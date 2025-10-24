@@ -1,0 +1,56 @@
+# robots.txt for Kattali Textile Ltd (ktlbd.com)
+# Generated for production deployment
+
+# Allow all robots to access all content
+User-agent: *
+Allow: /
+
+# Disallow access to admin/private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Disallow access to API endpoints (if any)
+# Disallow: /api/
+
+# Disallow access to build files and system directories
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /.vscode/
+
+# Sitemap location
+Sitemap: https://ktlbd.com/sitemap.xml
+
+# Crawl-delay (optional - commented out by default)
+# Crawl-delay: 1
+
+# Search Engine Specific Instructions
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu (Chinese search engine)
+User-agent: Baiduspider
+Allow: /
+
+# Yandex (Russian search engine)
+User-agent: Yandex
+Allow: /
+
+# Block bad bots (optional)
+# User-agent: BadBot
+# Disallow: /
+
+# Note: This file should be accessible at https://ktlbd.com/robots.txt

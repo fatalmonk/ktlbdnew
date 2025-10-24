@@ -1,0 +1,423 @@
+/* Import Google Fonts for Ananta typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Import IR styles */
+@import './styles/ir.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Consistent header spacing utility */
+@layer utilities {
+  .header-spacing {
+    padding-top: 72px;
+  }
+}
+
+/* Enhanced Typography System */
+@layer base {
+  html {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variant-numeric: oldstyle-nums;
+  }
+
+  body {
+    @apply antialiased;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Enhanced heading styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-feature-settings: 'ss01', 'ss02';
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply font-bold leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply font-semibold leading-tight tracking-tight;
+  }
+
+  /* Better text rendering */
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom utility classes for background images */
+@layer utilities {
+  .bg-hero-sustainability {
+    background-image: url('/assets/hero.jpg');
+  }
+
+  .bg-hero-about {
+    background-image: url('/assets/designer-2.jpg');
+  }
+
+  .bg-hero-contact {
+    background-image: url('/assets/designer-1.jpg');
+  }
+
+  .bg-hero-products {
+    background-image: url('/assets/designer-2.jpg');
+  }
+
+  .bg-hero-manufacturing {
+    background-image: url('/assets/hero.jpg');
+  }
+
+  .bg-hero-gallery {
+    background-image: url('/assets/hero.jpg');
+  }
+
+  .bg-investor-hero {
+    background-image: url('/assets/investor-hero.jpg');
+  }
+
+  /* Progress bar utilities */
+  .progress-25 {
+    width: 25%;
+  }
+  .progress-35 {
+    width: 35%;
+  }
+  .progress-40 {
+    width: 40%;
+  }
+  .progress-60 {
+    width: 60%;
+  }
+  .progress-75 {
+    width: 75%;
+  }
+
+  /* Enhanced glassmorphism effects */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-card-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10;
+  }
+
+  /* Enhanced shadow utilities */
+  .shadow-soft {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  .shadow-medium {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.08),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-large {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Enhanced typography utilities */
+  .text-display {
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight;
+  }
+
+  .text-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+
+  .text-section {
+    @apply text-3xl md:text-4xl font-semibold leading-tight tracking-tight;
+  }
+
+  .text-subsection {
+    @apply text-xl md:text-2xl font-semibold leading-snug;
+  }
+
+  /* Enhanced animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply transform -translate-y-2 shadow-large;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-lg shadow-primary/25;
+  }
+
+  /* Ananta Design System Components */
+  .btn-primary {
+    @apply bg-primary-500 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-600 transition-colors duration-200 shadow-hard;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-500 border border-primary-500 px-6 py-3 rounded-md font-medium hover:bg-primary-50 transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-neutral-600 px-6 py-3 rounded-md font-medium hover:bg-neutral-100 transition-colors duration-200;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  /* Card System */
+  .card-ananta {
+    @apply bg-white rounded-lg shadow-soft border border-neutral-200 overflow-hidden hover:shadow-medium hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .card-image-top {
+    @apply aspect-[3/2] overflow-hidden;
+  }
+
+  /* Chip System */
+  .chip {
+    @apply bg-neutral-100 text-neutral-500 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Navigation System */
+  .nav-ananta {
+    @apply h-18 bg-white text-neutral-600 border-b border-neutral-200;
+  }
+
+  /* Form System */
+  .form-field {
+    @apply h-11 bg-white border border-neutral-300 rounded-md px-4 text-neutral-600 focus:ring-2 focus:ring-accent-500/25 focus:border-primary-500 transition-colors duration-200;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-neutral-600 mb-2 block;
+  }
+
+  /* Typography Utilities */
+  .text-numeric {
+    @apply font-numeric tabular-nums;
+  }
+
+  /* Animation Utilities */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-6 transition-all duration-400 ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Enhanced Hover Effects */
+  .hover-zoom {
+    @apply hover:scale-105 transition-transform duration-200;
+  }
+
+  .hover-brightness {
+    @apply hover:brightness-95 transition-all duration-200;
+  }
+
+  /* Ananta Hero Panel Styles */
+  .panel-19 { width: 19%; }
+  .panel-22 { width: 22%; }
+  .panel-18 { width: 18%; }
+
+  /* Brand Button Styles */
+  .btn-ananta-primary {
+    @apply bg-primary-500 text-neutral-900 px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-primary-600 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-secondary-600 transition-colors duration-200;
+  }
+
+  .btn-ananta-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300 ease-out;
+  }
+
+  .btn-ananta-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-tertiary {
+    @apply bg-tertiary-500 text-white px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-tertiary-600 transition-colors duration-200;
+  }
+
+  /* Brand Gradient Backgrounds */
+  .bg-brand-gradient {
+    background: linear-gradient(90deg, #fdd338 50%, #e11a2b 50%, #e11a2b 66.33%, #000 66.33%, #000 82.66%, #1C6FE3 82.66%, #1C6FE3);
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, #fdd338 0%, #facc15 100%);
+  }
+
+  .bg-secondary-gradient {
+    background: linear-gradient(135deg, #e11a2b 0%, #dc2626 100%);
+  }
+
+  .bg-tertiary-gradient {
+    background: linear-gradient(135deg, #1C6FE3 0%, #2563eb 100%);
+  }
+
+  /* Metrics Section Wave Pattern */
+  .bg-wave-pattern {
+    background-image: repeating-linear-gradient(
+      35deg,
+      transparent,
+      transparent 110px,
+      #F4C414 110px,
+      #F4C414 116px,
+      transparent 116px,
+      transparent 220px
+    );
+    background-size: 220px 220px;
+  }
+
+  /* Metrics Section Styles */
+  .metrics-section {
+    position: relative;
+    background: #FFFFFF;
+  }
+
+  .metrics-accent-bar {
+    height: 4px;
+    background: #F4C414;
+    width: 100%;
+  }
+
+  .metrics-bottom-rule {
+    height: 3px;
+    background: #111111;
+    width: 100%;
+  }
+
+  .metric-display {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+
+  .metric-prefix {
+    font-size: 0.45em;
+    vertical-align: 18px;
+  }
+
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Contact Page Styles */
+.contact-bg {
+  background-image: url('/assets/hero.jpg');
+}
+
+.contact-vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* LogoLoop scroll animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+}
