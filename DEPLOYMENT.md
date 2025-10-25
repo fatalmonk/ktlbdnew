@@ -88,6 +88,40 @@ Based on `.env.example`, you may need to set:
 
 ## Troubleshooting Common Issues
 
+### 404 NOT_FOUND Errors
+**Problem:** Vercel shows 404 error after deployment
+**Causes:**
+- Wrong output directory (using 'public' instead of 'dist')
+- Missing `vercel.json` configuration
+- Build command not working properly
+
+**Solutions:**
+1. **Verify vercel.json exists and is correct:**
+   ```json
+   {
+     "buildCommand": "npm run build",
+     "outputDirectory": "dist",
+     "framework": "vite",
+     "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]
+   }
+   ```
+
+2. **Test build locally:**
+   ```bash
+   npm run build
+   ls -la dist/
+   # Should show dist/index.html
+   ```
+
+3. **Force redeploy:**
+   ```bash
+   vercel --prod --force
+   ```
+
+4. **Clear Vercel cache:**
+   - Go to Vercel dashboard → Project Settings → Functions
+   - Clear build cache and redeploy
+
 ### Build Failures
 ```bash
 # Clear cache and rebuild
@@ -100,14 +134,28 @@ npm run build
 - Ensure all `VITE_` prefixed variables are set in Vercel dashboard
 - Check that variables don't contain spaces or special characters
 
-### Routing Issues
+### Routing Issues (SPA)
 - Verify `vercel.json` rewrites are configured correctly
 - Check that all routes return `index.html` for SPA routing
+- Test navigation between pages
 
 ### Performance Issues
 - Check bundle size in Vercel dashboard
 - Consider code splitting for large components
 - Optimize images (already done with WebP)
+
+### Vercel CLI Issues
+```bash
+# Reinstall Vercel CLI
+npm uninstall -g vercel
+npm install -g vercel
+
+# Login again
+vercel login
+
+# Link project
+vercel link
+```
 
 ## Rollback Procedure
 
