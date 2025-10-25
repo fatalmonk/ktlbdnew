@@ -22,7 +22,7 @@ if [ $? -eq 0 ]; then
     echo "✅ Local build successful!"
     echo "📁 Build output: dist/"
     echo "📄 Main file: dist/index.html"
-    
+
     # Check if dist/index.html exists
     if [ -f "dist/index.html" ]; then
         echo "✅ dist/index.html found - build is ready"
@@ -30,11 +30,11 @@ if [ $? -eq 0 ]; then
         echo "❌ Error: dist/index.html not found"
         exit 1
     fi
-    
+
     echo ""
     echo "🚀 Deploying to Vercel..."
     vercel --prod
-    
+
     if [ $? -eq 0 ]; then
         echo ""
         echo "🎉 Deployment successful!"
