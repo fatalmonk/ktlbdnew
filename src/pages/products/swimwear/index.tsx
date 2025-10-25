@@ -1,13 +1,32 @@
 import SEO from '../../../components/SEO';
+import StructuredData from '../../../components/StructuredData';
 
 const SwimwearPage = () => {
   return (
     <>
       <SEO
-        title="Swimwear"
-        description="Kattali Textile Limited's premium swimwear collection. High-quality swimsuits, bikinis, and beachwear for global markets."
-        keywords={['swimwear', 'swimsuits', 'bikinis', 'beachwear', 'KTL swimwear']}
+        title="Premium Swimwear Products | Kattali Textile Ltd Manufacturing"
+        description="KTL's premium swimwear collection features high-quality swimsuits, bikinis, and beachwear manufactured in Bangladesh for global fashion brands."
+        canonical="/products/swimwear"
+        keywords={['swimwear products', 'swimsuits manufacturing', 'bikinis', 'Bangladesh swimwear', 'textile swimwear']}
       />
+      <StructuredData data={[{
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: 'Premium Swimwear Products',
+        description: 'High-quality swimsuits, bikinis, and beachwear manufactured by Kattali Textile Ltd',
+        image: 'https://ktlbd.com/assets/swimwear.jpg',
+        category: 'Swimwear Apparel',
+        brand: {
+          '@type': 'Brand',
+          name: 'Kattali Textile Ltd'
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: 'Kattali Textile Ltd',
+          url: 'https://ktlbd.com'
+        }
+      }]} />
       <main className="min-h-screen bg-white text-black pt-20">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">

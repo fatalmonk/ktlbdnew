@@ -88,9 +88,10 @@ const CompanySustainability = () => {
   return (
     <>
       <SEO
-        title="Company Sustainability"
-        description="KTL's commitment to sustainable practices and environmental responsibility in textile manufacturing."
-        keywords={['sustainability', 'eco-friendly', 'green manufacturing', 'environmental responsibility', 'KTL sustainability']}
+        title="Sustainable Textile Manufacturer | Kattali Textile Ltd Ethical Manufacturing"
+        description="KTL is Bangladesh's leading sustainable textile manufacturer, implementing eco-friendly practices, ethical production standards, and green certifications for responsible garment manufacturing."
+        canonical="/company/sustainability"
+        keywords={['sustainable textile manufacturer', 'ethical manufacturing', 'green factory', 'sustainable fashion', 'eco-friendly textile']}
       />
       <div>
         {/* Hero Section */}

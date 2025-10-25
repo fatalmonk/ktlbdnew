@@ -88,7 +88,7 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 
 ### Styling
 - **Tailwind CSS 3.4.1** - Utility-first CSS framework
-- **Custom "Ananta" Theme** - Brand-specific design system
+- **Custom "KTL" Theme** - Brand-specific design system
 - **PostCSS + Autoprefixer** - CSS processing
 - **Lucide React 0.344.0** - Icon library
 
@@ -350,6 +350,9 @@ For deployment, ensure:
   - Image optimization process
   - Responsive image handling
 
+- **[docs/prd-technical-improvements.md**] - Technical improvements product requirements
+
+- **[docs/architecture.md]** - Brownfield enhancement architecture
 ---
 
 ## 🤝 Contributing

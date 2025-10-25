@@ -1,4 +1,5 @@
 import { FileText, Users } from 'lucide-react';
+import SEO from '../../../components/SEO';
 
 const CompanyGovernance = () => {
   // KTL Board of Directors
@@ -82,7 +83,14 @@ const CompanyGovernance = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <SEO
+        title="Corporate Governance | Kattali Textile Ltd Board & Compliance"
+        description="KTL's corporate governance framework ensures transparency, accountability, and ethical business practices. Learn about our board structure and compliance standards."
+        canonical="/company/governance"
+        keywords={['corporate governance', 'board of directors', 'compliance', 'transparency', 'KTL governance']}
+      />
+      <main className="min-h-screen bg-white">
       {/* Top Gradient Bar */}
       <div className="h-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500"></div>
 
@@ -283,6 +291,7 @@ const CompanyGovernance = () => {
   </div>
 </section>
     </main>
+    </>
   );
 };
 

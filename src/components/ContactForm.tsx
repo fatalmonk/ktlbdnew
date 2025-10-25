@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 
+// Declare gtag for Google Analytics
+declare global {
+  interface Window {
+    gtag?: (command: string, targetId: string, config?: any) => void;
+  }
+}
+
 interface FormData {
   name: string;
   email: string;
@@ -107,6 +114,15 @@ const ContactForm: React.FC = () => {
       // if (!response.ok) throw new Error('Failed to send message');
 
       setStatus('success');
+
+      // Google Analytics 4 event
+      if (window.gtag) {
+        window.gtag('event', 'form_submission', {
+          event_category: 'Contact',
+          event_label: 'Contact Form',
+          value: 1
+        });
+      }
 
       // Reset form
       setFormData({

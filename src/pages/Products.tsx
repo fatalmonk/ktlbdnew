@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Shirt, Package } from 'lucide-react';
 import ResponsiveImage from '../components/ResponsiveImage';
+import SEO from '../components/SEO';
 
 const Products = () => {
   const productCategories = [
@@ -67,17 +68,62 @@ const Products = () => {
   ];
 
   return (
-    <div>
+    <>
+      <SEO
+        title="Woven Garment Supplier Bangladesh | Kattali Textile Ltd Manufacturing"
+        description="KTL is Bangladesh's leading woven garment supplier, manufacturing premium woven apparel, denim, and children's wear for global fashion brands from our Chittagong facilities."
+        canonical="/products"
+        keywords={['woven garment supplier bangladesh', 'woven apparel', 'woven clothing manufacturer', 'textile products', 'garment manufacturing']}
+      />
+      <div>
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center bg-cover bg-center bg-hero-products">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
-              Our <span className="text-primary">Products</span>
+              Woven Garment Supplier <span className="text-primary">Bangladesh</span>
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              Premium quality textiles and garments for global markets
+              Premium quality woven apparel, denim, and children's wear manufactured in Bangladesh for global fashion brands
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Woven Garments Section - P0 Keywords */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="font-heading text-4xl font-bold mb-6 text-gray-900">
+              Premium Woven Garment Manufacturing
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              As a leading <strong>woven garment supplier in Bangladesh</strong>, KTL specializes in manufacturing
+              high-quality woven apparel for global fashion brands. Our state-of-the-art facilities in Chittagong
+              produce a wide range of woven clothing including shirts, pants, dresses, and outerwear.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">Woven Apparel Capabilities</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Men's and women's woven shirts</li>
+                  <li>• Formal and casual pants</li>
+                  <li>• Dresses and blouses</li>
+                  <li>• Jackets and outerwear</li>
+                  <li>• Custom woven clothing</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">Quality Standards</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• AQL 2.5 quality inspection</li>
+                  <li>• OEKO-TEX certified materials</li>
+                  <li>• ISO 9001:2015 certified</li>
+                  <li>• Sustainable production practices</li>
+                  <li>• On-time delivery guarantee</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -193,6 +239,7 @@ const Products = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

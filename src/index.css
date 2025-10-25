@@ -1,4 +1,4 @@
-/* Import Google Fonts for Ananta typography */
+/* Import Google Fonts for KTL typography */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Import IR styles */
@@ -181,7 +181,7 @@
     @apply shadow-lg shadow-primary/25;
   }
 
-  /* Ananta Design System Components */
+  /* KTL Design System Components */
   .btn-primary {
     @apply bg-primary-500 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-600 transition-colors duration-200 shadow-hard;
   }
@@ -203,7 +203,7 @@
   }
 
   /* Card System */
-  .card-ananta {
+  .card-ktl {
     @apply bg-white rounded-lg shadow-soft border border-neutral-200 overflow-hidden hover:shadow-medium hover:-translate-y-0.5 transition-all duration-200;
   }
 
@@ -217,7 +217,7 @@
   }
 
   /* Navigation System */
-  .nav-ananta {
+  .nav-ktl {
     @apply h-18 bg-white text-neutral-600 border-b border-neutral-200;
   }
 
@@ -253,13 +253,13 @@
     @apply hover:brightness-95 transition-all duration-200;
   }
 
-  /* Ananta Hero Panel Styles */
+  /* KTL Hero Panel Styles */
   .panel-19 { width: 19%; }
   .panel-22 { width: 22%; }
   .panel-18 { width: 18%; }
 
   /* Brand Button Styles */
-  .btn-ananta-primary {
+  .btn-ktl-primary {
     @apply bg-primary-500 text-neutral-900 px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-primary-600 transition-colors duration-200;
   }
 
@@ -267,11 +267,11 @@
     @apply bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-secondary-600 transition-colors duration-200;
   }
 
-  .btn-ananta-secondary {
+  .btn-ktl-secondary {
     @apply inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300 ease-out;
   }
 
-  .btn-ananta-secondary:hover {
+  .btn-ktl-secondary:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
   }

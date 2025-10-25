@@ -50,7 +50,7 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'h-sc
 
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 max-w-ananta mx-auto px-4 text-center pt-20">
+      <div className="relative z-10 max-w-ktl mx-auto px-4 text-center pt-20">
         <div className="max-w-5xl mx-auto">
           <h1 className="font-heading text-h1-mobile md:text-h1 lg:text-display font-bold mb-8 leading-[0.9] text-white">
             {title}

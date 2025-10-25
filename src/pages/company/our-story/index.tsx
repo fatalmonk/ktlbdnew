@@ -86,8 +86,10 @@ const CompanyOurStory = () => {
   return (
     <>
       <SEO
-        title="Our Story"
-        description="Learn about Kattali Textile Limited's journey from 2002 to becoming Bangladesh's leading eco-friendly textile manufacturer."
+        title="About Kattali Textile Ltd | Three Decades of Garment Manufacturing Excellence"
+        description="Learn about Kattali Textile Ltd's journey as one of Bangladesh's trusted RMG manufacturers. From humble beginnings to a publicly listed company serving top global apparel brands."
+        canonical="/company/our-story"
+        keywords={['KTL history', 'Bangladesh textile company', 'garment manufacturer story']}
       />
       <div>
         {/* Hero Section */}

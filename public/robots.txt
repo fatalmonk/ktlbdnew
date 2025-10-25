@@ -9,6 +9,10 @@ Allow: /
 # Disallow: /admin/
 # Disallow: /private/
 
+# Disallow test and demo pages
+Disallow: /test/
+Disallow: /logo-demo/
+
 # Disallow access to API endpoints (if any)
 # Disallow: /api/
 

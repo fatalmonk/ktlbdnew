@@ -69,10 +69,10 @@ const InvestorsOverview = () => {
               Your gateway to KTL's financial performance, strategic insights, and investment opportunities
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#metric-band" className="btn-ananta-primary">
+              <a href="#metric-band" className="btn-ktl-primary">
                 View Key Metrics
               </a>
-              <a href="#latest-results" className="btn-ananta-secondary">
+              <a href="#latest-results" className="btn-ktl-secondary">
                 Latest Results
               </a>
             </div>

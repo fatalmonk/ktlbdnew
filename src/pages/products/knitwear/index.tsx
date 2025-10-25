@@ -1,13 +1,32 @@
 import SEO from '../../../components/SEO';
+import StructuredData from '../../../components/StructuredData';
 
 const KnitwearPage = () => {
   return (
     <>
       <SEO
-        title="Knitwear"
-        description="Kattali Textile Limited's premium knitwear collection. High-quality sweaters, cardigans, and knit accessories for global markets."
-        keywords={['knitwear', 'sweaters', 'cardigans', 'knit accessories', 'KTL knitwear']}
+        title="Premium Knitwear Products | Kattali Textile Ltd Manufacturing"
+        description="KTL's premium knitwear collection features high-quality sweaters, cardigans, and knit accessories manufactured in Bangladesh for global fashion brands."
+        canonical="/products/knitwear"
+        keywords={['knitwear products', 'sweaters manufacturing', 'cardigans', 'Bangladesh knitwear', 'textile knitwear']}
       />
+      <StructuredData data={[{
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: 'Premium Knitwear Products',
+        description: 'High-quality sweaters, cardigans, and knit accessories manufactured by Kattali Textile Ltd',
+        image: 'https://ktlbd.com/assets/knitwear.jpg',
+        category: 'Knitwear Apparel',
+        brand: {
+          '@type': 'Brand',
+          name: 'Kattali Textile Ltd'
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: 'Kattali Textile Ltd',
+          url: 'https://ktlbd.com'
+        }
+      }]} />
       <main className="min-h-screen bg-white text-black pt-20">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">

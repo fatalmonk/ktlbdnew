@@ -69,14 +69,14 @@ export default {
         footer: '#000000',
       },
       fontFamily: {
-        // Ananta typography system
+        // KTL typography system
         heading: ['Poppins', 'Montserrat', 'Inter', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
         display: ['Poppins', 'Montserrat', 'Inter', 'system-ui', 'sans-serif'],
         numeric: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Ananta Typography Scale (Updated to match design guidelines)
+        // KTL Typography Scale (Updated to match design guidelines)
         h1: ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.01em' }], // 56px desktop
         h2: ['2.25rem', { lineHeight: '1.15' }], // 36px desktop
         h3: ['1.75rem', { lineHeight: '1.2' }], // 28px desktop
@@ -102,7 +102,7 @@ export default {
         section: ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.025em' }],
       },
       spacing: {
-        // Ananta spacing scale: [4, 8, 12, 16, 24, 32, 48, 64, 96]px
+        // KTL spacing scale: [4, 8, 12, 16, 24, 32, 48, 64, 96]px
         1: '0.25rem', // 4px
         2: '0.5rem', // 8px
         3: '0.75rem', // 12px
@@ -118,18 +118,20 @@ export default {
         128: '32rem',
       },
       animation: {
-        // Ananta animation system: 200-400ms duration, ease-out easing
+        // KTL animation system: 200-400ms duration, ease-out easing
         'fade-in': 'fadeIn 0.3s ease-out forwards',
         'fade-in-slow': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.4s ease-out forwards',
         'slide-up-slow': 'slideUp 0.8s ease-out forwards',
         'scale-in': 'scaleIn 0.3s ease-out forwards',
         float: 'float 3s ease-in-out infinite',
-        // New Ananta-style animations
+        // New KTL-style animations
         'zoom-hover': 'zoomHover 0.2s ease-out forwards',
         'brightness-hover': 'brightnessHover 0.2s ease-out forwards',
         'translate-hover': 'translateHover 0.2s ease-out forwards',
         'zoom-in': 'zoomIn 8s ease-out forwards',
+        'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+        'star-movement-top': 'star-movement-top linear infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -148,7 +150,7 @@ export default {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        // Ananta-style hover animations
+        // KTL-style hover animations
         zoomHover: {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.05)' },
@@ -165,11 +167,19 @@ export default {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.08)' },
         },
+        'star-movement-bottom': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+        },
+        'star-movement-top': {
+          '0%': { transform: 'translate(0%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(100%, 0%)', opacity: '0' },
+        },
       },
       backdropBlur: {
         xs: '2px',
       },
-      // Ananta component system
+      // KTL component system
       borderRadius: {
         none: '0',
         sm: '6px',
@@ -184,7 +194,7 @@ export default {
         hard: '0 2px 0 rgba(0,0,0,0.06)',
       },
       maxWidth: {
-        ananta: '1200px', // Ananta max width
+        ktl: '1200px', // KTL max width
       },
       screens: {
         xs: '360px',

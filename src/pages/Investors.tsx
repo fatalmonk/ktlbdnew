@@ -52,7 +52,7 @@ const Investors = () => {
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat bg-investor-hero">
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/60" />
-        
+
         {/* Hero Content */}
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -62,15 +62,15 @@ const Investors = () => {
             Your gateway to KTL's financial performance, strategic insights, and investment opportunities
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#metric-band" className="btn-ananta-primary">
+            <a href="#metric-band" className="btn-ktl-primary">
               View Key Metrics
             </a>
-            <a href="#latest-results" className="btn-ananta-secondary">
+            <a href="#latest-results" className="btn-ktl-secondary">
               Latest Results
             </a>
           </div>
         </div>
-        
+
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white opacity-70">
           <div className="animate-bounce">
@@ -199,9 +199,9 @@ const Investors = () => {
             <p className="text-neutral-600 mt-2">Subscribe to updates (placeholder form).</p>
           </div>
           <form className="flex gap-3 w-full md:w-auto">
-            <input 
-              className="border rounded-md px-3 h-11 w-full md:w-80" 
-              placeholder="you@example.com" 
+            <input
+              className="border rounded-md px-3 h-11 w-full md:w-80"
+              placeholder="you@example.com"
               aria-label="Email"
             />
             <button className="h-11 px-5 rounded-md bg-black text-white">Subscribe</button>

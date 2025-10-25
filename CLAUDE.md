@@ -202,7 +202,7 @@ project/
 
 ### Styling & UI
 - **Tailwind CSS 3.4.1**: Utility-first CSS framework
-- **Custom "Ananta" Theme**: Brand-specific design system
+- **Custom "KTL" Theme**: Brand-specific design system
 - **PostCSS + Autoprefixer**: CSS processing
 - **Lucide React 0.344.0**: Icon library
 
@@ -353,7 +353,7 @@ public/data/ir/*.json → fetch() → Type validation → IR Components
 - `KPIGrid`: Display metrics in grid
 - `MetricBand`: Golden wave financial banner
 
-### Design System: "Ananta" Theme
+### Design System: "KTL" Theme
 
 **Location**: `tailwind.config.js`
 

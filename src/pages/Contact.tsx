@@ -3,6 +3,7 @@ import { ChevronUp } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import GoogleMapsLocator from '../components/GoogleMapsLocator';
 import GoogleBusinessWidget from '../components/GoogleBusinessWidget';
+import SEO from '../components/SEO';
 import { COMPANY_PHONE, COMPANY_EMAIL, GOOGLE_BUSINESS } from '../lib/constants';
 
 const Contact = () => {
@@ -54,7 +55,14 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <>
+      <SEO
+        title="Contact Kattali Textile Ltd | Investor Relations & Corporate Office"
+        description="Get in touch with Kattali Textile Ltd (KTL). Visit our corporate office in Chittagong or connect with our Investor Relations team for business inquiries."
+        canonical="/contact"
+        keywords={['KTL contact', 'textile manufacturer contact', 'Bangladesh garment inquiry', 'investor relations']}
+      />
+      <div className="min-h-screen bg-black text-white">
       {/* Full-bleed Background with Dark Overlay */}
       <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat contact-bg">
         {/* Dark Overlay */}
@@ -179,6 +187,7 @@ const Contact = () => {
         </button>
       )}
     </div>
+    </>
   );
 };
 

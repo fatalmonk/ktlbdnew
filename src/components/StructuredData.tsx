@@ -19,28 +19,66 @@ export const organizationSchema = {
     addressLocality: 'Chittagong',
     addressCountry: 'BD',
   },
-  contactPoint: [
-    {
-      '@type': 'ContactPoint',
-      telephone: '+880-XXX-XXX-XXX',
-      contactType: 'customer service',
-      areaServed: 'Worldwide',
-      availableLanguage: ['English', 'Bengali'],
-    },
-    {
-      '@type': 'ContactPoint',
-      email: 'info@ktlbd.com',
-      contactType: 'customer service',
-    },
-  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+8801730597576',
+    contactType: 'customer service',
+    areaServed: 'Worldwide',
+    availableLanguage: ['English', 'Bengali'],
+  },
   sameAs: [
-    'https://www.linkedin.com/company/kattali-textile-ltd',
-    'https://www.facebook.com/KattaliTextile',
-    'https://twitter.com/KTLManufacturing',
+    'https://www.linkedin.com/company/kattali-textile-limited',
+    'https://www.facebook.com/KTLManufacturing',
+  ],
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Product',
+        name: 'Woven Garment Manufacturing',
+        description: 'Premium woven apparel manufacturing services'
+      },
+      areaServed: 'Bangladesh',
+      availableAtOrFrom: {
+        '@type': 'Place',
+        name: 'Kattali Textile Ltd',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad',
+          addressLocality: 'Chittagong',
+          addressCountry: 'BD'
+        }
+      }
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Product',
+        name: 'Denim Manufacturing',
+        description: 'High-quality denim products and jeans manufacturing'
+      },
+      areaServed: 'Bangladesh'
+    },
+    {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Product',
+        name: 'Sustainable Textile Manufacturing',
+        description: 'Eco-friendly and ethical textile production'
+      },
+      areaServed: 'Bangladesh'
+    }
+  ],
+  keywords: [
+    'bangladesh garment manufacturer',
+    'textile exporter chittagong',
+    'woven garment supplier bangladesh',
+    'denim manufacturer bangladesh',
+    'sustainable textile manufacturer'
   ],
   numberOfEmployees: {
     '@type': 'QuantitativeValue',
-    value: 5000,
+    value: 1200,
   },
   parentOrganization: {
     '@type': 'Organization',

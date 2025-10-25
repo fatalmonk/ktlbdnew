@@ -2,31 +2,38 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Settings, Calendar, Award, Shirt, Package, Globe } from 'lucide-react';
 import KTLHero from '../components/KTLHero';
 import LogoLoop from '../components/LogoLoop';
+import SEO from '../components/SEO';
+import CountUp from '../components/CountUp';
+import StaggeredReveal from '../components/StaggeredReveal';
 
 const Home = () => {
   const stats = [
     {
       icon: Calendar,
-      title: '20+',
+      value: 20,
+      suffix: '+',
       subtitle: 'Years of Excellence',
       description:
         'Established since 2002, leading the textile industry with innovation and quality',
     },
     {
       icon: Users,
-      title: '1,200+',
+      value: 1200,
+      suffix: '+',
       subtitle: 'Skilled Employees',
       description: 'Our greatest asset - dedicated professionals driving our success',
     },
     {
       icon: Settings,
-      title: '680+',
+      value: 680,
+      suffix: '+',
       subtitle: 'Advanced Machines',
       description: 'State-of-the-art equipment ensuring premium quality production',
     },
     {
       icon: Package,
-      title: '360K+',
+      value: 360,
+      suffix: 'K+',
       subtitle: 'Annual Production',
       description: 'Dozen capacity - meeting global demand with efficiency',
     },
@@ -159,21 +166,16 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <>
+      <SEO
+        title="Bangladesh Garment Manufacturer | Kattali Textile Ltd - Leading Textile Exporter Chittagong"
+        description="Kattali Textile Ltd is Bangladesh's premier garment manufacturer and textile exporter from Chittagong. We produce high-quality woven, denim, and children's apparel for global brands with certified sustainable practices."
+        canonical="/"
+        keywords={['bangladesh garment manufacturer', 'textile exporter chittagong', 'woven apparel', 'denim manufacturing', 'RMG Bangladesh', 'Chittagong textile']}
+      />
+      <div>
       {/* Hero Section */}
       <KTLHero
-        title={
-          <>
-            Fashionably Sustaining
-            <br />
-            Apparel Industry Innovation
-            <br />
-            and Design
-          </>
-        }
-        subtitle={
-          "Designing, developing and manufacturing private-label apparel products for the world's leading brands and retailers."
-        }
         cta={{
           label: 'Explore Our Products',
           href: '/products'
@@ -182,18 +184,31 @@ const Home = () => {
 
       {/* Why Choose Us Section */}
       <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-ananta mx-auto px-4 md:px-6">
+        <div className="max-w-ktl mx-auto px-4 md:px-6">
                   <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-neutral-900">
                     Why Choose <span className="text-primary-500">Kattali Textile</span>
                   </h2>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12">
             {stats.map((stat, index) => (
-              <div key={index} className="card-ananta text-center p-4 md:p-8">
+              <div key={index} className="card-ktl text-center p-4 md:p-8">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                   <stat.icon className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />
                 </div>
                 <h3 className="font-heading text-xl md:text-h3 font-bold text-neutral-600 mb-1 md:mb-2 text-numeric">
-                  {stat.title}
+                  {stat.value !== undefined ? (
+                    <>
+                      <CountUp
+                        to={stat.value}
+                        separator=""
+                        duration={2}
+                        delay={index * 0.2}
+                        className="text-numeric"
+                      />
+                      {stat.suffix}
+                    </>
+                  ) : (
+                    stat.title
+                  )}
                 </h3>
                 <p className="text-primary-600 font-semibold mb-1 md:mb-2 text-sm md:text-base">{stat.subtitle}</p>
                 <p className="text-neutral-500 text-xs md:text-sm hidden md:block">{stat.description}</p>
@@ -217,13 +232,16 @@ const Home = () => {
 
       {/* Featured Products Section */}
       <section className="py-12 md:py-20">
-        <div className="max-w-ananta mx-auto px-4 md:px-6">
+        <div className="max-w-ktl mx-auto px-4 md:px-6">
                   <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-neutral-900">
                     Our <span className="text-primary-500">Products</span>
                   </h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <StaggeredReveal
+            stagger={0.1}
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+          >
             {products.map((product, index) => (
-              <div key={index} className="card-ananta hover-lift p-4 md:p-6 group">
+              <div key={index} className="card-ktl hover-lift p-4 md:p-6 group">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:bg-primary-200 transition-colors">
                   <product.icon className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />
                 </div>
@@ -236,19 +254,48 @@ const Home = () => {
                 <p className="text-neutral-500 text-center text-xs md:text-sm hidden md:block">{product.description}</p>
               </div>
             ))}
-          </div>
+          </StaggeredReveal>
           <div className="text-center mt-12">
             <Link to="/products" className="btn-primary inline-flex items-center group">
               View All Products
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
+
+          {/* Strategic Internal Links - P0 Keywords */}
+          <div className="mt-8 text-center">
+            <p className="text-body text-neutral-600 mb-4">
+              Explore our specialized manufacturing capabilities:
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/products/denims"
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Denim Manufacturer Bangladesh
+              </Link>
+              <span className="text-neutral-400">•</span>
+              <Link
+                to="/products"
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Woven Garment Supplier Bangladesh
+              </Link>
+              <span className="text-neutral-400">•</span>
+              <Link
+                to="/company/sustainability"
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Sustainable Textile Manufacturer
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Logo Loop Section */}
       <section className="py-12 md:py-20 bg-gray-100">
-        <div className="max-w-ananta mx-auto px-4 md:px-6">
+        <div className="max-w-ktl mx-auto px-4 md:px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-black">
             Partnering with <span className="text-primary-500">global brands</span>
           </h2>
@@ -263,7 +310,7 @@ const Home = () => {
 
       {/* Certifications Section */}
       <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-ananta mx-auto px-4 md:px-6">
+        <div className="max-w-ktl mx-auto px-4 md:px-6">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-gray-900">
             Our <span className="text-primary">Certifications</span>
           </h2>
@@ -286,13 +333,13 @@ const Home = () => {
 
       {/* Latest News Section */}
       <section className="py-12 md:py-20">
-        <div className="max-w-ananta mx-auto px-4 md:px-6">
+        <div className="max-w-ktl mx-auto px-4 md:px-6">
                   <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-neutral-900">
                     Latest <span className="text-primary-500">News</span>
                   </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {newsItems.map((news, index) => (
-              <article key={index} className="card-ananta card-image-top group">
+              <article key={index} className="card-ktl card-image-top group">
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={news.image}
@@ -383,7 +430,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-12 md:py-20" style={{ backgroundColor: '#fdd336' }}>
-        <div className="max-w-ananta mx-auto px-4 md:px-6 text-center">
+        <div className="max-w-ktl mx-auto px-4 md:px-6 text-center">
           <h2 className="font-heading text-2xl md:text-4xl font-bold text-neutral-900 mb-4 md:mb-6">
             Ready for Global Apparel Sourcing?
           </h2>
@@ -401,6 +448,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

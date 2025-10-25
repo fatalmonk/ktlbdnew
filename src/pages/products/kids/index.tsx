@@ -1,13 +1,32 @@
 import SEO from '../../../components/SEO';
+import StructuredData from '../../../components/StructuredData';
 
 const KidsPage = () => {
   return (
     <>
       <SEO
-        title="Kids Wear"
-        description="Kattali Textile Limited's premium kids wear collection. High-quality children's clothing for comfort, style, and durability."
-        keywords={['kids wear', 'children clothing', 'kids fashion', 'KTL kids', 'children apparel']}
+        title="Premium Kids Wear Products | Kattali Textile Ltd Manufacturing"
+        description="KTL's premium kids wear collection features high-quality children's clothing for comfort, style, and durability manufactured in Bangladesh for global brands."
+        canonical="/products/kids"
+        keywords={['kids wear products', 'children clothing', 'kids fashion', 'Bangladesh kids wear', 'textile children apparel']}
       />
+      <StructuredData data={[{
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: 'Premium Kids Wear Products',
+        description: 'High-quality children\'s clothing for comfort, style, and durability manufactured by Kattali Textile Ltd',
+        image: 'https://ktlbd.com/assets/kids.jpg',
+        category: 'Children\'s Apparel',
+        brand: {
+          '@type': 'Brand',
+          name: 'Kattali Textile Ltd'
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: 'Kattali Textile Ltd',
+          url: 'https://ktlbd.com'
+        }
+      }]} />
       <main className="min-h-screen bg-white text-black pt-20">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">

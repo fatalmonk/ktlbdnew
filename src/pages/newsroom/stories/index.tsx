@@ -22,7 +22,7 @@ const StoriesPage = () => {
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-3">From Vision to Reality</h3>
                 <p className="text-gray-800 mb-4">
-                  The story of how Ms. Ananta Rahman's vision in 2002 transformed into
+                  The story of how Mrs. Nasreen Hoque's vision in 2002 transformed into
                   Bangladesh's leading eco-friendly textile manufacturer.
                 </p>
                 <span className="text-sm text-primary">Read Full Story →</span>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import OptimizedImage from './OptimizedImage';
 
 type PanelData = {
   id: number;
@@ -82,7 +83,7 @@ const KTLHero: React.FC<Props> = ({ cta }) => {
             }`}
           >
             <div className="w-full h-full overflow-hidden">
-              <img
+              <OptimizedImage
                 key={`${panel.id}-${activePanel === index ? 'active' : 'inactive'}`}
                 src={panel.image}
                 alt={`Hero slide ${index + 1}`}
@@ -150,7 +151,7 @@ const KTLHero: React.FC<Props> = ({ cta }) => {
               }`}
               aria-label={`Go to slide ${index + 1}`}
             >
-              <img
+              <OptimizedImage
                 src={panel.image}
                 alt={`Thumbnail for slide ${index + 1}`}
                 className="w-full h-full object-cover grayscale"

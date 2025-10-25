@@ -207,9 +207,10 @@ const RMGFacility = () => {
   return (
     <>
       <SEO
-        title="RMG Manufacturing & Gallery"
-        description="KTL's comprehensive RMG manufacturing facility featuring advanced production capabilities, quality control systems, and photo gallery showcasing our operations."
-        keywords={['RMG manufacturing', 'garment production', 'manufacturing gallery', 'KTL facility', 'textile production', 'quality control']}
+        title="RMG Manufacturing Facility | Kattali Textile Ltd Production Center"
+        description="Explore KTL's state-of-the-art RMG manufacturing facility in Chittagong. Advanced production lines, quality control systems, and sustainable garment manufacturing."
+        canonical="/facilities/rmg"
+        keywords={['RMG facility', 'garment manufacturing', 'textile production', 'Bangladesh factory', 'quality control']}
       />
       <div>
         {/* Hero Section */}
