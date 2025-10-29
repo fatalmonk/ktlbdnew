@@ -1,7 +1,6 @@
-import React from 'react';
-import ResponsiveImage from '../../../components/ResponsiveImage';
+import Image from '../../../components/media/Image';
 import { Target, Eye, Users2, MapPin, Calendar, Award } from 'lucide-react';
-import SEO from '../../../components/SEO';
+import SEO from '../../../components/seo/SEO';
 
 const CompanyOurStory = () => {
   const leadership = [
@@ -146,7 +145,7 @@ const CompanyOurStory = () => {
                 </div>
               </div>
               <div className="relative">
-                <ResponsiveImage
+                <Image
                   src="designer-1.jpg"
                   alt="Textile manufacturing"
                   className="rounded-2xl shadow-2xl w-full h-auto"
@@ -201,7 +200,7 @@ const CompanyOurStory = () => {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="aspect-square overflow-hidden">
-                    <ResponsiveImage
+                    <Image
                       src={leader.image}
                       alt={leader.name}
                       className="w-full h-full object-cover"

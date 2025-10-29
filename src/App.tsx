@@ -1,11 +1,13 @@
 import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import FloatingCTA from './components/FloatingCTA';
-import ErrorBoundary from './components/ErrorBoundary';
-import Loading from './components/Loading';
-import StructuredData, { organizationSchema, websiteSchema } from './components/StructuredData';
+import { MotionConfig } from 'framer-motion';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import FloatingCTA from './components/layout/FloatingCTA';
+import ErrorBoundary from './components/shared/ErrorBoundary';
+import Loading from './components/ui/Loading';
+import StructuredData, { organizationSchema, websiteSchema } from './components/seo/StructuredData';
+import { DebugPanel } from './components/ui/DebugPanel';
 
 // Lazy load pages for better performance
 const Home = React.lazy(() => import('./pages/Home'));
@@ -57,6 +59,9 @@ const InvestorsAnnual = React.lazy(() => import('./pages/investors/reports/annua
 const InvestorsPSI = React.lazy(() => import('./pages/investors/reports/psi'));
 const InvestorsContacts = React.lazy(() => import('./pages/investors/contacts'));
 
+// Test pages
+const AnimationTest = React.lazy(() => import('./pages/test/AnimationTest'));
+
 function App() {
   useEffect(() => {
     console.log('App component mounted successfully');
@@ -65,14 +70,16 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <Router basename={import.meta.env.BASE_URL}>
-        <StructuredData data={[organizationSchema, websiteSchema]} />
-        <div className="min-h-screen bg-white font-body">
-          <Header />
-          <main>
-            <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
+      <MotionConfig reducedMotion="user">
+        <Router basename={import.meta.env.BASE_URL}>
+          <StructuredData data={[organizationSchema, websiteSchema]} />
+          <div className="min-h-screen bg-white font-body">
+            <Header />
+            <main>
+              <Suspense fallback={<Loading />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/test/animation" element={<AnimationTest />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/denims" element={<ProductDenims />} />
                 <Route path="/products/knitwear" element={<ProductKnitwear />} />
@@ -114,13 +121,15 @@ function App() {
                 <Route path="/investors/reports/annual" element={<InvestorsAnnual />} />
                 <Route path="/investors/reports/psi" element={<InvestorsPSI />} />
                 <Route path="/investors/contacts" element={<InvestorsContacts />} />
-              </Routes>
-            </Suspense>
-          </main>
-          <FloatingCTA />
-          <Footer />
-        </div>
-      </Router>
+                </Routes>
+              </Suspense>
+            </main>
+            <FloatingCTA />
+            <Footer />
+            {process.env.NODE_ENV === 'development' && <DebugPanel />}
+          </div>
+        </Router>
+      </MotionConfig>
     </ErrorBoundary>
   );
 }

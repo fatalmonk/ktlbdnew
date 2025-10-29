@@ -1,5 +1,5 @@
-import SEO from '../../../components/SEO';
-import StructuredData from '../../../components/StructuredData';
+import SEO from '../../../components/seo/SEO';
+import StructuredData from '../../../components/seo/StructuredData';
 
 const KnitwearPage = () => {
   return (

@@ -1,5 +1,5 @@
 import { FileText, Users } from 'lucide-react';
-import SEO from '../../../components/SEO';
+import SEO from '../../../components/seo/SEO';
 
 const CompanyGovernance = () => {
   // KTL Board of Directors

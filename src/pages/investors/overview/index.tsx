@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { KPI, IRFile, IRItem, Price } from '../../../ir/types';
-import SEO from '../../../components/SEO';
+import SEO from '../../../components/seo/SEO';
 
 const InvestorsOverview = () => {
   const [price, setPrice] = useState<Price | null>(null);

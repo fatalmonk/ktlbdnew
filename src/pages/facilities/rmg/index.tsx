@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import ImageX from '../../../components/ImageX';
-import ResponsiveImage from '../../../components/ResponsiveImage';
+import { useState } from 'react';
+import Image from '../../../components/media/Image';
 import { Settings, Users, Package, MapPin, Clock, Award, Shield, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import SEO from '../../../components/SEO';
+import SEO from '../../../components/seo/SEO';
 
 const RMGFacility = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -337,7 +336,7 @@ const RMGFacility = () => {
                 </div>
               </div>
               <div className="relative">
-                <ImageX
+                <Image
                   src="designer-2.jpg"
                   alt="Manufacturing facility"
                   className="rounded-2xl shadow-2xl"
@@ -412,7 +411,7 @@ const RMGFacility = () => {
                   className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                   onClick={() => openModal(index)}
                 >
-                  <ResponsiveImage
+                  <Image
                     src={image.src}
                     alt={image.title}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
@@ -466,7 +465,7 @@ const RMGFacility = () => {
               </button>
 
               {/* Image */}
-              <ResponsiveImage
+              <Image
                 src={filteredImages[selectedImage].src}
                 alt={filteredImages[selectedImage].title}
                 className="max-w-full max-h-full object-contain rounded-lg"

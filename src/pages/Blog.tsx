@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
-import BlogCard from '../components/BlogCard';
-import SEO from '../components/SEO';
+import BlogCard from '../components/features/BlogCard';
+import SEO from '../components/seo/SEO';
 
 interface BlogPost {
   id: string;

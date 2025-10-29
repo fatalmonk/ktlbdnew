@@ -81,7 +81,7 @@ export const GOOGLE_BUSINESS_STRUCTURED_DATA = {
   "name": COMPANY_NAME,
   "alternateName": COMPANY_SHORT_NAME,
   "url": "https://ktlbd.com",
-  "logo": "https://ktlbd.com/logo.png",
+  "logo": "https://ktlbd.com/logos/ktl-logo.webp",
   "description": "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
   "address": {
     "@type": "PostalAddress",

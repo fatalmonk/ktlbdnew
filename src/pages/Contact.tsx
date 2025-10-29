@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
-import ContactForm from '../components/ContactForm';
-import GoogleMapsLocator from '../components/GoogleMapsLocator';
-import GoogleBusinessWidget from '../components/GoogleBusinessWidget';
-import SEO from '../components/SEO';
+import ContactForm from '../components/features/ContactForm';
+import GoogleMapsLocator from '../components/features/GoogleMapsLocator';
+import GoogleBusinessWidget from '../components/features/GoogleBusinessWidget';
+import SEO from '../components/seo/SEO';
 import { COMPANY_PHONE, COMPANY_EMAIL, GOOGLE_BUSINESS } from '../lib/constants';
 
 const Contact = () => {

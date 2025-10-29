@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Linkedin, Twitter } from 'lucide-react';
-import SEO from '../components/SEO';
-import BlogCard from '../components/BlogCard';
+import SEO from '../components/seo/SEO';
+import BlogCard from '../components/features/BlogCard';
 
 interface BlogPostMeta {
   id: string;

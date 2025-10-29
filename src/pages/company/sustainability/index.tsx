@@ -1,7 +1,6 @@
-import React from 'react';
 import { Droplets, Zap, Users, Leaf, Award, Recycle, Heart, Globe } from 'lucide-react';
-import ResponsiveImage from '../../../components/ResponsiveImage';
-import SEO from '../../../components/SEO';
+import Image from '../../../components/media/Image';
+import SEO from '../../../components/seo/SEO';
 
 const CompanySustainability = () => {
   // ARIA attributes for progress bars
@@ -271,7 +270,7 @@ const CompanySustainability = () => {
                 </div>
               </div>
               <div className="relative">
-                <ResponsiveImage
+                <Image
                   src="designer-1.jpg"
                   alt="Sustainable manufacturing"
                   className="rounded-2xl shadow-2xl"

@@ -1,62 +1,33 @@
-import React from 'react';
-import { ArrowRight, Shirt, Package } from 'lucide-react';
-import ResponsiveImage from '../components/ResponsiveImage';
-import SEO from '../components/SEO';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Product3DCard from '../components/product/Product3DCard';
+import ProductFilter from '../components/product/ProductFilter';
+import EnhancedLogoCarousel from '../components/product/EnhancedLogoCarousel';
+import SEO from '../components/seo/SEO';
+import { products as productData } from '../data/products';
+import { partners } from '../data/partners';
+import { getUniqueCategories, getUniqueTags, filterProducts } from '../utils/filterHelpers';
+import { ProductFilterState } from '../types/product';
+import { useScrollTrigger } from '../hooks/animations/useScrollTrigger';
 
 const Products = () => {
-  const productCategories = [
-    {
-      category: "Men's Wear",
-      description: "Premium quality men's clothing for all occasions",
-      products: [
-        { name: 'T-Shirts', description: 'Cotton and blended fabric t-shirts in various styles' },
-        {
-          name: 'Polo Shirts',
-          description: 'Professional polo shirts for business and casual wear',
-        },
-        { name: 'Pants & Trousers', description: 'Formal and casual pants in different fits' },
-        { name: 'Shorts', description: 'Comfortable shorts for leisure and sports' },
-      ],
-      icon: Shirt,
-      image: 'designer-1.jpg',
-    },
-    {
-      category: "Women's Wear",
-      description: "Elegant and comfortable women's apparel",
-      products: [
-        { name: 'Dresses', description: 'Stylish dresses for various occasions' },
-        { name: 'Tops & Blouses', description: 'Fashion-forward tops and blouses' },
-        { name: 'Bottoms', description: 'Pants, skirts, and leggings' },
-        { name: 'Activewear', description: 'Comfortable athletic and leisure wear' },
-      ],
-      icon: Shirt,
-      image: 'designer-2.jpg',
-    },
-    {
-      category: "Children's Wear",
-      description: 'Safe, comfortable clothing for boys and girls',
-      products: [
-        { name: 'Boys Clothing', description: 'T-shirts, shirts, pants, and shorts for boys' },
-        { name: 'Girls Clothing', description: 'Dresses, tops, bottoms, and sets for girls' },
-        { name: 'Baby Wear', description: 'Soft, safe clothing for infants and toddlers' },
-        { name: 'School Uniforms', description: 'Durable uniforms for educational institutions' },
-      ],
-      icon: Package,
-      image: 'hero.jpg',
-    },
-    {
-      category: 'Sportswear',
-      description: 'High-performance athletic and leisure wear',
-      products: [
-        { name: 'Swim Trunks', description: 'Quick-dry swimwear for men and boys' },
-        { name: 'Athletic Wear', description: 'Performance clothing for sports and fitness' },
-        { name: 'Activewear Sets', description: 'Coordinated athletic clothing sets' },
-        { name: 'Leisure Wear', description: 'Comfortable clothing for relaxation' },
-      ],
-      icon: Package,
-      image: 'hero.jpg',
-    },
-  ];
+  // Animation triggers
+  const productsRef = useScrollTrigger({ threshold: 0.1 });
+  const carouselRef = useScrollTrigger({ threshold: 0.2 });
+
+  // Product filtering state
+  const [filteredProducts, setFilteredProducts] = useState(productData);
+
+  // Get filter options
+  const categories = getUniqueCategories(productData);
+  const tags = getUniqueTags(productData);
+
+  // Handle filter changes
+  const handleFilterChange = (filters: ProductFilterState) => {
+    const filtered = filterProducts(productData, filters);
+    setFilteredProducts(filtered);
+  };
 
   const features = [
     'Premium Quality Fabrics',
@@ -128,70 +99,40 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-20">
+      {/* Product Gallery with 3D Cards */}
+      <section className="py-20 bg-gradient-to-br from-primary-50 to-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <motion.div
+            ref={productsRef.ref}
+            animate={productsRef.controls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h2 className="font-heading text-4xl font-bold mb-6 text-gray-900">
-              Product <span className="text-primary">Categories</span>
+              Our <span className="text-primary">Products</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We specialize in manufacturing a wide range of textile products for men, women, and
               children across various categories.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="space-y-20">
-            {productCategories.map((category, index) => (
-              <div
-                key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
-              >
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <category.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="font-heading text-3xl font-bold text-gray-900">
-                      {category.category}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                    {category.description}
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    {category.products.map((product, productIndex) => (
-                      <div
-                        key={productIndex}
-                        className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <h4 className="font-semibold text-gray-900 mb-2">{product.name}</h4>
-                        <p className="text-gray-600 text-sm">{product.description}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button className="inline-flex items-center text-primary font-semibold hover:text-accent transition-colors group">
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <div className="relative">
-                    <ResponsiveImage
-                      src={category.image}
-                      alt={category.category}
-                      className="rounded-2xl shadow-2xl w-full h-96 object-cover"
-                      fit="cover"
-                      sizes="(min-width:1024px) 50vw, 100vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* 3D Product Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <AnimatePresence mode="popLayout">
+              {filteredProducts.map((product, index) => (
+                <Product3DCard
+                  key={product.id}
+                  product={product}
+                  index={index}
+                />
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>
@@ -218,6 +159,30 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Enhanced Logo Carousel */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            ref={carouselRef.ref}
+            animate={carouselRef.controls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-black mb-4">
+              Trusted by <span className="text-primary-500">Global Brands</span>
+            </h2>
+          </motion.div>
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <EnhancedLogoCarousel partners={partners} speed={20} />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
@@ -238,6 +203,13 @@ const Products = () => {
           </div>
         </div>
       </section>
+
+      {/* Product Filter Component */}
+      <ProductFilter
+        categories={categories}
+        tags={tags}
+        onFilterChange={handleFilterChange}
+      />
     </div>
     </>
   );
