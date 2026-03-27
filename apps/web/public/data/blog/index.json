@@ -1,0 +1,96 @@
+{
+  "categories": [
+    {
+      "id": "company",
+      "name": "Company",
+      "slug": "company",
+      "description": "Learn about Kattali Textile Ltd - our history, values, and culture"
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "slug": "manufacturing",
+      "description": "Insights into our manufacturing processes and capabilities"
+    },
+    {
+      "id": "partnerships",
+      "name": "Partnerships",
+      "slug": "partnerships",
+      "description": "Working with global brands and building lasting relationships"
+    },
+    {
+      "id": "sustainability",
+      "name": "Sustainability",
+      "slug": "sustainability",
+      "description": "Our commitment to eco-friendly and ethical manufacturing"
+    }
+  ],
+  "posts": [
+    {
+      "id": "inside-kattali-textile-legacy",
+      "slug": "inside-kattali-textile-legacy",
+      "title": "Inside Kattali Textile Ltd: Building a Legacy in Bangladesh's Garment Industry",
+      "excerpt": "Discover how Kattali Textile Ltd grew from a local manufacturer to a trusted global textile partner, and learn about the values that drive our success.",
+      "author": {
+        "name": "KTL Editorial Team",
+        "role": "Content Team"
+      },
+      "publishedAt": "2025-01-15",
+      "updatedAt": "2025-01-15",
+      "readingTime": 8,
+      "category": "company",
+      "tags": ["company history", "Bangladesh RMG", "textile manufacturing", "corporate values"],
+      "featured": true,
+      "image": "/assets/blog/kattali-textile-factory.jpg",
+      "seo": {
+        "metaTitle": "Inside Kattali Textile Ltd: Our Legacy in Bangladesh Garments",
+        "metaDescription": "Discover Kattali Textile Ltd's journey from 2002 to becoming a leading Bangladesh textile exporter. Learn about our values, manufacturing excellence, and global partnerships.",
+        "keywords": ["Kattali Textile Ltd", "Bangladesh garment manufacturer", "RMG Bangladesh", "textile exporter Bangladesh", "sustainable garment manufacturing"]
+      }
+    },
+    {
+      "id": "woven-garment-export-powerhouse",
+      "slug": "woven-garment-export-powerhouse",
+      "title": "Woven Garment Export Powerhouse: How Kattali Textile Ltd Serves Global Markets",
+      "excerpt": "Explore how our state-of-the-art facilities, skilled workforce, and quality focus make us a preferred woven garment exporter for international brands.",
+      "author": {
+        "name": "KTL Editorial Team",
+        "role": "Content Team"
+      },
+      "publishedAt": "2025-01-18",
+      "updatedAt": "2025-01-18",
+      "readingTime": 10,
+      "category": "manufacturing",
+      "tags": ["woven garments", "export", "manufacturing", "quality control", "global markets"],
+      "featured": true,
+      "image": "/assets/blog/woven-garment-manufacturing.jpg",
+      "seo": {
+        "metaTitle": "Woven Garment Export from Bangladesh | Kattali Textile Ltd",
+        "metaDescription": "Learn how Kattali Textile Ltd's advanced manufacturing, quality control, and global compliance make us a trusted woven garment exporter for international fashion brands.",
+        "keywords": ["woven garment exporter", "Bangladesh textile export", "readymade garment manufacturer", "garment export Bangladesh", "international garment supplier"]
+      }
+    },
+    {
+      "id": "global-textile-sourcing-partnerships",
+      "slug": "global-textile-sourcing-partnerships",
+      "title": "Global Textile Sourcing: Why Leading Brands Partner with Kattali Textile Ltd",
+      "excerpt": "Learn what makes Kattali Textile Ltd the sourcing partner of choice for global fashion brands seeking quality, reliability, and ethical manufacturing.",
+      "author": {
+        "name": "KTL Editorial Team",
+        "role": "Content Team"
+      },
+      "publishedAt": "2025-01-20",
+      "updatedAt": "2025-01-20",
+      "readingTime": 11,
+      "category": "partnerships",
+      "tags": ["sourcing", "partnerships", "global brands", "textile sourcing", "B2B"],
+      "featured": true,
+      "image": "/assets/blog/global-textile-sourcing.jpg",
+      "seo": {
+        "metaTitle": "Global Textile Sourcing Partner | Kattali Textile Ltd Bangladesh",
+        "metaDescription": "Discover why leading fashion brands choose Kattali Textile Ltd for textile sourcing. Quality manufacturing, ethical practices, and reliable partnerships since 2002.",
+        "keywords": ["textile sourcing Bangladesh", "apparel sourcing partner", "global garment sourcing", "ethical textile manufacturer", "fashion brand sourcing"]
+      }
+    }
+  ]
+}

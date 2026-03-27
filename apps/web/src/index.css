@@ -1,0 +1,588 @@
+/* Import IR styles */
+/* Note: Fonts are loaded via <link> in index.html for better performance */
+@import './styles/ir.css';
+
+/* Import tw-animate-css for animations */
+@import "tw-animate-css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for theming */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* Consistent header spacing utility */
+@layer utilities {
+  .header-spacing {
+    padding-top: 72px;
+  }
+}
+
+/* Enhanced Typography System */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  
+  *:focus-visible {
+    outline-color: var(--ring);
+    outline-opacity: 0.5;
+  }
+
+  html {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variant-numeric: oldstyle-nums;
+    /* Mobile viewport height fix - set by useViewportHeight hook */
+    /* Fallback to 1vh if --vh is not set */
+    --vh: 1vh;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Enhanced heading styles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-feature-settings: 'ss01', 'ss02';
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply font-bold leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply font-semibold leading-tight tracking-tight;
+  }
+
+  /* Better text rendering */
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Smooth scrolling with momentum */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Prevent pull-to-refresh on mobile (can be enabled per-section) */
+  body {
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
+  
+  /* Better text selection on mobile */
+  @media (max-width: 768px) {
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Better mobile scrolling */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent text size adjustment on orientation change */
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    
+    /* Better touch targets */
+    button, a, input, select, textarea {
+      touch-action: manipulation;
+    }
+  }
+}
+
+/* Custom utility classes for background images */
+@layer utilities {
+  .bg-hero-sustainability {
+    background-image: url('/assets/images/hero/hero-sustainability.webp');
+  }
+
+  .bg-hero-about {
+    background-image: url('/assets/images/hero/hero-global.webp');
+  }
+
+  .bg-hero-contact {
+    background-image: url('/assets/images/hero/hero-sustainability.webp');
+  }
+
+  .bg-hero-products {
+    background-image: url('/assets/images/hero/hero-global.webp');
+  }
+
+  .bg-hero-manufacturing {
+    background-image: url('/assets/images/hero/hero-main.webp');
+  }
+
+  .bg-hero-gallery {
+    background-image: url('/assets/images/hero/hero-main.webp');
+  }
+
+  .bg-investor-hero {
+    background-image: url('/assets/images/hero/hero-investor.webp');
+  }
+
+  /* Progress bar utilities */
+  .progress-25 {
+    width: 25%;
+  }
+  .progress-35 {
+    width: 35%;
+  }
+  .progress-40 {
+    width: 40%;
+  }
+  .progress-60 {
+    width: 60%;
+  }
+  .progress-75 {
+    width: 75%;
+  }
+
+  /* Enhanced glassmorphism effects */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-card-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10;
+  }
+
+  /* Enhanced shadow utilities */
+  .shadow-soft {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  .shadow-medium {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.08),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-large {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Enhanced typography utilities */
+  .text-display {
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight;
+  }
+
+  .text-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+
+  .text-section {
+    @apply text-3xl md:text-4xl font-semibold leading-tight tracking-tight;
+  }
+
+  .text-subsection {
+    @apply text-xl md:text-2xl font-semibold leading-snug;
+  }
+
+  /* Enhanced animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply transform -translate-y-2 shadow-large;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-lg shadow-primary/25;
+  }
+
+  /* KTL Design System Components */
+  .btn-primary {
+    @apply bg-primary-500 text-white px-6 py-3 rounded-md font-medium hover:bg-primary-600 transition-colors duration-200 shadow-2;
+    /* Mobile touch target minimum */
+    min-height: 44px;
+    @media (min-width: 768px) {
+      min-height: auto;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-500 border border-primary-500 px-6 py-3 rounded-md font-medium hover:bg-primary-50 transition-colors duration-200;
+    /* Mobile touch target minimum */
+    min-height: 44px;
+    @media (min-width: 768px) {
+      min-height: auto;
+    }
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-neutral-600 px-6 py-3 rounded-md font-medium hover:bg-neutral-100 transition-colors duration-200;
+    /* Mobile touch target minimum */
+    min-height: 44px;
+    @media (min-width: 768px) {
+      min-height: auto;
+    }
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+    min-height: 44px;
+    @media (min-width: 768px) {
+      min-height: 36px;
+    }
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+    min-height: 48px;
+    @media (min-width: 768px) {
+      min-height: 44px;
+    }
+  }
+
+  /* Card System */
+  .card-ktl {
+    @apply bg-white rounded-lg shadow-soft border border-neutral-200 overflow-hidden hover:shadow-medium hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .card-image-top {
+    @apply aspect-[3/2] overflow-hidden;
+  }
+
+  /* Chip System */
+  .chip {
+    @apply bg-neutral-100 text-neutral-500 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  /* Navigation System */
+  .nav-ktl {
+    @apply h-18 bg-white text-neutral-600 border-b border-neutral-200;
+  }
+
+  /* Form System */
+  .form-field {
+    @apply h-11 bg-white border border-neutral-300 rounded-md px-4 text-neutral-600 focus:ring-2 focus:ring-accent-500/25 focus:border-primary-500 transition-colors duration-200;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-neutral-600 mb-2 block;
+  }
+
+  /* Typography Utilities */
+  .text-numeric {
+    @apply font-numeric tabular-nums;
+  }
+
+  /* Animation Utilities */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-6 transition-all duration-400 ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Enhanced Hover Effects */
+  .hover-zoom {
+    @apply hover:scale-105 transition-transform duration-200;
+  }
+
+  .hover-brightness {
+    @apply hover:brightness-95 transition-all duration-200;
+  }
+
+  /* KTL Hero Panel Styles */
+  .panel-19 { width: 19%; }
+  .panel-22 { width: 22%; }
+  .panel-18 { width: 18%; }
+
+  /* Brand Button Styles */
+  .btn-ktl-primary {
+    @apply bg-primary-500 text-neutral-900 px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-primary-600 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-secondary-600 transition-colors duration-200;
+  }
+
+  .btn-ktl-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300 ease-out;
+  }
+
+  .btn-ktl-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-tertiary {
+    @apply bg-tertiary-500 text-white px-6 py-3 rounded-lg font-medium shadow-[0_2px_0_rgba(0,0,0,0.1)] hover:bg-tertiary-600 transition-colors duration-200;
+  }
+
+  /* Brand Gradient Backgrounds */
+  .bg-brand-gradient {
+    background: linear-gradient(90deg, primary-500 50%, secondary-500 50%, secondary-500 66.33%, #000 66.33%, #000 82.66%, accent-500 82.66%, accent-500);
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, primary-500 0%, #facc15 100%);
+  }
+
+  .bg-secondary-gradient {
+    background: linear-gradient(135deg, secondary-500 0%, #dc2626 100%);
+  }
+
+  .bg-tertiary-gradient {
+    background: linear-gradient(135deg, accent-500 0%, #2563eb 100%);
+  }
+
+  /* Metrics Section Wave Pattern */
+  .bg-wave-pattern {
+    background-image: repeating-linear-gradient(
+      35deg,
+      transparent,
+      transparent 110px,
+      #F4C414 110px,
+      #F4C414 116px,
+      transparent 116px,
+      transparent 220px
+    );
+    background-size: 220px 220px;
+  }
+
+  /* Metrics Section Styles */
+  .metrics-section {
+    position: relative;
+    background: #FFFFFF;
+  }
+
+  .metrics-accent-bar {
+    height: 4px;
+    background: #F4C414;
+    width: 100%;
+  }
+
+  .metrics-bottom-rule {
+    height: 3px;
+    background: #111111;
+    width: 100%;
+  }
+
+  .metric-display {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+
+  .metric-prefix {
+    font-size: 0.45em;
+    vertical-align: 18px;
+  }
+
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Contact Page Styles */
+.contact-bg {
+  background-image: url('/assets/images/hero/hero-main.webp');
+}
+
+.contact-vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* LogoLoop scroll animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+}
+
+/* Google Maps Locator Plus (Extended Component Library) — Quick Builder theme */
+.store-locator-embed gmpx-store-locator {
+  width: 100%;
+  height: 100%;
+  --gmpx-color-surface: #fff;
+  --gmpx-color-on-surface: #212121;
+  --gmpx-color-on-surface-variant: #757575;
+  --gmpx-color-primary: #1967d2;
+  --gmpx-color-outline: #e0e0e0;
+  --gmpx-fixed-panel-width-row-layout: 28.5em;
+  --gmpx-fixed-panel-height-column-layout: 65%;
+  --gmpx-font-family-base: 'Poppins', system-ui, sans-serif;
+  --gmpx-font-family-headings: 'Poppins', system-ui, sans-serif;
+  --gmpx-font-size-base: 0.875rem;
+  --gmpx-hours-color-open: #188038;
+  --gmpx-hours-color-closed: #d50000;
+  --gmpx-rating-color: #ffb300;
+  --gmpx-rating-color-empty: #e0e0e0;
+}

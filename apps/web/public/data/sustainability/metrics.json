@@ -1,0 +1,247 @@
+{
+  "currentMetrics": [
+    {
+      "id": "metric-001",
+      "name": "Water Consumption Reduction",
+      "category": "Environmental",
+      "value": 35,
+      "unit": "%",
+      "target": 50,
+      "trend": "down",
+      "trendIsGood": true,
+      "icon": "Droplets",
+      "description": "Reduction in water usage per garment compared to 2020 baseline through advanced washing technologies and water recycling systems."
+    },
+    {
+      "id": "metric-002",
+      "name": "Renewable Energy Usage",
+      "category": "Environmental",
+      "value": 45,
+      "unit": "%",
+      "target": 75,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "Sun",
+      "description": "Percentage of total energy from solar panels and renewable sources. We've installed 5MW of solar capacity across our facilities."
+    },
+    {
+      "id": "metric-003",
+      "name": "Waste Recycling Rate",
+      "category": "Environmental",
+      "value": 78,
+      "unit": "%",
+      "target": 90,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "Recycle",
+      "description": "Percentage of production waste diverted from landfills through recycling and upcycling programs."
+    },
+    {
+      "id": "metric-004",
+      "name": "Carbon Footprint Reduction",
+      "category": "Environmental",
+      "value": 28,
+      "unit": "%",
+      "target": 50,
+      "trend": "down",
+      "trendIsGood": true,
+      "icon": "TreePine",
+      "description": "Reduction in CO2 emissions per unit produced through renewable energy, efficient logistics, and process optimization."
+    },
+    {
+      "id": "metric-005",
+      "name": "Sustainable Materials",
+      "category": "Environmental",
+      "value": 62,
+      "unit": "%",
+      "target": 80,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "Leaf",
+      "description": "Percentage of products made with organic, recycled, or sustainable materials including GOTS organic cotton and GRS recycled polyester."
+    },
+    {
+      "id": "metric-006",
+      "name": "Women in Workforce",
+      "category": "Social",
+      "value": 68,
+      "unit": "%",
+      "target": 70,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "Users",
+      "description": "Percentage of female workers across all facilities, with dedicated women empowerment and leadership development programs."
+    },
+    {
+      "id": "metric-007",
+      "name": "Worker Training Hours",
+      "category": "Social",
+      "value": 15000,
+      "unit": "hours/year",
+      "target": 20000,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "GraduationCap",
+      "description": "Annual training hours provided to workers for skill development, safety, and career advancement."
+    },
+    {
+      "id": "metric-008",
+      "name": "Community Investment",
+      "category": "Social",
+      "value": 2.5,
+      "unit": "% of revenue",
+      "target": 3,
+      "trend": "up",
+      "trendIsGood": true,
+      "icon": "Heart",
+      "description": "Percentage of annual revenue invested in local community development, education, and healthcare programs."
+    },
+    {
+      "id": "metric-009",
+      "name": "Safety Incident Rate",
+      "category": "Governance",
+      "value": 0.8,
+      "unit": "per 100 workers",
+      "target": 0.5,
+      "trend": "down",
+      "trendIsGood": true,
+      "icon": "Shield",
+      "description": "Workplace safety incident rate per 100 workers, tracked monthly with continuous improvement initiatives."
+    },
+    {
+      "id": "metric-010",
+      "name": "Supplier Audits Completed",
+      "category": "Governance",
+      "value": 100,
+      "unit": "%",
+      "trend": "stable",
+      "trendIsGood": true,
+      "icon": "ClipboardCheck",
+      "description": "Percentage of suppliers audited annually for ethical compliance, environmental standards, and labor practices."
+    }
+  ],
+  "historicalData": {
+    "waterReduction": [
+      { "year": 2020, "value": 0 },
+      { "year": 2021, "value": 12 },
+      { "year": 2022, "value": 22 },
+      { "year": 2023, "value": 30 },
+      { "year": 2024, "value": 35 }
+    ],
+    "renewableEnergy": [
+      { "year": 2020, "value": 15 },
+      { "year": 2021, "value": 25 },
+      { "year": 2022, "value": 32 },
+      { "year": 2023, "value": 40 },
+      { "year": 2024, "value": 45 }
+    ],
+    "sustainableMaterials": [
+      { "year": 2020, "value": 35 },
+      { "year": 2021, "value": 45 },
+      { "year": 2022, "value": 52 },
+      { "year": 2023, "value": 58 },
+      { "year": 2024, "value": 62 }
+    ]
+  },
+  "goals": [
+    {
+      "id": "goal-001",
+      "title": "Net Zero by 2030",
+      "description": "Achieve net-zero carbon emissions across all operations through renewable energy, carbon offsets, and sustainable practices.",
+      "targetYear": 2030,
+      "currentProgress": 56,
+      "metrics": ["metric-002", "metric-004"],
+      "sdgAlignment": [7, 13]
+    },
+    {
+      "id": "goal-002",
+      "title": "100% Sustainable Materials",
+      "description": "Transition all production to certified organic, recycled, or sustainable materials by 2027.",
+      "targetYear": 2027,
+      "currentProgress": 78,
+      "metrics": ["metric-005"],
+      "sdgAlignment": [12, 15]
+    },
+    {
+      "id": "goal-003",
+      "title": "Zero Liquid Discharge",
+      "description": "Implement zero liquid discharge systems across all washing facilities by 2026.",
+      "targetYear": 2026,
+      "currentProgress": 65,
+      "metrics": ["metric-001"],
+      "sdgAlignment": [6, 14]
+    },
+    {
+      "id": "goal-004",
+      "title": "Fair Wage Guarantee",
+      "description": "Ensure all workers earn above living wage with comprehensive benefits by 2025.",
+      "targetYear": 2025,
+      "currentProgress": 85,
+      "metrics": ["metric-006", "metric-007"],
+      "sdgAlignment": [1, 8, 10]
+    }
+  ],
+  "initiatives": [
+    {
+      "id": "init-001",
+      "title": "Solar Power Expansion",
+      "category": "Renewable Energy",
+      "description": "Installation of 10MW solar panels across all facilities to achieve 75% renewable energy by 2026.",
+      "impact": "Expected to reduce CO2 emissions by 5,000 tons annually",
+      "startDate": "2023-06-01",
+      "status": "Active",
+      "image": "/assets-optimized/solar-panels.webp"
+    },
+    {
+      "id": "init-002",
+      "title": "Water Recycling Plant",
+      "category": "Water Conservation",
+      "description": "State-of-the-art water treatment and recycling system that recycles 90% of washing water.",
+      "impact": "Saves 2 million liters of water monthly",
+      "startDate": "2022-03-15",
+      "status": "Completed",
+      "image": "/assets-optimized/water-treatment.webp"
+    },
+    {
+      "id": "init-003",
+      "title": "Organic Cotton Partnership",
+      "category": "Sustainable Materials",
+      "description": "Direct partnerships with 150+ organic cotton farmers in Bangladesh to secure sustainable raw materials.",
+      "impact": "Supports 500+ farming families with fair prices",
+      "startDate": "2021-01-10",
+      "status": "Active",
+      "image": "/assets-optimized/organic-cotton.webp"
+    },
+    {
+      "id": "init-004",
+      "title": "Women Empowerment Program",
+      "category": "Social Impact",
+      "description": "Leadership training, skills development, and career advancement programs for female workers.",
+      "impact": "Trained 1,200+ women in leadership roles",
+      "startDate": "2020-09-01",
+      "status": "Active",
+      "image": "/assets-optimized/women-training.webp"
+    },
+    {
+      "id": "init-005",
+      "title": "Community Healthcare Center",
+      "category": "Community Development",
+      "description": "Free healthcare facility providing medical services to workers and local community members.",
+      "impact": "Serves 5,000+ people annually",
+      "startDate": "2023-01-15",
+      "status": "Active",
+      "image": "/assets-optimized/healthcare.webp"
+    },
+    {
+      "id": "init-006",
+      "title": "Circular Fashion Initiative",
+      "category": "Circular Economy",
+      "description": "Textile waste collection and upcycling program to create new products from production scraps.",
+      "impact": "Diverts 100+ tons of textile waste from landfills annually",
+      "startDate": "2024-02-01",
+      "status": "Active",
+      "image": "/assets-optimized/recycling.webp"
+    }
+  ]
+}
+

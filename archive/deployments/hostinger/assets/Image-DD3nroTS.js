@@ -1,0 +1,11 @@
+import{r,j as e}from"./index-B1ADfAkP.js";const P=({src:n,alt:m,className:o="",containerClassName:E="",eager:c=!1,priority:a=!1,sizes:b="100vw",width:i,height:s,fit:j="cover",onLoad:I,onError:y})=>{const[x,W]=r.useState(!1),[z,L]=r.useState(c||a),[l,R]=r.useState(!1),p=r.useRef(null),u=n.includes("/assets/")&&!n.includes("http"),k=t=>t.replace("/assets/","").replace(/\.(jpg|jpeg|png|gif)$/i,""),A=t=>t?t.startsWith("http://")||t.startsWith("https://")||t.startsWith("./assets/")||t.startsWith("/assets/")?t:`./assets/${t}`:"",d=u?k(n):"",g=u?n:A(n),$=u?{webp:`
+      /assets-optimized/${d}-mobile.webp 640w,
+      /assets-optimized/${d}-tablet.webp 1024w,
+      /assets-optimized/${d}-desktop.webp 1920w,
+      /assets-optimized/${d}.webp 2400w
+    `,fallback:`/assets${n.replace("/assets","")}`}:null;r.useEffect(()=>{if(c||a)return;const t=new IntersectionObserver(f=>{f.forEach(v=>{v.isIntersecting&&(L(!0),t.disconnect())})},{rootMargin:"50px",threshold:.01});return p.current&&t.observe(p.current),()=>{t.disconnect()}},[c,a]);const h=()=>{W(!0),I?.()},w=()=>{R(!0),y?.(),console.warn(`Failed to load image: ${n}`)};if(!u){if(l||!g)return null;const t=e.jsx("img",{ref:p,src:g,alt:m,className:`${o} ${j==="contain"?"object-contain":"object-cover"}`,width:i,height:s,loading:a?"eager":"lazy",decoding:"async",fetchPriority:a?"high":"auto",onLoad:h,onError:w,sizes:b});if(i&&s){const f=`${i}/${s}`;return e.jsx("div",{className:`${E} aspect-[${f}]`,children:t})}return t}return e.jsxs("picture",{ref:p,className:o,children:[z&&!l&&$&&e.jsxs(e.Fragment,{children:[e.jsx("source",{type:"image/webp",srcSet:$.webp,sizes:b}),e.jsx("img",{src:$.fallback,alt:m,loading:c||a?"eager":"lazy",onLoad:h,onError:w,className:`
+              ${o}
+              transition-opacity duration-500
+              ${x?"opacity-100":"opacity-0"}
+              ${j==="contain"?"object-contain":"object-cover"}
+            `,style:{filter:x?"none":"blur(10px)"},width:i,height:s,sizes:b})]}),!x&&!l&&e.jsx("div",{className:`${o} bg-gray-200 animate-pulse`,style:{minHeight:s?`${s}px`:"200px"}}),l&&e.jsx("div",{className:`${o} bg-gray-100 flex items-center justify-center text-gray-400`,style:{minHeight:s?`${s}px`:"200px"},children:e.jsx("span",{children:"Image not available"})})]})};export{P as I};

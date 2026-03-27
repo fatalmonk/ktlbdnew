@@ -1,0 +1,22 @@
+:root{
+  --ir-bg:#FFFFFF;
+  --ir-text:#0B0B0B;
+  --ir-muted:#3C3C3C;
+  --ir-accent:#F4C414; /* golden */
+  --ir-rule:#111111;
+}
+.ir-pattern{
+  background:
+    radial-gradient(100% 100% at 0 0,transparent 72%, transparent 72%) 0 0/220px 220px,
+    radial-gradient(100% 100% at 0 0,transparent 72%, transparent 72%) 110px 110px/220px 220px;
+  position:relative;
+}
+.ir-pattern:before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(35deg, transparent 0 204px, var(--ir-accent) 204px 210px, transparent 210px 220px);
+  opacity:1; pointer-events:none;
+}
+.ir-topbar{ height:4px; background:var(--ir-accent);}
+.ir-botrule{ height:3px; background:var(--ir-rule);}

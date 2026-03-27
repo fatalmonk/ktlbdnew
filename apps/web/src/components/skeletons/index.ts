@@ -1,0 +1,10 @@
+export { default as StatisticsSkeleton } from './StatisticsSkeleton';
+export { default as ProductsSkeleton } from './ProductsSkeleton';
+export { default as NewsSkeleton } from './NewsSkeleton';
+export { default as LogoCarouselSkeleton } from './LogoCarouselSkeleton';
+export { default as CaseStudySkeleton } from './CaseStudySkeleton';
+export { default as TestimonialsSkeleton } from './TestimonialsSkeleton';
+export { default as ValuesSkeleton } from './ValuesSkeleton';
+export { default as CertificationsSkeleton } from './CertificationsSkeleton';
+export { default as InvestorMetricsSkeleton } from './InvestorMetricsSkeleton';
+export { default as CTASkeleton } from './CTASkeleton';

@@ -1,0 +1,25 @@
+{
+  "name": "ktl-website-root",
+  "version": "1.0.0",
+  "description": "KTL Website - Root package for workspace management",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web",
+    "build:web": "npm run build --workspace=apps/web",
+    "lint": "npm run lint --workspace=apps/web",
+    "lint:web": "npm run lint --workspace=apps/web",
+    "test": "npm run test --workspace=apps/web",
+    "test:web": "npm run test --workspace=apps/web",
+    "test:e2e": "npm run test:e2e --workspace=apps/web",
+    "test:e2e:web": "npm run test:e2e --workspace=apps/web",
+    "typecheck": "npm run typecheck --workspace=apps/web",
+    "typecheck:web": "npm run typecheck --workspace=apps/web",
+    "format": "npm run format --workspace=apps/web",
+    "format:web": "npm run format --workspace=apps/web"
+  }
+}

@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cs-001",
+    "slug": "european-premium-denim-brand",
+    "title": "Scaling Production for Premium European Denim Brand",
+    "client": "Leading European Fashion Retailer",
+    "industry": ["Fashion", "Denim", "Retail"],
+    "challenge": "A premium European fashion brand needed to scale their sustainable denim production by 300% within 6 months while maintaining strict quality standards and OEKO-TEX certification requirements.",
+    "solution": "We implemented a dedicated production line with enhanced quality control processes, invested in additional eco-friendly washing facilities, and assigned a specialized team to ensure consistency. Our R&D team worked closely with the client to develop custom washes that met both aesthetic and environmental standards.",
+    "results": [
+      {
+        "metric": "Production Capacity Increase",
+        "value": "320%",
+        "icon": "TrendingUp"
+      },
+      {
+        "metric": "On-Time Delivery Rate",
+        "value": "98.5%",
+        "icon": "Clock"
+      },
+      {
+        "metric": "Quality Acceptance Rate",
+        "value": "99.2%",
+        "icon": "Award"
+      },
+      {
+        "metric": "Water Usage Reduction",
+        "value": "35%",
+        "icon": "Droplets"
+      }
+    ],
+    "testimonial": {
+      "quote": "KTL's ability to scale production while maintaining our stringent quality and sustainability requirements was exceptional. They didn't just meet our targets—they exceeded them.",
+      "author": "Sarah Martinez",
+      "position": "Head of Sourcing",
+      "company": "Confidential"
+    },
+    "featured": true,
+    "products": ["Denim", "Sustainable"],
+    "images": ["/assets-optimized/denim-production-1.webp", "/assets-optimized/quality-check.webp"],
+    "publishDate": "2024-11-15",
+    "readTime": 5
+  },
+  {
+    "id": "cs-002",
+    "slug": "us-sportswear-sustainability",
+    "title": "Transitioning to 100% Organic Cotton for US Sportswear Brand",
+    "client": "Major US Sportswear Company",
+    "industry": ["Sportswear", "Sustainability", "Knitwear"],
+    "challenge": "A leading US sportswear brand committed to using 100% organic cotton in their entire product line, requiring a complete supply chain transformation and GOTS certification within 12 months.",
+    "solution": "We partnered with certified organic cotton farmers in Bangladesh, implemented GOTS-compliant processes across our facilities, and provided complete supply chain transparency through digital tracking. Our sustainability team worked with the client to ensure every step met strict organic standards.",
+    "results": [
+      {
+        "metric": "Organic Cotton Conversion",
+        "value": "100%",
+        "icon": "Leaf"
+      },
+      {
+        "metric": "Carbon Footprint Reduction",
+        "value": "42%",
+        "icon": "TreePine"
+      },
+      {
+        "metric": "Farmer Partnerships",
+        "value": "150+",
+        "icon": "Users"
+      },
+      {
+        "metric": "Supply Chain Transparency",
+        "value": "100%",
+        "icon": "Eye"
+      }
+    ],
+    "testimonial": {
+      "quote": "KTL didn't just help us meet our sustainability goals—they helped us exceed them. Their commitment to organic practices and farmer welfare aligned perfectly with our values.",
+      "author": "Michael Chen",
+      "position": "Sustainability Director",
+      "company": "Confidential"
+    },
+    "featured": true,
+    "products": ["Knitwear", "Organic"],
+    "images": ["/assets-optimized/organic-cotton.webp", "/assets-optimized/sustainability.webp"],
+    "publishDate": "2024-10-20",
+    "readTime": 6
+  },
+  {
+    "id": "cs-003",
+    "slug": "childrens-apparel-safety-compliance",
+    "title": "Achieving Disney FAMA Certification for Children's Apparel",
+    "client": "International Children's Brand",
+    "industry": ["Kids Apparel", "Safety Compliance"],
+    "challenge": "A global children's apparel brand required Disney FAMA certification to supply major retailers. They needed comprehensive facility upgrades, safety protocol implementation, and staff training within a tight 4-month timeframe.",
+    "solution": "We conducted a complete facility audit, upgraded our quality control systems, implemented child safety protocols, and trained over 500 staff members on Disney's stringent requirements. Our compliance team worked with Disney auditors throughout the certification process.",
+    "results": [
+      {
+        "metric": "Certification Achievement",
+        "value": "First Attempt",
+        "icon": "CheckCircle"
+      },
+      {
+        "metric": "Audit Score",
+        "value": "95/100",
+        "icon": "Star"
+      },
+      {
+        "metric": "Production Volume",
+        "value": "2M+ units/year",
+        "icon": "Package"
+      },
+      {
+        "metric": "Zero Defect Rate",
+        "value": "99.7%",
+        "icon": "Shield"
+      }
+    ],
+    "featured": false,
+    "products": ["Kids Apparel", "Compliance"],
+    "images": ["/assets-optimized/kids-production.webp"],
+    "publishDate": "2024-09-10",
+    "readTime": 4
+  },
+  {
+    "id": "cs-004",
+    "slug": "fast-fashion-speed-to-market",
+    "title": "Reducing Time-to-Market by 40% for Fast Fashion Retailer",
+    "client": "Global Fast Fashion Chain",
+    "industry": ["Fashion", "Fast Fashion", "Retail"],
+    "challenge": "A major fast fashion retailer needed to reduce their time-to-market from 90 days to 45 days to compete with emerging ultra-fast fashion brands, while maintaining quality and cost efficiency.",
+    "solution": "We established a rapid response team, implemented just-in-time manufacturing processes, created a dedicated sampling facility, and integrated our systems with the client's design platform for real-time collaboration and faster approvals.",
+    "results": [
+      {
+        "metric": "Time-to-Market Reduction",
+        "value": "45 Days",
+        "icon": "Zap"
+      },
+      {
+        "metric": "Sample Turnaround",
+        "value": "72 Hours",
+        "icon": "Clock"
+      },
+      {
+        "metric": "Cost Savings",
+        "value": "18%",
+        "icon": "DollarSign"
+      },
+      {
+        "metric": "Order Flexibility",
+        "value": "+60%",
+        "icon": "Repeat"
+      }
+    ],
+    "testimonial": {
+      "quote": "KTL's agile manufacturing capabilities transformed our business. We can now respond to trends in weeks instead of months, giving us a major competitive advantage.",
+      "author": "Emma Thompson",
+      "position": "VP of Operations",
+      "company": "Confidential"
+    },
+    "featured": true,
+    "products": ["Denim", "Knitwear"],
+    "images": ["/assets-optimized/fast-production.webp"],
+    "publishDate": "2024-08-05",
+    "readTime": 5
+  },
+  {
+    "id": "cs-005",
+    "slug": "luxury-swimwear-custom-development",
+    "title": "Custom Fabric Development for Luxury Swimwear Line",
+    "client": "Premium Swimwear Designer",
+    "industry": ["Swimwear", "Luxury", "Innovation"],
+    "challenge": "A luxury swimwear designer needed a custom-developed fabric that combined superior stretch, chlorine resistance, UV protection, and sustainable materials—a combination not available in the market.",
+    "solution": "Our R&D team collaborated with Italian fabric specialists to develop a proprietary blend using recycled nylon and elastane. We invested in specialized testing equipment and conducted over 50 iterations to perfect the fabric's performance and feel.",
+    "results": [
+      {
+        "metric": "Custom Fabric Development",
+        "value": "Success",
+        "icon": "Sparkles"
+      },
+      {
+        "metric": "Chlorine Resistance",
+        "value": "300+ Hours",
+        "icon": "Shield"
+      },
+      {
+        "metric": "UV Protection",
+        "value": "UPF 50+",
+        "icon": "Sun"
+      },
+      {
+        "metric": "Recycled Content",
+        "value": "78%",
+        "icon": "Recycle"
+      }
+    ],
+    "featured": false,
+    "products": ["Swimwear", "Innovation"],
+    "images": ["/assets-optimized/swimwear-tech.webp"],
+    "publishDate": "2024-07-15",
+    "readTime": 6
+  }
+]
+
