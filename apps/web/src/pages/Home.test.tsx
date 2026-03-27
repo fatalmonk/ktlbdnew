@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, waitFor } from '../test/test-utils';
+import { render, screen } from '../test/test-utils';
 import Home from './Home';
 describe('Home Page', () => {
   it('renders hero heading and primary CTA', () => {
@@ -25,10 +25,15 @@ describe('Home Page', () => {
   it('eventually loads below-the-fold sections', async () => {
     render(<Home />);
 
-    await waitFor(() => {
-      expect(screen.getByRole('heading', { name: /Our Products/i })).toBeInTheDocument();
-      expect(screen.getByRole('heading', { name: /Our Values/i })).toBeInTheDocument();
-      expect(screen.getByText(/Investor Snapshot/i)).toBeInTheDocument();
-    });
+    const timeout = 15000;
+    expect(
+      await screen.findByRole('heading', { name: /Our Products/i }, { timeout })
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: /Our Values/i }, { timeout })
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Investor Snapshot/i, {}, { timeout })
+    ).toBeInTheDocument();
   });
 });

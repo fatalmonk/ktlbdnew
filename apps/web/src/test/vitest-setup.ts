@@ -44,21 +44,20 @@ HTMLCanvasElement.prototype.getContext = function (
   return null;
 };
 
-// Home.tsx defers islands with requestIdleCallback; ensure it runs in jsdom
-if (typeof window.requestIdleCallback !== 'function') {
-  window.requestIdleCallback = (cb: IdleRequestCallback) => {
-    const id = window.setTimeout(() => {
-      cb({
-        didTimeout: false,
-        timeRemaining: () => 50,
-      } as IdleDeadline);
-    }, 0);
-    return id as unknown as number;
-  };
-  window.cancelIdleCallback = (id: number) => {
-    clearTimeout(id);
-  };
-}
+// Home.tsx + createIdleLazy use requestIdleCallback. CI/jsdom may ship a broken or
+// no-op implementation — always replace; use next macrotask so dynamic imports resolve.
+window.requestIdleCallback = (cb: IdleRequestCallback) => {
+  const id = window.setTimeout(() => {
+    cb({
+      didTimeout: false,
+      timeRemaining: () => 50,
+    } as IdleDeadline);
+  }, 0);
+  return id as unknown as number;
+};
+window.cancelIdleCallback = (id: number) => {
+  clearTimeout(id);
+};
 
 // Cleanup after each test case
 afterEach(() => {
