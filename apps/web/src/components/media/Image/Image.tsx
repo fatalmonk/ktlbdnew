@@ -238,7 +238,7 @@ const Image: React.FC<ImageProps> = ({
           height={height}
           loading={priority || eager ? 'eager' : 'lazy'}
           decoding="async"
-          fetchPriority={priority ? 'high' : 'low'}
+          fetchpriority={priority ? 'high' : 'low'}
           onLoad={handleLoad}
           onError={handleError}
           sizes={finalSizes}
@@ -294,7 +294,7 @@ const Image: React.FC<ImageProps> = ({
           height={height}
           loading={priority || eager ? 'eager' : 'lazy'}
           decoding="async"
-          fetchPriority={priority ? 'high' : 'low'}
+          fetchpriority={priority ? 'high' : 'low'}
           onLoad={handleLoad}
           onError={handleError}
           sizes={finalSizes}
@@ -354,7 +354,7 @@ const Image: React.FC<ImageProps> = ({
             alt={alt}
             loading={eager || priority ? 'eager' : 'lazy'}
             decoding="async"
-            fetchPriority={priority ? 'high' : 'low'}
+            fetchpriority={priority ? 'high' : 'low'}
             onLoad={handleLoad}
             onError={(e) => {
               // Try original source as last resort
