@@ -105,3 +105,4 @@ pids
 *.njsproj
 *.sln
 *.sw?
+.vercel
