@@ -1,4 +1,5 @@
 export { default as StatisticsSkeleton } from './StatisticsSkeleton';
+export { default as GetToKnowUsSkeleton } from './GetToKnowUsSkeleton';
 export { default as ProductsSkeleton } from './ProductsSkeleton';
 export { default as NewsSkeleton } from './NewsSkeleton';
 export { default as LogoCarouselSkeleton } from './LogoCarouselSkeleton';

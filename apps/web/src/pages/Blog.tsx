@@ -1,4 +1,5 @@
 import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { createLazyIcon } from '@/lib/lucide-icons';
 
 const Search = createLazyIcon('Search');
@@ -41,10 +42,16 @@ interface BlogData {
 }
 
 const Blog = () => {
+  const [searchParams] = useSearchParams();
   const [blogData, setBlogData] = useState<BlogData | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearchQuery(q);
+  }, [searchParams]);
 
   useEffect(() => {
     const fetchBlogData = async () => {

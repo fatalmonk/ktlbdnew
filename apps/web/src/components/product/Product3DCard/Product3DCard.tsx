@@ -115,7 +115,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             {/* Featured Badge */}
             {product.featured && (
               <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10">
-                <span className="px-2 py-0.5 md:px-3 md:py-1 bg-primary-500 text-black text-[10px] md:text-xs font-bold rounded-full">
+                  <span className="px-3 py-1 bg-primary-500 text-black text-sm md:text-base font-bold rounded-full">
                   FEATURED
                 </span>
               </div>
@@ -223,7 +223,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             <div className="p-3 md:p-4 lg:p-6">
               {/* Category */}
               <motion.span
-                className="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-neutral-100 text-neutral-600 text-[10px] md:text-xs font-medium rounded-full mb-2 md:mb-3"
+                className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-sm md:text-base font-bold rounded-full mb-3 md:mb-4"
                 animate={{
                   backgroundColor: isHovered ? 'rgb(253, 211, 56)' : 'rgb(243, 244, 246)',
                   color: isHovered ? 'rgb(0, 0, 0)' : 'rgb(75, 85, 99)'
@@ -234,18 +234,18 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               </motion.span>
 
               {/* Product Name */}
-              <h3 className="text-sm md:text-base lg:text-xl font-bold text-neutral-800 mb-1 md:mb-2 leading-tight line-clamp-2">
+              <h3 className="text-2xl lg:text-3xl font-bold text-neutral-800 mb-2 leading-tight line-clamp-2">
                 {product.name}
               </h3>
 
               {/* Description */}
-              <p className="text-neutral-600 text-xs md:text-sm mb-2 md:mb-3 lg:mb-4 line-clamp-2 leading-relaxed">
+              <p className="text-neutral-600 text-lg lg:text-xl mb-4 line-clamp-2 leading-relaxed">
                 {product.description}
               </p>
 
               {/* Price */}
               {product.price && (
-                <p className="text-primary-600 font-bold text-sm md:text-base lg:text-lg mb-2 md:mb-3">
+                <p className="text-primary-600 font-bold text-xl lg:text-2xl mb-4">
                   {product.price}
                 </p>
               )}

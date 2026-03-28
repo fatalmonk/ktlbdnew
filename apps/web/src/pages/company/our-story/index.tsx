@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import Image from '../../../components/media/Image';
-import { Target, Eye, Users2, MapPin, Calendar, Award } from 'lucide-react';
+import IntroHighlightHero from '../../../components/company/IntroHighlightHero';
+import TimelineCarouselSection, {
+  type TimelineCarouselItem,
+} from '../../../components/company/TimelineCarouselSection';
+import { Target, Eye, MapPin, Calendar, Award } from 'lucide-react';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
 import { createBreadcrumbSchema } from '../../../modules/seo/templates';
@@ -48,43 +52,48 @@ const CompanyOurStory = () => {
     },
   ];
 
-  const milestones = [
+  const timelineCarouselItems: TimelineCarouselItem[] = [
     {
       year: '2002',
-      event: 'Company established in Chittagong',
-      description: 'Founded with a vision to become a leading textile manufacturer in Bangladesh',
-      icon: Calendar,
+      title: 'Kattali Textile',
+      description:
+        'Company established in Chittagong with a vision to become a leading textile manufacturer in Bangladesh.',
+      imageSrc: heroMain1x,
+      imageAlt: 'Kattali Textile manufacturing floor',
     },
     {
       year: '2006',
-      event: 'First international export shipment',
-      description: 'Began exporting to European markets, establishing global presence',
-      icon: MapPin,
+      title: 'Global reach',
+      description:
+        'First international export shipment—beginning long-term partnerships with European and global buyers.',
     },
     {
       year: '2010',
-      event: 'Sedex certification achieved',
+      title: 'Responsible business',
       description:
-        'Obtained ethical trade certification, demonstrating commitment to responsible business',
-      icon: Award,
+        'Sedex certification achieved, demonstrating commitment to ethical trade and transparent supply chains.',
+      imageSrc: heroSustainability1x,
+      imageAlt: 'Sustainable textile operations',
     },
     {
       year: '2014',
-      event: 'Green factory initiatives launched',
-      description: 'Implemented sustainable manufacturing practices and eco-friendly processes',
-      icon: Target,
+      title: 'Green manufacturing',
+      description:
+        'Green factory initiatives launched with sustainable processes and reduced environmental impact.',
     },
     {
       year: '2018',
-      event: 'Production capacity reached 360,000 dozen/year',
-      description: 'Significant expansion of manufacturing capabilities and workforce',
-      icon: Users2,
+      title: 'Scale & capacity',
+      description:
+        'Production capacity reached 360,000 dozen per year with expanded facilities and workforce.',
+      imageSrc: heroGlobal1x,
+      imageAlt: 'Global garment production',
     },
     {
       year: '2024',
-      event: 'Celebrating 22 years of excellence',
-      description: 'Over two decades of innovation, growth, and commitment to quality',
-      icon: Eye,
+      title: 'Kattali Textile Ltd',
+      description:
+        'Over two decades of innovation, growth, and commitment to quality for international partners.',
     },
   ];
 
@@ -92,6 +101,12 @@ const CompanyOurStory = () => {
     { name: 'Home', url: '/' },
     { name: 'Company', url: '/company' },
     { name: 'Our Story', url: '/company/our-story' },
+  ];
+
+  const introSlides = [
+    { src: heroMain1x, alt: 'Kattali Textile manufacturing operations' },
+    { src: heroGlobal1x, alt: 'Global garment manufacturing and export' },
+    { src: heroSustainability1x, alt: 'Sustainable textile production' },
   ];
 
   return (
@@ -104,19 +119,21 @@ const CompanyOurStory = () => {
       />
       <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
       <div>
-        {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center bg-cover bg-center bg-hero-about">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl">
-              <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
-                Our <span className="text-primary">Story</span>
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed">
-                Two decades of excellence in textile manufacturing and global export operations
-              </p>
-            </div>
-          </div>
-        </section>
+        <IntroHighlightHero
+          breadcrumbItems={[
+            { label: 'Home', to: '/' },
+            { label: 'Company' },
+            { label: 'Our Story' },
+          ]}
+          pageTitle="Our Story"
+          headlineLines={[
+            { text: 'Welcome to the' },
+            { text: 'Home of Quality', highlight: true },
+            { text: 'Manufacturing', highlight: true },
+          ]}
+          slides={introSlides}
+          sliderAriaLabel="Our story introduction images"
+        />
 
         {/* Company Overview */}
         <section className="py-20">
@@ -172,6 +189,12 @@ const CompanyOurStory = () => {
             </div>
           </div>
         </section>
+
+        <TimelineCarouselSection
+          sectionTitle="Kattali Textile Ltd — Timeline"
+          subtitle="From a dedicated local start-up to a trusted partner for global apparel brands"
+          items={timelineCarouselItems}
+        />
 
         {/* Mission & Vision */}
         <section className="py-20 bg-neutral-50">
@@ -244,38 +267,6 @@ const CompanyOurStory = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Company Timeline */}
-        <section className="py-20 bg-neutral-50">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-4xl font-bold text-center mb-16 text-neutral-900">
-              Our <span className="text-primary">Timeline</span>
-            </h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="space-y-12">
-                {milestones.map((milestone, index) => (
-                  <div key={index} className="flex items-start space-x-8">
-                    <div className="flex-shrink-0 w-20 h-20 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                      <milestone.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="bg-white p-8 rounded-2xl shadow-lg flex-grow border-l-4 border-primary">
-                      <div className="flex items-center space-x-4 mb-3">
-                        <span className="font-heading font-bold text-primary text-2xl">
-                          {milestone.year}
-                        </span>
-                        <div className="h-px bg-neutral-200 flex-grow"></div>
-                      </div>
-                      <h3 className="font-heading text-xl font-bold text-neutral-900 mb-3">
-                        {milestone.event}
-                      </h3>
-                      <p className="text-neutral-600 leading-relaxed">{milestone.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>

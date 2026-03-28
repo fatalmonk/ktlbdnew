@@ -11,11 +11,11 @@ interface ProductsShowcaseProps {
 const ProductsShowcase = ({ products }: ProductsShowcaseProps) => (
   <section className="py-24 bg-neutral-50" id="products">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-neutral-900 mb-4">
+      <div className="text-center mb-20">
+        <h2 className="text-6xl font-bold text-neutral-900 mb-6">
           Our <span className="text-primary-600">Products</span>
         </h2>
-        <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+        <p className="text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
           Discover our premium range of sustainable textiles and garments, crafted with precision and care.
         </p>
       </div>

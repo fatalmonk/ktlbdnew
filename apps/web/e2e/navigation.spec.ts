@@ -34,12 +34,12 @@ test.describe('Site Navigation', () => {
     });
 
     test('should navigate to Products page', async ({ page }) => {
-      await page.getByRole('link', { name: /Products/i }).first().click();
+      await page.getByRole('navigation', { name: /primary/i }).getByRole('link', { name: /^Capabilities$/i }).click();
       await expect(page).toHaveURL(/.*products/);
     });
 
     test('should navigate to Contact page', async ({ page }) => {
-      await page.getByRole('link', { name: /Contact/i }).first().click();
+      await page.locator('footer').getByRole('link', { name: /^Contact$/i }).click();
       await expect(page).toHaveURL(/.*contact/);
     });
 

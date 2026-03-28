@@ -13,6 +13,7 @@ import {
   LogoCarouselSkeleton,
   NewsSkeleton,
   ProductsSkeleton,
+  GetToKnowUsSkeleton,
   StatisticsSkeleton,
   TestimonialsSkeleton,
   ValuesSkeleton,
@@ -27,6 +28,7 @@ import {
 
 // BELOW-THE-FOLD COMPONENTS (LAZY)
 const LazyStatsSection = lazy(() => import('../modules/home/components/StatsSection'));
+const LazyGetToKnowUsSection = lazy(() => import('../modules/home/components/GetToKnowUsSection'));
 const LazyProductsShowcase = lazy(() => import('../modules/home/components/ProductsShowcase'));
 const LazyCaseStudy = lazy(() => import('../modules/home/components/CaseStudyHighlight'));
 const LazyLogoCarousel = lazy(() => import('../modules/home/components/LogoCarouselSection'));
@@ -68,6 +70,10 @@ const Home = () => {
           <>
             <Suspense fallback={<StatisticsSkeleton />}>
               <LazyStatsSection />
+            </Suspense>
+
+            <Suspense fallback={<GetToKnowUsSkeleton />}>
+              <LazyGetToKnowUsSection />
             </Suspense>
 
             <Suspense fallback={<ProductsSkeleton />}>

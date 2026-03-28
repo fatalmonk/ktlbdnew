@@ -1,27 +1,84 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronRight, X } from 'lucide-react';
-import React from 'react';
+import { X } from 'lucide-react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import { NAVIGATION_ITEMS, type NavItem } from '@/modules/navigation/data/navigation';
 
 interface MobileNavigationProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const menuItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Products', path: '/products' },
-  { label: 'Company', path: '/company/our-story' },
-  { label: 'Facilities', path: '/facilities/rmg' },
-  { label: 'Sustainability', path: '/sustainability' },
-  { label: 'Newsroom', path: '/newsroom/stories' },
-  { label: 'Investors', path: '/investors' },
-  { label: 'Contact', path: '/contact' },
-];
-
 const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) => {
-  // Use portal to render at document body level, escaping any parent stacking contexts
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+
+  const toggleItem = (name: string) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
+
+  const renderMobileNavItem = (item: NavItem) => {
+    const isExpanded = expandedItems[item.name];
+    const hasSubmenu = item.type === 'dropdown';
+
+    return (
+      <li key={item.name} className="border-b border-neutral-50 last:border-0">
+        <div className="flex items-center">
+          <button
+            onClick={() => (hasSubmenu ? toggleItem(item.name) : undefined)}
+            className="flex-1 py-4 text-left text-[0.85rem] font-medium uppercase tracking-wider text-neutral-900 transition-colors hover:text-primary-600 focus:outline-none"
+          >
+            {hasSubmenu ? item.name : (
+              <Link to={item.href} onClick={onClose} className="block w-full">
+                {item.name}
+              </Link>
+            )}
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {hasSubmenu && isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden bg-neutral-50/50"
+            >
+              <div className="pb-6 pl-4 pr-4">
+                {item.columns.map((column, idx) => (
+                  <div key={column.title || idx} className="mb-6 last:mb-0">
+                    {column.title && (
+                      <h4 className="mb-3 text-[0.75rem] font-semibold uppercase tracking-widest text-neutral-400">
+                        {column.title}
+                      </h4>
+                    )}
+                    <ul className="space-y-3 border-l-2 border-neutral-100 pl-4">
+                      {column.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            to={link.href}
+                            onClick={onClose}
+                            className="block py-1 text-[0.9375rem] font-medium text-neutral-600 hover:text-primary-600"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </li>
+    );
+  };
+
   return createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -31,40 +88,46 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 z-[10000] backdrop-blur-sm"
+            className="fixed inset-0 z-[10000] bg-black/50 backdrop-blur-sm"
           />
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-[300px] bg-white z-[10001] shadow-2xl overflow-y-auto"
+            className="fixed right-0 top-0 z-[10001] h-full w-[320px] bg-white shadow-2xl"
           >
-            <div className="p-4 flex justify-between items-center border-b border-neutral-100">
-              <span className="font-bold text-lg">Menu</span>
-              <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            <div className="flex h-full flex-col">
+              <div className="flex items-center justify-between border-b border-neutral-100 px-6 py-5">
+                <span className="text-[0.75rem] font-semibold uppercase tracking-widest text-neutral-900">
+                  Menu
+                </span>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close menu"
+                  className="rounded-full p-2 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+                >
+                  <X className="h-6 w-6" aria-hidden />
+                </button>
+              </div>
 
-            <nav className="p-4">
-              <ul className="space-y-2">
-                {menuItems.map((item) => (
-                  <li key={item.path}>
-                    <Link
-                      to={item.path}
-                      onClick={onClose}
-                      className="flex items-center justify-between p-3 hover:bg-neutral-50 rounded-lg group"
-                    >
-                      <span className="font-medium text-neutral-700 group-hover:text-primary-600">
-                        {item.label}
-                      </span>
-                      <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-primary-600" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+              <nav className="flex-1 overflow-y-auto px-6 py-4">
+                <ul className="flex flex-col">
+                  {NAVIGATION_ITEMS.map(renderMobileNavItem)}
+                </ul>
+              </nav>
+
+              <div className="border-t border-neutral-100 p-6 bg-neutral-50">
+                <Link
+                  to="/contact"
+                  onClick={onClose}
+                  className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-[0.875rem] font-bold uppercase tracking-wider text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </>
       )}

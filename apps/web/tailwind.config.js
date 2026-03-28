@@ -118,18 +118,18 @@ export default {
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        h1: ['3rem', { lineHeight: '1.1', letterSpacing: '-0.01em' }], // 48px
-        h2: ['2.25rem', { lineHeight: '1.15' }], // 36px
-        h3: ['1.75rem', { lineHeight: '1.2' }], // 28px
-        h4: ['1.25rem', { lineHeight: '1.3' }], // 20px
+        h1: ['6rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // 60px
+        h2: ['4.5rem', { lineHeight: '1.15' }], // 45px
+        h3: ['3.5rem', { lineHeight: '1.2' }], // 35px
+        h4: ['2.5rem', { lineHeight: '1.3' }], // 25px
 
-        body: ['1rem', { lineHeight: '1.65' }], // 16px
-        'body-lg': ['1.125rem', { lineHeight: '1.6' }], // 18px
-        caption: ['0.875rem', { lineHeight: '1.5' }], // 14px
+        body: ['1.8rem', { lineHeight: '1.7' }], // 18px
+        'body-lg': ['2.16rem', { lineHeight: '1.6' }], // 21.6px
+        caption: ['1.6rem', { lineHeight: '1.5' }], // 16px
 
         overline: [
-          '0.75rem',
-          { lineHeight: '1.5', letterSpacing: '0.08em', textTransform: 'uppercase' },
+          '1.4rem',
+          { lineHeight: '1.5', letterSpacing: '0.1em', textTransform: 'uppercase' },
         ],
       },
 
@@ -177,6 +177,7 @@ export default {
         fade: 'fade 0.3s ease-out',
         slide: 'slide 0.35s ease-out',
         scale: 'scale 0.25s ease-out',
+        'announcement-marquee': 'announcement-marquee 42s linear infinite',
       },
       keyframes: {
         fade: {
@@ -190,6 +191,10 @@ export default {
         scale: {
           '0%': { opacity: 0, transform: 'scale(0.96)' },
           '100%': { opacity: 1, transform: 'scale(1)' },
+        },
+        'announcement-marquee': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
 

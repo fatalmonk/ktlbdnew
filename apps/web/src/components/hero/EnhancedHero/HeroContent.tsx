@@ -50,7 +50,10 @@ const HeroButton = ({
 
 const HeroContent: React.FC<HeroContentProps> = ({ slide, opacity }) => {
   return (
-    <motion.div className="relative z-20 flex h-full items-center" style={{ opacity }}>
+    <motion.div
+      className="relative z-20 box-border flex h-full items-center pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]"
+      style={{ opacity }}
+    >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl">
 
@@ -66,14 +69,14 @@ const HeroContent: React.FC<HeroContentProps> = ({ slide, opacity }) => {
 
         <motion.h1
           {...fadeUp(0.2)}
-          className="mb-5 text-4xl font-bold text-white md:text-6xl lg:text-7xl leading-tight text-left"
+          className="mb-8 text-6xl font-bold text-white md:text-8xl lg:text-9xl leading-[1.1] tracking-tighter text-left"
         >
           {slide.title}
         </motion.h1>
 
         <motion.p
           {...fadeUp(0.3)}
-          className="mb-8 max-w-2xl text-lg text-neutral-200 leading-relaxed text-left"
+          className="mb-10 max-w-3xl text-xl md:text-2xl text-neutral-200 font-light leading-relaxed text-left"
         >
           {slide.description}
         </motion.p>

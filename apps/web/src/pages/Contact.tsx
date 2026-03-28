@@ -119,7 +119,7 @@ const Contact = () => {
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), createContactSchema(), createFAQSchema(faqs)]} />
       <div className="min-h-screen bg-black text-white">
       {/* Full-bleed Background with Dark Overlay */}
-      <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat contact-bg">
+      <section className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)] contact-bg">
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/55" />
 

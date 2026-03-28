@@ -4,7 +4,7 @@ import AnimatedCounter from '../../animation/AnimatedCounter';
 
 const StatisticsSection = () => {
     return (
-        <section className="py-20 bg-primary-900 text-white overflow-hidden">
+        <section className="py-32 bg-primary-900 text-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
@@ -16,11 +16,11 @@ const StatisticsSection = () => {
                             viewport={{ once: true }}
                             className="flex flex-col items-center text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors duration-300"
                         >
-                            <div className="mb-4 p-3 bg-primary-500/20 rounded-full text-primary-300">
-                                <stat.icon className="w-8 h-8" />
+                            <div className="mb-6 p-4 bg-primary-500/20 rounded-full text-primary-300">
+                                <stat.icon className="w-10 h-10" />
                             </div>
 
-                            <div className="text-4xl font-bold mb-2 flex items-center justify-center">
+                            <div className="text-6xl font-bold mb-3 flex items-center justify-center">
                                 <AnimatedCounter
                                     to={stat.value}
                                     suffix={stat.suffix}
@@ -29,11 +29,11 @@ const StatisticsSection = () => {
                                 />
                             </div>
 
-                            <h3 className="text-xl font-semibold mb-1 text-white/90">
+                            <h3 className="text-3xl font-semibold mb-2 text-white/90">
                                 {stat.label}
                             </h3>
 
-                            <p className="text-sm text-white/60">
+                            <p className="text-lg text-white/60">
                                 {stat.description}
                             </p>
                         </motion.div>

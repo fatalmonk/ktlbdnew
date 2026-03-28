@@ -67,11 +67,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
       {/* Content */}
       <div className="p-6">
         {/* Category & Meta */}
-        <div className="flex items-center gap-4 text-sm text-neutral-500 mb-3">
-          <span className="inline-flex items-center gap-1 text-primary-600 font-semibold capitalize">
+        <div className="flex items-center gap-6 text-lg text-neutral-500 mb-4">
+          <span className="inline-flex items-center gap-2 text-primary-600 font-bold capitalize">
             {category}
           </span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-2">
             <Suspense fallback={<div className="w-4 h-4" />}>
               <Calendar className="w-4 h-4" />
             </Suspense>
@@ -87,13 +87,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
         {/* Title */}
         <Link to={`/newsroom/stories/${slug}`}>
-          <h3 className="font-heading font-bold text-xl text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors duration-200 line-clamp-2">
+          <h3 className="font-heading font-bold text-3xl text-neutral-900 mb-4 group-hover:text-primary-600 transition-colors duration-200 line-clamp-2 leading-tight">
             {title}
           </h3>
         </Link>
 
         {/* Excerpt */}
-        <p className="text-neutral-600 mb-4 line-clamp-3">
+        <p className="text-neutral-600 text-xl mb-6 line-clamp-3 leading-relaxed">
           {excerpt}
         </p>
 

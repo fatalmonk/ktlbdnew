@@ -10,44 +10,31 @@
 @tailwind utilities;
 
 /* CSS Variables for theming */
-:root {
+ :root {
+  --strip-height: 17px;
+  --secondary-nav-height: 120px;
+  --ticker-height: 50px;
+  --sticky-header-height: calc(var(--strip-height) + var(--secondary-nav-height));
+  --evgRootFontSize: 10px;
+  --evgPrimaryColor: #06607f;
+  --evgAltColor: #6f3a8f;
+  --evgBodyTextColor: #585555;
+  --evgBorderColor: #dddddd;
+  --evgGreyColor: #fafafa;
+  --evgDarkColor: #283033;
+  --evgLightColor: #ffffff;
+  --evgSuccessColor: #006613;
+  --evgErrorColor: #b72121;
+  
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --foreground: var(--evgBodyTextColor);
+  --primary: var(--evgPrimaryColor);
   --radius: 0.625rem;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  --site-header-height-mobile: 88px;
+  --site-header-height-desktop: var(--sticky-header-height);
+  --announcement-ticker-yellow: #ffce00;
+  --announcement-ticker-badge-red: #e11a2b;
 }
 
 .dark {
@@ -85,11 +72,98 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* Consistent header spacing utility */
+/* Consistent offset below fixed header (mobile vs lg desktop) */
 @layer utilities {
   .header-spacing {
-    padding-top: 72px;
+    padding-top: var(--site-header-height-mobile);
   }
+
+  @media (min-width: 1024px) {
+    .header-spacing {
+      padding-top: var(--site-header-height-desktop);
+    }
+  }
+
+  /* Desktop primary nav + ticker — compact letter-spacing (editorial / IR style) */
+  .header-nav-typography {
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+
+  .announcement-ticker-typography {
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+}
+
+/* Corporate static header — logo pane (IR / Macy’s-style: fixed width, left-aligned mark) */
+.pane--static-header-logo {
+  box-sizing: border-box;
+  display: flex;
+  width: 220px;
+  min-height: 120px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pane--static-header-logo .module-logo {
+  display: flex;
+  min-width: 0;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pane--static-header-logo .module-logo__link {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.pane--static-header-logo .module-logo__img {
+  height: auto;
+  max-height: 57.7px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ============================================================
+   Desktop Nav — Exact macysinc.com measurements (DevTools)
+   li: padding 12px 0 | button: margin 0 5px, padding 5px
+   font-size: 1.8rem | font-weight: 400 | color: #000c26
+   nav height: 82px | max-width: 1470px | logo-left: 35px
+   ============================================================ */
+
+.nav--desktop--list--topMenu > li {
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav--desktop--list--topMenu > li > button,
+.nav--desktop--list--topMenu > li > .nav--desktop--list--innerMenu--menuItem {
+  margin: 0 5px;
+  padding: 10px;
+  font-size: 2.16rem; /* 21.6px */
+}
+
+.nav--desktop--list--topMenu > li > a.link {
+  margin: 0 5px;
+  padding: 10px 0;
+  font-size: 2.16rem; /* 21.6px */
+}
+
+/* Search button — 52.8px × 56.9px (exact spec) */
+.search-container button {
+  width: 52.8px;
+  height: 56.9px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Enhanced Typography System */
@@ -104,16 +178,36 @@
   }
 
   html {
+    font-size: var(--evgRootFontSize, 10px);
+    font-family: "Macys Sans", "Inter", sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     font-variant-numeric: oldstyle-nums;
     /* Mobile viewport height fix - set by useViewportHeight hook */
     /* Fallback to 1vh if --vh is not set */
     --vh: 1vh;
+    scroll-padding-top: var(--sticky-header-height);
+    scroll-margin-top: var(--sticky-header-height);
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: var(--site-header-height-desktop);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-ticker-track {
+      animation: none !important;
+    }
+
+    .announcement-ticker-track span:last-child {
+      display: none;
+    }
   }
 
   body {
     background-color: var(--background);
-    color: var(--foreground);
+    color: var(--evgBodyTextColor);
     @apply antialiased;
     font-feature-settings:
       'rlig' 1,
@@ -141,7 +235,7 @@
 
   /* Better text rendering */
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-[1.8rem];
   }
 
   /* Smooth scrolling with momentum */
@@ -258,19 +352,19 @@
 
   /* Enhanced typography utilities */
   .text-display {
-    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight;
+    @apply text-6xl md:text-8xl lg:text-9xl font-bold leading-[1.1] tracking-tighter;
   }
 
   .text-hero {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight;
   }
 
   .text-section {
-    @apply text-3xl md:text-4xl font-semibold leading-tight tracking-tight;
+    @apply text-4xl md:text-5xl font-semibold leading-tight tracking-tight;
   }
 
   .text-subsection {
-    @apply text-xl md:text-2xl font-semibold leading-snug;
+    @apply text-2xl md:text-3xl font-semibold leading-snug;
   }
 
   /* Enhanced animation utilities */
