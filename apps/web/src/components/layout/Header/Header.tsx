@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { createLazyIcon } from '@/lib/lucide-icons';
 import MobileNavigation from '../MobileNavigation';
@@ -11,25 +11,42 @@ const X = createLazyIcon('X');
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollHidden, setScrollHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
+    const threshold = 80;
     const handleScroll = () => {
-      const threshold = 80;
-      setIsScrolled(window.scrollY > threshold);
+      const y = window.scrollY;
+      setIsScrolled(y > threshold);
+
+      const delta = y - lastScrollY.current;
+      if (y < 48) {
+        setScrollHidden(false);
+      } else if (delta > 6) {
+        setScrollHidden(true);
+      } else if (delta < -6) {
+        setScrollHidden(false);
+      }
+      lastScrollY.current = y;
     };
 
+    lastScrollY.current = window.scrollY;
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const hideOnScroll = scrollHidden && !isMenuOpen;
+
   return (
     <>
-      <CorporateStaticHeader />
+      <CorporateStaticHeader scrollHidden={scrollHidden} />
 
       <header
         className={`
-        fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 lg:hidden
+        fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ease-out lg:hidden
+        ${hideOnScroll ? '-translate-y-full pointer-events-none' : 'translate-y-0'}
         ${isScrolled ? 'bg-white/95 shadow-2 backdrop-blur-md' : 'bg-transparent'}
       `}
       >

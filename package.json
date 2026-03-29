@@ -25,5 +25,8 @@
     "vercel:pull": "npx vercel@latest pull --yes",
     "vercel:deploy": "npx vercel@latest deploy",
     "vercel:prod": "npx vercel@latest deploy --prod"
+  },
+  "devDependencies": {
+    "baseline-browser-mapping": "^2.10.12"
   }
 }

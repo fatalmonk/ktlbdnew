@@ -26,13 +26,13 @@ const AnnouncementTicker: React.FC<AnnouncementTickerProps> = ({ isHidden }) => 
     >
       <Link
         to={announcementTicker.badgeHref}
-        className="flex min-h-[50px] shrink-0 items-center gap-0.5 self-stretch bg-[var(--announcement-ticker-badge-red)] px-3.5 py-2.5 font-body text-[1.8rem] font-normal leading-none text-white outline-none transition-colors hover:bg-[#c91526] focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--announcement-ticker-badge-red)] sm:px-5"
+        className="flex min-h-[50px] shrink-0 items-center gap-0.5 self-stretch bg-[var(--announcement-ticker-badge-red)] px-3.5 py-2.5 font-body text-[1.6rem] font-normal leading-none text-white outline-none transition-colors hover:bg-[#c91526] focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--announcement-ticker-badge-red)] sm:px-5"
       >
         <span className="whitespace-nowrap">{announcementTicker.badgeLabel}</span>
         <NewsPauseMarks />
       </Link>
       <div className="announcement-ticker-mask relative flex min-h-[50px] min-w-0 flex-1 items-stretch overflow-hidden pl-5 pr-3 sm:pl-8 sm:pr-6">
-        <div className="announcement-ticker-track announcement-ticker-typography flex h-full min-h-[50px] w-max shrink-0 flex-nowrap items-center font-body text-[1.8rem] font-normal leading-normal text-black animate-announcement-marquee">
+        <div className="announcement-ticker-track announcement-ticker-typography flex h-full min-h-[50px] w-max shrink-0 flex-nowrap items-center font-body text-[1.6rem] font-normal leading-normal text-black animate-announcement-marquee">
           {/* No flex gap — gap breaks translateX(-50%) seamless loop; use trailing padding on each copy */}
           <span className="inline-block shrink-0 whitespace-nowrap pr-12 sm:pr-16">{text}</span>
           <span className="inline-block shrink-0 whitespace-nowrap pr-12 sm:pr-16" aria-hidden>

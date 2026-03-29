@@ -6,7 +6,14 @@ import DesktopMegaMenu from '../DesktopMegaMenu/DesktopMegaMenu';
 import HeaderSearch from '../HeaderSearch';
 import WebMenuHidden from '../WebMenuHidden/WebMenuHidden';
 
-const CorporateStaticHeader: React.FC = () => {
+type CorporateStaticHeaderProps = {
+  /** When true, header slides up (unless mega menu is open). */
+  scrollHidden?: boolean;
+};
+
+const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
+  scrollHidden = false,
+}) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
   const containerRef = useRef<HTMLElement | null>(null);
@@ -75,6 +82,8 @@ const CorporateStaticHeader: React.FC = () => {
     };
   }, [openDropdown]);
 
+  const hideOnScroll = scrollHidden && !openDropdown;
+
   return (
     <>
       {/* Backdrop Overlay */}
@@ -86,7 +95,9 @@ const CorporateStaticHeader: React.FC = () => {
       />
 
       <header
-        className="fixed inset-x-0 top-0 z-[9999] hidden bg-white shadow-1 lg:block"
+        className={`fixed inset-x-0 top-0 z-[9999] hidden bg-white shadow-1 transition-transform duration-300 ease-out lg:block ${
+          hideOnScroll ? '-translate-y-full pointer-events-none' : 'translate-y-0'
+        }`}
         ref={containerRef}
       >
         {/* z-10: nav + mega menus must stack above the ticker (later sibling) */}

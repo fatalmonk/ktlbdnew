@@ -133,7 +133,7 @@
 /* ============================================================
    Desktop Nav — Exact macysinc.com measurements (DevTools)
    li: padding 12px 0 | button: margin 0 5px, padding 5px
-   font-size: 1.8rem | font-weight: 400 | color: #000c26
+   font-size: 1.96rem (19.6px) | font-weight: 400 | color: #000c26
    nav height: 82px | max-width: 1470px | logo-left: 35px
    ============================================================ */
 
@@ -147,13 +147,13 @@
 .nav--desktop--list--topMenu > li > .nav--desktop--list--innerMenu--menuItem {
   margin: 0 5px;
   padding: 10px;
-  font-size: 2.16rem; /* 21.6px */
+  font-size: 1.96rem; /* 19.6px — was 21.6px */
 }
 
 .nav--desktop--list--topMenu > li > a.link {
   margin: 0 5px;
   padding: 10px 0;
-  font-size: 2.16rem; /* 21.6px */
+  font-size: 1.96rem; /* 19.6px — was 21.6px */
 }
 
 /* Search button — 52.8px × 56.9px (exact spec) */
