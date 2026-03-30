@@ -10,6 +10,7 @@ import { createBreadcrumbSchema } from '../../../modules/seo/templates';
 import heroSustainability1x from '@/assets/images/hero/hero-sustainability@1x.webp';
 import heroGlobal1x from '@/assets/images/hero/hero-global@1x.webp';
 import heroMain1x from '@/assets/images/hero/hero-main@1x.webp';
+import StoreLocatorPlus from '../../../components/features/StoreLocatorPlus';
 
 const CompanyOurStory = () => {
   /** Name, title, and portrait — editorial grid (name + title only under photo). */
@@ -251,18 +252,20 @@ const CompanyOurStory = () => {
           </div>
         </section>
 
-        {/* Location map */}
-        <section className="py-16 md:py-20" aria-label="Location map">
+        {/* Location map — Locator Plus (Extended Component Library); embed iframe if no API key */}
+        <section
+          className="border-t border-neutral-200/80 bg-neutral-50 py-16 md:py-20"
+          aria-labelledby="our-story-map-heading"
+        >
           <div className="container mx-auto px-4">
-            <div className="h-[32rem] min-h-[32rem] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-neutral-200 md:h-[44rem] md:min-h-[44rem] lg:h-[min(70vh,56rem)] lg:min-h-[min(70vh,56rem)]">
-              <iframe
-                src="https://storage.googleapis.com/maps-solutions-fa4ntudplj/locator-plus/vcpi/locator-plus.html"
-                title="Kattali Textile — location map"
-                className="h-full w-full border-0"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <h2
+              id="our-story-map-heading"
+              className="font-heading text-3xl font-bold tracking-tight text-black md:text-4xl"
+            >
+              Our locations
+            </h2>
+            <div className="mt-8">
+              <StoreLocatorPlus title="Kattali Textile — production facility and head office map" />
             </div>
           </div>
         </section>
