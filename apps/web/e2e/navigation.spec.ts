@@ -11,7 +11,7 @@ test.describe('Site Navigation', () => {
     });
 
     test('should display the hero section', async ({ page }) => {
-      await expect(page.getByText(/Fashionably Sustaining/i)).toBeVisible();
+      await expect(page.getByText(/Your Global Supply Chain Starts in Bangladesh/i)).toBeVisible();
     });
 
     test('should display statistics section', async ({ page }) => {
@@ -258,21 +258,21 @@ test.describe('Site Navigation', () => {
       await page.setViewportSize({ width: 768, height: 1024 });
       await page.goto('/');
 
-      await expect(page.getByText(/Fashionably Sustaining/i)).toBeVisible();
+      await expect(page.getByText(/Your Global Supply Chain Starts in Bangladesh/i)).toBeVisible();
     });
 
     test('should be responsive on mobile', async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 667 });
       await page.goto('/');
 
-      await expect(page.getByText(/Fashionably Sustaining/i)).toBeVisible();
+      await expect(page.getByText(/Your Global Supply Chain Starts in Bangladesh/i)).toBeVisible();
     });
 
     test('should be responsive on large desktop', async ({ page }) => {
       await page.setViewportSize({ width: 1920, height: 1080 });
       await page.goto('/');
 
-      await expect(page.getByText(/Fashionably Sustaining/i)).toBeVisible();
+      await expect(page.getByText(/Your Global Supply Chain Starts in Bangladesh/i)).toBeVisible();
     });
   });
 });

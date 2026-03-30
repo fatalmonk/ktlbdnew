@@ -6,19 +6,19 @@ describe('Home Page', () => {
     render(<Home />);
 
     expect(
-      screen.getAllByRole('heading', { name: /Celebrate Quality Craftsmanship at KTL/i })[0]
+      screen.getAllByRole('heading', { name: /Your Global Supply Chain Starts in Bangladesh/i })[0]
     ).toBeInTheDocument();
 
-    const cta = screen.getAllByRole('link', { name: /Learn More/i })[0];
+    const cta = screen.getAllByRole('link', { name: /Get in Touch/i })[0];
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/company/our-story');
+    expect(cta).toHaveAttribute('href', '/contact');
   });
 
   it('renders primary hero image with alt text', () => {
     render(<Home />);
 
     expect(
-      screen.getAllByAltText(/Kattali Textile Limited manufacturing team and operations/i)[0]
+      screen.getAllByAltText(/Global logistics and garment supply chain operations at Kattali Textile Limited/i)[0]
     ).toBeInTheDocument();
   });
 

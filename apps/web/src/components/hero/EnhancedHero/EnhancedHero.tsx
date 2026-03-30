@@ -14,6 +14,7 @@ interface HeroSlide {
   alt: string;
   brand: string;
   headline: string;
+  subline: string;
   ctaLabel: string;
   ctaHref: string;
 }
@@ -26,31 +27,35 @@ const HERO_IMAGE_FADE = {
 
 const SLIDES: HeroSlide[] = [
   {
-    id: 'excellence',
+    id: 'supply-chain',
+    src: stockHero.logistics,
+    alt: 'Global logistics and garment supply chain operations at Kattali Textile Limited',
+    brand: 'Kattali Textile Limited',
+    headline: 'Your Global Supply Chain Starts in Bangladesh.',
+    subline: 'End-to-end garment manufacturing built for the demands of global trade.',
+    ctaLabel: 'Get in Touch →',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'trusted-brands',
     src: stockHero.manufacturing,
     alt: 'Kattali Textile Limited manufacturing team and operations',
     brand: 'Kattali Textile Limited',
-    headline: 'Celebrate Quality Craftsmanship at KTL',
-    ctaLabel: 'Learn More',
-    ctaHref: '/company/our-story',
+    headline: "Trusted by the World's Leading Brands.",
+    subline: 'From first sample to final shipment, our standards never waver.',
+    ctaLabel: 'View Our Capabilities →',
+    ctaHref: '/products',
   },
   {
     id: 'sustainability',
     src: stockHero.fabric,
-    alt: 'Sustainable apparel initiatives and production at KTL',
+    alt: 'Sustainable textile production and fabric at KTL',
     brand: 'Kattali Textile Limited',
-    headline: 'Sustainable Apparel Built for Global Brands',
-    ctaLabel: 'Explore Sustainability',
+    headline: 'Woven With Care. For People and Planet.',
+    subline:
+      'Certified sustainable practices, ethical working conditions, and a commitment to a cleaner fashion industry.',
+    ctaLabel: 'Explore Sustainability →',
     ctaHref: '/sustainability',
-  },
-  {
-    id: 'global',
-    src: stockHero.logistics,
-    alt: 'Global textile partnerships and high-volume production capabilities',
-    brand: 'Kattali Textile Limited',
-    headline: 'Global Reach with Trusted Bangladesh Production',
-    ctaLabel: 'Contact Us',
-    ctaHref: '/contact',
   },
 ];
 
@@ -197,18 +202,22 @@ const EnhancedHero: React.FC = () => {
                 </span>
 
                 {isHome ? (
-                  <h1 className="mt-8 max-w-[14ch] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
+                  <h1 className="mt-8 max-w-[min(100%,36rem)] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
                     {activeSlide.headline}
                   </h1>
                 ) : (
-                  <h2 className="mt-8 max-w-[14ch] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
+                  <h2 className="mt-8 max-w-[min(100%,36rem)] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
                     {activeSlide.headline}
                   </h2>
                 )}
 
+                <p className="mt-5 max-w-[min(100%,38rem)] text-[1.45rem] font-medium leading-snug text-white/90 sm:mt-6 sm:text-[1.5rem]">
+                  {activeSlide.subline}
+                </p>
+
                 <Link
                   to={activeSlide.ctaHref}
-                  className="mt-11 inline-flex w-fit items-center border-b border-black pb-0.5 text-[1.8rem] font-semibold text-black transition-colors hover:border-neutral-800 hover:text-neutral-800 sm:mt-12"
+                  className="mt-8 inline-flex w-fit items-center border-b border-black pb-0.5 text-[1.8rem] font-semibold text-black transition-colors hover:border-neutral-800 hover:text-neutral-800 sm:mt-10"
                 >
                   {activeSlide.ctaLabel}
                 </Link>
@@ -261,18 +270,22 @@ const EnhancedHero: React.FC = () => {
                   </span>
 
                   {isHome ? (
-                    <h1 className="mt-12 max-w-[10.8ch] text-[6.85rem] font-extrabold leading-[0.92] tracking-[-0.035em] text-black xl:mt-14 xl:text-[7.65rem]">
+                    <h1 className="mt-12 max-w-[min(100%,48rem)] text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:mt-14 xl:text-[6.85rem]">
                       {activeSlide.headline}
                     </h1>
                   ) : (
-                    <h2 className="mt-12 max-w-[10.8ch] text-[6.85rem] font-extrabold leading-[0.92] tracking-[-0.035em] text-black xl:mt-14 xl:text-[7.65rem]">
+                    <h2 className="mt-12 max-w-[min(100%,48rem)] text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:mt-14 xl:text-[6.85rem]">
                       {activeSlide.headline}
                     </h2>
                   )}
 
+                  <p className="mt-8 max-w-[min(100%,40rem)] text-[1.45rem] leading-snug text-neutral-600 xl:mt-9 xl:text-[1.55rem]">
+                    {activeSlide.subline}
+                  </p>
+
                   <Link
                     to={activeSlide.ctaHref}
-                    className="mt-20 inline-flex w-fit items-center border-b border-[#243a4f] pb-1 text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:border-primary-600 hover:text-primary-600 xl:mt-24"
+                    className="mt-10 inline-flex w-fit items-center border-b border-[#243a4f] pb-1 text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:border-primary-600 hover:text-primary-600 xl:mt-12"
                   >
                     {activeSlide.ctaLabel}
                   </Link>

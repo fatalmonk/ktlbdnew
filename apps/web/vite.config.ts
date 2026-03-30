@@ -38,6 +38,18 @@ export default defineConfig(({ mode }) => {
     // Allow known preview hostnames to pass Vite's host check when tunneling or in cloud IDEs.
     // Set to `true` to disable checks entirely, but we prefer an allowlist for safety.
     allowedHosts: ['localhost', '127.0.0.1', '.repl.co', '.id.repl.co'],
+
+    // Optional: set DEV_PROXY_VERCEL (e.g. http://127.0.0.1:3000) when `npx vercel dev` runs from repo root.
+    ...(env.DEV_PROXY_VERCEL
+      ? {
+          proxy: {
+            '/api': {
+              target: env.DEV_PROXY_VERCEL,
+              changeOrigin: true,
+            },
+          },
+        }
+      : {}),
   },
   // Set base to root for deployment
   base: '/',
