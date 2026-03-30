@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from '../media/Image';
+import SubpageHeader, { type SubpageBreadcrumbItem } from '../shared/SubpageHeader';
 import { cn } from '@/lib/utils';
 
-export type IntroHighlightBreadcrumbItem = {
-  label: string;
-  to?: string;
-};
+export type IntroHighlightBreadcrumbItem = SubpageBreadcrumbItem;
 
 export type IntroHighlightSlide = {
   src: string;
@@ -26,9 +23,11 @@ export type IntroHighlightHeroProps = {
   sliderAriaLabel?: string;
   autoplayMs?: number;
   className?: string;
+  /** Replaces default stacked headline below `lg` (e.g. custom line breaks). Desktop still uses `headlineLines`. */
+  headlineMobileSlot?: ReactNode;
 };
 
-function MarkerText({ children }: { children: ReactNode }) {
+export function MarkerText({ children }: { children: ReactNode }) {
   return (
     <span className="relative inline px-0.5">
       <span
@@ -37,6 +36,62 @@ function MarkerText({ children }: { children: ReactNode }) {
       />
       <span className="relative z-10">{children}</span>
     </span>
+  );
+}
+
+/** Yellow interlocking lines — desktop hero, beside headline (reference: editorial / Macy’s-style). */
+function HeadlineSideAccent({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        'pointer-events-none hidden shrink-0 self-start lg:flex lg:min-h-[14rem] lg:w-[min(42%,22rem)] lg:max-w-md lg:justify-end lg:ml-auto lg:-translate-y-3 lg:translate-x-10 xl:w-[min(38%,26rem)] xl:-translate-y-4 xl:translate-x-16 2xl:translate-x-24',
+        className,
+      )}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 320 280"
+        className="h-auto w-full max-w-[min(100%,320px)] text-primary-300"
+        fill="none"
+      >
+        <path
+          d="M20 40 C60 10 100 10 140 40 S220 70 280 40"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M40 90 C90 50 150 50 200 90 S280 130 300 90"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M20 140 C80 100 160 100 220 140 S300 180 300 140"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M60 200 C120 160 200 160 260 200"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M180 60 Q240 20 280 80 T260 160"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <path
+          d="M100 220 Q160 180 220 220"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
   );
 }
 
@@ -73,6 +128,7 @@ const IntroHighlightHero = ({
   sliderAriaLabel = 'Page introduction images',
   autoplayMs = 5000,
   className,
+  headlineMobileSlot,
 }: IntroHighlightHeroProps) => {
   const [index, setIndex] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -105,78 +161,82 @@ const IntroHighlightHero = ({
 
   return (
     <div className={cn('bg-white font-body', className)}>
-      <nav
-        className="relative z-[1] border-b border-transparent px-4 pb-2 pt-6 sm:px-6 lg:px-8"
-        aria-label="Breadcrumb"
-      >
-        <ol className="mx-auto flex max-w-ktl flex-wrap items-center gap-x-2 gap-y-1 text-body-lg text-neutral-600">
-          {breadcrumbItems.map((item, i) => {
-            const isLast = i === breadcrumbItems.length - 1;
-            return (
-              <li key={`${item.label}-${i}`} className="flex items-center gap-x-2">
-                {i > 0 && <span className="text-neutral-400">/</span>}
-                {isLast ? (
-                  <span className="font-semibold text-neutral-900">{item.label}</span>
-                ) : item.to ? (
-                  <Link to={item.to} className="hover:text-neutral-900">
-                    {item.label}
-                  </Link>
-                ) : (
-                  <span>{item.label}</span>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </nav>
+      <SubpageHeader breadcrumbItems={breadcrumbItems} pageTitle={pageTitle} />
 
-      <div className="relative px-4 py-10 text-center sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-ktl">
-          <h1 className="font-heading text-h1 font-bold tracking-tight text-neutral-900">{pageTitle}</h1>
+      <section className="relative overflow-hidden px-4 pb-8 pt-2 sm:px-6 lg:px-8">
+        <div className="relative z-[1] mb-14 flex w-full flex-col gap-6 sm:mb-16 lg:mb-24 lg:flex-row lg:items-start lg:gap-8">
+          <h2 className="font-heading w-full max-w-none text-left text-5xl font-semibold leading-[1.05] tracking-tight text-neutral-900 sm:text-6xl md:text-[4.5rem] md:leading-[0.97] md:tracking-[-0.04em] lg:max-w-[48%] lg:shrink-0 lg:text-[5rem] lg:leading-[0.93] xl:text-[5.5rem] 2xl:text-[6rem]">
+            {headlineMobileSlot ? (
+              <>
+                <span className="lg:hidden">{headlineMobileSlot}</span>
+                <span className="hidden lg:contents">
+                  {headlineLines.map((line, i) => (
+                    <span key={`${line.text}-lg-${i}`} className="block">
+                      {line.highlight ? <MarkerText>{line.text}</MarkerText> : line.text}
+                    </span>
+                  ))}
+                </span>
+              </>
+            ) : (
+              headlineLines.map((line, i) => (
+                <span key={`${line.text}-${i}`} className="block">
+                  {line.highlight ? <MarkerText>{line.text}</MarkerText> : line.text}
+                </span>
+              ))
+            )}
+          </h2>
+          <HeadlineSideAccent />
         </div>
-      </div>
-
-      <section className="relative overflow-hidden px-4 pb-16 pt-4 sm:px-6 lg:px-8">
-        <BannerAccent />
 
         <div className="relative z-[1] mx-auto max-w-ktl">
-          <h2 className="font-heading relative z-[1] max-w-[31.25rem] pb-8 text-4xl font-bold leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl md:text-[4.0625rem] md:leading-[0.95] md:tracking-[-0.04em]">
-            {headlineLines.map((line, i) => (
-              <span key={`${line.text}-${i}`} className="block">
-                {line.highlight ? <MarkerText>{line.text}</MarkerText> : line.text}
-              </span>
-            ))}
-          </h2>
-
+          <BannerAccent />
           <div
             className="relative w-full overflow-hidden"
-            role="region"
-            aria-roledescription="carousel"
-            aria-label={sliderAriaLabel}
+            {...(canNavigate
+              ? {
+                  role: 'region' as const,
+                  'aria-roledescription': 'carousel',
+                  'aria-label': sliderAriaLabel,
+                }
+              : { 'aria-label': sliderAriaLabel })}
           >
             <div className="relative aspect-[1400/544] w-full max-h-[min(70vh,544px)]">
-              {slides.map((slide, i) => (
-                <div
-                  key={slide.src + slide.alt}
-                  className={cn(
-                    'absolute inset-0 transition-opacity duration-500 ease-out',
-                    i === index ? 'z-[1] opacity-100' : 'z-0 opacity-0',
-                  )}
-                  aria-hidden={i !== index}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    className="h-full w-full object-cover"
-                    fit="cover"
-                    priority={i === 0}
-                    eager={i === 0}
-                    sizes="100vw"
-                    width={1400}
-                    height={544}
-                  />
-                </div>
-              ))}
+              {canNavigate ? (
+                slides.map((slide, i) => (
+                  <div
+                    key={slide.src + slide.alt}
+                    className={cn(
+                      'absolute inset-0 transition-opacity duration-500 ease-out',
+                      i === index ? 'z-[1] opacity-100' : 'z-0 opacity-0',
+                    )}
+                    aria-hidden={i !== index}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="h-full w-full object-cover"
+                      fit="cover"
+                      priority={i === 0}
+                      eager={i === 0}
+                      sizes="100vw"
+                      width={1400}
+                      height={544}
+                    />
+                  </div>
+                ))
+              ) : (
+                <Image
+                  src={slides[0].src}
+                  alt={slides[0].alt}
+                  className="h-full w-full object-cover"
+                  fit="cover"
+                  priority
+                  eager
+                  sizes="100vw"
+                  width={1400}
+                  height={544}
+                />
+              )}
             </div>
 
             {canNavigate && (

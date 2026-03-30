@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const VendorsPage = () => {
   return (
@@ -8,10 +9,17 @@ const VendorsPage = () => {
         description="Join KTL's vendor network. We partner with suppliers, service providers, and business partners to create a robust supply chain ecosystem."
         keywords={['vendors', 'suppliers', 'KTL partners', 'supply chain', 'business partners']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Work With Us', to: '/work-with-us/buyers' },
+          { label: 'Vendors' },
+        ]}
+        pageTitle="Vendors"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">For Vendors</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Join our vendor network and become part of KTL's supply chain ecosystem.
               We value long-term partnerships and mutual growth opportunities.
@@ -52,7 +60,7 @@ const VendorsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

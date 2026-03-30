@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import { createProductSchema, createBreadcrumbSchema } from '../../../modules/seo/templates';
 
 const KidsPage = () => {
@@ -28,17 +29,24 @@ const KidsPage = () => {
         keywords={['kids wear products', 'children clothing', 'kids fashion', 'Bangladesh kids wear', 'textile children apparel']}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Products', to: '/products' },
+          { label: "Kids'" },
+        ]}
+        pageTitle="Kids'"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Kids Wear</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our premium kids wear collection features high-quality children's clothing
               designed for comfort, style, and durability. As part of our comprehensive product range, 
               we also manufacture <Link to="/products/denims" className="text-primary-600 hover:text-primary-700 font-medium underline">premium denim products</Link> and 
               a wide variety of <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garments</Link> for global fashion brands. 
               All our products are made in our <Link to="/facilities/rmg" className="text-primary-600 hover:text-primary-700 font-medium underline">certified manufacturing facilities</Link> using 
-              <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainable practices</Link>.
+              <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainable practices</Link>.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,7 +73,7 @@ const KidsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

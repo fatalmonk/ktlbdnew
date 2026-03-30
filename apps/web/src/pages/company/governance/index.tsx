@@ -5,8 +5,17 @@ import { createLazyIcon } from '@/lib/lucide-icons';
 const FileText = createLazyIcon('FileText');
 const Users = createLazyIcon('Users');
 import SEO from '../../../components/seo/SEO';
+import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
+import { createBreadcrumbSchema } from '../../../modules/seo/templates';
 
 const CompanyGovernance = () => {
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Company', url: '/company/our-story' },
+    { name: 'Governance', url: '/company/governance' },
+  ];
+
   // KTL Board of Directors
   const directors = [
     { name: "Mr. Emdadul Hoque Chowdhury", title: "Chairman & Managing Director" },
@@ -95,42 +104,16 @@ const CompanyGovernance = () => {
         canonical="/company/governance"
         keywords={['corporate governance', 'board of directors', 'compliance', 'transparency', 'KTL governance']}
       />
-      <main className="min-h-screen bg-white">
-      {/* Top Gradient Bar */}
-      <div className="h-1 bg-gradient-to-r from-yellow-400 via-red-500 to-blue-500"></div>
-
-      {/* Hero Section - Macy's Style */}
-      <section className="pt-24 pb-16 bg-white">
-        <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <nav className="mb-8" aria-label="Breadcrumb">
-            <div className="text-neutral-600">
-              <span>Company</span>
-              <span className="mx-2">/</span>
-              <span className="font-bold text-black">Governance</span>
-            </div>
-          </nav>
-
-          {/* Main Heading with Decorative Elements */}
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-6xl md:text-7xl font-bold text-black mb-4">
-                Governance
-              </h1>
-              <div className="w-48 h-3" style={{ backgroundColor: '#FCD338' }}></div>
-            </div>
-            {/* Decorative Wavy Lines */}
-            <div className="hidden lg:block">
-              <svg width="200" height="60" viewBox="0 0 200 60" fill="none">
-                <path d="M10,30 Q30,10 50,30 T90,30 T130,30 T170,30" stroke="#FCD338" strokeWidth="2" fill="none"/>
-                <path d="M10,40 Q30,20 50,40 T90,40 T130,40 T170,40" stroke="#FCD338" strokeWidth="2" fill="none"/>
-                <path d="M10,50 Q30,30 50,50 T90,50 T130,50 T170,50" stroke="#FCD338" strokeWidth="2" fill="none"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'Governance' },
+        ]}
+        pageTitle="Governance"
+      />
+      <div className="min-h-screen bg-white">
       {/* Board of Directors - Macy's Style */}
       <section id="board-of-directors" className="pt-20 pb-16 bg-white">
         <div className="container mx-auto px-4">
@@ -140,7 +123,7 @@ const CompanyGovernance = () => {
             <p className="text-lg text-neutral-700 mt-4 max-w-4xl">
               Our board provides strategic oversight and governance for KTL's operations. Learn more about our <Link to="/company/leadership" className="text-primary-600 hover:text-primary-700 font-medium underline">executive leadership team</Link>, 
               <Link to="/company/our-story" className="text-primary-600 hover:text-primary-700 font-medium underline"> company history</Link>, and 
-              <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainability initiatives</Link>.
+              <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainability initiatives</Link>.
             </p>
           </div>
 
@@ -308,7 +291,7 @@ const CompanyGovernance = () => {
     </div>
   </div>
 </section>
-    </main>
+    </div>
     </>
   );
 };

@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import Image from '../../../components/media/Image';
-import IntroHighlightHero from '../../../components/company/IntroHighlightHero';
+import IntroHighlightHero, { MarkerText } from '../../../components/company/IntroHighlightHero';
 import TimelineCarouselSection, {
   type TimelineCarouselItem,
 } from '../../../components/company/TimelineCarouselSection';
-import { Target, Eye, MapPin, Calendar, Award } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
 import { createBreadcrumbSchema } from '../../../modules/seo/templates';
@@ -13,42 +12,47 @@ import heroGlobal1x from '@/assets/images/hero/hero-global@1x.webp';
 import heroMain1x from '@/assets/images/hero/hero-main@1x.webp';
 
 const CompanyOurStory = () => {
+  /** Name, title, and portrait — editorial grid (name + title only under photo). */
   const leadership = [
     {
       name: 'Nasreen Haque',
       position: 'Chairman & Founder',
-      description:
-        'Visionary leader with 20+ years of experience in textile industry development and strategic planning. Under her leadership, Kattali Textile has grown from a small startup to a major international manufacturer.',
-      image: heroSustainability1x,
-      achievements: [
-        'Founded Kattali Textile in 2002',
-        'Led company to international markets',
-        'Champion of sustainable manufacturing',
-      ],
+      image: '/assets/leadership/leadership-nasreen-haque.png',
     },
     {
       name: 'Md. Emdadul Hoque Chowdhury',
       position: 'Managing Director',
-      description:
-        'Operations expert focused on sustainable manufacturing and international market expansion. Responsible for day-to-day operations and strategic partnerships with global brands.',
-      image: heroGlobal1x,
-      achievements: [
-        'Overseeing 1,200+ employees',
-        'Managing 680+ production machines',
-        'Leading sustainability initiatives',
-      ],
+      image: '/assets/leadership/leadership-emdadul-hoque.png',
     },
     {
-      name: 'Sarah Ahmed',
-      position: 'Head of Design & Innovation',
-      description:
-        'Creative director with expertise in contemporary fashion trends and sustainable design practices. Leads our design studio in creating innovative products for global markets.',
-      image: heroMain1x,
-      achievements: [
-        '15+ years in fashion design',
-        'Expert in sustainable materials',
-        'International design awards',
-      ],
+      name: 'Mohammed Anwarul Haque Ishad',
+      position: 'DMD',
+      image: '/assets/leadership/leadership-ishad.png',
+    },
+    {
+      name: 'Mohammed Anwar Alvi',
+      position: 'Execurive Director',
+      image: '/assets/leadership/leadership-anwar-alvi.png',
+    },
+    {
+      name: 'MR. Mizanur Rahman',
+      position: 'Chief Financial Officer',
+      image: '/assets/leadership/leadership-mizanur-rahman.png',
+    },
+    {
+      name: 'Mr. Barkat Ullah',
+      position: 'Company Secretary',
+      image: '/assets/leadership/leadership-barkat-ullah.png',
+    },
+    {
+      name: 'Mr. Ashraful Ahsan Chowdhury',
+      position: 'Head of Human Resources & Compliance',
+      image: '/assets/leadership/leadership-ashraful-ahsan-chowdhury.png',
+    },
+    {
+      name: 'Zahed Iqbal',
+      position: 'Quality & Assurance Manager',
+      image: '/assets/leadership/leadership-arif-khan.png',
     },
   ];
 
@@ -105,8 +109,6 @@ const CompanyOurStory = () => {
 
   const introSlides = [
     { src: heroMain1x, alt: 'Kattali Textile manufacturing operations' },
-    { src: heroGlobal1x, alt: 'Global garment manufacturing and export' },
-    { src: heroSustainability1x, alt: 'Sustainable textile production' },
   ];
 
   return (
@@ -131,49 +133,32 @@ const CompanyOurStory = () => {
             { text: 'Home of Quality', highlight: true },
             { text: 'Manufacturing', highlight: true },
           ]}
+          headlineMobileSlot={
+            <>
+              <span className="block">Welcome to the Home</span>
+              <span className="block">
+                <MarkerText>of Quality Manufacturing</MarkerText>
+              </span>
+            </>
+          }
           slides={introSlides}
           sliderAriaLabel="Our story introduction images"
         />
 
         {/* Company Overview */}
-        <section className="py-20">
+        <section className="pt-8 pb-20 sm:pt-10">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4 items-center">
               <div>
-                <h2 className="font-heading text-4xl font-bold mb-8 text-neutral-900">
-                  Our <span className="text-primary">Journey</span>
-                </h2>
-                <div className="space-y-6 text-neutral-700 text-lg leading-relaxed">
-                  <p>
-                    Established in 2002, Kattali Textile Ltd is a Chittagong-based garment
-                    manufacturer specializing in <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven and knitwear products</Link>. Over the past two
-                    decades, we have built a reputation for delivering premium quality textiles to
-                    global markets.
-                  </p>
-                  <p>
-                    Our commitment to excellence, <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">sustainable practices</Link>, and ethical manufacturing has
-                    made us a trusted partner for international brands seeking reliable textile
-                    sourcing from Bangladesh. Learn more about our <Link to="/company/leadership" className="text-primary-600 hover:text-primary-700 font-medium underline">experienced leadership team</Link> and 
-                    <Link to="/company/governance" className="text-primary-600 hover:text-primary-700 font-medium underline"> corporate governance</Link> practices.
-                  </p>
-                  <p>
-                    With <Link to="/facilities/rmg" className="text-primary-600 hover:text-primary-700 font-medium underline">state-of-the-art manufacturing facilities</Link>, skilled workforce, and
-                    comprehensive quality control systems, we ensure every product meets the highest
-                    international standards.
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-6 mt-8">
-                  <div className="text-center p-4 bg-neutral-50 rounded-lg">
-                    <Calendar className="w-8 h-8 text-primary mx-auto mb-2" />
-                    <div className="font-heading text-2xl font-bold text-neutral-900">22+</div>
-                    <div className="text-sm text-neutral-600">Years Experience</div>
-                  </div>
-                  <div className="text-center p-4 bg-neutral-50 rounded-lg">
-                    <Award className="w-8 h-8 text-primary mx-auto mb-2" />
-                    <div className="font-heading text-2xl font-bold text-neutral-900">3+</div>
-                    <div className="text-sm text-neutral-600">Certifications</div>
-                  </div>
-                </div>
+                <p className="text-[#000000] text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] md:leading-tight">
+                  We are a leading garment manufacturer, and through our trusted facilities in
+                  Chittagong,{' '}
+                  <strong className="font-bold">
+                    we help global apparel brands deliver quality products to their customers
+                  </strong>{' '}
+                  — combining precision manufacturing, sustainable practices, and reliable
+                  partnerships to bring every collection to life.
+                </p>
               </div>
               <div className="relative">
                 <Image
@@ -197,118 +182,87 @@ const CompanyOurStory = () => {
         />
 
         {/* Mission & Vision */}
-        <section className="py-20 bg-neutral-50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                  <Target className="w-8 h-8 text-primary" />
+        <section className="border-t border-neutral-200/80 bg-neutral-50 py-16 md:py-24">
+          <div className="mx-auto max-w-ktl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <article className="flex flex-col rounded-2xl border border-neutral-200/90 border-l-4 border-l-primary-500 bg-white p-8 pl-7 shadow-sm ring-1 ring-neutral-100 sm:pl-8 md:p-10 md:pl-10 lg:p-12 lg:pl-12">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+                  <div
+                    className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary-500/20 text-primary-900"
+                    aria-hidden
+                  >
+                    <Target className="h-8 w-8" strokeWidth={2} />
+                  </div>
+                  <h3 className="font-heading text-4xl font-bold tracking-tight text-black md:text-5xl lg:text-[2.75rem] lg:leading-[1.1] xl:text-[3rem]">
+                    Our <span className="text-primary-500">Mission</span>
+                  </h3>
                 </div>
-                <h3 className="font-heading text-2xl font-bold mb-4 text-neutral-900">Our Mission</h3>
-                <p className="text-neutral-700 text-lg leading-relaxed">
+                <p className="mt-8 text-2xl font-medium leading-relaxed text-neutral-900 md:text-3xl md:leading-snug">
                   To deliver excellence through sustainable and ethical garment manufacturing,
                   providing our global partners with premium quality textiles while maintaining the
                   highest standards of environmental and social responsibility.
                 </p>
-              </div>
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                  <Eye className="w-8 h-8 text-primary" />
+              </article>
+              <article className="flex flex-col rounded-2xl border border-neutral-200/90 border-l-4 border-l-primary-500 bg-white p-8 pl-7 shadow-sm ring-1 ring-neutral-100 sm:pl-8 md:p-10 md:pl-10 lg:p-12 lg:pl-12">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+                  <div
+                    className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary-500/20 text-primary-900"
+                    aria-hidden
+                  >
+                    <Eye className="h-8 w-8" strokeWidth={2} />
+                  </div>
+                  <h3 className="font-heading text-4xl font-bold tracking-tight text-black md:text-5xl lg:text-[2.75rem] lg:leading-[1.1] xl:text-[3rem]">
+                    Our <span className="text-primary-500">Vision</span>
+                  </h3>
                 </div>
-                <h3 className="font-heading text-2xl font-bold mb-4 text-neutral-900">Our Vision</h3>
-                <p className="text-neutral-700 text-lg leading-relaxed">
+                <p className="mt-8 text-2xl font-medium leading-relaxed text-neutral-900 md:text-3xl md:leading-snug">
                   To become a globally respected textile brand from Bangladesh, recognized for
                   innovation, quality, and sustainable practices, while contributing to the economic
                   development of our community and country.
                 </p>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
-        {/* Leadership */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-4xl font-bold text-center mb-16 text-neutral-900">
-              Our <span className="text-primary">Leadership</span>
+        {/* Leadership — editorial grid: asymmetric image frame, name + title only */}
+        <section className="bg-white py-16 lg:py-20">
+          <div className="mx-auto max-w-ktl px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-black md:text-4xl">
+              Leadership Team
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {leadership.map((leader, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="aspect-square overflow-hidden">
+            <ul className="mt-10 grid list-none grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 md:grid-cols-3 md:gap-y-12 lg:grid-cols-4 lg:gap-x-10">
+              {leadership.map((leader) => (
+                <li key={leader.name} className="text-left">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-tl-xl rounded-br-xl rounded-bl-xl rounded-tr-[2.5rem] sm:rounded-tr-[3rem]">
                     <Image
                       src={leader.image}
                       alt={leader.name}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 h-full w-full object-cover object-[center_22%] scale-[1.18] origin-center"
                       fit="cover"
-                      width={400}
-                      height={400}
-                      sizes="(min-width:768px) 33vw, 100vw"
+                      sizes="(min-width:1024px) 22vw, (min-width:768px) 28vw, 42vw"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-heading text-xl font-bold mb-2 text-neutral-900">
-                      {leader.name}
-                    </h3>
-                    <h4 className="text-primary font-semibold mb-4">{leader.position}</h4>
-                    <p className="text-neutral-600 text-sm leading-relaxed mb-4">{leader.description}</p>
-                    <div className="space-y-2">
-                      <h5 className="font-semibold text-neutral-900 text-sm">Key Achievements:</h5>
-                      {leader.achievements.map((achievement, idx) => (
-                        <div key={idx} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                          <span className="text-neutral-600 text-sm">{achievement}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  <p className="mt-4 text-base font-bold leading-tight text-black">{leader.name}</p>
+                  <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">{leader.position}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        {/* Location */}
-        <section className="py-20">
+        {/* Location map */}
+        <section className="py-16 md:py-20" aria-label="Location map">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="font-heading text-4xl font-bold mb-8 text-neutral-900">
-                  Our <span className="text-primary">Location</span>
-                </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg text-neutral-900 mb-2">
-                        Head Office & Factory
-                      </h3>
-                      <p className="text-neutral-700 leading-relaxed">
-                        BM Heights, 8th Floor
-                        <br />
-                        318 Sk. Mujib Road, Agrabad
-                        <br />
-                        Chittagong, Bangladesh
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-neutral-700 leading-relaxed">
-                    Strategically located in Chittagong, Bangladesh's commercial capital and largest
-                    port city, our facilities provide excellent access to international shipping
-                    routes and supply chains.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-neutral-200 rounded-2xl h-96 flex items-center justify-center">
-                <div className="text-center text-neutral-500">
-                  <MapPin className="w-16 h-16 mx-auto mb-4" />
-                  <p className="text-lg">Interactive Map</p>
-                  <p className="text-sm">Chittagong, Bangladesh</p>
-                </div>
-              </div>
+            <div className="h-[32rem] min-h-[32rem] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-neutral-200 md:h-[44rem] md:min-h-[44rem] lg:h-[min(70vh,56rem)] lg:min-h-[min(70vh,56rem)]">
+              <iframe
+                src="https://storage.googleapis.com/maps-solutions-fa4ntudplj/locator-plus/vcpi/locator-plus.html"
+                title="Kattali Textile — location map"
+                className="h-full w-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </section>

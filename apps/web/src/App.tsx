@@ -32,7 +32,6 @@ const ProductKids = React.lazy(() => import('./pages/products/kids'));
 const CompanyOurStory = React.lazy(() => import('./pages/company/our-story'));
 const CompanyLeadership = React.lazy(() => import('./pages/company/leadership'));
 const CompanyGovernance = React.lazy(() => import('./pages/company/governance'));
-const CompanySustainability = React.lazy(() => import('./pages/company/sustainability'));
 
 // Facilities pages
 const FacilitiesRMG = React.lazy(() => import('./pages/facilities/rmg'));
@@ -117,7 +116,7 @@ function App() {
                   <Route path="/company/our-story" element={<CompanyOurStory />} />
                   <Route path="/company/leadership" element={<CompanyLeadership />} />
                   <Route path="/company/governance" element={<CompanyGovernance />} />
-                  <Route path="/company/sustainability" element={<CompanySustainability />} />
+                  <Route path="/company/sustainability" element={<Navigate to="/sustainability" replace />} />
 
                   {/* Facilities routes */}
                   <Route path="/facilities/rmg" element={<FacilitiesRMG />} />

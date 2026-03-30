@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const InvestorContactsPage = () => {
   return (
@@ -8,10 +9,17 @@ const InvestorContactsPage = () => {
         description="Contact information for KTL's investor relations team. Get in touch for investor inquiries, financial information, and shareholder services."
         keywords={['investor contacts', 'investor relations', 'KTL contacts', 'shareholder services', 'investor inquiries']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'IR Contacts' },
+        ]}
+        pageTitle="IR Contacts"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Investor Contacts</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Get in touch with our investor relations team for inquiries about financial information,
               shareholder services, and investment opportunities at Kattali Textile Limited.
@@ -102,7 +110,7 @@ const InvestorContactsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

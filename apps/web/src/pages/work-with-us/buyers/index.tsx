@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const BuyersPage = () => {
   return (
@@ -8,10 +9,17 @@ const BuyersPage = () => {
         description="Partner with KTL as a buyer. Discover our comprehensive textile solutions, quality assurance, and global supply chain capabilities."
         keywords={['buyers', 'textile buyers', 'KTL partners', 'global buyers', 'textile sourcing']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Work With Us', to: '/work-with-us/buyers' },
+          { label: 'Buyers' },
+        ]}
+        pageTitle="Buyers"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">For Buyers</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Partner with KTL for comprehensive textile solutions. We offer quality products, 
               reliable supply chain, and dedicated support for your business needs.
@@ -52,7 +60,7 @@ const BuyersPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

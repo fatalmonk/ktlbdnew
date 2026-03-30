@@ -582,8 +582,8 @@ Replace sample content with real KTL data:
 
 ### Data Files
 - Case Studies: `apps/web/src/data/case-studies/sample-data.json`
-- Certifications: `apps/web/public/data/certifications.json`
-- Sustainability: `apps/web/public/data/sustainability/metrics.json`
+- Certifications: `apps/web/src/data/certifications/index.json`
+- Sustainability: `apps/web/src/data/sustainability/index.json`
 
 ### Configuration
 - Navigation: `apps/web/src/lib/navigation.ts`
@@ -697,8 +697,8 @@ Replace sample content with real KTL data:
 
 ### To Update Content:
 - **Case Studies:** Edit `apps/web/src/data/case-studies/sample-data.json`
-- **Certifications:** Edit `apps/web/public/data/certifications.json`
-- **Sustainability:** Edit `apps/web/public/data/sustainability/metrics.json`
+- **Certifications:** Edit `apps/web/src/data/certifications/index.json`
+- **Sustainability:** Edit `apps/web/src/data/sustainability/index.json`
 - **Chatbot:** Edit `apps/web/src/lib/chatbot/responses.ts`
 
 ### To Deploy:

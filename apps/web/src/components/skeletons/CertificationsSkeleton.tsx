@@ -21,13 +21,13 @@ const CertificationsSkeleton: React.FC = () => {
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
             <div
               key={index}
-              className="flex items-center justify-center px-2 py-3 md:px-3 md:py-4 lg:px-4 lg:py-5"
+              className="flex items-center justify-center px-2 py-2 sm:py-3 md:px-3 md:py-4 lg:px-4 lg:py-5"
             >
               <Skeleton
                 variant="rectangular"
-                height={200}
+                height={144}
                 width="100%"
-                className="mx-auto max-w-[240px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-none"
+                className="mx-auto max-w-[160px] sm:max-w-[200px] md:max-w-[300px] lg:max-w-none"
                 aria-label={`Loading certification ${index} logo`}
               />
             </div>

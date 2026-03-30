@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import { createProductSchema, createBreadcrumbSchema } from '../../../modules/seo/templates';
 
 const KnitwearPage = () => {
@@ -28,17 +29,24 @@ const KnitwearPage = () => {
         keywords={['knitwear products', 'sweaters manufacturing', 'cardigans', 'Bangladesh knitwear', 'textile knitwear']}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Products', to: '/products' },
+          { label: 'Knitwear' },
+        ]}
+        pageTitle="Knitwear"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Knitwear</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our premium knitwear collection features high-quality sweaters, cardigans, and knit accessories
               crafted for comfort, warmth, and style. As part of our comprehensive <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garment products</Link> range, 
               we also manufacture <Link to="/products/denims" className="text-primary-600 hover:text-primary-700 font-medium underline">premium denim</Link> and 
               <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline"> children's clothing</Link>. All our knitwear is produced in our 
               <Link to="/facilities/rmg" className="text-primary-600 hover:text-primary-700 font-medium underline">state-of-the-art manufacturing facilities</Link> using 
-              <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">sustainable production practices</Link>.
+              <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">sustainable production practices</Link>.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,7 +73,7 @@ const KnitwearPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

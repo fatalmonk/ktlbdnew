@@ -8,6 +8,7 @@ const Award = createLazyIcon('Award');
 const TrendingUp = createLazyIcon('TrendingUp');
 import CaseStudyCard from '../../components/case-studies/CaseStudyCard';
 import SEO from '../../components/seo/SEO';
+import SubpageHeader from '../../components/shared/SubpageHeader';
 import { CaseStudy, CaseStudyFilterState } from '../../types/case-study';
 import caseStudiesData from '../../data/case-studies/sample-data.json';
 
@@ -73,9 +74,16 @@ const CaseStudiesIndex = () => {
         keywords={['textile case studies', 'manufacturing success stories', 'sustainable production', 'quality textile manufacturing']}
       />
 
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Case Studies' },
+        ]}
+        pageTitle="Case Studies"
+      />
       <div className="bg-neutral-50 min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
+        <section className="bg-gradient-to-r from-blue-900 to-blue-700 pb-20 pt-10 text-white lg:pt-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -83,9 +91,9 @@ const CaseStudiesIndex = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Client Success Stories
-              </h1>
+              </h2>
               <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
                 Real results from real partnerships. See how we've helped global brands achieve their manufacturing goals.
               </p>

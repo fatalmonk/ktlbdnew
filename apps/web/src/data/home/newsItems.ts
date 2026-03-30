@@ -47,13 +47,4 @@ export const newsItems: HomeNewsItem[] = [
     slug: 'global-textile-sourcing-partnerships',
     tags: ['Partnerships', 'Financial'],
   },
-  {
-    title: 'Quality, Compliance & Scale: A Closer Look at KTL Operations',
-    excerpt: 'Operations and export excellence across woven lines and global programs.',
-    image: stockNews.warehouse,
-    imageAlt: 'Warehouse aisle with stacked cartons and logistics operations',
-    date: '2025-01-12',
-    slug: 'woven-garment-export-powerhouse',
-    tags: ['Company News'],
-  },
 ];

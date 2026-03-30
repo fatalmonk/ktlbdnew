@@ -85,7 +85,7 @@ const Header: React.FC = () => {
               to="/"
               className="flex min-h-0 min-w-0 flex-shrink-0 items-center justify-center px-0.5"
             >
-              <span className="font-heading text-center text-[1.75rem] font-semibold leading-none tracking-tight text-[#243a4f] lowercase sm:text-[2.4rem] md:text-4xl">
+              <span className="font-heading text-body text-center font-semibold leading-none tracking-tight text-[#243a4f] lowercase sm:text-h4 md:text-h3">
                 kattali textile limited
               </span>
             </Link>

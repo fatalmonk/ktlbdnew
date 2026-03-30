@@ -10,6 +10,7 @@ const Facebook = createLazyIcon('Facebook');
 const Linkedin = createLazyIcon('Linkedin');
 const Twitter = createLazyIcon('Twitter');
 import SEO from '../components/seo/SEO';
+import SubpageHeader from '../components/shared/SubpageHeader';
 import BlogCard from '../components/features/BlogCard';
 
 interface BlogPostMeta {
@@ -111,7 +112,7 @@ const BlogPost = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="header-spacing min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
       </div>
     );
@@ -119,7 +120,7 @@ const BlogPost = () => {
 
   if (error || !postMeta) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="header-spacing min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-neutral-900 mb-4">Story Not Found</h1>
           <p className="text-neutral-600 mb-8">The story you're looking for doesn't exist.</p>
@@ -142,6 +143,17 @@ const BlogPost = () => {
         image={postMeta.image}
       />
 
+      {postMeta && (
+        <SubpageHeader
+          breadcrumbItems={[
+            { label: 'Home', to: '/' },
+            { label: 'Newsroom', to: '/newsroom/stories' },
+            { label: 'Company Stories', to: '/newsroom/stories' },
+            { label: postMeta.title },
+          ]}
+          pageTitle={postMeta.title}
+        />
+      )}
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <article className="relative">
@@ -180,11 +192,6 @@ const BlogPost = () => {
                       {postMeta.category}
                     </span>
                   </div>
-
-                  {/* Title */}
-                  <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-900 mb-6">
-                    {postMeta.title}
-                  </h1>
 
                   {/* Meta Info */}
                   <div className="flex flex-wrap items-center gap-6 text-neutral-600 text-sm">

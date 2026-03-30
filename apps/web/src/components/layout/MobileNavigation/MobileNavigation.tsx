@@ -49,7 +49,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             aria-expanded={isExpanded}
             className="group flex w-full items-center justify-between gap-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40"
           >
-            <span className="font-heading text-[clamp(1.65rem,5.9vw,3rem)] font-bold leading-[1.05] tracking-tight text-[#111827]">
+            <span className="font-heading text-h4 font-bold leading-[1.05] tracking-tight text-[#111827] md:text-h3">
               <span className="inline bg-[linear-gradient(#ffce00,#ffce00)] bg-[length:100%_0.15em] bg-no-repeat bg-[position:0_calc(100%-2px)] px-0.5">
                 {item.name}
               </span>
@@ -68,7 +68,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             onClick={onClose}
             className="group flex items-center justify-between gap-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40"
           >
-            <span className="font-heading text-[clamp(1.65rem,5.9vw,3rem)] font-bold leading-[1.05] tracking-tight text-[#111827]">
+            <span className="font-heading text-h4 font-bold leading-[1.05] tracking-tight text-[#111827] md:text-h3">
               <span className="inline bg-[linear-gradient(#ffce00,#ffce00)] bg-[length:100%_0.15em] bg-no-repeat bg-[position:0_calc(100%-2px)] px-0.5">
                 {item.name}
               </span>
@@ -94,7 +94,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
                 {item.columns.map((column, columnIdx) => (
                   <div key={`${item.name}-${column.title ?? columnIdx}`} className="space-y-2">
                     {column.title && (
-                      <h4 className="text-[1.2rem] font-semibold uppercase tracking-[0.08em] text-neutral-700">
+                      <h4 className="text-overline font-semibold text-neutral-700">
                         {column.title}
                       </h4>
                     )}
@@ -106,7 +106,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
                               href={link.href}
                               target="_blank"
                               rel="noreferrer"
-                              className="block text-[1.55rem] font-medium leading-snug text-[#111827] transition-colors hover:text-[#06607f]"
+                              className="block text-body font-medium leading-snug text-[#111827] transition-colors hover:text-[#06607f]"
                             >
                               {link.label}
                             </a>
@@ -114,7 +114,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
                             <Link
                               to={link.href}
                               onClick={onClose}
-                              className="block text-[1.55rem] font-medium leading-snug text-[#111827] transition-colors hover:text-[#06607f]"
+                              className="block text-body font-medium leading-snug text-[#111827] transition-colors hover:text-[#06607f]"
                             >
                               {link.label}
                             </Link>

@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const ShippingFacility = () => {
   return (
@@ -9,10 +10,17 @@ const ShippingFacility = () => {
         canonical="/facilities/shipping"
         keywords={['shipping logistics', 'global distribution', 'textile logistics', 'international delivery', 'supply chain']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'Shipping' },
+        ]}
+        pageTitle="Shipping"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Shipping & Logistics</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our comprehensive shipping and logistics facility ensures efficient global distribution
               and timely delivery of textile products to customers worldwide.
@@ -53,7 +61,7 @@ const ShippingFacility = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import { createBreadcrumbSchema, createProductSchema } from '../../../modules/seo/templates';
 
 const DenimsPage = () => {
@@ -28,10 +29,18 @@ const DenimsPage = () => {
         keywords={['denim manufacturer bangladesh', 'jeans manufacturer', 'denim supplier', 'Bangladesh denim', 'denim production']}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Products', to: '/products' },
+          { label: 'Denims' },
+        ]}
+        pageTitle="Denims"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Denim Manufacturer Bangladesh</h1>
+            <h2 className="text-4xl font-bold text-black mb-8">Denim Manufacturer Bangladesh</h2>
             <div className="mb-8">
               <p className="text-lg text-neutral-800 mb-6">
                 As a leading <strong>denim manufacturer in Bangladesh</strong>, KTL specializes in producing
@@ -99,7 +108,7 @@ const DenimsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

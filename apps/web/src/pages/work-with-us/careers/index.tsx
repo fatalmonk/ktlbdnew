@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const CareersPage = () => {
   return (
@@ -8,10 +9,17 @@ const CareersPage = () => {
         description="Join KTL's team and build your career in the textile industry. Explore job opportunities, benefits, and growth prospects at Kattali Textile Limited."
         keywords={['careers', 'jobs', 'KTL careers', 'textile jobs', 'employment opportunities']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Work With Us', to: '/work-with-us/buyers' },
+          { label: 'Careers' },
+        ]}
+        pageTitle="Careers"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Careers</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Join our team and be part of Bangladesh's leading textile manufacturer.
               We offer exciting career opportunities, professional development, and a
@@ -69,7 +77,7 @@ const CareersPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

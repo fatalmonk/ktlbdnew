@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import { createProductSchema, createBreadcrumbSchema } from '../../../modules/seo/templates';
 
 const SwimwearPage = () => {
@@ -28,10 +29,17 @@ const SwimwearPage = () => {
         keywords={['swimwear products', 'swimsuits manufacturing', 'bikinis', 'Bangladesh swimwear', 'textile swimwear']}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Products', to: '/products' },
+          { label: 'Swimwear' },
+        ]}
+        pageTitle="Swimwear"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Swimwear</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our premium swimwear collection features high-quality swimsuits, bikinis, and beachwear
               designed for comfort, style, and durability. As part of our diverse <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">textile product range</Link>, 
@@ -39,7 +47,7 @@ const SwimwearPage = () => {
               <Link to="/products/knitwear" className="text-primary-600 hover:text-primary-700 font-medium underline">knitwear</Link>, and 
               <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline">children's apparel</Link>. All swimwear products are manufactured in our 
               <Link to="/facilities/rmg" className="text-primary-600 hover:text-primary-700 font-medium underline">advanced production facilities</Link> with 
-              <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">certified sustainable practices</Link>.
+              <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">certified sustainable practices</Link>.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -66,7 +74,7 @@ const SwimwearPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const WashingFacility = () => {
   return (
@@ -9,10 +10,17 @@ const WashingFacility = () => {
         canonical="/facilities/washing"
         keywords={['washing plant', 'garment finishing', 'textile treatment', 'Bangladesh facility', 'quality enhancement']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'Washing' },
+        ]}
+        pageTitle="Washing"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Washing Plant</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our advanced washing plant facility is equipped with state-of-the-art machinery
               for garment finishing, treatment, and quality enhancement processes.
@@ -53,7 +61,7 @@ const WashingFacility = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

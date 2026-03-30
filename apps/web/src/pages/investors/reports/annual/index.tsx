@@ -1,4 +1,5 @@
 import SEO from '../../../../components/seo/SEO';
+import SubpageHeader from '../../../../components/shared/SubpageHeader';
 
 const AnnualReportsPage = () => {
   return (
@@ -8,10 +9,17 @@ const AnnualReportsPage = () => {
         description="Access KTL's comprehensive annual reports including financial statements, strategic overview, and year-end performance summaries."
         keywords={['annual reports', 'yearly reports', 'KTL annual', 'financial statements', 'annual performance']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'Annual Reports' },
+        ]}
+        pageTitle="Annual Reports"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Annual Reports</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Comprehensive annual reports covering KTL's yearly performance,
               financial statements, strategic initiatives, and future outlook.
@@ -56,7 +64,7 @@ const AnnualReportsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

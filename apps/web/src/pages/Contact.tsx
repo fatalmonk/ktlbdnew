@@ -8,6 +8,7 @@ import GoogleMapsLocator from '../components/features/GoogleMapsLocator';
 import GoogleBusinessWidget from '../components/features/GoogleBusinessWidget';
 import SEO from '../components/seo/SEO';
 import StructuredData from '../components/seo/StructuredData';
+import SubpageHeader from '../components/shared/SubpageHeader';
 import { createBreadcrumbSchema, createContactSchema, createFAQSchema } from '../modules/seo/templates';
 import { COMPANY_PHONE, COMPANY_EMAIL, GOOGLE_BUSINESS } from '../lib/constants';
 
@@ -117,15 +118,22 @@ const Contact = () => {
         keywords={['KTL contact', 'textile manufacturer contact', 'Bangladesh garment inquiry', 'investor relations', 'chittagong exporter list']}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), createContactSchema(), createFAQSchema(faqs)]} />
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Contact' },
+        ]}
+        pageTitle="Contact"
+      />
       <div className="min-h-screen bg-black text-white">
       {/* Full-bleed Background with Dark Overlay */}
-      <section className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)] contact-bg">
+      <section className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat pt-8 lg:pt-12 contact-bg">
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/55" />
 
         {/* Vertical Contact Label */}
         <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-          <div className="text-white font-heading font-semibold text-base tracking-[0.1em] contact-vertical-text">
+          <div className="text-white font-heading font-semibold text-caption tracking-[0.1em] contact-vertical-text">
             contact us
           </div>
         </div>
@@ -137,7 +145,7 @@ const Contact = () => {
             <div className="space-y-6">
               {contactInfo.slice(0, 3).map((info, index) => (
                 <div key={index} className="mb-6">
-                  <h3 className="font-heading font-semibold text-base text-white mb-3">
+                  <h3 className="font-heading font-semibold text-caption text-white mb-3">
                     {info.title}
                   </h3>
                   <div className="space-y-1">
@@ -146,12 +154,12 @@ const Contact = () => {
                         <a
                           key={detailIndex}
                           href={info.links[detailIndex]}
-                          className="block text-[15px] leading-[1.6] text-[#CCCCCC] hover:text-white hover:underline transition-colors duration-200"
+                          className="block text-caption leading-[1.6] text-[#CCCCCC] transition-colors duration-200 hover:text-white hover:underline"
                         >
                           {detail}
                         </a>
                       ) : (
-                        <p key={detailIndex} className="text-[15px] leading-[1.6] text-[#CCCCCC]">
+                        <p key={detailIndex} className="text-caption leading-[1.6] text-[#CCCCCC]">
                           {detail}
                         </p>
                       )
@@ -165,7 +173,7 @@ const Contact = () => {
             <div className="space-y-6">
               {contactInfo.slice(3).map((info, index) => (
                 <div key={index} className="mb-6">
-                  <h3 className="font-heading font-semibold text-base text-white mb-3">
+                  <h3 className="font-heading font-semibold text-caption text-white mb-3">
                     {info.title}
                   </h3>
                   <div className="space-y-1">
@@ -174,12 +182,12 @@ const Contact = () => {
                         <a
                           key={detailIndex}
                           href={info.links[detailIndex]}
-                          className="block text-[15px] leading-[1.6] text-[#CCCCCC] hover:text-white hover:underline transition-colors duration-200"
+                          className="block text-caption leading-[1.6] text-[#CCCCCC] transition-colors duration-200 hover:text-white hover:underline"
                         >
                           {detail}
                         </a>
                       ) : (
-                        <p key={detailIndex} className="text-[15px] leading-[1.6] text-[#CCCCCC]">
+                        <p key={detailIndex} className="text-caption leading-[1.6] text-[#CCCCCC]">
                           {detail}
                         </p>
                       )
@@ -199,7 +207,7 @@ const Contact = () => {
             <p className="text-neutral-300 text-lg max-w-3xl mx-auto">
               Whether you're interested in our <Link to="/products" className="text-primary-400 hover:text-primary-300 font-medium underline">textile manufacturing services</Link>, 
               want to learn more about our <Link to="/facilities/rmg" className="text-primary-400 hover:text-primary-300 font-medium underline">state-of-the-art facilities</Link>, 
-              or wish to explore our <Link to="/company/sustainability" className="text-primary-400 hover:text-primary-300 font-medium underline">sustainable practices</Link>, 
+              or wish to explore our <Link to="/sustainability" className="text-primary-400 hover:text-primary-300 font-medium underline">sustainable practices</Link>, 
               we're here to help. Get in touch with us today.
             </p>
           </div>
@@ -213,7 +221,7 @@ const Contact = () => {
       <section className="relative bg-neutral-900 py-20 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
+            <h2 className="font-heading font-bold text-h4 md:text-h3 text-white mb-4">
               Find Us
             </h2>
             <p className="text-neutral-300 text-lg">
@@ -243,7 +251,7 @@ const Contact = () => {
       <section className="relative bg-black py-20 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
+            <h2 className="font-heading font-bold text-h4 md:text-h3 text-white mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-neutral-300">Find quick answers to common questions about our products and services.</p>

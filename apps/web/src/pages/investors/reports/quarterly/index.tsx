@@ -1,4 +1,5 @@
 import SEO from '../../../../components/seo/SEO';
+import SubpageHeader from '../../../../components/shared/SubpageHeader';
 
 const QuarterlyReportsPage = () => {
   return (
@@ -8,10 +9,17 @@ const QuarterlyReportsPage = () => {
         description="Access KTL's quarterly financial reports, performance updates, and investor communications. Stay informed about our quarterly results."
         keywords={['quarterly reports', 'financial reports', 'KTL quarterly', 'investor reports', 'quarterly results']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'Quarterly Reports' },
+        ]}
+        pageTitle="Quarterly Reports"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Quarterly Reports</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Access our comprehensive quarterly financial reports and performance updates.
               Stay informed about KTL's quarterly results and strategic developments.
@@ -56,7 +64,7 @@ const QuarterlyReportsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

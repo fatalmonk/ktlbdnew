@@ -221,6 +221,7 @@ const Image: React.FC<ImageProps> = ({
     // - Any path containing /assets/images/ (Vite-processed imports)
     const isViteProcessed = (
       absoluteSrc.includes('/assets/images/') || // Contains /assets/images/ anywhere
+      absoluteSrc.startsWith('/assets/leadership/') || // Public leadership portraits (no AVIF/WebP siblings)
       /^\/assets\/[^/]+-[a-f0-9]+\.(jpg|jpeg|png|webp|avif|svg)$/i.test(absoluteSrc) || // Hashed filename
       /^\/src\/assets\//.test(absoluteSrc) // Dev mode with /src prefix
     ) && /\.(jpg|jpeg|png|webp|avif|svg)$/i.test(absoluteSrc) &&

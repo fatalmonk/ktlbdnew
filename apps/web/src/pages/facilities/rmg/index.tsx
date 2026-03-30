@@ -4,6 +4,7 @@ import Image from '../../../components/media/Image';
 import { Settings, Users, Package, MapPin, Clock, Award, Shield, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import { createBreadcrumbSchema } from '../../../modules/seo/templates';
 import heroMain1x from '@/assets/images/hero/hero-main@1x.webp';
 import heroSustainability1x from '@/assets/images/hero/hero-sustainability@1x.webp';
@@ -236,14 +237,22 @@ const RMGFacility = () => {
         keywords={['RMG facility', 'garment manufacturing', 'textile production', 'Bangladesh factory', 'quality control', 'chittagong garments factory list', 'garments factory in chittagong']}
       />
       <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'RMG' },
+        ]}
+        pageTitle="RMG"
+      />
       <div>
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center bg-cover bg-center bg-hero-manufacturing">
+        <section className="relative py-16 md:py-24 bg-gradient-to-r from-black/70 to-black/50 flex items-center bg-cover bg-center bg-hero-manufacturing">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl">
-              <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
+              <h2 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
                 RMG Manufacturing <span className="text-primary">Excellence</span>
-              </h1>
+              </h2>
               <p className="text-xl text-white/90 leading-relaxed">
                 Advanced facilities, skilled workforce, and proven processes for premium textile production
               </p>
@@ -263,7 +272,7 @@ const RMGFacility = () => {
                 world-class manufacturing services. Our facility produces a wide range of <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garments</Link>, 
                 <Link to="/products/denims" className="text-primary-600 hover:text-primary-700 font-medium underline"> denim products</Link>, and 
                 <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline"> children's wear</Link> using 
-                <Link to="/company/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainable manufacturing practices</Link>.
+                <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainable manufacturing practices</Link>.
               </p>
             </div>
 

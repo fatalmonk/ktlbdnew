@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SubpageHeader from '../../components/shared/SubpageHeader';
 import { useRFQForm } from '../../hooks/useRFQForm';
 import { RFQ_STEPS } from './data/rfq.config';
 import RFQSuccess from './components/RFQSuccess';
@@ -105,12 +106,17 @@ const RFQWizard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 py-12">
+    <div className="min-h-screen bg-neutral-50">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Request a Quote' },
+        ]}
+        pageTitle="Request a Quote"
+      />
+      <div className="py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4">
-            Request a Quote
-          </h1>
           <p className="text-lg text-neutral-600">
             Complete this form to receive a customized quote within 24 hours
           </p>
@@ -137,6 +143,7 @@ const RFQWizard = () => {
             onSubmit={handleSubmit}
           />
         </div>
+      </div>
       </div>
     </div>
   );

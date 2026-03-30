@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const StockPage = () => {
   return (
@@ -8,10 +9,17 @@ const StockPage = () => {
         description="KTL stock information, share prices, market data, and investor resources. Stay updated with Kattali Textile Limited's financial performance."
         keywords={['stock information', 'KTL shares', 'share price', 'market data', 'investor information']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'Stock Data' },
+        ]}
+        pageTitle="Stock Data"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Stock Information</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Stay updated with Kattali Textile Limited's stock performance,
               share prices, and market data. Access real-time information
@@ -67,7 +75,7 @@ const StockPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

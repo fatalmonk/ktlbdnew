@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { KPI, IRFile, IRItem, Price } from '../../../ir/types';
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const InvestorsOverview = () => {
   const [price, setPrice] = useState<Price | null>(null);
@@ -41,8 +42,8 @@ const InvestorsOverview = () => {
 
   if (loading) {
     return (
-      <div className="bg-[var(--ir-bg)] text-[var(--ir-text)] pt-20 min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading Investor Relations...</div>
+      <div className="header-spacing bg-[var(--ir-bg)] text-[var(--ir-text)] min-h-screen flex items-center justify-center">
+        <div className="text-body">Loading Investor Relations...</div>
       </div>
     );
   }
@@ -54,17 +55,25 @@ const InvestorsOverview = () => {
         description="Comprehensive overview of KTL's financial performance, strategic insights, and investment opportunities for investors."
         keywords={['investor relations', 'financial performance', 'KTL investors', 'investment opportunities', 'financial overview']}
       />
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'Overview' },
+        ]}
+        pageTitle="Investor Overview"
+      />
       <div className="bg-[var(--ir-bg)] text-[var(--ir-text)]">
         {/* Hero Section with Professional Background */}
-        <section className="relative h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat bg-investor-hero">
+        <section className="relative flex min-h-[70vh] items-center justify-center bg-cover bg-center bg-no-repeat bg-investor-hero px-6 py-16 lg:min-h-[75vh] lg:py-24">
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
 
           {/* Hero Content */}
-          <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Investor Overview
-            </h1>
+            </h2>
             <p className="text-xl md:text-2xl leading-relaxed opacity-90 max-w-3xl mx-auto">
               Your gateway to KTL's financial performance, strategic insights, and investment opportunities
             </p>
@@ -93,8 +102,8 @@ const InvestorsOverview = () => {
           <div className="ir-topbar" />
           <div className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 lg:py-24 grid grid-cols-1 md:grid-cols-[.58fr_.42fr] items-center gap-10">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--ir-text)]">Investor Snapshot</h2>
-              <p className="mt-4 text-[16px] leading-7 text-[var(--ir-muted)]">
+              <h2 className="text-h3 font-bold text-[var(--ir-text)]">Investor Snapshot</h2>
+              <p className="mt-4 text-caption leading-7 text-[var(--ir-muted)]">
                 Key figures (placeholder). Replace with live feed.
               </p>
               <a className="mt-6 inline-block underline text-[var(--ir-text)]" href="#investor-relations">
@@ -103,7 +112,7 @@ const InvestorsOverview = () => {
             </div>
             <div className="relative ir-pattern rounded-md">
               <div className="relative z-10 text-right p-6 md:p-8">
-                <div className="text-[64px] md:text-[120px] leading-[0.95] font-extrabold tracking-[-0.01em] text-[var(--ir-text)]">
+                <div className="text-h1 leading-[0.95] font-extrabold tracking-[-0.01em] text-[var(--ir-text)] md:text-[12rem]">
                   {price ? (
                     <>
                       <span className="align-top text-3xl mr-1">{price.currency === "BDT" ? "৳" : price.currency === "USD" ? "$" : ""}</span>

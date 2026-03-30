@@ -25,6 +25,7 @@ import {
   Recycle,
 } from 'lucide-react';
 import SEO from '../../components/seo/SEO';
+import SubpageHeader from '../../components/shared/SubpageHeader';
 import { CaseStudy } from '../../types/case-study';
 import caseStudiesData from '../../data/case-studies/sample-data.json';
 
@@ -95,10 +96,18 @@ const CaseStudyDetail = () => {
         keywords={[...caseStudy.industry, ...caseStudy.products, 'textile manufacturing case study']}
       />
 
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Case Studies', to: '/case-studies' },
+          { label: caseStudy.title },
+        ]}
+        pageTitle={caseStudy.title}
+      />
       <div className="bg-neutral-50 min-h-screen">
-        {/* Header/Back Button */}
-        <div className="bg-white border-b border-neutral-200">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Back link */}
+        <div className="border-b border-neutral-200 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <Link
               to="/case-studies"
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
@@ -128,8 +137,6 @@ const CaseStudyDetail = () => {
                   </span>
                 ))}
               </div>
-
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">{caseStudy.title}</h1>
 
               <div className="flex flex-wrap items-center gap-6 text-blue-100 mb-6">
                 <div className="flex items-center gap-2">

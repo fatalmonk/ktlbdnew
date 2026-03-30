@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import CertificationBadge from '../../components/certifications/CertificationBadge';
 import SEO from '../../components/seo/SEO';
+import SubpageHeader from '../../components/shared/SubpageHeader';
 import { Certification, CertificationFilterState, CertificationCategory } from '../../types/certification';
 import certificationsData from '@/data/certifications/index.json';
 
@@ -97,12 +98,29 @@ const CertificationsHub = () => {
       <SEO
         title="Certifications & Compliance | KTL"
         description="View all of KTL's international certifications including ISO 9001, ISO 14001, OEKO-TEX, GOTS, BSCI, WRAP, and customer-specific certifications."
-        keywords="ISO 9001, ISO 14001, OEKO-TEX, GOTS, BSCI, WRAP, textile certifications, compliance, quality management"
+        keywords={[
+          'ISO 9001',
+          'ISO 14001',
+          'OEKO-TEX',
+          'GOTS',
+          'BSCI',
+          'WRAP',
+          'textile certifications',
+          'compliance',
+          'quality management',
+        ]}
       />
 
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Certifications' },
+        ]}
+        pageTitle="Certifications"
+      />
       <div className="bg-neutral-50 min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
+        <section className="bg-gradient-to-r from-blue-900 to-blue-700 pb-20 pt-10 text-white lg:pt-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -111,9 +129,9 @@ const CertificationsHub = () => {
               className="text-center"
             >
               <Shield size={64} className="mx-auto mb-6" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Certifications & Compliance
-              </h1>
+              </h2>
               <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
                 Trusted by global brands. Certified by international standards.
               </p>

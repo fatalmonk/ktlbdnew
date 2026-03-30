@@ -111,7 +111,7 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
                 <div className="pane--static-header-logo">
                   <div className="module-logo">
                     <Link to="/" className="module-logo__link">
-                      <span className="module-logo__text font-heading text-3xl font-semibold tracking-tight text-[#243a4f] lowercase md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
+                      <span className="module-logo__text font-heading text-h4 font-semibold tracking-tight text-[#243a4f] lowercase md:text-h3 xl:text-h2 2xl:text-h1">
                         kattali textile limited
                       </span>
                     </Link>

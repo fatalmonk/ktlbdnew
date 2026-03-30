@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const TechFacility = () => {
   return (
@@ -9,10 +10,17 @@ const TechFacility = () => {
         canonical="/facilities/tech"
         keywords={['technology facility', 'automation', 'digital manufacturing', 'advanced machinery', 'textile innovation']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'Technology' },
+        ]}
+        pageTitle="Technology"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Tech Facility</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our technology facility houses cutting-edge machinery and automation systems
               that drive efficiency and precision in textile manufacturing.
@@ -53,7 +61,7 @@ const TechFacility = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

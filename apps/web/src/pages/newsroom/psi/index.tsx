@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const PSIPage = () => {
   return (
@@ -8,10 +9,17 @@ const PSIPage = () => {
         description="KTL's Pre-Shipment Inspection (PSI) services ensuring quality control and compliance for textile exports. Professional inspection and certification services."
         keywords={['PSI services', 'pre-shipment inspection', 'quality control', 'textile inspection', 'export certification']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Newsroom', to: '/newsroom/stories' },
+          { label: 'PSI' },
+        ]}
+        pageTitle="PSI"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">PSI Services</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our Pre-Shipment Inspection (PSI) services ensure quality control and compliance
               for textile exports. We provide professional inspection and certification services
@@ -53,7 +61,7 @@ const PSIPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

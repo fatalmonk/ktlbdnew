@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const MediaKitPage = () => {
   return (
@@ -8,10 +9,17 @@ const MediaKitPage = () => {
         description="Download KTL's media kit including company logos, brand guidelines, press photos, and media resources for journalists and partners."
         keywords={['media kit', 'press resources', 'KTL logos', 'brand guidelines', 'media downloads']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Newsroom', to: '/newsroom/stories' },
+          { label: 'Media Kit' },
+        ]}
+        pageTitle="Media Kit"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Media Kit</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Download our comprehensive media kit including company logos, brand guidelines,
               press photos, and other resources for journalists, partners, and media professionals.
@@ -72,7 +80,7 @@ const MediaKitPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

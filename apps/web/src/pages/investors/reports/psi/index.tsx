@@ -1,4 +1,5 @@
 import SEO from '../../../../components/seo/SEO';
+import SubpageHeader from '../../../../components/shared/SubpageHeader';
 
 const PSIReportsPage = () => {
   return (
@@ -8,10 +9,17 @@ const PSIReportsPage = () => {
         description="KTL's Pre-Shipment Inspection (PSI) reports and quality assurance documentation. Access detailed inspection reports and compliance certifications."
         keywords={['PSI reports', 'inspection reports', 'quality assurance', 'compliance reports', 'KTL PSI']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Investors', to: '/investors' },
+          { label: 'PSI' },
+        ]}
+        pageTitle="PSI Reports"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">PSI Reports</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Access our Pre-Shipment Inspection (PSI) reports and quality assurance documentation.
               These reports demonstrate our commitment to quality and compliance standards.
@@ -56,7 +64,7 @@ const PSIReportsPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

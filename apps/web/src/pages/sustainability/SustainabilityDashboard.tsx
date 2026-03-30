@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import MetricsWidget from '../../components/sustainability/MetricsWidget';
 import SEO from '../../components/seo/SEO';
+import SubpageHeader from '../../components/shared/SubpageHeader';
 import { SustainabilityMetric, SustainabilityGoal, SustainabilityInitiative } from '../../types/sustainability';
 import sustainabilityData from '@/data/sustainability/index.json';
 
@@ -64,12 +65,26 @@ const SustainabilityDashboard = () => {
       <SEO
         title="Sustainability & ESG Dashboard | KTL"
         description="Track KTL's environmental, social, and governance (ESG) performance. See our progress on water conservation, renewable energy, worker welfare, and sustainability goals."
-        keywords="ESG reporting, sustainability metrics, environmental impact, social responsibility, governance, textile sustainability"
+        keywords={[
+          'ESG reporting',
+          'sustainability metrics',
+          'environmental impact',
+          'social responsibility',
+          'governance',
+          'textile sustainability',
+        ]}
       />
 
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Sustainability' },
+        ]}
+        pageTitle="Sustainability"
+      />
       <div className="bg-neutral-50 min-h-screen">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-green-900 to-green-700 text-white py-20">
+        <section className="bg-gradient-to-r from-green-900 to-green-700 pb-20 pt-10 text-white lg:pt-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -78,9 +93,9 @@ const SustainabilityDashboard = () => {
               className="text-center"
             >
               <Leaf size={64} className="mx-auto mb-6" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Sustainability & ESG Dashboard
-              </h1>
+              </h2>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
                 Transparency in action. Track our environmental, social, and governance performance in real-time.
               </p>

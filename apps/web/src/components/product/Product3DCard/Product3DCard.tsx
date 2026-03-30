@@ -67,14 +67,14 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
+      initial={!isMobile ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
+      whileInView={!isMobile ? { opacity: 1, y: 0 } : undefined}
+      transition={!isMobile ? {
         delay: index * 0.1,
         duration: 0.6,
         ease: [0.215, 0.61, 0.355, 1]
-      }}
-      viewport={{ once: true, margin: "-100px" }}
+      } : undefined}
+      viewport={!isMobile ? { once: true, margin: "-100px" } : undefined}
     >
       <Tilt
         tiltMaxAngleX={animationConfig.enableTilt ? 10 : 0}
@@ -89,9 +89,10 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
           ref={cardRef}
           className="relative h-full group"
           style={{
-            rotateX,
-            rotateY,
-            transformStyle: 'preserve-3d'
+            rotateX: !isMobile ? rotateX : 0,
+            rotateY: !isMobile ? rotateY : 0,
+            transformStyle: animationConfig.enable3DTransforms ? 'preserve-3d' : 'flat',
+            willChange: !isMobile ? 'transform' : 'auto'
           }}
           onMouseMove={!isMobile ? handleMouseMove : undefined}
           onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
@@ -100,17 +101,20 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
         >
           {/* Card Container */}
           <div className="relative bg-white rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-md md:shadow-lg hover:shadow-xl md:hover:shadow-2xl transition-shadow duration-300">
-            {/* Gradient Border Effect */}
-            <motion.div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: `radial-gradient(
-                  600px circle at ${x.get() * 100}% ${y.get() * 100}%,
-                  rgba(253, 211, 56, 0.15),
-                  transparent 40%
-                )`
-              }}
-            />
+            {/* Gradient Border Effect - Desktop only */}
+            {!isMobile && (
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `radial-gradient(
+                    600px circle at ${x.get() * 100}% ${y.get() * 100}%,
+                    rgba(253, 211, 56, 0.15),
+                    transparent 40%
+                  )`,
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
 
             {/* Featured Badge */}
             {product.featured && (
@@ -170,7 +174,8 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                 className="w-full h-full"
                 style={{
                   scale: (isMobile ? (isTouched && animationConfig.enableComplexAnimations ? 1.05 : 1) : (isHovered && animationConfig.enableComplexAnimations ? 1.1 : 1)),
-                  transition: animationConfig.enableComplexAnimations ? 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)' : 'none'
+                  transition: animationConfig.enableComplexAnimations ? 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)' : 'none',
+                  willChange: isHovered || isTouched ? 'transform' : 'auto'
                 }}
               >
                 <Image

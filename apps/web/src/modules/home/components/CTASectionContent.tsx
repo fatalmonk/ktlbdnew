@@ -19,7 +19,7 @@ const CTASectionContent = () => (
         </p>
 
         <Link
-          to="/careers"
+          to="/work-with-us/careers"
           className="mt-6 inline-block w-fit text-lg font-semibold text-neutral-900 underline underline-offset-4 transition-colors hover:text-neutral-700 md:mt-8 md:text-xl"
         >
           Apply Now

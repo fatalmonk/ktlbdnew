@@ -41,7 +41,7 @@ const SLIDES: HeroSlide[] = [
     brand: 'Kattali Textile Limited',
     headline: 'Sustainable Apparel Built for Global Brands',
     ctaLabel: 'Explore Sustainability',
-    ctaHref: '/company/sustainability',
+    ctaHref: '/sustainability',
   },
   {
     id: 'global',

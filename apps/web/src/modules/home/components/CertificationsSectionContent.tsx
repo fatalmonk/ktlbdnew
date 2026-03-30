@@ -6,8 +6,8 @@ interface CertificationsSectionContentProps {
 }
 
 const CertLogo = ({ cert }: { cert: HomeCertification }) => (
-  <div className="flex items-center justify-center px-2 py-3 md:px-3 md:py-4 lg:px-4 lg:py-5">
-    <div className="mx-auto flex h-32 w-full max-w-[240px] items-center justify-center sm:max-w-[280px] md:h-44 md:max-w-[380px] lg:h-48 lg:max-w-none xl:h-64 2xl:h-72">
+  <div className="flex items-center justify-center px-2 py-2 sm:py-3 md:px-3 md:py-4 lg:px-3 lg:py-3">
+    <div className="mx-auto flex h-24 w-full max-w-[160px] items-center justify-center sm:h-28 sm:max-w-[200px] md:h-40 md:max-w-[300px] lg:h-36 lg:max-w-[165px] xl:h-40 xl:max-w-[185px] 2xl:h-44 2xl:max-w-[205px]">
       <img
         src={cert.logoSrc}
         alt={cert.logoAlt}
@@ -24,7 +24,7 @@ const CertLogo = ({ cert }: { cert: HomeCertification }) => (
 );
 
 const desktopGridGaps =
-  'gap-x-4 gap-y-6 xl:gap-x-6 xl:gap-y-8 2xl:gap-x-8 2xl:gap-y-10';
+  'gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10';
 
 const CertificationsSectionContent = ({ certifications }: CertificationsSectionContentProps) => (
   <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
@@ -41,7 +41,7 @@ const CertificationsSectionContent = ({ certifications }: CertificationsSectionC
       </div>
 
       {/* Desktop: row of 5, then centered row of 4 (10-col grid) */}
-      <div className="hidden flex-col gap-y-8 xl:gap-y-10 2xl:gap-y-12 lg:flex">
+      <div className="hidden flex-col gap-y-40 xl:gap-y-52 2xl:gap-y-64 lg:flex">
         <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
           {certifications.slice(0, 5).map((cert) => (
             <div key={cert.id} className="col-span-2">

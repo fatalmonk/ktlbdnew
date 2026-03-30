@@ -6,6 +6,7 @@ const Search = createLazyIcon('Search');
 const Filter = createLazyIcon('Filter');
 import BlogCard from '../components/features/BlogCard';
 import SEO from '../components/seo/SEO';
+import SubpageHeader from '../components/shared/SubpageHeader';
 
 interface BlogPost {
   id: string;
@@ -85,7 +86,7 @@ const Blog = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="header-spacing min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
       </div>
     );
@@ -100,14 +101,22 @@ const Blog = () => {
         keywords={['textile blog', 'garment manufacturing blog', 'Bangladesh RMG', 'textile industry insights', 'company stories']}
       />
 
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Newsroom', to: '/newsroom/stories' },
+          { label: 'Company Stories' },
+        ]}
+        pageTitle="Company Stories"
+      />
       <div className="min-h-screen bg-neutral-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-20">
+        <section className="bg-gradient-to-r from-primary-600 to-secondary-600 pb-20 pt-10 text-white lg:pt-14">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">
+              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4">
                 Company Stories
-              </h1>
+              </h2>
               <p className="text-xl text-white/90">
                 Insights, stories, and updates from Bangladesh's leading textile manufacturer
               </p>
@@ -116,7 +125,7 @@ const Blog = () => {
         </section>
 
         {/* Search & Filter Section */}
-        <section className="bg-white border-b sticky top-0 z-10 shadow-sm">
+        <section className="sticky z-10 border-b bg-white shadow-sm top-[var(--site-header-height-mobile)] lg:top-[var(--site-header-height-desktop)]">
           <div className="container mx-auto px-4 py-6">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               {/* Search */}

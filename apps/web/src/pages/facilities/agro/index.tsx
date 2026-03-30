@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const AgroFacility = () => {
   return (
@@ -9,10 +10,17 @@ const AgroFacility = () => {
         canonical="/facilities/agro"
         keywords={['agricultural facility', 'sustainable cotton', 'organic farming', 'eco-friendly production', 'textile agriculture']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Company', to: '/company/our-story' },
+          { label: 'Agro' },
+        ]}
+        pageTitle="Agro"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Agro Facility</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Our agricultural facility focuses on sustainable cotton production and organic farming
               practices to support eco-friendly textile manufacturing.
@@ -53,7 +61,7 @@ const AgroFacility = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

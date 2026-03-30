@@ -4,6 +4,7 @@ import { createLazyIcon } from '@/lib/lucide-icons';
 
 const CheckCircle = createLazyIcon('CheckCircle');
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 import type { RFQFormData } from '../types/rfq.types';
 
 interface RFQSuccessProps {
@@ -22,6 +23,13 @@ const RFQSuccess = ({ formData, onSubmitAnother }: RFQSuccessProps) => (
       title="Quote Request Submitted | KTL"
       description="Your quote request has been successfully submitted to KTL."
     />
+    <SubpageHeader
+      breadcrumbItems={[
+        { label: 'Home', to: '/' },
+        { label: 'Request a Quote' },
+      ]}
+      pageTitle="Request a Quote"
+    />
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -33,9 +41,9 @@ const RFQSuccess = ({ formData, onSubmitAnother }: RFQSuccessProps) => (
             <CheckCircle className="text-green-600" size={48} />
           </Suspense>
         </div>
-        <h1 className="text-3xl font-bold text-neutral-900 mb-4">
+        <h2 className="text-3xl font-bold text-neutral-900 mb-4">
           Request Successfully Submitted!
-        </h1>
+        </h2>
         <p className="text-lg text-neutral-600 mb-6">
           Thank you for your quote request. Our sales team will review your
           requirements and respond within 24 hours.

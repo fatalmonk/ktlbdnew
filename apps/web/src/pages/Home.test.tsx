@@ -5,20 +5,20 @@ describe('Home Page', () => {
   it('renders hero heading and primary CTA', () => {
     render(<Home />);
 
-    expect(screen.getByRole('heading', { name: /Excellence in Textile Manufacturing/i })).toBeInTheDocument();
+    expect(
+      screen.getAllByRole('heading', { name: /Celebrate Quality Craftsmanship at KTL/i })[0]
+    ).toBeInTheDocument();
 
-    const cta = screen.getByRole('link', { name: /Explore Products/i });
+    const cta = screen.getAllByRole('link', { name: /Learn More/i })[0];
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/products');
+    expect(cta).toHaveAttribute('href', '/company/our-story');
   });
 
   it('renders primary hero image with alt text', () => {
     render(<Home />);
 
     expect(
-      screen.getByAltText(
-        /Kattali Textile Limited modern manufacturing facility in Chittagong, Bangladesh producing sustainable woven garments/i
-      )
+      screen.getAllByAltText(/Kattali Textile Limited manufacturing team and operations/i)[0]
     ).toBeInTheDocument();
   });
 

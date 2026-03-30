@@ -44,7 +44,6 @@ export const NAVIGATION_ITEMS: NavItem[] = [
           { label: 'Our Story', href: '/company/our-story' },
           { label: 'Leadership', href: '/company/leadership' },
           { label: 'Governance', href: '/company/governance' },
-          { label: 'Sustainability', href: '/company/sustainability' },
         ],
       },
       {
@@ -75,8 +74,8 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     href: '/sustainability',
     columns: [
       {
-        title: 'Sustainability',
-        links: [{ label: 'Overview', href: '/sustainability' }],
+        title: 'Corporate Responsibility',
+        links: [{ label: 'Sustainability', href: '/sustainability' }],
       },
     ],
   },

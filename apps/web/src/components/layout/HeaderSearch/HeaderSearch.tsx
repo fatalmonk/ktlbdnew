@@ -114,7 +114,7 @@ const HeaderSearch: React.FC = () => {
                     placeholder="Search"
                     maxLength={256}
                     title="Search query"
-                    className="min-w-0 flex-1 border-0 bg-transparent px-4 py-3 text-[2.3rem] text-neutral-900 placeholder:text-neutral-500 focus:outline-none"
+                    className="min-w-0 flex-1 border-0 bg-transparent px-4 py-3 text-body-lg text-neutral-900 placeholder:text-neutral-500 focus:outline-none"
                     autoFocus
                   />
                   <button

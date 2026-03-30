@@ -1,4 +1,5 @@
 import SEO from '../../../components/seo/SEO';
+import SubpageHeader from '../../../components/shared/SubpageHeader';
 
 const PressPage = () => {
   return (
@@ -8,10 +9,17 @@ const PressPage = () => {
         description="Latest press releases and news from Kattali Textile Limited. Stay updated with our company announcements and industry news."
         keywords={['press releases', 'KTL news', 'company announcements', 'textile news', 'industry updates']}
       />
-      <main className="min-h-screen bg-white text-black pt-20">
+      <SubpageHeader
+        breadcrumbItems={[
+          { label: 'Home', to: '/' },
+          { label: 'Newsroom', to: '/newsroom/stories' },
+          { label: 'Press' },
+        ]}
+        pageTitle="Press"
+      />
+      <section className="min-h-screen bg-white text-black">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-black mb-8">Press Releases</h1>
             <p className="text-lg text-neutral-800 mb-8">
               Stay updated with the latest news and announcements from Kattali Textile Limited.
               Our press releases cover company milestones, industry developments, and strategic initiatives.
@@ -56,7 +64,7 @@ const PressPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 };

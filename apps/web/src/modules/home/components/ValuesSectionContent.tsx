@@ -49,7 +49,7 @@ const ValuesSectionContent = ({ values }: ValuesSectionContentProps) => {
           </Link>
           , we combine innovation with ethical practices. Our commitment to{' '}
           <Link
-            to="/company/sustainability"
+            to="/sustainability"
             className="text-primary-600 hover:text-primary-700 font-medium underline min-h-[44px] inline-flex items-center"
           >
             sustainable textile manufacturing

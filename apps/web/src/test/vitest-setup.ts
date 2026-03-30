@@ -33,7 +33,7 @@ function createCanvas2dMock(): Partial<CanvasRenderingContext2D> {
   };
 }
 
-// jsdom does not implement canvas 2D; DotGrid and similar call getContext('2d')
+// jsdom does not implement canvas 2D; provide a minimal mock for canvas-based components.
 HTMLCanvasElement.prototype.getContext = function (
   this: HTMLCanvasElement,
   type: string

@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductsSkeleton } from '../../../components/skeletons';
+import Image from '../../../components/media/Image';
 import type { Product } from '../../../types/product';
 
 import Product3DCard from '../../../components/product/Product3DCard/Product3DCard';
@@ -7,6 +9,43 @@ import Product3DCard from '../../../components/product/Product3DCard/Product3DCa
 interface ProductsShowcaseProps {
   products: Product[];
 }
+
+const MobileProductCard = ({ product }: { product: Product }) => (
+  <article className="w-[80vw] max-w-[22rem] shrink-0 overflow-hidden rounded-[1.75rem] border border-neutral-200 bg-white shadow-sm">
+    <div className="aspect-[4/5] bg-neutral-100">
+      <Image
+        src={product.image}
+        alt={product.name}
+        className="h-full w-full"
+        width={360}
+        height={450}
+        fit="cover"
+      />
+    </div>
+
+    <div className="flex min-h-[13rem] flex-col gap-3 p-5">
+      <span className="inline-flex w-fit rounded-full bg-neutral-100 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-neutral-600">
+        {product.category}
+      </span>
+
+      <div className="space-y-2">
+        <h3 className="text-xl font-semibold leading-tight text-neutral-900">
+          {product.name}
+        </h3>
+        <p className="line-clamp-3 text-sm leading-6 text-neutral-600">
+          {product.description}
+        </p>
+      </div>
+
+      <Link
+        to={product.link}
+        className="mt-auto inline-flex min-h-[44px] items-center text-sm font-semibold text-primary-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40"
+      >
+        View product
+      </Link>
+    </div>
+  </article>
+);
 
 const ProductsShowcase = ({ products }: ProductsShowcaseProps) => (
   <section className="bg-neutral-50 py-28 md:py-36" id="products">
@@ -17,23 +56,15 @@ const ProductsShowcase = ({ products }: ProductsShowcaseProps) => (
         </h2>
       </div>
 
-      {/* Mobile: swipeable snap carousel */}
+      {/* Mobile: simplified horizontal scroller to avoid sticky touch interactions */}
       <div className="md:hidden">
-        <Suspense fallback={<ProductsSkeleton />}>
-          <div
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            aria-label="Products carousel"
-          >
-            {products.map((product, index) => (
-              <div
-                key={product.id}
-                className="w-[84vw] max-w-[28rem] shrink-0 snap-start first:ml-1 last:mr-1"
-              >
-                <Product3DCard product={product} index={index} />
-              </div>
+        <div className="-mx-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-4" aria-label="Products carousel">
+            {products.map((product) => (
+              <MobileProductCard key={product.id} product={product} />
             ))}
           </div>
-        </Suspense>
+        </div>
       </div>
 
       {/* Tablet/Desktop: existing multi-column grid */}
