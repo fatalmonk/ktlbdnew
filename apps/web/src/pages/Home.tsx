@@ -1,22 +1,19 @@
 import { Suspense, lazy, useEffect, useState } from 'react';
-import { certifications, newsItems, testimonials, values } from '../data/home';
+import { certifications, newsItems } from '../data/home';
 import { partners } from '../data/partners';
 import { featuredProducts } from '../data/products';
 import HeroSection from '../modules/home/components/HeroSection';
 import HomeSEO from '../modules/home/components/HomeSEO';
+import OperationHistoryStrip from '../modules/home/components/OperationHistoryStrip';
 
 import {
   CTASkeleton,
-  CaseStudySkeleton,
   CertificationsSkeleton,
   InvestorMetricsSkeleton,
   LogoCarouselSkeleton,
   NewsSkeleton,
   ProductsSkeleton,
   GetToKnowUsSkeleton,
-  StatisticsSkeleton,
-  TestimonialsSkeleton,
-  ValuesSkeleton,
 } from '../components/skeletons';
 
 /**
@@ -27,17 +24,13 @@ import {
  */
 
 // BELOW-THE-FOLD COMPONENTS (LAZY)
-const LazyStatsSection = lazy(() => import('../modules/home/components/StatsSection'));
-const LazyGetToKnowUsSection = lazy(() => import('../modules/home/components/GetToKnowUsSection'));
 const LazyProductsShowcase = lazy(() => import('../modules/home/components/ProductsShowcase'));
-const LazyCaseStudy = lazy(() => import('../modules/home/components/CaseStudyHighlight'));
 const LazyLogoCarousel = lazy(() => import('../modules/home/components/LogoCarouselSection'));
-const LazyValuesSection = lazy(() => import('../modules/home/components/ValuesSection'));
-const LazyTestimonials = lazy(() => import('../modules/home/components/TestimonialsSection'));
+const LazyGetToKnowUsSection = lazy(() => import('../modules/home/components/GetToKnowUsSection'));
 const LazyCertifications = lazy(() => import('../modules/home/components/CertificationsSection'));
 const LazyNews = lazy(() => import('../modules/home/components/NewsSection'));
-const LazyInvestorMetrics = lazy(() => import('../modules/home/components/InvestorMetrics'));
 const LazyCTA = lazy(() => import('../modules/home/components/CTASection'));
+const LazyInvestorMetrics = lazy(() => import('../modules/home/components/InvestorMetrics'));
 
 const Home = () => {
   const [canRenderIslands, setCanRenderIslands] = useState(false);
@@ -61,6 +54,7 @@ const Home = () => {
              ABOVE THE FOLD (instant)
            ------------------------------ */}
         <HeroSection />
+        <OperationHistoryStrip />
 
         {/* ------------------------------
              BELOW THE FOLD (async islands)
@@ -68,32 +62,16 @@ const Home = () => {
 
         {canRenderIslands && (
           <>
-            <Suspense fallback={<StatisticsSkeleton />}>
-              <LazyStatsSection />
-            </Suspense>
-
-            <Suspense fallback={<GetToKnowUsSkeleton />}>
-              <LazyGetToKnowUsSection />
-            </Suspense>
-
             <Suspense fallback={<ProductsSkeleton />}>
               <LazyProductsShowcase products={featuredProducts} />
-            </Suspense>
-
-            <Suspense fallback={<CaseStudySkeleton />}>
-              <LazyCaseStudy />
             </Suspense>
 
             <Suspense fallback={<LogoCarouselSkeleton />}>
               <LazyLogoCarousel partners={partners} />
             </Suspense>
 
-            <Suspense fallback={<ValuesSkeleton />}>
-              <LazyValuesSection values={values} />
-            </Suspense>
-
-            <Suspense fallback={<TestimonialsSkeleton />}>
-              <LazyTestimonials testimonials={testimonials} />
+            <Suspense fallback={<GetToKnowUsSkeleton />}>
+              <LazyGetToKnowUsSection />
             </Suspense>
 
             <Suspense fallback={<CertificationsSkeleton />}>
@@ -104,12 +82,12 @@ const Home = () => {
               <LazyNews newsItems={newsItems} />
             </Suspense>
 
-            <Suspense fallback={<InvestorMetricsSkeleton />}>
-              <LazyInvestorMetrics />
-            </Suspense>
-
             <Suspense fallback={<CTASkeleton />}>
               <LazyCTA />
+            </Suspense>
+
+            <Suspense fallback={<InvestorMetricsSkeleton />}>
+              <LazyInvestorMetrics />
             </Suspense>
           </>
         )}

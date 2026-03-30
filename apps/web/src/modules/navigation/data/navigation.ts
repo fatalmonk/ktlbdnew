@@ -29,11 +29,14 @@ export type NavLinkTop = {
 
 export type NavItem = NavDropdownItem | NavLinkTop;
 
+/** Primary URL for the Company nav section — reuse for CTAs that should match header nav. */
+export const COMPANY_NAV_HREF = '/company/our-story';
+
 export const NAVIGATION_ITEMS: NavItem[] = [
   {
-    name: 'Who We Are',
+    name: 'Company',
     type: 'dropdown',
-    href: '/company/our-story',
+    href: COMPANY_NAV_HREF,
     columns: [
       {
         title: 'About',
@@ -44,13 +47,6 @@ export const NAVIGATION_ITEMS: NavItem[] = [
           { label: 'Sustainability', href: '/company/sustainability' },
         ],
       },
-    ],
-  },
-  {
-    name: 'Capabilities',
-    type: 'dropdown',
-    href: '/products',
-    columns: [
       {
         title: 'The Catalogue',
         links: [
@@ -82,8 +78,14 @@ export const NAVIGATION_ITEMS: NavItem[] = [
         title: 'Sustainability',
         links: [{ label: 'Overview', href: '/sustainability' }],
       },
+    ],
+  },
+  {
+    name: 'Newsroom',
+    type: 'dropdown',
+    href: '/newsroom/stories',
+    columns: [
       {
-        title: 'Newsroom',
         links: [
           { label: 'Press', href: '/newsroom/press' },
           { label: 'Company Stories', href: '/newsroom/stories' },
@@ -94,7 +96,7 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     ],
   },
   {
-    name: 'For Investors',
+    name: 'Investors',
     type: 'dropdown',
     href: '/investors',
     columns: [

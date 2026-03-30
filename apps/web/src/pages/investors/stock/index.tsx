@@ -21,25 +21,25 @@ const StockPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Current Price</h3>
-                <div className="text-3xl font-bold text-primary mb-2">৳45.50</div>
-                <p className="text-neutral-800">DSE: M | as of September 19, 2025 4:00 PM EST</p>
+                <div className="text-3xl font-bold text-primary mb-2">৳9.90</div>
+                <p className="text-neutral-800">DSE: M | as of March 29, 2026 3:10 PM BST</p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Trading Volume</h3>
-                <div className="text-2xl font-bold text-black mb-2">10,508,014</div>
-                <p className="text-neutral-800">Change: -0.06 (-0.34%)</p>
+                <div className="text-2xl font-bold text-black mb-2">873,009</div>
+                <p className="text-neutral-800">Change: +0.20 (+2.06%)</p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Market Cap</h3>
-                <div className="text-2xl font-bold text-black mb-2">৳2.1B</div>
+                <div className="text-2xl font-bold text-black mb-2">৳1,128.160M</div>
                 <p className="text-neutral-800">Based on current share price</p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">52-Week Range</h3>
-                <div className="text-lg font-semibold text-black mb-2">৳38.20 - ৳52.80</div>
+                <div className="text-lg font-semibold text-black mb-2">৳8.50 - ৳14.70</div>
                 <p className="text-neutral-800">High and low prices</p>
               </div>
             </div>

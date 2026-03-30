@@ -11,9 +11,9 @@
 
 /* CSS Variables for theming */
  :root {
-  --strip-height: 17px;
-  --secondary-nav-height: 120px;
-  --ticker-height: 50px;
+  --strip-height: 15px;
+  --secondary-nav-height: 110px;
+  --ticker-height: 38px;
   --sticky-header-height: calc(var(--strip-height) + var(--secondary-nav-height));
   --evgRootFontSize: 10px;
   --evgPrimaryColor: #06607f;
@@ -31,10 +31,30 @@
   --primary: var(--evgPrimaryColor);
   --radius: 0.625rem;
 
-  --site-header-height-mobile: 88px;
+  /* Strip + main row (matches desktop corporate bar; ticker is additional when present) */
+  /* Short bar; typography stays large via Header — icons/padding shrink to fit */
+  --mobile-nav-height: 58px;
+  --site-header-height-mobile: calc(var(--strip-height) + var(--mobile-nav-height));
   --site-header-height-desktop: var(--sticky-header-height);
+  /* Home: strip + nav + announcement ticker (fixed below header chrome) */
+  --site-header-height-mobile-with-ticker: calc(
+    var(--site-header-height-mobile) + var(--ticker-height)
+  );
+  --site-header-height-desktop-with-ticker: calc(
+    var(--site-header-height-desktop) + var(--ticker-height)
+  );
+  /* Extra white space between ticker and home hero — mobile/tablet only (<lg); desktop uses no extra gap */
+  --home-hero-ticker-gap: 5.5rem;
   --announcement-ticker-yellow: #ffce00;
   --announcement-ticker-badge-red: #e11a2b;
+}
+
+/* Thinner brand strip on mobile (desktop keeps --strip-height above) */
+@media (max-width: 1023px) {
+  :root {
+    --strip-height: 6px;
+    --ticker-height: 42px;
+  }
 }
 
 .dark {
@@ -92,16 +112,26 @@
 
   .announcement-ticker-typography {
     letter-spacing: -0.01em;
-    line-height: 1.35;
+    /* Tight line-height keeps larger type within fixed ticker height */
+    line-height: 1;
   }
+}
+
+/* Shared strip under both desktop and mobile corporate headers */
+.corp-header-strip {
+  height: var(--strip-height);
+  background-image: linear-gradient(90deg, #fdd338 50%, #e11a2b 50%, #e11a2b 66.33%, #000000 66.33%, #000000 82.66%, #1c6fe3 82.66%, #1c6fe3 100%);
+  background-size: 100% var(--strip-height);
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
 }
 
 /* Corporate static header — logo pane (IR / Macy’s-style: fixed width, left-aligned mark) */
 .pane--static-header-logo {
   box-sizing: border-box;
   display: flex;
-  width: 220px;
-  min-height: 120px;
+  width: 440px;
+  min-height: var(--secondary-nav-height);
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-start;
@@ -118,27 +148,36 @@
 .pane--static-header-logo .module-logo__link {
   display: flex;
   align-items: center;
-  line-height: 0;
+  line-height: 1;
 }
 
 .pane--static-header-logo .module-logo__img {
   height: auto;
-  max-height: 57.7px;
+  max-height: 104px;
   width: auto;
-  max-width: 220px;
+  max-width: 440px;
   object-fit: contain;
   object-position: left center;
 }
 
+/* Typography for logo text lives on the element (Tailwind: font-heading, font-semibold, tracking-tight, lowercase) — matches footer wordmark */
+.pane--static-header-logo .module-logo__text {
+  display: inline-block;
+  max-width: 440px;
+  line-height: 1;
+  /* denim blue wordmark — keep in sync with Header / CorporateStaticHeader */
+  color: #243a4f;
+  white-space: nowrap;
+}
+
 /* ============================================================
-   Desktop Nav — Exact macysinc.com measurements (DevTools)
-   li: padding 12px 0 | button: margin 0 5px, padding 5px
-   font-size: 1.96rem (19.6px) | font-weight: 400 | color: #000c26
-   nav height: 82px | max-width: 1470px | logo-left: 35px
+   Desktop Nav — Macy’s-style primary row (sizes aligned with TSX utilities)
+   li: vertical padding keeps row within --secondary-nav-height
+   font-size: 2.2rem | font-weight: 400 | color: #000c26
    ============================================================ */
 
 .nav--desktop--list--topMenu > li {
-  padding: 16px 0;
+  padding: 12px 0;
   display: flex;
   align-items: center;
 }
@@ -146,24 +185,28 @@
 .nav--desktop--list--topMenu > li > button,
 .nav--desktop--list--topMenu > li > .nav--desktop--list--innerMenu--menuItem {
   margin: 0 5px;
-  padding: 10px;
-  font-size: 1.96rem; /* 19.6px — was 21.6px */
+  padding: 8px;
+  font-size: 2.2rem;
+  line-height: 1.15;
 }
 
 .nav--desktop--list--topMenu > li > a.link {
   margin: 0 5px;
-  padding: 10px 0;
-  font-size: 1.96rem; /* 19.6px — was 21.6px */
+  padding: 8px 0;
+  font-size: 2.2rem;
+  line-height: 1.15;
 }
 
-/* Search button — 52.8px × 56.9px (exact spec) */
-.search-container button {
-  width: 52.8px;
-  height: 56.9px;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Search button — desktop spec only (mobile uses compact Tailwind in HeaderSearch) */
+@media (min-width: 1024px) {
+  .search-container button {
+    width: 52.8px;
+    height: 56.9px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* Enhanced Typography System */

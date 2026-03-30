@@ -3,46 +3,32 @@ import { Skeleton } from '../ui/Skeleton';
 
 const CertificationsSkeleton: React.FC = () => {
   return (
-    <section className="py-8 md:py-16 lg:py-20 bg-neutral-50">
-      <div className="max-w-ktl mx-auto px-4 md:px-6">
+    <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
+      <div className="mx-auto w-full max-w-[1920px] px-4 md:px-6 lg:px-8">
         {/* Header skeleton */}
-        <div className="text-center mb-6 md:mb-8 lg:mb-16">
+        <div className="text-center mb-24">
           <Skeleton
             variant="text"
-            height={48}
-            width="50%"
-            className="mx-auto"
+            height={72}
+            width="60%"
+            className="mx-auto max-w-2xl"
             aria-label="Loading certifications title"
           />
         </div>
 
         {/* Certifications grid skeleton */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-          {[1, 2, 3].map((index) => (
+        <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-6 lg:grid-cols-5 lg:gap-x-6 lg:gap-y-8 xl:gap-x-8 xl:gap-y-10 2xl:gap-x-10 2xl:gap-y-12">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
             <div
               key={index}
-              className="bg-white p-4 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-lg text-center"
+              className="flex items-center justify-center px-2 py-3 md:px-3 md:py-4 lg:px-4 lg:py-5"
             >
               <Skeleton
-                variant="circular"
-                width={80}
-                height={80}
-                className="mx-auto mb-2 md:mb-3 lg:mb-4"
-                aria-label={`Loading certification ${index} icon`}
-              />
-              <Skeleton
-                variant="text"
-                height={24}
-                width="60%"
-                className="mx-auto mb-1 md:mb-2 lg:mb-3"
-                aria-label={`Loading certification ${index} name`}
-              />
-              <Skeleton
-                variant="text"
-                height={16}
-                width="80%"
-                className="mx-auto"
-                aria-label={`Loading certification ${index} description`}
+                variant="rectangular"
+                height={200}
+                width="100%"
+                className="mx-auto max-w-[240px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-none"
+                aria-label={`Loading certification ${index} logo`}
               />
             </div>
           ))}
@@ -53,4 +39,3 @@ const CertificationsSkeleton: React.FC = () => {
 };
 
 export default CertificationsSkeleton;
-

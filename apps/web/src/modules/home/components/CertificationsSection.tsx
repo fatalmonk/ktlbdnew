@@ -1,14 +1,10 @@
 import { Suspense } from 'react';
 import { CertificationsSkeleton } from '../../../components/skeletons';
 import { createIdleLazy } from '../../../hooks/useIdleLoader';
-
-interface Certification {
-  name: string;
-  description: string;
-}
+import type { HomeCertification } from '../../../data/home/certifications';
 
 interface CertificationsSectionProps {
-  certifications: Certification[];
+  certifications: HomeCertification[];
 }
 
 const CertificationsSectionContent = createIdleLazy(() => import('./CertificationsSectionContent'));
@@ -20,5 +16,3 @@ const CertificationsSection = ({ certifications }: CertificationsSectionProps) =
 );
 
 export default CertificationsSection;
-
-

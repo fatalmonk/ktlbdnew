@@ -30,7 +30,7 @@ describe('Home Page', () => {
       await screen.findByRole('heading', { name: /Our Products/i }, { timeout })
     ).toBeInTheDocument();
     expect(
-      await screen.findByRole('heading', { name: /Our Values/i }, { timeout })
+      await screen.findByRole('heading', { name: /Our Certifications/i }, { timeout })
     ).toBeInTheDocument();
     expect(
       await screen.findByText(/Investor Snapshot/i, {}, { timeout })

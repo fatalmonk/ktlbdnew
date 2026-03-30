@@ -1,4 +1,3 @@
-import logo from '@/assets/images/brand/logo.webp';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import AnnouncementTicker from '../AnnouncementTicker';
@@ -88,8 +87,9 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
     <>
       {/* Backdrop Overlay */}
       <div
-        className={`fixed inset-0 z-[9990] bg-black/40 transition-opacity duration-300 pointer-events-none lg:pointer-events-auto ${openDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
+        className={`fixed inset-0 z-[9990] bg-black/40 transition-opacity duration-300 ${
+          openDropdown ? 'opacity-100 pointer-events-auto' : 'pointer-events-none opacity-0'
+        }`}
         onClick={() => setOpenDropdown(null)}
         aria-hidden="true"
       />
@@ -102,18 +102,8 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
       >
         {/* z-10: nav + mega menus must stack above the ticker (later sibling) */}
         <div className="mx-auto w-full max-w-[1470px] relative z-10">
-          {/* 17px decorative strip — exact macysinc.com spec */}
-          <div
-            className="mx-auto w-full max-w-[1430px]"
-            style={{
-              height: '17px',
-              backgroundImage: 'linear-gradient(90deg, #fdd338 50%, #e11a2b 50%, #e11a2b 66.33%, #000000 66.33%, #000000 82.66%, #1c6fe3 82.66%, #1c6fe3 100%)',
-              backgroundSize: '100% 17px',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: '50% 0%',
-            }}
-            aria-hidden
-          />
+          {/* Decorative strip (height: --strip-height) */}
+          <div className="corp-header-strip mx-auto w-full max-w-[1430px]" aria-hidden />
           <div className="pane--static-header-container relative w-full">
             <WebMenuHidden />
             <div className="pane--static-header overflow-visible">
@@ -121,11 +111,9 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
                 <div className="pane--static-header-logo">
                   <div className="module-logo">
                     <Link to="/" className="module-logo__link">
-                      <img
-                        src={logo}
-                        alt="Kattali Textile Limited"
-                        className="module-logo__img"
-                      />
+                      <span className="module-logo__text font-heading text-3xl font-semibold tracking-tight text-[#243a4f] lowercase md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
+                        kattali textile limited
+                      </span>
                     </Link>
                   </div>
                 </div>

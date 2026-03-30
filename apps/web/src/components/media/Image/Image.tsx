@@ -264,6 +264,43 @@ const Image: React.FC<ImageProps> = ({
       return img;
     }
 
+    // Remote URLs (stock/CDN): skip local AVIF/WebP pipeline
+    if (/^https?:\/\//i.test(absoluteSrc)) {
+      const img = (
+        <img
+          ref={imgRef}
+          src={absoluteSrc}
+          alt={alt}
+          className={`${className} ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          width={width}
+          height={height}
+          loading={priority || eager ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={priority ? 'high' : 'low'}
+          onLoad={handleLoad}
+          onError={handleError}
+          sizes={finalSizes}
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      );
+
+      if (width && height) {
+        const aspectRatio =
+          typeof width === 'number' && typeof height === 'number' ? `${width}/${height}` : 'auto';
+        return (
+          <div
+            ref={containerRef}
+            className={`${containerClassName} ${aspectRatio !== 'auto' ? `aspect-[${aspectRatio}]` : ''}`}
+            style={aspectRatio === 'auto' ? { width, height } : undefined}
+          >
+            {img}
+          </div>
+        );
+      }
+
+      return img;
+    }
+
     // For non-optimized images, create picture with AVIF/WebP sources if possible
     const getImageVariants = (imageSrc: string) => {
       const basePath = imageSrc.replace(/\.(jpg|jpeg|png|webp)$/i, '');

@@ -33,9 +33,9 @@ test.describe('Site Navigation', () => {
       await expect(header).toBeVisible();
     });
 
-    test('should navigate to Products page', async ({ page }) => {
-      await page.getByRole('navigation', { name: /primary/i }).getByRole('link', { name: /^Capabilities$/i }).click();
-      await expect(page).toHaveURL(/.*products/);
+    test('should navigate to Company overview from header', async ({ page }) => {
+      await page.getByRole('navigation', { name: /primary/i }).getByRole('link', { name: /^Company$/i }).click();
+      await expect(page).toHaveURL(/.*company\/our-story/);
     });
 
     test('should navigate to Contact page', async ({ page }) => {

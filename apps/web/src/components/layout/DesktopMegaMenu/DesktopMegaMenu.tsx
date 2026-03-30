@@ -62,7 +62,7 @@ function SubmenuPanelContent({
                 className="flex min-w-0 flex-col"
               >
                 {col.title && (
-                  <div className="mb-6 header-nav-typography text-[1.96rem] font-semibold uppercase tracking-widest text-[var(--evgBodyTextColor)] opacity-80">
+                  <div className="mb-6 header-nav-typography text-[2.2rem] font-semibold uppercase tracking-widest text-[var(--evgBodyTextColor)] opacity-80">
                     {col.title}
                   </div>
                 )}
@@ -76,7 +76,7 @@ function SubmenuPanelContent({
                       {link.external ? (
                         <a
                           href={link.href}
-                          className="link header-nav-typography block text-[1.96rem] font-normal leading-normal text-[#000c26] transition-all hover:translate-x-1 hover:text-[#06607f]"
+                          className="link header-nav-typography block text-[2.2rem] font-normal leading-normal text-[#000c26] transition-all hover:translate-x-1 hover:text-[#06607f]"
                           target="_blank"
                           rel="noreferrer"
                           role="menuitem"
@@ -87,7 +87,7 @@ function SubmenuPanelContent({
                       ) : (
                         <Link
                           to={link.href}
-                          className="link header-nav-typography block text-[1.96rem] font-normal leading-normal text-[#000c26] transition-all hover:translate-x-1 hover:text-[#06607f]"
+                          className="link header-nav-typography block text-[2.2rem] font-normal leading-normal text-[#000c26] transition-all hover:translate-x-1 hover:text-[#06607f]"
                           role="menuitem"
                           target="_self"
                           tabIndex={tabIndex}
@@ -128,7 +128,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
             to={item.href}
             target="_self"
             tabIndex={0}
-            className="link header-nav-typography block text-[1.96rem] font-normal leading-normal tracking-normal text-[#000c26] transition-colors hover:text-[#06607f]"
+            className="link header-nav-typography block text-[2.2rem] font-normal leading-[1.15] tracking-normal text-[#000c26] transition-colors hover:text-[#06607f]"
           >
             {item.name}
           </Link>
@@ -153,7 +153,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
           id={buttonId}
           onClick={() => toggleDropdown(item.name)}
           className={`
-            group inline-flex items-center text-[1.96rem] font-normal leading-normal tracking-normal transition-all focus:outline-none
+            group inline-flex items-center text-[2.2rem] font-normal leading-[1.15] tracking-normal transition-all focus:outline-none
             ${isOpen ? 'text-[#06607f]' : 'text-[#000c26] hover:text-[#06607f]'}
           `}
           aria-haspopup="true"

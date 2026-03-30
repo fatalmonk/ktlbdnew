@@ -33,6 +33,7 @@ export const GOOGLE_BUSINESS = {
 export const SOCIAL_MEDIA = {
   linkedin: 'http://linkedin.com/company/ktlbd',
   facebook: 'https://www.facebook.com/KTLManufacturing',
+  instagram: 'https://www.instagram.com/ktl.rmg/',
 };
 
 // Stock Exchange Links
@@ -123,6 +124,7 @@ export const GOOGLE_BUSINESS_STRUCTURED_DATA = {
   "sameAs": [
     SOCIAL_MEDIA.facebook,
     SOCIAL_MEDIA.linkedin,
+    SOCIAL_MEDIA.instagram,
     GOOGLE_BUSINESS.headOffice.profileUrl,
     GOOGLE_BUSINESS.production.profileUrl,
     STOCK_EXCHANGES.dse.url,

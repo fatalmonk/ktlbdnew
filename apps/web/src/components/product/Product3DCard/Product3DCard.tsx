@@ -187,7 +187,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               {/* Hover Overlay - Only on desktop, show on touch for mobile */}
               {(isMobile ? isTouched : isHovered) && (
                 <motion.div
-                  className="absolute inset-0 bg-black/50 flex items-center justify-center"
+                  className="absolute inset-0 bg-black/50 flex items-center justify-center p-6 sm:p-8 md:p-10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
@@ -206,7 +206,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                     >
                       <Link
                         to={product.link}
-                        className="flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 bg-white text-black font-bold rounded-lg"
+                        className="flex items-center justify-center gap-2 min-h-[44px] px-8 py-3.5 sm:px-10 sm:py-4 bg-white text-black font-bold rounded-lg"
                       >
                         <Suspense fallback={<div className="w-5 h-5" />}>
                           <Eye className="w-5 h-5" />
@@ -220,7 +220,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             </div>
 
             {/* Product Info */}
-            <div className="p-3 md:p-4 lg:p-6">
+            <div className="p-5 md:p-6 lg:p-8">
               {/* Category */}
               <motion.span
                 className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-sm md:text-base font-bold rounded-full mb-3 md:mb-4"

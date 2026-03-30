@@ -1,35 +1,52 @@
 import { Link } from 'react-router-dom';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
-
-const ArrowRight = createLazyIcon('ArrowRight');
 
 const CTASectionContent = () => (
-  <section className="py-8 md:py-16 lg:py-20 bg-primary-500">
-    <div className="max-w-ktl mx-auto px-4 md:px-6 text-center">
-      <h2 className="font-heading text-xl md:text-h2 lg:text-4xl font-bold text-neutral-900 mb-3 md:mb-4 lg:mb-6 leading-tight">
-        Ready for Global Apparel Sourcing?
-      </h2>
-      <p className="text-sm md:text-base lg:text-xl text-neutral-700 mb-4 md:mb-6 lg:mb-8 max-w-2xl mx-auto leading-relaxed">
-        Partner with us for premium quality textiles, ethical manufacturing, and reliable global
-        delivery.{' '}
+  <section className="relative overflow-hidden bg-primary-500">
+    <div className="mx-auto flex max-w-[1920px] flex-col lg:flex-row lg:items-stretch">
+      {/* Left column — text content */}
+      <div className="relative z-10 flex flex-1 flex-col justify-center pl-14 pr-6 py-16 md:pl-24 md:pr-12 md:py-20 lg:max-w-[55%] lg:pl-32 lg:pr-10 lg:py-24 xl:pl-40 xl:pr-12 xl:py-32">
+        <h2 className="font-heading text-5xl font-bold leading-[1.08] tracking-tight text-neutral-900 md:text-6xl lg:text-7xl xl:text-8xl">
+          Be part of an
+          <br />
+          <span className="italic">extraordinary</span>
+          <br />
+          story
+        </h2>
+
+        <p className="mt-6 max-w-md text-lg leading-relaxed text-neutral-800 md:mt-8 md:text-xl lg:text-2xl">
+          Whether you're looking to advance your career, or are just getting started, we're looking
+          for amazing talent like you.
+        </p>
+
         <Link
-          to="/contact"
-          className="text-primary-600 hover:text-primary-700 font-medium underline min-h-[44px] inline-flex items-center"
+          to="/careers"
+          className="mt-6 inline-block w-fit text-lg font-semibold text-neutral-900 underline underline-offset-4 transition-colors hover:text-neutral-700 md:mt-8 md:text-xl"
         >
-          Contact KTL
-        </Link>{' '}
-        today to discuss your sourcing needs.
-      </p>
-      <Link
-        to="/contact"
-        className="inline-flex items-center justify-center min-h-[44px] md:min-h-[48px] bg-secondary-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-sm md:text-base lg:text-lg hover:bg-secondary-600 active:bg-secondary-700 transition-colors duration-200 group"
+          Apply Now
+        </Link>
+      </div>
+
+      {/* Right column — image */}
+      <div className="relative hidden min-h-[400px] flex-1 lg:block lg:min-h-[480px]">
+        <img
+          src="/assets-optimized/designer-1-desktop.webp"
+          alt="Professional joining the KTL team"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+      </div>
+
+      {/* Decorative wave accent (bottom-right) */}
+      <svg
+        className="pointer-events-none absolute bottom-0 right-0 h-32 w-48 text-primary-400/40 md:h-40 md:w-64 lg:h-56 lg:w-80"
+        viewBox="0 0 200 120"
+        fill="none"
+        aria-hidden="true"
       >
-        Contact Us Today
-        <Suspense fallback={<div className="ml-2 w-4 h-4 md:w-5 md:h-5" />}>
-          <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-        </Suspense>
-      </Link>
+        <path
+          d="M200 120 C 160 120, 120 80, 80 80 S 0 40, 0 0 L 200 0 Z"
+          fill="currentColor"
+        />
+      </svg>
     </div>
   </section>
 );

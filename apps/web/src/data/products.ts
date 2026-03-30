@@ -2,7 +2,14 @@ import { createLazyIconWrapper } from '@/lib/lucide-icons';
 import { Product } from '../types/product';
 import heroSustainability1x from '@/assets/images/hero/hero-sustainability@1x.webp';
 import heroGlobal1x from '@/assets/images/hero/hero-global@1x.webp';
-import heroMain1x from '@/assets/images/hero/hero-main@1x.webp';
+
+/** Local stock photos — `public/assets/images/products/stock/` (Unsplash-sourced). */
+const stock = {
+  denims: '/assets/images/products/stock/denims.jpg',
+  tShirts: '/assets/images/products/stock/t-shirts.jpg',
+  knitwear: '/assets/images/products/stock/knitwear.jpg',
+  dresses: '/assets/images/products/stock/dresses.jpg',
+} as const;
 
 export const products: Product[] = [
   {
@@ -10,7 +17,7 @@ export const products: Product[] = [
     name: 'Denims',
     category: 'Casual Wear',
     description: 'Premium denim products including jeans, jackets, and shirts for all ages',
-    image: heroSustainability1x,
+    image: stock.denims,
     icon: createLazyIconWrapper('Shirt'),
     link: '/products/denims',
     featured: true,
@@ -22,7 +29,7 @@ export const products: Product[] = [
     name: 'T-Shirts',
     category: 'Casual Wear',
     description: 'High-quality cotton and blended t-shirts for everyday comfort',
-    image: heroGlobal1x,
+    image: stock.tShirts,
     icon: createLazyIconWrapper('Shirt'),
     link: '/products/t-shirts',
     featured: true,
@@ -34,7 +41,7 @@ export const products: Product[] = [
     name: 'Knitwear',
     category: 'Premium Apparel',
     description: 'Premium knitted garments including sweaters, cardigans, and knit tops',
-    image: heroMain1x,
+    image: stock.knitwear,
     icon: createLazyIconWrapper('Shirt'),
     link: '/products/knitwear',
     featured: true,
@@ -70,7 +77,7 @@ export const products: Product[] = [
     name: 'Dresses',
     category: "Women's Wear",
     description: 'Elegant dresses for women and children in contemporary styles',
-    image: heroMain1x,
+    image: stock.dresses,
     icon: createLazyIconWrapper('Shirt'),
     link: '/products/dresses',
     featured: true,

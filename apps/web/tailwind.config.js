@@ -116,6 +116,7 @@ export default {
       fontFamily: {
         heading: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
+        glacial: ['"Glacial Indifference"', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         h1: ['6rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }], // 60px

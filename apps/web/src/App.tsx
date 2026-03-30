@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -113,6 +113,7 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
 
                   {/* Company routes */}
+                  <Route path="/company/who-we-are" element={<Navigate to="/company/our-story" replace />} />
                   <Route path="/company/our-story" element={<CompanyOurStory />} />
                   <Route path="/company/leadership" element={<CompanyLeadership />} />
                   <Route path="/company/governance" element={<CompanyGovernance />} />

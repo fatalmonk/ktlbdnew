@@ -2,208 +2,192 @@ import { Link } from 'react-router-dom';
 import { Suspense } from 'react';
 import { createLazyIcon } from '@/lib/lucide-icons';
 import {
-  COMPANY_PHONE,
   COMPANY_EMAIL,
+  GOOGLE_BUSINESS,
   SOCIAL_MEDIA,
   STOCK_EXCHANGES,
   ASSOCIATIONS,
-  GOOGLE_BUSINESS
 } from '../../../lib/constants';
+import { NAVIGATION_ITEMS } from '../../../modules/navigation/data/navigation';
 
-const MapPin = createLazyIcon('MapPin');
-const Phone = createLazyIcon('Phone');
-const Mail = createLazyIcon('Mail');
 const Linkedin = createLazyIcon('Linkedin');
 const Facebook = createLazyIcon('Facebook');
+const Instagram = createLazyIcon('Instagram');
+const Mail = createLazyIcon('Mail');
+const MapPin = createLazyIcon('MapPin');
 const ExternalLink = createLazyIcon('ExternalLink');
-const Shirt = createLazyIcon('Shirt');
+
+const pipe = <span className="text-neutral-500 text-base sm:text-lg" aria-hidden>|</span>;
 
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Products', href: '/products' },
-    { name: 'Contact', href: '/contact' },
-  ];
+  const primaryNav = NAVIGATION_ITEMS.map((item) => ({
+    name: item.name,
+    href: item.href,
+  }));
 
   return (
-    <footer className="bg-black text-neutral-50">
-      <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-black text-white">
+      <div className="mx-auto max-w-[1920px] px-8 py-20 md:px-12 md:py-28 lg:px-16 lg:py-36">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20 lg:gap-x-24">
+          {/* Left: logo, socials, Google Business locator links */}
+          <div className="flex flex-col items-start gap-10 text-left">
+            <Link
+              to="/"
+              className="font-heading block text-5xl font-semibold tracking-tight text-[#6d8eb8] lowercase md:text-6xl lg:text-7xl"
+            >
+              kattali textile limited
+            </Link>
 
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-                <Suspense fallback={<div className="w-6 h-6" />}>
-                  <Shirt className="w-6 h-6 text-white" />
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={SOCIAL_MEDIA.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white/60 hover:bg-white/10"
+                aria-label="LinkedIn"
+              >
+                <Suspense fallback={<span className="h-7 w-7" />}>
+                  <Linkedin className="h-7 w-7" strokeWidth={1.75} />
                 </Suspense>
-              </div>
-              <div>
-                <h3 className="font-heading font-bold text-body-lg">Kattali Textile Ltd</h3>
-                <p className="text-caption text-neutral-300">Since 2002</p>
-              </div>
+              </a>
+              <a
+                href={SOCIAL_MEDIA.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white/60 hover:bg-white/10"
+                aria-label="Facebook"
+              >
+                <Suspense fallback={<span className="h-7 w-7" />}>
+                  <Facebook className="h-7 w-7" strokeWidth={1.75} />
+                </Suspense>
+              </a>
+              <a
+                href={SOCIAL_MEDIA.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white/60 hover:bg-white/10"
+                aria-label="Instagram"
+              >
+                <Suspense fallback={<span className="h-7 w-7" />}>
+                  <Instagram className="h-7 w-7" strokeWidth={1.75} />
+                </Suspense>
+              </a>
+              <a
+                href={`mailto:${COMPANY_EMAIL}`}
+                className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white/60 hover:bg-white/10"
+                aria-label="Email us"
+              >
+                <Suspense fallback={<span className="h-7 w-7" />}>
+                  <Mail className="h-7 w-7" strokeWidth={1.75} />
+                </Suspense>
+              </a>
             </div>
 
-            <p className="text-body text-neutral-300 mb-6 leading-relaxed">
-              Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in
-              manufacturing premium woven and knit garments for global markets.
-            </p>
-
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <Suspense fallback={<div className="w-5 h-5 mt-0.5 flex-shrink-0" />}>
-                  <MapPin className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
+            <div className="flex w-full max-w-2xl flex-col gap-5 border-t border-white/10 pt-10">
+              <p className="text-base font-medium uppercase tracking-wider text-neutral-400">Google Business</p>
+              <a
+                href={GOOGLE_BUSINESS.headOffice.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-start gap-3 text-lg text-neutral-200 transition-colors hover:text-white"
+              >
+                <Suspense fallback={<span className="mt-0.5 h-6 w-6 shrink-0" />}>
+                  <MapPin className="mt-0.5 h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
                 </Suspense>
-                <span className="text-caption text-neutral-300">
-                  BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong, Bangladesh
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-medium text-white">Head Office</span>
+                  <span className="mt-1 block text-base text-neutral-400 group-hover:text-neutral-300">
+                    {GOOGLE_BUSINESS.headOffice.address}
+                  </span>
                 </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Suspense fallback={<div className="w-5 h-5" />}>
-                  <Phone className="w-5 h-5 text-primary-500" />
+                <Suspense fallback={<span className="h-6 w-6 shrink-0" />}>
+                  <ExternalLink className="mt-1 h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
                 </Suspense>
-                <span className="text-caption text-neutral-300">{COMPANY_PHONE}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Suspense fallback={<div className="w-5 h-5" />}>
-                  <Mail className="w-5 h-5 text-primary-500" />
+              </a>
+              <a
+                href={GOOGLE_BUSINESS.production.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-start gap-3 text-lg text-neutral-200 transition-colors hover:text-white"
+              >
+                <Suspense fallback={<span className="mt-0.5 h-6 w-6 shrink-0" />}>
+                  <MapPin className="mt-0.5 h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
                 </Suspense>
-                <span className="text-caption text-neutral-300 break-all">{COMPANY_EMAIL}</span>
-              </div>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xl font-medium text-white">Production facility</span>
+                  <span className="mt-1 block text-base text-neutral-400 group-hover:text-neutral-300">
+                    {GOOGLE_BUSINESS.production.address}
+                  </span>
+                </span>
+                <Suspense fallback={<span className="h-6 w-6 shrink-0" />}>
+                  <ExternalLink className="mt-1 h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
+                </Suspense>
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading font-semibold text-body-lg mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-caption text-neutral-300 hover:text-primary-500 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Right: nav + meta rows */}
+          <div className="flex flex-col items-start gap-12 text-left lg:items-end lg:text-right">
+            <nav aria-label="Footer" className="w-full lg:w-auto">
+              <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-lg font-medium md:gap-x-8 md:text-xl lg:text-2xl lg:justify-end">
+                {primaryNav.map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.href} className="text-white transition-colors hover:text-primary-400">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-            <div className="mt-6">
-              <h5 className="font-heading font-semibold text-body mb-3">Follow Us</h5>
-              <div className="flex gap-3">
-                <a
-                  href={SOCIAL_MEDIA.linkedin}
-                  className="text-neutral-300 hover:text-primary-500 transition-colors"
-                  aria-label="LinkedIn"
-                  title="LinkedIn"
-                >
-                  <Suspense fallback={<div className="w-5 h-5" />}>
-                    <Linkedin className="w-5 h-5" />
-                  </Suspense>
-                </a>
-                <a
-                  href={SOCIAL_MEDIA.facebook}
-                  className="text-neutral-300 hover:text-primary-500 transition-colors"
-                  aria-label="Facebook"
-                  title="Facebook"
-                >
-                  <Suspense fallback={<div className="w-5 h-5" />}>
-                    <Facebook className="w-5 h-5" />
-                  </Suspense>
-                </a>
-              </div>
+            <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-lg text-neutral-300 md:text-xl lg:justify-end">
+              <a
+                href={STOCK_EXCHANGES.dse.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
+                {STOCK_EXCHANGES.dse.shortName}
+              </a>
+              {pipe}
+              <a
+                href={STOCK_EXCHANGES.cse.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
+                {STOCK_EXCHANGES.cse.shortName}
+              </a>
+              {pipe}
+              <a href={ASSOCIATIONS.bgmea.url} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                {ASSOCIATIONS.bgmea.shortName}
+              </a>
+              {pipe}
+              <Link to="/certifications" className="hover:text-white">
+                Certifications
+              </Link>
+            </div>
+
+            <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-sm text-neutral-400 sm:text-base lg:justify-end">
+              <Link to="/contact" className="hover:text-neutral-200">
+                Contact Us
+              </Link>
+              {pipe}
+              <Link to="/company/governance" className="hover:text-neutral-200">
+                Governance
+              </Link>
+              {pipe}
+              <Link to="/sustainability" className="hover:text-neutral-200">
+                Sustainability
+              </Link>
+              {pipe}
+              <Link to="/newsroom/stories" className="hover:text-neutral-200">
+                Company Stories
+              </Link>
+              {pipe}
+              <span>© {new Date().getFullYear()} Kattali Textile Ltd.</span>
             </div>
           </div>
-
-          {/* Certifications & Associations */}
-          <div>
-            <h4 className="font-heading font-semibold text-body-lg mb-4">Certifications</h4>
-
-            <div className="space-y-2 text-caption text-neutral-300">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                <span>Sedex Certified</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                <span>Green Factory Initiative</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                <a
-                  href={ASSOCIATIONS.bgmea.url}
-                  className="hover:text-primary-500 inline-flex items-center gap-1"
-                >
-                  {ASSOCIATIONS.bgmea.shortName} Member #{ASSOCIATIONS.bgmea.memberNumber}
-                  <Suspense fallback={<div className="w-3 h-3" />}>
-                    <ExternalLink className="w-3 h-3" />
-                  </Suspense>
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <h5 className="font-heading font-semibold text-body mb-3">Stock Exchange</h5>
-              <div className="space-y-2 text-caption">
-                <a
-                  href={STOCK_EXCHANGES.dse.url}
-                  className="text-neutral-300 hover:text-primary-500 flex items-center gap-2"
-                >
-                  {STOCK_EXCHANGES.dse.shortName}
-                  <Suspense fallback={<div className="w-3 h-3" />}>
-                    <ExternalLink className="w-3 h-3" />
-                  </Suspense>
-                </a>
-
-                <a
-                  href={STOCK_EXCHANGES.cse.url}
-                  className="text-neutral-300 hover:text-primary-500 flex items-center gap-2"
-                >
-                  {STOCK_EXCHANGES.cse.shortName}
-                  <Suspense fallback={<div className="w-3 h-3" />}>
-                    <ExternalLink className="w-3 h-3" />
-                  </Suspense>
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <h5 className="font-heading font-semibold text-body mb-3">Our Locations</h5>
-              <div className="space-y-2 text-caption">
-                <a
-                  href={GOOGLE_BUSINESS.headOffice.profileUrl}
-                  className="text-neutral-300 hover:text-primary-500 flex items-center gap-2"
-                >
-                  Head Office
-                  <Suspense fallback={<div className="w-3 h-3" />}>
-                    <ExternalLink className="w-3 h-3" />
-                  </Suspense>
-                </a>
-
-                <a
-                  href={GOOGLE_BUSINESS.production.profileUrl}
-                  className="text-neutral-300 hover:text-primary-500 flex items-center gap-2"
-                >
-                  Production Facility
-                  <Suspense fallback={<div className="w-3 h-3" />}>
-                    <ExternalLink className="w-3 h-3" />
-                  </Suspense>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-neutral-800 mt-12 pt-6 text-center">
-          <p className="text-caption text-neutral-400">
-            © 2025 Kattali Textile Ltd. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

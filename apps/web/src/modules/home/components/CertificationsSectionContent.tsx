@@ -1,44 +1,67 @@
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
-
-const Award = createLazyIcon('Award');
-
-interface Certification {
-  name: string;
-  description: string;
-}
+import type { HomeCertification } from '../../../data/home/certifications';
+import { cn } from '../../../lib/utils';
 
 interface CertificationsSectionContentProps {
-  certifications: Certification[];
+  certifications: HomeCertification[];
 }
 
+const CertLogo = ({ cert }: { cert: HomeCertification }) => (
+  <div className="flex items-center justify-center px-2 py-3 md:px-3 md:py-4 lg:px-4 lg:py-5">
+    <div className="mx-auto flex h-32 w-full max-w-[240px] items-center justify-center sm:max-w-[280px] md:h-44 md:max-w-[380px] lg:h-48 lg:max-w-none xl:h-64 2xl:h-72">
+      <img
+        src={cert.logoSrc}
+        alt={cert.logoAlt}
+        className={cn(
+          'max-h-full w-full max-w-full object-contain',
+          // Walt Disney asset ships with a white box; blend so it matches bg-neutral-50
+          cert.id === 'disney-fama' && 'mix-blend-multiply',
+        )}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+);
+
+const desktopGridGaps =
+  'gap-x-4 gap-y-6 xl:gap-x-6 xl:gap-y-8 2xl:gap-x-8 2xl:gap-y-10';
+
 const CertificationsSectionContent = ({ certifications }: CertificationsSectionContentProps) => (
-  <section className="py-8 md:py-16 lg:py-20 bg-neutral-50">
-    <div className="max-w-ktl mx-auto px-4 md:px-6">
-      <h2 className="font-heading text-xl md:text-h2 lg:text-4xl font-bold text-center mb-6 md:mb-8 lg:mb-16 text-neutral-900 leading-tight">
-        Our <span className="text-primary">Certifications</span>
+  <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
+    <div className="mx-auto w-full max-w-[1920px] px-4 md:px-6 lg:px-8">
+      <h2 className="font-heading mb-24 text-center text-5xl font-bold leading-tight tracking-tight text-neutral-900 md:text-6xl lg:text-7xl">
+        Our <span className="text-primary-500">Certifications</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+
+      {/* Mobile / tablet: single grid */}
+      <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-6 lg:hidden">
         {certifications.map((cert) => (
-          <div
-            key={cert.name}
-            className="bg-white p-4 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 lg:mb-4">
-              <Suspense fallback={<div className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />}>
-                <Award className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary" />
-              </Suspense>
-            </div>
-            <h3 className="font-heading text-sm md:text-lg lg:text-xl font-bold mb-1 md:mb-2 lg:mb-3 text-neutral-900">
-              {cert.name}
-            </h3>
-            <p className="text-neutral-600 text-xs md:text-sm lg:text-base">{cert.description}</p>
-          </div>
+          <CertLogo key={cert.id} cert={cert} />
         ))}
+      </div>
+
+      {/* Desktop: row of 5, then centered row of 4 (10-col grid) */}
+      <div className="hidden flex-col gap-y-8 xl:gap-y-10 2xl:gap-y-12 lg:flex">
+        <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
+          {certifications.slice(0, 5).map((cert) => (
+            <div key={cert.id} className="col-span-2">
+              <CertLogo cert={cert} />
+            </div>
+          ))}
+        </div>
+        <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
+          {certifications.slice(5, 9).map((cert, idx) => (
+            <div
+              key={cert.id}
+              className={cn('col-span-2', idx === 0 && 'col-start-2')}
+            >
+              <CertLogo cert={cert} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 );
 
 export default CertificationsSectionContent;
-

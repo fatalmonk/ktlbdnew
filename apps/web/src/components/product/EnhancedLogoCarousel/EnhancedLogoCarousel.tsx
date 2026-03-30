@@ -61,11 +61,11 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
             transition={{ type: 'spring', stiffness: 400 }}
           >
             {/* Logo */}
-            <div className="px-8 py-4">
+            <div className="px-8 py-5 md:px-10 md:py-6">
               <Image
                 src={partner.logo}
                 alt={partner.name}
-                className="h-16 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-20 w-auto object-contain transition-all duration-300 md:h-24"
                 fit="contain"
                 loading="lazy"
               />
