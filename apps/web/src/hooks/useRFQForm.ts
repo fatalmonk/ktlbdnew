@@ -11,6 +11,11 @@ import {
   initialRFQFormData,
 } from '../modules/rfq/data/rfq.config';
 import { isRFQStepValid } from '../modules/rfq/validation/rfq.validation';
+import {
+  safeLocalStorageGetItem,
+  safeLocalStorageRemoveItem,
+  safeLocalStorageSetItem,
+} from '../lib/storage/safeLocalStorage';
 
 export const useRFQForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -18,7 +23,7 @@ export const useRFQForm = () => {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem(RFQ_STORAGE_KEY);
+    const saved = safeLocalStorageGetItem(RFQ_STORAGE_KEY);
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -35,7 +40,7 @@ export const useRFQForm = () => {
       ...formData,
       attachments: [], // Don't save files to localStorage
     };
-    localStorage.setItem(RFQ_STORAGE_KEY, JSON.stringify(toSave));
+    safeLocalStorageSetItem(RFQ_STORAGE_KEY, JSON.stringify(toSave));
   }, [formData]);
 
   const updateProducts = (products: ProductSelection[]) => {
@@ -82,7 +87,7 @@ export const useRFQForm = () => {
   const resetForm = () => {
     setFormData(initialRFQFormData);
     setCurrentStep(1);
-    localStorage.removeItem(RFQ_STORAGE_KEY);
+    safeLocalStorageRemoveItem(RFQ_STORAGE_KEY);
   };
 
   const isStepValid = (step: number): boolean => {
