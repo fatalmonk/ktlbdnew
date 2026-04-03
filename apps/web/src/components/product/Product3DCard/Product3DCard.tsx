@@ -8,7 +8,7 @@ const ArrowRight = createLazyIcon("ArrowRight");
 const Eye = createLazyIcon("Eye");
 const Heart = createLazyIcon("Heart");
 const Share2 = createLazyIcon("Share2");
-import { Product } from "../../types/product";
+import { Product } from "@/types/product";
 import {
   isMobileDevice,
   getOptimizedAnimationConfig,

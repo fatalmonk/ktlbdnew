@@ -4,7 +4,7 @@ import { createLazyIcon } from "@/lib/lucide-icons";
 
 const Filter = createLazyIcon("Filter");
 const X = createLazyIcon("X");
-import { FilterOption, ProductFilterState } from "../../types/product";
+import { FilterOption, ProductFilterState } from "@/types/product";
 
 interface ProductFilterProps {
   categories: FilterOption[];

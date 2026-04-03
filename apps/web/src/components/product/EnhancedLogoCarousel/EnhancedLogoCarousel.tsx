@@ -14,7 +14,7 @@ const ExternalLink = createLazyIcon("ExternalLink");
 const Globe = createLazyIcon("Globe");
 const Users = createLazyIcon("Users");
 import { useMediaQuery } from "@/hooks/useResponsive";
-import { PartnerLogo } from "../../types/partner";
+import { PartnerLogo } from "@/types/partner";
 import Image from "../../media/Image";
 
 interface EnhancedLogoCarouselProps {
