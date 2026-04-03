@@ -7,12 +7,14 @@
 }
 .ir-pattern {
   background:
-    radial-gradient(100% 100% at 0 0, transparent 72%, transparent 72%) 0 0/220px 220px,
-    radial-gradient(100% 100% at 0 0, transparent 72%, transparent 72%) 110px 110px/220px 220px;
+    radial-gradient(100% 100% at 0 0, transparent 72%, transparent 72%) 0
+      0/220px 220px,
+    radial-gradient(100% 100% at 0 0, transparent 72%, transparent 72%) 110px
+      110px/220px 220px;
   position: relative;
 }
 .ir-pattern:before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(

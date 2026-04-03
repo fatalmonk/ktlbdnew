@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from "react";
 
-export type SwipeDirection = 'left' | 'right' | 'up' | 'down';
+export type SwipeDirection = "left" | "right" | "up" | "down";
 
 export interface TouchOptimizedProps {
   children: React.ReactNode;
@@ -38,7 +38,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
   children,
   onTap,
   onSwipe,
-  className = '',
+  className = "",
   minSwipeDistance = 50,
   minTouchTargetSize = 44,
   disabled = false,
@@ -48,7 +48,11 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
   onMouseUp,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [touchStart, setTouchStart] = useState<{ x: number; y: number; time: number } | null>(null);
+  const [touchStart, setTouchStart] = useState<{
+    x: number;
+    y: number;
+    time: number;
+  } | null>(null);
   const [isTouching, setIsTouching] = useState(false);
   const [touchMoved, setTouchMoved] = useState(false);
 
@@ -65,7 +69,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
         time: Date.now(),
       });
     },
-    [disabled]
+    [disabled],
   );
 
   // Track touch move to detect swipe vs tap
@@ -84,7 +88,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
         setTouchMoved(true);
       }
     },
-    [touchStart, disabled]
+    [touchStart, disabled],
   );
 
   // Handle touch end - detect tap or swipe
@@ -132,12 +136,12 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
         if (absDeltaX > absDeltaY) {
           // Horizontal swipe
           if (absDeltaX > minSwipeDistance) {
-            onSwipe(deltaX > 0 ? 'right' : 'left');
+            onSwipe(deltaX > 0 ? "right" : "left");
           }
         } else {
           // Vertical swipe
           if (absDeltaY > minSwipeDistance) {
-            onSwipe(deltaY > 0 ? 'down' : 'up');
+            onSwipe(deltaY > 0 ? "down" : "up");
           }
         }
       }
@@ -145,7 +149,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
       setTouchStart(null);
       setTouchMoved(false);
     },
-    [touchStart, touchMoved, onTap, onSwipe, minSwipeDistance, disabled]
+    [touchStart, touchMoved, onTap, onSwipe, minSwipeDistance, disabled],
   );
 
   // Set up touch event listeners
@@ -154,14 +158,14 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
     if (!element || disabled) return;
 
     // Use passive listeners for better performance
-    element.addEventListener('touchstart', handleTouchStart, { passive: true });
-    element.addEventListener('touchmove', handleTouchMove, { passive: true });
-    element.addEventListener('touchend', handleTouchEnd, { passive: false });
+    element.addEventListener("touchstart", handleTouchStart, { passive: true });
+    element.addEventListener("touchmove", handleTouchMove, { passive: true });
+    element.addEventListener("touchend", handleTouchEnd, { passive: false });
 
     return () => {
-      element.removeEventListener('touchstart', handleTouchStart);
-      element.removeEventListener('touchmove', handleTouchMove);
-      element.removeEventListener('touchend', handleTouchEnd);
+      element.removeEventListener("touchstart", handleTouchStart);
+      element.removeEventListener("touchmove", handleTouchMove);
+      element.removeEventListener("touchend", handleTouchEnd);
     };
   }, [handleTouchStart, handleTouchMove, handleTouchEnd, disabled]);
 
@@ -169,7 +173,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
   const touchTargetStyle: React.CSSProperties = {
     minWidth: `${minTouchTargetSize}px`,
     minHeight: `${minTouchTargetSize}px`,
-    touchAction: 'manipulation', // Improve touch responsiveness
+    touchAction: "manipulation", // Improve touch responsiveness
   };
 
   return (
@@ -177,7 +181,7 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
       ref={containerRef}
       className={`
         ${className}
-        ${touchFeedback && isTouching ? 'scale-[0.98]' : 'scale-100'}
+        ${touchFeedback && isTouching ? "scale-[0.98]" : "scale-100"}
         transition-transform duration-150 ease-out
         inline-block
       `}
@@ -185,14 +189,14 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
-      role={onTap || onSwipe ? 'button' : undefined}
+      role={onTap || onSwipe ? "button" : undefined}
       tabIndex={disabled ? -1 : onTap || onSwipe ? 0 : undefined}
       aria-disabled={disabled}
       onKeyDown={(e) => {
         // Support keyboard interaction for accessibility
         if (disabled) return;
 
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           onTap?.();
         }

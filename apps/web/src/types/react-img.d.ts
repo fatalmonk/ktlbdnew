@@ -1,8 +1,8 @@
-import 'react';
+import "react";
 
 /** React 18 warns on `fetchPriority`; HTML uses lowercase `fetchpriority`. */
-declare module 'react' {
+declare module "react" {
   interface ImgHTMLAttributes {
-    fetchpriority?: 'high' | 'low' | 'auto';
+    fetchpriority?: "high" | "low" | "auto";
   }
 }

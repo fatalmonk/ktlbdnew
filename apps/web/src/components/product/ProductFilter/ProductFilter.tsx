@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { useState, useEffect, Suspense } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const Filter = createLazyIcon('Filter');
-const X = createLazyIcon('X');
-import { FilterOption, ProductFilterState } from '../../types/product';
+const Filter = createLazyIcon("Filter");
+const X = createLazyIcon("X");
+import { FilterOption, ProductFilterState } from "../../types/product";
 
 interface ProductFilterProps {
   categories: FilterOption[];
@@ -12,7 +12,11 @@ interface ProductFilterProps {
   onFilterChange: (filters: ProductFilterState) => void;
 }
 
-const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilterChange }) => {
+const ProductFilter: React.FC<ProductFilterProps> = ({
+  categories,
+  tags,
+  onFilterChange,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -85,10 +89,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilte
 
             {/* Filter Sidebar */}
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl z-50 overflow-y-auto"
               role="dialog"
               aria-modal="true"
@@ -124,8 +128,12 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilte
                         <div className="flex items-center gap-3">
                           <input
                             type="checkbox"
-                            checked={selectedCategories.includes(category.value)}
-                            onChange={() => handleCategoryToggle(category.value)}
+                            checked={selectedCategories.includes(
+                              category.value,
+                            )}
+                            onChange={() =>
+                              handleCategoryToggle(category.value)
+                            }
                             className="w-5 h-5 text-primary-500 rounded focus:ring-primary-500"
                             aria-describedby={`category-${category.value}-count`}
                           />
@@ -154,8 +162,8 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilte
                         onClick={() => handleTagToggle(tag.value)}
                         className={`px-4 py-2 rounded-full border-2 transition-colors ${
                           selectedTags.includes(tag.value)
-                            ? 'bg-primary-500 border-primary-500 text-black'
-                            : 'bg-white border-neutral-300 text-neutral-700 hover:border-neutral-400'
+                            ? "bg-primary-500 border-primary-500 text-black"
+                            : "bg-white border-neutral-300 text-neutral-700 hover:border-neutral-400"
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -164,7 +172,10 @@ const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilte
                       >
                         {tag.label}
                         {tag.count && (
-                          <span id={`tag-${tag.value}-count`} className="ml-1 text-xs opacity-75">
+                          <span
+                            id={`tag-${tag.value}-count`}
+                            className="ml-1 text-xs opacity-75"
+                          >
                             ({tag.count})
                           </span>
                         )}

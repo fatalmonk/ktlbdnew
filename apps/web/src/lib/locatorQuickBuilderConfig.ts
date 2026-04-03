@@ -34,21 +34,21 @@ export type LocatorPlusConfiguration = {
 };
 
 /** Base config; `mapsApiKey` is set at runtime from env in the embed component. */
-export const LOCATOR_PLUS_BASE: Omit<LocatorPlusConfiguration, 'mapsApiKey'> = {
+export const LOCATOR_PLUS_BASE: Omit<LocatorPlusConfiguration, "mapsApiKey"> = {
   locations: [
     {
-      title: 'Kattali Textile Limited (KTL) - Production Facility',
-      address1: 'Kattali Textile Limited (KTL)',
-      address2: 'Chittagong, Bangladesh',
+      title: "Kattali Textile Limited (KTL) - Production Facility",
+      address1: "Kattali Textile Limited (KTL)",
+      address2: "Chittagong, Bangladesh",
       coords: { lat: 22.3698912, lng: 91.7696064 },
-      placeId: 'ChIJyQndyHXZrDARQbHKfGpmR-w',
+      placeId: "ChIJyQndyHXZrDARQbHKfGpmR-w",
     },
     {
-      title: 'Kattali Textile Limited (KTL) — Head Office',
-      address1: '318 SK Mujib Road, BM Heights, 8th Floor, Agrabad',
-      address2: 'Chittagong, Bangladesh',
+      title: "Kattali Textile Limited (KTL) — Head Office",
+      address1: "318 SK Mujib Road, BM Heights, 8th Floor, Agrabad",
+      address2: "Chittagong, Bangladesh",
       coords: { lat: 22.328026, lng: 91.8127478 },
-      placeId: 'ChIJmQQmAjHZrDARs0GQJ33qECg',
+      placeId: "ChIJmQQmAjHZrDARs0GQJ33qECg",
     },
   ],
   mapOptions: {
@@ -59,7 +59,7 @@ export const LOCATOR_PLUS_BASE: Omit<LocatorPlusConfiguration, 'mapsApiKey'> = {
     zoom: 11,
     zoomControl: true,
     maxZoom: 17,
-    mapId: '',
+    mapId: "",
   },
   capabilities: {
     input: true,

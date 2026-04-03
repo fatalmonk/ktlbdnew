@@ -1,133 +1,133 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, userEvent } from '../../test/test-utils';
-import Button from './Button/Button';
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, userEvent } from "../../test/test-utils";
+import Button from "./Button/Button";
 
-describe('Button Component', () => {
-  describe('Rendering', () => {
-    it('renders with default props', () => {
+describe("Button Component", () => {
+  describe("Rendering", () => {
+    it("renders with default props", () => {
       render(<Button>Click me</Button>);
 
-      const button = screen.getByRole('button', { name: /click me/i });
+      const button = screen.getByRole("button", { name: /click me/i });
       expect(button).toBeInTheDocument();
     });
 
-    it('renders children correctly', () => {
+    it("renders children correctly", () => {
       render(<Button>Test Content</Button>);
 
-      expect(screen.getByText('Test Content')).toBeInTheDocument();
+      expect(screen.getByText("Test Content")).toBeInTheDocument();
     });
 
-    it('renders with complex children', () => {
+    it("renders with complex children", () => {
       render(
         <Button>
           <span>Icon</span>
           <span>Text</span>
-        </Button>
+        </Button>,
       );
 
-      expect(screen.getByText('Icon')).toBeInTheDocument();
-      expect(screen.getByText('Text')).toBeInTheDocument();
+      expect(screen.getByText("Icon")).toBeInTheDocument();
+      expect(screen.getByText("Text")).toBeInTheDocument();
     });
   });
 
-  describe('Variants', () => {
-    it('renders primary variant by default', () => {
+  describe("Variants", () => {
+    it("renders primary variant by default", () => {
       render(<Button>Primary</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-primary');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("bg-primary");
     });
 
-    it('renders secondary variant', () => {
+    it("renders secondary variant", () => {
       render(<Button variant="secondary">Secondary</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-secondary');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("bg-secondary");
     });
 
-    it('renders outline variant', () => {
+    it("renders outline variant", () => {
       render(<Button variant="outline">Outline</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('border');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("border");
     });
 
-    it('renders ghost variant', () => {
+    it("renders ghost variant", () => {
       render(<Button variant="ghost">Ghost</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('hover:bg-accent');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("hover:bg-accent");
     });
   });
 
-  describe('Sizes', () => {
-    it('renders medium size by default', () => {
+  describe("Sizes", () => {
+    it("renders medium size by default", () => {
       render(<Button>Medium</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('h-12');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("h-12");
     });
 
-    it('renders small size', () => {
+    it("renders small size", () => {
       render(<Button size="sm">Small</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('h-11');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("h-11");
     });
 
-    it('renders large size', () => {
+    it("renders large size", () => {
       render(<Button size="lg">Large</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('h-14');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("h-14");
     });
   });
 
-  describe('States', () => {
-    it('renders disabled state', () => {
+  describe("States", () => {
+    it("renders disabled state", () => {
       render(<Button disabled>Disabled</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       expect(button).toBeDisabled();
-      expect(button).toHaveClass('disabled:opacity-50');
+      expect(button).toHaveClass("disabled:opacity-50");
     });
 
-    it('prevents click when disabled', async () => {
+    it("prevents click when disabled", async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
 
       render(
         <Button disabled onClick={handleClick}>
           Disabled
-        </Button>
+        </Button>,
       );
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       await user.click(button);
 
       expect(handleClick).not.toHaveBeenCalled();
     });
   });
 
-  describe('Interactions', () => {
-    it('calls onClick handler when clicked', async () => {
+  describe("Interactions", () => {
+    it("calls onClick handler when clicked", async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
 
       render(<Button onClick={handleClick}>Click me</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       await user.click(button);
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('does not call onClick when not provided', async () => {
+    it("does not call onClick when not provided", async () => {
       const user = userEvent.setup();
 
       render(<Button>Click me</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       await user.click(button);
 
       // Should not throw error
@@ -135,134 +135,134 @@ describe('Button Component', () => {
     });
   });
 
-  describe('Custom Props', () => {
-    it('accepts custom className', () => {
+  describe("Custom Props", () => {
+    it("accepts custom className", () => {
       render(<Button className="custom-class">Custom</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('custom-class');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("custom-class");
     });
 
-    it('merges custom className with default classes', () => {
+    it("merges custom className with default classes", () => {
       render(<Button className="custom-class">Merged</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('custom-class');
-      expect(button).toHaveClass('inline-flex');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("custom-class");
+      expect(button).toHaveClass("inline-flex");
     });
 
-    it('accepts custom type attribute', () => {
+    it("accepts custom type attribute", () => {
       render(<Button type="submit">Submit</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('type', 'submit');
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("type", "submit");
     });
 
-    it('accepts custom aria-label', () => {
+    it("accepts custom aria-label", () => {
       render(<Button aria-label="Custom label">Icon only</Button>);
 
-      const button = screen.getByRole('button', { name: /custom label/i });
+      const button = screen.getByRole("button", { name: /custom label/i });
       expect(button).toBeInTheDocument();
     });
 
-    it('accepts custom data attributes', () => {
+    it("accepts custom data attributes", () => {
       render(<Button data-testid="custom-button">Custom</Button>);
 
-      const button = screen.getByTestId('custom-button');
+      const button = screen.getByTestId("custom-button");
       expect(button).toBeInTheDocument();
     });
   });
 
-  describe('Accessibility', () => {
-    it('has button role', () => {
+  describe("Accessibility", () => {
+    it("has button role", () => {
       render(<Button>Accessible</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       expect(button).toBeInTheDocument();
     });
 
-    it('supports keyboard interaction', async () => {
+    it("supports keyboard interaction", async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
 
       render(<Button onClick={handleClick}>Keyboard</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       button.focus();
-      await user.keyboard('{Enter}');
+      await user.keyboard("{Enter}");
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('supports space key interaction', async () => {
+    it("supports space key interaction", async () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
 
       render(<Button onClick={handleClick}>Space</Button>);
 
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       button.focus();
-      await user.keyboard(' ');
+      await user.keyboard(" ");
 
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('has focus-visible styles', () => {
+    it("has focus-visible styles", () => {
       render(<Button>Focus</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('focus-visible:outline-none');
-      expect(button).toHaveClass('focus-visible:ring-2');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("focus-visible:outline-none");
+      expect(button).toHaveClass("focus-visible:ring-2");
     });
   });
 
-  describe('Variant and Size Combinations', () => {
-    it('renders primary small button', () => {
+  describe("Variant and Size Combinations", () => {
+    it("renders primary small button", () => {
       render(
         <Button variant="primary" size="sm">
           Primary Small
-        </Button>
+        </Button>,
       );
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-primary');
-      expect(button).toHaveClass('h-11');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("bg-primary");
+      expect(button).toHaveClass("h-11");
     });
 
-    it('renders secondary large button', () => {
+    it("renders secondary large button", () => {
       render(
         <Button variant="secondary" size="lg">
           Secondary Large
-        </Button>
+        </Button>,
       );
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('bg-secondary');
-      expect(button).toHaveClass('h-14');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("bg-secondary");
+      expect(button).toHaveClass("h-14");
     });
 
-    it('renders outline medium button', () => {
+    it("renders outline medium button", () => {
       render(
         <Button variant="outline" size="md">
           Outline Medium
-        </Button>
+        </Button>,
       );
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('border');
-      expect(button).toHaveClass('h-12');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("border");
+      expect(button).toHaveClass("h-12");
     });
 
-    it('renders ghost small button', () => {
+    it("renders ghost small button", () => {
       render(
         <Button variant="ghost" size="sm">
           Ghost Small
-        </Button>
+        </Button>,
       );
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('hover:bg-accent');
-      expect(button).toHaveClass('h-11');
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("hover:bg-accent");
+      expect(button).toHaveClass("h-11");
     });
   });
 });

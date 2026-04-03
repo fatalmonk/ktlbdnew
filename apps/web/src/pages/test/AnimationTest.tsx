@@ -1,14 +1,17 @@
-import { motion } from 'framer-motion';
-import React from 'react';
-import AnimatedCounter from '../../components/animation/AnimatedCounter';
-import EnhancedHero from '../../components/hero/EnhancedHero';
-import StatisticsSection from '../../components/shared/StatisticsSection';
-import { useScrollTrigger } from '../../hooks/animations/useScrollTrigger';
+import { motion } from "framer-motion";
+import React from "react";
+import AnimatedCounter from "../../components/animation/AnimatedCounter";
+import EnhancedHero from "../../components/hero/EnhancedHero";
+import StatisticsSection from "../../components/shared/StatisticsSection";
+import { useScrollTrigger } from "../../hooks/animations/useScrollTrigger";
 
-import { Calendar, Package, Settings, Users } from 'lucide-react';
-import GSAPTimeline from '../../components/animation/GSAPTimeline';
-import SEO from '../../components/seo/SEO';
-import { ANIMATION_DURATION, ANIMATION_EASING } from '../../utils/animations/constants';
+import { Calendar, Package, Settings, Users } from "lucide-react";
+import GSAPTimeline from "../../components/animation/GSAPTimeline";
+import SEO from "../../components/seo/SEO";
+import {
+  ANIMATION_DURATION,
+  ANIMATION_EASING,
+} from "../../utils/animations/constants";
 
 const AnimationTest: React.FC = () => {
   const { ref, controls } = useScrollTrigger();
@@ -18,35 +21,35 @@ const AnimationTest: React.FC = () => {
   const timelineMockupData = [
     {
       id: 1,
-      icon: '⭐',
-      iconBg: 'bg-blue-500',
-      label: 'Quality Excellence',
-      description: 'Premium quality products',
-      position: 'left-1/4',
+      icon: "⭐",
+      iconBg: "bg-blue-500",
+      label: "Quality Excellence",
+      description: "Premium quality products",
+      position: "left-1/4",
     },
     {
       id: 2,
-      icon: '✨',
-      iconBg: 'bg-green-500',
-      label: 'Innovation',
-      description: 'Cutting-edge technology',
-      position: 'left-3/4',
+      icon: "✨",
+      iconBg: "bg-green-500",
+      label: "Innovation",
+      description: "Cutting-edge technology",
+      position: "left-3/4",
     },
     {
       id: 3,
-      icon: '🏆',
-      iconBg: 'bg-purple-500',
-      label: 'Award Winner',
-      description: 'Industry recognition',
-      position: 'left-1/2',
+      icon: "🏆",
+      iconBg: "bg-purple-500",
+      label: "Award Winner",
+      description: "Industry recognition",
+      position: "left-1/2",
     },
     {
       id: 4,
-      icon: '🌱',
-      iconBg: 'bg-emerald-500',
-      label: 'Sustainability',
-      description: 'Eco-friendly practices',
-      position: 'left-1/6',
+      icon: "🌱",
+      iconBg: "bg-emerald-500",
+      label: "Sustainability",
+      description: "Eco-friendly practices",
+      position: "left-1/6",
     },
   ];
 
@@ -54,30 +57,30 @@ const AnimationTest: React.FC = () => {
     {
       icon: Calendar,
       value: 20,
-      suffix: '+',
-      label: 'Years of Excellence',
-      description: 'Leading the textile industry since 2002',
+      suffix: "+",
+      label: "Years of Excellence",
+      description: "Leading the textile industry since 2002",
     },
     {
       icon: Users,
       value: 1200,
-      suffix: '+',
-      label: 'Skilled Employees',
-      description: 'Dedicated professionals driving our success',
+      suffix: "+",
+      label: "Skilled Employees",
+      description: "Dedicated professionals driving our success",
     },
     {
       icon: Settings,
       value: 680,
-      suffix: '+',
-      label: 'Advanced Machines',
-      description: 'State-of-the-art equipment ensuring premium quality',
+      suffix: "+",
+      label: "Advanced Machines",
+      description: "State-of-the-art equipment ensuring premium quality",
     },
     {
       icon: Package,
       value: 360,
-      suffix: 'K+',
-      label: 'Annual Production',
-      description: 'Meeting global demand with efficiency',
+      suffix: "K+",
+      label: "Annual Production",
+      description: "Meeting global demand with efficiency",
     },
   ];
 
@@ -95,7 +98,7 @@ const AnimationTest: React.FC = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: 'spring', stiffness: 100, damping: 15 },
+      transition: { type: "spring", stiffness: 100, damping: 15 },
     },
   };
 
@@ -116,7 +119,9 @@ const AnimationTest: React.FC = () => {
 
         {/* Animated Counter Examples */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-4">Animated Counter - Simple Examples</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            Animated Counter - Simple Examples
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl font-bold text-primary-500 mb-2">
@@ -127,7 +132,12 @@ const AnimationTest: React.FC = () => {
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl font-bold text-primary-500 mb-2">
-                <AnimatedCounter to={1200} suffix="+" duration={2} delay={0.2} />
+                <AnimatedCounter
+                  to={1200}
+                  suffix="+"
+                  duration={2}
+                  delay={0.2}
+                />
               </div>
               <p className="text-neutral-600">Skilled Employees</p>
             </div>
@@ -144,21 +154,37 @@ const AnimationTest: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter to={360} suffix="K+" duration={2.5} delay={0.4} />
+                <AnimatedCounter
+                  to={360}
+                  suffix="K+"
+                  duration={2.5}
+                  delay={0.4}
+                />
               </div>
               <p className="text-blue-100">Annual Production</p>
             </div>
 
             <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter to={45.5} decimals={1} prefix="৳" duration={2} delay={0.5} />
+                <AnimatedCounter
+                  to={45.5}
+                  decimals={1}
+                  prefix="৳"
+                  duration={2}
+                  delay={0.5}
+                />
               </div>
               <p className="text-green-100">Stock Price</p>
             </div>
 
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter to={100} suffix="%" duration={2.5} delay={0.6} />
+                <AnimatedCounter
+                  to={100}
+                  suffix="%"
+                  duration={2.5}
+                  delay={0.6}
+                />
               </div>
               <p className="text-purple-100">Satisfaction Rate</p>
             </div>
@@ -178,9 +204,12 @@ const AnimationTest: React.FC = () => {
             className="text-center mb-8"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose <span className="text-primary-500">Kattali Textile Limited</span>
+              Why Choose{" "}
+              <span className="text-primary-500">Kattali Textile Limited</span>
             </h2>
-            <p className="text-xl text-neutral-600">Numbers that speak for our excellence</p>
+            <p className="text-xl text-neutral-600">
+              Numbers that speak for our excellence
+            </p>
           </motion.div>
 
           <motion.div
@@ -210,7 +239,7 @@ const AnimationTest: React.FC = () => {
                     transition={{
                       duration: 4,
                       repeat: Infinity,
-                      repeatType: 'reverse',
+                      repeatType: "reverse",
                     }}
                   >
                     <stat.icon className="w-8 h-8 text-primary-600" />
@@ -252,7 +281,7 @@ const AnimationTest: React.FC = () => {
                           delay: index * 0.1 + 0.7,
                           duration: 1.5,
                         }}
-                        style={{ transformOrigin: 'left' }}
+                        style={{ transformOrigin: "left" }}
                       />
                     </motion.div>
                   )}
@@ -288,7 +317,9 @@ const AnimationTest: React.FC = () => {
 
         {/* Staggered Scroll Animations */}
         <section className="mb-16 space-y-12">
-          <h2 className="text-2xl font-bold mb-4">Staggered Scroll Animations</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            Staggered Scroll Animations
+          </h2>
           <motion.div
             ref={ref}
             animate={controls}
@@ -316,22 +347,29 @@ const AnimationTest: React.FC = () => {
               GSAP Timeline <span className="text-primary-500">Animation</span>
             </h2>
             <p className="text-center text-neutral-600 mb-8">
-              Animated timeline showcasing company milestones with smooth transitions
+              Animated timeline showcasing company milestones with smooth
+              transitions
             </p>
 
             {/* Use Case: Company Journey Timeline */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div>
-                <h3 className="text-xl font-semibold mb-4">Use Case: Timeline Animation</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Use Case: Timeline Animation
+                </h3>
                 <div className="bg-white rounded-lg p-6 shadow-md">
                   <ul className="space-y-3 text-sm text-neutral-700">
                     <li className="flex items-start">
                       <span className="text-primary-500 mr-2">•</span>
-                      <span>Animate elements in sequence with precise timing control</span>
+                      <span>
+                        Animate elements in sequence with precise timing control
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-500 mr-2">•</span>
-                      <span>Coordinate multiple animations with nested timelines</span>
+                      <span>
+                        Coordinate multiple animations with nested timelines
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-500 mr-2">•</span>
@@ -339,14 +377,19 @@ const AnimationTest: React.FC = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="text-primary-500 mr-2">•</span>
-                      <span>Perfect for storytelling, process flows, or journey animations</span>
+                      <span>
+                        Perfect for storytelling, process flows, or journey
+                        animations
+                      </span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-4">Animation Sequence</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Animation Sequence
+                </h3>
                 <div className="bg-white rounded-lg p-6 shadow-md">
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center">
@@ -359,7 +402,9 @@ const AnimationTest: React.FC = () => {
                     </div>
                     <div className="flex items-center">
                       <span className="w-16 text-neutral-500">~0.3s</span>
-                      <span>First text appears (0.2s before icon finishes)</span>
+                      <span>
+                        First text appears (0.2s before icon finishes)
+                      </span>
                     </div>
                     <div className="flex items-center">
                       <span className="w-16 text-neutral-500">~1.6s</span>
@@ -377,7 +422,7 @@ const AnimationTest: React.FC = () => {
             <GSAPTimeline autoPlay={true} startPosition={0} timeScale={0.8}>
               <div
                 className="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden"
-                style={{ height: '500px', minWidth: '100%' }}
+                style={{ height: "500px", minWidth: "100%" }}
               >
                 {/* Scrubber element - moves horizontally */}
                 <div className="scrubber w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg absolute left-0 top-1/2 -translate-y-1/2 z-20 shadow-xl">
@@ -439,8 +484,11 @@ const AnimationTest: React.FC = () => {
                 Timeline animation starts automatically from position 0.0s
               </p>
               <p className="text-sm text-neutral-500">
-                Use <code className="bg-neutral-100 px-2 py-1 rounded">startPosition</code> prop to
-                begin from a different point
+                Use{" "}
+                <code className="bg-neutral-100 px-2 py-1 rounded">
+                  startPosition
+                </code>{" "}
+                prop to begin from a different point
               </p>
             </div>
           </div>

@@ -1,9 +1,9 @@
 /* Import IR styles */
 /* Note: Fonts are loaded via <link> in index.html for better performance */
-@import './styles/ir.css';
+@import "./styles/ir.css";
 
 /* Import tw-animate-css for animations */
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @tailwind base;
 @tailwind components;
@@ -14,7 +14,9 @@
   --strip-height: 15px;
   --secondary-nav-height: 110px;
   --ticker-height: 38px;
-  --sticky-header-height: calc(var(--strip-height) + var(--secondary-nav-height));
+  --sticky-header-height: calc(
+    var(--strip-height) + var(--secondary-nav-height)
+  );
   --evgRootFontSize: 10px;
   --evgPrimaryColor: #06607f;
   --evgAltColor: #6f3a8f;
@@ -34,7 +36,9 @@
   /* Strip + main row (matches desktop corporate bar; ticker is additional when present) */
   /* Short bar; typography stays large via Header — icons/padding shrink to fit */
   --mobile-nav-height: 58px;
-  --site-header-height-mobile: calc(var(--strip-height) + var(--mobile-nav-height));
+  --site-header-height-mobile: calc(
+    var(--strip-height) + var(--mobile-nav-height)
+  );
   --site-header-height-desktop: var(--sticky-header-height);
   /* Home: strip + nav + announcement ticker (fixed below header chrome) */
   --site-header-height-mobile-with-ticker: calc(
@@ -231,8 +235,8 @@
 
   html {
     font-size: var(--evgRootFontSize, 10px);
-    font-family: 'Macys Sans', 'Inter', sans-serif;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-family: "Macys Sans", "Inter", sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-variant-numeric: oldstyle-nums;
     /* Mobile viewport height fix - set by useViewportHeight hook */
     /* Fallback to 1vh if --vh is not set */
@@ -262,8 +266,8 @@
     color: var(--evgBodyTextColor);
     @apply antialiased;
     font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+      "rlig" 1,
+      "calt" 1;
   }
 
   /* Enhanced heading styles */
@@ -273,7 +277,7 @@
   h4,
   h5,
   h6 {
-    font-feature-settings: 'ss01', 'ss02';
+    font-feature-settings: "ss01", "ss02";
     letter-spacing: -0.025em;
   }
 
@@ -334,31 +338,31 @@
 /* Custom utility classes for background images */
 @layer utilities {
   .bg-hero-sustainability {
-    background-image: url('/assets/images/hero/hero-sustainability.webp');
+    background-image: url("/assets/images/hero/hero-sustainability.webp");
   }
 
   .bg-hero-about {
-    background-image: url('/assets/images/hero/hero-global.webp');
+    background-image: url("/assets/images/hero/hero-global.webp");
   }
 
   .bg-hero-contact {
-    background-image: url('/assets/images/hero/hero-sustainability.webp');
+    background-image: url("/assets/images/hero/hero-sustainability.webp");
   }
 
   .bg-hero-products {
-    background-image: url('/assets/images/hero/hero-global.webp');
+    background-image: url("/assets/images/hero/hero-global.webp");
   }
 
   .bg-hero-manufacturing {
-    background-image: url('/assets/images/hero/hero-main.webp');
+    background-image: url("/assets/images/hero/hero-main.webp");
   }
 
   .bg-hero-gallery {
-    background-image: url('/assets/images/hero/hero-main.webp');
+    background-image: url("/assets/images/hero/hero-main.webp");
   }
 
   .bg-investor-hero {
-    background-image: url('/assets/images/hero/hero-investor.webp');
+    background-image: url("/assets/images/hero/hero-investor.webp");
   }
 
   /* Progress bar utilities */
@@ -640,7 +644,7 @@
   }
 
   .metric-display {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     font-variant-numeric: tabular-nums;
     font-weight: 800;
     line-height: 0.95;
@@ -696,7 +700,7 @@
 
 /* Contact Page Styles */
 .contact-bg {
-  background-image: url('/assets/images/hero/hero-main.webp');
+  background-image: url("/assets/images/hero/hero-main.webp");
 }
 
 .contact-vertical-text {
@@ -742,8 +746,8 @@
   --gmpx-color-outline: #e0e0e0;
   --gmpx-fixed-panel-width-row-layout: 28.5em;
   --gmpx-fixed-panel-height-column-layout: 65%;
-  --gmpx-font-family-base: 'Poppins', system-ui, sans-serif;
-  --gmpx-font-family-headings: 'Poppins', system-ui, sans-serif;
+  --gmpx-font-family-base: "Poppins", system-ui, sans-serif;
+  --gmpx-font-family-headings: "Poppins", system-ui, sans-serif;
   --gmpx-font-size-base: 0.875rem;
   --gmpx-hours-color-open: #188038;
   --gmpx-hours-color-closed: #d50000;

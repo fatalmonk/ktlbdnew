@@ -1,26 +1,30 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Minimize2 } from 'lucide-react';
-import { ChatMessage, QUICK_ACTIONS, getResponse } from '../../lib/chatbot/responses';
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, X, Send, Minimize2 } from "lucide-react";
+import {
+  ChatMessage,
+  QUICK_ACTIONS,
+  getResponse,
+} from "../../lib/chatbot/responses";
 
 const ChatbotWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      id: '1',
-      text: 'Hello! Welcome to Kattali Textile Ltd. How can I help you today?',
-      sender: 'bot',
+      id: "1",
+      text: "Hello! Welcome to Kattali Textile Ltd. How can I help you today?",
+      sender: "bot",
       timestamp: new Date(),
     },
   ]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [unreadCount, setUnreadCount] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -41,19 +45,19 @@ const ChatbotWidget = () => {
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       text: messageText,
-      sender: 'user',
+      sender: "user",
       timestamp: new Date(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInputValue('');
+    setInputValue("");
 
     // Simulate bot thinking delay
     setTimeout(() => {
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: getResponse(messageText),
-        sender: 'bot',
+        sender: "bot",
         timestamp: new Date(),
       };
 
@@ -67,9 +71,9 @@ const ChatbotWidget = () => {
   };
 
   const handleQuickAction = (action: (typeof QUICK_ACTIONS)[0]) => {
-    if (action.action === 'navigate') {
+    if (action.action === "navigate") {
       window.location.href = action.value;
-    } else if (action.action === 'message') {
+    } else if (action.action === "message") {
       handleSendMessage(action.value);
     }
   };
@@ -125,7 +129,7 @@ const ChatbotWidget = () => {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             className="fixed bottom-24 right-6 z-50 bg-white rounded-lg shadow-2xl w-96 max-w-[calc(100vw-3rem)] overflow-hidden"
-            style={{ height: isMinimized ? 'auto' : '32rem' }}
+            style={{ height: isMinimized ? "auto" : "32rem" }}
           >
             {/* Header */}
             <div className="bg-blue-600 text-white p-4 flex items-center justify-between">
@@ -136,7 +140,9 @@ const ChatbotWidget = () => {
                 <div>
                   <h3 className="font-semibold">KTL Support</h3>
                   <p className="text-xs text-blue-100">
-                    {isBusinessHours() ? 'Online' : "Offline - We'll respond soon"}
+                    {isBusinessHours()
+                      ? "Online"
+                      : "Offline - We'll respond soon"}
                   </p>
                 </div>
               </div>
@@ -163,22 +169,22 @@ const ChatbotWidget = () => {
                   {messages.map((message) => (
                     <div
                       key={message.id}
-                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                      className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
                         className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                          message.sender === 'user'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-white text-neutral-900 shadow'
+                          message.sender === "user"
+                            ? "bg-blue-600 text-white"
+                            : "bg-white text-neutral-900 shadow"
                         }`}
                       >
                         <p className="text-sm">{message.text}</p>
                         <p
-                          className={`text-xs mt-1 ${message.sender === 'user' ? 'text-blue-100' : 'text-neutral-500'}`}
+                          className={`text-xs mt-1 ${message.sender === "user" ? "text-blue-100" : "text-neutral-500"}`}
                         >
-                          {message.timestamp.toLocaleTimeString('en-US', {
-                            hour: '2-digit',
-                            minute: '2-digit',
+                          {message.timestamp.toLocaleTimeString("en-US", {
+                            hour: "2-digit",
+                            minute: "2-digit",
                           })}
                         </p>
                       </div>
@@ -190,7 +196,9 @@ const ChatbotWidget = () => {
                 {/* Quick Actions */}
                 {messages.length === 1 && (
                   <div className="p-4 border-t border-neutral-200 bg-white">
-                    <p className="text-xs text-neutral-600 mb-2">Quick actions:</p>
+                    <p className="text-xs text-neutral-600 mb-2">
+                      Quick actions:
+                    </p>
                     <div className="grid grid-cols-2 gap-2">
                       {QUICK_ACTIONS.map((action) => (
                         <button
@@ -231,7 +239,8 @@ const ChatbotWidget = () => {
                     </button>
                   </form>
                   <p className="text-xs text-neutral-500 mt-2 text-center">
-                    Typical response time: {isBusinessHours() ? 'Minutes' : '24 hours'}
+                    Typical response time:{" "}
+                    {isBusinessHours() ? "Minutes" : "24 hours"}
                   </p>
                 </div>
               </>

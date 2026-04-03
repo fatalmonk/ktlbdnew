@@ -1,43 +1,49 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { GOOGLE_MAPS_LOCATOR_URL } from '../../lib/constants';
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { GOOGLE_MAPS_LOCATOR_URL } from "../../lib/constants";
 import {
   LOCATOR_PLUS_BASE,
   type LocatorPlusConfiguration,
-} from '../../lib/locatorQuickBuilderConfig';
+} from "../../lib/locatorQuickBuilderConfig";
 
-const ECL_VERSION = '0.6.11';
+const ECL_VERSION = "0.6.11";
 const ECL_SCRIPT = `https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/${ECL_VERSION}/index.min.js`;
 
 let eclLoadPromise: Promise<void> | null = null;
 
 function loadExtendedComponentLibrary(): Promise<void> {
-  if (typeof window === 'undefined') return Promise.resolve();
-  if (customElements.get('gmpx-store-locator')) return Promise.resolve();
+  if (typeof window === "undefined") return Promise.resolve();
+  if (customElements.get("gmpx-store-locator")) return Promise.resolve();
   if (eclLoadPromise) return eclLoadPromise;
 
   eclLoadPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${ECL_SCRIPT}"]`);
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${ECL_SCRIPT}"]`,
+    );
     if (existing) {
-      if (customElements.get('gmpx-store-locator')) {
+      if (customElements.get("gmpx-store-locator")) {
         resolve();
         return;
       }
-      existing.addEventListener('load', () => resolve());
-      existing.addEventListener('error', () => {
+      existing.addEventListener("load", () => resolve());
+      existing.addEventListener("error", () => {
         eclLoadPromise = null;
-        reject(new Error('Google Maps Extended Component Library failed to load'));
+        reject(
+          new Error("Google Maps Extended Component Library failed to load"),
+        );
       });
       return;
     }
 
-    const script = document.createElement('script');
-    script.type = 'module';
+    const script = document.createElement("script");
+    script.type = "module";
     script.src = ECL_SCRIPT;
     script.async = true;
     script.onload = () => resolve();
     script.onerror = () => {
       eclLoadPromise = null;
-      reject(new Error('Google Maps Extended Component Library failed to load'));
+      reject(
+        new Error("Google Maps Extended Component Library failed to load"),
+      );
     };
     document.head.appendChild(script);
   });
@@ -55,18 +61,18 @@ interface StoreLocatorPlusProps {
  * Falls back to the classic embed iframe when `VITE_GOOGLE_MAPS_API_KEY` is unset or init fails.
  */
 const StoreLocatorPlus: React.FC<StoreLocatorPlusProps> = ({
-  className = '',
-  title = 'Kattali Textile — location map',
+  className = "",
+  title = "Kattali Textile — location map",
 }) => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim();
-  const mapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID?.trim() ?? '';
+  const mapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID?.trim() ?? "";
   const locatorRef = useRef<HTMLElement | null>(null);
   const apiLoaderRef = useRef<HTMLElement | null>(null);
   const [useIframeFallback, setUseIframeFallback] = useState(false);
 
   useLayoutEffect(() => {
     if (!apiKey || !apiLoaderRef.current) return;
-    apiLoaderRef.current.setAttribute('key', apiKey);
+    apiLoaderRef.current.setAttribute("key", apiKey);
   }, [apiKey]);
 
   useEffect(() => {
@@ -77,15 +83,17 @@ const StoreLocatorPlus: React.FC<StoreLocatorPlusProps> = ({
     const run = async (): Promise<void> => {
       try {
         await loadExtendedComponentLibrary();
-        await customElements.whenDefined('gmpx-store-locator');
+        await customElements.whenDefined("gmpx-store-locator");
         await new Promise<void>((r) => requestAnimationFrame(() => r()));
         if (cancelled) return;
 
         const el = locatorRef.current;
         const configure = (
-          el as HTMLElement & { configureFromQuickBuilder?: (c: LocatorPlusConfiguration) => void }
+          el as HTMLElement & {
+            configureFromQuickBuilder?: (c: LocatorPlusConfiguration) => void;
+          }
         ).configureFromQuickBuilder;
-        if (typeof configure !== 'function') {
+        if (typeof configure !== "function") {
           setUseIframeFallback(true);
           return;
         }
@@ -111,7 +119,7 @@ const StoreLocatorPlus: React.FC<StoreLocatorPlusProps> = ({
   }, [apiKey, mapId, useIframeFallback]);
 
   const frameClass =
-    'h-[26rem] min-h-[26rem] w-full md:h-[36rem] md:min-h-[36rem] lg:h-[min(58vh,44rem)] lg:min-h-[min(58vh,44rem)]';
+    "h-[26rem] min-h-[26rem] w-full md:h-[36rem] md:min-h-[36rem] lg:h-[min(58vh,44rem)] lg:min-h-[min(58vh,44rem)]";
 
   if (!apiKey || useIframeFallback) {
     return (
@@ -157,8 +165,15 @@ const StoreLocatorPlus: React.FC<StoreLocatorPlusProps> = ({
           --gmpx-rating-color-empty: #e0e0e0;
         }
       `}</style>
-      <gmpx-api-loader ref={apiLoaderRef} solution-channel="GMP_QB_locatorplus_v11_cABD" />
-      <gmpx-store-locator ref={locatorRef} map-id={mapId} className="min-h-0 flex-1" />
+      <gmpx-api-loader
+        ref={apiLoaderRef}
+        solution-channel="GMP_QB_locatorplus_v11_cABD"
+      />
+      <gmpx-store-locator
+        ref={locatorRef}
+        map-id={mapId}
+        className="min-h-0 flex-1"
+      />
     </div>
   );
 };

@@ -1,17 +1,19 @@
 /* eslint-disable react-refresh/only-export-components -- factory helpers export alongside lazy icon components */
-import React, { Suspense, useEffect, useRef, useState } from 'react';
-import type { LucideIcon } from 'lucide-react';
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 
 /**
  * Creates a lazy-loaded Lucide icon component
  * @param iconName - The name of the Lucide icon (e.g., 'Menu', 'X', 'ArrowRight')
  * @returns A React lazy component for the icon
  */
-export function createLazyIcon(iconName: string): React.LazyExoticComponent<LucideIcon> {
+export function createLazyIcon(
+  iconName: string,
+): React.LazyExoticComponent<LucideIcon> {
   return React.lazy(() =>
-    import('lucide-react').then((module) => ({
+    import("lucide-react").then((module) => ({
       default: (module as Record<string, LucideIcon>)[iconName] as LucideIcon,
-    }))
+    })),
   );
 }
 
@@ -19,7 +21,9 @@ export function createLazyIcon(iconName: string): React.LazyExoticComponent<Luci
  * Creates a lazy icon component that can be used as a component (for passing as props)
  * This is useful when you need to pass icons to other components
  */
-export function createLazyIconComponent(iconName: string): React.LazyExoticComponent<LucideIcon> {
+export function createLazyIconComponent(
+  iconName: string,
+): React.LazyExoticComponent<LucideIcon> {
   return createLazyIcon(iconName);
 }
 
@@ -37,17 +41,25 @@ interface LazyIconProps {
  * A component that lazy-loads a Lucide icon only when it becomes visible
  * Uses IntersectionObserver to detect visibility
  */
-export const LazyIcon: React.FC<LazyIconProps> = ({ iconName, className, size, ...props }) => {
+export const LazyIcon: React.FC<LazyIconProps> = ({
+  iconName,
+  className,
+  size,
+  ...props
+}) => {
   const [shouldLoad, setShouldLoad] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const IconComponent = React.useMemo(() => createLazyIcon(iconName), [iconName]);
+  const IconComponent = React.useMemo(
+    () => createLazyIcon(iconName),
+    [iconName],
+  );
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     // If IntersectionObserver is not supported, load immediately
-    if (!('IntersectionObserver' in window)) {
+    if (!("IntersectionObserver" in window)) {
       setShouldLoad(true);
       return;
     }
@@ -63,9 +75,9 @@ export const LazyIcon: React.FC<LazyIconProps> = ({ iconName, className, size, .
         });
       },
       {
-        rootMargin: '50px', // Start loading 50px before the icon enters viewport
+        rootMargin: "50px", // Start loading 50px before the icon enters viewport
         threshold: 0.01,
-      }
+      },
     );
 
     observer.observe(container);
@@ -81,9 +93,9 @@ export const LazyIcon: React.FC<LazyIconProps> = ({ iconName, className, size, .
       ref={containerRef}
       className={className}
       style={{
-        width: typeof size === 'number' ? size : size || 24,
-        height: typeof size === 'number' ? size : size || 24,
-        display: 'inline-block',
+        width: typeof size === "number" ? size : size || 24,
+        height: typeof size === "number" ? size : size || 24,
+        display: "inline-block",
       }}
       aria-hidden="true"
     />
@@ -100,9 +112,9 @@ export const LazyIcon: React.FC<LazyIconProps> = ({ iconName, className, size, .
           <div
             className={className}
             style={{
-              width: typeof size === 'number' ? size : size || 24,
-              height: typeof size === 'number' ? size : size || 24,
-              display: 'inline-block',
+              width: typeof size === "number" ? size : size || 24,
+              height: typeof size === "number" ? size : size || 24,
+              display: "inline-block",
             }}
             aria-hidden="true"
           />
@@ -120,7 +132,9 @@ export const LazyIcon: React.FC<LazyIconProps> = ({ iconName, className, size, .
  * @param iconName - The name of the Lucide icon
  * @returns A lazy-loaded icon component
  */
-export function useLazyIcon(iconName: string): React.LazyExoticComponent<LucideIcon> {
+export function useLazyIcon(
+  iconName: string,
+): React.LazyExoticComponent<LucideIcon> {
   return React.useMemo(() => createLazyIcon(iconName), [iconName]);
 }
 
@@ -130,7 +144,7 @@ export function useLazyIcon(iconName: string): React.LazyExoticComponent<LucideI
  * Use this for icons in data arrays that are passed as component props
  */
 export function createLazyIconWrapper(
-  iconName: string
+  iconName: string,
 ): React.FC<React.ComponentProps<LucideIcon>> {
   const LazyIcon = createLazyIcon(iconName);
 
@@ -140,9 +154,11 @@ export function createLazyIconWrapper(
         <div
           className={props.className}
           style={{
-            width: typeof props.size === 'number' ? props.size : props.size || 24,
-            height: typeof props.size === 'number' ? props.size : props.size || 24,
-            display: 'inline-block',
+            width:
+              typeof props.size === "number" ? props.size : props.size || 24,
+            height:
+              typeof props.size === "number" ? props.size : props.size || 24,
+            display: "inline-block",
           }}
           aria-hidden="true"
         />
@@ -159,7 +175,7 @@ export function createLazyIconWrapper(
  */
 export async function preloadIcon(iconName: string): Promise<void> {
   try {
-    const module = await import('lucide-react');
+    const module = await import("lucide-react");
     // Access the icon to ensure it's loaded
     (module as Record<string, LucideIcon>)[iconName];
   } catch (error) {

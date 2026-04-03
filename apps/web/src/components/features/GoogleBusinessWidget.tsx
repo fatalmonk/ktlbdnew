@@ -1,16 +1,16 @@
-import React, { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const MapPin = createLazyIcon('MapPin');
-const Star = createLazyIcon('Star');
-const ExternalLink = createLazyIcon('ExternalLink');
-const Globe = createLazyIcon('Globe');
+const MapPin = createLazyIcon("MapPin");
+const Star = createLazyIcon("Star");
+const ExternalLink = createLazyIcon("ExternalLink");
+const Globe = createLazyIcon("Globe");
 import {
   GOOGLE_MAPS_VIEW_URL,
   GOOGLE_BUSINESS_PROFILE_URL,
   GOOGLE_BUSINESS_REVIEW_URL,
   COMPANY_COORDINATES,
-} from '../../lib/constants';
+} from "../../lib/constants";
 
 interface GoogleBusinessWidgetProps {
   className?: string;
@@ -20,7 +20,7 @@ interface GoogleBusinessWidgetProps {
 }
 
 const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
-  className = '',
+  className = "",
   showMap = true,
   showReviews = true,
   showDirections = true,
@@ -48,7 +48,9 @@ const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
               <Suspense fallback={<div className="w-4 h-4" />}>
                 <MapPin className="w-4 h-4 text-blue-600" />
               </Suspense>
-              <span className="text-neutral-700 font-medium">View on Google Maps</span>
+              <span className="text-neutral-700 font-medium">
+                View on Google Maps
+              </span>
             </div>
             <Suspense fallback={<div className="w-4 h-4" />}>
               <ExternalLink className="w-4 h-4 text-neutral-400 group-hover:text-neutral-600" />
@@ -67,7 +69,9 @@ const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
               <Suspense fallback={<div className="w-4 h-4" />}>
                 <MapPin className="w-4 h-4 text-green-600" />
               </Suspense>
-              <span className="text-neutral-700 font-medium">Get Directions</span>
+              <span className="text-neutral-700 font-medium">
+                Get Directions
+              </span>
             </div>
             <Suspense fallback={<div className="w-4 h-4" />}>
               <ExternalLink className="w-4 h-4 text-neutral-400 group-hover:text-neutral-600" />
@@ -86,7 +90,9 @@ const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
               <Suspense fallback={<div className="w-4 h-4" />}>
                 <Star className="w-4 h-4 text-yellow-500" />
               </Suspense>
-              <span className="text-neutral-700 font-medium">Leave a Review</span>
+              <span className="text-neutral-700 font-medium">
+                Leave a Review
+              </span>
             </div>
             <Suspense fallback={<div className="w-4 h-4" />}>
               <ExternalLink className="w-4 h-4 text-neutral-400 group-hover:text-neutral-600" />
@@ -104,7 +110,9 @@ const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
             <Suspense fallback={<div className="w-4 h-4" />}>
               <Globe className="w-4 h-4 text-purple-600" />
             </Suspense>
-            <span className="text-neutral-700 font-medium">View Business Profile</span>
+            <span className="text-neutral-700 font-medium">
+              View Business Profile
+            </span>
           </div>
           <Suspense fallback={<div className="w-4 h-4" />}>
             <ExternalLink className="w-4 h-4 text-neutral-400 group-hover:text-neutral-600" />

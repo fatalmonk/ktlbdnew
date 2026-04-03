@@ -1,10 +1,10 @@
-'use client';
-import { useEffect, useState } from 'react';
-import type { Price } from '../types';
+"use client";
+import { useEffect, useState } from "react";
+import type { Price } from "../types";
 export default function MetricBand() {
   const [p, setP] = useState<Price | null>(null);
   useEffect(() => {
-    fetch('/data/ir/price.json')
+    fetch("/data/ir/price.json")
       .then((r) => r.json())
       .then(setP)
       .catch(() => {});
@@ -32,15 +32,17 @@ export default function MetricBand() {
             <div className="text-[64px] md:text-[120px] leading-[0.95] font-extrabold tracking-[-0.01em] text-[var(--ir-text)]">
               {p ? (
                 <>
-                  <span className="align-top text-3xl mr-1">{p.currency === 'USD' ? '$' : ''}</span>
+                  <span className="align-top text-3xl mr-1">
+                    {p.currency === "USD" ? "$" : ""}
+                  </span>
                   {p.value.toFixed(2)}
                 </>
               ) : (
-                '—'
+                "—"
               )}
             </div>
             <div className="mt-2 text-sm text-[var(--ir-muted)]">
-              {p?.symbol ?? '—'} · {p?.asOf ?? ''}
+              {p?.symbol ?? "—"} · {p?.asOf ?? ""}
             </div>
           </div>
         </div>

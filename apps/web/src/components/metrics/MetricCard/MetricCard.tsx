@@ -1,12 +1,12 @@
-import { useState, Suspense } from 'react';
-import { motion } from 'framer-motion';
-import { createLazyIcon } from '@/lib/lucide-icons';
-import { Metric } from '../../../types/metrics';
-import AnimatedCounter from '../../animation/AnimatedCounter';
+import { useState, Suspense } from "react";
+import { motion } from "framer-motion";
+import { createLazyIcon } from "@/lib/lucide-icons";
+import { Metric } from "../../../types/metrics";
+import AnimatedCounter from "../../animation/AnimatedCounter";
 
-const TrendingUp = createLazyIcon('TrendingUp');
-const TrendingDown = createLazyIcon('TrendingDown');
-const Info = createLazyIcon('Info');
+const TrendingUp = createLazyIcon("TrendingUp");
+const TrendingDown = createLazyIcon("TrendingDown");
+const Info = createLazyIcon("Info");
 
 interface MetricCardProps {
   metric: Metric;
@@ -14,7 +14,11 @@ interface MetricCardProps {
   compact?: boolean;
 }
 
-export default function MetricCard({ metric, index = 0, compact = false }: MetricCardProps) {
+export default function MetricCard({
+  metric,
+  index = 0,
+  compact = false,
+}: MetricCardProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const Icon = metric.icon;
 
@@ -22,7 +26,7 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="relative bg-white rounded-xl p-4 md:p-6 shadow-lg hover:shadow-2xl 
@@ -33,7 +37,7 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
         className="absolute inset-0 opacity-0 group-hover:opacity-10 
           transition-opacity duration-300"
         style={{
-          background: `linear-gradient(135deg, ${metric.color || '#3B82F6'}40, transparent)`,
+          background: `linear-gradient(135deg, ${metric.color || "#3B82F6"}40, transparent)`,
         }}
       />
 
@@ -46,8 +50,8 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
               <div
                 className="p-2 md:p-3 rounded-lg flex-shrink-0"
                 style={{
-                  backgroundColor: `${metric.color || '#3B82F6'}20`,
-                  color: metric.color || '#3B82F6',
+                  backgroundColor: `${metric.color || "#3B82F6"}20`,
+                  color: metric.color || "#3B82F6",
                 }}
               >
                 <Icon size={20} className="md:w-6 md:h-6" />
@@ -77,13 +81,15 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
             <div
               className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs 
                 font-bold flex-shrink-0 ${
-                  metric.changeType === 'increase'
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-red-100 text-red-700'
+                  metric.changeType === "increase"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
                 }`}
             >
-              <Suspense fallback={<div className="w-3 h-3 md:w-3.5 md:h-3.5" />}>
-                {metric.changeType === 'increase' ? (
+              <Suspense
+                fallback={<div className="w-3 h-3 md:w-3.5 md:h-3.5" />}
+              >
+                {metric.changeType === "increase" ? (
                   <TrendingUp size={12} className="md:w-3.5 md:h-3.5" />
                 ) : (
                   <TrendingDown size={12} className="md:w-3.5 md:h-3.5" />
@@ -100,7 +106,7 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
             value={metric.value}
             format={metric.format}
             unit={metric.unit}
-            decimals={metric.format === 'percentage' ? 2 : 0}
+            decimals={metric.format === "percentage" ? 2 : 0}
           />
         </div>
 
@@ -125,7 +131,7 @@ export default function MetricCard({ metric, index = 0, compact = false }: Metri
         transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
         className="absolute -bottom-4 -right-4 w-24 h-24 md:w-32 md:h-32 rounded-full"
         style={{
-          backgroundColor: metric.color || '#3B82F6',
+          backgroundColor: metric.color || "#3B82F6",
         }}
       />
     </motion.div>

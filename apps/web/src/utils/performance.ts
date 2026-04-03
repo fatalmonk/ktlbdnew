@@ -21,7 +21,7 @@ export const resetLoadTimeMeasurement = (): void => {
  * Uses performance.now() for reliable timing instead of marks/measures
  */
 export const measureLoadTime = (): void => {
-  if (typeof window === 'undefined' || !window.performance) return;
+  if (typeof window === "undefined" || !window.performance) return;
 
   // Prevent multiple measurements
   if (hasMeasured) return;
@@ -40,19 +40,19 @@ export const measureLoadTime = (): void => {
 
       // Validate the measurement
       if (isNaN(loadTime) || loadTime < 0 || loadTime > 60000) {
-        console.warn('Invalid load time measurement:', loadTime);
+        console.warn("Invalid load time measurement:", loadTime);
         return;
       }
 
       hasMeasured = true;
-      console.log('Load:', loadTime, 'ms');
+      console.log("Load:", loadTime, "ms");
 
       // Send to analytics if available
-      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-        window.gtag('event', 'page_load_time', {
-          event_category: 'Performance',
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "page_load_time", {
+          event_category: "Performance",
           value: loadTime,
-          event_label: 'Initial Load',
+          event_label: "Initial Load",
           non_interaction: true,
         });
       }
@@ -63,16 +63,16 @@ export const measureLoadTime = (): void => {
 export const measurePerformance = (
   name: string,
   startMark: string,
-  endMark: string
+  endMark: string,
 ): number | null => {
-  if (typeof window === 'undefined' || !window.performance) return null;
+  if (typeof window === "undefined" || !window.performance) return null;
 
   try {
     const start = performance.getEntriesByName(startMark)[0];
     const end = performance.getEntriesByName(endMark)[0];
 
     if (!start || !end || isNaN(start.startTime) || isNaN(end.startTime)) {
-      console.warn('Invalid marks for:', name, { start, end });
+      console.warn("Invalid marks for:", name, { start, end });
       return null;
     }
 
@@ -80,7 +80,7 @@ export const measurePerformance = (
     const measure = performance.getEntriesByName(name)[0];
 
     if (!measure || isNaN(measure.duration) || measure.duration < 0) {
-      console.warn('Invalid measure:', name, measure);
+      console.warn("Invalid measure:", name, measure);
       return null;
     }
 
@@ -92,18 +92,18 @@ export const measurePerformance = (
 };
 
 export const markPerformance = (name: string): void => {
-  if (typeof window !== 'undefined' && window.performance) {
+  if (typeof window !== "undefined" && window.performance) {
     performance.mark(name);
   }
 };
 
 export const getPerformanceMeasures = (name: string): PerformanceEntry[] => {
-  if (typeof window === 'undefined' || !window.performance) return [];
+  if (typeof window === "undefined" || !window.performance) return [];
   return performance.getEntriesByName(name);
 };
 
 export const clearPerformanceMarks = (): void => {
-  if (typeof window !== 'undefined' && window.performance) {
+  if (typeof window !== "undefined" && window.performance) {
     performance.clearMarks();
     performance.clearMeasures();
   }

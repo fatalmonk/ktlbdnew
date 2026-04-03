@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import React from "react";
+import { motion, MotionValue } from "framer-motion";
 
 interface ParallaxLayerProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ interface ParallaxLayerProps {
 
 const ParallaxLayer: React.FC<ParallaxLayerProps> = ({
   children,
-  className = '',
+  className = "",
   offset,
   scale,
   opacity,

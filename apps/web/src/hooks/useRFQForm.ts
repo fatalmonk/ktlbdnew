@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   RFQFormData,
   ProductSelection,
   RFQRequirements,
   CompanyInfo,
   ContactInfo,
-} from '../modules/rfq/types/rfq';
-import { RFQ_STORAGE_KEY, initialRFQFormData } from '../modules/rfq/data/rfq.config';
-import { isRFQStepValid } from '../modules/rfq/validation/rfq.validation';
+} from "../modules/rfq/types/rfq";
+import {
+  RFQ_STORAGE_KEY,
+  initialRFQFormData,
+} from "../modules/rfq/data/rfq.config";
+import { isRFQStepValid } from "../modules/rfq/validation/rfq.validation";
 import {
   safeLocalStorageGetItem,
   safeLocalStorageRemoveItem,
   safeLocalStorageSetItem,
-} from '../lib/storage/safeLocalStorage';
+} from "../lib/storage/safeLocalStorage";
 
 export const useRFQForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -26,7 +29,7 @@ export const useRFQForm = () => {
         const parsed = JSON.parse(saved);
         setFormData({ ...initialRFQFormData, ...parsed, attachments: [] }); // Don't restore files
       } catch (error) {
-        console.error('Failed to load saved form data:', error);
+        console.error("Failed to load saved form data:", error);
       }
     }
   }, []);

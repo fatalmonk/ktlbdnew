@@ -1,21 +1,21 @@
-import { Link } from 'react-router-dom';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { Link } from "react-router-dom";
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 import {
   COMPANY_EMAIL,
   GOOGLE_BUSINESS,
   SOCIAL_MEDIA,
   STOCK_EXCHANGES,
   ASSOCIATIONS,
-} from '../../../lib/constants';
-import { NAVIGATION_ITEMS } from '../../../modules/navigation/data/navigation';
+} from "../../../lib/constants";
+import { NAVIGATION_ITEMS } from "../../../modules/navigation/data/navigation";
 
-const Linkedin = createLazyIcon('Linkedin');
-const Facebook = createLazyIcon('Facebook');
-const Instagram = createLazyIcon('Instagram');
-const Mail = createLazyIcon('Mail');
-const MapPin = createLazyIcon('MapPin');
-const ExternalLink = createLazyIcon('ExternalLink');
+const Linkedin = createLazyIcon("Linkedin");
+const Facebook = createLazyIcon("Facebook");
+const Instagram = createLazyIcon("Instagram");
+const Mail = createLazyIcon("Mail");
+const MapPin = createLazyIcon("MapPin");
+const ExternalLink = createLazyIcon("ExternalLink");
 
 const pipe = (
   <span className="text-neutral-500 text-base sm:text-lg" aria-hidden>
@@ -108,7 +108,9 @@ const Footer = () => {
 
           {/* Google Business — row 3 col 1; mobile order 3 */}
           <div className="order-3 flex w-full max-w-2xl flex-col gap-6 border-t border-white/10 pt-12 lg:order-none lg:col-start-1 lg:row-start-3 lg:pt-12">
-            <p className="text-overline font-medium text-neutral-400">Google Business</p>
+            <p className="text-overline font-medium text-neutral-400">
+              Google Business
+            </p>
             <a
               href={GOOGLE_BUSINESS.headOffice.profileUrl}
               target="_blank"
@@ -116,13 +118,30 @@ const Footer = () => {
               className="group flex flex-col gap-1 text-body text-neutral-200 transition-colors hover:text-white"
             >
               <span className="flex min-w-0 items-center gap-3">
-                <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
-                  <MapPin className="h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
+                <Suspense
+                  fallback={
+                    <span
+                      className="inline-block h-6 w-6 shrink-0"
+                      aria-hidden
+                    />
+                  }
+                >
+                  <MapPin
+                    className="h-6 w-6 shrink-0 text-primary-400"
+                    strokeWidth={2}
+                  />
                 </Suspense>
                 <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">
                   Head Office
                 </span>
-                <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
+                <Suspense
+                  fallback={
+                    <span
+                      className="inline-block h-6 w-6 shrink-0"
+                      aria-hidden
+                    />
+                  }
+                >
                   <ExternalLink className="h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
                 </Suspense>
               </span>
@@ -137,13 +156,30 @@ const Footer = () => {
               className="group flex flex-col gap-1 text-body text-neutral-200 transition-colors hover:text-white"
             >
               <span className="flex min-w-0 items-center gap-3">
-                <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
-                  <MapPin className="h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
+                <Suspense
+                  fallback={
+                    <span
+                      className="inline-block h-6 w-6 shrink-0"
+                      aria-hidden
+                    />
+                  }
+                >
+                  <MapPin
+                    className="h-6 w-6 shrink-0 text-primary-400"
+                    strokeWidth={2}
+                  />
                 </Suspense>
                 <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">
                   Production facility
                 </span>
-                <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
+                <Suspense
+                  fallback={
+                    <span
+                      className="inline-block h-6 w-6 shrink-0"
+                      aria-hidden
+                    />
+                  }
+                >
                   <ExternalLink className="h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
                 </Suspense>
               </span>

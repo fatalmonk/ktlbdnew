@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface UseScrollAnimationOptions {
   threshold?: number;
@@ -13,7 +13,7 @@ interface UseScrollAnimationOptions {
  * @returns Object containing ref to attach to element and isVisible state
  */
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
-  const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options;
+  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true } = options;
 
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +33,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
       {
         threshold,
         rootMargin,
-      }
+      },
     );
 
     const currentRef = ref.current;
@@ -56,23 +56,28 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
  */
 export const getAnimationClass = (
   isVisible: boolean,
-  animationType: 'fade' | 'slide-up' | 'slide-left' | 'slide-right' | 'scale' = 'fade',
-  delay: number = 0
+  animationType:
+    | "fade"
+    | "slide-up"
+    | "slide-left"
+    | "slide-right"
+    | "scale" = "fade",
+  delay: number = 0,
 ): string => {
-  const baseClasses = 'transition-all duration-700';
-  const delayClass = delay > 0 ? `delay-${delay}` : '';
+  const baseClasses = "transition-all duration-700";
+  const delayClass = delay > 0 ? `delay-${delay}` : "";
 
   if (!isVisible) {
     switch (animationType) {
-      case 'fade':
+      case "fade":
         return `${baseClasses} opacity-0`;
-      case 'slide-up':
+      case "slide-up":
         return `${baseClasses} opacity-0 translate-y-10`;
-      case 'slide-left':
+      case "slide-left":
         return `${baseClasses} opacity-0 -translate-x-10`;
-      case 'slide-right':
+      case "slide-right":
         return `${baseClasses} opacity-0 translate-x-10`;
-      case 'scale':
+      case "scale":
         return `${baseClasses} opacity-0 scale-95`;
       default:
         return `${baseClasses} opacity-0`;

@@ -1,11 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { usePerformanceMonitor } from '../../../hooks/usePerformanceMonitor';
+import React from "react";
+import { motion } from "framer-motion";
+import { usePerformanceMonitor } from "../../../hooks/usePerformanceMonitor";
 
 export const DebugPanel: React.FC = () => {
   const metrics = usePerformanceMonitor();
 
-  if (process.env.NODE_ENV === 'production') return null;
+  if (process.env.NODE_ENV === "production") return null;
 
   return (
     <motion.div
@@ -25,7 +25,9 @@ export const DebugPanel: React.FC = () => {
       <div className="flex flex-col gap-1">
         <div>FPS: {metrics.fps}</div>
         <div>Load: {metrics.loadTime}ms</div>
-        {metrics.memory && <div>Memory: {Math.round(metrics.memory / 1048576)}MB</div>}
+        {metrics.memory && (
+          <div>Memory: {Math.round(metrics.memory / 1048576)}MB</div>
+        )}
       </div>
     </motion.div>
   );

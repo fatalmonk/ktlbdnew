@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
-import { TestimonialsSkeleton } from '../../../components/skeletons';
-import { createIdleLazy } from '../../../hooks/useIdleLoader';
+import { Suspense } from "react";
+import { TestimonialsSkeleton } from "../../../components/skeletons";
+import { createIdleLazy } from "../../../hooks/useIdleLoader";
 
 interface Testimonial {
   quote: string;
@@ -13,7 +13,9 @@ interface TestimonialsSectionProps {
   testimonials: Testimonial[];
 }
 
-const TestimonialsSectionContent = createIdleLazy(() => import('./TestimonialsSectionContent'));
+const TestimonialsSectionContent = createIdleLazy(
+  () => import("./TestimonialsSectionContent"),
+);
 
 const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => (
   <Suspense fallback={<TestimonialsSkeleton />}>

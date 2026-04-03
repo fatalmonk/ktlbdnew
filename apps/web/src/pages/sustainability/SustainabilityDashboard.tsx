@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Leaf,
   Target,
@@ -9,16 +9,16 @@ import {
   CheckCircle,
   Clock,
   Calendar,
-} from 'lucide-react';
-import MetricsWidget from '../../components/sustainability/MetricsWidget';
-import SEO from '../../components/seo/SEO';
-import SubpageHeader from '../../components/shared/SubpageHeader';
+} from "lucide-react";
+import MetricsWidget from "../../components/sustainability/MetricsWidget";
+import SEO from "../../components/seo/SEO";
+import SubpageHeader from "../../components/shared/SubpageHeader";
 import {
   SustainabilityMetric,
   SustainabilityGoal,
   SustainabilityInitiative,
-} from '../../types/sustainability';
-import sustainabilityData from '@/data/sustainability/index.json';
+} from "../../types/sustainability";
+import sustainabilityData from "@/data/sustainability/index.json";
 
 interface SustainabilityData {
   currentMetrics: SustainabilityMetric[];
@@ -27,37 +27,38 @@ interface SustainabilityData {
 }
 
 const SustainabilityDashboard = () => {
-  const { currentMetrics, goals, initiatives } = sustainabilityData as SustainabilityData;
+  const { currentMetrics, goals, initiatives } =
+    sustainabilityData as SustainabilityData;
 
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ['All', 'Environmental', 'Social', 'Governance'];
+  const categories = ["All", "Environmental", "Social", "Governance"];
 
   const filteredMetrics =
-    selectedCategory === 'All'
+    selectedCategory === "All"
       ? currentMetrics
       : currentMetrics.filter((m) => m.category === selectedCategory);
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Active':
-        return 'bg-green-100 text-green-700';
-      case 'Completed':
-        return 'bg-blue-100 text-blue-700';
-      case 'Planned':
-        return 'bg-yellow-100 text-yellow-700';
+      case "Active":
+        return "bg-green-100 text-green-700";
+      case "Completed":
+        return "bg-blue-100 text-blue-700";
+      case "Planned":
+        return "bg-yellow-100 text-yellow-700";
       default:
-        return 'bg-neutral-100 text-neutral-700';
+        return "bg-neutral-100 text-neutral-700";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'Active':
+      case "Active":
         return <TrendingUp size={16} />;
-      case 'Completed':
+      case "Completed":
         return <CheckCircle size={16} />;
-      case 'Planned':
+      case "Planned":
         return <Clock size={16} />;
       default:
         return <Calendar size={16} />;
@@ -70,17 +71,20 @@ const SustainabilityDashboard = () => {
         title="Sustainability & ESG Dashboard | KTL"
         description="Track KTL's environmental, social, and governance (ESG) performance. See our progress on water conservation, renewable energy, worker welfare, and sustainability goals."
         keywords={[
-          'ESG reporting',
-          'sustainability metrics',
-          'environmental impact',
-          'social responsibility',
-          'governance',
-          'textile sustainability',
+          "ESG reporting",
+          "sustainability metrics",
+          "environmental impact",
+          "social responsibility",
+          "governance",
+          "textile sustainability",
         ]}
       />
 
       <SubpageHeader
-        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Sustainability' }]}
+        breadcrumbItems={[
+          { label: "Home", to: "/" },
+          { label: "Sustainability" },
+        ]}
         pageTitle="Sustainability"
       />
       <div className="bg-neutral-50 min-h-screen">
@@ -98,8 +102,8 @@ const SustainabilityDashboard = () => {
                 Sustainability & ESG Dashboard
               </h2>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-                Transparency in action. Track our environmental, social, and governance performance
-                in real-time.
+                Transparency in action. Track our environmental, social, and
+                governance performance in real-time.
               </p>
             </motion.div>
           </div>
@@ -119,7 +123,9 @@ const SustainabilityDashboard = () => {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600">62%</div>
-                <div className="text-neutral-600 mt-1">Sustainable Materials</div>
+                <div className="text-neutral-600 mt-1">
+                  Sustainable Materials
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600">68%</div>
@@ -138,8 +144,8 @@ const SustainabilityDashboard = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category
-                    ? 'bg-green-600 text-white'
-                    : 'bg-white text-neutral-700 hover:bg-green-50'
+                    ? "bg-green-600 text-white"
+                    : "bg-white text-neutral-700 hover:bg-green-50"
                 }`}
               >
                 {category}
@@ -150,7 +156,9 @@ const SustainabilityDashboard = () => {
 
         {/* Current Metrics */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-8">Current Performance</h2>
+          <h2 className="text-3xl font-bold text-neutral-900 mb-8">
+            Current Performance
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredMetrics.map((metric, index) => (
               <MetricsWidget key={metric.id} metric={metric} index={index} />
@@ -163,7 +171,9 @@ const SustainabilityDashboard = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3 mb-8">
               <Target size={32} className="text-green-600" />
-              <h2 className="text-3xl font-bold text-neutral-900">2030 Goals & Targets</h2>
+              <h2 className="text-3xl font-bold text-neutral-900">
+                2030 Goals & Targets
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,8 +187,12 @@ const SustainabilityDashboard = () => {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-neutral-900">{goal.title}</h3>
-                      <p className="text-sm text-neutral-600 mt-1">Target: {goal.targetYear}</p>
+                      <h3 className="text-xl font-bold text-neutral-900">
+                        {goal.title}
+                      </h3>
+                      <p className="text-sm text-neutral-600 mt-1">
+                        Target: {goal.targetYear}
+                      </p>
                     </div>
                     {goal.sdgAlignment && goal.sdgAlignment.length > 0 && (
                       <div className="flex flex-wrap gap-1">
@@ -201,7 +215,9 @@ const SustainabilityDashboard = () => {
                   <div className="mb-2">
                     <div className="flex items-center justify-between text-sm text-neutral-600 mb-2">
                       <span>Progress</span>
-                      <span className="font-semibold">{goal.currentProgress}%</span>
+                      <span className="font-semibold">
+                        {goal.currentProgress}%
+                      </span>
                     </div>
                     <div className="w-full bg-neutral-200 rounded-full h-3 overflow-hidden">
                       <motion.div
@@ -220,7 +236,9 @@ const SustainabilityDashboard = () => {
 
         {/* Initiatives */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-8">Sustainability Initiatives</h2>
+          <h2 className="text-3xl font-bold text-neutral-900 mb-8">
+            Sustainability Initiatives
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {initiatives.map((initiative, index) => (
@@ -257,24 +275,34 @@ const SustainabilityDashboard = () => {
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-lg text-neutral-900 mb-2">{initiative.title}</h3>
+                  <h3 className="font-bold text-lg text-neutral-900 mb-2">
+                    {initiative.title}
+                  </h3>
                   <p className="text-sm text-neutral-700 mb-3 line-clamp-3">
                     {initiative.description}
                   </p>
 
                   <div className="pt-3 border-t border-neutral-200">
                     <div className="flex items-start gap-2">
-                      <TrendingUp size={16} className="text-green-600 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-neutral-600">{initiative.impact}</p>
+                      <TrendingUp
+                        size={16}
+                        className="text-green-600 flex-shrink-0 mt-0.5"
+                      />
+                      <p className="text-sm text-neutral-600">
+                        {initiative.impact}
+                      </p>
                     </div>
                   </div>
 
                   <div className="mt-3 text-xs text-neutral-500">
-                    Started:{' '}
-                    {new Date(initiative.startDate).toLocaleDateString('en-US', {
-                      month: 'short',
-                      year: 'numeric',
-                    })}
+                    Started:{" "}
+                    {new Date(initiative.startDate).toLocaleDateString(
+                      "en-US",
+                      {
+                        month: "short",
+                        year: "numeric",
+                      },
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -286,9 +314,12 @@ const SustainabilityDashboard = () => {
         <section className="bg-neutral-900 text-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Download size={48} className="mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Sustainability Reports & Documentation</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Sustainability Reports & Documentation
+            </h2>
             <p className="text-xl text-neutral-300 mb-8">
-              Access our comprehensive sustainability reports, audits, and performance data.
+              Access our comprehensive sustainability reports, audits, and
+              performance data.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <a
@@ -331,9 +362,12 @@ const SustainabilityDashboard = () => {
         <section className="bg-green-900 text-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Leaf size={48} className="mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Partner with a Sustainable Manufacturer</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Partner with a Sustainable Manufacturer
+            </h2>
             <p className="text-xl text-green-100 mb-8">
-              Choose a partner committed to environmental responsibility and social impact.
+              Choose a partner committed to environmental responsibility and
+              social impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

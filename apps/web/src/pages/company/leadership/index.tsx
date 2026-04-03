@@ -1,42 +1,42 @@
-import { Link } from 'react-router-dom';
-import Image from '../../../components/media/Image';
-import SEO from '../../../components/seo/SEO';
-import SubpageHeader from '../../../components/shared/SubpageHeader';
+import { Link } from "react-router-dom";
+import Image from "../../../components/media/Image";
+import SEO from "../../../components/seo/SEO";
+import SubpageHeader from "../../../components/shared/SubpageHeader";
 const leadershipTeam = [
   {
-    name: 'Nasreen Haque',
-    title: 'Chairman & Founder',
-    image: '/assets/leadership/leadership-nasreen-haque.png',
+    name: "Nasreen Haque",
+    title: "Chairman & Founder",
+    image: "/assets/leadership/leadership-nasreen-haque.png",
   },
   {
-    name: 'Md. Emdadul Hoque Chowdhury',
-    title: 'Managing Director',
-    image: '/assets/leadership/leadership-emdadul-hoque.png',
+    name: "Md. Emdadul Hoque Chowdhury",
+    title: "Managing Director",
+    image: "/assets/leadership/leadership-emdadul-hoque.png",
   },
   {
-    name: 'Sarah Ahmed',
-    title: 'Head of Design & Innovation',
-    image: '/assets/leadership/leadership-ishad.png',
+    name: "Sarah Ahmed",
+    title: "Head of Design & Innovation",
+    image: "/assets/leadership/leadership-ishad.png",
   },
   {
-    name: 'Kamal Ahmed',
-    title: 'Chief Operating Officer',
-    image: '/assets/leadership/leadership-anwar-alvi.png',
+    name: "Kamal Ahmed",
+    title: "Chief Operating Officer",
+    image: "/assets/leadership/leadership-anwar-alvi.png",
   },
   {
-    name: 'Rashida Begum',
-    title: 'Chief Financial Officer',
-    image: '/assets/leadership/leadership-mizanur-rahman.png',
+    name: "Rashida Begum",
+    title: "Chief Financial Officer",
+    image: "/assets/leadership/leadership-mizanur-rahman.png",
   },
   {
-    name: 'Tanvir Mahmud',
-    title: 'Head of Merchandising & Sales',
-    image: '/assets/leadership/leadership-barkat-ullah.png',
+    name: "Tanvir Mahmud",
+    title: "Head of Merchandising & Sales",
+    image: "/assets/leadership/leadership-barkat-ullah.png",
   },
   {
-    name: 'Nusrat Jahan',
-    title: 'Head of Human Resources & Compliance',
-    image: '/assets/leadership/leadership-ashraful-ahsan-chowdhury.png',
+    name: "Nusrat Jahan",
+    title: "Head of Human Resources & Compliance",
+    image: "/assets/leadership/leadership-ashraful-ahsan-chowdhury.png",
   },
 ] as const;
 
@@ -48,17 +48,17 @@ const CompanyLeadership = () => {
         description="Meet KTL's experienced leadership team driving success in Bangladesh's textile industry. From Chairman Nasreen Haque to our dedicated management team."
         canonical="/company/leadership"
         keywords={[
-          'KTL leadership',
-          'textile executives',
-          'Bangladesh management team',
-          'garment industry leaders',
+          "KTL leadership",
+          "textile executives",
+          "Bangladesh management team",
+          "garment industry leaders",
         ]}
       />
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Company', to: '/company/our-story' },
-          { label: 'Leadership' },
+          { label: "Home", to: "/" },
+          { label: "Company", to: "/company/our-story" },
+          { label: "Leadership" },
         ]}
         pageTitle="Leadership"
       />
@@ -68,22 +68,22 @@ const CompanyLeadership = () => {
             Leadership Team
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-800">
-            Our leadership brings decades of experience in textile manufacturing and international
-            trade. Explore{' '}
+            Our leadership brings decades of experience in textile manufacturing
+            and international trade. Explore{" "}
             <Link
               to="/company/our-story"
               className="text-primary-600 underline hover:text-primary-700"
             >
               our story
             </Link>
-            ,{' '}
+            ,{" "}
             <Link
               to="/company/governance"
               className="text-primary-600 underline hover:text-primary-700"
             >
               governance
             </Link>
-            , and{' '}
+            , and{" "}
             <Link
               to="/sustainability"
               className="text-primary-600 underline hover:text-primary-700"
@@ -105,7 +105,9 @@ const CompanyLeadership = () => {
                     sizes="(min-width:1024px) 22vw, (min-width:768px) 28vw, 42vw"
                   />
                 </div>
-                <p className="mt-4 text-base font-bold leading-tight text-black">{leader.name}</p>
+                <p className="mt-4 text-base font-bold leading-tight text-black">
+                  {leader.name}
+                </p>
                 <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">
                   {leader.title}
                 </p>

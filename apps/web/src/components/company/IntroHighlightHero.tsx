@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from '../media/Image';
-import SubpageHeader, { type SubpageBreadcrumbItem } from '../shared/SubpageHeader';
-import { cn } from '@/lib/utils';
+import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "../media/Image";
+import SubpageHeader, {
+  type SubpageBreadcrumbItem,
+} from "../shared/SubpageHeader";
+import { cn } from "@/lib/utils";
 
 export type IntroHighlightBreadcrumbItem = SubpageBreadcrumbItem;
 
@@ -44,8 +46,8 @@ function HeadlineSideAccent({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'pointer-events-none hidden shrink-0 self-start lg:flex lg:min-h-[14rem] lg:w-[min(42%,22rem)] lg:max-w-md lg:justify-end lg:ml-auto lg:-translate-y-3 lg:translate-x-10 xl:w-[min(38%,26rem)] xl:-translate-y-4 xl:translate-x-16 2xl:translate-x-24',
-        className
+        "pointer-events-none hidden shrink-0 self-start lg:flex lg:min-h-[14rem] lg:w-[min(42%,22rem)] lg:max-w-md lg:justify-end lg:ml-auto lg:-translate-y-3 lg:translate-x-10 xl:w-[min(38%,26rem)] xl:-translate-y-4 xl:translate-x-16 2xl:translate-x-24",
+        className,
       )}
       aria-hidden
     >
@@ -125,7 +127,7 @@ const IntroHighlightHero = ({
   pageTitle,
   headlineLines,
   slides,
-  sliderAriaLabel = 'Page introduction images',
+  sliderAriaLabel = "Page introduction images",
   autoplayMs = 5000,
   className,
   headlineMobileSlot,
@@ -137,11 +139,11 @@ const IntroHighlightHero = ({
   const canNavigate = count > 1;
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mq.matches);
     const onChange = () => setReducedMotion(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   useEffect(() => {
@@ -156,11 +158,11 @@ const IntroHighlightHero = ({
     (dir: -1 | 1) => {
       setIndex((i) => (i + dir + count) % count);
     },
-    [count]
+    [count],
   );
 
   return (
-    <div className={cn('bg-white font-body', className)}>
+    <div className={cn("bg-white font-body", className)}>
       <SubpageHeader breadcrumbItems={breadcrumbItems} pageTitle={pageTitle} />
 
       <section className="relative overflow-hidden px-4 pb-8 pt-2 sm:px-6 lg:px-8">
@@ -172,7 +174,11 @@ const IntroHighlightHero = ({
                 <span className="hidden lg:contents">
                   {headlineLines.map((line, i) => (
                     <span key={`${line.text}-lg-${i}`} className="block">
-                      {line.highlight ? <MarkerText>{line.text}</MarkerText> : line.text}
+                      {line.highlight ? (
+                        <MarkerText>{line.text}</MarkerText>
+                      ) : (
+                        line.text
+                      )}
                     </span>
                   ))}
                 </span>
@@ -180,7 +186,11 @@ const IntroHighlightHero = ({
             ) : (
               headlineLines.map((line, i) => (
                 <span key={`${line.text}-${i}`} className="block">
-                  {line.highlight ? <MarkerText>{line.text}</MarkerText> : line.text}
+                  {line.highlight ? (
+                    <MarkerText>{line.text}</MarkerText>
+                  ) : (
+                    line.text
+                  )}
                 </span>
               ))
             )}
@@ -194,11 +204,11 @@ const IntroHighlightHero = ({
             className="relative w-full overflow-hidden"
             {...(canNavigate
               ? {
-                  role: 'region' as const,
-                  'aria-roledescription': 'carousel',
-                  'aria-label': sliderAriaLabel,
+                  role: "region" as const,
+                  "aria-roledescription": "carousel",
+                  "aria-label": sliderAriaLabel,
                 }
-              : { 'aria-label': sliderAriaLabel })}
+              : { "aria-label": sliderAriaLabel })}
           >
             <div className="relative aspect-[1400/544] w-full max-h-[min(70vh,544px)]">
               {canNavigate ? (
@@ -206,8 +216,8 @@ const IntroHighlightHero = ({
                   <div
                     key={slide.src + slide.alt}
                     className={cn(
-                      'absolute inset-0 transition-opacity duration-500 ease-out',
-                      i === index ? 'z-[1] opacity-100' : 'z-0 opacity-0'
+                      "absolute inset-0 transition-opacity duration-500 ease-out",
+                      i === index ? "z-[1] opacity-100" : "z-0 opacity-0",
                     )}
                     aria-hidden={i !== index}
                   >

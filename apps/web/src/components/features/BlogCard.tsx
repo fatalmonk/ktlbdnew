@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { Link } from "react-router-dom";
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const Calendar = createLazyIcon('Calendar');
-const Clock = createLazyIcon('Clock');
-const ArrowRight = createLazyIcon('ArrowRight');
+const Calendar = createLazyIcon("Calendar");
+const Clock = createLazyIcon("Clock");
+const ArrowRight = createLazyIcon("ArrowRight");
 
 interface BlogCardProps {
   slug: string;
@@ -29,19 +29,22 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   return (
     <article
-      className={`group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${featured ? 'border-2 border-primary-500' : ''}`}
+      className={`group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${featured ? "border-2 border-primary-500" : ""}`}
     >
       {/* Image */}
-      <Link to={`/newsroom/stories/${slug}`} className="block relative overflow-hidden">
+      <Link
+        to={`/newsroom/stories/${slug}`}
+        className="block relative overflow-hidden"
+      >
         <div className="aspect-[16/9] bg-neutral-200 relative">
           {image ? (
             <img
@@ -95,7 +98,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </Link>
 
         {/* Excerpt */}
-        <p className="text-neutral-600 text-xl mb-6 line-clamp-3 leading-relaxed">{excerpt}</p>
+        <p className="text-neutral-600 text-xl mb-6 line-clamp-3 leading-relaxed">
+          {excerpt}
+        </p>
 
         {/* Read More Link */}
         <Link

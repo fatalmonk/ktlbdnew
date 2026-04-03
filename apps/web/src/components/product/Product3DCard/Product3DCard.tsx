@@ -1,17 +1,20 @@
-import React, { useRef, useState, Suspense } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
-import { Link } from 'react-router-dom';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { useRef, useState, Suspense } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Tilt from "react-parallax-tilt";
+import { Link } from "react-router-dom";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const ArrowRight = createLazyIcon('ArrowRight');
-const Eye = createLazyIcon('Eye');
-const Heart = createLazyIcon('Heart');
-const Share2 = createLazyIcon('Share2');
-import { Product } from '../../types/product';
-import { isMobileDevice, getOptimizedAnimationConfig } from '../../../lib/utils/mobile-performance';
-import TouchOptimized from '../../ui/TouchOptimized';
-import Image from '../../media/Image';
+const ArrowRight = createLazyIcon("ArrowRight");
+const Eye = createLazyIcon("Eye");
+const Heart = createLazyIcon("Heart");
+const Share2 = createLazyIcon("Share2");
+import { Product } from "../../types/product";
+import {
+  isMobileDevice,
+  getOptimizedAnimationConfig,
+} from "../../../lib/utils/mobile-performance";
+import TouchOptimized from "../../ui/TouchOptimized";
+import Image from "../../media/Image";
 
 interface Product3DCardProps {
   product: Product;
@@ -37,8 +40,8 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
   const y = useSpring(mouseY, springConfig);
 
   // Transform values for 3D effect
-  const rotateX = useTransform(y, [-0.5, 0.5], ['17.5deg', '-17.5deg']);
-  const rotateY = useTransform(x, [-0.5, 0.5], ['-17.5deg', '17.5deg']);
+  const rotateX = useTransform(y, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+  const rotateY = useTransform(x, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -78,7 +81,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             }
           : undefined
       }
-      viewport={!isMobile ? { once: true, margin: '-100px' } : undefined}
+      viewport={!isMobile ? { once: true, margin: "-100px" } : undefined}
     >
       <Tilt
         tiltMaxAngleX={animationConfig.enableTilt ? 10 : 0}
@@ -95,8 +98,10 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
           style={{
             rotateX: !isMobile ? rotateX : 0,
             rotateY: !isMobile ? rotateY : 0,
-            transformStyle: animationConfig.enable3DTransforms ? 'preserve-3d' : 'flat',
-            willChange: !isMobile ? 'transform' : 'auto',
+            transformStyle: animationConfig.enable3DTransforms
+              ? "preserve-3d"
+              : "flat",
+            willChange: !isMobile ? "transform" : "auto",
           }}
           onMouseMove={!isMobile ? handleMouseMove : undefined}
           onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
@@ -115,7 +120,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                     rgba(253, 211, 56, 0.15),
                     transparent 40%
                   )`,
-                  pointerEvents: 'none',
+                  pointerEvents: "none",
                 }}
               />
             )}
@@ -131,7 +136,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
 
             {/* Quick Actions - Always visible on mobile, hover-only on desktop */}
             <div
-              className={`absolute top-2 right-2 md:top-4 md:right-4 z-10 flex flex-col gap-1.5 md:gap-2 ${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+              className={`absolute top-2 right-2 md:top-4 md:right-4 z-10 flex flex-col gap-1.5 md:gap-2 ${isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
             >
               <TouchOptimized
                 onTap={() => {
@@ -144,14 +149,18 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                   className="min-w-[36px] min-h-[36px] md:min-w-[44px] md:min-h-[44px] w-9 h-9 md:w-11 md:h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center"
                   initial={!isMobile ? { x: 20, opacity: 0 } : false}
                   animate={
-                    !isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false
+                    !isMobile
+                      ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }
+                      : false
                   }
                   transition={{ delay: 0.1 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Add to favorites"
                 >
-                  <Suspense fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}>
+                  <Suspense
+                    fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}
+                  >
                     <Heart className="w-4 h-4 md:w-5 md:h-5 text-neutral-700" />
                   </Suspense>
                 </motion.button>
@@ -168,14 +177,18 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                   className="min-w-[36px] min-h-[36px] md:min-w-[44px] md:min-h-[44px] w-9 h-9 md:w-11 md:h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center"
                   initial={!isMobile ? { x: 20, opacity: 0 } : false}
                   animate={
-                    !isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false
+                    !isMobile
+                      ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }
+                      : false
                   }
                   transition={{ delay: 0.2 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Share product"
                 >
-                  <Suspense fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}>
+                  <Suspense
+                    fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}
+                  >
                     <Share2 className="w-4 h-4 md:w-5 md:h-5 text-neutral-700" />
                   </Suspense>
                 </motion.button>
@@ -195,9 +208,9 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                       ? 1.1
                       : 1,
                   transition: animationConfig.enableComplexAnimations
-                    ? 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)'
-                    : 'none',
-                  willChange: isHovered || isTouched ? 'transform' : 'auto',
+                    ? "scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)"
+                    : "none",
+                  willChange: isHovered || isTouched ? "transform" : "auto",
                 }}
               >
                 <Image
@@ -231,7 +244,11 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                         scale: 1,
                         opacity: 1,
                       }}
-                      transition={{ delay: 0.1, type: 'spring', stiffness: 500 }}
+                      transition={{
+                        delay: 0.1,
+                        type: "spring",
+                        stiffness: 500,
+                      }}
                     >
                       <Link
                         to={product.link}
@@ -254,8 +271,10 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               <motion.span
                 className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-sm md:text-base font-bold rounded-full mb-3 md:mb-4"
                 animate={{
-                  backgroundColor: isHovered ? 'rgb(253, 211, 56)' : 'rgb(243, 244, 246)',
-                  color: isHovered ? 'rgb(0, 0, 0)' : 'rgb(75, 85, 99)',
+                  backgroundColor: isHovered
+                    ? "rgb(253, 211, 56)"
+                    : "rgb(243, 244, 246)",
+                  color: isHovered ? "rgb(0, 0, 0)" : "rgb(75, 85, 99)",
                 }}
                 transition={{ duration: 0.3 }}
               >
@@ -317,7 +336,9 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                     className="inline-flex items-center justify-center gap-1.5 md:gap-2 min-h-[40px] md:min-h-[44px] text-primary-600 font-semibold text-xs md:text-sm group/link"
                   >
                     View Details
-                    <Suspense fallback={<div className="w-3 h-3 md:w-4 md:h-4" />}>
+                    <Suspense
+                      fallback={<div className="w-3 h-3 md:w-4 md:h-4" />}
+                    >
                       <ArrowRight className="w-3 h-3 md:w-4 md:h-4 group-hover/link:translate-x-1 transition-transform" />
                     </Suspense>
                   </Link>

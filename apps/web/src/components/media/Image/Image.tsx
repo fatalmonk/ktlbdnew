@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 interface ImageProps {
   src: string;
@@ -10,7 +10,7 @@ interface ImageProps {
   sizes?: string;
   width?: number | string;
   height?: number | string;
-  fit?: 'cover' | 'contain';
+  fit?: "cover" | "contain";
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -31,14 +31,14 @@ interface ImageProps {
 const Image: React.FC<ImageProps> = ({
   src,
   alt,
-  className = '',
-  containerClassName = '',
+  className = "",
+  containerClassName = "",
   eager = false,
   priority = false,
   sizes,
   width,
   height,
-  fit = 'cover',
+  fit = "cover",
   onLoad,
   onError,
 }) => {
@@ -61,7 +61,7 @@ const Image: React.FC<ImageProps> = ({
     // - /src/assets/images/hero/hero-main@1x.webp (dev with src prefix)
     // - Any path containing /assets/images/ (Vite-processed imports)
     const isViteProcessed =
-      imageSrc.includes('/assets/images/') || // Contains /assets/images/ anywhere
+      imageSrc.includes("/assets/images/") || // Contains /assets/images/ anywhere
       /^\/assets\/[^/]+-[a-f0-9]+\.(jpg|jpeg|png|webp|avif)$/i.test(imageSrc) || // Hashed filename in /assets/
       /^\/src\/assets\//.test(imageSrc); // Dev mode with /src prefix
 
@@ -70,19 +70,22 @@ const Image: React.FC<ImageProps> = ({
     // Only treat as optimized if it's a simple path reference to /assets-optimized/ or ./assets-optimized/
     // that's meant to use the optimized responsive variants
     const assetsPattern = /\/?\.?assets-optimized\//;
-    return assetsPattern.test(imageSrc) && !imageSrc.startsWith('http');
+    return assetsPattern.test(imageSrc) && !imageSrc.startsWith("http");
   };
 
   // Extract filename without extension for optimized images
   const getImagePath = (imagePath: string): string => {
     // Normalize path - handle both /assets/ and ./assets/
-    const normalizedPath = imagePath.replace(/^\.\//, '/').replace(/^\/?/, '/');
+    const normalizedPath = imagePath.replace(/^\.\//, "/").replace(/^\/?/, "/");
 
     // Remove /assets/ prefix - use start anchor to avoid partial matches
-    const pathWithoutAssets = normalizedPath.replace(/^\/assets\//, '');
+    const pathWithoutAssets = normalizedPath.replace(/^\/assets\//, "");
 
     // Remove file extension
-    const pathWithoutExt = pathWithoutAssets.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '');
+    const pathWithoutExt = pathWithoutAssets.replace(
+      /\.(jpg|jpeg|png|gif|webp)$/i,
+      "",
+    );
 
     // Return without leading slash (will be added in generateSrcSet)
     return pathWithoutExt;
@@ -90,8 +93,9 @@ const Image: React.FC<ImageProps> = ({
 
   // Build absolute path for simple images
   const getAbsoluteSrc = (imageSrc: string): string => {
-    if (!imageSrc) return '';
-    if (imageSrc.startsWith('http://') || imageSrc.startsWith('https://')) return imageSrc;
+    if (!imageSrc) return "";
+    if (imageSrc.startsWith("http://") || imageSrc.startsWith("https://"))
+      return imageSrc;
 
     // Vite-processed URLs (imported images) already have the correct path - use as-is
     // They can be:
@@ -100,16 +104,16 @@ const Image: React.FC<ImageProps> = ({
     // - /src/assets/images/hero/hero-main@1x.webp (dev with src prefix)
     // - Any path containing /assets/images/ (Vite-processed imports)
     if (
-      imageSrc.includes('/assets/images/') ||
-      imageSrc.startsWith('/assets/') ||
-      imageSrc.startsWith('/src/assets/')
+      imageSrc.includes("/assets/images/") ||
+      imageSrc.startsWith("/assets/") ||
+      imageSrc.startsWith("/src/assets/")
     ) {
       return imageSrc;
     }
 
     // Handle relative paths
-    if (imageSrc.startsWith('./assets/')) {
-      return `/${imageSrc.replace(/^\.\//, '')}`;
+    if (imageSrc.startsWith("./assets/")) {
+      return `/${imageSrc.replace(/^\.\//, "")}`;
     }
 
     // Default: assume it's a simple filename and prepend /assets/
@@ -117,7 +121,7 @@ const Image: React.FC<ImageProps> = ({
   };
 
   const optimized = isOptimizedImage(src);
-  const imagePath = optimized ? getImagePath(src) : '';
+  const imagePath = optimized ? getImagePath(src) : "";
   // Always resolve absolute src, even for optimized images (needed for fallback)
   const absoluteSrc = getAbsoluteSrc(src);
 
@@ -126,7 +130,7 @@ const Image: React.FC<ImageProps> = ({
   // The script also creates optimized JPEG fallbacks in assets-optimized/ with the same naming pattern
   const generateSrcSet = (basePath: string) => {
     // Ensure single leading slash - basePath should not have leading slash
-    const normalizedPath = basePath.replace(/^\/+/, ''); // Remove any leading slashes
+    const normalizedPath = basePath.replace(/^\/+/, ""); // Remove any leading slashes
     const baseUrl = `/assets-optimized/${normalizedPath}`;
 
     // Generate WebP srcSet with responsive variants (primary format)
@@ -135,7 +139,7 @@ const Image: React.FC<ImageProps> = ({
       `${baseUrl}-tablet.webp 1024w`,
       `${baseUrl}-desktop.webp 1920w`,
       `${baseUrl}.webp 2400w`,
-    ].join(', ');
+    ].join(", ");
 
     // Single optimized JPEG fallback (optimize-images.js creates one optimized JPEG per image)
     // No responsive variants for JPEG, just use the single optimized file
@@ -157,7 +161,7 @@ const Image: React.FC<ImageProps> = ({
     if (sizes) return sizes;
 
     // Default responsive sizes based on common viewport breakpoints
-    return '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, (max-width: 1920px) 100vw, 2400px';
+    return "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, (max-width: 1920px) 100vw, 2400px";
   };
 
   const finalSizes = getDefaultSizes();
@@ -185,9 +189,9 @@ const Image: React.FC<ImageProps> = ({
         });
       },
       {
-        rootMargin: '100px', // Start loading 100px before image enters viewport
+        rootMargin: "100px", // Start loading 100px before image enters viewport
         threshold: 0.01,
-      }
+      },
     );
 
     observer.observe(targetElement);
@@ -222,12 +226,14 @@ const Image: React.FC<ImageProps> = ({
     // - /src/assets/images/hero/hero-main@1x.webp (dev with src prefix)
     // - Any path containing /assets/images/ (Vite-processed imports)
     const isViteProcessed =
-      (absoluteSrc.includes('/assets/images/') || // Contains /assets/images/ anywhere
-        absoluteSrc.startsWith('/assets/leadership/') || // Public leadership portraits (no AVIF/WebP siblings)
-        /^\/assets\/[^/]+-[a-f0-9]+\.(jpg|jpeg|png|webp|avif|svg)$/i.test(absoluteSrc) || // Hashed filename
+      (absoluteSrc.includes("/assets/images/") || // Contains /assets/images/ anywhere
+        absoluteSrc.startsWith("/assets/leadership/") || // Public leadership portraits (no AVIF/WebP siblings)
+        /^\/assets\/[^/]+-[a-f0-9]+\.(jpg|jpeg|png|webp|avif|svg)$/i.test(
+          absoluteSrc,
+        ) || // Hashed filename
         /^\/src\/assets\//.test(absoluteSrc)) && // Dev mode with /src prefix
       /\.(jpg|jpeg|png|webp|avif|svg)$/i.test(absoluteSrc) &&
-      !absoluteSrc.includes('/assets-optimized/');
+      !absoluteSrc.includes("/assets-optimized/");
 
     // For Vite-processed images, use directly without variants
     if (isViteProcessed) {
@@ -236,12 +242,12 @@ const Image: React.FC<ImageProps> = ({
           ref={imgRef}
           src={absoluteSrc}
           alt={alt}
-          className={`${className} ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          className={`${className} ${fit === "contain" ? "object-contain" : "object-cover"}`}
           width={width}
           height={height}
-          loading={priority || eager ? 'eager' : 'lazy'}
+          loading={priority || eager ? "eager" : "lazy"}
           decoding="async"
-          fetchpriority={priority ? 'high' : 'low'}
+          fetchpriority={priority ? "high" : "low"}
           onLoad={handleLoad}
           onError={handleError}
           sizes={finalSizes}
@@ -251,12 +257,14 @@ const Image: React.FC<ImageProps> = ({
       // If explicit dimensions provided, wrap with aspect ratio container
       if (width && height) {
         const aspectRatio =
-          typeof width === 'number' && typeof height === 'number' ? `${width}/${height}` : 'auto';
+          typeof width === "number" && typeof height === "number"
+            ? `${width}/${height}`
+            : "auto";
         return (
           <div
             ref={containerRef}
-            className={`${containerClassName} ${aspectRatio !== 'auto' ? `aspect-[${aspectRatio}]` : ''}`}
-            style={aspectRatio === 'auto' ? { width, height } : undefined}
+            className={`${containerClassName} ${aspectRatio !== "auto" ? `aspect-[${aspectRatio}]` : ""}`}
+            style={aspectRatio === "auto" ? { width, height } : undefined}
           >
             {img}
           </div>
@@ -273,12 +281,12 @@ const Image: React.FC<ImageProps> = ({
           ref={imgRef}
           src={absoluteSrc}
           alt={alt}
-          className={`${className} ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          className={`${className} ${fit === "contain" ? "object-contain" : "object-cover"}`}
           width={width}
           height={height}
-          loading={priority || eager ? 'eager' : 'lazy'}
+          loading={priority || eager ? "eager" : "lazy"}
           decoding="async"
-          fetchpriority={priority ? 'high' : 'low'}
+          fetchpriority={priority ? "high" : "low"}
           onLoad={handleLoad}
           onError={handleError}
           sizes={finalSizes}
@@ -288,12 +296,14 @@ const Image: React.FC<ImageProps> = ({
 
       if (width && height) {
         const aspectRatio =
-          typeof width === 'number' && typeof height === 'number' ? `${width}/${height}` : 'auto';
+          typeof width === "number" && typeof height === "number"
+            ? `${width}/${height}`
+            : "auto";
         return (
           <div
             ref={containerRef}
-            className={`${containerClassName} ${aspectRatio !== 'auto' ? `aspect-[${aspectRatio}]` : ''}`}
-            style={aspectRatio === 'auto' ? { width, height } : undefined}
+            className={`${containerClassName} ${aspectRatio !== "auto" ? `aspect-[${aspectRatio}]` : ""}`}
+            style={aspectRatio === "auto" ? { width, height } : undefined}
           >
             {img}
           </div>
@@ -305,10 +315,12 @@ const Image: React.FC<ImageProps> = ({
 
     // For non-optimized images, create picture with AVIF/WebP sources if possible
     const getImageVariants = (imageSrc: string) => {
-      const basePath = imageSrc.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+      const basePath = imageSrc.replace(/\.(jpg|jpeg|png|webp)$/i, "");
       return {
         avif: `${basePath}.avif`,
-        webp: imageSrc.match(/\.(jpg|jpeg|png)$/i) ? `${basePath}.webp` : imageSrc,
+        webp: imageSrc.match(/\.(jpg|jpeg|png)$/i)
+          ? `${basePath}.webp`
+          : imageSrc,
         original: imageSrc,
       };
     };
@@ -322,12 +334,12 @@ const Image: React.FC<ImageProps> = ({
           ref={imgRef}
           src={variants.original}
           alt={alt}
-          className={`${className} ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          className={`${className} ${fit === "contain" ? "object-contain" : "object-cover"}`}
           width={width}
           height={height}
-          loading={priority || eager ? 'eager' : 'lazy'}
+          loading={priority || eager ? "eager" : "lazy"}
           decoding="async"
-          fetchpriority={priority ? 'high' : 'low'}
+          fetchpriority={priority ? "high" : "low"}
           onLoad={handleLoad}
           onError={handleError}
           sizes={finalSizes}
@@ -338,12 +350,14 @@ const Image: React.FC<ImageProps> = ({
     // If explicit dimensions provided, wrap with aspect ratio container
     if (width && height) {
       const aspectRatio =
-        typeof width === 'number' && typeof height === 'number' ? `${width}/${height}` : 'auto';
+        typeof width === "number" && typeof height === "number"
+          ? `${width}/${height}`
+          : "auto";
       return (
         <div
           ref={containerRef}
-          className={`${containerClassName} ${aspectRatio !== 'auto' ? `aspect-[${aspectRatio}]` : ''}`}
-          style={aspectRatio === 'auto' ? { width, height } : undefined}
+          className={`${containerClassName} ${aspectRatio !== "auto" ? `aspect-[${aspectRatio}]` : ""}`}
+          style={aspectRatio === "auto" ? { width, height } : undefined}
         >
           {img}
         </div>
@@ -365,7 +379,7 @@ const Image: React.FC<ImageProps> = ({
         {shouldRender && srcSet && (
           <source
             type="image/avif"
-            srcSet={srcSet.webp.replace(/\.webp/g, '.avif')}
+            srcSet={srcSet.webp.replace(/\.webp/g, ".avif")}
             sizes={finalSizes}
           />
         )}
@@ -380,23 +394,31 @@ const Image: React.FC<ImageProps> = ({
             ref={imgRef}
             src={srcSet ? srcSet.jpegFallback : absoluteSrc}
             alt={alt}
-            loading={eager || priority ? 'eager' : 'lazy'}
+            loading={eager || priority ? "eager" : "lazy"}
             decoding="async"
-            fetchpriority={priority ? 'high' : 'low'}
+            fetchpriority={priority ? "high" : "low"}
             onLoad={handleLoad}
             onError={(e) => {
               // Try original source as last resort
               const imgElement = e.currentTarget;
               const currentSrc = imgElement.src;
 
-              if (srcSet && srcSet.originalFallback && currentSrc !== srcSet.originalFallback) {
-                console.log(`[Image] Fallback 1: Trying original path: ${srcSet.originalFallback}`);
+              if (
+                srcSet &&
+                srcSet.originalFallback &&
+                currentSrc !== srcSet.originalFallback
+              ) {
+                console.log(
+                  `[Image] Fallback 1: Trying original path: ${srcSet.originalFallback}`,
+                );
                 imgElement.src = srcSet.originalFallback;
                 return;
               }
               // If no srcSet or originalFallback failed, try absoluteSrc
               if (absoluteSrc && currentSrc !== absoluteSrc) {
-                console.log(`[Image] Fallback 2: Trying absoluteSrc: ${absoluteSrc}`);
+                console.log(
+                  `[Image] Fallback 2: Trying absoluteSrc: ${absoluteSrc}`,
+                );
                 imgElement.src = absoluteSrc;
                 return;
               }
@@ -406,13 +428,13 @@ const Image: React.FC<ImageProps> = ({
             className={`
               ${className}
               transition-opacity duration-500
-              ${isLoaded ? 'opacity-100' : 'opacity-0'}
-              ${fit === 'contain' ? 'object-contain' : 'object-cover'}
+              ${isLoaded ? "opacity-100" : "opacity-0"}
+              ${fit === "contain" ? "object-contain" : "object-cover"}
               w-full h-full
               relative z-10
             `}
             style={{
-              filter: isLoaded ? 'none' : 'blur(10px)',
+              filter: isLoaded ? "none" : "blur(10px)",
             }}
             width={width}
             height={height}
@@ -426,7 +448,11 @@ const Image: React.FC<ImageProps> = ({
         <div
           className="absolute inset-0 bg-neutral-200 animate-pulse z-0"
           style={{
-            minHeight: height ? (typeof height === 'number' ? `${height}px` : height) : '200px',
+            minHeight: height
+              ? typeof height === "number"
+                ? `${height}px`
+                : height
+              : "200px",
           }}
           aria-hidden="true"
         />
@@ -437,10 +463,14 @@ const Image: React.FC<ImageProps> = ({
         <div
           className="absolute inset-0 flex items-center justify-center bg-neutral-100 text-neutral-400 z-0"
           style={{
-            minHeight: height ? (typeof height === 'number' ? `${height}px` : height) : '200px',
+            minHeight: height
+              ? typeof height === "number"
+                ? `${height}px`
+                : height
+              : "200px",
           }}
           role="img"
-          aria-label={alt || 'Image not available'}
+          aria-label={alt || "Image not available"}
         >
           <span>Image not available</span>
         </div>
@@ -451,9 +481,15 @@ const Image: React.FC<ImageProps> = ({
   // If dimensions provided, ensure proper aspect ratio
   if (width && height) {
     const aspectRatio =
-      typeof width === 'number' && typeof height === 'number' ? `${width}/${height}` : undefined;
+      typeof width === "number" && typeof height === "number"
+        ? `${width}/${height}`
+        : undefined;
 
-    return <div className={aspectRatio ? `aspect-[${aspectRatio}]` : ''}>{pictureWrapper}</div>;
+    return (
+      <div className={aspectRatio ? `aspect-[${aspectRatio}]` : ""}>
+        {pictureWrapper}
+      </div>
+    );
   }
 
   return pictureWrapper;

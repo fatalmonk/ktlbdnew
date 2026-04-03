@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from '../media/Image';
-import { cn } from '@/lib/utils';
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "../media/Image";
+import { cn } from "@/lib/utils";
 
 export type TimelineCarouselItem = {
   year: string;
@@ -62,10 +62,13 @@ const TimelineCarouselSection = ({
         return next;
       });
     },
-    [maxIndex, perPage]
+    [maxIndex, perPage],
   );
 
-  const progress = maxIndex <= 0 ? 100 : Math.min(100, ((pageIndex + 1) / (maxIndex + 1)) * 100);
+  const progress =
+    maxIndex <= 0
+      ? 100
+      : Math.min(100, ((pageIndex + 1) / (maxIndex + 1)) * 100);
 
   const canPrev = pageIndex > 0;
   const canNext = pageIndex < maxIndex;
@@ -77,7 +80,10 @@ const TimelineCarouselSection = ({
 
   return (
     <section
-      className={cn('bg-primary-300 py-16 text-neutral-900 md:py-24 lg:py-[7.5rem]', className)}
+      className={cn(
+        "bg-primary-300 py-16 text-neutral-900 md:py-24 lg:py-[7.5rem]",
+        className,
+      )}
       aria-labelledby={`${progressId}-heading`}
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-8">
@@ -127,7 +133,7 @@ const TimelineCarouselSection = ({
                       <div className="relative min-h-[10rem] w-full flex-1 md:min-h-[12rem]">
                         <Image
                           src={item.imageSrc}
-                          alt={item.imageAlt ?? ''}
+                          alt={item.imageAlt ?? ""}
                           className="absolute inset-0 h-full w-full object-cover"
                           fit="cover"
                           sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 100vw"
@@ -146,8 +152,8 @@ const TimelineCarouselSection = ({
             <button
               type="button"
               className={cn(
-                'pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900',
-                !canPrev && 'cursor-not-allowed opacity-30'
+                "pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+                !canPrev && "cursor-not-allowed opacity-30",
               )}
               aria-label="Previous slides"
               disabled={!canPrev}
@@ -160,8 +166,8 @@ const TimelineCarouselSection = ({
             <button
               type="button"
               className={cn(
-                'pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900',
-                !canNext && 'cursor-not-allowed opacity-30'
+                "pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+                !canNext && "cursor-not-allowed opacity-30",
               )}
               aria-label="Next slides"
               disabled={!canNext}
@@ -172,7 +178,10 @@ const TimelineCarouselSection = ({
           </div>
         </div>
 
-        <div className="mx-auto mt-16 h-[3px] max-w-[1440px] bg-neutral-900" aria-hidden>
+        <div
+          className="mx-auto mt-16 h-[3px] max-w-[1440px] bg-neutral-900"
+          aria-hidden
+        >
           <div
             className="h-full bg-white transition-[width] duration-300 ease-out"
             style={{ width: `${progress}%` }}

@@ -2,7 +2,7 @@
  * Stock photography (Unsplash) — suitable for hero and news previews.
  * https://unsplash.com/license
  */
-const q = 'auto=format&fit=crop&q=80';
+const q = "auto=format&fit=crop&q=80";
 
 /** Full-width hero (~1920w) */
 export const stockHero = {

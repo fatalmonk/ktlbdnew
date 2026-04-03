@@ -1,4 +1,4 @@
-import { ComponentType } from 'react';
+import { ComponentType } from "react";
 
 export interface Metric {
   id: string;
@@ -6,10 +6,10 @@ export interface Metric {
   value: number;
   unit?: string;
   change?: number; // Percentage change
-  changeType?: 'increase' | 'decrease';
+  changeType?: "increase" | "decrease";
   icon?: ComponentType<{ size?: number; className?: string }>;
   color?: string;
-  format?: 'number' | 'currency' | 'percentage';
+  format?: "number" | "currency" | "percentage";
   description?: string;
 }
 
@@ -23,7 +23,7 @@ export interface ChartData {
   id: string;
   title: string;
   data: TimeSeriesData[];
-  type: 'line' | 'bar' | 'area';
+  type: "line" | "bar" | "area";
   color?: string;
 }
 

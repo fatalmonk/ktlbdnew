@@ -1,5 +1,5 @@
-import SEO from '../../../components/seo/SEO';
-import SubpageHeader from '../../../components/shared/SubpageHeader';
+import SEO from "../../../components/seo/SEO";
+import SubpageHeader from "../../../components/shared/SubpageHeader";
 
 const InvestorContactsPage = () => {
   return (
@@ -8,18 +8,18 @@ const InvestorContactsPage = () => {
         title="Investor Contacts"
         description="Contact information for KTL's investor relations team. Get in touch for investor inquiries, financial information, and shareholder services."
         keywords={[
-          'investor contacts',
-          'investor relations',
-          'KTL contacts',
-          'shareholder services',
-          'investor inquiries',
+          "investor contacts",
+          "investor relations",
+          "KTL contacts",
+          "shareholder services",
+          "investor inquiries",
         ]}
       />
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Investors', to: '/investors' },
-          { label: 'IR Contacts' },
+          { label: "Home", to: "/" },
+          { label: "Investors", to: "/investors" },
+          { label: "IR Contacts" },
         ]}
         pageTitle="IR Contacts"
       />
@@ -27,14 +27,16 @@ const InvestorContactsPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Get in touch with our investor relations team for inquiries about financial
-              information, shareholder services, and investment opportunities at Kattali Textile
-              Limited.
+              Get in touch with our investor relations team for inquiries about
+              financial information, shareholder services, and investment
+              opportunities at Kattali Textile Limited.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Investor Relations</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Investor Relations
+                </h3>
                 <div className="space-y-3">
                   <div>
                     <h4 className="font-semibold text-black">Email</h4>
@@ -52,7 +54,9 @@ const InvestorContactsPage = () => {
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Shareholder Services</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Shareholder Services
+                </h3>
                 <div className="space-y-3">
                   <div>
                     <h4 className="font-semibold text-black">Email</h4>
@@ -64,13 +68,17 @@ const InvestorContactsPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-black">Services</h4>
-                    <p className="text-neutral-800">Account inquiries, dividend information</p>
+                    <p className="text-neutral-800">
+                      Account inquiries, dividend information
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Financial Information</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Financial Information
+                </h3>
                 <div className="space-y-3">
                   <div>
                     <h4 className="font-semibold text-black">Email</h4>
@@ -82,7 +90,9 @@ const InvestorContactsPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-black">Available</h4>
-                    <p className="text-neutral-800">Monday - Friday, 9 AM - 5 PM</p>
+                    <p className="text-neutral-800">
+                      Monday - Friday, 9 AM - 5 PM
+                    </p>
                   </div>
                 </div>
               </div>
@@ -107,7 +117,9 @@ const InvestorContactsPage = () => {
             </div>
 
             <div className="mt-12 bg-primary/10 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-black mb-4">Office Address</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Office Address
+              </h3>
               <div className="text-neutral-800">
                 <p className="font-semibold">Kattali Textile Limited</p>
                 <p>BM Heights, 8th Floor</p>

@@ -2,12 +2,12 @@ import {
   NAVIGATION_ITEMS,
   type NavDropdownItem,
   type NavItem,
-} from '@/modules/navigation/data/navigation';
-import React from 'react';
-import { Link } from 'react-router-dom';
+} from "@/modules/navigation/data/navigation";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function navSlug(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-');
+  return name.toLowerCase().replace(/\s+/g, "-");
 }
 
 interface DesktopMegaMenuProps {
@@ -31,7 +31,7 @@ function SubmenuPanelContent({
 
   // Standardized 5-column layout with increased width and spacing
   const submenuGridClass =
-    'nav--desktop--list--submenus grid w-full content-start grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 xl:gap-x-16';
+    "nav--desktop--list--submenus grid w-full content-start grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 xl:gap-x-16";
 
   return (
     <div className="nav--desktop--list--submenu-container block w-full bg-white pb-32 pt-20 shadow-xl ring-1 ring-black/5">
@@ -57,13 +57,19 @@ function SubmenuPanelContent({
           {/* Columnar Grid */}
           <div className={submenuGridClass}>
             {item.columns.map((col, idx) => (
-              <div key={col.title ?? col.links[0]?.href ?? idx} className="flex min-w-0 flex-col">
+              <div
+                key={col.title ?? col.links[0]?.href ?? idx}
+                className="flex min-w-0 flex-col"
+              >
                 {col.title && (
                   <div className="mb-6 header-nav-typography text-[2.2rem] font-semibold uppercase tracking-widest text-[var(--evgBodyTextColor)] opacity-80">
                     {col.title}
                   </div>
                 )}
-                <ul className="nav--desktop--list--submenu level1 space-y-4" role="menu">
+                <ul
+                  className="nav--desktop--list--submenu level1 space-y-4"
+                  role="menu"
+                >
                   {col.links.map((link) => (
                     <li
                       key={`${link.href}-${link.label}`}
@@ -114,7 +120,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
   const renderNavItem = (item: NavItem, menuIndex: number) => {
     const slug = navSlug(item.name);
 
-    if (item.type === 'link') {
+    if (item.type === "link") {
       return (
         <li
           key={item.name}
@@ -151,7 +157,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
           onClick={() => toggleDropdown(item.name)}
           className={`
             group inline-flex items-center text-[2.2rem] font-normal leading-[1.15] tracking-normal transition-all focus:outline-none
-            ${isOpen ? 'text-[#06607f]' : 'text-[#000c26] hover:text-[#06607f]'}
+            ${isOpen ? "text-[#06607f]" : "text-[#000c26] hover:text-[#06607f]"}
           `}
           aria-haspopup="true"
           aria-expanded={isOpen}
@@ -160,7 +166,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
           <span>{item.name}</span>
           {/* Aesthetic Active Underline */}
           <span
-            className={`absolute bottom-0 left-4 right-4 h-0.5 bg-primary-500 transition-all duration-300 ${isOpen ? 'opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-50'}`}
+            className={`absolute bottom-0 left-4 right-4 h-0.5 bg-primary-500 transition-all duration-300 ${isOpen ? "opacity-100" : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-50"}`}
           />
         </button>
 
@@ -168,7 +174,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
           id={menuId}
           className={`
             nav--desktop--list--submenu-item fixed inset-x-0 top-[var(--sticky-header-height)] z-[9995] w-full transition-all duration-300
-            ${isOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'}
+            ${isOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}
           `}
           aria-labelledby={buttonId}
           aria-hidden={!isOpen}
@@ -177,7 +183,11 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
           onMouseEnter={() => setOpenWithIntent(item.name, 0)}
           onMouseLeave={() => setOpenWithIntent(null, 250)}
         >
-          <SubmenuPanelContent item={item} isOpen={isOpen} setOpenDropdown={setOpenDropdown} />
+          <SubmenuPanelContent
+            item={item}
+            isOpen={isOpen}
+            setOpenDropdown={setOpenDropdown}
+          />
         </div>
       </li>
     );
@@ -187,7 +197,9 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
     <nav className="pane--static-nav-menu min-w-0 flex-1" aria-label="primary">
       {/* li padding: 12px 0; button margin: 5px each side — exact macysinc.com spec */}
       <ul className="nav--desktop--list--topMenu flex h-full items-center justify-end">
-        {NAVIGATION_ITEMS.map((item, menuIndex) => renderNavItem(item, menuIndex))}
+        {NAVIGATION_ITEMS.map((item, menuIndex) =>
+          renderNavItem(item, menuIndex),
+        )}
       </ul>
     </nav>
   );

@@ -1,5 +1,11 @@
-import { IRFile } from '../types';
-export function FilesList({ items, title }: { items: IRFile[]; title: string }) {
+import { IRFile } from "../types";
+export function FilesList({
+  items,
+  title,
+}: {
+  items: IRFile[];
+  title: string;
+}) {
   return (
     <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
       <h3 className="text-2xl font-semibold">{title}</h3>

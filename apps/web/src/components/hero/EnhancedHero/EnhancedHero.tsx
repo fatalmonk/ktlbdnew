@@ -1,12 +1,18 @@
-import { stockHero } from '@/data/stockImages';
-import { createLazyIcon } from '@/lib/lucide-icons';
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Image from '../../media/Image';
+import { stockHero } from "@/data/stockImages";
+import { createLazyIcon } from "@/lib/lucide-icons";
+import { AnimatePresence, motion } from "framer-motion";
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { Link, useLocation } from "react-router-dom";
+import Image from "../../media/Image";
 
-const Play = createLazyIcon('Play');
-const Pause = createLazyIcon('Pause');
+const Play = createLazyIcon("Play");
+const Pause = createLazyIcon("Pause");
 
 interface HeroSlide {
   id: string;
@@ -27,46 +33,47 @@ const HERO_IMAGE_FADE = {
 
 const SLIDES: HeroSlide[] = [
   {
-    id: 'supply-chain',
+    id: "supply-chain",
     src: stockHero.logistics,
-    alt: 'Global logistics and garment supply chain operations at Kattali Textile Limited',
-    brand: 'Kattali Textile Limited',
-    headline: 'Your Global Supply Chain Starts in Bangladesh.',
-    subline: 'End-to-end garment manufacturing built for the demands of global trade.',
-    ctaLabel: 'Get in Touch →',
-    ctaHref: '/contact',
-  },
-  {
-    id: 'trusted-brands',
-    src: stockHero.manufacturing,
-    alt: 'Kattali Textile Limited manufacturing team and operations',
-    brand: 'Kattali Textile Limited',
-    headline: "Trusted by the World's Leading Brands.",
-    subline: 'From first sample to final shipment, our standards never waver.',
-    ctaLabel: 'View Our Capabilities →',
-    ctaHref: '/products',
-  },
-  {
-    id: 'sustainability',
-    src: stockHero.fabric,
-    alt: 'Sustainable textile production and fabric at KTL',
-    brand: 'Kattali Textile Limited',
-    headline: 'Woven With Care. For People and Planet.',
+    alt: "Global logistics and garment supply chain operations at Kattali Textile Limited",
+    brand: "Kattali Textile Limited",
+    headline: "Your Global Supply Chain Starts in Bangladesh.",
     subline:
-      'Certified sustainable practices, ethical working conditions, and a commitment to a cleaner fashion industry.',
-    ctaLabel: 'Explore Sustainability →',
-    ctaHref: '/sustainability',
+      "End-to-end garment manufacturing built for the demands of global trade.",
+    ctaLabel: "Get in Touch →",
+    ctaHref: "/contact",
+  },
+  {
+    id: "trusted-brands",
+    src: stockHero.manufacturing,
+    alt: "Kattali Textile Limited manufacturing team and operations",
+    brand: "Kattali Textile Limited",
+    headline: "Trusted by the World's Leading Brands.",
+    subline: "From first sample to final shipment, our standards never waver.",
+    ctaLabel: "View Our Capabilities →",
+    ctaHref: "/products",
+  },
+  {
+    id: "sustainability",
+    src: stockHero.fabric,
+    alt: "Sustainable textile production and fabric at KTL",
+    brand: "Kattali Textile Limited",
+    headline: "Woven With Care. For People and Planet.",
+    subline:
+      "Certified sustainable practices, ethical working conditions, and a commitment to a cleaner fashion industry.",
+    ctaLabel: "Explore Sustainability →",
+    ctaHref: "/sustainability",
   },
 ];
 
 const EnhancedHero: React.FC = () => {
   const { pathname } = useLocation();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   // Track the live region announcement text separately so screen readers
   // pick up every change, even between identical headline strings.
-  const [announcement, setAnnouncement] = useState('');
+  const [announcement, setAnnouncement] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
 
   // FIXED: Static array — no dependencies, so useMemo adds no value.
@@ -76,10 +83,12 @@ const EnhancedHero: React.FC = () => {
   const goToSlide = useCallback(
     (index: number, pauseAutoPlay = false) => {
       setCurrentSlide(index);
-      setAnnouncement(`Slide ${index + 1} of ${slides.length}: ${slides[index].headline}`);
+      setAnnouncement(
+        `Slide ${index + 1} of ${slides.length}: ${slides[index].headline}`,
+      );
       if (pauseAutoPlay) setIsAutoPlay(false);
     },
-    [slides]
+    [slides],
   );
 
   const goToPrev = useCallback(() => {
@@ -96,17 +105,17 @@ const EnhancedHero: React.FC = () => {
     if (!section) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         e.preventDefault();
         goToPrev();
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         e.preventDefault();
         goToNext();
       }
     };
 
-    section.addEventListener('keydown', handleKeyDown);
-    return () => section.removeEventListener('keydown', handleKeyDown);
+    section.addEventListener("keydown", handleKeyDown);
+    return () => section.removeEventListener("keydown", handleKeyDown);
   }, [goToPrev, goToNext]);
 
   // Auto-advance
@@ -115,7 +124,9 @@ const EnhancedHero: React.FC = () => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => {
         const next = (prev + 1) % slides.length;
-        setAnnouncement(`Slide ${next + 1} of ${slides.length}: ${slides[next].headline}`);
+        setAnnouncement(
+          `Slide ${next + 1} of ${slides.length}: ${slides[next].headline}`,
+        );
         return next;
       });
     }, 7000);
@@ -133,12 +144,17 @@ const EnhancedHero: React.FC = () => {
       aria-label="Kattali Textile Limited highlights"
       className={
         isHome
-          ? 'bg-white pb-6 pt-[calc(var(--site-header-height-mobile-with-ticker)+var(--home-hero-ticker-gap))] lg:pt-[var(--site-header-height-desktop-with-ticker)]'
-          : 'bg-white pb-6 pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]'
+          ? "bg-white pb-6 pt-[calc(var(--site-header-height-mobile-with-ticker)+var(--home-hero-ticker-gap))] lg:pt-[var(--site-header-height-desktop-with-ticker)]"
+          : "bg-white pb-6 pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]"
       }
     >
       {/* Live region: announces slide changes to screen readers */}
-      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
         {announcement}
       </div>
 
@@ -154,8 +170,9 @@ const EnhancedHero: React.FC = () => {
             <div
               className="relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
               style={{
-                minHeight: '360px',
-                height: 'calc((100svh - var(--site-header-height-mobile-with-ticker, 0px)) * 0.97)',
+                minHeight: "360px",
+                height:
+                  "calc((100svh - var(--site-header-height-mobile-with-ticker, 0px)) * 0.97)",
               }}
             >
               <AnimatePresence mode="sync" initial={false}>
@@ -292,7 +309,7 @@ const EnhancedHero: React.FC = () => {
               className="pointer-events-none absolute bottom-0 right-0 h-[280px] w-[36%]"
               style={{
                 backgroundImage:
-                  'repeating-linear-gradient(25deg, transparent 0 26px, rgba(243,212,90,0.92) 26px 30px, transparent 30px 58px), repeating-linear-gradient(155deg, transparent 0 24px, rgba(243,212,90,0.62) 24px 27px, transparent 27px 54px)',
+                  "repeating-linear-gradient(25deg, transparent 0 26px, rgba(243,212,90,0.92) 26px 30px, transparent 30px 58px), repeating-linear-gradient(155deg, transparent 0 24px, rgba(243,212,90,0.62) 24px 27px, transparent 27px 54px)",
               }}
             />
           </div>
@@ -305,9 +322,13 @@ const EnhancedHero: React.FC = () => {
             type="button"
             onClick={() => setIsAutoPlay((prev) => !prev)}
             className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-[#243a4f]"
-            aria-label={isAutoPlay ? 'Pause slideshow' : 'Play slideshow'}
+            aria-label={isAutoPlay ? "Pause slideshow" : "Play slideshow"}
           >
-            <Suspense fallback={<span className="inline-block h-7 w-7" aria-hidden="true" />}>
+            <Suspense
+              fallback={
+                <span className="inline-block h-7 w-7" aria-hidden="true" />
+              }
+            >
               {isAutoPlay ? (
                 <Pause className="h-7 w-7" aria-hidden="true" />
               ) : (
@@ -321,7 +342,11 @@ const EnhancedHero: React.FC = () => {
             FIXED: aria-current is for navigation landmarks (e.g. the current page link).
             For a selected tab/button state, aria-pressed is the correct attribute.
           */}
-          <div role="group" aria-label="Slide controls" className="flex items-center gap-3">
+          <div
+            role="group"
+            aria-label="Slide controls"
+            className="flex items-center gap-3"
+          >
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
@@ -330,7 +355,7 @@ const EnhancedHero: React.FC = () => {
                 aria-pressed={index === currentSlide}
                 onClick={() => goToSlide(index, true)}
                 className={`h-3.5 w-3.5 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-[#243a4f]' : 'bg-neutral-300'
+                  index === currentSlide ? "bg-[#243a4f]" : "bg-neutral-300"
                 }`}
               />
             ))}

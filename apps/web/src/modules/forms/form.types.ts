@@ -11,4 +11,4 @@ export interface FormErrors {
   [key: string]: string;
 }
 
-export type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+export type FormStatus = "idle" | "loading" | "success" | "error";

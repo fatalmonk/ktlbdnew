@@ -1,4 +1,4 @@
-import { IRItem } from '../types';
+import { IRItem } from "../types";
 export function ItemsList({
   items,
   title,

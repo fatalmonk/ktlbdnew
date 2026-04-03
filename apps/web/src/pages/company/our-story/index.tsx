@@ -1,114 +1,118 @@
-import Image from '../../../components/media/Image';
-import IntroHighlightHero, { MarkerText } from '../../../components/company/IntroHighlightHero';
+import Image from "../../../components/media/Image";
+import IntroHighlightHero, {
+  MarkerText,
+} from "../../../components/company/IntroHighlightHero";
 import TimelineCarouselSection, {
   type TimelineCarouselItem,
-} from '../../../components/company/TimelineCarouselSection';
-import { Target, Eye } from 'lucide-react';
-import SEO from '../../../components/seo/SEO';
-import StructuredData from '../../../components/seo/StructuredData';
-import { createBreadcrumbSchema } from '../../../modules/seo/templates';
-import heroSustainability1x from '@/assets/images/hero/hero-sustainability@1x.webp';
-import heroGlobal1x from '@/assets/images/hero/hero-global@1x.webp';
-import heroMain1x from '@/assets/images/hero/hero-main@1x.webp';
-import StoreLocatorPlus from '../../../components/features/StoreLocatorPlus';
+} from "../../../components/company/TimelineCarouselSection";
+import { Target, Eye } from "lucide-react";
+import SEO from "../../../components/seo/SEO";
+import StructuredData from "../../../components/seo/StructuredData";
+import { createBreadcrumbSchema } from "../../../modules/seo/templates";
+import heroSustainability1x from "@/assets/images/hero/hero-sustainability@1x.webp";
+import heroGlobal1x from "@/assets/images/hero/hero-global@1x.webp";
+import heroMain1x from "@/assets/images/hero/hero-main@1x.webp";
+import StoreLocatorPlus from "../../../components/features/StoreLocatorPlus";
 
 const CompanyOurStory = () => {
   /** Name, title, and portrait — editorial grid (name + title only under photo). */
   const leadership = [
     {
-      name: 'Nasreen Haque',
-      position: 'Chairman & Founder',
-      image: '/assets/leadership/leadership-nasreen-haque.png',
+      name: "Nasreen Haque",
+      position: "Chairman & Founder",
+      image: "/assets/leadership/leadership-nasreen-haque.png",
     },
     {
-      name: 'Md. Emdadul Hoque Chowdhury',
-      position: 'Managing Director',
-      image: '/assets/leadership/leadership-emdadul-hoque.png',
+      name: "Md. Emdadul Hoque Chowdhury",
+      position: "Managing Director",
+      image: "/assets/leadership/leadership-emdadul-hoque.png",
     },
     {
-      name: 'Mohammed Anwarul Haque Ishad',
-      position: 'DMD',
-      image: '/assets/leadership/leadership-ishad.png',
+      name: "Mohammed Anwarul Haque Ishad",
+      position: "DMD",
+      image: "/assets/leadership/leadership-ishad.png",
     },
     {
-      name: 'Mohammed Anwar Alvi',
-      position: 'Execurive Director',
-      image: '/assets/leadership/leadership-anwar-alvi.png',
+      name: "Mohammed Anwar Alvi",
+      position: "Execurive Director",
+      image: "/assets/leadership/leadership-anwar-alvi.png",
     },
     {
-      name: 'MR. Mizanur Rahman',
-      position: 'Chief Financial Officer',
-      image: '/assets/leadership/leadership-mizanur-rahman.png',
+      name: "MR. Mizanur Rahman",
+      position: "Chief Financial Officer",
+      image: "/assets/leadership/leadership-mizanur-rahman.png",
     },
     {
-      name: 'Mr. Barkat Ullah',
-      position: 'Company Secretary',
-      image: '/assets/leadership/leadership-barkat-ullah.png',
+      name: "Mr. Barkat Ullah",
+      position: "Company Secretary",
+      image: "/assets/leadership/leadership-barkat-ullah.png",
     },
     {
-      name: 'Mr. Ashraful Ahsan Chowdhury',
-      position: 'Head of Human Resources & Compliance',
-      image: '/assets/leadership/leadership-ashraful-ahsan-chowdhury.png',
+      name: "Mr. Ashraful Ahsan Chowdhury",
+      position: "Head of Human Resources & Compliance",
+      image: "/assets/leadership/leadership-ashraful-ahsan-chowdhury.png",
     },
     {
-      name: 'Zahed Iqbal',
-      position: 'Quality & Assurance Manager',
-      image: '/assets/leadership/leadership-arif-khan.png',
+      name: "Zahed Iqbal",
+      position: "Quality & Assurance Manager",
+      image: "/assets/leadership/leadership-arif-khan.png",
     },
   ];
 
   const timelineCarouselItems: TimelineCarouselItem[] = [
     {
-      year: '2002',
-      title: 'Kattali Textile',
+      year: "2002",
+      title: "Kattali Textile",
       description:
-        'Company established in Chittagong with a vision to become a leading textile manufacturer in Bangladesh.',
+        "Company established in Chittagong with a vision to become a leading textile manufacturer in Bangladesh.",
       imageSrc: heroMain1x,
-      imageAlt: 'Kattali Textile manufacturing floor',
+      imageAlt: "Kattali Textile manufacturing floor",
     },
     {
-      year: '2006',
-      title: 'Global reach',
+      year: "2006",
+      title: "Global reach",
       description:
-        'First international export shipment—beginning long-term partnerships with European and global buyers.',
+        "First international export shipment—beginning long-term partnerships with European and global buyers.",
     },
     {
-      year: '2010',
-      title: 'Responsible business',
+      year: "2010",
+      title: "Responsible business",
       description:
-        'Sedex certification achieved, demonstrating commitment to ethical trade and transparent supply chains.',
+        "Sedex certification achieved, demonstrating commitment to ethical trade and transparent supply chains.",
       imageSrc: heroSustainability1x,
-      imageAlt: 'Sustainable textile operations',
+      imageAlt: "Sustainable textile operations",
     },
     {
-      year: '2014',
-      title: 'Green manufacturing',
+      year: "2014",
+      title: "Green manufacturing",
       description:
-        'Green factory initiatives launched with sustainable processes and reduced environmental impact.',
+        "Green factory initiatives launched with sustainable processes and reduced environmental impact.",
     },
     {
-      year: '2018',
-      title: 'Scale & capacity',
+      year: "2018",
+      title: "Scale & capacity",
       description:
-        'Production capacity reached 360,000 dozen per year with expanded facilities and workforce.',
+        "Production capacity reached 360,000 dozen per year with expanded facilities and workforce.",
       imageSrc: heroGlobal1x,
-      imageAlt: 'Global garment production',
+      imageAlt: "Global garment production",
     },
     {
-      year: '2024',
-      title: 'Kattali Textile Ltd',
+      year: "2024",
+      title: "Kattali Textile Ltd",
       description:
-        'Over two decades of innovation, growth, and commitment to quality for international partners.',
+        "Over two decades of innovation, growth, and commitment to quality for international partners.",
     },
   ];
 
   const breadcrumbs = [
-    { name: 'Home', url: '/' },
-    { name: 'Company', url: '/company' },
-    { name: 'Our Story', url: '/company/our-story' },
+    { name: "Home", url: "/" },
+    { name: "Company", url: "/company" },
+    { name: "Our Story", url: "/company/our-story" },
   ];
 
-  const introSlides = [{ src: heroMain1x, alt: 'Kattali Textile manufacturing operations' }];
+  const introSlides = [
+    { src: heroMain1x, alt: "Kattali Textile manufacturing operations" },
+  ];
 
   return (
     <>
@@ -116,21 +120,25 @@ const CompanyOurStory = () => {
         title="About Kattali Textile Ltd | Three Decades of Garment Manufacturing Excellence"
         description="Learn about Kattali Textile Ltd's journey as one of Bangladesh's trusted RMG manufacturers. From humble beginnings to a publicly listed company serving top global apparel brands."
         canonical="/company/our-story"
-        keywords={['KTL history', 'Bangladesh textile company', 'garment manufacturer story']}
+        keywords={[
+          "KTL history",
+          "Bangladesh textile company",
+          "garment manufacturer story",
+        ]}
       />
       <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
       <div>
         <IntroHighlightHero
           breadcrumbItems={[
-            { label: 'Home', to: '/' },
-            { label: 'Company' },
-            { label: 'Our Story' },
+            { label: "Home", to: "/" },
+            { label: "Company" },
+            { label: "Our Story" },
           ]}
           pageTitle="Our Story"
           headlineLines={[
-            { text: 'Welcome to the' },
-            { text: 'Home of Quality', highlight: true },
-            { text: 'Manufacturing', highlight: true },
+            { text: "Welcome to the" },
+            { text: "Home of Quality", highlight: true },
+            { text: "Manufacturing", highlight: true },
           ]}
           headlineMobileSlot={
             <>
@@ -150,13 +158,14 @@ const CompanyOurStory = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-4 items-center">
               <div>
                 <p className="text-[#000000] text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] md:leading-tight">
-                  We are a leading garment manufacturer, and through our trusted facilities in
-                  Chittagong,{' '}
+                  We are a leading garment manufacturer, and through our trusted
+                  facilities in Chittagong,{" "}
                   <strong className="font-bold">
-                    we help global apparel brands deliver quality products to their customers
-                  </strong>{' '}
-                  — combining precision manufacturing, sustainable practices, and reliable
-                  partnerships to bring every collection to life.
+                    we help global apparel brands deliver quality products to
+                    their customers
+                  </strong>{" "}
+                  — combining precision manufacturing, sustainable practices,
+                  and reliable partnerships to bring every collection to life.
                 </p>
               </div>
               <div className="relative">
@@ -197,9 +206,10 @@ const CompanyOurStory = () => {
                   </h3>
                 </div>
                 <p className="mt-8 text-2xl font-medium leading-relaxed text-neutral-900 md:text-3xl md:leading-snug">
-                  To deliver excellence through sustainable and ethical garment manufacturing,
-                  providing our global partners with premium quality textiles while maintaining the
-                  highest standards of environmental and social responsibility.
+                  To deliver excellence through sustainable and ethical garment
+                  manufacturing, providing our global partners with premium
+                  quality textiles while maintaining the highest standards of
+                  environmental and social responsibility.
                 </p>
               </article>
               <article className="flex flex-col rounded-2xl border border-neutral-200/90 border-l-4 border-l-primary-500 bg-white p-8 pl-7 shadow-sm ring-1 ring-neutral-100 sm:pl-8 md:p-10 md:pl-10 lg:p-12 lg:pl-12">
@@ -215,9 +225,10 @@ const CompanyOurStory = () => {
                   </h3>
                 </div>
                 <p className="mt-8 text-2xl font-medium leading-relaxed text-neutral-900 md:text-3xl md:leading-snug">
-                  To become a globally respected textile brand from Bangladesh, recognized for
-                  innovation, quality, and sustainable practices, while contributing to the economic
-                  development of our community and country.
+                  To become a globally respected textile brand from Bangladesh,
+                  recognized for innovation, quality, and sustainable practices,
+                  while contributing to the economic development of our
+                  community and country.
                 </p>
               </article>
             </div>
@@ -242,7 +253,9 @@ const CompanyOurStory = () => {
                       sizes="(min-width:1024px) 22vw, (min-width:768px) 28vw, 42vw"
                     />
                   </div>
-                  <p className="mt-4 text-base font-bold leading-tight text-black">{leader.name}</p>
+                  <p className="mt-4 text-base font-bold leading-tight text-black">
+                    {leader.name}
+                  </p>
                   <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">
                     {leader.position}
                   </p>

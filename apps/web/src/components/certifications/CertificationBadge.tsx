@@ -1,14 +1,14 @@
-import { motion } from 'framer-motion';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
-import { Certification } from '../../types/certification';
+import { motion } from "framer-motion";
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
+import { Certification } from "../../types/certification";
 
-const ExternalLink = createLazyIcon('ExternalLink');
-const Download = createLazyIcon('Download');
-const Award = createLazyIcon('Award');
-const CheckCircle = createLazyIcon('CheckCircle');
-const AlertCircle = createLazyIcon('AlertCircle');
-const Clock = createLazyIcon('Clock');
+const ExternalLink = createLazyIcon("ExternalLink");
+const Download = createLazyIcon("Download");
+const Award = createLazyIcon("Award");
+const CheckCircle = createLazyIcon("CheckCircle");
+const AlertCircle = createLazyIcon("AlertCircle");
+const Clock = createLazyIcon("Clock");
 
 interface CertificationBadgeProps {
   certification: Certification;
@@ -23,40 +23,40 @@ const CertificationBadge = ({
 }: CertificationBadgeProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Active':
-        return 'text-green-600 bg-green-50';
-      case 'Expiring Soon':
-        return 'text-yellow-600 bg-yellow-50';
-      case 'Expired':
-        return 'text-red-600 bg-red-50';
-      case 'In Renewal':
-        return 'text-blue-600 bg-blue-50';
+      case "Active":
+        return "text-green-600 bg-green-50";
+      case "Expiring Soon":
+        return "text-yellow-600 bg-yellow-50";
+      case "Expired":
+        return "text-red-600 bg-red-50";
+      case "In Renewal":
+        return "text-blue-600 bg-blue-50";
       default:
-        return 'text-neutral-600 bg-neutral-50';
+        return "text-neutral-600 bg-neutral-50";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'Active':
+      case "Active":
         return (
           <Suspense fallback={<div className="w-4 h-4" />}>
             <CheckCircle size={16} />
           </Suspense>
         );
-      case 'Expiring Soon':
+      case "Expiring Soon":
         return (
           <Suspense fallback={<div className="w-4 h-4" />}>
             <Clock size={16} />
           </Suspense>
         );
-      case 'Expired':
+      case "Expired":
         return (
           <Suspense fallback={<div className="w-4 h-4" />}>
             <AlertCircle size={16} />
           </Suspense>
         );
-      case 'In Renewal':
+      case "In Renewal":
         return (
           <Suspense fallback={<div className="w-4 h-4" />}>
             <Clock size={16} />
@@ -73,18 +73,18 @@ const CertificationBadge = ({
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'Quality Management':
-        return 'bg-blue-100 text-blue-700';
-      case 'Environmental':
-        return 'bg-green-100 text-green-700';
-      case 'Social Compliance':
-        return 'bg-purple-100 text-purple-700';
-      case 'Product Safety':
-        return 'bg-orange-100 text-orange-700';
-      case 'Customer Specific':
-        return 'bg-pink-100 text-pink-700';
+      case "Quality Management":
+        return "bg-blue-100 text-blue-700";
+      case "Environmental":
+        return "bg-green-100 text-green-700";
+      case "Social Compliance":
+        return "bg-purple-100 text-purple-700";
+      case "Product Safety":
+        return "bg-orange-100 text-orange-700";
+      case "Customer Specific":
+        return "bg-pink-100 text-pink-700";
       default:
-        return 'bg-neutral-100 text-neutral-700';
+        return "bg-neutral-100 text-neutral-700";
     }
   };
 
@@ -151,8 +151,12 @@ const CertificationBadge = ({
             </Suspense>
           </div>
         )}
-        <h3 className="font-bold text-lg text-neutral-900">{certification.name}</h3>
-        <p className="text-sm text-neutral-600 mt-1">{certification.issuingBody}</p>
+        <h3 className="font-bold text-lg text-neutral-900">
+          {certification.name}
+        </h3>
+        <p className="text-sm text-neutral-600 mt-1">
+          {certification.issuingBody}
+        </p>
       </div>
 
       {/* Content */}
@@ -173,27 +177,30 @@ const CertificationBadge = ({
         </div>
 
         {/* Description */}
-        <p className="text-sm text-neutral-700 mb-4 line-clamp-3">{certification.description}</p>
+        <p className="text-sm text-neutral-700 mb-4 line-clamp-3">
+          {certification.description}
+        </p>
 
         {/* Dates */}
         {certification.certificateNumber && (
           <div className="text-xs text-neutral-600 mb-2">
-            <span className="font-medium">Certificate #:</span> {certification.certificateNumber}
+            <span className="font-medium">Certificate #:</span>{" "}
+            {certification.certificateNumber}
           </div>
         )}
         <div className="grid grid-cols-2 gap-3 text-xs text-neutral-600 mb-4">
           <div>
-            <span className="font-medium">Issued:</span>{' '}
-            {new Date(certification.issuedDate).toLocaleDateString('en-US', {
-              month: 'short',
-              year: 'numeric',
+            <span className="font-medium">Issued:</span>{" "}
+            {new Date(certification.issuedDate).toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric",
             })}
           </div>
           <div>
-            <span className="font-medium">Expires:</span>{' '}
-            {new Date(certification.expiryDate).toLocaleDateString('en-US', {
-              month: 'short',
-              year: 'numeric',
+            <span className="font-medium">Expires:</span>{" "}
+            {new Date(certification.expiryDate).toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric",
             })}
           </div>
         </div>

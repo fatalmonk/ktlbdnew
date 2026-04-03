@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const ChevronLeft = createLazyIcon('ChevronLeft');
-const ChevronRight = createLazyIcon('ChevronRight');
-const Send = createLazyIcon('Send');
+const ChevronLeft = createLazyIcon("ChevronLeft");
+const ChevronRight = createLazyIcon("ChevronRight");
+const Send = createLazyIcon("Send");
 
 interface RFQNavigationProps {
   currentStep: number;

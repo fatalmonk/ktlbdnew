@@ -1,7 +1,7 @@
-import type { LucideIcon } from 'lucide-react';
-import { createLazyIconWrapper } from '@/lib/lucide-icons';
+import type { LucideIcon } from "lucide-react";
+import { createLazyIconWrapper } from "@/lib/lucide-icons";
 
-type StatColor = 'primary' | 'secondary' | 'accent';
+type StatColor = "primary" | "secondary" | "accent";
 
 export interface Stat {
   icon: LucideIcon;
@@ -14,35 +14,35 @@ export interface Stat {
 
 export const stats: Stat[] = [
   {
-    icon: createLazyIconWrapper('Calendar') as LucideIcon,
+    icon: createLazyIconWrapper("Calendar") as LucideIcon,
     value: 20,
-    suffix: '+',
-    label: 'Years of Excellence',
-    description: 'Established since 2002',
-    color: 'primary',
+    suffix: "+",
+    label: "Years of Excellence",
+    description: "Established since 2002",
+    color: "primary",
   },
   {
-    icon: createLazyIconWrapper('Users') as LucideIcon,
+    icon: createLazyIconWrapper("Users") as LucideIcon,
     value: 1200,
-    suffix: '+',
-    label: 'Skilled Employees',
-    description: 'Dedicated professionals',
-    color: 'accent',
+    suffix: "+",
+    label: "Skilled Employees",
+    description: "Dedicated professionals",
+    color: "accent",
   },
   {
-    icon: createLazyIconWrapper('Settings') as LucideIcon,
+    icon: createLazyIconWrapper("Settings") as LucideIcon,
     value: 680,
-    suffix: '+',
-    label: 'Advanced Machines',
-    description: 'State-of-the-art equipment',
-    color: 'secondary',
+    suffix: "+",
+    label: "Advanced Machines",
+    description: "State-of-the-art equipment",
+    color: "secondary",
   },
   {
-    icon: createLazyIconWrapper('Package') as LucideIcon,
+    icon: createLazyIconWrapper("Package") as LucideIcon,
     value: 360,
-    suffix: 'K+',
-    label: 'Annual Production',
-    description: 'Dozen capacity',
-    color: 'primary',
+    suffix: "K+",
+    label: "Annual Production",
+    description: "Dozen capacity",
+    color: "primary",
   },
 ];

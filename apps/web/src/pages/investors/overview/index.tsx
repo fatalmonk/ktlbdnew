@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import type { KPI, IRFile, IRItem, Price } from '../../../ir/types';
-import SEO from '../../../components/seo/SEO';
-import SubpageHeader from '../../../components/shared/SubpageHeader';
+import { useEffect, useState } from "react";
+import type { KPI, IRFile, IRItem, Price } from "../../../ir/types";
+import SEO from "../../../components/seo/SEO";
+import SubpageHeader from "../../../components/shared/SubpageHeader";
 
 const InvestorsOverview = () => {
   const [price, setPrice] = useState<Price | null>(null);
@@ -15,14 +15,15 @@ const InvestorsOverview = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [priceRes, kpisRes, resultsRes, filingsRes, pressRes, eventsRes] = await Promise.all([
-          fetch('/data/ir/price.json'),
-          fetch('/data/ir/kpis.json'),
-          fetch('/data/ir/results.json'),
-          fetch('/data/ir/filings.json'),
-          fetch('/data/ir/press.json'),
-          fetch('/data/ir/events.json'),
-        ]);
+        const [priceRes, kpisRes, resultsRes, filingsRes, pressRes, eventsRes] =
+          await Promise.all([
+            fetch("/data/ir/price.json"),
+            fetch("/data/ir/kpis.json"),
+            fetch("/data/ir/results.json"),
+            fetch("/data/ir/filings.json"),
+            fetch("/data/ir/press.json"),
+            fetch("/data/ir/events.json"),
+          ]);
 
         if (priceRes.ok) setPrice(await priceRes.json());
         if (kpisRes.ok) setKpis(await kpisRes.json());
@@ -31,7 +32,7 @@ const InvestorsOverview = () => {
         if (pressRes.ok) setPress(await pressRes.json());
         if (eventsRes.ok) setEvents(await eventsRes.json());
       } catch (error) {
-        console.error('Error fetching IR data:', error);
+        console.error("Error fetching IR data:", error);
       } finally {
         setLoading(false);
       }
@@ -54,18 +55,18 @@ const InvestorsOverview = () => {
         title="Investor Overview"
         description="Comprehensive overview of KTL's financial performance, strategic insights, and investment opportunities for investors."
         keywords={[
-          'investor relations',
-          'financial performance',
-          'KTL investors',
-          'investment opportunities',
-          'financial overview',
+          "investor relations",
+          "financial performance",
+          "KTL investors",
+          "investment opportunities",
+          "financial overview",
         ]}
       />
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Investors', to: '/investors' },
-          { label: 'Overview' },
+          { label: "Home", to: "/" },
+          { label: "Investors", to: "/investors" },
+          { label: "Overview" },
         ]}
         pageTitle="Investor Overview"
       />
@@ -77,10 +78,12 @@ const InvestorsOverview = () => {
 
           {/* Hero Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Investor Overview</h2>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Investor Overview
+            </h2>
             <p className="text-xl md:text-2xl leading-relaxed opacity-90 max-w-3xl mx-auto">
-              Your gateway to KTL's financial performance, strategic insights, and investment
-              opportunities
+              Your gateway to KTL's financial performance, strategic insights,
+              and investment opportunities
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#metric-band" className="btn-ktl-primary">
@@ -95,7 +98,12 @@ const InvestorsOverview = () => {
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white opacity-70">
             <div className="animate-bounce">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -112,7 +120,9 @@ const InvestorsOverview = () => {
           <div className="ir-topbar" />
           <div className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 lg:py-24 grid grid-cols-1 md:grid-cols-[.58fr_.42fr] items-center gap-10">
             <div>
-              <h2 className="text-h3 font-bold text-[var(--ir-text)]">Investor Snapshot</h2>
+              <h2 className="text-h3 font-bold text-[var(--ir-text)]">
+                Investor Snapshot
+              </h2>
               <p className="mt-4 text-caption leading-7 text-[var(--ir-muted)]">
                 Key figures (placeholder). Replace with live feed.
               </p>
@@ -129,16 +139,20 @@ const InvestorsOverview = () => {
                   {price ? (
                     <>
                       <span className="align-top text-3xl mr-1">
-                        {price.currency === 'BDT' ? '৳' : price.currency === 'USD' ? '$' : ''}
+                        {price.currency === "BDT"
+                          ? "৳"
+                          : price.currency === "USD"
+                            ? "$"
+                            : ""}
                       </span>
                       {price.value.toFixed(2)}
                     </>
                   ) : (
-                    '—'
+                    "—"
                   )}
                 </div>
                 <div className="mt-2 text-sm text-[var(--ir-muted)]">
-                  {price?.symbol ?? '—'} · {price?.asOf ?? ''}
+                  {price?.symbol ?? "—"} · {price?.asOf ?? ""}
                 </div>
               </div>
             </div>
@@ -154,14 +168,21 @@ const InvestorsOverview = () => {
               <div key={i} className="rounded-lg border p-6">
                 <div className="text-sm text-neutral-600">{k.label}</div>
                 <div className="mt-2 text-2xl font-semibold">{k.value}</div>
-                {k.footnote && <div className="mt-1 text-xs text-neutral-500">{k.footnote}</div>}
+                {k.footnote && (
+                  <div className="mt-1 text-xs text-neutral-500">
+                    {k.footnote}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </section>
 
         {/* Latest Results */}
-        <section id="latest-results" className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
+        <section
+          id="latest-results"
+          className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12"
+        >
           <h3 className="text-2xl font-semibold">Latest Results</h3>
           <ul className="mt-6 grid gap-4 md:grid-cols-2">
             {results.map((f, i) => (
@@ -249,7 +270,9 @@ const InvestorsOverview = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-semibold">Email Alerts</h3>
-              <p className="text-neutral-600 mt-2">Subscribe to updates (placeholder form).</p>
+              <p className="text-neutral-600 mt-2">
+                Subscribe to updates (placeholder form).
+              </p>
             </div>
             <form className="flex gap-3 w-full md:w-auto">
               <input
@@ -257,7 +280,9 @@ const InvestorsOverview = () => {
                 placeholder="you@example.com"
                 aria-label="Email"
               />
-              <button className="h-11 px-6 rounded-md bg-black text-white">Subscribe</button>
+              <button className="h-11 px-6 rounded-md bg-black text-white">
+                Subscribe
+              </button>
             </form>
           </div>
         </section>

@@ -1,5 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams, Link, Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Calendar,
@@ -23,11 +23,11 @@ import {
   Sparkles,
   Sun,
   Recycle,
-} from 'lucide-react';
-import SEO from '../../components/seo/SEO';
-import SubpageHeader from '../../components/shared/SubpageHeader';
-import { CaseStudy } from '../../types/case-study';
-import caseStudiesData from '../../data/case-studies/sample-data.json';
+} from "lucide-react";
+import SEO from "../../components/seo/SEO";
+import SubpageHeader from "../../components/shared/SubpageHeader";
+import { CaseStudy } from "../../types/case-study";
+import caseStudiesData from "../../data/case-studies/sample-data.json";
 
 // Icon mapping for results
 const iconMap: Record<string, React.ElementType> = {
@@ -69,23 +69,23 @@ const CaseStudyDetail = () => {
           url: window.location.href,
         });
       } catch (err) {
-        console.log('Error sharing:', err);
+        console.log("Error sharing:", err);
       }
     } else {
       // Fallback: copy to clipboard
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
+        alert("Link copied to clipboard!");
       } catch (err) {
-        console.error('Failed to copy to clipboard:', err);
-        alert('Failed to copy link. Please copy it manually.');
+        console.error("Failed to copy to clipboard:", err);
+        alert("Failed to copy link. Please copy it manually.");
       }
     }
   };
 
   const handleDownload = () => {
     // In production, this would download a PDF version
-    alert('PDF download feature coming soon!');
+    alert("PDF download feature coming soon!");
   };
 
   return (
@@ -96,14 +96,14 @@ const CaseStudyDetail = () => {
         keywords={[
           ...caseStudy.industry,
           ...caseStudy.products,
-          'textile manufacturing case study',
+          "textile manufacturing case study",
         ]}
       />
 
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Case Studies', to: '/case-studies' },
+          { label: "Home", to: "/" },
+          { label: "Case Studies", to: "/case-studies" },
           { label: caseStudy.title },
         ]}
         pageTitle={caseStudy.title}
@@ -146,10 +146,13 @@ const CaseStudyDetail = () => {
                 <div className="flex items-center gap-2">
                   <Calendar size={18} />
                   <span>
-                    {new Date(caseStudy.publishDate).toLocaleDateString('en-US', {
-                      month: 'long',
-                      year: 'numeric',
-                    })}
+                    {new Date(caseStudy.publishDate).toLocaleDateString(
+                      "en-US",
+                      {
+                        month: "long",
+                        year: "numeric",
+                      },
+                    )}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -177,8 +180,12 @@ const CaseStudyDetail = () => {
                 transition={{ delay: 0.1 }}
                 className="bg-white rounded-lg shadow-md p-8"
               >
-                <h2 className="text-2xl font-bold text-neutral-900 mb-4">The Challenge</h2>
-                <p className="text-neutral-700 text-lg leading-relaxed">{caseStudy.challenge}</p>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-4">
+                  The Challenge
+                </h2>
+                <p className="text-neutral-700 text-lg leading-relaxed">
+                  {caseStudy.challenge}
+                </p>
               </motion.div>
 
               {/* Solution */}
@@ -188,8 +195,12 @@ const CaseStudyDetail = () => {
                 transition={{ delay: 0.2 }}
                 className="bg-white rounded-lg shadow-md p-8"
               >
-                <h2 className="text-2xl font-bold text-neutral-900 mb-4">Our Solution</h2>
-                <p className="text-neutral-700 text-lg leading-relaxed">{caseStudy.solution}</p>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-4">
+                  Our Solution
+                </h2>
+                <p className="text-neutral-700 text-lg leading-relaxed">
+                  {caseStudy.solution}
+                </p>
               </motion.div>
 
               {/* Results */}
@@ -199,7 +210,9 @@ const CaseStudyDetail = () => {
                 transition={{ delay: 0.3 }}
                 className="bg-white rounded-lg shadow-md p-8"
               >
-                <h2 className="text-2xl font-bold text-neutral-900 mb-6">The Results</h2>
+                <h2 className="text-2xl font-bold text-neutral-900 mb-6">
+                  The Results
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {caseStudy.results.map((result) => {
                     const IconComponent = iconMap[result.icon] || Award;
@@ -215,7 +228,9 @@ const CaseStudyDetail = () => {
                           <div className="text-3xl font-bold text-blue-600 mb-1">
                             {result.value}
                           </div>
-                          <div className="text-sm text-neutral-700">{result.metric}</div>
+                          <div className="text-sm text-neutral-700">
+                            {result.metric}
+                          </div>
                         </div>
                       </div>
                     );
@@ -244,8 +259,12 @@ const CaseStudyDetail = () => {
                       />
                     )}
                     <div>
-                      <div className="font-semibold">{caseStudy.testimonial.author}</div>
-                      <div className="text-blue-200 text-sm">{caseStudy.testimonial.position}</div>
+                      <div className="font-semibold">
+                        {caseStudy.testimonial.author}
+                      </div>
+                      <div className="text-blue-200 text-sm">
+                        {caseStudy.testimonial.position}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -261,7 +280,9 @@ const CaseStudyDetail = () => {
                 transition={{ delay: 0.2 }}
                 className="bg-white rounded-lg shadow-md p-6 sticky top-6"
               >
-                <h3 className="font-semibold text-neutral-900 mb-4">Share This Story</h3>
+                <h3 className="font-semibold text-neutral-900 mb-4">
+                  Share This Story
+                </h3>
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={handleShare}
@@ -281,7 +302,9 @@ const CaseStudyDetail = () => {
 
                 {/* Products Used */}
                 <div className="mt-6 pt-6 border-t border-neutral-200">
-                  <h4 className="font-semibold text-neutral-900 mb-3">Products Involved</h4>
+                  <h4 className="font-semibold text-neutral-900 mb-3">
+                    Products Involved
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {caseStudy.products.map((product) => (
                       <Link

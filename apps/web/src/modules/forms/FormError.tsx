@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const AlertCircle = createLazyIcon('AlertCircle');
+const AlertCircle = createLazyIcon("AlertCircle");
 
 interface FormErrorProps {
   message: string;
   className?: string;
 }
 
-const FormError: React.FC<FormErrorProps> = ({ message, className = '' }) => {
+const FormError: React.FC<FormErrorProps> = ({ message, className = "" }) => {
   return (
     <div
       className={`p-4 bg-red-500/20 border border-red-500/50 rounded-lg flex items-start gap-3 ${className}`}

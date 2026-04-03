@@ -1,38 +1,42 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-const SCRIPT_ATTR = 'data-ktl-maps-js-api';
+const SCRIPT_ATTR = "data-ktl-maps-js-api";
 
 let mapsJsLoadPromise: Promise<void> | null = null;
 
 function loadMapsJavaScriptApi(apiKey: string): Promise<void> {
-  if (typeof window !== 'undefined' && window.google?.maps?.places) {
+  if (typeof window !== "undefined" && window.google?.maps?.places) {
     return Promise.resolve();
   }
   if (mapsJsLoadPromise) return mapsJsLoadPromise;
 
   mapsJsLoadPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(`script[${SCRIPT_ATTR}="1"]`);
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[${SCRIPT_ATTR}="1"]`,
+    );
     if (existing) {
-      if (existing.dataset.loaded === '1') {
+      if (existing.dataset.loaded === "1") {
         resolve();
         return;
       }
-      existing.addEventListener('load', () => resolve());
-      existing.addEventListener('error', () => reject(new Error('Maps load failed')));
+      existing.addEventListener("load", () => resolve());
+      existing.addEventListener("error", () =>
+        reject(new Error("Maps load failed")),
+      );
       return;
     }
-    const s = document.createElement('script');
+    const s = document.createElement("script");
     s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&libraries=places&v=weekly&solution_channel=GMP_CCS_placedetails_v2`;
     s.async = true;
     s.defer = true;
-    s.setAttribute(SCRIPT_ATTR, '1');
+    s.setAttribute(SCRIPT_ATTR, "1");
     s.onload = () => {
-      s.dataset.loaded = '1';
+      s.dataset.loaded = "1";
       resolve();
     };
     s.onerror = () => {
       mapsJsLoadPromise = null;
-      reject(new Error('Failed to load Google Maps JavaScript API'));
+      reject(new Error("Failed to load Google Maps JavaScript API"));
     };
     document.head.appendChild(s);
   });
@@ -64,10 +68,10 @@ const DEFAULT_CENTER: google.maps.LatLngLiteral = {
 const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
   apiKey,
   placeId,
-  height = '400px',
+  height = "400px",
   zoom = 15,
-  className = '',
-  title = 'Map',
+  className = "",
+  title = "Map",
   defaultCenter = DEFAULT_CENTER,
   onError,
 }) => {
@@ -94,8 +98,8 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
 
         const request: google.maps.places.PlaceDetailsRequest = {
           placeId,
-          fields: ['name', 'formatted_address', 'place_id', 'geometry'],
-          region: 'bd',
+          fields: ["name", "formatted_address", "place_id", "geometry"],
+          region: "bd",
         };
 
         const infowindow = new google.maps.InfoWindow();
@@ -103,7 +107,10 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
 
         service.getDetails(request, (place, status) => {
           if (cancelled) return;
-          if (status !== google.maps.places.PlacesServiceStatus.OK || !place?.geometry?.location) {
+          if (
+            status !== google.maps.places.PlacesServiceStatus.OK ||
+            !place?.geometry?.location
+          ) {
             onError?.();
             return;
           }
@@ -116,22 +123,23 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
             title: place.name,
           });
 
-          marker.addListener('click', () => {
-            const content = document.createElement('div');
-            const nameElement = document.createElement('h2');
+          marker.addListener("click", () => {
+            const content = document.createElement("div");
+            const nameElement = document.createElement("h2");
             nameElement.className =
-              'font-heading text-lg font-semibold text-neutral-900 m-0 mb-2 pr-6';
-            nameElement.textContent = place.name ?? '';
+              "font-heading text-lg font-semibold text-neutral-900 m-0 mb-2 pr-6";
+            nameElement.textContent = place.name ?? "";
             content.appendChild(nameElement);
 
-            const placeIdElement = document.createElement('p');
-            placeIdElement.className = 'text-xs text-neutral-500 m-0 mb-2 break-all';
-            placeIdElement.textContent = place.place_id ?? '';
+            const placeIdElement = document.createElement("p");
+            placeIdElement.className =
+              "text-xs text-neutral-500 m-0 mb-2 break-all";
+            placeIdElement.textContent = place.place_id ?? "";
             content.appendChild(placeIdElement);
 
-            const placeAddressElement = document.createElement('p');
-            placeAddressElement.className = 'text-sm text-neutral-700 m-0';
-            placeAddressElement.textContent = place.formatted_address ?? '';
+            const placeAddressElement = document.createElement("p");
+            placeAddressElement.className = "text-sm text-neutral-700 m-0";
+            placeAddressElement.textContent = place.formatted_address ?? "";
             content.appendChild(placeAddressElement);
 
             infowindow.setContent(content);
@@ -154,7 +162,10 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
   }, [apiKey, placeId, zoom, defaultCenter, onError]);
 
   return (
-    <div className={`rounded-lg overflow-hidden shadow-xl ${className}`} style={{ height }}>
+    <div
+      className={`rounded-lg overflow-hidden shadow-xl ${className}`}
+      style={{ height }}
+    >
       <div
         ref={containerRef}
         className="h-full w-full min-h-[320px]"

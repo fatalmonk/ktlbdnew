@@ -4,7 +4,9 @@ export default function EmailAlertsCTA() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h3 className="text-2xl font-semibold">Email Alerts</h3>
-          <p className="text-neutral-600 mt-2">Subscribe to updates (placeholder form).</p>
+          <p className="text-neutral-600 mt-2">
+            Subscribe to updates (placeholder form).
+          </p>
         </div>
         <form className="flex gap-3 w-full md:w-auto">
           <input
@@ -12,7 +14,9 @@ export default function EmailAlertsCTA() {
             placeholder="you@example.com"
             aria-label="Email"
           />
-          <button className="h-11 px-6 rounded-md bg-black text-white">Subscribe</button>
+          <button className="h-11 px-6 rounded-md bg-black text-white">
+            Subscribe
+          </button>
         </form>
       </div>
     </section>

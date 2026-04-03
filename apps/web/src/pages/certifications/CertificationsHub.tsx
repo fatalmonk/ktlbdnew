@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   Filter,
@@ -11,43 +11,51 @@ import {
   CheckCircle,
   ExternalLink,
   Download,
-} from 'lucide-react';
-import CertificationBadge from '../../components/certifications/CertificationBadge';
-import SEO from '../../components/seo/SEO';
-import SubpageHeader from '../../components/shared/SubpageHeader';
+} from "lucide-react";
+import CertificationBadge from "../../components/certifications/CertificationBadge";
+import SEO from "../../components/seo/SEO";
+import SubpageHeader from "../../components/shared/SubpageHeader";
 import {
   Certification,
   CertificationFilterState,
   CertificationCategory,
-} from '../../types/certification';
-import certificationsData from '@/data/certifications/index.json';
+} from "../../types/certification";
+import certificationsData from "@/data/certifications/index.json";
 
 const CertificationsHub = () => {
   const certifications = certificationsData as Certification[];
 
   const [filters, setFilters] = useState<CertificationFilterState>({
-    category: '',
-    status: '',
-    searchQuery: '',
+    category: "",
+    status: "",
+    searchQuery: "",
   });
 
-  const [selectedCertification, setSelectedCertification] = useState<Certification | null>(null);
+  const [selectedCertification, setSelectedCertification] =
+    useState<Certification | null>(null);
 
   // Get unique categories for filter
   const categories = useMemo(() => {
-    return Array.from(new Set(certifications.map((cert) => cert.category))).sort();
+    return Array.from(
+      new Set(certifications.map((cert) => cert.category)),
+    ).sort();
   }, [certifications]);
 
   // Filter certifications
   const filteredCertifications = useMemo(() => {
     return certifications.filter((cert) => {
-      const matchesCategory = !filters.category || cert.category === filters.category;
+      const matchesCategory =
+        !filters.category || cert.category === filters.category;
       const matchesStatus = !filters.status || cert.status === filters.status;
       const matchesSearch =
         !filters.searchQuery ||
         cert.name.toLowerCase().includes(filters.searchQuery.toLowerCase()) ||
-        cert.fullName.toLowerCase().includes(filters.searchQuery.toLowerCase()) ||
-        cert.description.toLowerCase().includes(filters.searchQuery.toLowerCase());
+        cert.fullName
+          .toLowerCase()
+          .includes(filters.searchQuery.toLowerCase()) ||
+        cert.description
+          .toLowerCase()
+          .includes(filters.searchQuery.toLowerCase());
 
       return matchesCategory && matchesStatus && matchesSearch;
     });
@@ -56,11 +64,11 @@ const CertificationsHub = () => {
   // Group certifications by category
   const certificationsByCategory = useMemo(() => {
     const grouped: Record<CertificationCategory, Certification[]> = {
-      'Quality Management': [],
+      "Quality Management": [],
       Environmental: [],
-      'Social Compliance': [],
-      'Product Safety': [],
-      'Customer Specific': [],
+      "Social Compliance": [],
+      "Product Safety": [],
+      "Customer Specific": [],
     };
 
     filteredCertifications.forEach((cert) => {
@@ -72,25 +80,26 @@ const CertificationsHub = () => {
 
   const handleReset = () => {
     setFilters({
-      category: '',
-      status: '',
-      searchQuery: '',
+      category: "",
+      status: "",
+      searchQuery: "",
     });
   };
 
-  const hasActiveFilters = filters.category || filters.status || filters.searchQuery;
+  const hasActiveFilters =
+    filters.category || filters.status || filters.searchQuery;
 
   const getCategoryIcon = (category: CertificationCategory) => {
     switch (category) {
-      case 'Quality Management':
+      case "Quality Management":
         return <Award size={24} />;
-      case 'Environmental':
+      case "Environmental":
         return <Leaf size={24} />;
-      case 'Social Compliance':
+      case "Social Compliance":
         return <Users size={24} />;
-      case 'Product Safety':
+      case "Product Safety":
         return <Shield size={24} />;
-      case 'Customer Specific':
+      case "Customer Specific":
         return <CheckCircle size={24} />;
       default:
         return <Award size={24} />;
@@ -103,20 +112,23 @@ const CertificationsHub = () => {
         title="Certifications & Compliance | KTL"
         description="View all of KTL's international certifications including ISO 9001, ISO 14001, OEKO-TEX, GOTS, BSCI, WRAP, and customer-specific certifications."
         keywords={[
-          'ISO 9001',
-          'ISO 14001',
-          'OEKO-TEX',
-          'GOTS',
-          'BSCI',
-          'WRAP',
-          'textile certifications',
-          'compliance',
-          'quality management',
+          "ISO 9001",
+          "ISO 14001",
+          "OEKO-TEX",
+          "GOTS",
+          "BSCI",
+          "WRAP",
+          "textile certifications",
+          "compliance",
+          "quality management",
         ]}
       />
 
       <SubpageHeader
-        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Certifications' }]}
+        breadcrumbItems={[
+          { label: "Home", to: "/" },
+          { label: "Certifications" },
+        ]}
         pageTitle="Certifications"
       />
       <div className="bg-neutral-50 min-h-screen">
@@ -130,7 +142,9 @@ const CertificationsHub = () => {
               className="text-center"
             >
               <Shield size={64} className="mx-auto mb-6" />
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Certifications & Compliance</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Certifications & Compliance
+              </h2>
               <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
                 Trusted by global brands. Certified by international standards.
               </p>
@@ -143,11 +157,15 @@ const CertificationsHub = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">{certifications.length}+</div>
+                <div className="text-3xl font-bold text-blue-600">
+                  {certifications.length}+
+                </div>
                 <div className="text-neutral-600 mt-1">Certifications</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">{categories.length}</div>
+                <div className="text-3xl font-bold text-blue-600">
+                  {categories.length}
+                </div>
                 <div className="text-neutral-600 mt-1">Categories</div>
               </div>
               <div className="text-center">
@@ -167,13 +185,17 @@ const CertificationsHub = () => {
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <div className="flex items-center gap-2 mb-4">
               <Filter size={20} className="text-neutral-600" />
-              <h2 className="text-lg font-semibold text-neutral-900">Filter Certifications</h2>
+              <h2 className="text-lg font-semibold text-neutral-900">
+                Filter Certifications
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {/* Search */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-neutral-700 mb-2">Search</label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
+                  Search
+                </label>
                 <div className="relative">
                   <Search
                     className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400"
@@ -183,7 +205,9 @@ const CertificationsHub = () => {
                     type="text"
                     placeholder="Search certifications..."
                     value={filters.searchQuery}
-                    onChange={(e) => setFilters({ ...filters, searchQuery: e.target.value })}
+                    onChange={(e) =>
+                      setFilters({ ...filters, searchQuery: e.target.value })
+                    }
                     className="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -191,13 +215,15 @@ const CertificationsHub = () => {
 
               {/* Category Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">Category</label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
+                  Category
+                </label>
                 <select
                   value={filters.category}
                   onChange={(e) =>
                     setFilters({
                       ...filters,
-                      category: e.target.value as CertificationCategory | '',
+                      category: e.target.value as CertificationCategory | "",
                     })
                   }
                   className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -213,10 +239,14 @@ const CertificationsHub = () => {
 
               {/* Status Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">Status</label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">
+                  Status
+                </label>
                 <select
                   value={filters.status}
-                  onChange={(e) => setFilters({ ...filters, status: e.target.value })}
+                  onChange={(e) =>
+                    setFilters({ ...filters, status: e.target.value })
+                  }
                   className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">All Status</option>
@@ -231,7 +261,8 @@ const CertificationsHub = () => {
             {hasActiveFilters && (
               <div className="mt-4 flex items-center justify-between">
                 <div className="text-sm text-neutral-600">
-                  Showing {filteredCertifications.length} of {certifications.length} certifications
+                  Showing {filteredCertifications.length} of{" "}
+                  {certifications.length} certifications
                 </div>
                 <button
                   onClick={handleReset}
@@ -246,35 +277,40 @@ const CertificationsHub = () => {
           {/* Certifications by Category */}
           {filteredCertifications.length > 0 ? (
             <div className="space-y-12">
-              {Object.entries(certificationsByCategory).map(([category, certs]) => {
-                if (certs.length === 0) return null;
+              {Object.entries(certificationsByCategory).map(
+                ([category, certs]) => {
+                  if (certs.length === 0) return null;
 
-                return (
-                  <div key={category}>
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="p-3 bg-blue-100 rounded-lg text-blue-600">
-                        {getCategoryIcon(category as CertificationCategory)}
+                  return (
+                    <div key={category}>
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="p-3 bg-blue-100 rounded-lg text-blue-600">
+                          {getCategoryIcon(category as CertificationCategory)}
+                        </div>
+                        <div>
+                          <h2 className="text-2xl font-bold text-neutral-900">
+                            {category}
+                          </h2>
+                          <p className="text-neutral-600">
+                            {certs.length} certification
+                            {certs.length > 1 ? "s" : ""}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h2 className="text-2xl font-bold text-neutral-900">{category}</h2>
-                        <p className="text-neutral-600">
-                          {certs.length} certification{certs.length > 1 ? 's' : ''}
-                        </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {certs.map((cert) => (
+                          <CertificationBadge
+                            key={cert.id}
+                            certification={cert}
+                            onClick={() => setSelectedCertification(cert)}
+                          />
+                        ))}
                       </div>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {certs.map((cert) => (
-                        <CertificationBadge
-                          key={cert.id}
-                          certification={cert}
-                          onClick={() => setSelectedCertification(cert)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                },
+              )}
             </div>
           ) : (
             <div className="text-center py-16">
@@ -300,10 +336,12 @@ const CertificationsHub = () => {
         <section className="bg-blue-900 text-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <CheckCircle size={48} className="mx-auto mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Certified Quality You Can Trust</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Certified Quality You Can Trust
+            </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Our certifications ensure that every product meets the highest standards of quality,
-              safety, and sustainability.
+              Our certifications ensure that every product meets the highest
+              standards of quality, safety, and sustainability.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -354,7 +392,9 @@ const CertificationsHub = () => {
                     <h2 className="text-2xl font-bold text-neutral-900">
                       {selectedCertification.name}
                     </h2>
-                    <p className="text-neutral-600 mt-1">{selectedCertification.fullName}</p>
+                    <p className="text-neutral-600 mt-1">
+                      {selectedCertification.fullName}
+                    </p>
                   </div>
                 </div>
                 <button
@@ -370,16 +410,26 @@ const CertificationsHub = () => {
                 {/* Details */}
                 <div className="grid grid-cols-2 gap-4 p-4 bg-neutral-50 rounded-lg">
                   <div>
-                    <div className="text-sm text-neutral-600 mb-1">Issuing Body</div>
-                    <div className="font-semibold">{selectedCertification.issuingBody}</div>
+                    <div className="text-sm text-neutral-600 mb-1">
+                      Issuing Body
+                    </div>
+                    <div className="font-semibold">
+                      {selectedCertification.issuingBody}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-sm text-neutral-600 mb-1">Category</div>
-                    <div className="font-semibold">{selectedCertification.category}</div>
+                    <div className="text-sm text-neutral-600 mb-1">
+                      Category
+                    </div>
+                    <div className="font-semibold">
+                      {selectedCertification.category}
+                    </div>
                   </div>
                   {selectedCertification.certificateNumber && (
                     <div>
-                      <div className="text-sm text-neutral-600 mb-1">Certificate Number</div>
+                      <div className="text-sm text-neutral-600 mb-1">
+                        Certificate Number
+                      </div>
                       <div className="font-semibold font-mono text-sm">
                         {selectedCertification.certificateNumber}
                       </div>
@@ -387,25 +437,35 @@ const CertificationsHub = () => {
                   )}
                   <div>
                     <div className="text-sm text-neutral-600 mb-1">Status</div>
-                    <div className="font-semibold">{selectedCertification.status}</div>
+                    <div className="font-semibold">
+                      {selectedCertification.status}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-sm text-neutral-600 mb-1">Issued Date</div>
+                    <div className="text-sm text-neutral-600 mb-1">
+                      Issued Date
+                    </div>
                     <div className="font-semibold">
-                      {new Date(selectedCertification.issuedDate).toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                      {new Date(
+                        selectedCertification.issuedDate,
+                      ).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-neutral-600 mb-1">Expiry Date</div>
+                    <div className="text-sm text-neutral-600 mb-1">
+                      Expiry Date
+                    </div>
                     <div className="font-semibold">
-                      {new Date(selectedCertification.expiryDate).toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                      {new Date(
+                        selectedCertification.expiryDate,
+                      ).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </div>
                   </div>
@@ -413,7 +473,9 @@ const CertificationsHub = () => {
 
                 {/* Description */}
                 <div>
-                  <h3 className="font-bold text-lg mb-2">About This Certification</h3>
+                  <h3 className="font-bold text-lg mb-2">
+                    About This Certification
+                  </h3>
                   <p className="text-neutral-700 leading-relaxed">
                     {selectedCertification.description}
                   </p>
@@ -421,7 +483,9 @@ const CertificationsHub = () => {
 
                 {/* Why It Matters */}
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                  <h3 className="font-bold text-lg mb-2 text-blue-900">Why It Matters</h3>
+                  <h3 className="font-bold text-lg mb-2 text-blue-900">
+                    Why It Matters
+                  </h3>
                   <p className="text-blue-800 leading-relaxed">
                     {selectedCertification.whyItMatters}
                   </p>
@@ -431,16 +495,20 @@ const CertificationsHub = () => {
                 {selectedCertification.relatedProducts &&
                   selectedCertification.relatedProducts.length > 0 && (
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Applicable Products</h3>
+                      <h3 className="font-bold text-lg mb-2">
+                        Applicable Products
+                      </h3>
                       <div className="flex flex-wrap gap-2">
-                        {selectedCertification.relatedProducts.map((product) => (
-                          <span
-                            key={product}
-                            className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm"
-                          >
-                            {product}
-                          </span>
-                        ))}
+                        {selectedCertification.relatedProducts.map(
+                          (product) => (
+                            <span
+                              key={product}
+                              className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm"
+                            >
+                              {product}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
                   )}

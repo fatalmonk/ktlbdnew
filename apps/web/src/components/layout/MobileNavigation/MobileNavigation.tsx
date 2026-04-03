@@ -1,30 +1,38 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { Link } from 'react-router-dom';
-import { NAVIGATION_ITEMS, type NavItem } from '@/modules/navigation/data/navigation';
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
+import {
+  NAVIGATION_ITEMS,
+  type NavItem,
+} from "@/modules/navigation/data/navigation";
 
 interface MobileNavigationProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) => {
-  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+const MobileNavigation: React.FC<MobileNavigationProps> = ({
+  isOpen,
+  onClose,
+}) => {
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
+    {},
+  );
 
   useEffect(() => {
     if (!isOpen) return;
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
-    window.addEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
 
     return () => {
-      window.removeEventListener('keydown', onKey);
+      window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
     };
   }, [isOpen, onClose]);
@@ -37,7 +45,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
   };
 
   const renderMenuItem = (item: NavItem) => {
-    const hasSubmenu = item.type === 'dropdown';
+    const hasSubmenu = item.type === "dropdown";
     const isExpanded = !!expandedItems[item.name];
 
     return (
@@ -56,7 +64,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </span>
             <ChevronRight
               className={`h-11 w-11 shrink-0 text-[#374151] transition-transform duration-200 ${
-                isExpanded ? 'rotate-90' : 'group-hover:translate-x-1'
+                isExpanded ? "rotate-90" : "group-hover:translate-x-1"
               }`}
               strokeWidth={1.75}
               aria-hidden
@@ -85,14 +93,17 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
           {hasSubmenu && isExpanded && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               className="overflow-hidden"
             >
               <div className="mt-5 space-y-4 border-l border-neutral-200 pl-4">
                 {item.columns.map((column, columnIdx) => (
-                  <div key={`${item.name}-${column.title ?? columnIdx}`} className="space-y-2">
+                  <div
+                    key={`${item.name}-${column.title ?? columnIdx}`}
+                    className="space-y-2"
+                  >
                     {column.title && (
                       <h4 className="text-overline font-semibold text-neutral-700">
                         {column.title}
@@ -139,17 +150,21 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
           initial={{ opacity: 0, y: -14 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -14 }}
-          transition={{ duration: 0.24, ease: 'easeOut' }}
+          transition={{ duration: 0.24, ease: "easeOut" }}
           className="fixed inset-x-0 z-[9998] h-[calc(100dvh-(var(--strip-height)+var(--mobile-nav-height)))] overflow-y-auto bg-white"
-          style={{ top: 'calc(var(--strip-height) + var(--mobile-nav-height))' }}
+          style={{
+            top: "calc(var(--strip-height) + var(--mobile-nav-height))",
+          }}
         >
           <nav className="min-h-full px-8 pb-20 pt-32">
-            <ul className="flex flex-col gap-16">{NAVIGATION_ITEMS.map(renderMenuItem)}</ul>
+            <ul className="flex flex-col gap-16">
+              {NAVIGATION_ITEMS.map(renderMenuItem)}
+            </ul>
           </nav>
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 

@@ -1,15 +1,15 @@
-import { motion } from 'framer-motion';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
-import { useScrollTrigger } from '../../../hooks/animations/useScrollTrigger';
+import { motion } from "framer-motion";
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
+import { useScrollTrigger } from "../../../hooks/animations/useScrollTrigger";
 
-const Shield = createLazyIcon('Shield');
+const Shield = createLazyIcon("Shield");
 import {
   fadeInUpTransition,
   fadeInUpVariants,
   staggerContainerVariants,
   staggerItemVariants,
-} from '../animations';
+} from "../animations";
 
 interface Testimonial {
   quote: string;
@@ -22,7 +22,9 @@ interface TestimonialsSectionContentProps {
   testimonials: Testimonial[];
 }
 
-const TestimonialsSectionContent = ({ testimonials }: TestimonialsSectionContentProps) => {
+const TestimonialsSectionContent = ({
+  testimonials,
+}: TestimonialsSectionContentProps) => {
   const testimonialsHeadingRef = useScrollTrigger({ threshold: 0.2 });
   const testimonialsRef = useScrollTrigger({ threshold: 0.2 });
 
@@ -63,7 +65,10 @@ const TestimonialsSectionContent = ({ testimonials }: TestimonialsSectionContent
           >
             <div className="flex gap-1 mb-3 md:mb-4">
               {[...Array(testimonial.rating)].map((_, i) => (
-                <Suspense key={i} fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}>
+                <Suspense
+                  key={i}
+                  fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}
+                >
                   <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary-500 fill-current" />
                 </Suspense>
               ))}
@@ -75,7 +80,9 @@ const TestimonialsSectionContent = ({ testimonials }: TestimonialsSectionContent
               <p className="font-semibold text-xs md:text-sm lg:text-base text-neutral-800">
                 {testimonial.author}
               </p>
-              <p className="text-xs md:text-sm text-neutral-600">{testimonial.position}</p>
+              <p className="text-xs md:text-sm text-neutral-600">
+                {testimonial.position}
+              </p>
             </div>
           </motion.div>
         ))}

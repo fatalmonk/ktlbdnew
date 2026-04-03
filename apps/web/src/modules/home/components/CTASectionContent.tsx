@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const CTASectionContent = () => (
   <section className="relative overflow-hidden bg-primary-500">
@@ -14,8 +14,8 @@ const CTASectionContent = () => (
         </h2>
 
         <p className="mt-6 max-w-md text-lg leading-relaxed text-neutral-800 md:mt-8 md:text-xl lg:text-2xl">
-          Whether you're looking to advance your career, or are just getting started, we're looking
-          for amazing talent like you.
+          Whether you're looking to advance your career, or are just getting
+          started, we're looking for amazing talent like you.
         </p>
 
         <Link
@@ -42,7 +42,10 @@ const CTASectionContent = () => (
         fill="none"
         aria-hidden="true"
       >
-        <path d="M200 120 C 160 120, 120 80, 80 80 S 0 40, 0 0 L 200 0 Z" fill="currentColor" />
+        <path
+          d="M200 120 C 160 120, 120 80, 80 80 S 0 40, 0 0 L 200 0 Z"
+          fill="currentColor"
+        />
       </svg>
     </div>
   </section>

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
+import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export type SubpageBreadcrumbItem = {
   label: string;
@@ -22,12 +22,18 @@ export function SubpageHeaderAccent({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'pointer-events-none absolute right-4 top-1/2 z-0 hidden -translate-y-1/2 lg:block xl:right-8',
-        className
+        "pointer-events-none absolute right-4 top-1/2 z-0 hidden -translate-y-1/2 lg:block xl:right-8",
+        className,
       )}
       aria-hidden
     >
-      <svg width="200" height="72" viewBox="0 0 200 72" fill="none" className="text-primary-300">
+      <svg
+        width="200"
+        height="72"
+        viewBox="0 0 200 72"
+        fill="none"
+        className="text-primary-300"
+      >
         <path
           d="M10 36 Q30 16 50 36 T90 36 T130 36 T170 36"
           stroke="currentColor"
@@ -52,10 +58,12 @@ export function SubpageHeaderAccent({ className }: { className?: string }) {
 }
 
 /** Drop leading "Home" so breadcrumbs read as section / subpage only (no site root in the trail). */
-function withoutLeadingHome(items: SubpageBreadcrumbItem[]): SubpageBreadcrumbItem[] {
+function withoutLeadingHome(
+  items: SubpageBreadcrumbItem[],
+): SubpageBreadcrumbItem[] {
   if (items.length === 0) return items;
   const [first, ...rest] = items;
-  if (first.label === 'Home' && first.to === '/') {
+  if (first.label === "Home" && first.to === "/") {
     return rest;
   }
   return items;
@@ -72,10 +80,10 @@ export function SubpageHeader({
   return (
     <header
       className={cn(
-        'relative bg-white font-body',
+        "relative bg-white font-body",
         withHeaderOffset &&
-          'pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]',
-        className
+          "pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]",
+        className,
       )}
     >
       {pageTitle ? <h1 className="sr-only">{pageTitle}</h1> : null}
@@ -88,10 +96,15 @@ export function SubpageHeader({
             {crumbs.map((item, i) => {
               const isLast = i === crumbs.length - 1;
               return (
-                <li key={`${item.label}-${i}`} className="flex items-center gap-x-2">
+                <li
+                  key={`${item.label}-${i}`}
+                  className="flex items-center gap-x-2"
+                >
                   {i > 0 && <span className="text-neutral-400">/</span>}
                   {isLast ? (
-                    <span className="font-semibold text-neutral-900">{item.label}</span>
+                    <span className="font-semibold text-neutral-900">
+                      {item.label}
+                    </span>
                   ) : item.to ? (
                     <Link to={item.to} className="hover:text-neutral-900">
                       {item.label}

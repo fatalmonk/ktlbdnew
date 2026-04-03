@@ -1,17 +1,17 @@
-import { useState, useEffect, Suspense } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { useState, useEffect, Suspense } from "react";
+import { useParams, Link } from "react-router-dom";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const Calendar = createLazyIcon('Calendar');
-const Clock = createLazyIcon('Clock');
-const ArrowLeft = createLazyIcon('ArrowLeft');
-const Share2 = createLazyIcon('Share2');
-const Facebook = createLazyIcon('Facebook');
-const Linkedin = createLazyIcon('Linkedin');
-const Twitter = createLazyIcon('Twitter');
-import SEO from '../components/seo/SEO';
-import SubpageHeader from '../components/shared/SubpageHeader';
-import BlogCard from '../components/features/BlogCard';
+const Calendar = createLazyIcon("Calendar");
+const Clock = createLazyIcon("Clock");
+const ArrowLeft = createLazyIcon("ArrowLeft");
+const Share2 = createLazyIcon("Share2");
+const Facebook = createLazyIcon("Facebook");
+const Linkedin = createLazyIcon("Linkedin");
+const Twitter = createLazyIcon("Twitter");
+import SEO from "../components/seo/SEO";
+import SubpageHeader from "../components/shared/SubpageHeader";
+import BlogCard from "../components/features/BlogCard";
 
 interface BlogPostMeta {
   id: string;
@@ -37,14 +37,19 @@ interface BlogPostMeta {
 }
 
 interface BlogData {
-  categories: Array<{ id: string; name: string; slug: string; description: string }>;
+  categories: Array<{
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+  }>;
   posts: BlogPostMeta[];
 }
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [postMeta, setPostMeta] = useState<BlogPostMeta | null>(null);
-  const [content, setContent] = useState<string>('');
+  const [content, setContent] = useState<string>("");
   const [relatedPosts, setRelatedPosts] = useState<BlogPostMeta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -58,13 +63,13 @@ const BlogPost = () => {
         setError(null);
 
         // Fetch blog index to get post metadata
-        const indexResponse = await fetch('/data/blog/index.json');
+        const indexResponse = await fetch("/data/blog/index.json");
         const blogData: BlogData = await indexResponse.json();
 
         // Find the post metadata
         const post = blogData.posts.find((p) => p.slug === slug);
         if (!post) {
-          setError('Blog post not found');
+          setError("Blog post not found");
           setLoading(false);
           return;
         }
@@ -82,8 +87,8 @@ const BlogPost = () => {
           .slice(0, 3);
         setRelatedPosts(related);
       } catch (err) {
-        console.error('Error loading blog post:', err);
-        setError('Failed to load blog post');
+        console.error("Error loading blog post:", err);
+        setError("Failed to load blog post");
       } finally {
         setLoading(false);
       }
@@ -94,15 +99,15 @@ const BlogPost = () => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const shareTitle = postMeta?.title || '';
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareTitle = postMeta?.title || "";
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
@@ -122,8 +127,12 @@ const BlogPost = () => {
     return (
       <div className="header-spacing min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4">Story Not Found</h1>
-          <p className="text-neutral-600 mb-8">The story you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-neutral-900 mb-4">
+            Story Not Found
+          </h1>
+          <p className="text-neutral-600 mb-8">
+            The story you're looking for doesn't exist.
+          </p>
           <Link
             to="/newsroom/stories"
             className="text-primary-600 hover:text-primary-700 font-semibold"
@@ -149,9 +158,9 @@ const BlogPost = () => {
       {postMeta && (
         <SubpageHeader
           breadcrumbItems={[
-            { label: 'Home', to: '/' },
-            { label: 'Newsroom', to: '/newsroom/stories' },
-            { label: 'Company Stories', to: '/newsroom/stories' },
+            { label: "Home", to: "/" },
+            { label: "Newsroom", to: "/newsroom/stories" },
+            { label: "Company Stories", to: "/newsroom/stories" },
             { label: postMeta.title },
           ]}
           pageTitle={postMeta.title}
@@ -187,8 +196,16 @@ const BlogPost = () => {
               </Link>
 
               {/* Article Header */}
-              <header className={postMeta.image ? '-mt-32 relative z-10 mb-8' : 'mb-8'}>
-                <div className={postMeta.image ? 'bg-white p-8 rounded-lg shadow-xl' : ''}>
+              <header
+                className={
+                  postMeta.image ? "-mt-32 relative z-10 mb-8" : "mb-8"
+                }
+              >
+                <div
+                  className={
+                    postMeta.image ? "bg-white p-8 rounded-lg shadow-xl" : ""
+                  }
+                >
                   {/* Category */}
                   <div className="flex items-center gap-2 mb-4">
                     <span className="inline-block px-3 py-1 bg-primary-500 text-white text-sm font-semibold rounded-full capitalize">
@@ -211,7 +228,9 @@ const BlogPost = () => {
                       <span>{postMeta.readingTime} min read</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold">By {postMeta.author.name}</span>
+                      <span className="font-semibold">
+                        By {postMeta.author.name}
+                      </span>
                     </div>
                   </div>
 
@@ -290,7 +309,9 @@ const BlogPost = () => {
           <section className="bg-neutral-50 py-16">
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
-                <h2 className="font-heading font-bold text-3xl mb-8">Related Articles</h2>
+                <h2 className="font-heading font-bold text-3xl mb-8">
+                  Related Articles
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {relatedPosts.map((post) => (
                     <BlogCard key={post.id} {...post} />
@@ -304,9 +325,12 @@ const BlogPost = () => {
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="font-heading font-bold text-3xl mb-4">Ready to Partner with Us?</h2>
+            <h2 className="font-heading font-bold text-3xl mb-4">
+              Ready to Partner with Us?
+            </h2>
             <p className="text-xl mb-8 text-white/90">
-              Let's discuss how Kattali Textile Ltd can meet your manufacturing needs
+              Let's discuss how Kattali Textile Ltd can meet your manufacturing
+              needs
             </p>
             <Link
               to="/contact"

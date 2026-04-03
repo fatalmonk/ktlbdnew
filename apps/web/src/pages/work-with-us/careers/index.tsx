@@ -1,5 +1,5 @@
-import SEO from '../../../components/seo/SEO';
-import SubpageHeader from '../../../components/shared/SubpageHeader';
+import SEO from "../../../components/seo/SEO";
+import SubpageHeader from "../../../components/shared/SubpageHeader";
 
 const CareersPage = () => {
   return (
@@ -7,13 +7,19 @@ const CareersPage = () => {
       <SEO
         title="Careers"
         description="Join KTL's team and build your career in the textile industry. Explore job opportunities, benefits, and growth prospects at Kattali Textile Limited."
-        keywords={['careers', 'jobs', 'KTL careers', 'textile jobs', 'employment opportunities']}
+        keywords={[
+          "careers",
+          "jobs",
+          "KTL careers",
+          "textile jobs",
+          "employment opportunities",
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Work With Us', to: '/work-with-us/buyers' },
-          { label: 'Careers' },
+          { label: "Home", to: "/" },
+          { label: "Work With Us", to: "/work-with-us/buyers" },
+          { label: "Careers" },
         ]}
         pageTitle="Careers"
       />
@@ -21,47 +27,53 @@ const CareersPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Join our team and be part of Bangladesh's leading textile manufacturer. We offer
-              exciting career opportunities, professional development, and a supportive work
-              environment.
+              Join our team and be part of Bangladesh's leading textile
+              manufacturer. We offer exciting career opportunities, professional
+              development, and a supportive work environment.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Manufacturing Roles</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Manufacturing Roles
+                </h3>
                 <p className="text-neutral-800">
-                  Production supervisors, quality control specialists, machine operators, and
-                  technical staff positions.
+                  Production supervisors, quality control specialists, machine
+                  operators, and technical staff positions.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Design & Development</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Design & Development
+                </h3>
                 <p className="text-neutral-800">
-                  Fashion designers, product developers, pattern makers, and creative professionals
-                  in textile design.
+                  Fashion designers, product developers, pattern makers, and
+                  creative professionals in textile design.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Business & Sales</h3>
                 <p className="text-neutral-800">
-                  Sales representatives, business development managers, marketing specialists, and
-                  customer service roles.
+                  Sales representatives, business development managers,
+                  marketing specialists, and customer service roles.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Administrative</h3>
                 <p className="text-neutral-800">
-                  HR professionals, finance specialists, IT support, and administrative staff
-                  positions.
+                  HR professionals, finance specialists, IT support, and
+                  administrative staff positions.
                 </p>
               </div>
             </div>
 
             <div className="mt-12 bg-primary/10 p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-black mb-4">Why Work at KTL?</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Why Work at KTL?
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <ul className="space-y-2 text-neutral-800">
                   <li>• Competitive salary and benefits</li>

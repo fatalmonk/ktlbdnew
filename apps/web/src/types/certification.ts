@@ -4,11 +4,11 @@
  */
 
 export type CertificationCategory =
-  | 'Quality Management'
-  | 'Environmental'
-  | 'Social Compliance'
-  | 'Product Safety'
-  | 'Customer Specific';
+  | "Quality Management"
+  | "Environmental"
+  | "Social Compliance"
+  | "Product Safety"
+  | "Customer Specific";
 
 export interface Certification {
   id: string;
@@ -19,7 +19,7 @@ export interface Certification {
   certificateNumber?: string;
   issuedDate: string;
   expiryDate: string;
-  status: 'Active' | 'Expiring Soon' | 'Expired' | 'In Renewal';
+  status: "Active" | "Expiring Soon" | "Expired" | "In Renewal";
   description: string;
   whyItMatters: string;
   verificationUrl?: string;
@@ -29,7 +29,7 @@ export interface Certification {
 }
 
 export interface CertificationFilterState {
-  category: CertificationCategory | '';
+  category: CertificationCategory | "";
   status: string;
   searchQuery: string;
 }

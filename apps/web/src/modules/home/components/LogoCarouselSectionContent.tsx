@@ -1,14 +1,16 @@
-import { motion } from 'framer-motion';
-import EnhancedLogoCarousel from '../../../components/product/EnhancedLogoCarousel';
-import type { PartnerLogo } from '../../../types/partner';
-import { useScrollTrigger } from '../../../hooks/animations/useScrollTrigger';
-import { fadeInUpVariants, fadeInUpTransition } from '../animations';
+import { motion } from "framer-motion";
+import EnhancedLogoCarousel from "../../../components/product/EnhancedLogoCarousel";
+import type { PartnerLogo } from "../../../types/partner";
+import { useScrollTrigger } from "../../../hooks/animations/useScrollTrigger";
+import { fadeInUpVariants, fadeInUpTransition } from "../animations";
 
 interface LogoCarouselSectionContentProps {
   partners: PartnerLogo[];
 }
 
-const LogoCarouselSectionContent = ({ partners }: LogoCarouselSectionContentProps) => {
+const LogoCarouselSectionContent = ({
+  partners,
+}: LogoCarouselSectionContentProps) => {
   const logoRef = useScrollTrigger({ threshold: 0.2 });
 
   return (
@@ -23,7 +25,8 @@ const LogoCarouselSectionContent = ({ partners }: LogoCarouselSectionContentProp
           className="mb-24 text-center"
         >
           <h2 className="font-heading text-5xl font-bold leading-tight tracking-tight text-neutral-900 md:text-6xl lg:text-7xl">
-            Partnering with <span className="text-primary-500">global brands</span>
+            Partnering with{" "}
+            <span className="text-primary-500">global brands</span>
           </h2>
         </motion.div>
         <div className="rounded-xl bg-white p-6 shadow-lg md:rounded-2xl md:p-10 lg:p-12">

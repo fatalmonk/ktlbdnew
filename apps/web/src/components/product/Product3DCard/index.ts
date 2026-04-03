@@ -1,1 +1,1 @@
-export { default } from './Product3DCard';
+export { default } from "./Product3DCard";

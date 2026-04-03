@@ -1,6 +1,6 @@
-import '@testing-library/jest-dom';
-import { afterEach, vi } from 'vitest';
-import { cleanup } from '@testing-library/react';
+import "@testing-library/jest-dom";
+import { afterEach, vi } from "vitest";
+import { cleanup } from "@testing-library/react";
 
 function createCanvas2dMock(): Partial<CanvasRenderingContext2D> {
   return {
@@ -14,16 +14,24 @@ function createCanvas2dMock(): Partial<CanvasRenderingContext2D> {
     arc: vi.fn(),
     fill: vi.fn(),
     stroke: vi.fn(),
-    fillStyle: '',
-    strokeStyle: '',
+    fillStyle: "",
+    strokeStyle: "",
     lineWidth: 1,
     globalAlpha: 1,
     measureText: vi.fn(() => ({ width: 0 })),
-    getImageData: vi.fn(() => ({ data: new Uint8ClampedArray(4), width: 1, height: 1 })),
+    getImageData: vi.fn(() => ({
+      data: new Uint8ClampedArray(4),
+      width: 1,
+      height: 1,
+    })),
     putImageData: vi.fn(),
     setTransform: vi.fn(),
     drawImage: vi.fn(),
-    createImageData: vi.fn(() => ({ data: new Uint8ClampedArray(4), width: 1, height: 1 })),
+    createImageData: vi.fn(() => ({
+      data: new Uint8ClampedArray(4),
+      width: 1,
+      height: 1,
+    })),
     transform: vi.fn(),
     rect: vi.fn(),
     clip: vi.fn(),
@@ -36,9 +44,13 @@ function createCanvas2dMock(): Partial<CanvasRenderingContext2D> {
 // jsdom does not implement canvas 2D; provide a minimal mock for canvas-based components.
 HTMLCanvasElement.prototype.getContext = function (
   this: HTMLCanvasElement,
-  type: string
-): CanvasRenderingContext2D | WebGLRenderingContext | WebGL2RenderingContext | null {
-  if (type === '2d') {
+  type: string,
+):
+  | CanvasRenderingContext2D
+  | WebGLRenderingContext
+  | WebGL2RenderingContext
+  | null {
+  if (type === "2d") {
     return createCanvas2dMock() as unknown as CanvasRenderingContext2D;
   }
   return null;
@@ -65,7 +77,7 @@ afterEach(() => {
 });
 
 // Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
@@ -91,7 +103,7 @@ global.IntersectionObserver = class IntersectionObserver {
 } as unknown as typeof IntersectionObserver;
 
 // Mock scrollTo
-Object.defineProperty(window, 'scrollTo', {
+Object.defineProperty(window, "scrollTo", {
   writable: true,
   value: vi.fn(),
 });

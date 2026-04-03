@@ -1,8 +1,8 @@
-import { Metric, ChartData } from '../../types/metrics';
-import { mockMetrics, mockChartData } from '../../data/metrics-mock';
+import { Metric, ChartData } from "../../types/metrics";
+import { mockMetrics, mockChartData } from "../../data/metrics-mock";
 
 class MetricsService {
-  private baseUrl = import.meta.env.VITE_API_URL || '/api';
+  private baseUrl = import.meta.env.VITE_API_URL || "/api";
 
   /**
    * Fetch all metrics
@@ -17,8 +17,8 @@ class MetricsService {
       await new Promise((resolve) => setTimeout(resolve, 500));
       return mockMetrics;
     } catch (error) {
-      console.error('Error fetching metrics:', error);
-      throw new Error('Failed to fetch metrics');
+      console.error("Error fetching metrics:", error);
+      throw new Error("Failed to fetch metrics");
     }
   }
 
@@ -30,7 +30,7 @@ class MetricsService {
       const metrics = await this.getMetrics();
       return metrics.find((m) => m.id === id) || null;
     } catch (error) {
-      console.error('Error fetching metric:', error);
+      console.error("Error fetching metric:", error);
       return null;
     }
   }
@@ -55,8 +55,8 @@ class MetricsService {
 
       return mockChartData;
     } catch (error) {
-      console.error('Error fetching chart data:', error);
-      throw new Error('Failed to fetch chart data');
+      console.error("Error fetching chart data:", error);
+      throw new Error("Failed to fetch chart data");
     }
   }
 

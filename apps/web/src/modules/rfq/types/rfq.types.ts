@@ -52,5 +52,5 @@ export interface RFQSubmission extends RFQFormData {
   id: string;
   timestamp: string;
   referenceNumber: string;
-  status: 'Draft' | 'Submitted' | 'Under Review' | 'Quoted' | 'Closed';
+  status: "Draft" | "Submitted" | "Under Review" | "Quoted" | "Closed";
 }

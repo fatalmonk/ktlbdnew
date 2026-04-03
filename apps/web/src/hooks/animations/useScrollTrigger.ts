@@ -1,6 +1,6 @@
-import { useInView } from 'react-intersection-observer';
-import { useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface UseScrollTriggerOptions {
   threshold?: number;
@@ -19,12 +19,12 @@ export const useScrollTrigger = (options: UseScrollTriggerOptions = {}) => {
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const threshold = options.threshold || (isMobile ? 0.05 : 0.1);
-  const rootMargin = options.rootMargin || (isMobile ? '50px' : '100px');
+  const rootMargin = options.rootMargin || (isMobile ? "50px" : "100px");
 
   const [ref, inView] = useInView({
     threshold,
@@ -34,12 +34,12 @@ export const useScrollTrigger = (options: UseScrollTriggerOptions = {}) => {
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible');
+      controls.start("visible");
       if (options.announce) {
         // Screen reader announcement handled by ARIA live regions
       }
     } else if (!options.triggerOnce) {
-      controls.start('hidden');
+      controls.start("hidden");
     }
   }, [controls, inView, options.triggerOnce, options.announce]);
 

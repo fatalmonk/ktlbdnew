@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
-import { Link } from 'react-router-dom';
-import { ProductsSkeleton } from '../../../components/skeletons';
-import Image from '../../../components/media/Image';
-import type { Product } from '../../../types/product';
+import { Suspense } from "react";
+import { Link } from "react-router-dom";
+import { ProductsSkeleton } from "../../../components/skeletons";
+import Image from "../../../components/media/Image";
+import type { Product } from "../../../types/product";
 
-import Product3DCard from '../../../components/product/Product3DCard/Product3DCard';
+import Product3DCard from "../../../components/product/Product3DCard/Product3DCard";
 
 interface ProductsShowcaseProps {
   products: Product[];
@@ -29,8 +29,12 @@ const MobileProductCard = ({ product }: { product: Product }) => (
       </span>
 
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold leading-tight text-neutral-900">{product.name}</h3>
-        <p className="line-clamp-3 text-sm leading-6 text-neutral-600">{product.description}</p>
+        <h3 className="text-xl font-semibold leading-tight text-neutral-900">
+          {product.name}
+        </h3>
+        <p className="line-clamp-3 text-sm leading-6 text-neutral-600">
+          {product.description}
+        </p>
       </div>
 
       <Link

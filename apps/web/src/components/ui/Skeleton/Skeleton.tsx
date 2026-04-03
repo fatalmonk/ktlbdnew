@@ -1,33 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface SkeletonProps {
   width?: string | number;
   height?: string | number;
   className?: string;
-  variant?: 'text' | 'circular' | 'rectangular';
-  animation?: 'pulse' | 'wave';
-  'aria-label'?: string;
+  variant?: "text" | "circular" | "rectangular";
+  animation?: "pulse" | "wave";
+  "aria-label"?: string;
 }
 
 export const Skeleton: React.FC<SkeletonProps> = ({
-  width = '100%',
+  width = "100%",
   height = 20,
-  className = '',
-  variant = 'text',
-  animation = 'pulse',
-  'aria-label': ariaLabel = 'Loading content',
+  className = "",
+  variant = "text",
+  animation = "pulse",
+  "aria-label": ariaLabel = "Loading content",
 }) => {
-  const baseClasses = 'bg-neutral-200 dark:bg-neutral-700';
+  const baseClasses = "bg-neutral-200 dark:bg-neutral-700";
 
   const variantClasses = {
-    text: 'rounded',
-    circular: 'rounded-full',
-    rectangular: 'rounded-lg',
+    text: "rounded",
+    circular: "rounded-full",
+    rectangular: "rounded-lg",
   };
 
   const prefersReducedMotion =
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const animationVariants = {
     pulse: {
@@ -35,15 +36,17 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: "easeInOut",
       },
     },
     wave: {
-      backgroundPosition: prefersReducedMotion ? '0% 0%' : ['200% 0', '-200% 0'],
+      backgroundPosition: prefersReducedMotion
+        ? "0% 0%"
+        : ["200% 0", "-200% 0"],
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: 'linear',
+        ease: "linear",
       },
     },
   };

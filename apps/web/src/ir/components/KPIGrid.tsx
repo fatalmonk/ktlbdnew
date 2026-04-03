@@ -1,4 +1,4 @@
-import { KPI } from '../types';
+import { KPI } from "../types";
 export function KPIGrid({ items }: { items: KPI[] }) {
   return (
     <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
@@ -8,7 +8,9 @@ export function KPIGrid({ items }: { items: KPI[] }) {
           <div key={i} className="rounded-lg border p-6">
             <div className="text-sm text-neutral-600">{k.label}</div>
             <div className="mt-2 text-2xl font-semibold">{k.value}</div>
-            {k.footnote && <div className="mt-1 text-xs text-neutral-500">{k.footnote}</div>}
+            {k.footnote && (
+              <div className="mt-1 text-xs text-neutral-500">{k.footnote}</div>
+            )}
           </div>
         ))}
       </div>

@@ -6,17 +6,17 @@
  * for responsive images
  */
 
-import sharp from 'sharp';
-import { readdir, mkdir, stat } from 'fs/promises';
-import { existsSync } from 'fs';
-import { join, parse, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import sharp from "sharp";
+import { readdir, mkdir, stat } from "fs/promises";
+import { existsSync } from "fs";
+import { join, parse, dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const INPUT_DIR = join(__dirname, 'public', 'assets');
-const OUTPUT_DIR = join(__dirname, 'public', 'assets-optimized');
+const INPUT_DIR = join(__dirname, "public", "assets");
+const OUTPUT_DIR = join(__dirname, "public", "assets-optimized");
 
 // Image sizes for responsive images
 const SIZES = {
@@ -56,7 +56,7 @@ async function getImageFiles(dir) {
  */
 async function optimizeImage(inputPath) {
   const { name, ext } = parse(inputPath);
-  const relativePath = inputPath.replace(INPUT_DIR, '').replace(/^\//, '');
+  const relativePath = inputPath.replace(INPUT_DIR, "").replace(/^\//, "");
   const relativeDir = dirname(relativePath);
 
   console.log(`\n📸 Processing: ${name}${ext}`);
@@ -65,7 +65,9 @@ async function optimizeImage(inputPath) {
     const image = sharp(inputPath);
     const metadata = await image.metadata();
 
-    console.log(`   Original: ${metadata.width}x${metadata.height} (${metadata.format})`);
+    console.log(
+      `   Original: ${metadata.width}x${metadata.height} (${metadata.format})`,
+    );
 
     // Create output directory
     const outputDir = join(OUTPUT_DIR, relativeDir);
@@ -78,7 +80,9 @@ async function optimizeImage(inputPath) {
     await image.webp({ quality: WEBP_QUALITY }).toFile(originalWebP);
 
     const originalStats = await stat(originalWebP);
-    console.log(`   ✓ Full size WebP: ${Math.round(originalStats.size / 1024)}KB`);
+    console.log(
+      `   ✓ Full size WebP: ${Math.round(originalStats.size / 1024)}KB`,
+    );
 
     // Generate responsive sizes
     for (const [sizeName, width] of Object.entries(SIZES)) {
@@ -87,19 +91,23 @@ async function optimizeImage(inputPath) {
         await sharp(inputPath)
           .resize(width, null, {
             withoutEnlargement: true,
-            fit: 'inside',
+            fit: "inside",
           })
           .webp({ quality: WEBP_QUALITY })
           .toFile(outputPath);
 
         const stats = await stat(outputPath);
-        console.log(`   ✓ ${sizeName} (${width}px): ${Math.round(stats.size / 1024)}KB`);
+        console.log(
+          `   ✓ ${sizeName} (${width}px): ${Math.round(stats.size / 1024)}KB`,
+        );
       }
     }
 
     // Keep original as fallback (optimized)
     const fallbackPath = join(outputDir, `${name}${ext}`);
-    await sharp(inputPath).jpeg({ quality: 85, progressive: true }).toFile(fallbackPath);
+    await sharp(inputPath)
+      .jpeg({ quality: 85, progressive: true })
+      .toFile(fallbackPath);
 
     console.log(`   ✓ Fallback JPEG created`);
   } catch (error) {
@@ -111,7 +119,7 @@ async function optimizeImage(inputPath) {
  * Main function
  */
 async function main() {
-  console.log('🚀 Image Optimization Started\n');
+  console.log("🚀 Image Optimization Started\n");
   console.log(`📂 Input directory: ${INPUT_DIR}`);
   console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
 
@@ -121,7 +129,7 @@ async function main() {
     console.log(`Found ${imageFiles.length} images to process\n`);
 
     if (imageFiles.length === 0) {
-      console.log('⚠️  No images found to optimize');
+      console.log("⚠️  No images found to optimize");
       return;
     }
 
@@ -130,10 +138,10 @@ async function main() {
       await optimizeImage(imagePath);
     }
 
-    console.log('\n✅ Image optimization complete!');
+    console.log("\n✅ Image optimization complete!");
     console.log(`\nOptimized images saved to: ${OUTPUT_DIR}`);
   } catch (error) {
-    console.error('\n❌ Error:', error.message);
+    console.error("\n❌ Error:", error.message);
     process.exit(1);
   }
 }

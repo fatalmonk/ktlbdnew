@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { reportMessage } from '@/lib/observability';
-import SubpageHeader from '../../components/shared/SubpageHeader';
-import { useRFQForm } from '../../hooks/useRFQForm';
-import { RFQ_STEPS } from './data/rfq.config';
-import RFQSuccess from './components/RFQSuccess';
-import RFQProgress from './components/RFQProgress';
-import RFQNavigation from './components/RFQNavigation';
-import { ProductSelectionStep, ProductSpecificationsStep } from './steps/ProductStep';
-import { TimelineStep } from './steps/TimelineStep';
-import { CompanyStep } from './steps/CompanyStep';
-import ContactStep from './steps/ContactStep';
-import { ReviewStep } from './steps/ReviewStep';
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { reportMessage } from "@/lib/observability";
+import SubpageHeader from "../../components/shared/SubpageHeader";
+import { useRFQForm } from "../../hooks/useRFQForm";
+import { RFQ_STEPS } from "./data/rfq.config";
+import RFQSuccess from "./components/RFQSuccess";
+import RFQProgress from "./components/RFQProgress";
+import RFQNavigation from "./components/RFQNavigation";
+import {
+  ProductSelectionStep,
+  ProductSpecificationsStep,
+} from "./steps/ProductStep";
+import { TimelineStep } from "./steps/TimelineStep";
+import { CompanyStep } from "./steps/CompanyStep";
+import ContactStep from "./steps/ContactStep";
+import { ReviewStep } from "./steps/ReviewStep";
 
 const RFQWizard = () => {
   const {
@@ -32,11 +35,13 @@ const RFQWizard = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    const referenceNumber = `RFQ-${new Date().getFullYear()}-${Math.floor(Math.random() * 100000)
+    const referenceNumber = `RFQ-${new Date().getFullYear()}-${Math.floor(
+      Math.random() * 100000,
+    )
       .toString()
-      .padStart(5, '0')}`;
+      .padStart(5, "0")}`;
 
-    reportMessage('RFQ submitted', 'info', {
+    reportMessage("RFQ submitted", "info", {
       ...formData,
       referenceNumber,
       timestamp: new Date().toISOString(),
@@ -61,11 +66,17 @@ const RFQWizard = () => {
     switch (currentStep) {
       case 1:
         return (
-          <ProductSelectionStep products={formData.products} updateProducts={updateProducts} />
+          <ProductSelectionStep
+            products={formData.products}
+            updateProducts={updateProducts}
+          />
         );
       case 2:
         return (
-          <ProductSpecificationsStep products={formData.products} updateProducts={updateProducts} />
+          <ProductSpecificationsStep
+            products={formData.products}
+            updateProducts={updateProducts}
+          />
         );
       case 3:
         return (
@@ -75,9 +86,19 @@ const RFQWizard = () => {
           />
         );
       case 4:
-        return <CompanyStep company={formData.company} updateCompany={updateCompany} />;
+        return (
+          <CompanyStep
+            company={formData.company}
+            updateCompany={updateCompany}
+          />
+        );
       case 5:
-        return <ContactStep contact={formData.contact} updateContact={updateContact} />;
+        return (
+          <ContactStep
+            contact={formData.contact}
+            updateContact={updateContact}
+          />
+        );
       case 6:
       default:
         return <ReviewStep formData={formData} />;
@@ -87,7 +108,10 @@ const RFQWizard = () => {
   return (
     <div className="min-h-screen bg-neutral-50">
       <SubpageHeader
-        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Request a Quote' }]}
+        breadcrumbItems={[
+          { label: "Home", to: "/" },
+          { label: "Request a Quote" },
+        ]}
         pageTitle="Request a Quote"
       />
       <div className="py-12">

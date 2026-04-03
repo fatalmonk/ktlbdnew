@@ -1,5 +1,5 @@
-import React from 'react';
-import { Skeleton } from '../ui/Skeleton';
+import React from "react";
+import { Skeleton } from "../ui/Skeleton";
 
 const ProductsSkeleton: React.FC = () => {
   return (
@@ -71,7 +71,10 @@ const ProductsSkeleton: React.FC = () => {
         {/* Tablet/Desktop skeleton: existing grid */}
         <div className="hidden gap-10 md:grid md:grid-cols-2 md:gap-12 lg:grid-cols-4 lg:gap-14">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg">
+            <div
+              key={index}
+              className="bg-white rounded-xl overflow-hidden shadow-lg"
+            >
               {/* Image skeleton */}
               <div className="mb-4">
                 <Skeleton

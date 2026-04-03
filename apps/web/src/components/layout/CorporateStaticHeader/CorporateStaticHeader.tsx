@@ -1,16 +1,18 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import AnnouncementTicker from '../AnnouncementTicker';
-import DesktopMegaMenu from '../DesktopMegaMenu/DesktopMegaMenu';
-import HeaderSearch from '../HeaderSearch';
-import WebMenuHidden from '../WebMenuHidden/WebMenuHidden';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import AnnouncementTicker from "../AnnouncementTicker";
+import DesktopMegaMenu from "../DesktopMegaMenu/DesktopMegaMenu";
+import HeaderSearch from "../HeaderSearch";
+import WebMenuHidden from "../WebMenuHidden/WebMenuHidden";
 
 type CorporateStaticHeaderProps = {
   /** When true, header slides up (unless mega menu is open). */
   scrollHidden?: boolean;
 };
 
-const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHidden = false }) => {
+const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
+  scrollHidden = false,
+}) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
   const containerRef = useRef<HTMLElement | null>(null);
@@ -28,7 +30,7 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
       clearTimer();
       setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
     },
-    [clearTimer]
+    [clearTimer],
   );
 
   const setOpenWithIntent = useCallback(
@@ -43,14 +45,14 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
         }, delay);
       }
     },
-    [clearTimer]
+    [clearTimer],
   );
 
   useEffect(() => () => clearTimer(), [clearTimer]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpenDropdown(null);
+      if (e.key === "Escape") setOpenDropdown(null);
     };
     const onClickOutside = (e: MouseEvent) => {
       if (
@@ -62,26 +64,26 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
       }
     };
 
-    window.addEventListener('keydown', onKey);
-    window.addEventListener('mousedown', onClickOutside);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("mousedown", onClickOutside);
     return () => {
-      window.removeEventListener('keydown', onKey);
-      window.removeEventListener('mousedown', onClickOutside);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("mousedown", onClickOutside);
     };
   }, [openDropdown]);
 
   // Body class and scroll management
   useEffect(() => {
     if (openDropdown) {
-      document.body.classList.add('megaMenuActive');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add("megaMenuActive");
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove('megaMenuActive');
-      document.body.style.overflow = '';
+      document.body.classList.remove("megaMenuActive");
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.classList.remove('megaMenuActive');
-      document.body.style.overflow = '';
+      document.body.classList.remove("megaMenuActive");
+      document.body.style.overflow = "";
     };
   }, [openDropdown]);
 
@@ -92,7 +94,9 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
       {/* Backdrop Overlay */}
       <div
         className={`fixed inset-0 z-[9990] bg-black/40 transition-opacity duration-300 ${
-          openDropdown ? 'opacity-100 pointer-events-auto' : 'pointer-events-none opacity-0'
+          openDropdown
+            ? "opacity-100 pointer-events-auto"
+            : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpenDropdown(null)}
         aria-hidden="true"
@@ -100,14 +104,19 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
 
       <header
         className={`fixed inset-x-0 top-0 z-[9999] hidden bg-white shadow-1 transition-transform duration-300 ease-out lg:block ${
-          hideOnScroll ? '-translate-y-full pointer-events-none' : 'translate-y-0'
+          hideOnScroll
+            ? "-translate-y-full pointer-events-none"
+            : "translate-y-0"
         }`}
         ref={containerRef}
       >
         {/* z-10: nav + mega menus must stack above the ticker (later sibling) */}
         <div className="mx-auto w-full max-w-[1470px] relative z-10">
           {/* Decorative strip (height: --strip-height) */}
-          <div className="corp-header-strip mx-auto w-full max-w-[1430px]" aria-hidden />
+          <div
+            className="corp-header-strip mx-auto w-full max-w-[1430px]"
+            aria-hidden
+          />
           <div className="pane--static-header-container relative w-full">
             <WebMenuHidden />
             <div className="pane--static-header overflow-visible">
@@ -136,7 +145,9 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHid
               </div>
             </div>
           </div>
-          {location.pathname === '/' && <AnnouncementTicker isHidden={!!openDropdown} />}
+          {location.pathname === "/" && (
+            <AnnouncementTicker isHidden={!!openDropdown} />
+          )}
         </div>
       </header>
     </>

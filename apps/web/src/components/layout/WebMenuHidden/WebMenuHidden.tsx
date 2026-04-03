@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   NAVIGATION_ITEMS,
   type NavDropdownItem,
   type NavItem,
-} from '@/modules/navigation/data/navigation';
+} from "@/modules/navigation/data/navigation";
 
 function isDropdown(item: NavItem): item is NavDropdownItem {
-  return item.type === 'dropdown';
+  return item.type === "dropdown";
 }
 
 /**
@@ -24,10 +24,16 @@ const WebMenuHidden: React.FC = () => {
           </Link>
           <ul className="level2">
             {NAVIGATION_ITEMS.map((item) => (
-              <li key={item.name} className={isDropdown(item) ? 'has-children' : undefined}>
+              <li
+                key={item.name}
+                className={isDropdown(item) ? "has-children" : undefined}
+              >
                 {isDropdown(item) ? (
                   <>
-                    <Link to={item.href} aria-label={`${item.name} within the site section`}>
+                    <Link
+                      to={item.href}
+                      aria-label={`${item.name} within the site section`}
+                    >
                       {item.name}
                     </Link>
                     <ul className="level3">
@@ -62,7 +68,10 @@ const WebMenuHidden: React.FC = () => {
                     </ul>
                   </>
                 ) : (
-                  <Link to={item.href} aria-label={`${item.name} within the site section`}>
+                  <Link
+                    to={item.href}
+                    aria-label={`${item.name} within the site section`}
+                  >
                     {item.name}
                   </Link>
                 )}

@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import AnimatedCounter from '../../../components/animation/AnimatedCounter';
+import { Link } from "react-router-dom";
+import AnimatedCounter from "../../../components/animation/AnimatedCounter";
 
 const metrics = [
-  { value: 24, text: 'years of operation' },
-  { value: 79, text: 'years of history' },
+  { value: 24, text: "years of operation" },
+  { value: 79, text: "years of history" },
 ];
 
 const OperationHistoryStrip = () => (
@@ -16,7 +16,7 @@ const OperationHistoryStrip = () => (
       aria-hidden
       style={{
         background:
-          'radial-gradient(130% 85% at 30% -10%, rgba(22,27,46,0.95) 0%, rgba(8,10,18,0.95) 45%, rgba(4,5,10,1) 100%)',
+          "radial-gradient(130% 85% at 30% -10%, rgba(22,27,46,0.95) 0%, rgba(8,10,18,0.95) 45%, rgba(4,5,10,1) 100%)",
       }}
     />
     <div className="relative mx-auto flex min-h-[26rem] w-full max-w-[1440px] flex-col items-center justify-center gap-14 px-6 md:min-h-[32rem] md:px-10 lg:min-h-[36rem] lg:px-16">

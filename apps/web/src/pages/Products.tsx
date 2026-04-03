@@ -1,18 +1,22 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import Product3DCard from '../components/product/Product3DCard';
-import ProductFilter from '../components/product/ProductFilter';
-import EnhancedLogoCarousel from '../components/product/EnhancedLogoCarousel';
-import SEO from '../components/seo/SEO';
-import StructuredData from '../components/seo/StructuredData';
-import SubpageHeader from '../components/shared/SubpageHeader';
-import { createBreadcrumbSchema } from '../modules/seo/templates';
-import { products as productData } from '../data/products';
-import { partners } from '../data/partners';
-import { getUniqueCategories, getUniqueTags, filterProducts } from '../utils/filterHelpers';
-import { ProductFilterState } from '../types/product';
-import { useScrollTrigger } from '../hooks/animations/useScrollTrigger';
+import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import Product3DCard from "../components/product/Product3DCard";
+import ProductFilter from "../components/product/ProductFilter";
+import EnhancedLogoCarousel from "../components/product/EnhancedLogoCarousel";
+import SEO from "../components/seo/SEO";
+import StructuredData from "../components/seo/StructuredData";
+import SubpageHeader from "../components/shared/SubpageHeader";
+import { createBreadcrumbSchema } from "../modules/seo/templates";
+import { products as productData } from "../data/products";
+import { partners } from "../data/partners";
+import {
+  getUniqueCategories,
+  getUniqueTags,
+  filterProducts,
+} from "../utils/filterHelpers";
+import { ProductFilterState } from "../types/product";
+import { useScrollTrigger } from "../hooks/animations/useScrollTrigger";
 
 const Products = () => {
   // Animation triggers
@@ -26,7 +30,10 @@ const Products = () => {
   });
 
   // Memoized filtered products - only recalculates when filters change
-  const filteredProducts = useMemo(() => filterProducts(productData, filters), [filters]);
+  const filteredProducts = useMemo(
+    () => filterProducts(productData, filters),
+    [filters],
+  );
 
   // Get filter options (memoized for performance)
   const categories = useMemo(() => getUniqueCategories(productData), []);
@@ -38,17 +45,17 @@ const Products = () => {
   };
 
   const features = [
-    'Premium Quality Fabrics',
-    'Custom Design Services',
-    'Bulk Order Capabilities',
-    'International Standards',
-    'Competitive Pricing',
-    'Timely Delivery',
+    "Premium Quality Fabrics",
+    "Custom Design Services",
+    "Bulk Order Capabilities",
+    "International Standards",
+    "Competitive Pricing",
+    "Timely Delivery",
   ];
 
   const breadcrumbs = [
-    { name: 'Home', url: '/' },
-    { name: 'Products', url: '/products' },
+    { name: "Home", url: "/" },
+    { name: "Products", url: "/products" },
   ];
 
   return (
@@ -58,17 +65,17 @@ const Products = () => {
         description="Explore KTL's world-class manufacturing facilities in Chittagong, producing woven bottoms, denim, and children's wear for leading fashion brands worldwide."
         canonical="/products"
         keywords={[
-          'woven garment supplier bangladesh',
-          'woven apparel',
-          'woven clothing manufacturer',
-          'textile products',
-          'garment manufacturing',
-          'woven textile company in chittagong',
+          "woven garment supplier bangladesh",
+          "woven apparel",
+          "woven clothing manufacturer",
+          "textile products",
+          "garment manufacturing",
+          "woven textile company in chittagong",
         ]}
       />
       <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
       <SubpageHeader
-        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Products' }]}
+        breadcrumbItems={[{ label: "Home", to: "/" }, { label: "Products" }]}
         pageTitle="Products"
       />
       <div>
@@ -77,11 +84,12 @@ const Products = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl">
               <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
-                Woven Garment Supplier <span className="text-primary">Bangladesh</span>
+                Woven Garment Supplier{" "}
+                <span className="text-primary">Bangladesh</span>
               </h2>
               <p className="text-sm md:text-base lg:text-xl text-white/90 leading-relaxed">
-                Premium quality woven apparel, denim, and children's wear manufactured in Bangladesh
-                for global fashion brands
+                Premium quality woven apparel, denim, and children's wear
+                manufactured in Bangladesh for global fashion brands
               </p>
             </div>
           </div>
@@ -95,11 +103,13 @@ const Products = () => {
                 Premium Woven Garment Manufacturing
               </h2>
               <p className="text-sm md:text-base lg:text-lg text-neutral-600 mb-6 md:mb-8 leading-relaxed">
-                As a leading <strong>woven garment supplier in Bangladesh</strong>, KTL specializes
-                in manufacturing high-quality woven apparel for global fashion brands. Our
-                state-of-the-art facilities in Chittagong produce a wide range of woven clothing
-                including ladies shirts, chino pants, dresses, and outerwear. Explore our
-                specialized product categories including{' '}
+                As a leading{" "}
+                <strong>woven garment supplier in Bangladesh</strong>, KTL
+                specializes in manufacturing high-quality woven apparel for
+                global fashion brands. Our state-of-the-art facilities in
+                Chittagong produce a wide range of woven clothing including
+                ladies shirts, chino pants, dresses, and outerwear. Explore our
+                specialized product categories including{" "}
                 <Link
                   to="/products/denims"
                   className="text-primary-600 hover:text-primary-700 font-medium underline"
@@ -120,13 +130,13 @@ const Products = () => {
                 >
                   swimwear collections
                 </Link>
-                , and our{' '}
+                , and our{" "}
                 <Link
                   to="/products/kids"
                   className="text-primary-600 hover:text-primary-700 font-medium underline"
                 >
                   kidswear manufacturer
-                </Link>{' '}
+                </Link>{" "}
                 lines.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
@@ -143,31 +153,33 @@ const Products = () => {
                   </ul>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-xl font-semibold mb-4 text-neutral-900">Quality Standards</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-neutral-900">
+                    Quality Standards
+                  </h3>
                   <ul className="space-y-2 text-neutral-600">
                     <li>• AQL 2.5 quality inspection</li>
                     <li>• OEKO-TEX certified materials</li>
                     <li>• ISO 9001:2015 certified</li>
                     <li>
-                      •{' '}
+                      •{" "}
                       <Link
                         to="/sustainability"
                         className="text-primary-600 hover:text-primary-700 font-medium underline"
                       >
                         Certified sustainable manufacturing
-                      </Link>{' '}
+                      </Link>{" "}
                       practices
                     </li>
                     <li>• On-time delivery guarantee</li>
                   </ul>
                   <p className="mt-4 text-neutral-600">
-                    Learn more about our{' '}
+                    Learn more about our{" "}
                     <Link
                       to="/facilities/rmg"
                       className="text-primary-600 hover:text-primary-700 font-medium underline"
                     >
                       production facilities
-                    </Link>{' '}
+                    </Link>{" "}
                     and manufacturing capabilities.
                   </p>
                 </div>
@@ -194,8 +206,8 @@ const Products = () => {
                 Our <span className="text-primary">Products</span>
               </h2>
               <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-                We specialize in manufacturing a wide range of textile products for men, women, and
-                children across various categories.
+                We specialize in manufacturing a wide range of textile products
+                for men, women, and children across various categories.
               </p>
             </motion.div>
 
@@ -203,7 +215,11 @@ const Products = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <AnimatePresence mode="popLayout">
                 {filteredProducts.map((product, index) => (
-                  <Product3DCard key={product.id} product={product} index={index} />
+                  <Product3DCard
+                    key={product.id}
+                    product={product}
+                    index={index}
+                  />
                 ))}
               </AnimatePresence>
             </div>
@@ -247,7 +263,8 @@ const Products = () => {
               className="text-center mb-12"
             >
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-black mb-4">
-                Trusted by <span className="text-primary-500">Global Brands</span>
+                Trusted by{" "}
+                <span className="text-primary-500">Global Brands</span>
               </h2>
             </motion.div>
             <div className="bg-white rounded-2xl shadow-lg p-8">
@@ -263,8 +280,8 @@ const Products = () => {
               Ready to Source Premium Textiles?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your requirements and get a customized quote for your
-              textile sourcing needs.
+              Contact us today to discuss your requirements and get a customized
+              quote for your textile sourcing needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-neutral-100 transition-colors">
@@ -278,7 +295,11 @@ const Products = () => {
         </section>
 
         {/* Product Filter Component */}
-        <ProductFilter categories={categories} tags={tags} onFilterChange={handleFilterChange} />
+        <ProductFilter
+          categories={categories}
+          tags={tags}
+          onFilterChange={handleFilterChange}
+        />
       </div>
     </>
   );

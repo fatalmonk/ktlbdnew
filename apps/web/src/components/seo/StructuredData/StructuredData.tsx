@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface StructuredDataProps {
   data: object | object[];
@@ -12,7 +12,10 @@ interface StructuredDataProps {
  * <StructuredData data={organizationSchema} />
  * <StructuredData data={[organizationSchema, websiteSchema]} />
  */
-const StructuredData: React.FC<StructuredDataProps> = ({ data, id = 'structured-data' }) => {
+const StructuredData: React.FC<StructuredDataProps> = ({
+  data,
+  id = "structured-data",
+}) => {
   useEffect(() => {
     const schemas = Array.isArray(data) ? data : [data];
 
@@ -21,9 +24,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({ data, id = 'structured-
       let scriptTag = document.getElementById(scriptId) as HTMLScriptElement;
 
       if (!scriptTag) {
-        scriptTag = document.createElement('script');
+        scriptTag = document.createElement("script");
         scriptTag.id = scriptId;
-        scriptTag.type = 'application/ld+json';
+        scriptTag.type = "application/ld+json";
         document.head.appendChild(scriptTag);
       }
 

@@ -1,16 +1,19 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { createLazyIcon } from '@/lib/lucide-icons';
-import { flattenNavLinks, NAVIGATION_ITEMS } from '@/modules/navigation/data/navigation';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createLazyIcon } from "@/lib/lucide-icons";
+import {
+  flattenNavLinks,
+  NAVIGATION_ITEMS,
+} from "@/modules/navigation/data/navigation";
 
-const Search = createLazyIcon('Search');
-const X = createLazyIcon('X');
+const Search = createLazyIcon("Search");
+const X = createLazyIcon("X");
 
 const HeaderSearch: React.FC = () => {
   const navigate = useNavigate();
   const rootRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -19,8 +22,8 @@ const HeaderSearch: React.FC = () => {
         setOpen(false);
       }
     };
-    document.addEventListener('mousedown', onDoc);
-    return () => document.removeEventListener('mousedown', onDoc);
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
   }, [open]);
 
   const suggestions = useMemo(() => flattenNavLinks(NAVIGATION_ITEMS), []);
@@ -29,7 +32,10 @@ const HeaderSearch: React.FC = () => {
     const q = query.trim().toLowerCase();
     if (!q) return suggestions.slice(0, 6);
     return suggestions
-      .filter((l) => l.label.toLowerCase().includes(q) || l.href.toLowerCase().includes(q))
+      .filter(
+        (l) =>
+          l.label.toLowerCase().includes(q) || l.href.toLowerCase().includes(q),
+      )
       .slice(0, 8);
   }, [query, suggestions]);
 
@@ -38,20 +44,20 @@ const HeaderSearch: React.FC = () => {
     if (!q) return;
     navigate(`/newsroom/stories?q=${encodeURIComponent(q)}`);
     setOpen(false);
-    setQuery('');
+    setQuery("");
   };
 
   return (
     <div ref={rootRef} className="relative flex shrink-0 items-center">
       <div
         id="navDesktopSearch"
-        className={`nav--desktop--search_container ${open ? '' : 'closed'}`}
+        className={`nav--desktop--search_container ${open ? "" : "closed"}`}
         aria-describedby="search-tip"
       >
         <label
           id="navDesktopSearchText"
           className="nav--desktop--search_container--text module-search_text sr-only"
-          htmlFor={open ? 'header-search-input' : undefined}
+          htmlFor={open ? "header-search-input" : undefined}
         >
           Search query
         </label>
@@ -61,16 +67,21 @@ const HeaderSearch: React.FC = () => {
           aria-expanded={open}
           aria-controls="header-search-panel"
           aria-haspopup="true"
-          aria-label={open ? 'Close search' : 'Click to open search'}
+          aria-label={open ? "Close search" : "Click to open search"}
           onClick={() => setOpen((v) => !v)}
           className="nav--desktop--search_container--btn flex h-12 w-12 min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-full border-0 bg-transparent text-neutral-900 transition hover:bg-neutral-100/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 lg:h-[56.9px] lg:w-[52.8px] lg:min-h-0 lg:min-w-0"
         >
           <span className="button_text inline-flex" aria-hidden>
             <React.Suspense
-              fallback={<span className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" />}
+              fallback={
+                <span className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" />
+              }
             >
               {open ? (
-                <X className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" strokeWidth={2.5} />
+                <X
+                  className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]"
+                  strokeWidth={2.5}
+                />
               ) : (
                 <Search
                   className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]"
@@ -90,7 +101,9 @@ const HeaderSearch: React.FC = () => {
               id="header-search-panel"
               className="fixed left-0 right-0 z-[10020] border-b border-neutral-200 bg-white px-4 pb-4 pt-3 shadow-md lg:hidden"
               role="search"
-              style={{ top: 'calc(var(--strip-height) + var(--mobile-nav-height))' }}
+              style={{
+                top: "calc(var(--strip-height) + var(--mobile-nav-height))",
+              }}
             >
               <form
                 onSubmit={(e) => {
@@ -164,7 +177,7 @@ const HeaderSearch: React.FC = () => {
                         onClick={() => {
                           navigate(item.href);
                           setOpen(false);
-                          setQuery('');
+                          setQuery("");
                         }}
                       >
                         {item.label}

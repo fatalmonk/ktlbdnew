@@ -37,7 +37,10 @@
     },
     "featured": true,
     "products": ["Denim", "Sustainable"],
-    "images": ["/assets-optimized/denim-production-1.webp", "/assets-optimized/quality-check.webp"],
+    "images": [
+      "/assets-optimized/denim-production-1.webp",
+      "/assets-optimized/quality-check.webp"
+    ],
     "publishDate": "2024-11-15",
     "readTime": 5
   },
@@ -79,7 +82,10 @@
     },
     "featured": true,
     "products": ["Knitwear", "Organic"],
-    "images": ["/assets-optimized/organic-cotton.webp", "/assets-optimized/sustainability.webp"],
+    "images": [
+      "/assets-optimized/organic-cotton.webp",
+      "/assets-optimized/sustainability.webp"
+    ],
     "publishDate": "2024-10-20",
     "readTime": 6
   },

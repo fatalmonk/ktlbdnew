@@ -6,17 +6,20 @@ export interface GetToKnowUsSectionProps {
 }
 
 const DEFAULT_QUOTE =
-  'From global manufacturing excellence to trusted partnerships across the supply chain, we help leading brands deliver quality apparel that meets the highest standards.';
+  "From global manufacturing excellence to trusted partnerships across the supply chain, we help leading brands deliver quality apparel that meets the highest standards.";
 
 /**
  * Editorial intro block inspired by a captured layout: section title + large statement
  * with a brand-yellow quarter-circle accent (no capture class names — Tailwind only).
  */
 const GetToKnowUsSection = ({
-  title = 'Get to Know Us',
+  title = "Get to Know Us",
   quote = DEFAULT_QUOTE,
 }: GetToKnowUsSectionProps) => (
-  <section className="bg-white pt-24 pb-16 md:pt-24 md:pb-16" aria-labelledby="get-to-know-heading">
+  <section
+    className="bg-white pt-24 pb-16 md:pt-24 md:pb-16"
+    aria-labelledby="get-to-know-heading"
+  >
     <div className="mx-auto max-w-[1440px] px-5">
       <h2
         id="get-to-know-heading"

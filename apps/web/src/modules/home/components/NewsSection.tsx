@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { cn } from '../../../lib/utils';
-import type { HomeNewsItem } from '../../../data/home/newsItems';
+import { Link } from "react-router-dom";
+import { cn } from "../../../lib/utils";
+import type { HomeNewsItem } from "../../../data/home/newsItems";
 
 interface NewsSectionProps {
   newsItems: HomeNewsItem[];
@@ -9,19 +9,19 @@ interface NewsSectionProps {
 function formatNewsDate(dateString: string): string {
   const d = new Date(dateString);
   if (Number.isNaN(d.getTime())) return dateString;
-  return d.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
 
 const cellBorder = (index: number) =>
   cn(
-    'border-neutral-200',
-    index < 3 && 'border-b',
-    index % 2 === 0 && 'md:border-r',
-    index < 2 && 'md:border-b'
+    "border-neutral-200",
+    index < 3 && "border-b",
+    index % 2 === 0 && "md:border-r",
+    index < 2 && "md:border-b",
   );
 
 const NewsSection = ({ newsItems }: NewsSectionProps) => {
@@ -47,7 +47,7 @@ const NewsSection = ({ newsItems }: NewsSectionProps) => {
           {items.map((item, index) => (
             <article
               key={item.slug}
-              className={cn('min-h-0 p-0 sm:min-h-[220px]', cellBorder(index))}
+              className={cn("min-h-0 p-0 sm:min-h-[220px]", cellBorder(index))}
             >
               <Link
                 to={`/newsroom/stories/${item.slug}`}

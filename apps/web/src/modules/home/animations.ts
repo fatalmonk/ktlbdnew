@@ -1,4 +1,4 @@
-import type { Variants } from 'framer-motion';
+import type { Variants } from "framer-motion";
 
 export const staggerContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -14,7 +14,7 @@ export const staggerItemVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: 'spring', stiffness: 100, damping: 15 },
+    transition: { type: "spring", stiffness: 100, damping: 15 },
   },
 };
 

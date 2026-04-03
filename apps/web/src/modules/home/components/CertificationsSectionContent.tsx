@@ -1,5 +1,5 @@
-import type { HomeCertification } from '../../../data/home/certifications';
-import { cn } from '../../../lib/utils';
+import type { HomeCertification } from "../../../data/home/certifications";
+import { cn } from "../../../lib/utils";
 
 interface CertificationsSectionContentProps {
   certifications: HomeCertification[];
@@ -12,9 +12,9 @@ const CertLogo = ({ cert }: { cert: HomeCertification }) => (
         src={cert.logoSrc}
         alt={cert.logoAlt}
         className={cn(
-          'max-h-full w-full max-w-full object-contain',
+          "max-h-full w-full max-w-full object-contain",
           // Walt Disney asset ships with a white box; blend so it matches bg-neutral-50
-          cert.id === 'disney-fama' && 'mix-blend-multiply'
+          cert.id === "disney-fama" && "mix-blend-multiply",
         )}
         loading="lazy"
         decoding="async"
@@ -23,9 +23,12 @@ const CertLogo = ({ cert }: { cert: HomeCertification }) => (
   </div>
 );
 
-const desktopGridGaps = 'gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10';
+const desktopGridGaps =
+  "gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10";
 
-const CertificationsSectionContent = ({ certifications }: CertificationsSectionContentProps) => (
+const CertificationsSectionContent = ({
+  certifications,
+}: CertificationsSectionContentProps) => (
   <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
     <div className="mx-auto w-full max-w-[1920px] px-4 md:px-6 lg:px-8">
       <h2 className="font-heading mb-24 text-center text-5xl font-bold leading-tight tracking-tight text-neutral-900 md:text-6xl lg:text-7xl">
@@ -41,16 +44,19 @@ const CertificationsSectionContent = ({ certifications }: CertificationsSectionC
 
       {/* Desktop: row of 5, then centered row of 4 (10-col grid) */}
       <div className="hidden flex-col gap-y-40 xl:gap-y-52 2xl:gap-y-64 lg:flex">
-        <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
+        <div className={cn("grid w-full grid-cols-10", desktopGridGaps)}>
           {certifications.slice(0, 5).map((cert) => (
             <div key={cert.id} className="col-span-2">
               <CertLogo cert={cert} />
             </div>
           ))}
         </div>
-        <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
+        <div className={cn("grid w-full grid-cols-10", desktopGridGaps)}>
           {certifications.slice(5, 9).map((cert, idx) => (
-            <div key={cert.id} className={cn('col-span-2', idx === 0 && 'col-start-2')}>
+            <div
+              key={cert.id}
+              className={cn("col-span-2", idx === 0 && "col-start-2")}
+            >
               <CertLogo cert={cert} />
             </div>
           ))}

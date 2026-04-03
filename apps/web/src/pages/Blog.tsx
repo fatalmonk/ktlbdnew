@@ -1,12 +1,12 @@
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "react-router-dom";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const Search = createLazyIcon('Search');
-const Filter = createLazyIcon('Filter');
-import BlogCard from '../components/features/BlogCard';
-import SEO from '../components/seo/SEO';
-import SubpageHeader from '../components/shared/SubpageHeader';
+const Search = createLazyIcon("Search");
+const Filter = createLazyIcon("Filter");
+import BlogCard from "../components/features/BlogCard";
+import SEO from "../components/seo/SEO";
+import SubpageHeader from "../components/shared/SubpageHeader";
 
 interface BlogPost {
   id: string;
@@ -46,22 +46,22 @@ const Blog = () => {
   const [searchParams] = useSearchParams();
   const [blogData, setBlogData] = useState<BlogData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   useEffect(() => {
-    const q = searchParams.get('q');
+    const q = searchParams.get("q");
     if (q) setSearchQuery(q);
   }, [searchParams]);
 
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch('/data/blog/index.json');
+        const response = await fetch("/data/blog/index.json");
         const data: BlogData = await response.json();
         setBlogData(data);
       } catch (error) {
-        console.error('Error loading blog data:', error);
+        console.error("Error loading blog data:", error);
       } finally {
         setLoading(false);
       }
@@ -74,14 +74,19 @@ const Blog = () => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
 
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === "all" || post.category === selectedCategory;
 
     return matchesSearch && matchesCategory;
   });
 
-  const featuredPosts = filteredPosts?.filter((post) => post.featured).slice(0, 2);
+  const featuredPosts = filteredPosts
+    ?.filter((post) => post.featured)
+    .slice(0, 2);
   const regularPosts = filteredPosts?.filter((post) => !post.featured);
 
   if (loading) {
@@ -99,19 +104,19 @@ const Blog = () => {
         description="Insights, stories, and updates from Kattali Textile Ltd. Learn about our manufacturing processes, partnerships, and commitment to quality."
         canonical="/newsroom/stories"
         keywords={[
-          'textile blog',
-          'garment manufacturing blog',
-          'Bangladesh RMG',
-          'textile industry insights',
-          'company stories',
+          "textile blog",
+          "garment manufacturing blog",
+          "Bangladesh RMG",
+          "textile industry insights",
+          "company stories",
         ]}
       />
 
       <SubpageHeader
         breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Newsroom', to: '/newsroom/stories' },
-          { label: 'Company Stories' },
+          { label: "Home", to: "/" },
+          { label: "Newsroom", to: "/newsroom/stories" },
+          { label: "Company Stories" },
         ]}
         pageTitle="Company Stories"
       />
@@ -120,9 +125,12 @@ const Blog = () => {
         <section className="bg-gradient-to-r from-primary-600 to-secondary-600 pb-20 pt-10 text-white lg:pt-14">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4">Company Stories</h2>
+              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4">
+                Company Stories
+              </h2>
               <p className="text-xl text-white/90">
-                Insights, stories, and updates from Bangladesh's leading textile manufacturer
+                Insights, stories, and updates from Bangladesh's leading textile
+                manufacturer
               </p>
             </div>
           </div>
@@ -135,7 +143,9 @@ const Blog = () => {
               {/* Search */}
               <div className="relative flex-1 max-w-md w-full">
                 <Suspense
-                  fallback={<div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" />}
+                  fallback={
+                    <div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" />
+                  }
                 >
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                 </Suspense>
@@ -154,11 +164,11 @@ const Blog = () => {
                   <Filter className="w-5 h-5 text-neutral-500" />
                 </Suspense>
                 <button
-                  onClick={() => setSelectedCategory('all')}
+                  onClick={() => setSelectedCategory("all")}
                   className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-                    selectedCategory === 'all'
-                      ? 'bg-primary-500 text-white'
-                      : 'bg-neutral-200 text-neutral-700 hover:bg-neutral-300'
+                    selectedCategory === "all"
+                      ? "bg-primary-500 text-white"
+                      : "bg-neutral-200 text-neutral-700 hover:bg-neutral-300"
                   }`}
                 >
                   All
@@ -169,8 +179,8 @@ const Blog = () => {
                     onClick={() => setSelectedCategory(category.id)}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                       selectedCategory === category.id
-                        ? 'bg-primary-500 text-white'
-                        : 'bg-neutral-200 text-neutral-700 hover:bg-neutral-300'
+                        ? "bg-primary-500 text-white"
+                        : "bg-neutral-200 text-neutral-700 hover:bg-neutral-300"
                     }`}
                   >
                     {category.name}
@@ -188,7 +198,9 @@ const Blog = () => {
               {/* Featured Posts */}
               {featuredPosts && featuredPosts.length > 0 && (
                 <div>
-                  <h2 className="font-heading font-bold text-2xl mb-6">Featured Articles</h2>
+                  <h2 className="font-heading font-bold text-2xl mb-6">
+                    Featured Articles
+                  </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {featuredPosts.map((post) => (
                       <BlogCard key={post.id} {...post} />
@@ -201,7 +213,9 @@ const Blog = () => {
               {regularPosts && regularPosts.length > 0 && (
                 <div>
                   <h2 className="font-heading font-bold text-2xl mb-6">
-                    {featuredPosts && featuredPosts.length > 0 ? 'More Articles' : 'Articles'}
+                    {featuredPosts && featuredPosts.length > 0
+                      ? "More Articles"
+                      : "Articles"}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {regularPosts.map((post) => (
@@ -213,7 +227,9 @@ const Blog = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-neutral-500 text-lg">No articles found matching your criteria.</p>
+              <p className="text-neutral-500 text-lg">
+                No articles found matching your criteria.
+              </p>
             </div>
           )}
         </section>

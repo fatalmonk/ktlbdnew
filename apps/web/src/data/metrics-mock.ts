@@ -1,97 +1,107 @@
-import { Metric, MetricsGroup, ChartData } from '../types/metrics';
-import { TrendingUp, Users, ShoppingCart, DollarSign, Package, Eye, Heart } from 'lucide-react';
+import { Metric, MetricsGroup, ChartData } from "../types/metrics";
+import {
+  TrendingUp,
+  Users,
+  ShoppingCart,
+  DollarSign,
+  Package,
+  Eye,
+  Heart,
+} from "lucide-react";
 
 export const mockMetrics: Metric[] = [
   {
-    id: 'total-products',
-    label: 'Total Products',
+    id: "total-products",
+    label: "Total Products",
     value: 247,
     change: 12.5,
-    changeType: 'increase',
+    changeType: "increase",
     icon: Package,
-    color: '#3B82F6',
-    format: 'number',
-    description: 'Active products in catalog',
+    color: "#3B82F6",
+    format: "number",
+    description: "Active products in catalog",
   },
   {
-    id: 'monthly-revenue',
-    label: 'Monthly Revenue',
+    id: "monthly-revenue",
+    label: "Monthly Revenue",
     value: 1250000,
-    unit: 'USD',
+    unit: "USD",
     change: 8.3,
-    changeType: 'increase',
+    changeType: "increase",
     icon: DollarSign,
-    color: '#10B981',
-    format: 'currency',
-    description: 'Total revenue this month',
+    color: "#10B981",
+    format: "currency",
+    description: "Total revenue this month",
   },
   {
-    id: 'active-users',
-    label: 'Active Users',
+    id: "active-users",
+    label: "Active Users",
     value: 15420,
     change: 5.7,
-    changeType: 'increase',
+    changeType: "increase",
     icon: Users,
-    color: '#8B5CF6',
-    format: 'number',
-    description: 'Monthly active users',
+    color: "#8B5CF6",
+    format: "number",
+    description: "Monthly active users",
   },
   {
-    id: 'conversion-rate',
-    label: 'Conversion Rate',
+    id: "conversion-rate",
+    label: "Conversion Rate",
     value: 3.42,
-    unit: '%',
+    unit: "%",
     change: -1.2,
-    changeType: 'decrease',
+    changeType: "decrease",
     icon: TrendingUp,
-    color: '#F59E0B',
-    format: 'percentage',
-    description: 'Average conversion rate',
+    color: "#F59E0B",
+    format: "percentage",
+    description: "Average conversion rate",
   },
   {
-    id: 'total-orders',
-    label: 'Total Orders',
+    id: "total-orders",
+    label: "Total Orders",
     value: 8934,
     change: 15.8,
-    changeType: 'increase',
+    changeType: "increase",
     icon: ShoppingCart,
-    color: '#EF4444',
-    format: 'number',
-    description: 'Orders processed this month',
+    color: "#EF4444",
+    format: "number",
+    description: "Orders processed this month",
   },
   {
-    id: 'page-views',
-    label: 'Page Views',
+    id: "page-views",
+    label: "Page Views",
     value: 342567,
     change: 22.4,
-    changeType: 'increase',
+    changeType: "increase",
     icon: Eye,
-    color: '#06B6D4',
-    format: 'number',
-    description: 'Total page views this month',
+    color: "#06B6D4",
+    format: "number",
+    description: "Total page views this month",
   },
 ];
 
 export const mockMetricsGroups: MetricsGroup[] = [
   {
-    id: 'business',
-    title: 'Business Metrics',
+    id: "business",
+    title: "Business Metrics",
     icon: DollarSign,
     metrics: mockMetrics.filter((m) =>
-      ['monthly-revenue', 'total-orders', 'conversion-rate'].includes(m.id)
+      ["monthly-revenue", "total-orders", "conversion-rate"].includes(m.id),
     ),
   },
   {
-    id: 'engagement',
-    title: 'Engagement Metrics',
+    id: "engagement",
+    title: "Engagement Metrics",
     icon: Heart,
-    metrics: mockMetrics.filter((m) => ['active-users', 'page-views'].includes(m.id)),
+    metrics: mockMetrics.filter((m) =>
+      ["active-users", "page-views"].includes(m.id),
+    ),
   },
   {
-    id: 'products',
-    title: 'Product Metrics',
+    id: "products",
+    title: "Product Metrics",
     icon: Package,
-    metrics: mockMetrics.filter((m) => ['total-products'].includes(m.id)),
+    metrics: mockMetrics.filter((m) => ["total-products"].includes(m.id)),
   },
 ];
 
@@ -99,9 +109,9 @@ export const mockMetricsGroups: MetricsGroup[] = [
 function generateTimeSeriesData(
   days: number,
   baseValue: number,
-  variance: number
-): ChartData['data'] {
-  const data: ChartData['data'] = [];
+  variance: number,
+): ChartData["data"] {
+  const data: ChartData["data"] = [];
   const now = new Date();
 
   for (let i = days; i >= 0; i--) {
@@ -115,7 +125,10 @@ function generateTimeSeriesData(
     data.push({
       timestamp: date,
       value: Math.max(0, value),
-      label: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      label: date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      }),
     });
   }
 
@@ -124,24 +137,24 @@ function generateTimeSeriesData(
 
 export const mockChartData: ChartData[] = [
   {
-    id: 'revenue-trend',
-    title: 'Revenue Trend (30 Days)',
+    id: "revenue-trend",
+    title: "Revenue Trend (30 Days)",
     data: generateTimeSeriesData(30, 40000, 10000),
-    type: 'area',
-    color: '#10B981',
+    type: "area",
+    color: "#10B981",
   },
   {
-    id: 'users-trend',
-    title: 'Active Users (30 Days)',
+    id: "users-trend",
+    title: "Active Users (30 Days)",
     data: generateTimeSeriesData(30, 500, 100),
-    type: 'line',
-    color: '#8B5CF6',
+    type: "line",
+    color: "#8B5CF6",
   },
   {
-    id: 'orders-trend',
-    title: 'Orders (30 Days)',
+    id: "orders-trend",
+    title: "Orders (30 Days)",
     data: generateTimeSeriesData(30, 300, 50),
-    type: 'bar',
-    color: '#EF4444',
+    type: "bar",
+    color: "#EF4444",
   },
 ];

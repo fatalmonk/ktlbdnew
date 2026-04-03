@@ -1,4 +1,4 @@
-import SEO from '../../../components/seo/SEO';
+import SEO from "../../../components/seo/SEO";
 
 const HomeSEO = () => (
   <SEO
@@ -6,15 +6,15 @@ const HomeSEO = () => (
     description="Kattali Textile Limited (KTL) is a publicly listed garment manufacturer in Chittagong, Bangladesh. We produce high-quality woven, denim, and children's apparel for global brands with certified sustainable practices."
     canonical="/"
     keywords={[
-      'bangladesh garment manufacturer',
-      'textile exporter chittagong',
-      'chittagong exporter list',
-      'woven apparel',
-      'denim manufacturing',
-      'RMG Bangladesh',
-      'Chittagong textile',
-      'garments factory in chittagong',
-      'woven textile company in chittagong',
+      "bangladesh garment manufacturer",
+      "textile exporter chittagong",
+      "chittagong exporter list",
+      "woven apparel",
+      "denim manufacturing",
+      "RMG Bangladesh",
+      "Chittagong textile",
+      "garments factory in chittagong",
+      "woven textile company in chittagong",
     ]}
   />
 );

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   TrendingUp,
   TrendingDown,
@@ -12,8 +12,8 @@ import {
   Heart,
   Shield,
   ClipboardCheck,
-} from 'lucide-react';
-import { SustainabilityMetric } from '../../types/sustainability';
+} from "lucide-react";
+import { SustainabilityMetric } from "../../types/sustainability";
 
 interface MetricsWidgetProps {
   metric: SustainabilityMetric;
@@ -38,32 +38,34 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
   const IconComponent = iconMap[metric.icon] || Leaf;
 
   const getTrendIcon = () => {
-    if (metric.trend === 'up') return TrendingUp;
-    if (metric.trend === 'down') return TrendingDown;
+    if (metric.trend === "up") return TrendingUp;
+    if (metric.trend === "down") return TrendingDown;
     return Minus;
   };
 
   const TrendIcon = getTrendIcon();
 
   const getTrendColor = () => {
-    if (metric.trendIsGood) return 'text-green-600';
-    return 'text-red-600';
+    if (metric.trendIsGood) return "text-green-600";
+    return "text-red-600";
   };
 
   const getCategoryColor = () => {
     switch (metric.category) {
-      case 'Environmental':
-        return 'bg-green-100 text-green-700';
-      case 'Social':
-        return 'bg-blue-100 text-blue-700';
-      case 'Governance':
-        return 'bg-purple-100 text-purple-700';
+      case "Environmental":
+        return "bg-green-100 text-green-700";
+      case "Social":
+        return "bg-blue-100 text-blue-700";
+      case "Governance":
+        return "bg-purple-100 text-purple-700";
       default:
-        return 'bg-neutral-100 text-neutral-700';
+        return "bg-neutral-100 text-neutral-700";
     }
   };
 
-  const progressPercentage = metric.target ? (metric.value / metric.target) * 100 : 100;
+  const progressPercentage = metric.target
+    ? (metric.value / metric.target) * 100
+    : 100;
 
   return (
     <motion.div
@@ -95,7 +97,9 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
       {/* Value */}
       <div className="mb-4">
         <div className="flex items-baseline gap-2">
-          <span className="text-4xl font-bold text-neutral-900">{metric.value}</span>
+          <span className="text-4xl font-bold text-neutral-900">
+            {metric.value}
+          </span>
           <span className="text-lg text-neutral-600">{metric.unit}</span>
         </div>
         {metric.target && (
@@ -120,12 +124,12 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
               transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
               className={`h-full rounded-full ${
                 progressPercentage >= 100
-                  ? 'bg-green-500'
+                  ? "bg-green-500"
                   : progressPercentage >= 75
-                    ? 'bg-blue-500'
+                    ? "bg-blue-500"
                     : progressPercentage >= 50
-                      ? 'bg-yellow-500'
-                      : 'bg-orange-500'
+                      ? "bg-yellow-500"
+                      : "bg-orange-500"
               }`}
             />
           </div>
@@ -133,7 +137,9 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
       )}
 
       {/* Description */}
-      <p className="text-sm text-neutral-600 leading-relaxed">{metric.description}</p>
+      <p className="text-sm text-neutral-600 leading-relaxed">
+        {metric.description}
+      </p>
     </motion.div>
   );
 };

@@ -1,0 +1,43 @@
+[
+  {
+    "input": {
+      "focus": "Kattali Textile Ltd corporate site",
+      "website": "https://ktlbd.com"
+    },
+    "output": {
+      "company_legal_name": "Kattali Textile Ltd",
+      "hq_location": "Chittagong, Bangladesh",
+      "year_founded": "2002",
+      "stock_exchange_symbol": "DSE/CSE: KTL",
+      "main_product_lines": [
+        "Woven garments",
+        "Knitwear",
+        "Denim (jeans, jackets, shirts)",
+        "T-shirts",
+        "Children's wear / Kids clothing",
+        "Outerwear / Jackets",
+        "Dresses",
+        "Bottoms / Pants / Shorts",
+        "Swimwear"
+      ],
+      "buyer_differentiators": [
+        "Eco-friendly / sustainable manufacturing practices",
+        "Ethical production / fair labor standards",
+        "State-of-the-art equipment and advanced manufacturing technology",
+        "Over 20 years of experience (est. 2002)",
+        "Trusted supplier to global brands / reliable on-time delivery"
+      ],
+      "certifications_compliance": [
+        "Sedex",
+        "Green Factory Initiative",
+        "BGMEA member (#1940)"
+      ],
+      "primary_contact_channels": [
+        "sales@ktlbd.com",
+        "+880 1308 790475",
+        "Head office: BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong, Bangladesh"
+      ],
+      "uncertain_information_flag": false
+    }
+  }
+]

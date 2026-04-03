@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { stats } from '../../../data/home/stats';
-import AnimatedCounter from '../../animation/AnimatedCounter';
+import { motion } from "framer-motion";
+import { stats } from "../../../data/home/stats";
+import AnimatedCounter from "../../animation/AnimatedCounter";
 
 const StatisticsSection = () => {
   return (

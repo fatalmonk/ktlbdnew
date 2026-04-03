@@ -1,1 +1,1 @@
-export { default } from './CorporateStaticHeader';
+export { default } from "./CorporateStaticHeader";

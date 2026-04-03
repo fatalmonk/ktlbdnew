@@ -1,4 +1,4 @@
-import { Product, FilterOption, ProductFilterState } from '../types/product';
+import { Product, FilterOption, ProductFilterState } from "../types/product";
 
 /**
  * Extract unique categories from products array
@@ -41,18 +41,23 @@ export const getUniqueTags = (products: Product[]): FilterOption[] => {
 /**
  * Filter products based on selected categories and tags
  */
-export const filterProducts = (products: Product[], filters: ProductFilterState): Product[] => {
+export const filterProducts = (
+  products: Product[],
+  filters: ProductFilterState,
+): Product[] => {
   let filtered = [...products];
 
   // Filter by categories
   if (filters.categories.length > 0) {
-    filtered = filtered.filter((product) => filters.categories.includes(product.category));
+    filtered = filtered.filter((product) =>
+      filters.categories.includes(product.category),
+    );
   }
 
   // Filter by tags
   if (filters.tags.length > 0) {
     filtered = filtered.filter((product) =>
-      product.tags?.some((tag) => filters.tags.includes(tag))
+      product.tags?.some((tag) => filters.tags.includes(tag)),
     );
   }
 
@@ -69,14 +74,20 @@ export const getFeaturedProducts = (products: Product[]): Product[] => {
 /**
  * Get products by category
  */
-export const getProductsByCategory = (products: Product[], category: string): Product[] => {
+export const getProductsByCategory = (
+  products: Product[],
+  category: string,
+): Product[] => {
   return products.filter((product) => product.category === category);
 };
 
 /**
  * Search products by name or description
  */
-export const searchProducts = (products: Product[], query: string): Product[] => {
+export const searchProducts = (
+  products: Product[],
+  query: string,
+): Product[] => {
   if (!query.trim()) return products;
 
   const lowercaseQuery = query.toLowerCase();
@@ -84,6 +95,6 @@ export const searchProducts = (products: Product[], query: string): Product[] =>
     (product) =>
       product.name.toLowerCase().includes(lowercaseQuery) ||
       product.description.toLowerCase().includes(lowercaseQuery) ||
-      product.tags?.some((tag) => tag.toLowerCase().includes(lowercaseQuery))
+      product.tags?.some((tag) => tag.toLowerCase().includes(lowercaseQuery)),
   );
 };

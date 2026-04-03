@@ -7,7 +7,7 @@
  */
 
 interface NetworkInformation {
-  effectiveType?: '2g' | '3g' | '4g' | 'slow-2g';
+  effectiveType?: "2g" | "3g" | "4g" | "slow-2g";
 }
 
 /**
@@ -15,17 +15,21 @@ interface NetworkInformation {
  * @returns true if device is mobile (smartphone or tablet)
  */
 export function isMobileDevice(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === "undefined") return false;
 
   // Check for touch capability (more reliable than UA)
-  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
   // Check user agent for mobile devices
   const userAgent =
-    navigator.userAgent || navigator.vendor || (window as { opera?: string }).opera || '';
-  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    userAgent
-  );
+    navigator.userAgent ||
+    navigator.vendor ||
+    (window as { opera?: string }).opera ||
+    "";
+  const isMobileUA =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      userAgent,
+    );
 
   // Check screen width (fallback)
   const isSmallScreen = window.innerWidth <= 768;
@@ -38,30 +42,33 @@ export function isMobileDevice(): boolean {
  * @returns true if device has limited hardware capabilities
  */
 export function isLowEndDevice(): boolean {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === "undefined") return false;
 
   // Check hardware concurrency (CPU cores)
   const cores = navigator.hardwareConcurrency || 1;
 
   // Check memory (if available - not all browsers support this)
   const memory =
-    ('deviceMemory' in navigator
+    ("deviceMemory" in navigator
       ? (navigator as { deviceMemory?: number }).deviceMemory
       : undefined) || 4;
 
   // Check connection speed (if available)
   const connection =
-    ('connection' in navigator
+    ("connection" in navigator
       ? (navigator as { connection?: NetworkInformation }).connection
       : undefined) ||
-    ('mozConnection' in navigator
+    ("mozConnection" in navigator
       ? (navigator as { mozConnection?: NetworkInformation }).mozConnection
       : undefined) ||
-    ('webkitConnection' in navigator
-      ? (navigator as { webkitConnection?: NetworkInformation }).webkitConnection
+    ("webkitConnection" in navigator
+      ? (navigator as { webkitConnection?: NetworkInformation })
+          .webkitConnection
       : undefined);
   const isSlowConnection =
-    connection && (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g');
+    connection &&
+    (connection.effectiveType === "2g" ||
+      connection.effectiveType === "slow-2g");
 
   return cores <= 2 || memory <= 2 || isSlowConnection || false;
 }
@@ -89,13 +96,13 @@ export function getOptimizedAnimationConfig() {
  * Get device performance tier
  * @returns 'high' | 'medium' | 'low'
  */
-export function getDevicePerformanceTier(): 'high' | 'medium' | 'low' {
-  if (typeof window === 'undefined') return 'medium';
+export function getDevicePerformanceTier(): "high" | "medium" | "low" {
+  if (typeof window === "undefined") return "medium";
 
   const isLowEnd = isLowEndDevice();
   const isMobile = isMobileDevice();
 
-  if (isLowEnd) return 'low';
-  if (isMobile) return 'medium';
-  return 'high';
+  if (isLowEnd) return "low";
+  if (isMobile) return "medium";
+  return "high";
 }

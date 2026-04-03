@@ -1,19 +1,22 @@
-import React, { useState, useRef, Suspense } from 'react';
-import { motion, useAnimationFrame, AnimatePresence } from 'framer-motion';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { useState, useRef, Suspense } from "react";
+import { motion, useAnimationFrame, AnimatePresence } from "framer-motion";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const ExternalLink = createLazyIcon('ExternalLink');
-const Globe = createLazyIcon('Globe');
-const Users = createLazyIcon('Users');
-import { PartnerLogo } from '../../types/partner';
-import Image from '../../media/Image';
+const ExternalLink = createLazyIcon("ExternalLink");
+const Globe = createLazyIcon("Globe");
+const Users = createLazyIcon("Users");
+import { PartnerLogo } from "../../types/partner";
+import Image from "../../media/Image";
 
 interface EnhancedLogoCarouselProps {
   partners: PartnerLogo[];
   speed?: number;
 }
 
-const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({ partners, speed = 30 }) => {
+const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
+  partners,
+  speed = 30,
+}) => {
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +58,7 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({ partners, s
             onMouseEnter={() => setHoveredPartner(partner.id)}
             onMouseLeave={() => setHoveredPartner(null)}
             whileHover={{ scale: 1.1 }}
-            transition={{ type: 'spring', stiffness: 400 }}
+            transition={{ type: "spring", stiffness: 400 }}
           >
             {/* Logo */}
             <div className="px-8 py-5 md:px-10 md:py-6">
@@ -85,7 +88,10 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({ partners, s
 
                   {/* Content */}
                   <div className="relative">
-                    <h4 id={`partner-${partner.id}-name`} className="font-bold text-lg mb-2">
+                    <h4
+                      id={`partner-${partner.id}-name`}
+                      className="font-bold text-lg mb-2"
+                    >
                       {partner.name}
                     </h4>
                     <p

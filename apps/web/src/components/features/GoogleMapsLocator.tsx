@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import { GOOGLE_MAPS_LOCATOR_URL } from '../../lib/constants';
-import { LOCATOR_PLUS_BASE } from '../../lib/locatorQuickBuilderConfig';
-import PlaceDetailsMap from './PlaceDetailsMap';
+import React, { useCallback, useState } from "react";
+import { GOOGLE_MAPS_LOCATOR_URL } from "../../lib/constants";
+import { LOCATOR_PLUS_BASE } from "../../lib/locatorQuickBuilderConfig";
+import PlaceDetailsMap from "./PlaceDetailsMap";
 
 interface GoogleMapsLocatorProps {
   className?: string;
@@ -10,11 +10,14 @@ interface GoogleMapsLocatorProps {
 }
 
 const IframeLocator: React.FC<GoogleMapsLocatorProps> = ({
-  className = '',
-  height = '400px',
-  title = 'Google Maps Location Finder',
+  className = "",
+  height = "400px",
+  title = "Google Maps Location Finder",
 }) => (
-  <div className={`rounded-lg overflow-hidden shadow-xl ${className}`} style={{ height }}>
+  <div
+    className={`rounded-lg overflow-hidden shadow-xl ${className}`}
+    style={{ height }}
+  >
     <iframe
       src={GOOGLE_MAPS_LOCATOR_URL}
       width="100%"
@@ -42,7 +45,9 @@ const GoogleMapsLocator: React.FC<GoogleMapsLocatorProps> = (props) => {
         {...props}
         apiKey={apiKey}
         placeId={DEFAULT_PLACE_ID}
-        title={props.title ?? 'Kattali Textile Limited — production facility on map'}
+        title={
+          props.title ?? "Kattali Textile Limited — production facility on map"
+        }
         onError={onEmbedError}
       />
     );

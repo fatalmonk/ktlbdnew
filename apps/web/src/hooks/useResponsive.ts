@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 // Tailwind breakpoints (matching tailwind.config.js)
 export const BREAKPOINTS = {
@@ -26,12 +26,12 @@ export type Breakpoint = keyof typeof BREAKPOINTS;
  */
 export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === "undefined") return false;
     return window.matchMedia(query).matches;
   });
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     const mediaQuery = window.matchMedia(query);
 
@@ -45,8 +45,8 @@ export function useMediaQuery(query: string): boolean {
 
     // Modern browsers support addEventListener
     if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handler);
-      return () => mediaQuery.removeEventListener('change', handler);
+      mediaQuery.addEventListener("change", handler);
+      return () => mediaQuery.removeEventListener("change", handler);
     } else {
       // Fallback for older browsers
       mediaQuery.addListener(handler);
@@ -69,40 +69,43 @@ export function useMediaQuery(query: string): boolean {
  * const { breakpoint, isXs, isSm, isMd, isLg, isXl, isMobile, isDesktop } = useBreakpoint();
  */
 export function useBreakpoint() {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>('xs');
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("xs");
 
   const isXs = useMediaQuery(`(max-width: ${BREAKPOINTS.sm - 1}px)`);
   const isSm = useMediaQuery(
-    `(min-width: ${BREAKPOINTS.sm}px) and (max-width: ${BREAKPOINTS.md - 1}px)`
+    `(min-width: ${BREAKPOINTS.sm}px) and (max-width: ${BREAKPOINTS.md - 1}px)`,
   );
   const isMd = useMediaQuery(
-    `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 1}px)`
+    `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 1}px)`,
   );
   const isLg = useMediaQuery(
-    `(min-width: ${BREAKPOINTS.lg}px) and (max-width: ${BREAKPOINTS.xl - 1}px)`
+    `(min-width: ${BREAKPOINTS.lg}px) and (max-width: ${BREAKPOINTS.xl - 1}px)`,
   );
   const isXl = useMediaQuery(`(min-width: ${BREAKPOINTS.xl}px)`);
 
   useEffect(() => {
     if (isXl) {
-      setBreakpoint('xl');
+      setBreakpoint("xl");
     } else if (isLg) {
-      setBreakpoint('lg');
+      setBreakpoint("lg");
     } else if (isMd) {
-      setBreakpoint('md');
+      setBreakpoint("md");
     } else if (isSm) {
-      setBreakpoint('sm');
+      setBreakpoint("sm");
     } else {
-      setBreakpoint('xs');
+      setBreakpoint("xs");
     }
   }, [isXs, isSm, isMd, isLg, isXl]);
 
-  const isMobile = useMemo(() => breakpoint === 'xs' || breakpoint === 'sm', [breakpoint]);
-  const isDesktop = useMemo(
-    () => breakpoint === 'md' || breakpoint === 'lg' || breakpoint === 'xl',
-    [breakpoint]
+  const isMobile = useMemo(
+    () => breakpoint === "xs" || breakpoint === "sm",
+    [breakpoint],
   );
-  const isTablet = useMemo(() => breakpoint === 'md', [breakpoint]);
+  const isDesktop = useMemo(
+    () => breakpoint === "md" || breakpoint === "lg" || breakpoint === "xl",
+    [breakpoint],
+  );
+  const isTablet = useMemo(() => breakpoint === "md", [breakpoint]);
 
   return {
     breakpoint,
@@ -140,16 +143,16 @@ export function useViewportHeight(
   options: {
     includeMobileFix?: boolean;
     debounceMs?: number;
-  } = {}
+  } = {},
 ) {
   const { includeMobileFix = true, debounceMs = 150 } = options;
   const [viewportHeight, setViewportHeight] = useState(() => {
-    if (typeof window === 'undefined') return 0;
+    if (typeof window === "undefined") return 0;
     return window.innerHeight;
   });
 
   const updateViewportHeight = useCallback(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     let height = window.innerHeight;
 
@@ -163,12 +166,12 @@ export function useViewportHeight(
     // Set CSS custom property for mobile viewport height fix
     if (includeMobileFix) {
       const vh = height * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
     }
   }, [includeMobileFix]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     // Initial calculation
     updateViewportHeight();
@@ -181,24 +184,30 @@ export function useViewportHeight(
     };
 
     // Listen to resize events
-    window.addEventListener('resize', debouncedUpdate, { passive: true });
+    window.addEventListener("resize", debouncedUpdate, { passive: true });
 
     // Listen to visual viewport changes (mobile browsers)
     if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', debouncedUpdate, { passive: true });
-      window.visualViewport.addEventListener('scroll', debouncedUpdate, { passive: true });
+      window.visualViewport.addEventListener("resize", debouncedUpdate, {
+        passive: true,
+      });
+      window.visualViewport.addEventListener("scroll", debouncedUpdate, {
+        passive: true,
+      });
     }
 
     // Listen to orientation changes
-    window.addEventListener('orientationchange', updateViewportHeight, { passive: true });
+    window.addEventListener("orientationchange", updateViewportHeight, {
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener('resize', debouncedUpdate);
-      window.removeEventListener('orientationchange', updateViewportHeight);
+      window.removeEventListener("resize", debouncedUpdate);
+      window.removeEventListener("orientationchange", updateViewportHeight);
 
       if (window.visualViewport) {
-        window.visualViewport.removeEventListener('resize', debouncedUpdate);
-        window.visualViewport.removeEventListener('scroll', debouncedUpdate);
+        window.visualViewport.removeEventListener("resize", debouncedUpdate);
+        window.visualViewport.removeEventListener("scroll", debouncedUpdate);
       }
 
       clearTimeout(timeoutId);
@@ -226,7 +235,7 @@ export function useResponsive() {
 
   // Memoized media query matcher
   const matches = useCallback((query: string) => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === "undefined") return false;
     return window.matchMedia(query).matches;
   }, []);
 

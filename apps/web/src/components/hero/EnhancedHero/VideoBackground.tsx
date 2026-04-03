@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 
 interface VideoBackgroundProps {
   src: string;
@@ -7,7 +7,12 @@ interface VideoBackgroundProps {
   isPaused: boolean;
 }
 
-const VideoBackground: React.FC<VideoBackgroundProps> = ({ src, mobileSrc, isMuted, isPaused }) => {
+const VideoBackground: React.FC<VideoBackgroundProps> = ({
+  src,
+  mobileSrc,
+  isMuted,
+  isPaused,
+}) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -16,8 +21,8 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ src, mobileSrc, isMut
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {

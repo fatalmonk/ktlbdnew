@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Suspense } from 'react';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Suspense } from "react";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const ArrowRight = createLazyIcon('ArrowRight');
-const Calendar = createLazyIcon('Calendar');
-const Clock = createLazyIcon('Clock');
-import { CaseStudy } from '../../types/case-study';
+const ArrowRight = createLazyIcon("ArrowRight");
+const Calendar = createLazyIcon("Calendar");
+const Clock = createLazyIcon("Clock");
+import { CaseStudy } from "../../types/case-study";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -70,14 +70,23 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
           </p>
 
           {/* Challenge Preview */}
-          <p className="text-neutral-700 mb-4 line-clamp-3">{caseStudy.challenge}</p>
+          <p className="text-neutral-700 mb-4 line-clamp-3">
+            {caseStudy.challenge}
+          </p>
 
           {/* Key Results */}
           <div className="grid grid-cols-2 gap-3 mb-4">
             {caseStudy.results.slice(0, 2).map((result) => (
-              <div key={result.metric} className="text-center p-3 bg-neutral-50 rounded">
-                <div className="text-2xl font-bold text-blue-600">{result.value}</div>
-                <div className="text-xs text-neutral-600 mt-1 line-clamp-2">{result.metric}</div>
+              <div
+                key={result.metric}
+                className="text-center p-3 bg-neutral-50 rounded"
+              >
+                <div className="text-2xl font-bold text-blue-600">
+                  {result.value}
+                </div>
+                <div className="text-xs text-neutral-600 mt-1 line-clamp-2">
+                  {result.metric}
+                </div>
               </div>
             ))}
           </div>
@@ -90,9 +99,9 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
                   <Calendar size={14} />
                 </Suspense>
                 <span>
-                  {new Date(caseStudy.publishDate).toLocaleDateString('en-US', {
-                    month: 'short',
-                    year: 'numeric',
+                  {new Date(caseStudy.publishDate).toLocaleDateString("en-US", {
+                    month: "short",
+                    year: "numeric",
                   })}
                 </span>
               </div>

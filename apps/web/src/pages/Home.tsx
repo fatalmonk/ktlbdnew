@@ -1,10 +1,10 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
-import { certifications, newsItems } from '../data/home';
-import { partners } from '../data/partners';
-import { featuredProducts } from '../data/products';
-import HeroSection from '../modules/home/components/HeroSection';
-import HomeSEO from '../modules/home/components/HomeSEO';
-import OperationHistoryStrip from '../modules/home/components/OperationHistoryStrip';
+import { Suspense, lazy, useEffect, useState } from "react";
+import { certifications, newsItems } from "../data/home";
+import { partners } from "../data/partners";
+import { featuredProducts } from "../data/products";
+import HeroSection from "../modules/home/components/HeroSection";
+import HomeSEO from "../modules/home/components/HomeSEO";
+import OperationHistoryStrip from "../modules/home/components/OperationHistoryStrip";
 
 import {
   CTASkeleton,
@@ -14,7 +14,7 @@ import {
   NewsSkeleton,
   ProductsSkeleton,
   GetToKnowUsSkeleton,
-} from '../components/skeletons';
+} from "../components/skeletons";
 
 /**
  * True async islands:
@@ -24,20 +24,30 @@ import {
  */
 
 // BELOW-THE-FOLD COMPONENTS (LAZY)
-const LazyProductsShowcase = lazy(() => import('../modules/home/components/ProductsShowcase'));
-const LazyLogoCarousel = lazy(() => import('../modules/home/components/LogoCarouselSection'));
-const LazyGetToKnowUsSection = lazy(() => import('../modules/home/components/GetToKnowUsSection'));
-const LazyCertifications = lazy(() => import('../modules/home/components/CertificationsSection'));
-const LazyNews = lazy(() => import('../modules/home/components/NewsSection'));
-const LazyCTA = lazy(() => import('../modules/home/components/CTASection'));
-const LazyInvestorMetrics = lazy(() => import('../modules/home/components/InvestorMetrics'));
+const LazyProductsShowcase = lazy(
+  () => import("../modules/home/components/ProductsShowcase"),
+);
+const LazyLogoCarousel = lazy(
+  () => import("../modules/home/components/LogoCarouselSection"),
+);
+const LazyGetToKnowUsSection = lazy(
+  () => import("../modules/home/components/GetToKnowUsSection"),
+);
+const LazyCertifications = lazy(
+  () => import("../modules/home/components/CertificationsSection"),
+);
+const LazyNews = lazy(() => import("../modules/home/components/NewsSection"));
+const LazyCTA = lazy(() => import("../modules/home/components/CTASection"));
+const LazyInvestorMetrics = lazy(
+  () => import("../modules/home/components/InvestorMetrics"),
+);
 
 const Home = () => {
   const [canRenderIslands, setCanRenderIslands] = useState(false);
 
   useEffect(() => {
     // Use requestIdleCallback to sleep until CPU is free
-    if ('requestIdleCallback' in window) {
+    if ("requestIdleCallback" in window) {
       requestIdleCallback(() => setCanRenderIslands(true), { timeout: 300 });
     } else {
       // fallback
@@ -48,7 +58,10 @@ const Home = () => {
   return (
     <>
       <HomeSEO />
-      <div className="overflow-x-hidden" style={{ WebkitOverflowScrolling: 'touch' }}>
+      <div
+        className="overflow-x-hidden"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         {/* ------------------------------
              ABOVE THE FOLD (instant)
            ------------------------------ */}

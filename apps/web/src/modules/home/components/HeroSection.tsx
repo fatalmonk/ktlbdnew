@@ -1,4 +1,4 @@
-import EnhancedHero from '../../../components/hero/EnhancedHero';
+import EnhancedHero from "../../../components/hero/EnhancedHero";
 
 const HeroSection = () => <EnhancedHero />;
 

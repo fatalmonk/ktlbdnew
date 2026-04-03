@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Metric, ChartData } from '../../types/metrics';
-import { metricsService } from '../services/metrics.service';
+import { useState, useEffect } from "react";
+import { Metric, ChartData } from "../../types/metrics";
+import { metricsService } from "../services/metrics.service";
 
-export function useMetrics(autoRefresh: boolean = false, interval: number = 30000) {
+export function useMetrics(
+  autoRefresh: boolean = false,
+  interval: number = 30000,
+) {
   const [metrics, setMetrics] = useState<Metric[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

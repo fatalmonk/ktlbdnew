@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const InvestorMetricsContent = () => (
   <section className="metrics-section">

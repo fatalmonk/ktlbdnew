@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import type { LucideIcon } from 'lucide-react';
-import { useScrollTrigger } from '../../../hooks/animations/useScrollTrigger';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
+import { useScrollTrigger } from "../../../hooks/animations/useScrollTrigger";
 import {
   fadeInUpTransition,
   fadeInUpVariants,
   staggerContainerVariants,
   staggerItemVariants,
-} from '../animations';
+} from "../animations";
 
 interface ValueItem {
   icon: LucideIcon;
@@ -40,27 +40,27 @@ const ValuesSectionContent = ({ values }: ValuesSectionContentProps) => {
           What drives us forward
         </p>
         <p className="text-xs md:text-sm lg:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed px-2">
-          As a leading{' '}
+          As a leading{" "}
           <Link
             to="/products"
             className="text-primary-600 hover:text-primary-700 font-medium underline min-h-[44px] inline-flex items-center"
           >
             woven garment supplier in Bangladesh
           </Link>
-          , we combine innovation with ethical practices. Our commitment to{' '}
+          , we combine innovation with ethical practices. Our commitment to{" "}
           <Link
             to="/sustainability"
             className="text-primary-600 hover:text-primary-700 font-medium underline min-h-[44px] inline-flex items-center"
           >
             sustainable textile manufacturing
-          </Link>{' '}
-          ensures quality products from our{' '}
+          </Link>{" "}
+          ensures quality products from our{" "}
           <Link
             to="/facilities/rmg"
             className="text-primary-600 hover:text-primary-700 font-medium underline min-h-[44px] inline-flex items-center"
           >
             modern garment manufacturing facility
-          </Link>{' '}
+          </Link>{" "}
           in Chittagong.
         </p>
       </motion.div>

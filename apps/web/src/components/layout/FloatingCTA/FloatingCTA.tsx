@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
-import { Link } from 'react-router-dom';
-import { createLazyIcon } from '@/lib/lucide-icons';
+import React, { Suspense } from "react";
+import { Link } from "react-router-dom";
+import { createLazyIcon } from "@/lib/lucide-icons";
 
-const MessageCircle = createLazyIcon('MessageCircle');
+const MessageCircle = createLazyIcon("MessageCircle");
 
 const FloatingCTA = () => {
   return (

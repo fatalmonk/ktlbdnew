@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useMotionValue, useSpring, useTransform, motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect } from "react";
+import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface AnimatedCounterProps {
   // Legacy API (from animation/AnimatedCounter)
@@ -16,7 +16,7 @@ interface AnimatedCounterProps {
 
   // New API (from metrics/AnimatedCounter)
   value?: number;
-  format?: 'number' | 'currency' | 'percentage';
+  format?: "number" | "currency" | "percentage";
   unit?: string;
 }
 
@@ -26,10 +26,10 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   to,
   duration = 2,
   delay = 0,
-  suffix = '',
-  prefix = '',
+  suffix = "",
+  prefix = "",
   decimals = 0,
-  className = '',
+  className = "",
   onComplete,
   // New API
   value,
@@ -42,12 +42,12 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   // For legacy API, 'to' is required, but we'll default to 0 if neither is provided
   const targetValue = isNewAPI ? value : to !== undefined ? to : 0;
   const startValue = from;
-  const actualFormat = isNewAPI ? (format ?? 'number') : undefined;
+  const actualFormat = isNewAPI ? (format ?? "number") : undefined;
 
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-    rootMargin: '50px',
+    rootMargin: "50px",
   });
 
   const motionValue = useMotionValue(startValue);
@@ -61,28 +61,29 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   // Format value based on format prop (new API) or use prefix/suffix (legacy API)
   const formatValue = (num: number): string => {
     // New API: use format prop
-    if (actualFormat === 'currency') {
+    if (actualFormat === "currency") {
       const rounded = Math.floor(num);
-      return `$${rounded.toLocaleString()}${unit ? ` ${unit}` : ''}`;
+      return `$${rounded.toLocaleString()}${unit ? ` ${unit}` : ""}`;
     }
 
-    if (actualFormat === 'percentage') {
+    if (actualFormat === "percentage") {
       return `${num.toFixed(decimals)}%`;
     }
 
-    if (actualFormat === 'number') {
+    if (actualFormat === "number") {
       const rounded = Math.floor(num);
       if (rounded >= 1000000) {
-        return `${(rounded / 1000000).toFixed(1)}M${unit ? ` ${unit}` : ''}`;
+        return `${(rounded / 1000000).toFixed(1)}M${unit ? ` ${unit}` : ""}`;
       }
       if (rounded >= 1000) {
-        return `${(rounded / 1000).toFixed(1)}K${unit ? ` ${unit}` : ''}`;
+        return `${(rounded / 1000).toFixed(1)}K${unit ? ` ${unit}` : ""}`;
       }
-      return `${rounded.toLocaleString()}${unit ? ` ${unit}` : ''}`;
+      return `${rounded.toLocaleString()}${unit ? ` ${unit}` : ""}`;
     }
 
     // Legacy API: use prefix/suffix
-    const formatted = decimals > 0 ? num.toFixed(decimals) : Math.round(num).toLocaleString();
+    const formatted =
+      decimals > 0 ? num.toFixed(decimals) : Math.round(num).toLocaleString();
     return `${prefix}${formatted}${suffix}`;
   };
 

@@ -1,4 +1,4 @@
-import { useViewportHeight } from '../hooks/useResponsive';
+import { useViewportHeight } from "../hooks/useResponsive";
 
 /**
  * ViewportHeightInit Component

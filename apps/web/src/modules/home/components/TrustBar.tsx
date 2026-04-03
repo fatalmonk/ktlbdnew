@@ -1,4 +1,4 @@
-import { Calendar, Globe, Award, Leaf } from 'lucide-react';
+import { Calendar, Globe, Award, Leaf } from "lucide-react";
 
 const TrustBar = () => (
   <section className="bg-white py-8 border-y border-neutral-200">
@@ -30,7 +30,9 @@ const TrustBar = () => (
             <Leaf className="text-green-600" size={32} />
           </div>
           <div className="text-3xl font-bold text-neutral-900">62%</div>
-          <div className="text-sm text-neutral-600 mt-1">Sustainable Products</div>
+          <div className="text-sm text-neutral-600 mt-1">
+            Sustainable Products
+          </div>
         </div>
       </div>
     </div>
