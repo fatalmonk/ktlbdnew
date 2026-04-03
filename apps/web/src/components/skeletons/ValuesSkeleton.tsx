@@ -67,4 +67,3 @@ const ValuesSkeleton: React.FC = () => {
 };
 
 export default ValuesSkeleton;
-

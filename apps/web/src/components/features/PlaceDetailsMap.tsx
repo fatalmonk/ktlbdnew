@@ -103,10 +103,7 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
 
         service.getDetails(request, (place, status) => {
           if (cancelled) return;
-          if (
-            status !== google.maps.places.PlacesServiceStatus.OK ||
-            !place?.geometry?.location
-          ) {
+          if (status !== google.maps.places.PlacesServiceStatus.OK || !place?.geometry?.location) {
             onError?.();
             return;
           }
@@ -157,10 +154,7 @@ const PlaceDetailsMap: React.FC<PlaceDetailsMapProps> = ({
   }, [apiKey, placeId, zoom, defaultCenter, onError]);
 
   return (
-    <div
-      className={`rounded-lg overflow-hidden shadow-xl ${className}`}
-      style={{ height }}
-    >
+    <div className={`rounded-lg overflow-hidden shadow-xl ${className}`} style={{ height }}>
       <div
         ref={containerRef}
         className="h-full w-full min-h-[320px]"

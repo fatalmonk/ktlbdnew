@@ -22,7 +22,7 @@ export const products: Product[] = [
     link: '/products/denims',
     featured: true,
     price: 'From $15',
-    tags: ['denim', 'casual', 'jeans', 'jackets']
+    tags: ['denim', 'casual', 'jeans', 'jackets'],
   },
   {
     id: 't-shirts',
@@ -34,7 +34,7 @@ export const products: Product[] = [
     link: '/products/t-shirts',
     featured: true,
     price: 'From $8',
-    tags: ['cotton', 'casual', 'basic', 'comfort']
+    tags: ['cotton', 'casual', 'basic', 'comfort'],
   },
   {
     id: 'knitwear',
@@ -46,19 +46,20 @@ export const products: Product[] = [
     link: '/products/knitwear',
     featured: true,
     price: 'From $15',
-    tags: ['knit', 'premium', 'sweaters', 'cardigans']
+    tags: ['knit', 'premium', 'sweaters', 'cardigans'],
   },
   {
     id: 'kids-clothing',
     name: 'Kids Clothing',
     category: "Children's Wear",
-    description: 'Safe and comfortable children\'s apparel including tops, pants, and sets for all ages',
+    description:
+      "Safe and comfortable children's apparel including tops, pants, and sets for all ages",
     image: heroSustainability1x,
     icon: createLazyIconWrapper('Package'),
     link: '/products/kids-clothing',
     featured: false,
     price: 'From $10',
-    tags: ['children', 'kids', 'safe', 'comfortable']
+    tags: ['children', 'kids', 'safe', 'comfortable'],
   },
   {
     id: 'outerwear',
@@ -70,7 +71,7 @@ export const products: Product[] = [
     link: '/products/outerwear',
     featured: false,
     price: 'From $25',
-    tags: ['jackets', 'coats', 'seasonal', 'warmth']
+    tags: ['jackets', 'coats', 'seasonal', 'warmth'],
   },
   {
     id: 'dresses',
@@ -82,7 +83,7 @@ export const products: Product[] = [
     link: '/products/dresses',
     featured: true,
     price: 'From $20',
-    tags: ['women', 'elegant', 'dresses', 'fashion']
+    tags: ['women', 'elegant', 'dresses', 'fashion'],
   },
   {
     id: 'bottoms',
@@ -94,7 +95,7 @@ export const products: Product[] = [
     link: '/products/bottoms',
     featured: false,
     price: 'From $10',
-    tags: ['pants', 'shorts', 'trousers', 'casual']
+    tags: ['pants', 'shorts', 'trousers', 'casual'],
   },
   {
     id: 'swimwear',
@@ -106,9 +107,9 @@ export const products: Product[] = [
     link: '/products/swimwear',
     featured: false,
     price: 'From $15',
-    tags: ['swim', 'beach', 'sports', 'water']
-  }
+    tags: ['swim', 'beach', 'sports', 'water'],
+  },
 ];
 
 // Featured products for homepage showcase (limited to max 4 items for performance)
-export const featuredProducts = products.filter(p => p.featured).slice(0, 4);
+export const featuredProducts = products.filter((p) => p.featured).slice(0, 4);

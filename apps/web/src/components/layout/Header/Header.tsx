@@ -65,17 +65,9 @@ const Header: React.FC = () => {
               >
                 <Suspense fallback={<div className="h-7 w-7 sm:h-8 sm:w-8" />}>
                   {isMenuOpen ? (
-                    <X
-                      size={30}
-                      strokeWidth={2.5}
-                      className="h-7 w-7 sm:h-8 sm:w-8"
-                    />
+                    <X size={30} strokeWidth={2.5} className="h-7 w-7 sm:h-8 sm:w-8" />
                   ) : (
-                    <Menu
-                      size={30}
-                      strokeWidth={2.5}
-                      className="h-7 w-7 sm:h-8 sm:w-8"
-                    />
+                    <Menu size={30} strokeWidth={2.5} className="h-7 w-7 sm:h-8 sm:w-8" />
                   )}
                 </Suspense>
               </button>
@@ -94,9 +86,7 @@ const Header: React.FC = () => {
               <HeaderSearch />
             </div>
           </div>
-          {location.pathname === '/' && (
-            <AnnouncementTicker isHidden={isMenuOpen} />
-          )}
+          {location.pathname === '/' && <AnnouncementTicker isHidden={isMenuOpen} />}
         </div>
 
         <MobileNavigation isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

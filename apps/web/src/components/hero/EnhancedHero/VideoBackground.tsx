@@ -7,12 +7,7 @@ interface VideoBackgroundProps {
   isPaused: boolean;
 }
 
-const VideoBackground: React.FC<VideoBackgroundProps> = ({
-  src,
-  mobileSrc,
-  isMuted,
-  isPaused
-}) => {
+const VideoBackground: React.FC<VideoBackgroundProps> = ({ src, mobileSrc, isMuted, isPaused }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 

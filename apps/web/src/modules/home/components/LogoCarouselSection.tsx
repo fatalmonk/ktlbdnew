@@ -16,5 +16,3 @@ const LogoCarouselSection = ({ partners }: LogoCarouselSectionProps) => (
 );
 
 export default LogoCarouselSection;
-
-

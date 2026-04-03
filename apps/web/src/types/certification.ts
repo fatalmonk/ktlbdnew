@@ -3,7 +3,7 @@
  * For showcasing company certifications and compliance
  */
 
-export type CertificationCategory = 
+export type CertificationCategory =
   | 'Quality Management'
   | 'Environmental'
   | 'Social Compliance'
@@ -33,4 +33,3 @@ export interface CertificationFilterState {
   status: string;
   searchQuery: string;
 }
-

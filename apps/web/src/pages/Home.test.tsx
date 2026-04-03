@@ -18,7 +18,9 @@ describe('Home Page', () => {
     render(<Home />);
 
     expect(
-      screen.getAllByAltText(/Global logistics and garment supply chain operations at Kattali Textile Limited/i)[0]
+      screen.getAllByAltText(
+        /Global logistics and garment supply chain operations at Kattali Textile Limited/i
+      )[0]
     ).toBeInTheDocument();
   });
 
@@ -32,8 +34,6 @@ describe('Home Page', () => {
     expect(
       await screen.findByRole('heading', { name: /Our Certifications/i }, { timeout })
     ).toBeInTheDocument();
-    expect(
-      await screen.findByText(/Investor Snapshot/i, {}, { timeout })
-    ).toBeInTheDocument();
+    expect(await screen.findByText(/Investor Snapshot/i, {}, { timeout })).toBeInTheDocument();
   });
 });

@@ -20,5 +20,3 @@ const HomeSEO = () => (
 );
 
 export default HomeSEO;
-
-

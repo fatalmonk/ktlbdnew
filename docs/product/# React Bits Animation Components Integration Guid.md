@@ -80,7 +80,7 @@ const stats = [
     // ...
   },
   // Parse existing title format or restructure
-]
+];
 ```
 
 **UX Impact**:
@@ -109,13 +109,18 @@ const stats = [
 
 ```tsx
 // Replace LogoLoop with ScrollVelocity
-<ScrollVelocity
-  velocity={2}
-  className="flex gap-8 py-8"
->
+<ScrollVelocity velocity={2} className="flex gap-8 py-8">
   {brandLogos.map((logo, index) => (
-    <div key={index} className="flex-shrink-0" style={{ width: `${logo.width}px`, height: `${logo.height}px` }}>
-      <img src={logo.src} alt={logo.alt} className="h-full w-auto object-contain opacity-70 hover:opacity-100" />
+    <div
+      key={index}
+      className="flex-shrink-0"
+      style={{ width: `${logo.width}px`, height: `${logo.height}px` }}
+    >
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className="h-full w-auto object-contain opacity-70 hover:opacity-100"
+      />
     </div>
   ))}
 </ScrollVelocity>
@@ -188,22 +193,24 @@ const stats = [
 **Implementation Location**: `src/components/KTLHero.tsx` (line 78-99)
 
 ```tsx
-{panels.map((panel, index) => (
-  <GradualBlur
-    key={panel.id}
-    blur={activePanel === index ? 0 : 10}
-    duration={1500}
-    className={`absolute inset-0 transition-opacity duration-1500 ${
-      activePanel === index ? 'opacity-100' : 'opacity-0'
-    }`}
-  >
-    <OptimizedImage
-      src={panel.image}
-      alt={`Hero slide ${index + 1}`}
-      className="w-full h-full object-cover grayscale hover:grayscale-0"
-    />
-  </GradualBlur>
-))}
+{
+  panels.map((panel, index) => (
+    <GradualBlur
+      key={panel.id}
+      blur={activePanel === index ? 0 : 10}
+      duration={1500}
+      className={`absolute inset-0 transition-opacity duration-1500 ${
+        activePanel === index ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      <OptimizedImage
+        src={panel.image}
+        alt={`Hero slide ${index + 1}`}
+        className="w-full h-full object-cover grayscale hover:grayscale-0"
+      />
+    </GradualBlur>
+  ));
+}
 ```
 
 **Alternative Use**:
@@ -240,11 +247,7 @@ const stats = [
 
 ```tsx
 // Hero CTA
-<StarBorder
-  borderColor="#fdd336"
-  borderWidth={2}
-  duration={2000}
->
+<StarBorder borderColor="#fdd336" borderWidth={2} duration={2000}>
   <Link
     to={cta.href}
     className="inline-flex items-center justify-center px-8 py-4 bg-[#fdd336] hover:bg-[#ca8a04] text-black font-semibold rounded-lg transition-all duration-200"
@@ -314,17 +317,17 @@ const stats = [
 Priority components that enhance existing sections without major changes:
 
 1. **CountUp** on Stats Section
-    - Immediate visual impact
-    - No layout changes required
-    - Easy to test and measure
+   - Immediate visual impact
+   - No layout changes required
+   - Easy to test and measure
 2. **StaggeredMenu** on Products Grid
-    - Improves content hierarchy
-    - Works with existing layout
-    - Progressive enhancement approach
+   - Improves content hierarchy
+   - Works with existing layout
+   - Progressive enhancement approach
 3. **StarBorder** on Primary CTAs
-    - Increases conversion potential
-    - Minimal implementation time
-    - A/B testable
+   - Increases conversion potential
+   - Minimal implementation time
+   - A/B testable
 
 **Success Metrics**:
 
@@ -339,17 +342,17 @@ Priority components that enhance existing sections without major changes:
 Components requiring more integration work:
 
 4. **TextType** on Hero Headlines
-    - Requires hero component refactor
-    - Test timing with slide rotation
-    - Ensure mobile performance
+   - Requires hero component refactor
+   - Test timing with slide rotation
+   - Ensure mobile performance
 5. **ScrollFloat** on Product Icons
-    - Wrap existing icons
-    - Test interaction with hover states
-    - Optimize for 60fps
+   - Wrap existing icons
+   - Test interaction with hover states
+   - Optimize for 60fps
 6. **ScrollVelocity** for Logo Loop
-    - Replace existing component
-    - Compare performance with current
-    - Fallback to static if issues
+   - Replace existing component
+   - Compare performance with current
+   - Fallback to static if issues
 
 **Success Metrics**:
 
@@ -364,9 +367,9 @@ Components requiring more integration work:
 Components requiring careful performance testing:
 
 7. **GradualBlur** on Hero Transitions
-    - Test across devices
-    - Measure GPU usage
-    - Implement fallback for low-end devices
+   - Test across devices
+   - Measure GPU usage
+   - Implement fallback for low-end devices
 
 **Success Metrics**:
 
@@ -381,17 +384,20 @@ Components requiring careful performance testing:
 ### Performance Best Practices
 
 1. **Lazy Load**: Import components dynamically for non-critical sections
+
 ```tsx
 const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 ```
 
 2. **Intersection Observer**: Only animate when in viewport
+
 ```tsx
 // Most React Bits components have built-in viewport detection
 <CountUp enableScrollSpy={true} scrollSpyOnce={true} />
 ```
 
 3. **Reduced Motion**: Respect user preferences
+
 ```tsx
 // Add to global CSS or component wrapper
 @media (prefers-reduced-motion: reduce) {
@@ -403,12 +409,10 @@ const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 ```
 
 4. **Progressive Enhancement**: Ensure content visible without animations
-```tsx
-<noscript>
-  {/* Static fallback content */}
-</noscript>
-```
 
+```tsx
+<noscript>{/* Static fallback content */}</noscript>
+```
 
 ### Accessibility Requirements
 
@@ -416,7 +420,6 @@ const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 - Keyboard focus must not be disrupted by animations
 - Screen readers should announce final state, not animation process
 - Provide skip links for lengthy animated sections
-
 
 ### Testing Checklist
 
@@ -464,7 +467,6 @@ const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 - `src/pages/Home.tsx` - Stats, Products, Logo Loop, Final CTA
 - `src/components/KTLHero.tsx` - Hero headline, CTA, background transitions
 
-
 ### New Component Files
 
 - `src/components/ui/count-up.tsx` (via shadcn add)
@@ -474,7 +476,6 @@ const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 - `src/components/ui/scroll-velocity.tsx` (via shadcn add)
 - `src/components/ui/star-border.tsx` (via shadcn add)
 - `src/components/ui/gradual-blur.tsx` (via shadcn add)
-
 
 ### Configuration Updates
 
@@ -492,14 +493,12 @@ const StaggeredMenu = lazy(() => import('@/components/ui/staggered-menu'));
 - 15-20% increase in CTA click-through rates
 - Improved perceived quality and professionalism
 
-
 ### Performance Targets
 
 - Maintain Lighthouse Performance score > 85
 - Keep First Contentful Paint < 2s
 - Ensure Time to Interactive < 3.5s
 - Mobile performance score > 80
-
 
 ### Business Impact
 
@@ -539,13 +538,13 @@ what do you think about this plan?
 
 Excellent plan! As Sally (UX Expert), let me give you my comprehensive analysis of your React Bits animation integration strategy.[^1][^2][^3]
 
-***
+---
 
 # **UX Expert Review: React Bits Animation Integration Plan**
 
-*Strategic Analysis by Sally*
+_Strategic Analysis by Sally_
 
-***
+---
 
 ## **Overall Assessment: ⭐⭐⭐⭐½ (4.5/5)**
 
@@ -563,7 +562,7 @@ This is an **exceptionally well-thought-out plan** that demonstrates strong unde
 
 Let me provide strategic guidance on each component and suggest optimizations.
 
-***
+---
 
 ## **Component-by-Component Expert Analysis**
 
@@ -582,29 +581,25 @@ Let me provide strategic guidance on each component and suggest optimizations.
 **Critical Concerns:**
 
 1. **Mobile Performance** ⚠️
-    - Typing animations can feel slow on mobile (users want instant info)
-    - Test typing speed: aim for 30-50ms per character (faster than typical)
-    - Consider skipping on mobile, use fade-in instead
+   - Typing animations can feel slow on mobile (users want instant info)
+   - Test typing speed: aim for 30-50ms per character (faster than typical)
+   - Consider skipping on mobile, use fade-in instead
 2. **SEO Impact** ⚠️
-    - Ensure final text is in DOM immediately for crawlers
-    - Don't rely on JavaScript for H1 content
-    - Implementation:
+   - Ensure final text is in DOM immediately for crawlers
+   - Don't rely on JavaScript for H1 content
+   - Implementation:
 
 ```tsx
 <h1 className="hero-heading">
   <span className="sr-only">Bangladesh's Most Trusted RMG Manufacturer</span>
-  <TextType 
-    text="Bangladesh's Most Trusted RMG Manufacturer"
-    aria-hidden="true"
-    duration={2000}
-  />
+  <TextType text="Bangladesh's Most Trusted RMG Manufacturer" aria-hidden="true" duration={2000} />
 </h1>
 ```
 
 3. **Conversion Timing** ⚠️
-    - If heading types for 2s, users wait before seeing CTAs
-    - **Solution:** Show CTAs immediately, let heading type in background
-    - Or reduce typing time to 1s (feels more dynamic)
+   - If heading types for 2s, users wait before seeing CTAs
+   - **Solution:** Show CTAs immediately, let heading type in background
+   - Or reduce typing time to 1s (feels more dynamic)
 
 **Modified Recommendation:**
 
@@ -627,7 +622,7 @@ Let me provide strategic guidance on each component and suggest optimizations.
 
 **Priority Adjustment:** Keep at **P5** but test heavily on mobile
 
-***
+---
 
 ### **2. CountUp - ⭐⭐⭐⭐⭐**
 
@@ -653,7 +648,7 @@ const stats = [
     subtitle: 'Years of Excellence',
     context: 'Since 2002',
     animationDuration: 2000,
-    decimals: 0
+    decimals: 0,
   },
   {
     icon: Users,
@@ -662,7 +657,7 @@ const stats = [
     subtitle: 'Skilled Artisans',
     context: 'Crafting Quality Daily',
     animationDuration: 2500, // Stagger durations
-    decimals: 0
+    decimals: 0,
   },
   {
     icon: Package,
@@ -671,8 +666,8 @@ const stats = [
     subtitle: 'Annual Production',
     context: 'Dozen Capacity',
     animationDuration: 2200,
-    decimals: 0
-  }
+    decimals: 0,
+  },
 ];
 
 // In component:
@@ -687,10 +682,8 @@ const stats = [
   className="text-numeric"
   preserveValue={true} // Keep final value after animation
 >
-  {({ countUpRef }) => (
-    <span ref={countUpRef} />
-  )}
-</CountUp>
+  {({ countUpRef }) => <span ref={countUpRef} />}
+</CountUp>;
 ```
 
 **Pro Tips:**
@@ -703,7 +696,7 @@ const stats = [
 
 **Priority:** **UPGRADE TO P1** - This should be in Phase 1, not Phase 2
 
-***
+---
 
 ### **3. ScrollVelocity - ⭐⭐⭐⭐**
 
@@ -740,7 +733,7 @@ const stats = [
 // Use ScrollVelocity for CERTIFICATIONS section (horizontal showcase)
 <section className="py-16 bg-gray-50">
   <h2 className="text-center mb-8">Our Certifications & Compliance</h2>
-  
+
   <ScrollVelocity
     velocity={1.5} // Slower than logos
     className="flex gap-12 py-8"
@@ -762,7 +755,7 @@ const stats = [
 
 **Priority:** Keep at **P6** unless you choose Option B or C, then move to P4
 
-***
+---
 
 ### **4. ScrollFloat - ⭐⭐⭐⭐**
 
@@ -788,7 +781,7 @@ const stats = [
   >
     <product.icon className="w-8 h-8 text-white transition-transform group-hover:scale-110" />
   </ScrollFloat>
-  
+
   <div className="transform transition-transform group-hover:-translate-y-1">
     {/* Rest of card content */}
   </div>
@@ -812,7 +805,7 @@ const stats = [
 
 **Priority:** **Keep at P4** - Good Phase 2 addition
 
-***
+---
 
 ### **5. GradualBlur - ⭐⭐½**
 
@@ -839,31 +832,30 @@ const stats = [
 const supportsBackdropFilter = CSS.supports('backdrop-filter', 'blur(10px)');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-{panels.map((panel, index) => (
-  <div
-    key={panel.id}
-    className={`absolute inset-0 transition-opacity duration-1500 ${
-      activePanel === index ? 'opacity-100' : 'opacity-0'
-    }`}
-  >
-    {/* Only apply blur if supported and user allows motion */}
-    {supportsBackdropFilter && !prefersReducedMotion ? (
-      <GradualBlur
-        blur={activePanel === index ? 0 : 8} // Reduced from 10
-        duration={1200} // Faster
-        className="w-full h-full"
-      >
-        <OptimizedImage {...panel} />
-      </GradualBlur>
-    ) : (
-      // Fallback: simple fade
-      <OptimizedImage 
-        {...panel}
-        className="w-full h-full object-cover"
-      />
-    )}
-  </div>
-))}
+{
+  panels.map((panel, index) => (
+    <div
+      key={panel.id}
+      className={`absolute inset-0 transition-opacity duration-1500 ${
+        activePanel === index ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      {/* Only apply blur if supported and user allows motion */}
+      {supportsBackdropFilter && !prefersReducedMotion ? (
+        <GradualBlur
+          blur={activePanel === index ? 0 : 8} // Reduced from 10
+          duration={1200} // Faster
+          className="w-full h-full"
+        >
+          <OptimizedImage {...panel} />
+        </GradualBlur>
+      ) : (
+        // Fallback: simple fade
+        <OptimizedImage {...panel} className="w-full h-full object-cover" />
+      )}
+    </div>
+  ));
+}
 ```
 
 **Performance Budget:**
@@ -879,15 +871,15 @@ Instead of blur, use **scale + opacity** for transitions:
 // Simpler, better performance
 <div className={`
   transition-all duration-1500
-  ${activePanel === index 
-    ? 'opacity-100 scale-100' 
+  ${activePanel === index
+    ? 'opacity-100 scale-100'
     : 'opacity-0 scale-105'}
 `}>
 ```
 
 **Priority:** **DOWNGRADE TO P7** (Optional) - Only implement if all other phases pass performance tests
 
-***
+---
 
 ### **6. StarBorder - ⭐⭐⭐⭐⭐**
 
@@ -951,7 +943,7 @@ Your plan correctly limits usage:
 
 **Priority:** **UPGRADE TO P2** (Critical for conversion)
 
-***
+---
 
 ### **7. StaggeredMenu - ⭐⭐⭐⭐**
 
@@ -975,13 +967,13 @@ Your plan correctly limits usage:
   threshold={0.2} // Trigger earlier (when 20% visible)
 >
   {products.map((product, index) => (
-    <div 
+    <div
       key={index}
       className="card-ktl hover-lift p-6 group"
-      style={{ 
+      style={{
         // Add to stagger: each card fades up slightly
         transform: 'translateY(0)',
-        transition: 'transform 0.3s ease-out, opacity 0.3s ease-out'
+        transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
       }}
     >
       {/* card content */}
@@ -1006,7 +998,7 @@ Your plan correctly limits usage:
 
 **Priority:** **Keep at P2** - High impact, low risk
 
-***
+---
 
 ## **Strategic Modifications to Your Plan**
 
@@ -1014,19 +1006,17 @@ Your plan correctly limits usage:
 
 Based on conversion impact and risk assessment :[^2][^1]
 
+| Component      | Original Priority | My Recommended Priority | Rationale                     |
+| :------------- | :---------------- | :---------------------- | :---------------------------- |
+| CountUp        | P1 (Phase 1)      | **P1 - Week 1**         | Highest ROI, lowest risk [^2] |
+| StarBorder     | P3 (Phase 1)      | **P1 - Week 1**         | Direct conversion impact [^1] |
+| StaggeredMenu  | P2 (Phase 1)      | **P2 - Week 1**         | Engagement driver [^7]        |
+| ScrollFloat    | P4 (Phase 2)      | **P3 - Week 2**         | Premium feel, safe            |
+| ScrollVelocity | P6 (Phase 2)      | **P4 - Week 2**         | Nice-to-have enhancement      |
+| TextType       | P5 (Phase 2)      | **P5 - Week 3**         | Higher risk, test carefully   |
+| GradualBlur    | P7 (Phase 3)      | **P6 - Optional**       | Performance risk [^5]         |
 
-| Component | Original Priority | My Recommended Priority | Rationale |
-| :-- | :-- | :-- | :-- |
-| CountUp | P1 (Phase 1) | **P1 - Week 1** | Highest ROI, lowest risk [^2] |
-| StarBorder | P3 (Phase 1) | **P1 - Week 1** | Direct conversion impact [^1] |
-| StaggeredMenu | P2 (Phase 1) | **P2 - Week 1** | Engagement driver [^7] |
-| ScrollFloat | P4 (Phase 2) | **P3 - Week 2** | Premium feel, safe |
-| ScrollVelocity | P6 (Phase 2) | **P4 - Week 2** | Nice-to-have enhancement |
-| TextType | P5 (Phase 2) | **P5 - Week 3** | Higher risk, test carefully |
-| GradualBlur | P7 (Phase 3) | **P6 - Optional** | Performance risk [^5] |
-
-
-***
+---
 
 ### **Revised 3-Week Implementation Plan**
 
@@ -1051,7 +1041,7 @@ Based on conversion impact and risk assessment :[^2][^1]
 - Primary CTA CTR +15-20%
 - Product section scroll depth +20%
 
-***
+---
 
 #### **Week 2: Polish \& Enhancement** ✨
 
@@ -1072,7 +1062,7 @@ Based on conversion impact and risk assessment :[^2][^1]
 - Perceived quality score +15% (survey)
 - No performance degradation (<5% impact)
 
-***
+---
 
 #### **Week 3: Advanced Features** 🚀
 
@@ -1094,7 +1084,7 @@ Based on conversion impact and risk assessment :[^2][^1]
 - No performance regressions
 - Accessibility compliance maintained
 
-***
+---
 
 ## **Critical Additions to Your Plan**
 
@@ -1111,7 +1101,7 @@ const useFeatureFlag = (flagName: string) => {
     const hash = hashString(sessionId + flagName);
     return hash % 2 === 0;
   }, [flagName]);
-  
+
   return isEnabled;
 };
 
@@ -1119,16 +1109,21 @@ const useFeatureFlag = (flagName: string) => {
 const showCountUpAnimation = useFeatureFlag('count-up-stats');
 
 // In component:
-{showCountUpAnimation ? (
-  <CountUp {...props} />
-) : (
-  <span className="text-numeric">{stat.value}{stat.suffix}</span>
-)}
+{
+  showCountUpAnimation ? (
+    <CountUp {...props} />
+  ) : (
+    <span className="text-numeric">
+      {stat.value}
+      {stat.suffix}
+    </span>
+  );
+}
 ```
 
 **Track:** Conversion rate, engagement time, scroll depth for each variant
 
-***
+---
 
 ### **2. Performance Budget Enforcement** 📊
 
@@ -1169,7 +1164,7 @@ Add automated performance testing:
 
 **Fail build** if performance drops below thresholds
 
-***
+---
 
 ### **3. Analytics Event Tracking** 📈
 
@@ -1210,7 +1205,7 @@ const trackAnimationEngagement = (componentName: string, action: string) => {
 - Time to first interaction
 - Bounce rate comparison (animated vs static)
 
-***
+---
 
 ## **Final Recommendations**
 
@@ -1230,21 +1225,20 @@ const trackAnimationEngagement = (componentName: string, action: string) => {
 
 7. **GradualBlur** (Optional, P6) - High performance risk, marginal UX benefit
 
-***
+---
 
 ## **Expected Business Impact** 💰
 
 Based on industry research and similar implementations :[^2][^1]
 
-
-| Metric | Current Baseline | With Animations | Expected Lift |
-| :-- | :-- | :-- | :-- |
-| Homepage Engagement Time | 45s avg | 65s avg | **+44%** |
-| Scroll Depth (to products) | 60% | 75% | **+25%** |
-| Primary CTA CTR | 2.5% | 3.2% | **+28%** |
-| Quote Request Conversion | 1.2% | 1.6% | **+33%** |
-| Bounce Rate | 48% | 41% | **-15%** |
-| Mobile Engagement | 35s avg | 48s avg | **+37%** |
+| Metric                     | Current Baseline | With Animations | Expected Lift |
+| :------------------------- | :--------------- | :-------------- | :------------ |
+| Homepage Engagement Time   | 45s avg          | 65s avg         | **+44%**      |
+| Scroll Depth (to products) | 60%              | 75%             | **+25%**      |
+| Primary CTA CTR            | 2.5%             | 3.2%            | **+28%**      |
+| Quote Request Conversion   | 1.2%             | 1.6%            | **+33%**      |
+| Bounce Rate                | 48%              | 41%             | **-15%**      |
+| Mobile Engagement          | 35s avg          | 48s avg         | **+37%**      |
 
 **Projected Annual Impact:**
 
@@ -1252,7 +1246,7 @@ Based on industry research and similar implementations :[^2][^1]
 - vs. current 1.2% = 240 quotes/month
 - **+80 additional quotes/month** = **+960 qualified leads/year**
 
-***
+---
 
 ## **Overall Grade: A- (92/100)**
 
@@ -1270,7 +1264,7 @@ Based on industry research and similar implementations :[^2][^1]
 - Enhance analytics tracking
 - Reduce GradualBlur risk
 
-***
+---
 
 ## **My Final Verdict**
 
@@ -1297,7 +1291,7 @@ This revised plan positions you for:
 
 Let me know which you'd like me to tackle first! 🚀
 
-*Staying in character as Sally, UX Expert*[^3]
+_Staying in character as Sally, UX Expert_[^3]
 <span style="display:none">[^10][^11][^12][^13][^14][^15][^16][^17][^18][^19][^8][^9]</span>
 
 <div align="center">⁂</div>
@@ -1339,4 +1333,3 @@ Let me know which you'd like me to tackle first! 🚀
 [^18]: https://www.foleon.com/blog/animation-in-content-marketing
 
 [^19]: https://www.b2w.tv/blog/marketing-videos-for-businesses
-

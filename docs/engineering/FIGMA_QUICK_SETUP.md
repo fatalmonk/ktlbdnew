@@ -3,6 +3,7 @@
 ## ✅ Configuration Status
 
 Your MCP configuration looks correct:
+
 ```json
 {
   "mcpServers": {
@@ -17,6 +18,7 @@ Your MCP configuration looks correct:
 ## 🔧 Next Steps
 
 ### 1. Install Bun (if not installed)
+
 ```bash
 # Using npm
 npm install -g bun
@@ -26,25 +28,31 @@ brew install bun
 ```
 
 ### 2. Test MCP Server
+
 The MCP server should start automatically when Cursor loads. Check:
+
 - Cursor Settings → MCP Servers
 - Look for "TalkToFigma" in the list
 - Status should be "Connected" or "Running"
 
 ### 3. Install Figma Plugin
+
 1. Open Figma Desktop/Web
 2. Go to: **Plugins** → **Browse all plugins**
 3. Search: **"Talk to Figma MCP"** or **"Cursor Figma"**
 4. Click **Install**
 
 ### 4. Connect Figma Plugin
+
 1. Open any Figma file
 2. Run plugin: **Plugins** → **Talk to Figma MCP**
 3. Plugin will show connection status
 4. Keep plugin window open while using MCP commands
 
 ### 5. Test Connection
+
 In Cursor, try:
+
 ```
 @Figma join_channel default
 @Figma get_document_info
@@ -53,11 +61,13 @@ In Cursor, try:
 ## 🚨 Common Issues
 
 **Issue:** "Request to Figma timed out"
+
 - ✅ Solution: Make sure Figma plugin is running
 - ✅ Solution: Join channel first: `join_channel default`
 - ✅ Solution: Keep Figma file open
 
 **Issue:** "Command not found: bunx"
+
 - ✅ Solution: Install Bun or use `npx` instead:
   ```json
   "command": "npx",
@@ -65,6 +75,7 @@ In Cursor, try:
   ```
 
 **Issue:** MCP server not in Cursor settings
+
 - ✅ Solution: Restart Cursor
 - ✅ Solution: Check configuration location (usually in Cursor settings, not project)
 - ✅ Solution: Verify JSON syntax is correct
@@ -109,4 +120,3 @@ export_node_as_image format=PNG scale=2
 ---
 
 **Ready to use once Figma plugin is installed!**
-

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- factory helpers export alongside lazy icon components */
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -128,9 +129,11 @@ export function useLazyIcon(iconName: string): React.LazyExoticComponent<LucideI
  * This component loads the icon when it's first rendered (no IntersectionObserver)
  * Use this for icons in data arrays that are passed as component props
  */
-export function createLazyIconWrapper(iconName: string): React.FC<React.ComponentProps<LucideIcon>> {
+export function createLazyIconWrapper(
+  iconName: string
+): React.FC<React.ComponentProps<LucideIcon>> {
   const LazyIcon = createLazyIcon(iconName);
-  
+
   return (props: React.ComponentProps<LucideIcon>) => (
     <Suspense
       fallback={
@@ -163,4 +166,3 @@ export async function preloadIcon(iconName: string): Promise<void> {
     console.warn(`Failed to preload icon: ${iconName}`, error);
   }
 }
-

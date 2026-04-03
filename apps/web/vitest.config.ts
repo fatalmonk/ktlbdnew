@@ -38,14 +38,7 @@ export default defineConfig({
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
 
     // Test exclude patterns
-    exclude: [
-      'node_modules',
-      'dist',
-      '.idea',
-      '.git',
-      '.cache',
-      'e2e',
-    ],
+    exclude: ['node_modules', 'dist', '.idea', '.git', '.cache', 'e2e'],
 
     // Reporters
     reporters: ['verbose'],

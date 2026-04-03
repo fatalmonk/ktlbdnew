@@ -15,6 +15,7 @@ To understand modern sourcing partnerships, it's helpful to understand how the i
 Twenty years ago, many brands viewed manufacturing relationships primarily as transactional: find the lowest price, place an order, receive goods, repeat. This approach had obvious appeal—it was simple and theoretically kept costs down.
 
 However, this model created numerous problems:
+
 - Quality inconsistencies between orders
 - Communication challenges and misunderstandings
 - Ethical and compliance concerns
@@ -253,6 +254,7 @@ Based on our experience and industry knowledge, here's what brands should evalua
 ### Warning Signs
 
 Be cautious of:
+
 - Reluctance to allow facility visits or provide references
 - Inconsistent information or documentation
 - Pressure to commit quickly without due diligence
@@ -302,6 +304,7 @@ As we look ahead, several trends will shape textile sourcing relationships:
 ### Increasing Sustainability Requirements
 
 Environmental and social sustainability will become even more critical. Brands will need partners who:
+
 - Demonstrate measurable environmental improvements
 - Provide transparent supply chain information
 - Meet evolving compliance standards proactively
@@ -310,6 +313,7 @@ Environmental and social sustainability will become even more critical. Brands w
 ### Digital Transformation
 
 Technology will transform how sourcing works:
+
 - Virtual sampling and 3D visualization reducing physical sample needs
 - Digital tracking providing real-time production visibility
 - Data analytics optimizing operations and predicting issues
@@ -318,6 +322,7 @@ Technology will transform how sourcing works:
 ### Supply Chain Resilience
 
 Recent disruptions have highlighted the importance of stable, reliable partners:
+
 - Brands will value partner stability and continuity
 - Diversification strategies may create opportunities for reliable manufacturers
 - Strong communication becomes even more critical during disruptions
@@ -326,6 +331,7 @@ Recent disruptions have highlighted the importance of stable, reliable partners:
 ### Relationship Depth
 
 The trend toward strategic partnerships will accelerate:
+
 - More brands seeking fewer, deeper relationships
 - Earlier involvement of manufacturing partners in design processes
 - Joint problem-solving and innovation
@@ -345,4 +351,4 @@ The best sourcing relationships are built on mutual respect, shared values, and 
 
 ---
 
-*Ready to explore a partnership with Kattali Textile Ltd? Contact us to start a conversation about your sourcing needs and learn how we can support your success.*
+_Ready to explore a partnership with Kattali Textile Ltd? Contact us to start a conversation about your sourcing needs and learn how we can support your success._

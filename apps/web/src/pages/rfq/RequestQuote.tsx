@@ -21,4 +21,3 @@ const RequestQuote = () => {
 };
 
 export default RequestQuote;
-

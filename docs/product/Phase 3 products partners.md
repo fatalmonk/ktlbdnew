@@ -1,7 +1,9 @@
 # 🎴 Phase 3: Products & Partners Enhancement (Week 3)
-*3D product cards, interactive filtering, and enhanced logo carousel*
+
+_3D product cards, interactive filtering, and enhanced logo carousel_
 
 ## Overview
+
 Transform the static product grid into an interactive 3D showcase with filtering, and enhance the partner logos section with interactive tooltips and hover effects.
 
 ## Tasks Checklist
@@ -9,6 +11,7 @@ Transform the static product grid into an interactive 3D showcase with filtering
 ### Day 1-2: 3D Product Cards
 
 #### 3.1 Install 3D Animation Dependencies
+
 ```bash
 cd /Users/mac.alvi/Desktop/KTL Website/Version01/project
 npm install react-parallax-tilt@1.7.175
@@ -17,7 +20,9 @@ npm install @react-three/drei@9.88.17
 ```
 
 #### 3.2 Create 3D Product Card Component
+
 **File:** `src/components/Product3DCard/Product3DCard.tsx`
+
 ```typescript
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
@@ -44,11 +49,11 @@ interface Product3DCardProps {
 const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   // Mouse position tracking for gradient effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   // Smooth spring animations
   const springConfig = { damping: 25, stiffness: 700 };
   const x = useSpring(mouseX, springConfig);
@@ -60,11 +65,11 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
-    
+
     const rect = cardRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     mouseX.set((e.clientX - centerX) / rect.width);
     mouseY.set((e.clientY - centerY) / rect.height);
   };
@@ -79,7 +84,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ 
+      transition={{
         delay: index * 0.1,
         duration: 0.6,
         ease: [0.215, 0.61, 0.355, 1]
@@ -141,7 +146,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               >
                 <Heart className="w-5 h-5 text-gray-700" />
               </motion.button>
-              
+
               <motion.button
                 className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100"
                 initial={{ x: 20, opacity: 0 }}
@@ -165,7 +170,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                   transition: 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)'
                 }}
               />
-              
+
               {/* Hover Overlay */}
               <motion.div
                 className="absolute inset-0 bg-black/50 flex items-center justify-center"
@@ -175,7 +180,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               >
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     scale: isHovered ? 1 : 0,
                     opacity: isHovered ? 1 : 0
                   }}
@@ -197,7 +202,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               {/* Category */}
               <motion.span
                 className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3"
-                animate={{ 
+                animate={{
                   backgroundColor: isHovered ? '#fdd338' : '#f3f4f6',
                   color: isHovered ? '#000000' : '#4b5563'
                 }}
@@ -233,7 +238,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               {/* CTA Button */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ 
+                animate={{
                   opacity: isHovered ? 1 : 0,
                   y: isHovered ? 0 : 10
                 }}
@@ -261,7 +266,9 @@ export default Product3DCard;
 ### Day 3: Interactive Product Filtering
 
 #### 3.3 Create Product Filter Component
+
 **File:** `src/components/ProductFilter/ProductFilter.tsx`
+
 ```typescript
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -292,7 +299,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
     const updated = selectedCategories.includes(category)
       ? selectedCategories.filter(c => c !== category)
       : [...selectedCategories, category];
-    
+
     setSelectedCategories(updated);
     onFilterChange({ categories: updated, tags: selectedTags });
   };
@@ -301,7 +308,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
     const updated = selectedTags.includes(tag)
       ? selectedTags.filter(t => t !== tag)
       : [...selectedTags, tag];
-    
+
     setSelectedTags(updated);
     onFilterChange({ categories: selectedCategories, tags: updated });
   };
@@ -442,7 +449,9 @@ export default ProductFilter;
 ### Day 4: Enhanced Logo Carousel
 
 #### 3.4 Create Interactive Logo Carousel
+
 **File:** `src/components/EnhancedLogoCarousel/EnhancedLogoCarousel.tsx`
+
 ```typescript
 import React, { useState, useRef } from 'react';
 import { motion, useAnimationFrame } from 'framer-motion';
@@ -536,20 +545,20 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
                     <p className="text-sm text-gray-600 mb-3">
                       {partner.description}
                     </p>
-                    
+
                     <div className="flex flex-col gap-2 text-xs text-gray-500">
                       <div className="flex items-center gap-2">
                         <span className="font-semibold">Partnership:</span>
                         {partner.partnership}
                       </div>
-                      
+
                       {partner.employees && (
                         <div className="flex items-center gap-2">
                           <Users className="w-4 h-4" />
                           {partner.employees} employees
                         </div>
                       )}
-                      
+
                       {partner.location && (
                         <div className="flex items-center gap-2">
                           <Globe className="w-4 h-4" />
@@ -586,7 +595,9 @@ export default EnhancedLogoCarousel;
 ### Day 5: Integration
 
 #### 3.5 Update Products Section
+
 **File:** Update relevant section in `Home.tsx`
+
 ```typescript
 import Product3DCard from '../components/Product3DCard/Product3DCard';
 import ProductFilter from '../components/ProductFilter/ProductFilter';
@@ -597,19 +608,19 @@ const [filteredProducts, setFilteredProducts] = useState(products);
 
 const handleFilterChange = (filters: { categories: string[], tags: string[] }) => {
   let filtered = [...products];
-  
+
   if (filters.categories.length > 0) {
-    filtered = filtered.filter(p => 
+    filtered = filtered.filter(p =>
       filters.categories.includes(p.category)
     );
   }
-  
+
   if (filters.tags?.length > 0) {
-    filtered = filtered.filter(p => 
+    filtered = filtered.filter(p =>
       p.tags?.some(tag => filters.tags.includes(tag))
     );
   }
-  
+
   setFilteredProducts(filtered);
 };
 
@@ -619,7 +630,7 @@ const handleFilterChange = (filters: { categories: string[], tags: string[] }) =
     <h2 className="text-4xl font-bold text-center mb-12">
       Our Products
     </h2>
-    
+
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <AnimatePresence mode="popLayout">
         {filteredProducts.map((product, index) => (
@@ -631,7 +642,7 @@ const handleFilterChange = (filters: { categories: string[], tags: string[] }) =
         ))}
       </AnimatePresence>
     </div>
-    
+
     <ProductFilter
       categories={uniqueCategories}
       tags={uniqueTags}
@@ -669,10 +680,7 @@ const handleFilterChange = (filters: { categories: string[], tags: string[] }) =
 export default React.memo(Product3DCard);
 
 // Debounce filter updates
-const debouncedFilter = useMemo(
-  () => debounce(handleFilterChange, 300),
-  []
-);
+const debouncedFilter = useMemo(() => debounce(handleFilterChange, 300), []);
 ```
 
 ## Next Phase

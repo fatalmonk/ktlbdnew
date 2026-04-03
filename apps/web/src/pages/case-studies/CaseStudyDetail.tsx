@@ -93,7 +93,11 @@ const CaseStudyDetail = () => {
       <SEO
         title={`${caseStudy.title} | Case Study | KTL`}
         description={caseStudy.challenge}
-        keywords={[...caseStudy.industry, ...caseStudy.products, 'textile manufacturing case study']}
+        keywords={[
+          ...caseStudy.industry,
+          ...caseStudy.products,
+          'textile manufacturing case study',
+        ]}
       />
 
       <SubpageHeader
@@ -241,9 +245,7 @@ const CaseStudyDetail = () => {
                     )}
                     <div>
                       <div className="font-semibold">{caseStudy.testimonial.author}</div>
-                      <div className="text-blue-200 text-sm">
-                        {caseStudy.testimonial.position}
-                      </div>
+                      <div className="text-blue-200 text-sm">{caseStudy.testimonial.position}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -295,7 +297,9 @@ const CaseStudyDetail = () => {
 
                 {/* CTA */}
                 <div className="mt-6 pt-6 border-t border-neutral-200">
-                  <h4 className="font-semibold text-neutral-900 mb-3">Interested in Similar Results?</h4>
+                  <h4 className="font-semibold text-neutral-900 mb-3">
+                    Interested in Similar Results?
+                  </h4>
                   <Link
                     to="/rfq"
                     className="block w-full px-4 py-3 bg-green-600 text-white text-center rounded-lg font-semibold hover:bg-green-700 transition-colors"
@@ -331,4 +335,3 @@ const CaseStudyDetail = () => {
 };
 
 export default CaseStudyDetail;
-

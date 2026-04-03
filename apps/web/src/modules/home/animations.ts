@@ -24,5 +24,3 @@ export const fadeInUpVariants: Variants = {
 };
 
 export const fadeInUpTransition = { duration: 0.6 };
-
-

@@ -138,18 +138,12 @@ const EnhancedHero: React.FC = () => {
       }
     >
       {/* Live region: announces slide changes to screen readers */}
-      <div
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-      >
+      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {announcement}
       </div>
 
       <div className="mx-auto w-full max-w-[1920px]">
         <div className="relative bg-white">
-
           {/*
             ─── MOBILE / TABLET (< lg) ───────────────────────────────────────────
             Full-bleed image that fills the viewport width and a fixed tall height.
@@ -161,8 +155,7 @@ const EnhancedHero: React.FC = () => {
               className="relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
               style={{
                 minHeight: '360px',
-                height:
-                  'calc((100svh - var(--site-header-height-mobile-with-ticker, 0px)) * 0.97)',
+                height: 'calc((100svh - var(--site-header-height-mobile-with-ticker, 0px)) * 0.97)',
               }}
             >
               <AnimatePresence mode="sync" initial={false}>

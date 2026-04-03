@@ -47,14 +47,22 @@ const routes = [
   { path: '/newsroom/stories', priority: 0.7, changefreq: 'weekly' },
   { path: '/newsroom/psi', priority: 0.7, changefreq: 'weekly' },
   { path: '/newsroom/media-kit', priority: 0.6, changefreq: 'monthly' },
-  
+
   // B2B Enhancement Pages
   { path: '/case-studies', priority: 0.9, changefreq: 'weekly' },
   { path: '/case-studies/european-premium-denim-brand', priority: 0.8, changefreq: 'monthly' },
   { path: '/case-studies/us-sportswear-sustainability', priority: 0.8, changefreq: 'monthly' },
-  { path: '/case-studies/childrens-apparel-safety-compliance', priority: 0.8, changefreq: 'monthly' },
+  {
+    path: '/case-studies/childrens-apparel-safety-compliance',
+    priority: 0.8,
+    changefreq: 'monthly',
+  },
   { path: '/case-studies/fast-fashion-speed-to-market', priority: 0.8, changefreq: 'monthly' },
-  { path: '/case-studies/luxury-swimwear-custom-development', priority: 0.8, changefreq: 'monthly' },
+  {
+    path: '/case-studies/luxury-swimwear-custom-development',
+    priority: 0.8,
+    changefreq: 'monthly',
+  },
   { path: '/certifications', priority: 0.9, changefreq: 'monthly' },
   { path: '/sustainability', priority: 0.9, changefreq: 'monthly' },
   { path: '/rfq', priority: 1.0, changefreq: 'monthly' },
@@ -106,11 +114,21 @@ async function main() {
     console.log(`  - Homepage`);
     console.log(`  - ${routes.filter((r) => r.path.startsWith('/products')).length} Product pages`);
     console.log(`  - ${routes.filter((r) => r.path.startsWith('/company')).length} Company pages`);
-    console.log(`  - ${routes.filter((r) => r.path.startsWith('/facilities')).length} Facility pages`);
-    console.log(`  - ${routes.filter((r) => r.path.startsWith('/investors')).length} Investor pages`);
-    console.log(`  - ${routes.filter((r) => r.path.startsWith('/work-with-us')).length} Work With Us pages`);
-    console.log(`  - ${routes.filter((r) => r.path.startsWith('/newsroom')).length} Newsroom pages`);
-    console.log(`  - ${routes.filter((r) => r.path.startsWith('/case-studies')).length} Case Study pages`);
+    console.log(
+      `  - ${routes.filter((r) => r.path.startsWith('/facilities')).length} Facility pages`
+    );
+    console.log(
+      `  - ${routes.filter((r) => r.path.startsWith('/investors')).length} Investor pages`
+    );
+    console.log(
+      `  - ${routes.filter((r) => r.path.startsWith('/work-with-us')).length} Work With Us pages`
+    );
+    console.log(
+      `  - ${routes.filter((r) => r.path.startsWith('/newsroom')).length} Newsroom pages`
+    );
+    console.log(
+      `  - ${routes.filter((r) => r.path.startsWith('/case-studies')).length} Case Study pages`
+    );
     console.log(`  - Certifications hub`);
     console.log(`  - Sustainability dashboard`);
     console.log(`  - RFQ (Request Quote) page`);

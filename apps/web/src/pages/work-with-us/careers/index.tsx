@@ -21,41 +21,41 @@ const CareersPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Join our team and be part of Bangladesh's leading textile manufacturer.
-              We offer exciting career opportunities, professional development, and a
-              supportive work environment.
+              Join our team and be part of Bangladesh's leading textile manufacturer. We offer
+              exciting career opportunities, professional development, and a supportive work
+              environment.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Manufacturing Roles</h3>
                 <p className="text-neutral-800">
-                  Production supervisors, quality control specialists,
-                  machine operators, and technical staff positions.
+                  Production supervisors, quality control specialists, machine operators, and
+                  technical staff positions.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Design & Development</h3>
                 <p className="text-neutral-800">
-                  Fashion designers, product developers, pattern makers,
-                  and creative professionals in textile design.
+                  Fashion designers, product developers, pattern makers, and creative professionals
+                  in textile design.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Business & Sales</h3>
                 <p className="text-neutral-800">
-                  Sales representatives, business development managers,
-                  marketing specialists, and customer service roles.
+                  Sales representatives, business development managers, marketing specialists, and
+                  customer service roles.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Administrative</h3>
                 <p className="text-neutral-800">
-                  HR professionals, finance specialists, IT support,
-                  and administrative staff positions.
+                  HR professionals, finance specialists, IT support, and administrative staff
+                  positions.
                 </p>
               </div>
             </div>

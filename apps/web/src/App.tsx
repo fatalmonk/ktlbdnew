@@ -61,7 +61,9 @@ const CaseStudyDetail = React.lazy(() => import('./pages/case-studies/CaseStudyD
 const CertificationsHub = React.lazy(() => import('./pages/certifications/CertificationsHub'));
 
 // Sustainability pages
-const SustainabilityDashboard = React.lazy(() => import('./pages/sustainability/SustainabilityDashboard'));
+const SustainabilityDashboard = React.lazy(
+  () => import('./pages/sustainability/SustainabilityDashboard')
+);
 
 // RFQ pages
 const RequestQuote = React.lazy(() => import('./pages/rfq/RequestQuote'));
@@ -84,7 +86,7 @@ function App() {
   useEffect(() => {
     console.log('App component mounted successfully');
     console.log('Current location:', window.location.href);
-    
+
     // Measure React app load time after mount
     measureLoadTime();
   }, []);
@@ -102,7 +104,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   {isDev && <Route path="/test/animation" element={<AnimationTest />} />}
-                  {isDev && <Route path="/test/responsive-hooks" element={<ResponsiveHooksTest />} />}
+                  {isDev && (
+                    <Route path="/test/responsive-hooks" element={<ResponsiveHooksTest />} />
+                  )}
                   {isDev && <Route path="/test/metrics" element={<MetricsTest />} />}
                   <Route path="/products" element={<Products />} />
                   <Route path="/products/denims" element={<ProductDenims />} />
@@ -112,11 +116,17 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
 
                   {/* Company routes */}
-                  <Route path="/company/who-we-are" element={<Navigate to="/company/our-story" replace />} />
+                  <Route
+                    path="/company/who-we-are"
+                    element={<Navigate to="/company/our-story" replace />}
+                  />
                   <Route path="/company/our-story" element={<CompanyOurStory />} />
                   <Route path="/company/leadership" element={<CompanyLeadership />} />
                   <Route path="/company/governance" element={<CompanyGovernance />} />
-                  <Route path="/company/sustainability" element={<Navigate to="/sustainability" replace />} />
+                  <Route
+                    path="/company/sustainability"
+                    element={<Navigate to="/sustainability" replace />}
+                  />
 
                   {/* Facilities routes */}
                   <Route path="/facilities/rmg" element={<FacilitiesRMG />} />

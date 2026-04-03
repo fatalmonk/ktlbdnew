@@ -80,7 +80,9 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
           </div>
           <div>
             <h3 className="font-semibold text-neutral-900">{metric.name}</h3>
-            <span className={`inline-block text-xs px-2 py-1 rounded-full mt-1 ${getCategoryColor()}`}>
+            <span
+              className={`inline-block text-xs px-2 py-1 rounded-full mt-1 ${getCategoryColor()}`}
+            >
               {metric.category}
             </span>
           </div>
@@ -98,7 +100,8 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
         </div>
         {metric.target && (
           <div className="text-sm text-neutral-500 mt-1">
-            Target: {metric.target}{metric.unit}
+            Target: {metric.target}
+            {metric.unit}
           </div>
         )}
       </div>
@@ -119,10 +122,10 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
                 progressPercentage >= 100
                   ? 'bg-green-500'
                   : progressPercentage >= 75
-                  ? 'bg-blue-500'
-                  : progressPercentage >= 50
-                  ? 'bg-yellow-500'
-                  : 'bg-orange-500'
+                    ? 'bg-blue-500'
+                    : progressPercentage >= 50
+                      ? 'bg-yellow-500'
+                      : 'bg-orange-500'
               }`}
             />
           </div>
@@ -136,4 +139,3 @@ const MetricsWidget = ({ metric, index = 0 }: MetricsWidgetProps) => {
 };
 
 export default MetricsWidget;
-

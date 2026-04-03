@@ -11,9 +11,11 @@ Phase 2 focuses on enhancing the Hero section and Statistics section with advanc
 ## Components to Implement
 
 ### 1. AnimatedCounter Component ✅ (Created)
+
 **File:** `src/components/AnimatedCounter/AnimatedCounter.tsx`
 
 **Features:**
+
 - Smooth number animations using framer-motion
 - In-view detection with intersection observer
 - Configurable duration, delay, decimals
@@ -23,9 +25,11 @@ Phase 2 focuses on enhancing the Hero section and Statistics section with advanc
 **Status:** ✅ Complete
 
 ### 2. Enhanced Statistics Section
+
 **File:** `src/components/StatisticsSection/StatisticsSection.tsx` (To Create)
 
 **Features to Implement:**
+
 - Staggered card animations on scroll
 - Enhanced hover effects with scale and shadow
 - Animated icons with rotation
@@ -34,9 +38,11 @@ Phase 2 focuses on enhancing the Hero section and Statistics section with advanc
 - Integration with existing CountUp component
 
 ### 3. Enhanced Hero Component (Optional)
+
 **File:** `src/components/EnhancedHero/EnhancedHero.tsx` (To Create)
 
 **Features to Implement:**
+
 - Parallax scrolling effects
 - Video background support (future enhancement)
 - Improved slide transitions
@@ -46,6 +52,7 @@ Phase 2 focuses on enhancing the Hero section and Statistics section with advanc
 ## Implementation Strategy
 
 ### Option 1: Enhance Existing Components (Recommended)
+
 Rather than creating entirely new components, we'll enhance the existing Home.tsx page with:
 
 1. **Enhanced Statistics Section** - Add stagger animations and hover effects
@@ -53,6 +60,7 @@ Rather than creating entirely new components, we'll enhance the existing Home.ts
 3. **Use Existing CountUp** - Already working well, just need animation enhancements
 
 ### Option 2: Full Replacement (More Time)
+
 Create completely new EnhancedHero and StatisticsSection components as specified in the Phase 2 plan.
 
 **Recommendation:** Choose Option 1 for faster implementation with immediate visual improvements.
@@ -62,6 +70,7 @@ Create completely new EnhancedHero and StatisticsSection components as specified
 ### Statistics Section Enhancements
 
 **Current Issues to Address:**
+
 - No scroll-triggered animations
 - No hover effects
 - Cards are static

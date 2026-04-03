@@ -13,7 +13,7 @@ interface AnimatedCounterProps {
   decimals?: number;
   className?: string;
   onComplete?: () => void;
-  
+
   // New API (from metrics/AnimatedCounter)
   value?: number;
   format?: 'number' | 'currency' | 'percentage';
@@ -40,14 +40,14 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   // If using new API (value is provided), format is used; otherwise use prefix/suffix
   const isNewAPI = value !== undefined;
   // For legacy API, 'to' is required, but we'll default to 0 if neither is provided
-  const targetValue = isNewAPI ? value : (to !== undefined ? to : 0);
+  const targetValue = isNewAPI ? value : to !== undefined ? to : 0;
   const startValue = from;
   const actualFormat = isNewAPI ? (format ?? 'number') : undefined;
 
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
-    rootMargin: '50px'
+    rootMargin: '50px',
   });
 
   const motionValue = useMotionValue(startValue);
@@ -55,7 +55,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   const springValue = useSpring(motionValue, {
     damping: 30,
     stiffness: 50,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   // Format value based on format prop (new API) or use prefix/suffix (legacy API)
@@ -65,11 +65,11 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
       const rounded = Math.floor(num);
       return `$${rounded.toLocaleString()}${unit ? ` ${unit}` : ''}`;
     }
-    
+
     if (actualFormat === 'percentage') {
       return `${num.toFixed(decimals)}%`;
     }
-    
+
     if (actualFormat === 'number') {
       const rounded = Math.floor(num);
       if (rounded >= 1000000) {
@@ -80,11 +80,9 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
       }
       return `${rounded.toLocaleString()}${unit ? ` ${unit}` : ''}`;
     }
-    
+
     // Legacy API: use prefix/suffix
-    const formatted = decimals > 0
-      ? num.toFixed(decimals)
-      : Math.round(num).toLocaleString();
+    const formatted = decimals > 0 ? num.toFixed(decimals) : Math.round(num).toLocaleString();
     return `${prefix}${formatted}${suffix}`;
   };
 

@@ -13,10 +13,7 @@ interface EnhancedLogoCarouselProps {
   speed?: number;
 }
 
-const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
-  partners,
-  speed = 30
-}) => {
+const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({ partners, speed = 30 }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,10 +85,7 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
 
                   {/* Content */}
                   <div className="relative">
-                    <h4
-                      id={`partner-${partner.id}-name`}
-                      className="font-bold text-lg mb-2"
-                    >
+                    <h4 id={`partner-${partner.id}-name`} className="font-bold text-lg mb-2">
                       {partner.name}
                     </h4>
                     <p

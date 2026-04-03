@@ -21,7 +21,7 @@ const BuyersPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Partner with KTL for comprehensive textile solutions. We offer quality products, 
+              Partner with KTL for comprehensive textile solutions. We offer quality products,
               reliable supply chain, and dedicated support for your business needs.
             </p>
 
@@ -29,32 +29,32 @@ const BuyersPage = () => {
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Product Range</h3>
                 <p className="text-neutral-800">
-                  Wide variety of textile products including denims, knitwear, 
-                  swimwear, and kids wear to meet diverse market demands.
+                  Wide variety of textile products including denims, knitwear, swimwear, and kids
+                  wear to meet diverse market demands.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Quality Assurance</h3>
                 <p className="text-neutral-800">
-                  Rigorous quality control processes and certifications 
-                  ensuring consistent high-quality products.
+                  Rigorous quality control processes and certifications ensuring consistent
+                  high-quality products.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Global Supply Chain</h3>
                 <p className="text-neutral-800">
-                  Efficient global distribution network with reliable 
-                  shipping and logistics support worldwide.
+                  Efficient global distribution network with reliable shipping and logistics support
+                  worldwide.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Custom Solutions</h3>
                 <p className="text-neutral-800">
-                  Tailored manufacturing solutions to meet specific 
-                  requirements and design specifications.
+                  Tailored manufacturing solutions to meet specific requirements and design
+                  specifications.
                 </p>
               </div>
             </div>

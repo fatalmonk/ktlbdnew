@@ -22,7 +22,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   // Device detection for mobile optimizations
   const isMobile = isMobileDevice();
   const animationConfig = getOptimizedAnimationConfig();
@@ -57,7 +57,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
     setIsHovered(false);
     setIsTouched(false);
   };
-  
+
   const handleTouchStart = () => {
     if (isMobile) {
       setIsTouched(true);
@@ -69,12 +69,16 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
     <motion.div
       initial={!isMobile ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
       whileInView={!isMobile ? { opacity: 1, y: 0 } : undefined}
-      transition={!isMobile ? {
-        delay: index * 0.1,
-        duration: 0.6,
-        ease: [0.215, 0.61, 0.355, 1]
-      } : undefined}
-      viewport={!isMobile ? { once: true, margin: "-100px" } : undefined}
+      transition={
+        !isMobile
+          ? {
+              delay: index * 0.1,
+              duration: 0.6,
+              ease: [0.215, 0.61, 0.355, 1],
+            }
+          : undefined
+      }
+      viewport={!isMobile ? { once: true, margin: '-100px' } : undefined}
     >
       <Tilt
         tiltMaxAngleX={animationConfig.enableTilt ? 10 : 0}
@@ -92,7 +96,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             rotateX: !isMobile ? rotateX : 0,
             rotateY: !isMobile ? rotateY : 0,
             transformStyle: animationConfig.enable3DTransforms ? 'preserve-3d' : 'flat',
-            willChange: !isMobile ? 'transform' : 'auto'
+            willChange: !isMobile ? 'transform' : 'auto',
           }}
           onMouseMove={!isMobile ? handleMouseMove : undefined}
           onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
@@ -111,7 +115,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                     rgba(253, 211, 56, 0.15),
                     transparent 40%
                   )`,
-                  pointerEvents: 'none'
+                  pointerEvents: 'none',
                 }}
               />
             )}
@@ -119,23 +123,29 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
             {/* Featured Badge */}
             {product.featured && (
               <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10">
-                  <span className="px-3 py-1 bg-primary-500 text-black text-sm md:text-base font-bold rounded-full">
+                <span className="px-3 py-1 bg-primary-500 text-black text-sm md:text-base font-bold rounded-full">
                   FEATURED
                 </span>
               </div>
             )}
 
             {/* Quick Actions - Always visible on mobile, hover-only on desktop */}
-            <div className={`absolute top-2 right-2 md:top-4 md:right-4 z-10 flex flex-col gap-1.5 md:gap-2 ${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+            <div
+              className={`absolute top-2 right-2 md:top-4 md:right-4 z-10 flex flex-col gap-1.5 md:gap-2 ${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+            >
               <TouchOptimized
-                onTap={() => {/* Handle favorite */}}
+                onTap={() => {
+                  /* Handle favorite */
+                }}
                 touchFeedback={true}
                 minTouchTargetSize={44}
               >
                 <motion.button
                   className="min-w-[36px] min-h-[36px] md:min-w-[44px] md:min-h-[44px] w-9 h-9 md:w-11 md:h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center"
                   initial={!isMobile ? { x: 20, opacity: 0 } : false}
-                  animate={!isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false}
+                  animate={
+                    !isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false
+                  }
                   transition={{ delay: 0.1 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -148,14 +158,18 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               </TouchOptimized>
 
               <TouchOptimized
-                onTap={() => {/* Handle share */}}
+                onTap={() => {
+                  /* Handle share */
+                }}
                 touchFeedback={true}
                 minTouchTargetSize={44}
               >
                 <motion.button
                   className="min-w-[36px] min-h-[36px] md:min-w-[44px] md:min-h-[44px] w-9 h-9 md:w-11 md:h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center"
                   initial={!isMobile ? { x: 20, opacity: 0 } : false}
-                  animate={!isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false}
+                  animate={
+                    !isMobile ? { x: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 } : false
+                  }
                   transition={{ delay: 0.2 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -173,9 +187,17 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
               <motion.div
                 className="w-full h-full"
                 style={{
-                  scale: (isMobile ? (isTouched && animationConfig.enableComplexAnimations ? 1.05 : 1) : (isHovered && animationConfig.enableComplexAnimations ? 1.1 : 1)),
-                  transition: animationConfig.enableComplexAnimations ? 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)' : 'none',
-                  willChange: isHovered || isTouched ? 'transform' : 'auto'
+                  scale: isMobile
+                    ? isTouched && animationConfig.enableComplexAnimations
+                      ? 1.05
+                      : 1
+                    : isHovered && animationConfig.enableComplexAnimations
+                      ? 1.1
+                      : 1,
+                  transition: animationConfig.enableComplexAnimations
+                    ? 'scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)'
+                    : 'none',
+                  willChange: isHovered || isTouched ? 'transform' : 'auto',
                 }}
               >
                 <Image
@@ -198,14 +220,16 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                   transition={{ duration: 0.3 }}
                 >
                   <TouchOptimized
-                    onTap={() => {/* Navigate on tap */}}
+                    onTap={() => {
+                      /* Navigate on tap */
+                    }}
                     touchFeedback={true}
                   >
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{
                         scale: 1,
-                        opacity: 1
+                        opacity: 1,
                       }}
                       transition={{ delay: 0.1, type: 'spring', stiffness: 500 }}
                     >
@@ -231,7 +255,7 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
                 className="inline-block px-3 py-1 bg-neutral-100 text-neutral-600 text-sm md:text-base font-bold rounded-full mb-3 md:mb-4"
                 animate={{
                   backgroundColor: isHovered ? 'rgb(253, 211, 56)' : 'rgb(243, 244, 246)',
-                  color: isHovered ? 'rgb(0, 0, 0)' : 'rgb(75, 85, 99)'
+                  color: isHovered ? 'rgb(0, 0, 0)' : 'rgb(75, 85, 99)',
                 }}
                 transition={{ duration: 0.3 }}
               >
@@ -271,15 +295,21 @@ const Product3DCard: React.FC<Product3DCardProps> = ({ product, index }) => {
 
               {/* CTA Button - Always visible on mobile, hover-only on desktop */}
               <TouchOptimized
-                onTap={() => {/* Navigate on tap */}}
+                onTap={() => {
+                  /* Navigate on tap */
+                }}
                 touchFeedback={true}
               >
                 <motion.div
                   initial={!isMobile ? { opacity: 0, y: 10 } : false}
-                  animate={!isMobile ? {
-                    opacity: isHovered ? 1 : 0,
-                    y: isHovered ? 0 : 10
-                  } : { opacity: 1, y: 0 }}
+                  animate={
+                    !isMobile
+                      ? {
+                          opacity: isHovered ? 1 : 0,
+                          y: isHovered ? 0 : 10,
+                        }
+                      : { opacity: 1, y: 0 }
+                  }
                   transition={{ duration: 0.3 }}
                 >
                   <Link

@@ -1,14 +1,17 @@
 # Design System Refactoring Summary
 
 ## Overview
+
 Successfully completed comprehensive refactoring of the KTL Website codebase to align with the unified Tailwind CSS design system defined in `tailwind.config.js`.
 
 ## Changes Applied
 
 ### 1. ✅ Color Hex Code Replacements
+
 **Scope:** All `.tsx`, `.ts`, and `.css` files in `/apps/web/src`
 
 **Replaced Hardcoded Colors:**
+
 - `#fdd336` → `primary-500` (Brand Yellow)
 - `#fdd338` → `primary-500` (Brand Yellow variant)
 - `#ca8a04` → `primary-600` (Brand Yellow dark)
@@ -18,6 +21,7 @@ Successfully completed comprehensive refactoring of the KTL Website codebase to 
 - `#1c6fe3` → `accent-500` (Brand Blue lowercase)
 
 **Files Modified:** 5 core files + 80+ component files
+
 - `apps/web/src/modules/home/components/CTASection.tsx`
 - `apps/web/src/modules/home/components/LogoCarouselSection.tsx`
 - `apps/web/src/components/hero/KTLHero.tsx`
@@ -25,22 +29,27 @@ Successfully completed comprehensive refactoring of the KTL Website codebase to 
 - Plus all related product and facility pages
 
 **Example:**
+
 ```before
 bg-[#fdd336] hover:bg-[#ca8a04]
 ```
+
 ```after
 bg-primary-500 hover:bg-primary-600
 ```
 
 ### 2. ✅ Color Naming Standardization
+
 **Scope:** All `.tsx`, `.ts`, `.css` files
 
 **Replaced Grayscale Colors:**
+
 - `text-gray-*` → `text-neutral-*` (87 instances)
 - `bg-gray-*` → `bg-neutral-*` (87 instances)
 - `border-gray-*` → `border-neutral-*` (included in bulk replace)
 
 **Files Modified:** 80+ component files including:
+
 - All product pages (swimwear, denims, knitwear, kids)
 - All facility pages (rmg, agro, tech, shipping, washing)
 - Company pages (sustainability, our-story, leadership, governance)
@@ -50,21 +59,25 @@ bg-primary-500 hover:bg-primary-600
 - Form components
 
 **Example:**
+
 ```before
 <p className="text-gray-800">Description</p>
 <div className="bg-gray-50 p-6">
 ```
+
 ```after
 <p className="text-neutral-800">Description</p>
 <div className="bg-neutral-50 p-6">
 ```
 
 ### 3. ✅ Spacing Scale Normalization
+
 **Scope:** All `.tsx` and `.ts` files
 
 **Defined Scale:** `1, 2, 3, 4, 6, 8, 12, 16, 24` (from `tailwind.config.js`)
 
 **Removed Non-Standard Classes:**
+
 - `p-5` → `p-6` (18 instances)
 - `px-5` → `px-6` (8 instances)
 - `py-5` → `py-6` (5 instances)
@@ -72,6 +85,7 @@ bg-primary-500 hover:bg-primary-600
 - `py-2.5` → `py-3` (3 instances)
 
 **Files Modified:**
+
 - `apps/web/src/pages/investors/overview/index.tsx`
 - `apps/web/src/pages/Investors.tsx`
 - `apps/web/src/modules/experimental/StaggeredMenu.tsx`
@@ -83,25 +97,30 @@ bg-primary-500 hover:bg-primary-600
 - `apps/web/src/ir/components/KPIGrid.tsx`
 
 **Example:**
+
 ```before
 <div className="p-5 gap-5">
 <button className="py-2.5">
 ```
+
 ```after
 <div className="p-6 gap-6">
 <button className="py-3">
 ```
 
 ### 4. ✅ Typography Classes Audit
+
 **Status:** No changes needed
 
 **Finding:** The codebase does not use legacy `h1`, `h2`, `h3` classes. Instead, it properly uses:
+
 - Semantic HTML: `<h1>`, `<h2>`, `<h3>` tags
 - Tailwind utilities: `text-h1`, `text-h2`, `text-h3` (where typography utility classes are needed)
 
 ## Design System Reference
 
 ### Brand Colors (Defined in `tailwind.config.js`)
+
 ```js
 primary: {
   500: '#fdd338',    // Core brand yellow
@@ -122,6 +141,7 @@ neutral: {
 ```
 
 ### Spacing Scale (Defined in `tailwind.config.js`)
+
 ```js
 spacing: {
   1: '0.25rem',   // 4px
@@ -137,6 +157,7 @@ spacing: {
 ```
 
 ### Typography Scale (Defined in `tailwind.config.js`)
+
 ```js
 fontSize: {
   h1: ['3rem', { lineHeight: '1.1', letterSpacing: '-0.01em' }],    // 48px
@@ -151,11 +172,13 @@ fontSize: {
 ## Validation Results
 
 ### Build Status
+
 ✅ No TypeScript/React compilation errors
 ✅ No Tailwind CSS errors
 ✅ All CSS files process without errors
 
 ### Linter Status
+
 - CSS Warnings: Browser compatibility warnings only (existing, pre-refactor)
 - Markdown Warnings: Formatting issues only (existing, pre-refactor)
 - No new errors introduced
@@ -163,11 +186,13 @@ fontSize: {
 ## Files Modified Summary
 
 ### Bulk Changes (Using sed)
+
 - **Color Hex Codes:** ~86 files
-- **Gray to Neutral:** ~87 files  
+- **Gray to Neutral:** ~87 files
 - **Spacing Normalization:** ~9 files
 
 ### Manual Changes
+
 1. `CTASection.tsx` - bg-[#fdd336] → bg-primary-500
 2. `LogoCarouselSection.tsx` - text-gray-800 and #fdd336 replacements
 3. `KTLHero.tsx` - #fdd336 and #ca8a04 replacements
@@ -211,9 +236,3 @@ find . -type f \( -name "*.tsx" -o -name "*.ts" \) \
 **Refactoring Date:** November 29, 2025
 **Status:** ✅ Complete
 **Impact:** High - Ensures consistent design system implementation across entire codebase
-
-
-
-
-
-

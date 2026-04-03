@@ -47,7 +47,12 @@ const CompanyLeadership = () => {
         title="Leadership Team | Kattali Textile Ltd Executive Management"
         description="Meet KTL's experienced leadership team driving success in Bangladesh's textile industry. From Chairman Nasreen Haque to our dedicated management team."
         canonical="/company/leadership"
-        keywords={['KTL leadership', 'textile executives', 'Bangladesh management team', 'garment industry leaders']}
+        keywords={[
+          'KTL leadership',
+          'textile executives',
+          'Bangladesh management team',
+          'garment industry leaders',
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
@@ -65,15 +70,24 @@ const CompanyLeadership = () => {
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-800">
             Our leadership brings decades of experience in textile manufacturing and international
             trade. Explore{' '}
-            <Link to="/company/our-story" className="text-primary-600 underline hover:text-primary-700">
+            <Link
+              to="/company/our-story"
+              className="text-primary-600 underline hover:text-primary-700"
+            >
               our story
             </Link>
             ,{' '}
-            <Link to="/company/governance" className="text-primary-600 underline hover:text-primary-700">
+            <Link
+              to="/company/governance"
+              className="text-primary-600 underline hover:text-primary-700"
+            >
               governance
             </Link>
             , and{' '}
-            <Link to="/sustainability" className="text-primary-600 underline hover:text-primary-700">
+            <Link
+              to="/sustainability"
+              className="text-primary-600 underline hover:text-primary-700"
+            >
               sustainability
             </Link>
             .
@@ -92,7 +106,9 @@ const CompanyLeadership = () => {
                   />
                 </div>
                 <p className="mt-4 text-base font-bold leading-tight text-black">{leader.name}</p>
-                <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">{leader.title}</p>
+                <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">
+                  {leader.title}
+                </p>
               </li>
             ))}
           </ul>

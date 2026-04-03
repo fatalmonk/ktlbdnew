@@ -3,14 +3,14 @@
 @import './styles/ir.css';
 
 /* Import tw-animate-css for animations */
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* CSS Variables for theming */
- :root {
+:root {
   --strip-height: 15px;
   --secondary-nav-height: 110px;
   --ticker-height: 38px;
@@ -25,7 +25,7 @@
   --evgLightColor: #ffffff;
   --evgSuccessColor: #006613;
   --evgErrorColor: #b72121;
-  
+
   --background: oklch(1 0 0);
   --foreground: var(--evgBodyTextColor);
   --primary: var(--evgPrimaryColor);
@@ -120,7 +120,16 @@
 /* Shared strip under both desktop and mobile corporate headers */
 .corp-header-strip {
   height: var(--strip-height);
-  background-image: linear-gradient(90deg, #fdd338 50%, #e11a2b 50%, #e11a2b 66.33%, #000000 66.33%, #000000 82.66%, #1c6fe3 82.66%, #1c6fe3 100%);
+  background-image: linear-gradient(
+    90deg,
+    #fdd338 50%,
+    #e11a2b 50%,
+    #e11a2b 66.33%,
+    #000000 66.33%,
+    #000000 82.66%,
+    #1c6fe3 82.66%,
+    #1c6fe3 100%
+  );
   background-size: 100% var(--strip-height);
   background-repeat: no-repeat;
   background-position: 50% 0%;
@@ -214,7 +223,7 @@
   * {
     border-color: var(--border);
   }
-  
+
   *:focus-visible {
     outline-color: var(--ring);
     outline-opacity: 0.5;
@@ -222,7 +231,7 @@
 
   html {
     font-size: var(--evgRootFontSize, 10px);
-    font-family: "Macys Sans", "Inter", sans-serif;
+    font-family: 'Macys Sans', 'Inter', sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     font-variant-numeric: oldstyle-nums;
     /* Mobile viewport height fix - set by useViewportHeight hook */
@@ -287,32 +296,36 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
   }
-  
+
   /* Prevent pull-to-refresh on mobile (can be enabled per-section) */
   body {
     overscroll-behavior-y: contain;
     touch-action: pan-y;
   }
-  
+
   /* Better text selection on mobile */
   @media (max-width: 768px) {
     * {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
     }
-    
+
     /* Better mobile scrolling */
     * {
       -webkit-overflow-scrolling: touch;
     }
-    
+
     /* Prevent text size adjustment on orientation change */
     html {
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
-    
+
     /* Better touch targets */
-    button, a, input, select, textarea {
+    button,
+    a,
+    input,
+    select,
+    textarea {
       touch-action: manipulation;
     }
   }
@@ -536,9 +549,15 @@
   }
 
   /* KTL Hero Panel Styles */
-  .panel-19 { width: 19%; }
-  .panel-22 { width: 22%; }
-  .panel-18 { width: 18%; }
+  .panel-19 {
+    width: 19%;
+  }
+  .panel-22 {
+    width: 22%;
+  }
+  .panel-18 {
+    width: 18%;
+  }
 
   /* Brand Button Styles */
   .btn-ktl-primary {
@@ -564,7 +583,16 @@
 
   /* Brand Gradient Backgrounds */
   .bg-brand-gradient {
-    background: linear-gradient(90deg, primary-500 50%, secondary-500 50%, secondary-500 66.33%, #000 66.33%, #000 82.66%, accent-500 82.66%, accent-500);
+    background: linear-gradient(
+      90deg,
+      primary-500 50%,
+      secondary-500 50%,
+      secondary-500 66.33%,
+      #000 66.33%,
+      #000 82.66%,
+      accent-500 82.66%,
+      accent-500
+    );
   }
 
   .bg-primary-gradient {
@@ -585,8 +613,8 @@
       35deg,
       transparent,
       transparent 110px,
-      #F4C414 110px,
-      #F4C414 116px,
+      #f4c414 110px,
+      #f4c414 116px,
       transparent 116px,
       transparent 220px
     );
@@ -596,12 +624,12 @@
   /* Metrics Section Styles */
   .metrics-section {
     position: relative;
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   .metrics-accent-bar {
     height: 4px;
-    background: #F4C414;
+    background: #f4c414;
     width: 100%;
   }
 
@@ -623,7 +651,6 @@
     font-size: 0.45em;
     vertical-align: 18px;
   }
-
 }
 
 /* Custom animations */

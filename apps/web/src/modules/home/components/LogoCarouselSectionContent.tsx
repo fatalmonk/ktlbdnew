@@ -35,4 +35,3 @@ const LogoCarouselSectionContent = ({ partners }: LogoCarouselSectionContentProp
 };
 
 export default LogoCarouselSectionContent;
-

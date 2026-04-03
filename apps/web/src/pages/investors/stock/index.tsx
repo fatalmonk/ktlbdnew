@@ -7,7 +7,13 @@ const StockPage = () => {
       <SEO
         title="Stock Information"
         description="KTL stock information, share prices, market data, and investor resources. Stay updated with Kattali Textile Limited's financial performance."
-        keywords={['stock information', 'KTL shares', 'share price', 'market data', 'investor information']}
+        keywords={[
+          'stock information',
+          'KTL shares',
+          'share price',
+          'market data',
+          'investor information',
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
@@ -21,27 +27,26 @@ const StockPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Stay updated with Kattali Textile Limited's stock performance,
-              share prices, and market data. Access real-time information
-              and investor resources.
+              Stay updated with Kattali Textile Limited's stock performance, share prices, and
+              market data. Access real-time information and investor resources.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Current Price</h3>
-                <div className="text-3xl font-bold text-primary mb-2">৳9.90</div>
-                <p className="text-neutral-800">DSE: M | as of March 29, 2026 3:10 PM BST</p>
+                <div className="text-3xl font-bold text-primary mb-2">৳9.60</div>
+                <p className="text-neutral-800">DSE: Z | as of April 2, 2026 3:10 PM BST</p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Trading Volume</h3>
-                <div className="text-2xl font-bold text-black mb-2">873,009</div>
-                <p className="text-neutral-800">Change: +0.20 (+2.06%)</p>
+                <div className="text-2xl font-bold text-black mb-2">283,798</div>
+                <p className="text-neutral-800">Change: -0.20 (-2.04%)</p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Market Cap</h3>
-                <div className="text-2xl font-bold text-black mb-2">৳1,128.160M</div>
+                <div className="text-2xl font-bold text-black mb-2">৳1,139.791M</div>
                 <p className="text-neutral-800">Based on current share price</p>
               </div>
 

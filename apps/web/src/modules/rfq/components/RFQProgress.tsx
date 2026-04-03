@@ -20,8 +20,8 @@ const RFQProgress = ({ steps, currentStep }: RFQProgressProps) => (
                 currentStep > step.number
                   ? 'bg-green-600 text-white'
                   : currentStep === step.number
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-neutral-200 text-neutral-500'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-neutral-200 text-neutral-500'
               }`}
             >
               {currentStep > step.number ? (
@@ -50,5 +50,3 @@ const RFQProgress = ({ steps, currentStep }: RFQProgressProps) => (
 );
 
 export default RFQProgress;
-
-

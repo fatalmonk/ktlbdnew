@@ -29,7 +29,7 @@ export const useScrollTrigger = (options: UseScrollTriggerOptions = {}) => {
   const [ref, inView] = useInView({
     threshold,
     triggerOnce: options.triggerOnce ?? true,
-    rootMargin
+    rootMargin,
   });
 
   useEffect(() => {

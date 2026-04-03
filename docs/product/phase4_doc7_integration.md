@@ -1,6 +1,7 @@
 # Phase 4.7: News & Metrics Integration
 
 ## Overview
+
 Integrate news and metrics components into the homepage with cohesive layouts and transitions.
 
 ---
@@ -8,6 +9,7 @@ Integrate news and metrics components into the homepage with cohesive layouts an
 ## 4.7.1 Homepage News Section
 
 **Create news section for homepage:**
+
 ```typescript
 // components/home/NewsSection.tsx
 'use client';
@@ -32,25 +34,25 @@ export default function NewsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100
             text-blue-600 rounded-full mb-4">
             <Newspaper size={18} />
             <span className="text-sm font-semibold">Latest Updates</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             News & Insights
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Stay informed with our latest announcements, product launches, 
+            Stay informed with our latest announcements, product launches,
             and industry insights
           </p>
         </motion.div>
 
         {/* News Grid */}
-        <NewsGrid 
-          articles={articles} 
+        <NewsGrid
+          articles={articles}
           loading={loading}
           showFeatured={false}
         />
@@ -67,8 +69,8 @@ export default function NewsSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 
-                text-white font-semibold rounded-full hover:bg-blue-700 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600
+                text-white font-semibold rounded-full hover:bg-blue-700
                 transition-colors shadow-lg hover:shadow-xl"
             >
               View All News
@@ -87,6 +89,7 @@ export default function NewsSection() {
 ## 4.7.2 Homepage Metrics Section
 
 **Create metrics preview for homepage:**
+
 ```typescript
 // components/home/MetricsSection.tsx
 'use client';
@@ -114,16 +117,16 @@ export default function MetricsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100
             text-green-600 rounded-full mb-4">
             <TrendingUp size={18} />
             <span className="text-sm font-semibold">Live Metrics</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Performance At A Glance
           </h2>
-          
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Real-time metrics tracking our growth, impact, and success
           </p>
@@ -131,7 +134,7 @@ export default function MetricsSection() {
 
         {/* Metrics Grid */}
         {!loading && (
-          <MetricsGrid 
+          <MetricsGrid
             metrics={featuredMetrics}
             columns={3}
           />
@@ -149,8 +152,8 @@ export default function MetricsSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 
-                bg-gray-900 text-white font-semibold rounded-full 
+              className="inline-flex items-center gap-2 px-8 py-4
+                bg-gray-900 text-white font-semibold rounded-full
                 hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl"
             >
               <BarChart3 size={20} />
@@ -169,6 +172,7 @@ export default function MetricsSection() {
 ## 4.7.3 Combined Section Layout
 
 **Create alternating news/metrics layout:**
+
 ```typescript
 // components/home/NewsMetricsCombo.tsx
 'use client';
@@ -191,14 +195,14 @@ export default function NewsMetricsCombo() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 0.05, scale: 1 } : {}}
           transition={{ duration: 1 }}
-          className="absolute top-1/4 right-0 w-96 h-96 bg-blue-600 
+          className="absolute top-1/4 right-0 w-96 h-96 bg-blue-600
             rounded-full blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 0.05, scale: 1 } : {}}
           transition={{ duration: 1, delay: 0.2 }}
-          className="absolute bottom-1/4 left-0 w-96 h-96 bg-green-600 
+          className="absolute bottom-1/4 left-0 w-96 h-96 bg-green-600
             rounded-full blur-3xl"
         />
       </div>
@@ -218,6 +222,7 @@ export default function NewsMetricsCombo() {
 ## 4.7.4 Update Homepage
 
 **Integrate into main homepage:**
+
 ```typescript
 // app/page.tsx
 import Hero from '@/components/Hero';
@@ -244,6 +249,7 @@ export default function HomePage() {
 ## 4.7.5 Responsive Behavior
 
 **Create mobile-optimized layouts:**
+
 ```typescript
 // components/home/ResponsiveNewsMetrics.tsx
 'use client';
@@ -271,6 +277,7 @@ export default function ResponsiveNewsMetrics() {
 ```
 
 **Create compact mobile version:**
+
 ```typescript
 // components/home/CompactNewsMetrics.tsx
 'use client';
@@ -291,7 +298,7 @@ export default function CompactNewsMetrics() {
         <div className="flex gap-2 mb-8">
           <button
             onClick={() => setActiveView('metrics')}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 
+            className={`flex-1 flex items-center justify-center gap-2 py-3
               rounded-lg font-semibold transition-all ${
                 activeView === 'metrics'
                   ? 'bg-blue-600 text-white shadow-lg'
@@ -303,7 +310,7 @@ export default function CompactNewsMetrics() {
           </button>
           <button
             onClick={() => setActiveView('news')}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 
+            className={`flex-1 flex items-center justify-center gap-2 py-3
               rounded-lg font-semibold transition-all ${
                 activeView === 'news'
                   ? 'bg-blue-600 text-white shadow-lg'
@@ -336,6 +343,7 @@ export default function CompactNewsMetrics() {
 ## 4.7.6 Scroll Animations
 
 **Add scroll-triggered animations:**
+
 ```typescript
 // components/home/AnimatedSection.tsx
 'use client';
@@ -348,9 +356,9 @@ interface AnimatedSectionProps {
   className?: string;
 }
 
-export default function AnimatedSection({ 
-  children, 
-  className = '' 
+export default function AnimatedSection({
+  children,
+  className = ''
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -383,6 +391,7 @@ export default function AnimatedSection({
 ## 4.7.7 Section Transition Effects
 
 **Create smooth section transitions:**
+
 ```typescript
 // components/home/SectionTransition.tsx
 'use client';

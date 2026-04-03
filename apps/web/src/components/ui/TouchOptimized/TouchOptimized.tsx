@@ -19,14 +19,14 @@ export interface TouchOptimizedProps {
 
 /**
  * TouchOptimized Component
- * 
+ *
  * A wrapper component that provides touch-optimized interactions including:
  * - Tap gesture detection
  * - Swipe gestures in all directions (left, right, up, down)
  * - Visual touch feedback
  * - Accessibility-compliant touch targets
  * - Non-blocking mouse/keyboard interactions
- * 
+ *
  * Usage:
  * ```tsx
  * <TouchOptimized onTap={handleTap} onSwipe={handleSwipe}>
@@ -53,91 +53,100 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
   const [touchMoved, setTouchMoved] = useState(false);
 
   // Track touch start
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    if (disabled) return;
-    
-    setIsTouching(true);
-    setTouchMoved(false);
-    setTouchStart({
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY,
-      time: Date.now(),
-    });
-  }, [disabled]);
+  const handleTouchStart = useCallback(
+    (e: TouchEvent) => {
+      if (disabled) return;
+
+      setIsTouching(true);
+      setTouchMoved(false);
+      setTouchStart({
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        time: Date.now(),
+      });
+    },
+    [disabled]
+  );
 
   // Track touch move to detect swipe vs tap
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!touchStart || disabled) return;
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      if (!touchStart || disabled) return;
 
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
-    
-    const deltaX = Math.abs(currentX - touchStart.x);
-    const deltaY = Math.abs(currentY - touchStart.y);
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
 
-    // If moved more than 10px, consider it a swipe attempt
-    if (deltaX > 10 || deltaY > 10) {
-      setTouchMoved(true);
-    }
-  }, [touchStart, disabled]);
+      const deltaX = Math.abs(currentX - touchStart.x);
+      const deltaY = Math.abs(currentY - touchStart.y);
+
+      // If moved more than 10px, consider it a swipe attempt
+      if (deltaX > 10 || deltaY > 10) {
+        setTouchMoved(true);
+      }
+    },
+    [touchStart, disabled]
+  );
 
   // Handle touch end - detect tap or swipe
-  const handleTouchEnd = useCallback((e: TouchEvent) => {
-    if (disabled || !touchStart) {
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      if (disabled || !touchStart) {
+        setIsTouching(false);
+        setTouchStart(null);
+        return;
+      }
+
       setIsTouching(false);
-      setTouchStart(null);
-      return;
-    }
 
-    setIsTouching(false);
-    
-    const touchEnd = {
-      x: e.changedTouches[0].clientX,
-      y: e.changedTouches[0].clientY,
-    };
+      const touchEnd = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY,
+      };
 
-    const deltaX = touchEnd.x - touchStart.x;
-    const deltaY = touchEnd.y - touchStart.y;
-    const deltaTime = Date.now() - touchStart.time;
+      const deltaX = touchEnd.x - touchStart.x;
+      const deltaY = touchEnd.y - touchStart.y;
+      const deltaTime = Date.now() - touchStart.time;
 
-    // Detect tap (small movement and quick touch)
-    const tapThreshold = 10;
-    const tapTimeThreshold = 300; // Max 300ms for tap
-    
-    if (
-      !touchMoved &&
-      Math.abs(deltaX) < tapThreshold &&
-      Math.abs(deltaY) < tapThreshold &&
-      deltaTime < tapTimeThreshold
-    ) {
-      onTap?.();
-      setTouchStart(null);
-      setTouchMoved(false);
-      return;
-    }
+      // Detect tap (small movement and quick touch)
+      const tapThreshold = 10;
+      const tapTimeThreshold = 300; // Max 300ms for tap
 
-    // Detect swipe (larger movement)
-    if (touchMoved && onSwipe) {
-      const absDeltaX = Math.abs(deltaX);
-      const absDeltaY = Math.abs(deltaY);
+      if (
+        !touchMoved &&
+        Math.abs(deltaX) < tapThreshold &&
+        Math.abs(deltaY) < tapThreshold &&
+        deltaTime < tapTimeThreshold
+      ) {
+        onTap?.();
+        setTouchStart(null);
+        setTouchMoved(false);
+        return;
+      }
 
-      // Determine if horizontal or vertical swipe
-      if (absDeltaX > absDeltaY) {
-        // Horizontal swipe
-        if (absDeltaX > minSwipeDistance) {
-          onSwipe(deltaX > 0 ? 'right' : 'left');
-        }
-      } else {
-        // Vertical swipe
-        if (absDeltaY > minSwipeDistance) {
-          onSwipe(deltaY > 0 ? 'down' : 'up');
+      // Detect swipe (larger movement)
+      if (touchMoved && onSwipe) {
+        const absDeltaX = Math.abs(deltaX);
+        const absDeltaY = Math.abs(deltaY);
+
+        // Determine if horizontal or vertical swipe
+        if (absDeltaX > absDeltaY) {
+          // Horizontal swipe
+          if (absDeltaX > minSwipeDistance) {
+            onSwipe(deltaX > 0 ? 'right' : 'left');
+          }
+        } else {
+          // Vertical swipe
+          if (absDeltaY > minSwipeDistance) {
+            onSwipe(deltaY > 0 ? 'down' : 'up');
+          }
         }
       }
-    }
 
-    setTouchStart(null);
-    setTouchMoved(false);
-  }, [touchStart, touchMoved, onTap, onSwipe, minSwipeDistance, disabled]);
+      setTouchStart(null);
+      setTouchMoved(false);
+    },
+    [touchStart, touchMoved, onTap, onSwipe, minSwipeDistance, disabled]
+  );
 
   // Set up touch event listeners
   useEffect(() => {
@@ -177,12 +186,12 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       role={onTap || onSwipe ? 'button' : undefined}
-      tabIndex={disabled ? -1 : (onTap || onSwipe ? 0 : undefined)}
+      tabIndex={disabled ? -1 : onTap || onSwipe ? 0 : undefined}
       aria-disabled={disabled}
       onKeyDown={(e) => {
         // Support keyboard interaction for accessibility
         if (disabled) return;
-        
+
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onTap?.();
@@ -195,4 +204,3 @@ const TouchOptimized: React.FC<TouchOptimizedProps> = ({
 };
 
 export default TouchOptimized;
-

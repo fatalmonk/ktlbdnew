@@ -1,1 +1,13 @@
-{ "symbol":"KTL", "currency":"BDT", "value":45.50, "asOf":"2024-12-20T15:00:00+06:00" }
+{
+  "symbol": "KTL",
+  "currency": "BDT",
+  "value": 9.6,
+  "asOf": "2026-04-02T15:10:00+06:00",
+  "source": "DSE",
+  "change": -0.2,
+  "changePercent": -2.04,
+  "volume": 283798,
+  "priorClose": 9.8,
+  "marketCapMn": 1139.791,
+  "weekRange52": { "low": 8.5, "high": 14.7 }
+}

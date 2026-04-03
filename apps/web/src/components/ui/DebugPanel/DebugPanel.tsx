@@ -30,4 +30,3 @@ export const DebugPanel: React.FC = () => {
     </motion.div>
   );
 };
-

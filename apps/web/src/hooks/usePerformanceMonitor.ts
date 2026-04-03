@@ -9,7 +9,7 @@ interface PerformanceMetrics {
 export const usePerformanceMonitor = () => {
   const [metrics, setMetrics] = useState<PerformanceMetrics>({
     fps: 60,
-    loadTime: 0
+    loadTime: 0,
   });
 
   useEffect(() => {
@@ -24,14 +24,16 @@ export const usePerformanceMonitor = () => {
       if (currentTime >= lastTime + 1000) {
         const currentFPS = Math.round((frameCount * 1000) / (currentTime - lastTime));
 
-        setMetrics(prev => ({
+        setMetrics((prev) => ({
           ...prev,
-          fps: currentFPS
+          fps: currentFPS,
         }));
 
         // Warn if FPS drops below threshold
         if (currentFPS < 30 && process.env.NODE_ENV === 'development') {
-          console.warn(`Performance degraded: FPS dropped to ${currentFPS}. Consider reducing animations.`);
+          console.warn(
+            `Performance degraded: FPS dropped to ${currentFPS}. Consider reducing animations.`
+          );
         }
 
         frameCount = 0;
@@ -45,9 +47,9 @@ export const usePerformanceMonitor = () => {
 
     // Measure page load time
     if (window.performance && window.performance.timing) {
-      const loadTime = window.performance.timing.loadEventEnd -
-                      window.performance.timing.navigationStart;
-      setMetrics(prev => ({ ...prev, loadTime }));
+      const loadTime =
+        window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+      setMetrics((prev) => ({ ...prev, loadTime }));
     }
 
     return () => {

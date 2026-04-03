@@ -42,7 +42,7 @@ const TestimonialsSkeleton: React.FC = () => {
                   />
                 ))}
               </div>
-              
+
               {/* Quote skeleton */}
               <div className="mb-3 md:mb-4">
                 <Skeleton
@@ -66,7 +66,7 @@ const TestimonialsSkeleton: React.FC = () => {
                   aria-label={`Loading testimonial ${index} quote line 3`}
                 />
               </div>
-              
+
               {/* Author info skeleton */}
               <div className="border-t pt-3 md:pt-4">
                 <Skeleton
@@ -92,4 +92,3 @@ const TestimonialsSkeleton: React.FC = () => {
 };
 
 export default TestimonialsSkeleton;
-

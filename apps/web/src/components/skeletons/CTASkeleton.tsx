@@ -39,4 +39,3 @@ const CTASkeleton: React.FC = () => {
 };
 
 export default CTASkeleton;
-

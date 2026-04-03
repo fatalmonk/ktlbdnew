@@ -17,7 +17,11 @@ const Mail = createLazyIcon('Mail');
 const MapPin = createLazyIcon('MapPin');
 const ExternalLink = createLazyIcon('ExternalLink');
 
-const pipe = <span className="text-neutral-500 text-base sm:text-lg" aria-hidden>|</span>;
+const pipe = (
+  <span className="text-neutral-500 text-base sm:text-lg" aria-hidden>
+    |
+  </span>
+);
 
 const Footer = () => {
   const primaryNav = NAVIGATION_ITEMS.map((item) => ({
@@ -91,7 +95,10 @@ const Footer = () => {
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-body font-medium md:gap-x-8 md:text-body-lg lg:justify-end lg:text-body">
               {primaryNav.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.href} className="text-white transition-colors hover:text-primary-400">
+                  <Link
+                    to={item.href}
+                    className="text-white transition-colors hover:text-primary-400"
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -112,7 +119,9 @@ const Footer = () => {
                 <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
                   <MapPin className="h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
                 </Suspense>
-                <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">Head Office</span>
+                <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">
+                  Head Office
+                </span>
                 <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
                   <ExternalLink className="h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
                 </Suspense>
@@ -131,7 +140,9 @@ const Footer = () => {
                 <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
                   <MapPin className="h-6 w-6 shrink-0 text-primary-400" strokeWidth={2} />
                 </Suspense>
-                <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">Production facility</span>
+                <span className="min-w-0 flex-1 text-h4 font-medium leading-none text-white">
+                  Production facility
+                </span>
                 <Suspense fallback={<span className="inline-block h-6 w-6 shrink-0" aria-hidden />}>
                   <ExternalLink className="h-6 w-6 shrink-0 text-neutral-500 group-hover:text-white" />
                 </Suspense>
@@ -163,7 +174,12 @@ const Footer = () => {
                 {STOCK_EXCHANGES.cse.shortName}
               </a>
               {pipe}
-              <a href={ASSOCIATIONS.bgmea.url} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a
+                href={ASSOCIATIONS.bgmea.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
                 {ASSOCIATIONS.bgmea.shortName}
               </a>
               {pipe}

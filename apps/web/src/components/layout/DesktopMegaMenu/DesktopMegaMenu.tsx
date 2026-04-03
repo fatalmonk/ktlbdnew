@@ -57,10 +57,7 @@ function SubmenuPanelContent({
           {/* Columnar Grid */}
           <div className={submenuGridClass}>
             {item.columns.map((col, idx) => (
-              <div
-                key={col.title ?? col.links[0]?.href ?? idx}
-                className="flex min-w-0 flex-col"
-              >
+              <div key={col.title ?? col.links[0]?.href ?? idx} className="flex min-w-0 flex-col">
                 {col.title && (
                   <div className="mb-6 header-nav-typography text-[2.2rem] font-semibold uppercase tracking-widest text-[var(--evgBodyTextColor)] opacity-80">
                     {col.title}
@@ -116,7 +113,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
 }) => {
   const renderNavItem = (item: NavItem, menuIndex: number) => {
     const slug = navSlug(item.name);
-    
+
     if (item.type === 'link') {
       return (
         <li
@@ -162,7 +159,7 @@ const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({
         >
           <span>{item.name}</span>
           {/* Aesthetic Active Underline */}
-          <span 
+          <span
             className={`absolute bottom-0 left-4 right-4 h-0.5 bg-primary-500 transition-all duration-300 ${isOpen ? 'opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-50'}`}
           />
         </button>

@@ -98,7 +98,13 @@ const Blog = () => {
         title="Company Stories | Kattali Textile Ltd"
         description="Insights, stories, and updates from Kattali Textile Ltd. Learn about our manufacturing processes, partnerships, and commitment to quality."
         canonical="/newsroom/stories"
-        keywords={['textile blog', 'garment manufacturing blog', 'Bangladesh RMG', 'textile industry insights', 'company stories']}
+        keywords={[
+          'textile blog',
+          'garment manufacturing blog',
+          'Bangladesh RMG',
+          'textile industry insights',
+          'company stories',
+        ]}
       />
 
       <SubpageHeader
@@ -114,9 +120,7 @@ const Blog = () => {
         <section className="bg-gradient-to-r from-primary-600 to-secondary-600 pb-20 pt-10 text-white lg:pt-14">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4">
-                Company Stories
-              </h2>
+              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4">Company Stories</h2>
               <p className="text-xl text-white/90">
                 Insights, stories, and updates from Bangladesh's leading textile manufacturer
               </p>
@@ -130,7 +134,9 @@ const Blog = () => {
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
               {/* Search */}
               <div className="relative flex-1 max-w-md w-full">
-                <Suspense fallback={<div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" />}>
+                <Suspense
+                  fallback={<div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5" />}
+                >
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
                 </Suspense>
                 <input

@@ -73,6 +73,7 @@ Improve animation performance through reduced motion support and optimize JavaSc
 Create reusable animation utilities that automatically detect user motion preferences and device capabilities, providing optimized animation variants that respect accessibility and performance constraints.
 
 **Acceptance Criteria:**
+
 - `useReducedMotion` hook detects `prefers-reduced-motion` media query
 - Performance variants utility provides reduced/full animation options
 - Automatic device capability detection (low-end device detection)
@@ -88,6 +89,7 @@ Create reusable animation utilities that automatically detect user motion prefer
 Integrate bundle analysis tooling and optimize JavaScript bundle through dependency review, tree shaking verification, and chunk optimization strategies.
 
 **Acceptance Criteria:**
+
 - Bundle analyzer (rollup-plugin-visualizer) integrated into Vite config
 - Bundle analysis script added to package.json
 - Bundle size reduced through identified optimizations
@@ -103,6 +105,7 @@ Integrate bundle analysis tooling and optimize JavaScript bundle through depende
 Create optimized hooks for scroll and resize events using throttling and debouncing to reduce main thread blocking and improve FID metrics.
 
 **Acceptance Criteria:**
+
 - `useThrottledScroll` hook created with configurable delay
 - `useDebounce` hook created for resize events
 - Existing scroll/resize handlers replaced with optimized versions
@@ -130,6 +133,7 @@ Create optimized hooks for scroll and resize events using throttling and debounc
 **Risk:** Animation performance optimizations may change animation behavior or break existing animations.
 
 **Mitigation:**
+
 - Maintain full animation variants for capable devices
 - Only reduce animations for users who prefer reduced motion or on low-end devices
 - Test all animated components to ensure no visual regressions
@@ -140,6 +144,7 @@ Create optimized hooks for scroll and resize events using throttling and debounc
 **Risk:** Bundle optimization changes may break dependencies or cause runtime errors.
 
 **Mitigation:**
+
 - Test bundle analyzer output thoroughly before applying optimizations
 - Verify tree shaking doesn't remove necessary code
 - Test all functionality after bundle changes
@@ -198,4 +203,3 @@ Please develop detailed user stories for this brownfield epic. Key consideration
   - No performance regressions
 
 The epic should maintain animation quality while improving performance metrics (FID < 100ms, reduced bundle size, optimized event handling).
-

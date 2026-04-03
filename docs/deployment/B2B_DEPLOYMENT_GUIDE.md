@@ -20,30 +20,39 @@ This guide covers the deployment process for the B2B-enhanced KTL website.
 ### 🔍 Pre-Deployment Testing
 
 #### 1. **Build Test**
+
 ```bash
 npm run build
 ```
+
 Ensure the build completes without errors.
 
 #### 2. **Type Check**
+
 ```bash
 npm run typecheck
 ```
+
 Verify no TypeScript errors.
 
 #### 3. **Lint Check**
+
 ```bash
 npm run lint
 ```
+
 Fix any linting issues.
 
 #### 4. **Local Preview**
+
 ```bash
 npm run preview
 ```
+
 Test the production build locally at `http://localhost:4173`
 
 #### 5. **E2E Tests** (if available)
+
 ```bash
 npm run test:e2e
 ```
@@ -61,6 +70,7 @@ Test each route manually:
 ### 🔗 Navigation Updates
 
 Verify the updated navigation structure:
+
 - Company → includes Case Studies
 - Investor Relations → includes ESG & Sustainability
 - Trust & Compliance → new section
@@ -84,7 +94,9 @@ In `apps/web/index.html`, add:
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
@@ -93,6 +105,7 @@ In `apps/web/index.html`, add:
 3. **Verify Events**
 
 The following events are tracked:
+
 - RFQ form interactions
 - Case study views and downloads
 - Certification clicks and verifications
@@ -105,6 +118,7 @@ The following events are tracked:
 #### Option 1: Vercel (Recommended)
 
 1. **Deploy from Git**
+
    ```bash
    # Ensure vercel.json is configured
    # Push to main branch
@@ -123,11 +137,13 @@ The following events are tracked:
 #### Option 2: Hostinger
 
 1. **Build the project**
+
    ```bash
    npm run build
    ```
 
 2. **Deploy using script**
+
    ```bash
    cd ops/deployment/hostinger
    ./deploy-hostinger.sh
@@ -140,6 +156,7 @@ The following events are tracked:
 ### 🔧 Post-Deployment Tasks
 
 #### 1. **Verify All Pages Load**
+
 - Homepage with new sections
 - All case studies
 - Certifications hub
@@ -147,18 +164,21 @@ The following events are tracked:
 - RFQ form (all steps)
 
 #### 2. **Test Chatbot**
+
 - Opens/closes correctly
 - Responds to messages
 - Quick actions work
 - Navigates properly
 
 #### 3. **Test Forms**
+
 - RFQ multi-step form
 - Form validation
 - Auto-save functionality
 - Submission (check console for now)
 
 #### 4. **Mobile Testing**
+
 - Test on actual devices
 - Check responsive layouts
 - Test chatbot on mobile
@@ -167,6 +187,7 @@ The following events are tracked:
 #### 5. **SEO Verification**
 
 Test each new page:
+
 ```bash
 # Check meta tags
 curl -s https://ktlbd.com/case-studies | grep -i "meta"
@@ -195,6 +216,7 @@ npm run generate-sitemap
 Upload new `sitemap.xml` to production.
 
 Submit to Google Search Console:
+
 ```
 https://search.google.com/search-console
 ```
@@ -204,18 +226,21 @@ https://search.google.com/search-console
 #### Initial Metrics to Track
 
 **Week 1:**
+
 - Page load times
 - Core Web Vitals
 - RFQ form completion rate
 - Chatbot engagement rate
 
 **Week 2-4:**
+
 - Organic traffic to new pages
 - Case study page views
 - Certification hub visits
 - RFQ submissions
 
 **Month 1-3:**
+
 - Lead conversion rate
 - Time on site increase
 - Bounce rate on new pages
@@ -224,20 +249,24 @@ https://search.google.com/search-console
 ### 🐛 Troubleshooting
 
 #### Build Fails
+
 - Check Node version (should be 20+)
 - Clear `node_modules` and reinstall
 - Check for TypeScript errors
 
 #### Routes Not Working
+
 - Verify `vercel.json` or `.htaccess` for SPA routing
 - Check if lazy loading is working
 
 #### Analytics Not Tracking
+
 - Verify GA4 Measurement ID
 - Check browser console for errors
 - Ensure gtag script is loading
 
 #### Chatbot Not Appearing
+
 - Check if component is imported in App.tsx
 - Verify z-index conflicts
 - Check console for errors
@@ -299,25 +328,27 @@ Final verification before announcing:
 ## Success Metrics (30/60/90 Days)
 
 ### 30 Days
+
 - [ ] 50+ RFQ submissions
 - [ ] 500+ case study views
 - [ ] 200+ certification hub visits
 - [ ] 1,000+ chatbot interactions
 
 ### 60 Days
+
 - [ ] 150+ RFQ submissions
 - [ ] 25+ qualified leads
 - [ ] 10+ sustainability report downloads
 
 ### 90 Days
+
 - [ ] 300+ total RFQs
 - [ ] 50+ active sales conversations
 - [ ] 10+ new clients from leads
 
 ---
 
-**Deployment Date**: _________________
-**Deployed By**: _________________
+**Deployment Date**: **\*\*\*\***\_**\*\*\*\***
+**Deployed By**: **\*\*\*\***\_**\*\*\*\***
 **Version**: 2.0.0-b2b
 **Status**: ✅ Ready for Production
-

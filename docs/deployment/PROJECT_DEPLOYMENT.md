@@ -3,6 +3,7 @@
 ## Pre-Deployment Checklist
 
 ### ✅ Completed Items
+
 - [x] Git repository connected to GitHub
 - [x] All local changes committed and pushed
 - [x] Build tested successfully (1.39s build time)
@@ -10,6 +11,7 @@
 - [x] Environment variables documented (`.env.example`)
 
 ### 📊 Build Statistics
+
 - **Total Build Time:** 1.39s
 - **Main Bundle Size:** 215.49 kB (68.36 kB gzipped)
 - **Home Page Bundle:** 135.41 kB (44.34 kB gzipped)
@@ -19,6 +21,7 @@
 ## Vercel Deployment Commands
 
 ### Option 1: Vercel CLI (Recommended)
+
 ```bash
 # Install Vercel CLI globally
 npm i -g vercel
@@ -39,6 +42,7 @@ vercel
 ```
 
 ### Option 2: GitHub Integration
+
 1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "New Project"
@@ -49,11 +53,14 @@ vercel
 ## Environment Variables
 
 ### Required Variables (if any)
+
 Based on `.env.example`, you may need to set:
+
 - `VITE_APP_TITLE` (default: "KTL Vite App")
 - `VITE_API_BASE` (default: "https://api.example.com")
 
 ### Setting Environment Variables in Vercel
+
 1. Go to your project dashboard on Vercel
 2. Navigate to Settings → Environment Variables
 3. Add any required variables
@@ -61,11 +68,13 @@ Based on `.env.example`, you may need to set:
 ## Post-Deployment Verification
 
 ### 1. Check Deployment Status
+
 - Visit your Vercel dashboard
 - Verify deployment shows "Ready" status
 - Check build logs for any errors
 
 ### 2. Test Live Website
+
 - [ ] Homepage loads correctly
 - [ ] Navigation works (all menu items)
 - [ ] Contact form functions
@@ -75,12 +84,14 @@ Based on `.env.example`, you may need to set:
 - [ ] Animations (CountUp, StaggeredReveal) work
 
 ### 3. Performance Checks
+
 - [ ] Lighthouse score > 90
 - [ ] Page load time < 3 seconds
 - [ ] All images optimized (WebP format)
 - [ ] No console errors
 
 ### 4. SEO Verification
+
 - [ ] Meta tags present
 - [ ] Structured data working
 - [ ] Sitemap accessible: `yoursite.vercel.app/sitemap.xml`
@@ -89,24 +100,29 @@ Based on `.env.example`, you may need to set:
 ## Troubleshooting Common Issues
 
 ### 404 NOT_FOUND Errors
+
 **Problem:** Vercel shows 404 error after deployment
 **Causes:**
+
 - Wrong output directory (using 'public' instead of 'dist')
 - Missing `vercel.json` configuration
 - Build command not working properly
 
 **Solutions:**
+
 1. **Verify vercel.json exists and is correct:**
+
    ```json
    {
      "buildCommand": "npm run build",
      "outputDirectory": "dist",
      "framework": "vite",
-     "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]
+     "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
    }
    ```
 
 2. **Test build locally:**
+
    ```bash
    npm run build
    ls -la dist/
@@ -114,6 +130,7 @@ Based on `.env.example`, you may need to set:
    ```
 
 3. **Force redeploy:**
+
    ```bash
    vercel --prod --force
    ```
@@ -123,6 +140,7 @@ Based on `.env.example`, you may need to set:
    - Clear build cache and redeploy
 
 ### Build Failures
+
 ```bash
 # Clear cache and rebuild
 rm -rf node_modules package-lock.json
@@ -131,20 +149,24 @@ npm run build
 ```
 
 ### Environment Variable Issues
+
 - Ensure all `VITE_` prefixed variables are set in Vercel dashboard
 - Check that variables don't contain spaces or special characters
 
 ### Routing Issues (SPA)
+
 - Verify `vercel.json` rewrites are configured correctly
 - Check that all routes return `index.html` for SPA routing
 - Test navigation between pages
 
 ### Performance Issues
+
 - Check bundle size in Vercel dashboard
 - Consider code splitting for large components
 - Optimize images (already done with WebP)
 
 ### Vercel CLI Issues
+
 ```bash
 # Reinstall Vercel CLI
 npm uninstall -g vercel
@@ -160,6 +182,7 @@ vercel link
 ## Rollback Procedure
 
 If deployment fails:
+
 1. Check Vercel dashboard for error logs
 2. Fix issues locally and commit
 3. Push to GitHub (auto-deploys)
@@ -168,6 +191,7 @@ If deployment fails:
 ## Monitoring and Analytics
 
 ### Recommended Setup
+
 1. **Vercel Analytics** (built-in)
    - Enable in project settings
    - Monitor Core Web Vitals

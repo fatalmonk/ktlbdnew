@@ -262,11 +262,13 @@ npm run test:coverage
 ```
 
 Coverage reports are generated in:
+
 - **Terminal**: Text summary
 - **HTML**: `coverage/index.html`
 - **LCOV**: `coverage/lcov.info`
 
 **Coverage Thresholds:**
+
 - Lines: 70%
 - Functions: 70%
 - Branches: 70%
@@ -390,6 +392,7 @@ test('should load within acceptable time', async ({ page }) => {
 ### Test Naming Conventions
 
 **Good Test Names:**
+
 ```typescript
 ✅ 'should display error when email is invalid'
 ✅ 'should navigate to products page when clicking link'
@@ -397,6 +400,7 @@ test('should load within acceptable time', async ({ page }) => {
 ```
 
 **Poor Test Names:**
+
 ```typescript
 ❌ 'test 1'
 ❌ 'it works'
@@ -428,6 +432,7 @@ describe('ComponentName', () => {
 ### What to Test
 
 **✅ DO Test:**
+
 - User interactions (clicks, typing, form submissions)
 - Visual feedback (error messages, success states)
 - Navigation and routing
@@ -436,6 +441,7 @@ describe('ComponentName', () => {
 - Critical user flows
 
 **❌ DON'T Test:**
+
 - Implementation details (internal state, private methods)
 - Third-party libraries
 - CSS styles (unless critical to functionality)
@@ -446,28 +452,32 @@ describe('ComponentName', () => {
 Use queries in this order (as recommended by Testing Library):
 
 1. **getByRole** (preferred) - Most accessible
+
    ```typescript
-   screen.getByRole('button', { name: /submit/i })
+   screen.getByRole('button', { name: /submit/i });
    ```
 
 2. **getByLabelText** - Form elements
+
    ```typescript
-   screen.getByLabelText(/email address/i)
+   screen.getByLabelText(/email address/i);
    ```
 
 3. **getByPlaceholderText** - Forms without labels
+
    ```typescript
-   screen.getByPlaceholderText(/enter email/i)
+   screen.getByPlaceholderText(/enter email/i);
    ```
 
 4. **getByText** - Non-interactive elements
+
    ```typescript
-   screen.getByText(/welcome/i)
+   screen.getByText(/welcome/i);
    ```
 
 5. **getByTestId** - Last resort
    ```typescript
-   screen.getByTestId('custom-element')
+   screen.getByTestId('custom-element');
    ```
 
 ---
@@ -608,6 +618,7 @@ within(sidebar).getByText('Menu Item');
 **Problem:** State updates happening outside of React's act()
 
 **Solution:**
+
 ```typescript
 // Use waitFor for async updates
 await waitFor(() => {
@@ -620,6 +631,7 @@ await waitFor(() => {
 **Problem:** Element not yet rendered or hidden
 
 **Solution:**
+
 ```typescript
 // Wait for element to be visible
 await page.getByText('Content').waitFor({ state: 'visible' });
@@ -633,12 +645,13 @@ await element.scrollIntoViewIfNeeded();
 **Problem:** Different environments, timing issues
 
 **Solution:**
+
 ```typescript
 // Increase timeouts in CI
 test.setTimeout(process.env.CI ? 60000 : 30000);
 
 // Use retries in Playwright config
-retries: process.env.CI ? 2 : 0
+retries: process.env.CI ? 2 : 0;
 ```
 
 #### 4. Mock Not Working
@@ -646,6 +659,7 @@ retries: process.env.CI ? 2 : 0
 **Problem:** Mock defined after import
 
 **Solution:**
+
 ```typescript
 // ❌ Bad - Mock after import
 import { getData } from './api';
@@ -661,6 +675,7 @@ import { getData } from './api';
 **Problem:** Insufficient test coverage
 
 **Solution:**
+
 ```bash
 # Generate coverage report to see what's missing
 npm run test:coverage
@@ -727,18 +742,21 @@ npm run lint
 ## Additional Resources
 
 ### Documentation
+
 - **Vitest**: https://vitest.dev
 - **Playwright**: https://playwright.dev
 - **React Testing Library**: https://testing-library.com/react
 - **Jest DOM Matchers**: https://github.com/testing-library/jest-dom
 
 ### Project Files
+
 - **Vitest Config**: `vitest.config.ts`
 - **Playwright Config**: `playwright.config.ts`
 - **Test Setup**: `src/test/vitest-setup.ts`
 - **Test Utils**: `src/test/test-utils.tsx`
 
 ### Example Tests
+
 - **Component Test**: `src/components/Button.test.tsx`
 - **Page Test**: `src/pages/Home.test.tsx`
 - **E2E Test**: `e2e/navigation.spec.ts`
@@ -772,17 +790,17 @@ npx playwright codegen   # Generate tests
 
 ```typescript
 // Vitest/Jest DOM
-expect(element).toBeInTheDocument()
-expect(element).toBeVisible()
-expect(element).toHaveTextContent('text')
-expect(element).toHaveClass('class-name')
-expect(element).toHaveAttribute('attr', 'value')
+expect(element).toBeInTheDocument();
+expect(element).toBeVisible();
+expect(element).toHaveTextContent('text');
+expect(element).toHaveClass('class-name');
+expect(element).toHaveAttribute('attr', 'value');
 
 // Playwright
-await expect(page).toHaveURL(/pattern/)
-await expect(element).toBeVisible()
-await expect(element).toHaveText('text')
-await expect(element).toHaveAttribute('attr', 'value')
+await expect(page).toHaveURL(/pattern/);
+await expect(element).toBeVisible();
+await expect(element).toHaveText('text');
+await expect(element).toHaveAttribute('attr', 'value');
 ```
 
 ---

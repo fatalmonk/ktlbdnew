@@ -39,6 +39,7 @@ This comprehensive developer guide provides everything needed to contribute to t
 ## Project Overview
 
 ### Technology Stack
+
 ```
 Technology Stack
 ├── Frontend
@@ -66,6 +67,7 @@ Technology Stack
 ```
 
 ### Project Goals
+
 - **Test Stability:** Achieve 100% E2E test pass rate across all browsers
 - **Backend Integration:** Implement serverless APIs for form submissions
 - **Performance:** Optimize bundle size and Core Web Vitals
@@ -77,49 +79,53 @@ Technology Stack
 ## Development Environment Setup
 
 ### Prerequisites
+
 ```bash
-# Required software versions
-Node.js: >= 18.0.0
+# Required software versions (align with CI and root README)
+Node.js: 20.x (LTS)
 npm: >= 10.0.0
 Git: >= 2.30.0
 VS Code: >= 1.80.0 (recommended)
 ```
 
 ### Initial Setup
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/your-org/ktl-website.git
 cd ktl-website
 
-# 2. Install dependencies
+# 2. Install dependencies (npm workspaces — root installs apps/web)
 npm install
 
-# 3. Install Playwright browsers
-npx playwright install
+# 3. Install Playwright browsers (for E2E)
+npm exec --workspace=apps/web -- playwright install
 
-# 4. Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your configuration
+# 4. Set up environment variables (Vite uses VITE_* — see apps/web/.env.example)
+cp apps/web/.env.example apps/web/.env.local
+# Edit apps/web/.env.local with your configuration
 
-# 5. Start development server
+# 5. Start development server (from repo root)
 npm run dev
 ```
 
 ### Environment Variables
-```bash
-# Frontend Environment Variables
-REACT_APP_API_URL=https://api.ktlbd.com
-REACT_APP_SENTRY_DSN=your_sentry_dsn
-REACT_APP_GA_TRACKING_ID=your_ga_id
 
-# Backend Environment Variables
-SENDGRID_API_KEY=your_sendgrid_key
-CORS_ORIGIN=https://ktlbd.com
-EMAIL_FROM=noreply@ktlbd.com
-EMAIL_TO=sales@ktlbd.com
+See `apps/web/.env.example` for the authoritative list. The Vite app uses **`VITE_*`** for client-exposed variables (for example `VITE_API_URL`, optional `VITE_GOOGLE_MAPS_API_KEY`, optional Datadog RUM keys). Do not use legacy `REACT_APP_*` names in this codebase.
+
+```bash
+# Examples — match names in apps/web/.env.example
+# VITE_API_URL=/api
+# VITE_GOOGLE_MAPS_API_KEY=
+# VITE_GOOGLE_MAPS_MAP_ID=
+
+# Backend / serverless (when applicable — not all are used in every deployment)
+# SENDGRID_API_KEY=your_sendgrid_key
+# CORS_ORIGIN=https://ktlbd.com
 ```
 
 ### VS Code Setup
+
 ```json
 // .vscode/settings.json
 {
@@ -136,6 +142,7 @@ EMAIL_TO=sales@ktlbd.com
 ```
 
 ### Recommended Extensions
+
 ```json
 // .vscode/extensions.json
 {
@@ -154,6 +161,7 @@ EMAIL_TO=sales@ktlbd.com
 ## Project Structure
 
 ### Frontend Structure
+
 ```
 project/
 ├── src/
@@ -199,6 +207,7 @@ project/
 ```
 
 ### Backend Structure
+
 ```
 backend/
 ├── functions/
@@ -223,6 +232,7 @@ backend/
 ## Development Workflow
 
 ### Story Development Process
+
 ```bash
 # 1. Create feature branch
 git checkout -b feature/story-1.1-fix-chromium-tests
@@ -245,6 +255,7 @@ git push origin feature/story-1.1-fix-chromium-tests
 ```
 
 ### Code Review Process
+
 ```bash
 # 1. Ensure all tests pass
 npm run test
@@ -262,6 +273,7 @@ npm run type-check
 ```
 
 ### Testing Workflow
+
 ```bash
 # Unit tests
 npm run test
@@ -286,6 +298,7 @@ npm run test:a11y
 ## Coding Standards
 
 ### TypeScript Standards
+
 ```typescript
 // Use strict TypeScript
 // tsconfig.json
@@ -314,6 +327,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 ```
 
 ### React Standards
+
 ```typescript
 // Use functional components with hooks
 import { useState, useEffect } from 'react';
@@ -346,6 +360,7 @@ const useFormSubmit = (endpoint: string) => {
 ```
 
 ### CSS/Tailwind Standards
+
 ```typescript
 // Use Tailwind classes consistently
 const buttonClasses = `
@@ -373,6 +388,7 @@ const theme = {
 ```
 
 ### File Naming Conventions
+
 ```
 # Components
 ContactForm.tsx          # PascalCase for components
@@ -400,6 +416,7 @@ contact-form.e2e.ts      # .e2e.ts for E2E tests
 ## Testing Guidelines
 
 ### Unit Testing
+
 ```typescript
 // ContactForm.test.tsx
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
@@ -429,6 +446,7 @@ describe('ContactForm', () => {
 ```
 
 ### Integration Testing
+
 ```typescript
 // api-client.test.ts
 import { ApiClient } from './api-client';
@@ -437,7 +455,7 @@ describe('ApiClient', () => {
   it('should submit contact form successfully', async () => {
     const client = new ApiClient();
     const mockResponse = { success: true, message: 'Success' };
-    
+
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
       json: () => Promise.resolve(mockResponse),
@@ -461,28 +479,28 @@ describe('ApiClient', () => {
 ```
 
 ### E2E Testing
+
 ```typescript
 // contact-form.e2e.ts
 import { test, expect } from '@playwright/test';
 
 test('contact form submission', async ({ page }) => {
   await page.goto('/contact');
-  
+
   await page.fill('[name="name"]', 'John Doe');
   await page.fill('[name="email"]', 'john@example.com');
   await page.fill('[name="subject"]', 'Test Subject');
   await page.fill('[name="message"]', 'Test message');
-  
+
   await page.click('button[type="submit"]');
-  
+
   await expect(page.locator('.success-message')).toBeVisible();
-  await expect(page.locator('.success-message')).toContainText(
-    'Thank you for your message'
-  );
+  await expect(page.locator('.success-message')).toContainText('Thank you for your message');
 });
 ```
 
 ### Test Coverage Requirements
+
 ```bash
 # Unit tests: > 80% coverage
 # Integration tests: > 70% coverage
@@ -497,6 +515,7 @@ npm run test:coverage
 ## Performance Guidelines
 
 ### Bundle Optimization
+
 ```typescript
 // vite.config.ts
 export default defineConfig({
@@ -516,6 +535,7 @@ export default defineConfig({
 ```
 
 ### Code Splitting
+
 ```typescript
 // Lazy load components
 const ContactPage = lazy(() => import('./pages/ContactPage'));
@@ -531,6 +551,7 @@ const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 ```
 
 ### Image Optimization
+
 ```typescript
 // OptimizedImage component
 export const OptimizedImage: React.FC<{
@@ -555,6 +576,7 @@ export const OptimizedImage: React.FC<{
 ```
 
 ### Performance Monitoring
+
 ```typescript
 // Performance monitoring
 const trackPerformance = (metric: string, value: number) => {
@@ -580,6 +602,7 @@ new PerformanceObserver((list) => {
 ## Accessibility Guidelines
 
 ### ARIA Implementation
+
 ```typescript
 // Accessible form component
 export const AccessibleForm: React.FC<{
@@ -612,6 +635,7 @@ export const AccessibleForm: React.FC<{
 ```
 
 ### Keyboard Navigation
+
 ```typescript
 // Keyboard navigation hook
 const useKeyboardNavigation = () => {
@@ -638,11 +662,13 @@ const useKeyboardNavigation = () => {
 ```
 
 ### Focus Management
+
 ```typescript
 // Focus management for modals
 const useFocusManagement = () => {
-  const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  
+  const focusableElements =
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
   const trapFocus = (element: HTMLElement) => {
     const focusableContent = element.querySelectorAll(focusableElements);
     const firstFocusableElement = focusableContent[0] as HTMLElement;
@@ -670,6 +696,7 @@ const useFocusManagement = () => {
 ```
 
 ### Color Contrast
+
 ```css
 /* Ensure proper color contrast */
 .text-primary {
@@ -696,6 +723,7 @@ const useFocusManagement = () => {
 ## Deployment Process
 
 ### Frontend Deployment
+
 ```bash
 # 1. Build the project
 npm run build
@@ -711,6 +739,7 @@ npm run verify:deployment
 ```
 
 ### Backend Deployment
+
 ```bash
 # 1. Install serverless framework
 npm install -g serverless
@@ -729,6 +758,7 @@ serverless deploy --stage production
 ```
 
 ### Environment Configuration
+
 ```bash
 # Staging environment
 REACT_APP_API_URL=https://staging-api.ktlbd.com
@@ -746,6 +776,7 @@ REACT_APP_SENTRY_DSN=production_sentry_dsn
 ### Common Issues
 
 #### 1. E2E Test Failures
+
 ```bash
 # Debug E2E tests
 npx playwright test --debug
@@ -758,6 +789,7 @@ npx playwright show-report
 ```
 
 #### 2. Build Issues
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json
@@ -771,6 +803,7 @@ npm run lint
 ```
 
 #### 3. Performance Issues
+
 ```bash
 # Analyze bundle size
 npm run analyze
@@ -783,6 +816,7 @@ npm run profile
 ```
 
 #### 4. API Issues
+
 ```bash
 # Test API endpoints
 curl -X POST https://api.ktlbd.com/api/contact \
@@ -794,6 +828,7 @@ serverless logs -f contact --stage production
 ```
 
 ### Debug Tools
+
 ```typescript
 // Development debugging
 if (process.env.NODE_ENV === 'development') {
@@ -830,6 +865,7 @@ class ErrorBoundary extends React.Component {
 ## Best Practices
 
 ### Code Organization
+
 ```typescript
 // 1. Use barrel exports
 // components/index.ts
@@ -866,6 +902,7 @@ interface ApiResponse<T> {
 ```
 
 ### Error Handling
+
 ```typescript
 // API error handling
 const handleApiError = (error: any) => {
@@ -900,6 +937,7 @@ const validateForm = (data: FormData) => {
 ```
 
 ### Security Best Practices
+
 ```typescript
 // Input sanitization
 const sanitizeInput = (input: string) => {
@@ -917,7 +955,7 @@ const getCsrfToken = () => {
 // Secure API calls
 const secureApiCall = async (endpoint: string, data: any) => {
   const csrfToken = getCsrfToken();
-  
+
   return fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -930,6 +968,7 @@ const secureApiCall = async (endpoint: string, data: any) => {
 ```
 
 ### Performance Best Practices
+
 ```typescript
 // 1. Use React.memo for expensive components
 const ExpensiveComponent = React.memo(({ data }) => {
@@ -960,6 +999,7 @@ const ParentComponent = () => {
 ## Resources
 
 ### Documentation
+
 - [React Documentation](https://react.dev/)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
@@ -967,22 +1007,26 @@ const ParentComponent = () => {
 - [Vite Documentation](https://vitejs.dev/guide/)
 
 ### Tools
+
 - [VS Code](https://code.visualstudio.com/)
 - [GitHub](https://github.com/)
 - [AWS Lambda](https://aws.amazon.com/lambda/)
 - [SendGrid](https://sendgrid.com/)
 
 ### Testing
+
 - [Vitest](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Playwright](https://playwright.dev/)
 
 ### Performance
+
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 - [Web Vitals](https://web.dev/vitals/)
 - [Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 
 ### Accessibility
+
 - [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [ARIA Documentation](https://www.w3.org/TR/wai-aria-1.1/)
 - [Accessibility Testing](https://www.deque.com/axe/)
@@ -992,12 +1036,14 @@ const ParentComponent = () => {
 ## Support
 
 ### Getting Help
+
 - **Team Slack:** #ktl-dev-team
 - **GitHub Issues:** Create issues for bugs and feature requests
 - **Documentation:** Check this guide first
 - **Code Review:** Ask for reviews on pull requests
 
 ### Escalation Process
+
 1. **Level 1:** Check documentation and troubleshooting guide
 2. **Level 2:** Ask team members in Slack
 3. **Level 3:** Create GitHub issue
@@ -1009,4 +1055,3 @@ const ParentComponent = () => {
 **Created:** October 25, 2025  
 **Last Updated:** October 25, 2025  
 **Version:** 1.0
-

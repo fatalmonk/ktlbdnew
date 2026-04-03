@@ -4,7 +4,8 @@ import { COMPANY_NAME } from '../../../lib/constants';
 const SEO = {
   siteName: COMPANY_NAME,
   siteUrl: 'https://ktlbd.com/',
-  defaultDescription: 'Bangladesh\'s leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.',
+  defaultDescription:
+    "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
 };
 
 interface SEOProps {
@@ -137,11 +138,10 @@ const SEOComponent: React.FC<SEOProps> = ({
     publishedTime,
     modifiedTime,
     section,
-    tags
+    tags,
   ]);
 
   return null; // Nothing visual rendered
 };
 
 export default SEOComponent;
-

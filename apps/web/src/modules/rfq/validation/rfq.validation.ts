@@ -10,8 +10,7 @@ export const isRFQStepValid = (formData: RFQFormData, step: number): boolean => 
     }
     case 3: {
       return (
-        formData.requirements.timeline !== '' &&
-        formData.requirements.shippingDestination !== ''
+        formData.requirements.timeline !== '' && formData.requirements.shippingDestination !== ''
       );
     }
     case 4: {
@@ -34,5 +33,3 @@ export const isRFQStepValid = (formData: RFQFormData, step: number): boolean => 
       return false;
   }
 };
-
-

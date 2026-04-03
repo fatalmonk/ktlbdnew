@@ -12,8 +12,16 @@ export interface AnalyticsEvent {
 
 // Track events to Google Analytics (GA4)
 export function trackEvent(eventName: string, parameters?: Record<string, unknown>) {
-  if (typeof window !== 'undefined' && 'gtag' in window && typeof (window as { gtag?: unknown }).gtag === 'function') {
-    ((window as { gtag: (command: string, targetId: string, config?: Record<string, unknown>) => void }).gtag)('event', eventName, parameters);
+  if (
+    typeof window !== 'undefined' &&
+    'gtag' in window &&
+    typeof (window as { gtag?: unknown }).gtag === 'function'
+  ) {
+    (
+      window as {
+        gtag: (command: string, targetId: string, config?: Record<string, unknown>) => void;
+      }
+    ).gtag('event', eventName, parameters);
   }
 
   // Also log to console in development
@@ -30,21 +38,21 @@ export const RFQEvents = {
       step_number: step,
     });
   },
-  
+
   stepCompleted: (step: number) => {
     trackEvent('rfq_step_completed', {
       event_category: 'RFQ',
       step_number: step,
     });
   },
-  
+
   stepAbandoned: (step: number) => {
     trackEvent('rfq_step_abandoned', {
       event_category: 'RFQ',
       step_number: step,
     });
   },
-  
+
   formSubmitted: (productCount: number, estimatedValue?: string) => {
     trackEvent('rfq_form_submitted', {
       event_category: 'RFQ',
@@ -63,14 +71,14 @@ export const CaseStudyEvents = {
       case_study_title: title,
     });
   },
-  
+
   pdfDownloaded: (caseStudyId: string) => {
     trackEvent('case_study_pdf_downloaded', {
       event_category: 'Download',
       case_study_id: caseStudyId,
     });
   },
-  
+
   shared: (caseStudyId: string, method: string) => {
     trackEvent('case_study_shared', {
       event_category: 'Share',
@@ -88,14 +96,14 @@ export const CertificationEvents = {
       certification_name: certificationName,
     });
   },
-  
+
   verified: (certificationName: string) => {
     trackEvent('certification_verified', {
       event_category: 'Certification',
       certification_name: certificationName,
     });
   },
-  
+
   pdfDownloaded: (certificationName: string) => {
     trackEvent('certification_pdf_downloaded', {
       event_category: 'Download',
@@ -111,14 +119,14 @@ export const SustainabilityEvents = {
       event_category: 'Sustainability',
     });
   },
-  
+
   reportDownloaded: (reportType: string) => {
     trackEvent('sustainability_report_downloaded', {
       event_category: 'Download',
       report_type: reportType,
     });
   },
-  
+
   metricClicked: (metricName: string) => {
     trackEvent('sustainability_metric_clicked', {
       event_category: 'Sustainability',
@@ -134,14 +142,14 @@ export const ChatbotEvents = {
       event_category: 'Chatbot',
     });
   },
-  
+
   messageSent: (messageCount: number) => {
     trackEvent('chatbot_message_sent', {
       event_category: 'Chatbot',
       message_count: messageCount,
     });
   },
-  
+
   actionTaken: (actionType: string, actionValue: string) => {
     trackEvent('chatbot_action_taken', {
       event_category: 'Chatbot',
@@ -159,7 +167,7 @@ export const NavigationEvents = {
       menu_name: menuName,
     });
   },
-  
+
   linkClicked: (linkText: string, destination: string) => {
     trackEvent('navigation_link_clicked', {
       event_category: 'Navigation',
@@ -177,7 +185,7 @@ export const ConversionEvents = {
       form_type: formType,
     });
   },
-  
+
   contactRequested: (source: string) => {
     trackEvent('contact_requested', {
       event_category: 'Conversion',
@@ -193,4 +201,3 @@ export function trackPageView(path: string, title: string) {
     page_title: title,
   });
 }
-

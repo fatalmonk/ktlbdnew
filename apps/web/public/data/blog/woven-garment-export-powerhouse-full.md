@@ -80,26 +80,31 @@ We believe quality can't be "inspected in"—it must be built in from the start.
 Our quality system encompasses multiple checkpoints:
 
 **Fabric Inspection**: All incoming fabric undergoes 100% inspection before cutting
+
 - Checking for defects, color consistency, and specification compliance
 - Measuring actual vs. specified fabric characteristics
 - Rejecting or segregating substandard materials
 
 **Pattern and Cutting Verification**: Ensuring accurate patterns and precise cutting
+
 - Verifying pattern specifications match buyer requirements
 - Checking marker efficiency and layout optimization
 - Inspecting cutting quality and accuracy
 
 **In-Line Quality Checks**: Monitoring during production
+
 - Regular inspections of sewing quality
 - Measurement checks to ensure size accuracy
 - Thread tension and stitch quality verification
 
 **Final Inspection**: Comprehensive review before packing
+
 - 100% inspection of finished garments
 - Checking all specifications, measurements, and finishing
 - Segregating and reworking any garments that don't meet standards
 
 **Pre-Shipment Verification**: Final confirmation before export
+
 - Random sampling of packed cartons
 - Verification of packing specifications
 - Documentation review and accuracy confirmation
@@ -107,6 +112,7 @@ Our quality system encompasses multiple checkpoints:
 ### Third-Party Audits
 
 We regularly undergo inspections by:
+
 - International buyers' quality teams
 - Independent inspection agencies
 - Industry certification bodies
@@ -163,6 +169,7 @@ Our garments reach markets across the globe:
 ### Logistics Partnerships
 
 We maintain relationships with:
+
 - International freight forwarders with global networks
 - Customs brokers in key destination countries
 - Quality inspection agencies for pre-shipment verification
@@ -242,6 +249,7 @@ In a crowded market, buyers need clear reasons to choose one manufacturer over a
 ### Specialization Focus
 
 Unlike factories that try to do everything, we focus on woven garments where we have deep expertise. This specialization means:
+
 - Better understanding of woven-specific challenges
 - Specialized equipment and processes
 - Experienced workforce with woven garment skills
@@ -250,6 +258,7 @@ Unlike factories that try to do everything, we focus on woven garments where we 
 ### Balance of Scale and Flexibility
 
 We're large enough to handle significant orders but nimble enough to accommodate special requirements:
+
 - Capacity for major production runs
 - Ability to manage multiple smaller orders simultaneously
 - Willingness to work on product development and sampling
@@ -258,6 +267,7 @@ We're large enough to handle significant orders but nimble enough to accommodate
 ### Vertical Integration
 
 Our comprehensive capabilities under one roof mean:
+
 - Better control over quality throughout the process
 - Faster turnaround times without external dependencies
 - Lower costs through elimination of middlemen
@@ -266,6 +276,7 @@ Our comprehensive capabilities under one roof mean:
 ### Track Record
 
 We've built our reputation through consistent performance:
+
 - Years of successful exports to demanding markets
 - Long-term relationships with global brands
 - Ability to handle complex, technical garments
@@ -303,4 +314,4 @@ For international buyers seeking a woven garment manufacturer they can truly rel
 
 ---
 
-*Ready to explore how Kattali Textile Ltd can support your woven garment needs? Contact us to discuss your requirements and discover the KTL difference.*
+_Ready to explore how Kattali Textile Ltd can support your woven garment needs? Contact us to discuss your requirements and discover the KTL difference._

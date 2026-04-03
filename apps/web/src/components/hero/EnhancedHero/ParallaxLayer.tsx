@@ -14,7 +14,7 @@ const ParallaxLayer: React.FC<ParallaxLayerProps> = ({
   className = '',
   offset,
   scale,
-  opacity
+  opacity,
 }) => {
   return (
     <motion.div
@@ -22,7 +22,7 @@ const ParallaxLayer: React.FC<ParallaxLayerProps> = ({
       style={{
         y: offset,
         scale: scale,
-        opacity: opacity
+        opacity: opacity,
       }}
     >
       {children}

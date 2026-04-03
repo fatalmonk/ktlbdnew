@@ -16,7 +16,11 @@ interface CertificationBadgeProps {
   compact?: boolean;
 }
 
-const CertificationBadge = ({ certification, onClick, compact = false }: CertificationBadgeProps) => {
+const CertificationBadge = ({
+  certification,
+  onClick,
+  compact = false,
+}: CertificationBadgeProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Active':
@@ -35,15 +39,35 @@ const CertificationBadge = ({ certification, onClick, compact = false }: Certifi
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'Active':
-        return <Suspense fallback={<div className="w-4 h-4" />}><CheckCircle size={16} /></Suspense>;
+        return (
+          <Suspense fallback={<div className="w-4 h-4" />}>
+            <CheckCircle size={16} />
+          </Suspense>
+        );
       case 'Expiring Soon':
-        return <Suspense fallback={<div className="w-4 h-4" />}><Clock size={16} /></Suspense>;
+        return (
+          <Suspense fallback={<div className="w-4 h-4" />}>
+            <Clock size={16} />
+          </Suspense>
+        );
       case 'Expired':
-        return <Suspense fallback={<div className="w-4 h-4" />}><AlertCircle size={16} /></Suspense>;
+        return (
+          <Suspense fallback={<div className="w-4 h-4" />}>
+            <AlertCircle size={16} />
+          </Suspense>
+        );
       case 'In Renewal':
-        return <Suspense fallback={<div className="w-4 h-4" />}><Clock size={16} /></Suspense>;
+        return (
+          <Suspense fallback={<div className="w-4 h-4" />}>
+            <Clock size={16} />
+          </Suspense>
+        );
       default:
-        return <Suspense fallback={<div className="w-4 h-4" />}><Award size={16} /></Suspense>;
+        return (
+          <Suspense fallback={<div className="w-4 h-4" />}>
+            <Award size={16} />
+          </Suspense>
+        );
     }
   };
 
@@ -88,8 +112,12 @@ const CertificationBadge = ({ certification, onClick, compact = false }: Certifi
             <h4 className="font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors truncate">
               {certification.name}
             </h4>
-            <p className="text-xs text-neutral-500 mt-1 line-clamp-1">{certification.issuingBody}</p>
-            <div className={`inline-flex items-center gap-1 mt-2 text-xs px-2 py-1 rounded-full ${getStatusColor(certification.status)}`}>
+            <p className="text-xs text-neutral-500 mt-1 line-clamp-1">
+              {certification.issuingBody}
+            </p>
+            <div
+              className={`inline-flex items-center gap-1 mt-2 text-xs px-2 py-1 rounded-full ${getStatusColor(certification.status)}`}
+            >
               {getStatusIcon(certification.status)}
               <span>{certification.status}</span>
             </div>
@@ -131,19 +159,21 @@ const CertificationBadge = ({ certification, onClick, compact = false }: Certifi
       <div className="p-6">
         {/* Category & Status */}
         <div className="flex items-center justify-between mb-4">
-          <span className={`text-xs px-3 py-1 rounded-full ${getCategoryColor(certification.category)}`}>
+          <span
+            className={`text-xs px-3 py-1 rounded-full ${getCategoryColor(certification.category)}`}
+          >
             {certification.category}
           </span>
-          <div className={`flex items-center gap-1 text-xs px-3 py-1 rounded-full ${getStatusColor(certification.status)}`}>
+          <div
+            className={`flex items-center gap-1 text-xs px-3 py-1 rounded-full ${getStatusColor(certification.status)}`}
+          >
             {getStatusIcon(certification.status)}
             <span>{certification.status}</span>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-neutral-700 mb-4 line-clamp-3">
-          {certification.description}
-        </p>
+        <p className="text-sm text-neutral-700 mb-4 line-clamp-3">{certification.description}</p>
 
         {/* Dates */}
         {certification.certificateNumber && (
@@ -204,4 +234,3 @@ const CertificationBadge = ({ certification, onClick, compact = false }: Certifi
 };
 
 export default CertificationBadge;
-

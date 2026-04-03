@@ -22,7 +22,7 @@ const AnimationTest: React.FC = () => {
       iconBg: 'bg-blue-500',
       label: 'Quality Excellence',
       description: 'Premium quality products',
-      position: 'left-1/4'
+      position: 'left-1/4',
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const AnimationTest: React.FC = () => {
       iconBg: 'bg-green-500',
       label: 'Innovation',
       description: 'Cutting-edge technology',
-      position: 'left-3/4'
+      position: 'left-3/4',
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const AnimationTest: React.FC = () => {
       iconBg: 'bg-purple-500',
       label: 'Award Winner',
       description: 'Industry recognition',
-      position: 'left-1/2'
+      position: 'left-1/2',
     },
     {
       id: 4,
@@ -46,10 +46,9 @@ const AnimationTest: React.FC = () => {
       iconBg: 'bg-emerald-500',
       label: 'Sustainability',
       description: 'Eco-friendly practices',
-      position: 'left-1/6'
-    }
+      position: 'left-1/6',
+    },
   ];
-
 
   const stats = [
     {
@@ -57,39 +56,37 @@ const AnimationTest: React.FC = () => {
       value: 20,
       suffix: '+',
       label: 'Years of Excellence',
-      description: 'Leading the textile industry since 2002'
+      description: 'Leading the textile industry since 2002',
     },
     {
       icon: Users,
       value: 1200,
       suffix: '+',
       label: 'Skilled Employees',
-      description: 'Dedicated professionals driving our success'
+      description: 'Dedicated professionals driving our success',
     },
     {
       icon: Settings,
       value: 680,
       suffix: '+',
       label: 'Advanced Machines',
-      description: 'State-of-the-art equipment ensuring premium quality'
+      description: 'State-of-the-art equipment ensuring premium quality',
     },
     {
       icon: Package,
       value: 360,
       suffix: 'K+',
       label: 'Annual Production',
-      description: 'Meeting global demand with efficiency'
+      description: 'Meeting global demand with efficiency',
     },
   ];
-
-
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+      transition: { staggerChildren: 0.1 },
+    },
   };
 
   const itemVariants = {
@@ -98,8 +95,8 @@ const AnimationTest: React.FC = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: 'spring', stiffness: 100, damping: 15 }
-    }
+      transition: { type: 'spring', stiffness: 100, damping: 15 },
+    },
   };
 
   return (
@@ -123,36 +120,21 @@ const AnimationTest: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl font-bold text-primary-500 mb-2">
-                <AnimatedCounter
-                  to={20}
-                  suffix="+"
-                  duration={2}
-                  delay={0.1}
-                />
+                <AnimatedCounter to={20} suffix="+" duration={2} delay={0.1} />
               </div>
               <p className="text-neutral-600">Years of Excellence</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl font-bold text-primary-500 mb-2">
-                <AnimatedCounter
-                  to={1200}
-                  suffix="+"
-                  duration={2}
-                  delay={0.2}
-                />
+                <AnimatedCounter to={1200} suffix="+" duration={2} delay={0.2} />
               </div>
               <p className="text-neutral-600">Skilled Employees</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl font-bold text-primary-500 mb-2">
-                <AnimatedCounter
-                  to={680}
-                  suffix="+"
-                  duration={2}
-                  delay={0.3}
-                />
+                <AnimatedCounter to={680} suffix="+" duration={2} delay={0.3} />
               </div>
               <p className="text-neutral-600">Advanced Machines</p>
             </div>
@@ -162,37 +144,21 @@ const AnimationTest: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter
-                  to={360}
-                  suffix="K+"
-                  duration={2.5}
-                  delay={0.4}
-                />
+                <AnimatedCounter to={360} suffix="K+" duration={2.5} delay={0.4} />
               </div>
               <p className="text-blue-100">Annual Production</p>
             </div>
 
             <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter
-                  to={45.5}
-                  decimals={1}
-                  prefix="৳"
-                  duration={2}
-                  delay={0.5}
-                />
+                <AnimatedCounter to={45.5} decimals={1} prefix="৳" duration={2} delay={0.5} />
               </div>
               <p className="text-green-100">Stock Price</p>
             </div>
 
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-6 rounded-lg text-white text-center">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter
-                  to={100}
-                  suffix="%"
-                  duration={2.5}
-                  delay={0.6}
-                />
+                <AnimatedCounter to={100} suffix="%" duration={2.5} delay={0.6} />
               </div>
               <p className="text-purple-100">Satisfaction Rate</p>
             </div>
@@ -206,7 +172,7 @@ const AnimationTest: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={controls}
             variants={{
-              visible: { opacity: 1, y: 0 }
+              visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
@@ -230,7 +196,7 @@ const AnimationTest: React.FC = () => {
                 variants={itemVariants}
                 whileHover={{
                   scale: 1.05,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.2 },
                 }}
                 className="relative group"
               >
@@ -244,7 +210,7 @@ const AnimationTest: React.FC = () => {
                     transition={{
                       duration: 4,
                       repeat: Infinity,
-                      repeatType: 'reverse'
+                      repeatType: 'reverse',
                     }}
                   >
                     <stat.icon className="w-8 h-8 text-primary-600" />
@@ -275,7 +241,7 @@ const AnimationTest: React.FC = () => {
                       animate={{ scaleX: 1 }}
                       transition={{
                         delay: index * 0.1 + 0.5,
-                        duration: 1
+                        duration: 1,
                       }}
                     >
                       <motion.div
@@ -284,7 +250,7 @@ const AnimationTest: React.FC = () => {
                         animate={{ scaleX: 1 }}
                         transition={{
                           delay: index * 0.1 + 0.7,
-                          duration: 1.5
+                          duration: 1.5,
                         }}
                         style={{ transformOrigin: 'left' }}
                       />
@@ -309,9 +275,9 @@ const AnimationTest: React.FC = () => {
                 y: 0,
                 transition: {
                   duration: ANIMATION_DURATION.slow,
-                  ease: ANIMATION_EASING.easeOut
-                }
-              }
+                  ease: ANIMATION_EASING.easeOut,
+                },
+              },
             }}
             className="bg-primary-500 text-white p-8 rounded-lg"
           >
@@ -342,7 +308,6 @@ const AnimationTest: React.FC = () => {
             ))}
           </motion.div>
         </section>
-
 
         {/* GSAP Timeline Animation Section - Use Case Example */}
         <section className="mb-16 py-12 bg-gradient-to-br from-gray-50 to-gray-100">
@@ -409,12 +374,11 @@ const AnimationTest: React.FC = () => {
               </div>
             </div>
 
-            <GSAPTimeline
-              autoPlay={true}
-              startPosition={0}
-              timeScale={0.8}
-            >
-              <div className="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden" style={{ height: '500px', minWidth: '100%' }}>
+            <GSAPTimeline autoPlay={true} startPosition={0} timeScale={0.8}>
+              <div
+                className="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden"
+                style={{ height: '500px', minWidth: '100%' }}
+              >
                 {/* Scrubber element - moves horizontally */}
                 <div className="scrubber w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg absolute left-0 top-1/2 -translate-y-1/2 z-20 shadow-xl">
                   <span>●</span>
@@ -428,7 +392,9 @@ const AnimationTest: React.FC = () => {
 
                 {/* Mockup Data - Icon 1 (Quality Excellence) */}
                 <div className="icon1 absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div className={`w-20 h-20 ${timelineMockupData[0].iconBg} rounded-full flex items-center justify-center text-white text-3xl shadow-2xl border-4 border-white`}>
+                  <div
+                    className={`w-20 h-20 ${timelineMockupData[0].iconBg} rounded-full flex items-center justify-center text-white text-3xl shadow-2xl border-4 border-white`}
+                  >
                     {timelineMockupData[0].icon}
                   </div>
                 </div>
@@ -436,14 +402,20 @@ const AnimationTest: React.FC = () => {
                 {/* Mockup Data - Text 1 */}
                 <div className="text1 absolute top-1/2 left-1/4 -translate-x-1/2 translate-y-16 z-20">
                   <div className="text-center bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <p className="text-xl font-bold text-neutral-900">{timelineMockupData[0].label}</p>
-                    <p className="text-sm text-neutral-600 mt-1">{timelineMockupData[0].description}</p>
+                    <p className="text-xl font-bold text-neutral-900">
+                      {timelineMockupData[0].label}
+                    </p>
+                    <p className="text-sm text-neutral-600 mt-1">
+                      {timelineMockupData[0].description}
+                    </p>
                   </div>
                 </div>
 
                 {/* Mockup Data - Icon 2 (Innovation) */}
                 <div className="icon2 absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div className={`w-20 h-20 ${timelineMockupData[1].iconBg} rounded-full flex items-center justify-center text-white text-3xl shadow-2xl border-4 border-white`}>
+                  <div
+                    className={`w-20 h-20 ${timelineMockupData[1].iconBg} rounded-full flex items-center justify-center text-white text-3xl shadow-2xl border-4 border-white`}
+                  >
                     {timelineMockupData[1].icon}
                   </div>
                 </div>
@@ -451,8 +423,12 @@ const AnimationTest: React.FC = () => {
                 {/* Mockup Data - Text 2 */}
                 <div className="text2 absolute top-1/2 left-3/4 -translate-x-1/2 translate-y-16 z-20">
                   <div className="text-center bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <p className="text-xl font-bold text-neutral-900">{timelineMockupData[1].label}</p>
-                    <p className="text-sm text-neutral-600 mt-1">{timelineMockupData[1].description}</p>
+                    <p className="text-xl font-bold text-neutral-900">
+                      {timelineMockupData[1].label}
+                    </p>
+                    <p className="text-sm text-neutral-600 mt-1">
+                      {timelineMockupData[1].description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -463,7 +439,8 @@ const AnimationTest: React.FC = () => {
                 Timeline animation starts automatically from position 0.0s
               </p>
               <p className="text-sm text-neutral-500">
-                Use <code className="bg-neutral-100 px-2 py-1 rounded">startPosition</code> prop to begin from a different point
+                Use <code className="bg-neutral-100 px-2 py-1 rounded">startPosition</code> prop to
+                begin from a different point
               </p>
             </div>
           </div>

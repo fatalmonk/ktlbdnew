@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useMediaQuery, useBreakpoint, useViewportHeight, useResponsive } from '../../hooks/useResponsive';
+import {
+  useMediaQuery,
+  useBreakpoint,
+  useViewportHeight,
+  useResponsive,
+} from '../../hooks/useResponsive';
 
 /**
  * Component to safely read CSS custom property value (client-side only)
@@ -9,15 +14,17 @@ const ViewportHeightCSSValue: React.FC = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const value = getComputedStyle(document.documentElement).getPropertyValue('--vh') || 'Not set';
+      const value =
+        getComputedStyle(document.documentElement).getPropertyValue('--vh') || 'Not set';
       setVhValue(value);
-      
+
       // Update on resize
       const updateVh = () => {
-        const newValue = getComputedStyle(document.documentElement).getPropertyValue('--vh') || 'Not set';
+        const newValue =
+          getComputedStyle(document.documentElement).getPropertyValue('--vh') || 'Not set';
         setVhValue(newValue);
       };
-      
+
       window.addEventListener('resize', updateVh);
       return () => window.removeEventListener('resize', updateVh);
     }
@@ -28,7 +35,7 @@ const ViewportHeightCSSValue: React.FC = () => {
 
 /**
  * Test Component for Story 4.2 - Responsive Hooks
- * 
+ *
  * This component demonstrates and tests all responsive hooks:
  * - useMediaQuery
  * - useBreakpoint
@@ -68,11 +75,15 @@ const ResponsiveHooksTest: React.FC = () => {
             <span>Tablet (768-1023px): {isTablet ? 'Yes' : 'No'}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className={`w-3 h-3 rounded-full ${prefersDark ? 'bg-green-500' : 'bg-red-500'}`} />
+            <span
+              className={`w-3 h-3 rounded-full ${prefersDark ? 'bg-green-500' : 'bg-red-500'}`}
+            />
             <span>Prefers Dark Mode: {prefersDark ? 'Yes' : 'No'}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className={`w-3 h-3 rounded-full ${prefersReducedMotion ? 'bg-green-500' : 'bg-red-500'}`} />
+            <span
+              className={`w-3 h-3 rounded-full ${prefersReducedMotion ? 'bg-green-500' : 'bg-red-500'}`}
+            />
             <span>Prefers Reduced Motion: {prefersReducedMotion ? 'Yes' : 'No'}</span>
           </div>
         </div>
@@ -83,7 +94,8 @@ const ResponsiveHooksTest: React.FC = () => {
         <h3 className="text-lg font-semibold mb-3">useBreakpoint Tests</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
           <div>
-            <strong>Current:</strong> <span className="text-blue-600">{breakpointInfo.breakpoint}</span>
+            <strong>Current:</strong>{' '}
+            <span className="text-blue-600">{breakpointInfo.breakpoint}</span>
           </div>
           <div>
             <strong>XS:</strong> {breakpointInfo.isXs ? '✓' : '✗'}
@@ -117,18 +129,23 @@ const ResponsiveHooksTest: React.FC = () => {
         <h3 className="text-lg font-semibold mb-3">useViewportHeight Tests</h3>
         <div className="space-y-2 text-sm">
           <div>
-            <strong>Viewport Height:</strong> <span className="text-green-600">{viewportHeight}px</span>
+            <strong>Viewport Height:</strong>{' '}
+            <span className="text-green-600">{viewportHeight}px</span>
           </div>
           <div>
-            <strong>CSS --vh value:</strong> <span className="text-green-600 font-mono">
+            <strong>CSS --vh value:</strong>{' '}
+            <span className="text-green-600 font-mono">
               <ViewportHeightCSSValue />
             </span>
           </div>
           <div className="mt-4 p-3 bg-white rounded border border-green-200">
             <p className="text-xs text-neutral-600 mb-2">
-              Test CSS usage: <code className="bg-neutral-100 px-1 rounded">height: calc(var(--vh, 1vh) * 100)</code>
+              Test CSS usage:{' '}
+              <code className="bg-neutral-100 px-1 rounded">
+                height: calc(var(--vh, 1vh) * 100)
+              </code>
             </p>
-            <div 
+            <div
               className="bg-green-500 text-white p-2 rounded text-center"
               style={{ height: 'calc(var(--vh, 1vh) * 20)' }}
             >
@@ -143,16 +160,19 @@ const ResponsiveHooksTest: React.FC = () => {
         <h3 className="text-lg font-semibold mb-3">useResponsive (Combined) Tests</h3>
         <div className="space-y-2 text-sm">
           <div>
-            <strong>Breakpoint:</strong> <span className="text-purple-600">{responsiveInfo.breakpoint}</span>
+            <strong>Breakpoint:</strong>{' '}
+            <span className="text-purple-600">{responsiveInfo.breakpoint}</span>
           </div>
           <div>
             <strong>Is Mobile:</strong> {responsiveInfo.isMobile ? '✓' : '✗'}
           </div>
           <div>
-            <strong>Viewport Height:</strong> <span className="text-purple-600">{responsiveInfo.viewportHeight}px</span>
+            <strong>Viewport Height:</strong>{' '}
+            <span className="text-purple-600">{responsiveInfo.viewportHeight}px</span>
           </div>
           <div>
-            <strong>Matches (min-width: 768px):</strong> {responsiveInfo.matches('(min-width: 768px)') ? '✓' : '✗'}
+            <strong>Matches (min-width: 768px):</strong>{' '}
+            {responsiveInfo.matches('(min-width: 768px)') ? '✓' : '✗'}
           </div>
         </div>
       </section>
@@ -173,4 +193,3 @@ const ResponsiveHooksTest: React.FC = () => {
 };
 
 export default ResponsiveHooksTest;
-

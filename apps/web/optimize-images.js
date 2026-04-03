@@ -75,9 +75,7 @@ async function optimizeImage(inputPath) {
 
     // Generate original WebP (full size)
     const originalWebP = join(outputDir, `${name}.webp`);
-    await image
-      .webp({ quality: WEBP_QUALITY })
-      .toFile(originalWebP);
+    await image.webp({ quality: WEBP_QUALITY }).toFile(originalWebP);
 
     const originalStats = await stat(originalWebP);
     console.log(`   ✓ Full size WebP: ${Math.round(originalStats.size / 1024)}KB`);
@@ -101,12 +99,9 @@ async function optimizeImage(inputPath) {
 
     // Keep original as fallback (optimized)
     const fallbackPath = join(outputDir, `${name}${ext}`);
-    await sharp(inputPath)
-      .jpeg({ quality: 85, progressive: true })
-      .toFile(fallbackPath);
+    await sharp(inputPath).jpeg({ quality: 85, progressive: true }).toFile(fallbackPath);
 
     console.log(`   ✓ Fallback JPEG created`);
-
   } catch (error) {
     console.error(`   ✗ Error processing ${name}${ext}:`, error.message);
   }
@@ -137,7 +132,6 @@ async function main() {
 
     console.log('\n✅ Image optimization complete!');
     console.log(`\nOptimized images saved to: ${OUTPUT_DIR}`);
-
   } catch (error) {
     console.error('\n❌ Error:', error.message);
     process.exit(1);

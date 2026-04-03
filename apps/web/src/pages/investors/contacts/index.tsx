@@ -7,7 +7,13 @@ const InvestorContactsPage = () => {
       <SEO
         title="Investor Contacts"
         description="Contact information for KTL's investor relations team. Get in touch for investor inquiries, financial information, and shareholder services."
-        keywords={['investor contacts', 'investor relations', 'KTL contacts', 'shareholder services', 'investor inquiries']}
+        keywords={[
+          'investor contacts',
+          'investor relations',
+          'KTL contacts',
+          'shareholder services',
+          'investor inquiries',
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
@@ -21,8 +27,9 @@ const InvestorContactsPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Get in touch with our investor relations team for inquiries about financial information,
-              shareholder services, and investment opportunities at Kattali Textile Limited.
+              Get in touch with our investor relations team for inquiries about financial
+              information, shareholder services, and investment opportunities at Kattali Textile
+              Limited.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

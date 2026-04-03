@@ -52,4 +52,3 @@ const InvestorMetricsSkeleton: React.FC = () => {
 };
 
 export default InvestorMetricsSkeleton;
-

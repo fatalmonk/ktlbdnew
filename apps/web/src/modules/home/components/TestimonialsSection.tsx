@@ -22,5 +22,3 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => (
 );
 
 export default TestimonialsSection;
-
-

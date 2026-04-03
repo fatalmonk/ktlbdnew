@@ -21,7 +21,7 @@ const InvestorsOverview = () => {
           fetch('/data/ir/results.json'),
           fetch('/data/ir/filings.json'),
           fetch('/data/ir/press.json'),
-          fetch('/data/ir/events.json')
+          fetch('/data/ir/events.json'),
         ]);
 
         if (priceRes.ok) setPrice(await priceRes.json());
@@ -53,7 +53,13 @@ const InvestorsOverview = () => {
       <SEO
         title="Investor Overview"
         description="Comprehensive overview of KTL's financial performance, strategic insights, and investment opportunities for investors."
-        keywords={['investor relations', 'financial performance', 'KTL investors', 'investment opportunities', 'financial overview']}
+        keywords={[
+          'investor relations',
+          'financial performance',
+          'KTL investors',
+          'investment opportunities',
+          'financial overview',
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
@@ -71,11 +77,10 @@ const InvestorsOverview = () => {
 
           {/* Hero Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Investor Overview
-            </h2>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">Investor Overview</h2>
             <p className="text-xl md:text-2xl leading-relaxed opacity-90 max-w-3xl mx-auto">
-              Your gateway to KTL's financial performance, strategic insights, and investment opportunities
+              Your gateway to KTL's financial performance, strategic insights, and investment
+              opportunities
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#metric-band" className="btn-ktl-primary">
@@ -91,7 +96,12 @@ const InvestorsOverview = () => {
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white opacity-70">
             <div className="animate-bounce">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
               </svg>
             </div>
           </div>
@@ -106,7 +116,10 @@ const InvestorsOverview = () => {
               <p className="mt-4 text-caption leading-7 text-[var(--ir-muted)]">
                 Key figures (placeholder). Replace with live feed.
               </p>
-              <a className="mt-6 inline-block underline text-[var(--ir-text)]" href="#investor-relations">
+              <a
+                className="mt-6 inline-block underline text-[var(--ir-text)]"
+                href="#investor-relations"
+              >
                 Investor Relations
               </a>
             </div>
@@ -115,15 +128,17 @@ const InvestorsOverview = () => {
                 <div className="text-h1 leading-[0.95] font-extrabold tracking-[-0.01em] text-[var(--ir-text)] md:text-[12rem]">
                   {price ? (
                     <>
-                      <span className="align-top text-3xl mr-1">{price.currency === "BDT" ? "৳" : price.currency === "USD" ? "$" : ""}</span>
+                      <span className="align-top text-3xl mr-1">
+                        {price.currency === 'BDT' ? '৳' : price.currency === 'USD' ? '$' : ''}
+                      </span>
                       {price.value.toFixed(2)}
                     </>
                   ) : (
-                    "—"
+                    '—'
                   )}
                 </div>
                 <div className="mt-2 text-sm text-[var(--ir-muted)]">
-                  {price?.symbol ?? "—"} · {price?.asOf ?? ""}
+                  {price?.symbol ?? '—'} · {price?.asOf ?? ''}
                 </div>
               </div>
             </div>
@@ -152,8 +167,12 @@ const InvestorsOverview = () => {
             {results.map((f, i) => (
               <li key={i} className="border rounded-lg p-4 hover:shadow-sm">
                 <div className="text-base font-medium">{f.title}</div>
-                <div className="text-sm text-neutral-600 mt-1">{new Date(f.date).toLocaleDateString()}</div>
-                <a className="mt-3 inline-flex underline" href={f.href}>Download</a>
+                <div className="text-sm text-neutral-600 mt-1">
+                  {new Date(f.date).toLocaleDateString()}
+                </div>
+                <a className="mt-3 inline-flex underline" href={f.href}>
+                  Download
+                </a>
               </li>
             ))}
           </ul>
@@ -163,13 +182,19 @@ const InvestorsOverview = () => {
         <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
           <div className="flex items-baseline justify-between">
             <h3 className="text-2xl font-semibold">SEC Filings</h3>
-            <a className="underline" href="#">See all</a>
+            <a className="underline" href="#">
+              See all
+            </a>
           </div>
           <ul className="mt-6 space-y-3">
             {filings.map((it, i) => (
               <li key={i} className="flex justify-between gap-4 border-b py-3">
-                <a className="underline" href={it.href}>{it.title}</a>
-                <time className="text-sm text-neutral-600">{new Date(it.date).toLocaleDateString()}</time>
+                <a className="underline" href={it.href}>
+                  {it.title}
+                </a>
+                <time className="text-sm text-neutral-600">
+                  {new Date(it.date).toLocaleDateString()}
+                </time>
               </li>
             ))}
           </ul>
@@ -179,13 +204,19 @@ const InvestorsOverview = () => {
         <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
           <div className="flex items-baseline justify-between">
             <h3 className="text-2xl font-semibold">Press Releases</h3>
-            <a className="underline" href="#">See all</a>
+            <a className="underline" href="#">
+              See all
+            </a>
           </div>
           <ul className="mt-6 space-y-3">
             {press.map((it, i) => (
               <li key={i} className="flex justify-between gap-4 border-b py-3">
-                <a className="underline" href={it.href}>{it.title}</a>
-                <time className="text-sm text-neutral-600">{new Date(it.date).toLocaleDateString()}</time>
+                <a className="underline" href={it.href}>
+                  {it.title}
+                </a>
+                <time className="text-sm text-neutral-600">
+                  {new Date(it.date).toLocaleDateString()}
+                </time>
               </li>
             ))}
           </ul>
@@ -195,13 +226,19 @@ const InvestorsOverview = () => {
         <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-12">
           <div className="flex items-baseline justify-between">
             <h3 className="text-2xl font-semibold">Events & Presentations</h3>
-            <a className="underline" href="#">See all</a>
+            <a className="underline" href="#">
+              See all
+            </a>
           </div>
           <ul className="mt-6 space-y-3">
             {events.map((it, i) => (
               <li key={i} className="flex justify-between gap-4 border-b py-3">
-                <a className="underline" href={it.href}>{it.title}</a>
-                <time className="text-sm text-neutral-600">{new Date(it.date).toLocaleDateString()}</time>
+                <a className="underline" href={it.href}>
+                  {it.title}
+                </a>
+                <time className="text-sm text-neutral-600">
+                  {new Date(it.date).toLocaleDateString()}
+                </time>
               </li>
             ))}
           </ul>

@@ -64,9 +64,7 @@ const TestimonialsSectionContent = ({ testimonials }: TestimonialsSectionContent
             <div className="flex gap-1 mb-3 md:mb-4">
               {[...Array(testimonial.rating)].map((_, i) => (
                 <Suspense key={i} fallback={<div className="w-4 h-4 md:w-5 md:h-5" />}>
-                  <Shield
-                    className="w-4 h-4 md:w-5 md:h-5 text-primary-500 fill-current"
-                  />
+                  <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary-500 fill-current" />
                 </Suspense>
               ))}
             </div>
@@ -87,4 +85,3 @@ const TestimonialsSectionContent = ({ testimonials }: TestimonialsSectionContent
 };
 
 export default TestimonialsSectionContent;
-

@@ -63,19 +63,19 @@ export default function LineChart({
       className="bg-white rounded-xl p-6 shadow-lg"
     >
       <h3 className="text-lg font-bold text-gray-900 mb-4">{data.title}</h3>
-    
+
       <ResponsiveContainer width="100%" height={height}>
         <RechartsLineChart data={chartData}>
           {showGrid && (
             <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
           )}
-        
+
           <XAxis
             dataKey="name"
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
           />
-        
+
           <YAxis
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
@@ -85,7 +85,7 @@ export default function LineChart({
               return value.toString();
             }}
           />
-        
+
           <Tooltip
             contentStyle={{
               backgroundColor: '#1F2937',
@@ -98,9 +98,9 @@ export default function LineChart({
               'Value',
             ]}
           />
-        
+
           {showLegend && <Legend />}
-        
+
           <Line
             type="monotone"
             dataKey="value"
@@ -171,13 +171,13 @@ export default function AreaChart({
       className="bg-white rounded-xl p-6 shadow-lg"
     >
       <h3 className="text-lg font-bold text-gray-900 mb-4">{data.title}</h3>
-    
+
       <ResponsiveContainer width="100%" height={height}>
         <RechartsAreaChart data={chartData}>
           {showGrid && (
             <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
           )}
-        
+
           <defs>
             <linearGradient id={`gradient-${data.id}`} x1="0" y1="0" x2="0" y2="1">
               <stop
@@ -192,13 +192,13 @@ export default function AreaChart({
               />
             </linearGradient>
           </defs>
-        
+
           <XAxis
             dataKey="name"
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
           />
-        
+
           <YAxis
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
@@ -208,7 +208,7 @@ export default function AreaChart({
               return value.toString();
             }}
           />
-        
+
           <Tooltip
             contentStyle={{
               backgroundColor: '#1F2937',
@@ -221,7 +221,7 @@ export default function AreaChart({
               'Revenue',
             ]}
           />
-        
+
           <Area
             type="monotone"
             dataKey="value"
@@ -282,7 +282,7 @@ export default function BarChart({
   // Generate colors for gradient effect
   const getBarColor = (index: number) => {
     if (!gradient) return data.color || '#3B82F6';
-  
+
     const opacity = 0.5 + (index / chartData.length) * 0.5;
     return `${data.color || '#3B82F6'}${Math.floor(opacity * 255).toString(16).padStart(2, '0')}`;
   };
@@ -295,19 +295,19 @@ export default function BarChart({
       className="bg-white rounded-xl p-6 shadow-lg"
     >
       <h3 className="text-lg font-bold text-gray-900 mb-4">{data.title}</h3>
-    
+
       <ResponsiveContainer width="100%" height={height}>
         <RechartsBarChart data={chartData}>
           {showGrid && (
             <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
           )}
-        
+
           <XAxis
             dataKey="name"
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
           />
-        
+
           <YAxis
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
@@ -317,7 +317,7 @@ export default function BarChart({
               return value.toString();
             }}
           />
-        
+
           <Tooltip
             contentStyle={{
               backgroundColor: '#1F2937',
@@ -331,7 +331,7 @@ export default function BarChart({
             ]}
             cursor={{ fill: 'rgba(59, 130, 246, 0.1)' }}
           />
-        
+
           <Bar
             dataKey="value"
             radius={[8, 8, 0, 0]}
@@ -398,7 +398,7 @@ export default function PieChart({
       className="bg-white rounded-xl p-6 shadow-lg"
     >
       <h3 className="text-lg font-bold text-gray-900 mb-4">{title}</h3>
-    
+
       <ResponsiveContainer width="100%" height={height}>
         <RechartsPieChart>
           <Pie
@@ -406,7 +406,7 @@ export default function PieChart({
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={({ name, percent }) => 
+            label={({ name, percent }) =>
               `${name}: ${(percent * 100).toFixed(0)}%`
             }
             outerRadius={80}
@@ -423,7 +423,7 @@ export default function PieChart({
               />
             ))}
           </Pie>
-        
+
           <Tooltip
             contentStyle={{
               backgroundColor: '#1F2937',
@@ -436,7 +436,7 @@ export default function PieChart({
               'Value',
             ]}
           />
-        
+
           <Legend
             verticalAlign="bottom"
             height={36}
@@ -487,7 +487,7 @@ export default function ChartContainer({
           showLegend={showLegend}
         />
       );
-  
+
     case 'area':
       return (
         <AreaChart
@@ -496,7 +496,7 @@ export default function ChartContainer({
           showGrid={showGrid}
         />
       );
-  
+
     case 'bar':
       return (
         <BarChart
@@ -505,7 +505,7 @@ export default function ChartContainer({
           showGrid={showGrid}
         />
       );
-  
+
     default:
       return null;
   }
@@ -531,9 +531,9 @@ interface ChartsGridProps {
   columns?: 1 | 2 | 3;
 }
 
-export default function ChartsGrid({ 
-  charts, 
-  columns = 2 
+export default function ChartsGrid({
+  charts,
+  columns = 2
 }: ChartsGridProps) {
   const gridCols = {
     1: 'grid-cols-1',
@@ -625,7 +625,7 @@ export default function InteractiveLineChart({
       {/* Header with Controls */}
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-gray-900">{data.title}</h3>
-      
+
         <div className="flex items-center gap-2">
           <button
             onClick={handleZoomIn}
@@ -657,14 +657,14 @@ export default function InteractiveLineChart({
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-        
+
           <XAxis
             dataKey="name"
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
             domain={zoomDomain || undefined}
           />
-        
+
           <YAxis
             stroke="#6B7280"
             style={{ fontSize: '12px' }}
@@ -674,7 +674,7 @@ export default function InteractiveLineChart({
               return value.toString();
             }}
           />
-        
+
           <Tooltip
             contentStyle={{
               backgroundColor: '#1F2937',
@@ -683,7 +683,7 @@ export default function InteractiveLineChart({
               color: '#FFFFFF',
             }}
           />
-        
+
           {showBrush && (
             <Brush
               dataKey="name"
@@ -697,7 +697,7 @@ export default function InteractiveLineChart({
               }}
             />
           )}
-        
+
           <Line
             type="monotone"
             dataKey="value"

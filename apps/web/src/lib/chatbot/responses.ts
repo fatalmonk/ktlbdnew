@@ -21,13 +21,18 @@ export const QUICK_ACTIONS: QuickAction[] = [
   { id: 'rfq', label: 'Request a Quote', action: 'navigate', value: '/rfq' },
   { id: 'products', label: 'View Products', action: 'navigate', value: '/products' },
   { id: 'contact', label: 'Contact Sales', action: 'navigate', value: '/contact' },
-  { id: 'certifications', label: 'View Certifications', action: 'navigate', value: '/certifications' },
+  {
+    id: 'certifications',
+    label: 'View Certifications',
+    action: 'navigate',
+    value: '/certifications',
+  },
 ];
 
 export const KNOWLEDGE_BASE: Record<string, string[]> = {
   greeting: [
     'Hello! Welcome to Kattali Textile Ltd. How can I help you today?',
-    'Hi there! I\'m here to help you learn more about KTL. What would you like to know?',
+    "Hi there! I'm here to help you learn more about KTL. What would you like to know?",
     'Welcome! I can help you with information about our products, certifications, and services. What are you looking for?',
   ],
   products: [
@@ -47,7 +52,7 @@ export const KNOWLEDGE_BASE: Record<string, string[]> = {
     'KTL holds 10+ international certifications including ISO 9001, ISO 14001, OEKO-TEX, GOTS, BSCI, WRAP, and customer-specific certifications like Disney FAMA. Which certification are you interested in?',
   ],
   sustainability: [
-    'Sustainability is core to our operations. We use 45% renewable energy, recycle 78% of waste, and 62% of our products use sustainable materials. We\'re committed to net-zero by 2030. Want to see our full sustainability dashboard?',
+    "Sustainability is core to our operations. We use 45% renewable energy, recycle 78% of waste, and 62% of our products use sustainable materials. We're committed to net-zero by 2030. Want to see our full sustainability dashboard?",
   ],
   moq: [
     'Our minimum order quantities vary by product category. Typically: Denim: 1,000-2,000 pcs, Knitwear: 500-1,000 pcs per style. For exact MOQs, please submit an RFQ with your specific requirements.',
@@ -83,13 +88,13 @@ export const KNOWLEDGE_BASE: Record<string, string[]> = {
     'Yes! We specialize in custom manufacturing including custom washes, prints, embroidery, labels, and packaging. Our R&D team can work with you to develop exactly what you need.',
   ],
   thanks: [
-    'You\'re welcome! Is there anything else I can help you with?',
+    "You're welcome! Is there anything else I can help you with?",
     'Happy to help! Feel free to ask if you have any other questions.',
     'Glad I could assist! Let me know if you need anything else.',
   ],
   default: [
-    'I\'m not sure about that specific question, but our sales team can definitely help! Would you like to contact them or submit an RFQ for detailed information?',
-    'That\'s a great question! For specific inquiries like this, I recommend contacting our sales team or submitting an RFQ. Can I direct you there?',
+    "I'm not sure about that specific question, but our sales team can definitely help! Would you like to contact them or submit an RFQ for detailed information?",
+    "That's a great question! For specific inquiries like this, I recommend contacting our sales team or submitting an RFQ. Can I direct you there?",
   ],
 };
 
@@ -194,4 +199,3 @@ export function getResponse(userMessage: string): string {
 function randomChoice<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
 }
-

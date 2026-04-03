@@ -11,20 +11,13 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
 }
 
 function AllTheProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <BrowserRouter>
-      {children}
-    </BrowserRouter>
-  );
+  return <BrowserRouter>{children}</BrowserRouter>;
 }
 
 /**
  * Custom render with Router provider
  */
-export function renderWithRouter(
-  ui: ReactElement,
-  options?: CustomRenderOptions
-) {
+export function renderWithRouter(ui: ReactElement, options?: CustomRenderOptions) {
   const { initialRoute = '/', ...renderOptions } = options || {};
 
   // Set initial route if provided

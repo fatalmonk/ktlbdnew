@@ -1,13 +1,5 @@
 import { Metric, MetricsGroup, ChartData } from '../types/metrics';
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingCart, 
-  DollarSign,
-  Package,
-  Eye,
-  Heart
-} from 'lucide-react';
+import { TrendingUp, Users, ShoppingCart, DollarSign, Package, Eye, Heart } from 'lucide-react';
 
 export const mockMetrics: Metric[] = [
   {
@@ -85,7 +77,7 @@ export const mockMetricsGroups: MetricsGroup[] = [
     id: 'business',
     title: 'Business Metrics',
     icon: DollarSign,
-    metrics: mockMetrics.filter(m => 
+    metrics: mockMetrics.filter((m) =>
       ['monthly-revenue', 'total-orders', 'conversion-rate'].includes(m.id)
     ),
   },
@@ -93,17 +85,13 @@ export const mockMetricsGroups: MetricsGroup[] = [
     id: 'engagement',
     title: 'Engagement Metrics',
     icon: Heart,
-    metrics: mockMetrics.filter(m => 
-      ['active-users', 'page-views'].includes(m.id)
-    ),
+    metrics: mockMetrics.filter((m) => ['active-users', 'page-views'].includes(m.id)),
   },
   {
     id: 'products',
     title: 'Product Metrics',
     icon: Package,
-    metrics: mockMetrics.filter(m => 
-      ['total-products'].includes(m.id)
-    ),
+    metrics: mockMetrics.filter((m) => ['total-products'].includes(m.id)),
   },
 ];
 
@@ -119,7 +107,7 @@ function generateTimeSeriesData(
   for (let i = days; i >= 0; i--) {
     const date = new Date(now);
     date.setDate(date.getDate() - i);
-    
+
     const randomVariance = (Math.random() - 0.5) * variance;
     const trend = (days - i) * (variance / days); // Upward trend
     const value = baseValue + trend + randomVariance;
@@ -157,7 +145,3 @@ export const mockChartData: ChartData[] = [
     color: '#EF4444',
   },
 ];
-
-
-
-

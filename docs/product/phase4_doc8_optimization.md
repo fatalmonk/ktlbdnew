@@ -1,6 +1,7 @@
 # Phase 4.8: Performance Optimization
 
 ## Overview
+
 Optimize news and metrics components for maximum performance, fast loading, and smooth animations.
 
 ---
@@ -8,11 +9,12 @@ Optimize news and metrics components for maximum performance, fast loading, and 
 ## 4.8.1 Data Prefetching
 
 **Implement prefetching strategies:**
+
 ```typescript
 // lib/utils/prefetch.ts
 export function prefetchNewsData() {
   if (typeof window === 'undefined') return;
-  
+
   // Prefetch news data on hover or in viewport
   const prefetchLink = document.createElement('link');
   prefetchLink.rel = 'prefetch';
@@ -22,7 +24,7 @@ export function prefetchNewsData() {
 
 export function prefetchMetricsData() {
   if (typeof window === 'undefined') return;
-  
+
   const prefetchLink = document.createElement('link');
   prefetchLink.rel = 'prefetch';
   prefetchLink.href = '/api/metrics';
@@ -33,7 +35,7 @@ export function prefetchMetricsData() {
 export function usePrefetch(shouldPrefetch: boolean, type: 'news' | 'metrics') {
   useEffect(() => {
     if (!shouldPrefetch) return;
-    
+
     const timer = setTimeout(() => {
       if (type === 'news') {
         prefetchNewsData();
@@ -41,7 +43,7 @@ export function usePrefetch(shouldPrefetch: boolean, type: 'news' | 'metrics') {
         prefetchMetricsData();
       }
     }, 2000); // Prefetch after 2 seconds
-    
+
     return () => clearTimeout(timer);
   }, [shouldPrefetch, type]);
 }
@@ -52,6 +54,7 @@ export function usePrefetch(shouldPrefetch: boolean, type: 'news' | 'metrics') {
 ## 4.8.2 Virtual Scrolling
 
 **Implement virtual list for large datasets:**
+
 ```typescript
 // components/news/VirtualNewsList.tsx
 'use client';
@@ -116,6 +119,7 @@ export default function VirtualNewsList({
 ```
 
 **Install dependency:**
+
 ```bash
 npm install @tanstack/react-virtual
 ```
@@ -125,6 +129,7 @@ npm install @tanstack/react-virtual
 ## 4.8.3 Memoization
 
 **Optimize expensive calculations:**
+
 ```typescript
 // lib/hooks/useMemoizedMetrics.ts
 'use client';
@@ -144,12 +149,15 @@ export function useMemoizedMetrics(metrics: Metric[]) {
 
   // Memoize metrics by category
   const metricsByCategory = useMemo(() => {
-    return metrics.reduce((acc, metric) => {
-      const category = metric.id.split('-')[0];
-      if (!acc[category]) acc[category] = [];
-      acc[category].push(metric);
-      return acc;
-    }, {} as Record<string, Metric[]>);
+    return metrics.reduce(
+      (acc, metric) => {
+        const category = metric.id.split('-')[0];
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(metric);
+        return acc;
+      },
+      {} as Record<string, Metric[]>
+    );
   }, [metrics]);
 
   // Memoize summary statistics
@@ -162,10 +170,7 @@ export function useMemoizedMetrics(metrics: Metric[]) {
       };
     }
 
-    const totalChange = metrics.reduce(
-      (sum, m) => sum + (m.change || 0),
-      0
-    );
+    const totalChange = metrics.reduce((sum, m) => sum + (m.change || 0), 0);
     const totalValue = metrics.reduce((sum, m) => sum + m.value, 0);
 
     return {
@@ -188,6 +193,7 @@ export function useMemoizedMetrics(metrics: Metric[]) {
 ## 4.8.4 Lazy Loading Images
 
 **Optimize image loading:**
+
 ```typescript
 // components/news/LazyNewsImage.tsx
 'use client';
@@ -247,7 +253,7 @@ export default function LazyNewsImage({
         <>
           {/* Blur placeholder */}
           {!isLoaded && (
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-200
               to-gray-300 animate-pulse" />
           )}
 
@@ -275,6 +281,7 @@ export default function LazyNewsImage({
 ## 4.8.5 Request Batching
 
 **Batch multiple API requests:**
+
 ```typescript
 // lib/services/batch-service.ts
 type RequestConfig = {
@@ -309,11 +316,14 @@ class BatchService {
 
     try {
       // Group requests by endpoint
-      const grouped = batch.reduce((acc, req) => {
-        if (!acc[req.endpoint]) acc[req.endpoint] = [];
-        acc[req.endpoint].push(req);
-        return {};
-      }, {} as Record<string, any[]>);
+      const grouped = batch.reduce(
+        (acc, req) => {
+          if (!acc[req.endpoint]) acc[req.endpoint] = [];
+          acc[req.endpoint].push(req);
+          return {};
+        },
+        {} as Record<string, any[]>
+      );
 
       // Execute grouped requests
       for (const [endpoint, requests] of Object.entries(grouped)) {
@@ -344,6 +354,7 @@ export const batchService = new BatchService();
 ## 4.8.6 Debounced Updates
 
 **Optimize real-time metric updates:**
+
 ```typescript
 // lib/hooks/useDebouncedMetrics.ts
 'use client';
@@ -395,6 +406,7 @@ export function useDebouncedMetrics(delay: number = 1000) {
 ## 4.8.7 Code Splitting
 
 **Split large components:**
+
 ```typescript
 // app/news/page.tsx
 import dynamic from 'next/dynamic';
@@ -450,6 +462,7 @@ export default function NewsPage() {
 ## 4.8.8 Performance Monitoring
 
 **Add performance tracking:**
+
 ```typescript
 // lib/utils/performance-monitor.ts
 export class PerformanceMonitor {
@@ -461,11 +474,11 @@ export class PerformanceMonitor {
 
   static endMeasure(label: string) {
     performance.mark(`${label}-end`);
-    
+
     try {
       performance.measure(label, `${label}-start`, `${label}-end`);
       const measure = performance.getEntriesByName(label)[0];
-      
+
       if (measure) {
         const existing = this.metrics.get(label) || [];
         existing.push(measure.duration);
@@ -473,9 +486,7 @@ export class PerformanceMonitor {
 
         // Log if duration exceeds threshold
         if (measure.duration > 100) {
-          console.warn(
-            `Performance: ${label} took ${measure.duration.toFixed(2)}ms`
-          );
+          console.warn(`Performance: ${label} took ${measure.duration.toFixed(2)}ms`);
         }
       }
 
@@ -510,6 +521,7 @@ export class PerformanceMonitor {
 ## 4.8.9 Caching Strategy
 
 **Implement intelligent caching:**
+
 ```typescript
 // lib/utils/cache-manager.ts
 interface CacheEntry<T> {
@@ -533,7 +545,7 @@ export class CacheManager {
 
   static get<T>(key: string): T | null {
     const entry = this.cache.get(key);
-    
+
     if (!entry) return null;
 
     // Check if expired
@@ -548,12 +560,12 @@ export class CacheManager {
   static has(key: string): boolean {
     const entry = this.cache.get(key);
     if (!entry) return false;
-    
+
     if (Date.now() > entry.expiresAt) {
       this.cache.delete(key);
       return false;
     }
-    
+
     return true;
   }
 

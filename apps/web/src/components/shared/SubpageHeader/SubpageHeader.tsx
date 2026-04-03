@@ -23,7 +23,7 @@ export function SubpageHeaderAccent({ className }: { className?: string }) {
     <div
       className={cn(
         'pointer-events-none absolute right-4 top-1/2 z-0 hidden -translate-y-1/2 lg:block xl:right-8',
-        className,
+        className
       )}
       aria-hidden
     >
@@ -75,7 +75,7 @@ export function SubpageHeader({
         'relative bg-white font-body',
         withHeaderOffset &&
           'pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]',
-        className,
+        className
       )}
     >
       {pageTitle ? <h1 className="sr-only">{pageTitle}</h1> : null}

@@ -14,6 +14,7 @@ This document captures the pre-cleanup baseline for structure, routes, dependenc
 ## 2) Route Graph Baseline (`apps/web/src/App.tsx`)
 
 ### Main routes
+
 - `/`
 - `/products`, `/products/denims`, `/products/knitwear`, `/products/swimwear`, `/products/kids`
 - `/contact`
@@ -28,6 +29,7 @@ This document captures the pre-cleanup baseline for structure, routes, dependenc
 - `/rfq`
 
 ### Dev/test routes currently in router
+
 - `/test/animation`
 - `/test/responsive-hooks`
 - `/test/metrics`
@@ -35,6 +37,7 @@ This document captures the pre-cleanup baseline for structure, routes, dependenc
 ## 3) Dependency Baseline (`apps/web/package.json`)
 
 ### Runtime libraries
+
 - React, React DOM, React Router
 - Framer Motion + Motion
 - GSAP
@@ -42,12 +45,14 @@ This document captures the pre-cleanup baseline for structure, routes, dependenc
 - Additional libraries present: `@react-spring/web`, `@react-three/drei`, `@react-three/fiber`, `react-use`, `class-variance-authority`
 
 ### Tooling
+
 - Vite, TypeScript, ESLint, Vitest, Playwright, Tailwind/PostCSS
 - `sharp`, `terser`, `web-vitals`
 
 ## 4) Unused/Redundant Candidate Inventory
 
 Confidence levels:
+
 - `high`: static reference checks indicate safe removal candidate
 - `medium`: likely unused but requires product/route verification
 - `low`: keep, monitor, or needs runtime/manual validation
@@ -55,6 +60,7 @@ Confidence levels:
 ### High-confidence candidates (pre-change)
 
 #### Dependencies
+
 - `@react-spring/web` (no source imports found)
 - `@react-three/drei` (no source imports found)
 - `@react-three/fiber` (no source imports found)
@@ -63,6 +69,7 @@ Confidence levels:
 - `web-vitals` (declared but not used in app source)
 
 #### Source files/components
+
 - `apps/web/src/lib/navigation.ts`
 - `apps/web/src/modules/home/components/ProductFilterSection.tsx`
 - `apps/web/src/components/features/Search.tsx`
@@ -89,17 +96,20 @@ Confidence levels:
 - `apps/web/src/hooks/index.ts`
 
 ### Medium-confidence candidates (verify before removal)
+
 - `apps/web/src/modules/experimental/*` and deprecated re-export shims under `components/animation/StaggeredMenu/*` (experiment may be intentionally preserved).
 - Dev/test pages and routes under `apps/web/src/pages/test/*` if these are not meant for production.
 - Root script aliases (`dev:web`, `build:web`, etc.) in root `package.json` (redundant, but may be kept for convenience).
 
 ### Low-confidence / policy candidates
+
 - `archive/*` historical artifacts (organizational decision: keep read-only in-repo vs move externally).
 - `apps/web/public/data/*` versus `apps/web/src/data/*` ownership (requires explicit governance policy).
 
 ## 5) Validation Gates For Cleanup
 
 Run after each removal/restructure batch:
+
 - `npm run lint --workspace=apps/web`
 - `npm run typecheck --workspace=apps/web`
 - `npm run test:run --workspace=apps/web`

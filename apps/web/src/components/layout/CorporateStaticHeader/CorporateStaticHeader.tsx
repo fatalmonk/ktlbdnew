@@ -10,9 +10,7 @@ type CorporateStaticHeaderProps = {
   scrollHidden?: boolean;
 };
 
-const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
-  scrollHidden = false,
-}) => {
+const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({ scrollHidden = false }) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
   const containerRef = useRef<HTMLElement | null>(null);
@@ -25,22 +23,28 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
     }
   }, []);
 
-  const toggleDropdown = useCallback((dropdown: string | null) => {
-    clearTimer();
-    setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
-  }, [clearTimer]);
+  const toggleDropdown = useCallback(
+    (dropdown: string | null) => {
+      clearTimer();
+      setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
+    },
+    [clearTimer]
+  );
 
-  const setOpenWithIntent = useCallback((dropdown: string | null, delay = 0) => {
-    clearTimer();
-    if (delay === 0) {
-      setOpenDropdown(dropdown);
-    } else {
-      timerRef.current = setTimeout(() => {
+  const setOpenWithIntent = useCallback(
+    (dropdown: string | null, delay = 0) => {
+      clearTimer();
+      if (delay === 0) {
         setOpenDropdown(dropdown);
-        timerRef.current = null;
-      }, delay);
-    }
-  }, [clearTimer]);
+      } else {
+        timerRef.current = setTimeout(() => {
+          setOpenDropdown(dropdown);
+          timerRef.current = null;
+        }, delay);
+      }
+    },
+    [clearTimer]
+  );
 
   useEffect(() => () => clearTimer(), [clearTimer]);
 
@@ -132,9 +136,7 @@ const CorporateStaticHeader: React.FC<CorporateStaticHeaderProps> = ({
               </div>
             </div>
           </div>
-          {location.pathname === '/' && (
-            <AnnouncementTicker isHidden={!!openDropdown} />
-          )}
+          {location.pathname === '/' && <AnnouncementTicker isHidden={!!openDropdown} />}
         </div>
       </header>
     </>

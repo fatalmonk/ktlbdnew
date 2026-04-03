@@ -42,14 +42,10 @@ const CTASectionContent = () => (
         fill="none"
         aria-hidden="true"
       >
-        <path
-          d="M200 120 C 160 120, 120 80, 80 80 S 0 40, 0 0 L 200 0 Z"
-          fill="currentColor"
-        />
+        <path d="M200 120 C 160 120, 120 80, 80 80 S 0 40, 0 0 L 200 0 Z" fill="currentColor" />
       </svg>
     </div>
   </section>
 );
 
 export default CTASectionContent;
-

@@ -29,12 +29,8 @@ const MobileProductCard = ({ product }: { product: Product }) => (
       </span>
 
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold leading-tight text-neutral-900">
-          {product.name}
-        </h3>
-        <p className="line-clamp-3 text-sm leading-6 text-neutral-600">
-          {product.description}
-        </p>
+        <h3 className="text-xl font-semibold leading-tight text-neutral-900">{product.name}</h3>
+        <p className="line-clamp-3 text-sm leading-6 text-neutral-600">{product.description}</p>
       </div>
 
       <Link
@@ -80,5 +76,3 @@ const ProductsShowcase = ({ products }: ProductsShowcaseProps) => (
 );
 
 export default ProductsShowcase;
-
-

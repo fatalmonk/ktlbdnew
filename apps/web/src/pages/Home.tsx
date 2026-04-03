@@ -49,7 +49,6 @@ const Home = () => {
     <>
       <HomeSEO />
       <div className="overflow-x-hidden" style={{ WebkitOverflowScrolling: 'touch' }}>
-
         {/* ------------------------------
              ABOVE THE FOLD (instant)
            ------------------------------ */}

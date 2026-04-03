@@ -70,5 +70,3 @@ const RFQNavigation = ({
 );
 
 export default RFQNavigation;
-
-

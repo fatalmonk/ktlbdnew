@@ -11,5 +11,3 @@ const InvestorMetrics = () => (
 );
 
 export default InvestorMetrics;
-
-

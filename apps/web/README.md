@@ -11,7 +11,7 @@
 
 **Modern, performance-optimized corporate website for Bangladesh's leading textile manufacturer**
 
-[Live Demo](#) • [Documentation](CLAUDE.md) • [Testing Guide](TESTING.md)
+[Live Demo](#) • [Documentation](../../docs/engineering/CLAUDE.md) • [Testing Guide](../../docs/engineering/TESTING.md)
 
 </div>
 
@@ -51,12 +51,14 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 ## ✨ Features
 
 ### Core Functionality
+
 - ✅ **30+ Pages** with React Router and lazy loading
 - ✅ **Desktop & Mobile Navigation** with mega menu
 - ✅ **Error Boundaries** and loading states
 - ✅ **Responsive Design** on all screen sizes
 
 ### Content
+
 - ✅ **Product Catalog**: Denims, Knitwear, Swimwear, Kids apparel
 - ✅ **Company Stories Blog**: Search, filtering, social sharing
 - ✅ **Investor Relations**: Financial data, stock info, reports
@@ -64,6 +66,7 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 - ✅ **Google Business Integration**: Maps and business profiles
 
 ### Performance & SEO
+
 - ✅ **Code Splitting**: 30+ lazy-loaded routes
 - ✅ **Image Optimization**: WebP format with responsive variants
 - ✅ **SEO Components**: Meta tags, OpenGraph, structured data
@@ -71,6 +74,7 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 - ✅ **Bundle Optimization**: Tree shaking and dead code elimination
 
 ### Development
+
 - ✅ **TypeScript**: Full type safety
 - ✅ **ESLint & Prettier**: Code quality and formatting
 - ✅ **Hot Module Replacement**: Instant updates during development
@@ -81,24 +85,28 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - **React 18.3.1** - UI library with concurrent features
 - **TypeScript 5.5.4** - Type-safe JavaScript
 - **Vite 7.1.6** - Fast build tool and dev server
 - **React Router 7.7.1** - Client-side routing
 
 ### Styling
+
 - **Tailwind CSS 3.4.1** - Utility-first CSS framework
 - **Custom "KTL" Theme** - Brand-specific design system
 - **PostCSS + Autoprefixer** - CSS processing
 - **Lucide React 0.344.0** - Icon library
 
 ### Testing
+
 - **Vitest 4.0.1** - Fast unit testing framework
 - **Playwright 1.56.1** - Cross-browser E2E testing
 - **React Testing Library 16.3.0** - Component testing
 - **@vitest/coverage-v8** - Code coverage reporting
 
 ### Build & Optimization
+
 - **Sharp 0.34.4** - Image processing and optimization
 - **Code Splitting** - Automatic via React.lazy()
 - **Tree Shaking** - Dead code elimination
@@ -115,21 +123,26 @@ The Kattali Textile Ltd (KTL) corporate website is a comprehensive, production-r
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone the repository** (use your fork or organization remote)
+
    ```bash
-   git clone https://github.com/fatalmonk/ktlbdnew.git
-   cd ktlbdnew
+   git clone <YOUR_REPO_URL>
+   cd <YOUR_REPO_CHECKOUT_DIR>
    ```
 
-2. **Install dependencies**
+2. **Install dependencies** from the **monorepo root** (parent of `apps/web/`)
+
    ```bash
    npm install
    ```
 
-3. **Start the development server**
+3. **Start the development server** from the repo root
+
    ```bash
    npm run dev
    ```
+
+   To run Vite directly inside the app package: `cd apps/web && npm run dev`.
 
 4. **Open your browser**
    - Local: http://localhost:5173/
@@ -212,6 +225,7 @@ npm run dev
 ```
 
 Features:
+
 - Instant page updates on file changes
 - Detailed error messages in browser
 - Network access for mobile testing
@@ -280,6 +294,7 @@ npm run test:all      # Run unit + E2E tests
 **Current Status**: 126/150 tests passing (84%)
 
 E2E tests cover:
+
 - 5 browsers (Chromium, Firefox, WebKit, Mobile Chrome, Mobile Safari)
 - Navigation and routing
 - Performance metrics
@@ -294,7 +309,7 @@ If Playwright browsers are not installed:
 npx playwright install
 ```
 
-For more details, see [TESTING.md](TESTING.md).
+For more details, see [TESTING.md](../../docs/engineering/TESTING.md).
 
 ---
 
@@ -305,6 +320,7 @@ For more details, see [TESTING.md](TESTING.md).
 The project includes a GitHub Actions workflow for automatic deployment to GitHub Pages.
 
 **Setup**:
+
 1. Go to repository Settings → Pages
 2. Source: "GitHub Actions"
 3. Push to `main` branch triggers automatic deployment
@@ -321,6 +337,7 @@ The project can be deployed to:
 ### Build Configuration
 
 For deployment, ensure:
+
 1. Environment variables are set (if any)
 2. Base URL is configured in `vite.config.ts`
 3. Redirects are configured (`.htaccess` or `_redirects`)
@@ -351,6 +368,7 @@ For deployment, ensure:
 - **[../../docs/prd-technical-improvements.md](../../docs/prd-technical-improvements.md)** - Technical improvements product requirements
 
 - **[../../docs/architecture.md](../../docs/architecture.md)** - Brownfield enhancement architecture
+
 ---
 
 ## 🤝 Contributing
@@ -368,9 +386,9 @@ Contributions are welcome! Please follow these guidelines:
    - Write clean, typed code
    - Add tests for new features
    - Update documentation as needed
-4. **Run tests and checks**
+4. **Run tests and checks** (from monorepo root, recommended)
    ```bash
-   npm run test
+   npm run test:run
    npm run test:e2e
    npm run typecheck
    npm run lint

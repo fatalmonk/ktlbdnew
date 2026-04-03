@@ -22,10 +22,10 @@ export const resetLoadTimeMeasurement = (): void => {
  */
 export const measureLoadTime = (): void => {
   if (typeof window === 'undefined' || !window.performance) return;
-  
+
   // Prevent multiple measurements
   if (hasMeasured) return;
-  
+
   // Record start time immediately
   loadTimeStart = performance.now();
 
@@ -34,10 +34,10 @@ export const measureLoadTime = (): void => {
     requestAnimationFrame(() => {
       // Prevent duplicate measurements
       if (hasMeasured || loadTimeStart === null) return;
-      
+
       const loadTimeEnd = performance.now();
       const loadTime = Math.round(loadTimeEnd - loadTimeStart);
-      
+
       // Validate the measurement
       if (isNaN(loadTime) || loadTime < 0 || loadTime > 60000) {
         console.warn('Invalid load time measurement:', loadTime);
@@ -48,10 +48,7 @@ export const measureLoadTime = (): void => {
       console.log('Load:', loadTime, 'ms');
 
       // Send to analytics if available
-      if (
-        typeof window !== 'undefined' &&
-        typeof window.gtag === 'function'
-      ) {
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'page_load_time', {
           event_category: 'Performance',
           value: loadTime,

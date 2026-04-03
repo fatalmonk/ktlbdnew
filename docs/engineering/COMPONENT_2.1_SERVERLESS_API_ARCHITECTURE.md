@@ -21,6 +21,7 @@
 ## Technical Specifications
 
 ### Serverless Architecture
+
 ```
 Serverless API Infrastructure
 ├── API Gateway
@@ -47,6 +48,7 @@ Serverless API Infrastructure
 ```
 
 ### API Endpoint Specifications
+
 ```typescript
 // Contact Form API
 POST /api/contact
@@ -103,6 +105,7 @@ Request Body:
 ## Implementation Requirements
 
 ### Serverless Function Structure
+
 ```
 backend/
 ├── functions/
@@ -128,6 +131,7 @@ backend/
 ```
 
 ### Lambda Function Implementation
+
 ```typescript
 // functions/contact.ts
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
@@ -135,9 +139,7 @@ import { validateContactSubmission } from '../lib/validation-schemas';
 import { sendContactEmail } from '../lib/email-service';
 import { handleError } from '../lib/error-handling';
 
-export const handler = async (
-  event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> => {
+export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
     // CORS headers
     const headers = {
@@ -179,6 +181,7 @@ export const handler = async (
 ## Integration Requirements
 
 ### Email Service Integration
+
 - **Provider:** SendGrid OR AWS SES
 - **Templates:** HTML email templates for each form type
 - **Delivery:** Real-time email delivery
@@ -186,6 +189,7 @@ export const handler = async (
 - **Fallback:** Error handling and retry logic
 
 ### Security Integration
+
 - **CORS:** Whitelist ktlbd.com domain only
 - **Rate Limiting:** 10 requests/minute per IP
 - **Input Validation:** Zod schema validation
@@ -193,6 +197,7 @@ export const handler = async (
 - **Input Sanitization:** XSS protection
 
 ### Frontend Integration
+
 - **API Client:** Fetch API with error handling
 - **Loading States:** User feedback during submission
 - **Error Handling:** User-friendly error messages
@@ -203,12 +208,14 @@ export const handler = async (
 ## Performance Requirements
 
 ### Response Time
+
 - **API Response:** < 500ms for all endpoints
 - **Email Delivery:** < 5 seconds for email sending
 - **Cold Start:** < 2 seconds for Lambda cold starts
 - **Warm Start:** < 100ms for warm Lambda functions
 
 ### Scalability
+
 - **Concurrent Requests:** Support 100+ concurrent requests
 - **Auto-scaling:** Automatic scaling based on demand
 - **Resource Limits:** Appropriate memory and timeout settings
@@ -219,6 +226,7 @@ export const handler = async (
 ## Security Architecture
 
 ### Input Validation
+
 ```typescript
 // validation-schemas.ts
 import { z } from 'zod';
@@ -247,11 +255,12 @@ export const inquirySubmissionSchema = z.object({
 export const newsletterSubscriptionSchema = z.object({
   email: z.string().email(),
   source: z.string().max(100),
-  consent: z.boolean().refine(val => val === true),
+  consent: z.boolean().refine((val) => val === true),
 });
 ```
 
 ### Rate Limiting Implementation
+
 ```typescript
 // security.ts
 import { APIGatewayProxyEvent } from 'aws-lambda';
@@ -265,7 +274,7 @@ export const checkRateLimit = (event: APIGatewayProxyEvent): boolean => {
   const maxRequests = 10;
 
   const current = rateLimitMap.get(ip);
-  
+
   if (!current || now > current.resetTime) {
     rateLimitMap.set(ip, { count: 1, resetTime: now + windowMs });
     return true;
@@ -285,18 +294,21 @@ export const checkRateLimit = (event: APIGatewayProxyEvent): boolean => {
 ## Monitoring and Observability
 
 ### Metrics
+
 - **Request Count:** Number of API requests
 - **Response Time:** API response times
 - **Error Rate:** Percentage of failed requests
 - **Email Delivery Rate:** Email delivery success rate
 
 ### Logging
+
 - **Request Logging:** All API requests logged
 - **Error Logging:** Detailed error information
 - **Performance Logging:** Response time tracking
 - **Security Logging:** Security event logging
 
 ### Alerting
+
 - **High Error Rate:** Alert when error rate > 5%
 - **Slow Response:** Alert when response time > 1s
 - **Email Delivery Issues:** Alert on email delivery failures
@@ -307,17 +319,20 @@ export const checkRateLimit = (event: APIGatewayProxyEvent): boolean => {
 ## Deployment Architecture
 
 ### Environment Strategy
+
 - **Development:** Local development environment
 - **Staging:** Pre-production testing environment
 - **Production:** Live production environment
 
 ### Deployment Process
+
 1. **Code Deployment:** Serverless functions deployed via CI/CD
 2. **Configuration:** Environment variables and secrets
 3. **Testing:** Automated testing in staging
 4. **Production:** Gradual rollout to production
 
 ### Infrastructure as Code
+
 ```yaml
 # serverless.yml
 service: ktl-api
@@ -367,18 +382,21 @@ functions:
 ## Success Criteria
 
 ### Technical Success
+
 - [ ] All API endpoints functional and tested
 - [ ] Response time < 500ms for all endpoints
 - [ ] Email delivery working reliably
 - [ ] Security measures implemented
 
 ### Operational Success
+
 - [ ] CI/CD pipeline working
 - [ ] Monitoring and alerting setup
 - [ ] Documentation complete
 - [ ] Team training completed
 
 ### Quality Success
+
 - [ ] Test coverage comprehensive
 - [ ] Error handling robust
 - [ ] Performance optimized
@@ -389,14 +407,17 @@ functions:
 ## Risk Assessment
 
 ### High Risk
+
 - **Email Delivery:** Email service may have delivery issues
 - **Security Vulnerabilities:** API may be vulnerable to attacks
 
 ### Medium Risk
+
 - **Performance:** Serverless cold starts may cause delays
 - **Scalability:** High traffic may cause issues
 
 ### Mitigation Strategies
+
 - Use reputable email service with good delivery rates
 - Implement comprehensive security testing
 - Optimize function for fast cold starts

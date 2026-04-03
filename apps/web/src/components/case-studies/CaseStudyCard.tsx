@@ -70,9 +70,7 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
           </p>
 
           {/* Challenge Preview */}
-          <p className="text-neutral-700 mb-4 line-clamp-3">
-            {caseStudy.challenge}
-          </p>
+          <p className="text-neutral-700 mb-4 line-clamp-3">{caseStudy.challenge}</p>
 
           {/* Key Results */}
           <div className="grid grid-cols-2 gap-3 mb-4">
@@ -91,7 +89,12 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
                 <Suspense fallback={<div className="w-3.5 h-3.5" />}>
                   <Calendar size={14} />
                 </Suspense>
-                <span>{new Date(caseStudy.publishDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+                <span>
+                  {new Date(caseStudy.publishDate).toLocaleDateString('en-US', {
+                    month: 'short',
+                    year: 'numeric',
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-1">
                 <Suspense fallback={<div className="w-3.5 h-3.5" />}>
@@ -114,4 +117,3 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
 };
 
 export default CaseStudyCard;
-

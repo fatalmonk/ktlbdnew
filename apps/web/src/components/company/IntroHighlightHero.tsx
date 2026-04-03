@@ -45,7 +45,7 @@ function HeadlineSideAccent({ className }: { className?: string }) {
     <div
       className={cn(
         'pointer-events-none hidden shrink-0 self-start lg:flex lg:min-h-[14rem] lg:w-[min(42%,22rem)] lg:max-w-md lg:justify-end lg:ml-auto lg:-translate-y-3 lg:translate-x-10 xl:w-[min(38%,26rem)] xl:-translate-y-4 xl:translate-x-16 2xl:translate-x-24',
-        className,
+        className
       )}
       aria-hidden
     >
@@ -156,7 +156,7 @@ const IntroHighlightHero = ({
     (dir: -1 | 1) => {
       setIndex((i) => (i + dir + count) % count);
     },
-    [count],
+    [count]
   );
 
   return (
@@ -207,7 +207,7 @@ const IntroHighlightHero = ({
                     key={slide.src + slide.alt}
                     className={cn(
                       'absolute inset-0 transition-opacity duration-500 ease-out',
-                      i === index ? 'z-[1] opacity-100' : 'z-0 opacity-0',
+                      i === index ? 'z-[1] opacity-100' : 'z-0 opacity-0'
                     )}
                     aria-hidden={i !== index}
                   >

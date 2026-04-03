@@ -6,10 +6,7 @@ import {
   CompanyInfo,
   ContactInfo,
 } from '../modules/rfq/types/rfq';
-import {
-  RFQ_STORAGE_KEY,
-  initialRFQFormData,
-} from '../modules/rfq/data/rfq.config';
+import { RFQ_STORAGE_KEY, initialRFQFormData } from '../modules/rfq/data/rfq.config';
 import { isRFQStepValid } from '../modules/rfq/validation/rfq.validation';
 import {
   safeLocalStorageGetItem,
@@ -109,4 +106,3 @@ export const useRFQForm = () => {
     isStepValid,
   };
 };
-

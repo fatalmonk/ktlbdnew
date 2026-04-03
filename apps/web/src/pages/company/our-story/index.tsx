@@ -108,9 +108,7 @@ const CompanyOurStory = () => {
     { name: 'Our Story', url: '/company/our-story' },
   ];
 
-  const introSlides = [
-    { src: heroMain1x, alt: 'Kattali Textile manufacturing operations' },
-  ];
+  const introSlides = [{ src: heroMain1x, alt: 'Kattali Textile manufacturing operations' }];
 
   return (
     <>
@@ -245,7 +243,9 @@ const CompanyOurStory = () => {
                     />
                   </div>
                   <p className="mt-4 text-base font-bold leading-tight text-black">{leader.name}</p>
-                  <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">{leader.position}</p>
+                  <p className="mt-1 text-sm font-normal leading-snug text-neutral-900">
+                    {leader.position}
+                  </p>
                 </li>
               ))}
             </ul>

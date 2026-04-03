@@ -1,0 +1,118 @@
+{
+  "exportMeta": {
+    "format": "webflow-site-audit",
+    "version": 1,
+    "exportedAt": "2026-04-03",
+    "siteId": "69cf4d6762c4aeedd723252b"
+  },
+  "site": {
+    "id": "69cf4d6762c4aeedd723252b",
+    "workspaceId": "69cf4c849b18aafe4a212dba",
+    "displayName": "Kattali Textile Limited",
+    "shortName": "kattali-textile-limited",
+    "timeZone": "Asia/Dhaka",
+    "createdOn": "2026-04-03T05:17:27.326Z",
+    "lastUpdated": "2026-04-03T05:18:22.560Z",
+    "fullSiteCompiledAt": null,
+    "customDomains": [],
+    "dataCollectionEnabled": false,
+    "dataCollectionType": "always"
+  },
+  "pages": {
+    "pagination": { "limit": 100, "offset": 0, "total": 6 },
+    "items": [
+      {
+        "id": "69cf4d6862c4aeedd723252e",
+        "title": "Home",
+        "slug": null,
+        "publishedPath": "/",
+        "draft": false,
+        "archived": false,
+        "seo": {
+          "title": "Kattali Textile Limited - Premier Ready Made Garment Manufacturer",
+          "description": "Discover Kattali Textile Limited, a leader in ready-made garment manufacturing. Explore our quality products and services tailored to meet industry demands."
+        },
+        "openGraph": {
+          "title": "Kattali Textile Limited - Quality Ready Made Garments",
+          "description": "Explore Kattali Textile Limited, a prominent name in the ready-made garment industry, committed to quality and excellence."
+        }
+      },
+      {
+        "id": "69cf4d7362c4aeedd7232709",
+        "title": "About",
+        "slug": "about",
+        "publishedPath": "/about",
+        "draft": false,
+        "archived": false,
+        "seo": {
+          "title": "About Kattali Textile Limited - Leading Ready-Made Garment Manufacturer",
+          "description": "Discover Kattali Textile Limited's mission, vision, and capabilities as a top-tier garment manufacturing company."
+        },
+        "openGraph": {
+          "title": "About Kattali Textile Limited",
+          "description": "Explore the origins and values of Kattali Textile Limited, a prominent player in the ready-made garment sector."
+        }
+      },
+      {
+        "id": "69cf4d7362c4aeedd723270c",
+        "title": "Contact",
+        "slug": "contact",
+        "publishedPath": "/contact",
+        "draft": false,
+        "archived": false,
+        "seo": {
+          "title": "Contact Kattali Textile Limited",
+          "description": "Reach out to Kattali Textile Limited for any inquiries regarding our ready-made garment manufacturing services."
+        },
+        "openGraph": {
+          "title": "Contact Kattali Textile Limited",
+          "description": "We value your feedback and inquiries. Contact Kattali Textile Limited today."
+        }
+      },
+      {
+        "id": "69cf4d7362c4aeedd723270a",
+        "title": "Product Catalog",
+        "slug": "product-catalog",
+        "publishedPath": "/product-catalog",
+        "draft": false,
+        "archived": false,
+        "seo": {
+          "title": "Kattali Textile Limited | Product Catalog",
+          "description": "Discover our comprehensive product catalog featuring premium ready-made garments at Kattali Textile Limited. Quality and style redefined."
+        },
+        "openGraph": {
+          "title": "Kattali Textile Limited | Explore Our Product Catalog",
+          "description": "Browse our product catalog for top-tier ready-made garments tailored for various markets, showcasing our commitment to quality and craftsmanship."
+        }
+      },
+      {
+        "id": "69cf4d7362c4aeedd723270b",
+        "title": "Solutions",
+        "slug": "solutions",
+        "publishedPath": "/solutions",
+        "draft": false,
+        "archived": false,
+        "seo": {
+          "title": "Solutions | Kattali Textile Limited",
+          "description": "Discover Kattali Textile Limited's tailored solutions for efficient and quality-ready made garment manufacturing."
+        },
+        "openGraph": {
+          "title": "Innovative Solutions from Kattali Textile Limited",
+          "description": "Explore our industry-leading solutions designed to enhance efficiency and quality in garment manufacturing."
+        }
+      },
+      {
+        "id": "69cf4d6b62c4aeedd723254d",
+        "title": "Style guide",
+        "slug": "style-guide",
+        "publishedPath": "/style-guide",
+        "draft": false,
+        "archived": false,
+        "seo": {},
+        "openGraph": {},
+        "issues": ["missing_seo_metadata"]
+      }
+    ]
+  },
+  "collections": []
+}

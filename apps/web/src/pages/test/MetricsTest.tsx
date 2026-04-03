@@ -8,7 +8,7 @@ import { mockMetrics } from '../../data/metrics-mock';
 function MetricsDashboardContent() {
   const { metrics, loading, error } = useMetrics(false);
   const { data: chartData = [] } = useChartData();
-  
+
   // Fallback to mock data if no metrics loaded
   const displayMetrics = metrics.length > 0 ? metrics : mockMetrics;
 
@@ -34,12 +34,8 @@ function MetricsDashboardContent() {
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
-          Metrics Dashboard
-        </h1>
-        <p className="text-neutral-600">
-          Real-time business metrics and performance indicators
-        </p>
+        <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">Metrics Dashboard</h1>
+        <p className="text-neutral-600">Real-time business metrics and performance indicators</p>
       </div>
 
       <MetricsGrid
@@ -59,9 +55,7 @@ function MetricsDashboardContent() {
                 className="bg-white rounded-lg p-6 shadow-md border border-neutral-200"
               >
                 <h3 className="font-semibold text-neutral-900 mb-2">{chart.title}</h3>
-                <p className="text-sm text-neutral-600 mb-4">
-                  {chart.data.length} data points
-                </p>
+                <p className="text-sm text-neutral-600 mb-4">{chart.data.length} data points</p>
                 <div className="text-xs text-neutral-500">
                   Type: {chart.type} • Color: {chart.color}
                 </div>
@@ -91,4 +85,3 @@ export default function MetricsTest() {
     </>
   );
 }
-

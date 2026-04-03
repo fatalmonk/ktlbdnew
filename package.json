@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "KTL Website - Root package for workspace management",
   "private": true,
+  "license": "UNLICENSED",
   "workspaces": [
     "apps/*"
   ],
@@ -11,22 +12,39 @@
     "dev:web": "npm run dev --workspace=apps/web",
     "build": "npm run build --workspace=apps/web",
     "build:web": "npm run build --workspace=apps/web",
+    "preview": "npm run preview --workspace=apps/web",
+    "preview:web": "npm run preview --workspace=apps/web",
     "lint": "npm run lint --workspace=apps/web",
     "lint:web": "npm run lint --workspace=apps/web",
     "test": "npm run test --workspace=apps/web",
     "test:web": "npm run test --workspace=apps/web",
+    "test:run": "npm run test:run --workspace=apps/web",
+    "test:run:web": "npm run test:run --workspace=apps/web",
     "test:e2e": "npm run test:e2e --workspace=apps/web",
     "test:e2e:web": "npm run test:e2e --workspace=apps/web",
+    "test:all": "npm run test:all --workspace=apps/web",
+    "test:all:web": "npm run test:all --workspace=apps/web",
     "typecheck": "npm run typecheck --workspace=apps/web",
     "typecheck:web": "npm run typecheck --workspace=apps/web",
     "format": "npm run format --workspace=apps/web",
     "format:web": "npm run format --workspace=apps/web",
+    "format:check": "npm run format:check --workspace=apps/web",
+    "format:check:web": "npm run format:check --workspace=apps/web",
     "vercel:link": "npx vercel@latest link",
     "vercel:pull": "npx vercel@latest pull --yes",
     "vercel:deploy": "npx vercel@latest deploy",
-    "vercel:prod": "npx vercel@latest deploy --prod"
+    "vercel:prod": "npx vercel@latest deploy --prod",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "baseline-browser-mapping": "^2.10.12"
+    "baseline-browser-mapping": "^2.10.12",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
+  },
+  "lint-staged": {
+    "apps/web/**/*.{ts,tsx,js,jsx}": "eslint --fix --config apps/web/eslint.config.js",
+    "apps/web/**/*.{json,css,md,html}": "prettier --write",
+    "{README.md,CONTRIBUTING.md}": "prettier --write",
+    "docs/**/*.md": "prettier --write"
   }
 }

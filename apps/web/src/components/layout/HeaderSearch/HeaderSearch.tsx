@@ -28,10 +28,9 @@ const HeaderSearch: React.FC = () => {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return suggestions.slice(0, 6);
-    return suggestions.filter(
-      (l) =>
-        l.label.toLowerCase().includes(q) || l.href.toLowerCase().includes(q)
-    ).slice(0, 8);
+    return suggestions
+      .filter((l) => l.label.toLowerCase().includes(q) || l.href.toLowerCase().includes(q))
+      .slice(0, 8);
   }, [query, suggestions]);
 
   const submit = () => {
@@ -68,15 +67,10 @@ const HeaderSearch: React.FC = () => {
         >
           <span className="button_text inline-flex" aria-hidden>
             <React.Suspense
-              fallback={
-                <span className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" />
-              }
+              fallback={<span className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" />}
             >
               {open ? (
-                <X
-                  className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]"
-                  strokeWidth={2.5}
-                />
+                <X className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]" strokeWidth={2.5} />
               ) : (
                 <Search
                   className="h-7 w-7 sm:h-8 sm:w-8 lg:h-[28px] lg:w-[28px]"

@@ -43,4 +43,3 @@ export const createIdleLazy = <T extends React.ComponentType<object>>(
     });
   });
 };
-

@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { useEffect } from 'react';
 
 interface StructuredDataProps {
@@ -47,4 +46,3 @@ const StructuredData: React.FC<StructuredDataProps> = ({ data, id = 'structured-
 };
 
 export default StructuredData;
-

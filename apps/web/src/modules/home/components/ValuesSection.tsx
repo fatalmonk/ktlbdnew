@@ -22,5 +22,3 @@ const ValuesSection = ({ values }: ValuesSectionProps) => (
 );
 
 export default ValuesSection;
-
-

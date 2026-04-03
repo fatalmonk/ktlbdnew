@@ -6,9 +6,7 @@ interface ReviewStepProps {
 
 export const ReviewStep = ({ formData }: ReviewStepProps) => (
   <div>
-    <h2 className="text-2xl font-bold text-neutral-900 mb-6">
-      Review Your Request
-    </h2>
+    <h2 className="text-2xl font-bold text-neutral-900 mb-6">Review Your Request</h2>
     <div className="space-y-6">
       <div className="border border-neutral-200 rounded-lg p-6">
         <h3 className="font-semibold text-lg mb-4">Products</h3>
@@ -16,9 +14,7 @@ export const ReviewStep = ({ formData }: ReviewStepProps) => (
           {formData.products.map((product) => (
             <div key={product.category} className="flex justify-between">
               <span>{product.category}</span>
-              <span className="font-semibold">
-                {product.quantity.toLocaleString()} units
-              </span>
+              <span className="font-semibold">{product.quantity.toLocaleString()} units</span>
             </div>
           ))}
         </div>
@@ -33,16 +29,12 @@ export const ReviewStep = ({ formData }: ReviewStepProps) => (
           </div>
           <div>
             <span className="text-neutral-600">Destination:</span>
-            <p className="font-semibold">
-              {formData.requirements.shippingDestination}
-            </p>
+            <p className="font-semibold">{formData.requirements.shippingDestination}</p>
           </div>
           {formData.requirements.certifications.length > 0 && (
             <div className="col-span-2">
               <span className="text-neutral-600">Certifications:</span>
-              <p className="font-semibold">
-                {formData.requirements.certifications.join(', ')}
-              </p>
+              <p className="font-semibold">{formData.requirements.certifications.join(', ')}</p>
             </div>
           )}
         </div>
@@ -72,12 +64,10 @@ export const ReviewStep = ({ formData }: ReviewStepProps) => (
 
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <p className="text-sm text-yellow-800">
-          ⚠️ Please review all information carefully before submitting. Our team
-          will respond within 24 business hours.
+          ⚠️ Please review all information carefully before submitting. Our team will respond within
+          24 business hours.
         </p>
       </div>
     </div>
   </div>
 );
-
-

@@ -16,18 +16,18 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   className = '',
   variant = 'text',
   animation = 'pulse',
-  'aria-label': ariaLabel = 'Loading content'
+  'aria-label': ariaLabel = 'Loading content',
 }) => {
   const baseClasses = 'bg-neutral-200 dark:bg-neutral-700';
 
   const variantClasses = {
     text: 'rounded',
     circular: 'rounded-full',
-    rectangular: 'rounded-lg'
+    rectangular: 'rounded-lg',
   };
 
-  const prefersReducedMotion = typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const animationVariants = {
     pulse: {
@@ -35,17 +35,17 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: 'easeInOut'
-      }
+        ease: 'easeInOut',
+      },
     },
     wave: {
       backgroundPosition: prefersReducedMotion ? '0% 0%' : ['200% 0', '-200% 0'],
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: 'linear'
-      }
-    }
+        ease: 'linear',
+      },
+    },
   };
 
   return (
@@ -60,4 +60,3 @@ export const Skeleton: React.FC<SkeletonProps> = ({
     />
   );
 };
-

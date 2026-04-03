@@ -13,7 +13,8 @@ const KnitwearPage = () => {
 
   const productSchema = createProductSchema({
     name: 'Premium Knitwear Products',
-    description: "KTL's premium knitwear collection features high-quality sweaters, cardigans, and knit accessories manufactured in Bangladesh for global fashion brands.",
+    description:
+      "KTL's premium knitwear collection features high-quality sweaters, cardigans, and knit accessories manufactured in Bangladesh for global fashion brands.",
     image: 'https://ktlbd.com/assets/knitwear.jpg',
     category: 'Knitwear Apparel',
     brand: 'Kattali Textile Ltd',
@@ -26,7 +27,13 @@ const KnitwearPage = () => {
         title="Premium Knitwear Products | Kattali Textile Ltd Manufacturing"
         description="KTL's premium knitwear collection features high-quality sweaters, cardigans, and knit accessories manufactured in Bangladesh for global fashion brands."
         canonical="/products/knitwear"
-        keywords={['knitwear products', 'sweaters manufacturing', 'cardigans', 'Bangladesh knitwear', 'textile knitwear']}
+        keywords={[
+          'knitwear products',
+          'sweaters manufacturing',
+          'cardigans',
+          'Bangladesh knitwear',
+          'textile knitwear',
+        ]}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
       <SubpageHeader
@@ -41,12 +48,44 @@ const KnitwearPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Our premium knitwear collection features high-quality sweaters, cardigans, and knit accessories
-              crafted for comfort, warmth, and style. As part of our comprehensive <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garment products</Link> range, 
-              we also manufacture <Link to="/products/denims" className="text-primary-600 hover:text-primary-700 font-medium underline">premium denim</Link> and 
-              <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline"> children's clothing</Link>. All our knitwear is produced in our 
-              <Link to="/facilities/rmg" className="text-primary-600 hover:text-primary-700 font-medium underline">state-of-the-art manufacturing facilities</Link> using 
-              <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline">sustainable production practices</Link>.
+              Our premium knitwear collection features high-quality sweaters, cardigans, and knit
+              accessories crafted for comfort, warmth, and style. As part of our comprehensive{' '}
+              <Link
+                to="/products"
+                className="text-primary-600 hover:text-primary-700 font-medium underline"
+              >
+                woven garment products
+              </Link>{' '}
+              range, we also manufacture{' '}
+              <Link
+                to="/products/denims"
+                className="text-primary-600 hover:text-primary-700 font-medium underline"
+              >
+                premium denim
+              </Link>{' '}
+              and
+              <Link
+                to="/products/kids"
+                className="text-primary-600 hover:text-primary-700 font-medium underline"
+              >
+                {' '}
+                children's clothing
+              </Link>
+              . All our knitwear is produced in our
+              <Link
+                to="/facilities/rmg"
+                className="text-primary-600 hover:text-primary-700 font-medium underline"
+              >
+                state-of-the-art manufacturing facilities
+              </Link>{' '}
+              using
+              <Link
+                to="/sustainability"
+                className="text-primary-600 hover:text-primary-700 font-medium underline"
+              >
+                sustainable production practices
+              </Link>
+              .
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

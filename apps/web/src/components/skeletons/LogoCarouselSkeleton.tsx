@@ -15,7 +15,7 @@ const LogoCarouselSkeleton: React.FC = () => {
             aria-label="Loading logo carousel title"
           />
         </div>
-        
+
         {/* Carousel container skeleton */}
         <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
           <div className="flex gap-8 overflow-hidden">
@@ -37,4 +37,3 @@ const LogoCarouselSkeleton: React.FC = () => {
 };
 
 export default LogoCarouselSkeleton;
-

@@ -21,40 +21,40 @@ const VendorsPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Join our vendor network and become part of KTL's supply chain ecosystem.
-              We value long-term partnerships and mutual growth opportunities.
+              Join our vendor network and become part of KTL's supply chain ecosystem. We value
+              long-term partnerships and mutual growth opportunities.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Supplier Partnerships</h3>
                 <p className="text-neutral-800">
-                  Long-term partnerships with reliable suppliers for
-                  raw materials, equipment, and services.
+                  Long-term partnerships with reliable suppliers for raw materials, equipment, and
+                  services.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Service Providers</h3>
                 <p className="text-neutral-800">
-                  Collaboration with service providers for logistics,
-                  maintenance, and specialized services.
+                  Collaboration with service providers for logistics, maintenance, and specialized
+                  services.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Technology Partners</h3>
                 <p className="text-neutral-800">
-                  Strategic partnerships with technology providers
-                  for innovation and digital transformation.
+                  Strategic partnerships with technology providers for innovation and digital
+                  transformation.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Sustainability Partners</h3>
                 <p className="text-neutral-800">
-                  Collaboration with organizations focused on
-                  environmental sustainability and social responsibility.
+                  Collaboration with organizations focused on environmental sustainability and
+                  social responsibility.
                 </p>
               </div>
             </div>

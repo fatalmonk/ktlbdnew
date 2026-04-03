@@ -13,7 +13,11 @@ import {
 import MetricsWidget from '../../components/sustainability/MetricsWidget';
 import SEO from '../../components/seo/SEO';
 import SubpageHeader from '../../components/shared/SubpageHeader';
-import { SustainabilityMetric, SustainabilityGoal, SustainabilityInitiative } from '../../types/sustainability';
+import {
+  SustainabilityMetric,
+  SustainabilityGoal,
+  SustainabilityInitiative,
+} from '../../types/sustainability';
 import sustainabilityData from '@/data/sustainability/index.json';
 
 interface SustainabilityData {
@@ -76,10 +80,7 @@ const SustainabilityDashboard = () => {
       />
 
       <SubpageHeader
-        breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Sustainability' },
-        ]}
+        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Sustainability' }]}
         pageTitle="Sustainability"
       />
       <div className="bg-neutral-50 min-h-screen">
@@ -97,7 +98,8 @@ const SustainabilityDashboard = () => {
                 Sustainability & ESG Dashboard
               </h2>
               <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-                Transparency in action. Track our environmental, social, and governance performance in real-time.
+                Transparency in action. Track our environmental, social, and governance performance
+                in real-time.
               </p>
             </motion.div>
           </div>
@@ -247,14 +249,18 @@ const SustainabilityDashboard = () => {
                     <span className="text-xs px-2 py-1 bg-neutral-100 text-neutral-700 rounded-full">
                       {initiative.category}
                     </span>
-                    <span className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full ${getStatusColor(initiative.status)}`}>
+                    <span
+                      className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full ${getStatusColor(initiative.status)}`}
+                    >
                       {getStatusIcon(initiative.status)}
                       {initiative.status}
                     </span>
                   </div>
 
                   <h3 className="font-bold text-lg text-neutral-900 mb-2">{initiative.title}</h3>
-                  <p className="text-sm text-neutral-700 mb-3 line-clamp-3">{initiative.description}</p>
+                  <p className="text-sm text-neutral-700 mb-3 line-clamp-3">
+                    {initiative.description}
+                  </p>
 
                   <div className="pt-3 border-t border-neutral-200">
                     <div className="flex items-start gap-2">
@@ -264,7 +270,11 @@ const SustainabilityDashboard = () => {
                   </div>
 
                   <div className="mt-3 text-xs text-neutral-500">
-                    Started: {new Date(initiative.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                    Started:{' '}
+                    {new Date(initiative.startDate).toLocaleDateString('en-US', {
+                      month: 'short',
+                      year: 'numeric',
+                    })}
                   </div>
                 </div>
               </motion.div>
@@ -347,4 +357,3 @@ const SustainabilityDashboard = () => {
 };
 
 export default SustainabilityDashboard;
-

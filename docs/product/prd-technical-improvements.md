@@ -10,9 +10,9 @@
 
 ## Change Log
 
-| Date | Version | Description | Author |
-|------|---------|-------------|--------|
-| October 25, 2025 | 1.0 | Initial PRD for technical improvements | John (PM) |
+| Date             | Version | Description                            | Author    |
+| ---------------- | ------- | -------------------------------------- | --------- |
+| October 25, 2025 | 1.0     | Initial PRD for technical improvements | John (PM) |
 
 ---
 
@@ -46,6 +46,7 @@ This PRD addresses **significant technical improvements** to the existing Kattal
 The Kattali Textile Limited website is a production-ready React 18 SPA with 30+ pages, comprehensive SEO implementation, and strong testing infrastructure. The application serves as the primary digital presence for a Bangladesh-based RMG factory, showcasing products (Denims, Knitwear, Swimwear, Kids apparel), company information, facilities, and investor relations.
 
 **Key Current Capabilities:**
+
 - 30+ lazy-loaded pages with React Router
 - Blog system with 9,200+ words of content
 - Complete product catalog and investor relations section
@@ -59,6 +60,7 @@ The Kattali Textile Limited website is a production-ready React 18 SPA with 30+ 
 **Document-Project Analysis Available:** Yes - comprehensive technical analysis completed
 
 **Existing Documentation:**
+
 - ✅ Tech Stack Documentation - Complete (React 18.3.1, TypeScript 5.5.4, Vite 7.1.6, etc.)
 - ✅ Source Tree/Architecture - Complete project structure documented
 - ✅ Coding Standards - Partial (ESLint, Prettier, TypeScript configured)
@@ -71,6 +73,7 @@ The Kattali Textile Limited website is a production-ready React 18 SPA with 30+ 
 ### Enhancement Type
 
 **Primary Enhancement Categories:**
+
 - ✅ **Bug Fix and Stability Improvements** - Fix 24 failing E2E tests
 - ✅ **Performance/Scalability Improvements** - Optimize bundle size and Core Web Vitals
 - ✅ **Integration with New Systems** - Backend API for forms, CMS for blog
@@ -85,6 +88,7 @@ Systematically improve the technical quality, reliability, and functionality of 
 **Significant Impact** - substantial existing code changes required
 
 **Areas of Impact:**
+
 - Test suite modifications across 5 browser configurations
 - Build configuration updates for optimization
 - New backend integration requiring API endpoints
@@ -99,6 +103,7 @@ Systematically improve the technical quality, reliability, and functionality of 
 ### Goals
 
 **Primary Objectives:**
+
 1. Achieve 100% E2E test pass rate across all 5 browsers (Chromium, Firefox, WebKit, Mobile Chrome, Mobile Safari) for deployment confidence
 2. Enable lead capture through functional contact/inquiry forms with backend submission handling
 3. Improve Core Web Vitals scores (LCP < 2.5s, FID < 100ms, CLS < 0.1) for better SEO rankings and user experience
@@ -187,11 +192,13 @@ All UI changes will maintain strict adherence to the existing KTL theme design s
 ### Modified/New Screens and Views
 
 **Modified Pages:**
+
 - Contact page - Enhanced form with validation, loading states, success/error messaging
 - All pages with inquiry forms - Backend integration and validation
 - Blog listing and individual post pages - CMS integration (visual appearance unchanged)
 
 **New Components:**
+
 - Form validation feedback components (inline errors, success messages)
 - Loading spinners for async operations
 - Toast notifications for form submissions
@@ -218,42 +225,44 @@ All UI changes will maintain strict adherence to the existing KTL theme design s
 
 ### Existing Technology Stack
 
-| Category | Technology | Version | Constraints |
-|----------|-----------|---------|-------------|
-| **Languages** | TypeScript | 5.5.4 | Maintain strict type safety |
-| **Languages** | JavaScript | ES2022+ | Continue using modern syntax |
-| **Frontend Framework** | React | 18.3.1 | Use concurrent features |
-| **Build Tool** | Vite | 7.1.6 | Optimize build configuration |
-| **Routing** | React Router | 7.7.1 | Maintain existing routing structure |
-| **Styling** | Tailwind CSS | 3.4.1 | Continue using KTL custom theme |
-| **Icons** | Lucide React | 0.344.0 | Use for any new icons needed |
-| **Image Processing** | Sharp | 0.34.4 | Continue WebP optimization |
-| **Unit Testing** | Vitest | 4.0.1 | Maintain test patterns |
-| **E2E Testing** | Playwright | 1.56.1 | Fix existing tests, maintain coverage |
-| **Component Testing** | React Testing Library | 16.3.0 | Continue using for new components |
-| **Code Quality** | ESLint + Prettier | Latest | Enhance with stricter rules |
-| **Package Manager** | npm | 10+ | Continue using npm |
-| **Hosting** | GitHub Pages | N/A | Continue for frontend |
+| Category               | Technology            | Version | Constraints                           |
+| ---------------------- | --------------------- | ------- | ------------------------------------- |
+| **Languages**          | TypeScript            | 5.5.4   | Maintain strict type safety           |
+| **Languages**          | JavaScript            | ES2022+ | Continue using modern syntax          |
+| **Frontend Framework** | React                 | 18.3.1  | Use concurrent features               |
+| **Build Tool**         | Vite                  | 7.1.6   | Optimize build configuration          |
+| **Routing**            | React Router          | 7.7.1   | Maintain existing routing structure   |
+| **Styling**            | Tailwind CSS          | 3.4.1   | Continue using KTL custom theme       |
+| **Icons**              | Lucide React          | 0.344.0 | Use for any new icons needed          |
+| **Image Processing**   | Sharp                 | 0.34.4  | Continue WebP optimization            |
+| **Unit Testing**       | Vitest                | 4.0.1   | Maintain test patterns                |
+| **E2E Testing**        | Playwright            | 1.56.1  | Fix existing tests, maintain coverage |
+| **Component Testing**  | React Testing Library | 16.3.0  | Continue using for new components     |
+| **Code Quality**       | ESLint + Prettier     | Latest  | Enhance with stricter rules           |
+| **Package Manager**    | npm                   | 10+     | Continue using npm                    |
+| **Hosting**            | GitHub Pages          | N/A     | Continue for frontend                 |
 
 **New Technologies to Add:**
 
-| Category | Recommended Technology | Purpose | Rationale |
-|----------|----------------------|---------|-----------|
-| **Backend** | AWS Lambda + API Gateway OR Vercel Serverless Functions | Form handling, API endpoints | Cost-effective, auto-scaling, minimal maintenance |
-| **Email Service** | SendGrid OR AWS SES | Transactional emails | Reliable delivery, good free tier |
-| **Headless CMS** | Contentful OR Sanity | Blog management | Modern API, good DX, generous free tier |
-| **Pre-commit Hooks** | Husky + lint-staged | Automated quality checks | Industry standard |
-| **Dependency Management** | Dependabot | Security updates | GitHub native, automatic PRs |
+| Category                  | Recommended Technology                                  | Purpose                      | Rationale                                         |
+| ------------------------- | ------------------------------------------------------- | ---------------------------- | ------------------------------------------------- |
+| **Backend**               | AWS Lambda + API Gateway OR Vercel Serverless Functions | Form handling, API endpoints | Cost-effective, auto-scaling, minimal maintenance |
+| **Email Service**         | SendGrid OR AWS SES                                     | Transactional emails         | Reliable delivery, good free tier                 |
+| **Headless CMS**          | Contentful OR Sanity                                    | Blog management              | Modern API, good DX, generous free tier           |
+| **Pre-commit Hooks**      | Husky + lint-staged                                     | Automated quality checks     | Industry standard                                 |
+| **Dependency Management** | Dependabot                                              | Security updates             | GitHub native, automatic PRs                      |
 
 ### Integration Approach
 
-**Database Integration Strategy:**  
+**Database Integration Strategy:**
+
 - Initial implementation: No database required
 - Form submissions sent directly to email service
 - CMS provides content storage (no custom database needed)
 - Future consideration: DynamoDB or PostgreSQL if analytics/storage needed
 
-**API Integration Strategy:**  
+**API Integration Strategy:**
+
 - RESTful API endpoints using serverless functions
 - Endpoints: `/api/contact`, `/api/inquiry`, `/api/newsletter`
 - CORS configuration to allow requests from ktlbd.com domain
@@ -261,7 +270,8 @@ All UI changes will maintain strict adherence to the existing KTL theme design s
 - Input validation using Zod or Joi schemas
 - Error handling with appropriate HTTP status codes
 
-**Frontend Integration Strategy:**  
+**Frontend Integration Strategy:**
+
 - Axios or Fetch API for backend communication
 - Loading states during API calls
 - Error handling with user-friendly messages
@@ -269,7 +279,8 @@ All UI changes will maintain strict adherence to the existing KTL theme design s
 - Form state management using React hooks
 - CMS data fetched at build time (static generation) or runtime (ISR)
 
-**Testing Integration Strategy:**  
+**Testing Integration Strategy:**
+
 - Unit tests for form validation logic
 - Integration tests for API communication
 - E2E tests for complete form submission flow
@@ -317,8 +328,8 @@ backend/ # NEW: Serverless functions
 │ └── spam-protection.ts
 └── tests/
 
+**Naming Conventions:**
 
-**Naming Conventions:**  
 - Maintain PascalCase for React components
 - camelCase for functions, variables, and hooks
 - UPPER_SNAKE_CASE for environment variables
@@ -326,7 +337,8 @@ backend/ # NEW: Serverless functions
 - Prefix custom hooks with `use`
 - Suffix test files with `.test.ts` or `.test.tsx`
 
-**Coding Standards:**  
+**Coding Standards:**
+
 - TypeScript strict mode enabled
 - No `any` types (use `unknown` if truly dynamic)
 - ESLint rules enforced via pre-commit hooks
@@ -334,7 +346,8 @@ backend/ # NEW: Serverless functions
 - Maximum function length: 50 lines
 - Comprehensive JSDoc comments for complex functions
 
-**Documentation Standards:**  
+**Documentation Standards:**
+
 - README updates for new features
 - API endpoint documentation with request/response examples
 - Environment variable documentation
@@ -343,27 +356,31 @@ backend/ # NEW: Serverless functions
 
 ### Deployment and Operations
 
-**Build Process Integration:**  
+**Build Process Integration:**
+
 - Vite build continues for frontend static assets
 - Separate build process for serverless functions
 - Environment-specific builds (dev, staging, production)
 - Pre-build optimization scripts (image optimization, sitemap generation)
 
-**Deployment Strategy:**  
+**Deployment Strategy:**
+
 - **Frontend:** Continue GitHub Pages deployment via GitHub Actions
 - **Backend:** Deploy serverless functions to AWS Lambda or Vercel
 - **CMS:** Cloud-hosted (Contentful/Sanity) - no deployment needed
 - **Staging Environment:** Separate deployment for testing before production
 - **Rollback Plan:** Git tags for quick reversion, serverless versions for backend
 
-**Monitoring and Logging:**  
+**Monitoring and Logging:**
+
 - **Frontend:** Google Analytics 4 for user behavior
 - **Backend:** CloudWatch Logs (AWS) or Vercel Logs for function execution
 - **Error Tracking:** Sentry or similar for production error monitoring
 - **Performance:** Real User Monitoring (RUM) for Core Web Vitals
 - **Uptime:** UptimeRobot or Pingdom for availability monitoring
 
-**Configuration Management:**  
+**Configuration Management:**
+
 - Environment variables for API keys, endpoints
 - Separate `.env.development`, `.env.production` files
 - Secrets stored in GitHub Secrets or AWS Secrets Manager
@@ -437,14 +454,16 @@ backend/ # NEW: Serverless functions
 **Epic Goal:**  
 Transform the Kattali Textile Limited website from a functional MVP to a production-grade, enterprise-quality digital asset by achieving 100% test stability, enabling lead capture through backend integration, optimizing performance for SEO competitiveness, ensuring accessibility compliance, and enhancing developer productivity.
 
-**Business Value:**  
+**Business Value:**
+
 - Increased lead generation through functional contact forms
 - Improved search engine rankings via performance optimization
 - Broader audience reach through accessibility compliance
 - Reduced deployment risk through test stability
 - Faster feature delivery through improved developer experience
 
-**Integration Requirements:**  
+**Integration Requirements:**
+
 - All changes must preserve existing functionality and visual design
 - Backend integration must not interfere with static asset serving
 - Performance optimizations must not break lazy loading or code splitting

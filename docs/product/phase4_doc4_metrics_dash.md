@@ -1,6 +1,7 @@
 # Phase 4.4: Metrics Dashboard Foundation
 
 ## Overview
+
 Build the foundation for real-time metrics visualization with animated counters, charts, and data widgets.
 
 ---
@@ -8,6 +9,7 @@ Build the foundation for real-time metrics visualization with animated counters,
 ## 4.4.1 Metrics Type Definitions
 
 **Create metrics data structures:**
+
 ```typescript
 // types/metrics.ts
 export interface Metric {
@@ -57,18 +59,19 @@ export interface DashboardConfig {
 ## 4.4.2 Mock Metrics Data
 
 **Create sample metrics:**
+
 ```typescript
 // data/metrics-mock.ts
 import { Metric, MetricsGroup, ChartData } from '@/types/metrics';
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingCart, 
+import {
+  TrendingUp,
+  Users,
+  ShoppingCart,
   DollarSign,
   Package,
   Eye,
   Heart,
-  Share2
+  Share2,
 } from 'lucide-react';
 
 export const mockMetrics: Metric[] = [
@@ -147,7 +150,7 @@ export const mockMetricsGroups: MetricsGroup[] = [
     id: 'business',
     title: 'Business Metrics',
     icon: DollarSign,
-    metrics: mockMetrics.filter(m => 
+    metrics: mockMetrics.filter((m) =>
       ['monthly-revenue', 'total-orders', 'conversion-rate'].includes(m.id)
     ),
   },
@@ -155,17 +158,13 @@ export const mockMetricsGroups: MetricsGroup[] = [
     id: 'engagement',
     title: 'Engagement Metrics',
     icon: Heart,
-    metrics: mockMetrics.filter(m => 
-      ['active-users', 'page-views'].includes(m.id)
-    ),
+    metrics: mockMetrics.filter((m) => ['active-users', 'page-views'].includes(m.id)),
   },
   {
     id: 'products',
     title: 'Product Metrics',
     icon: Package,
-    metrics: mockMetrics.filter(m => 
-      ['total-products'].includes(m.id)
-    ),
+    metrics: mockMetrics.filter((m) => ['total-products'].includes(m.id)),
   },
 ];
 
@@ -181,7 +180,7 @@ function generateTimeSeriesData(
   for (let i = days; i >= 0; i--) {
     const date = new Date(now);
     date.setDate(date.getDate() - i);
-    
+
     const randomVariance = (Math.random() - 0.5) * variance;
     const trend = (days - i) * (variance / days); // Upward trend
     const value = baseValue + trend + randomVariance;
@@ -226,6 +225,7 @@ export const mockChartData: ChartData[] = [
 ## 4.4.3 Animated Counter Component
 
 **Create counting animation:**
+
 ```typescript
 // components/metrics/AnimatedCounter.tsx
 'use client';
@@ -250,7 +250,7 @@ export default function AnimatedCounter({
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  
+
   const spring = useSpring(0, {
     duration: duration * 1000,
     bounce: 0,
@@ -289,10 +289,10 @@ function formatValue(
   switch (format) {
     case 'currency':
       return `$${rounded.toLocaleString()}${unit ? ` ${unit}` : ''}`;
-    
+
     case 'percentage':
       return `${rounded.toFixed(decimals)}%`;
-    
+
     case 'number':
     default:
       if (rounded >= 1000000) {
@@ -311,6 +311,7 @@ function formatValue(
 ## 4.4.4 Metric Card Component
 
 **Create individual metric display:**
+
 ```typescript
 // components/metrics/MetricCard.tsx
 'use client';
@@ -327,10 +328,10 @@ interface MetricCardProps {
   compact?: boolean;
 }
 
-export default function MetricCard({ 
-  metric, 
+export default function MetricCard({
+  metric,
   index = 0,
-  compact = false 
+  compact = false
 }: MetricCardProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const Icon = metric.icon;
@@ -342,12 +343,12 @@ export default function MetricCard({
       viewport={{ once: true, margin: '-50px' }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      className="relative bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl 
+      className="relative bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl
         transition-all duration-300 overflow-hidden group"
     >
       {/* Background Gradient */}
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-10 
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-10
           transition-opacity duration-300"
         style={{
           background: `linear-gradient(135deg, ${metric.color || '#3B82F6'}40, transparent)`,
@@ -389,7 +390,7 @@ export default function MetricCard({
           {/* Change Badge */}
           {metric.change !== undefined && (
             <div
-              className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs 
+              className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs
                 font-bold ${
                   metric.changeType === 'increase'
                     ? 'bg-green-100 text-green-700'
@@ -421,7 +422,7 @@ export default function MetricCard({
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-full left-0 mt-2 px-3 py-2 bg-gray-900 
+            className="absolute top-full left-0 mt-2 px-3 py-2 bg-gray-900
               text-white text-xs rounded-lg shadow-xl z-50 w-full"
           >
             {metric.description}
@@ -450,6 +451,7 @@ export default function MetricCard({
 ## 4.4.5 Metrics Grid Component
 
 **Create responsive metrics grid:**
+
 ```typescript
 // components/metrics/MetricsGrid.tsx
 'use client';
@@ -519,6 +521,7 @@ export default function MetricsGrid({
 ## 4.4.6 Metrics Service
 
 **Create data fetching service:**
+
 ```typescript
 // lib/services/metrics.service.ts
 import { Metric, ChartData } from '@/types/metrics';
@@ -537,7 +540,7 @@ class MetricsService {
       // return response.json();
 
       // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       return mockMetrics;
     } catch (error) {
       console.error('Error fetching metrics:', error);
@@ -551,7 +554,7 @@ class MetricsService {
   async getMetricById(id: string): Promise<Metric | null> {
     try {
       const metrics = await this.getMetrics();
-      return metrics.find(m => m.id === id) || null;
+      return metrics.find((m) => m.id === id) || null;
     } catch (error) {
       console.error('Error fetching metric:', error);
       return null;
@@ -569,13 +572,13 @@ class MetricsService {
       // );
       // return response.json();
 
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       if (chartId) {
-        const chart = mockChartData.find(c => c.id === chartId);
+        const chart = mockChartData.find((c) => c.id === chartId);
         return chart ? [chart] : [];
       }
-      
+
       return mockChartData;
     } catch (error) {
       console.error('Error fetching chart data:', error);
@@ -594,9 +597,7 @@ class MetricsService {
   /**
    * Subscribe to real-time updates (WebSocket)
    */
-  subscribeToUpdates(
-    callback: (metrics: Metric[]) => void
-  ): () => void {
+  subscribeToUpdates(callback: (metrics: Metric[]) => void): () => void {
     // In production, implement WebSocket connection
     // const ws = new WebSocket(`${this.baseUrl}/metrics/stream`);
     // ws.onmessage = (event) => {
@@ -623,6 +624,7 @@ export const metricsService = new MetricsService();
 ## 4.4.7 Metrics Hooks
 
 **Create React hooks:**
+
 ```typescript
 // lib/hooks/useMetrics.ts
 'use client';

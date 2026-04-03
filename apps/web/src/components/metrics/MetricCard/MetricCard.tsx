@@ -14,11 +14,7 @@ interface MetricCardProps {
   compact?: boolean;
 }
 
-export default function MetricCard({ 
-  metric, 
-  index = 0,
-  compact = false 
-}: MetricCardProps) {
+export default function MetricCard({ metric, index = 0, compact = false }: MetricCardProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const Icon = metric.icon;
 
@@ -33,7 +29,7 @@ export default function MetricCard({
         transition-all duration-300 overflow-hidden group"
     >
       {/* Background Gradient */}
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-10 
           transition-opacity duration-300"
         style={{
@@ -135,7 +131,3 @@ export default function MetricCard({
     </motion.div>
   );
 }
-
-
-
-

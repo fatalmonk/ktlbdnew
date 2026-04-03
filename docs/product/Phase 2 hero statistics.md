@@ -1,7 +1,9 @@
 # 🎯 Phase 2: Hero & Statistics Enhancement (Week 2)
-*Transform static sections into dynamic, engaging experiences*
+
+_Transform static sections into dynamic, engaging experiences_
 
 ## Overview
+
 This phase focuses on creating an immersive hero section with parallax effects, video backgrounds, and advanced count-up animations for the statistics section.
 
 ## Tasks Checklist
@@ -9,7 +11,9 @@ This phase focuses on creating an immersive hero section with parallax effects, 
 ### Day 1-2: Enhanced Hero Component
 
 #### 2.1 Create Advanced Hero Component
+
 **File:** `src/components/EnhancedHero/EnhancedHero.tsx`
+
 ```typescript
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
@@ -37,7 +41,7 @@ const EnhancedHero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [isVideoPaused, setIsVideoPaused] = useState(false);
-  
+
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -53,13 +57,13 @@ const EnhancedHero: React.FC = () => {
       subtitle: 'Since 2002',
       description: 'Leading Bangladesh's garment industry with innovation, quality, and sustainable practices',
       cta: {
-        primary: { 
-          label: 'Explore Products', 
+        primary: {
+          label: 'Explore Products',
           href: '/products',
           icon: <ArrowRight className="w-5 h-5" />
         },
-        secondary: { 
-          label: 'Watch Video', 
+        secondary: {
+          label: 'Watch Video',
           href: '#video',
           icon: <Play className="w-5 h-5" />
         }
@@ -74,8 +78,8 @@ const EnhancedHero: React.FC = () => {
       subtitle: 'Green Certified',
       description: 'Committed to eco-friendly manufacturing and ethical business practices',
       cta: {
-        primary: { 
-          label: 'Learn More', 
+        primary: {
+          label: 'Learn More',
           href: '/company/sustainability'
         }
       }
@@ -88,8 +92,8 @@ const EnhancedHero: React.FC = () => {
       subtitle: 'Trusted Worldwide',
       description: 'Serving international brands with premium quality textiles from Chittagong',
       cta: {
-        primary: { 
-          label: 'Contact Us', 
+        primary: {
+          label: 'Contact Us',
           href: '/contact'
         }
       }
@@ -173,7 +177,7 @@ const EnhancedHero: React.FC = () => {
               <motion.div
                 className="absolute inset-0 bg-primary-500"
                 initial={{ scaleX: 0 }}
-                animate={{ 
+                animate={{
                   scaleX: index === currentSlide ? 1 : 0,
                   width: index === currentSlide ? 40 : 8
                 }}
@@ -194,8 +198,8 @@ const EnhancedHero: React.FC = () => {
               whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
-              {isVideoPaused ? 
-                <Play className="w-4 h-4 text-white" /> : 
+              {isVideoPaused ?
+                <Play className="w-4 h-4 text-white" /> :
                 <Pause className="w-4 h-4 text-white" />
               }
             </motion.button>
@@ -205,8 +209,8 @@ const EnhancedHero: React.FC = () => {
               whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
               whileTap={{ scale: 0.95 }}
             >
-              {isVideoMuted ? 
-                <VolumeX className="w-4 h-4 text-white" /> : 
+              {isVideoMuted ?
+                <VolumeX className="w-4 h-4 text-white" /> :
                 <Volume2 className="w-4 h-4 text-white" />
               }
             </motion.button>
@@ -218,8 +222,8 @@ const EnhancedHero: React.FC = () => {
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
         animate={{ y: [0, 10, 0] }}
-        transition={{ 
-          duration: 1.5, 
+        transition={{
+          duration: 1.5,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -237,7 +241,9 @@ export default EnhancedHero;
 ```
 
 #### 2.2 Create Hero Content Component
+
 **File:** `src/components/EnhancedHero/HeroContent.tsx`
+
 ```typescript
 import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
@@ -252,7 +258,7 @@ interface HeroContentProps {
 
 const HeroContent: React.FC<HeroContentProps> = ({ slide, opacity }) => {
   return (
-    <motion.div 
+    <motion.div
       className="relative z-20 h-full flex items-center"
       style={{ opacity }}
     >
@@ -344,7 +350,9 @@ export default HeroContent;
 ### Day 3-4: Advanced Statistics Animation
 
 #### 2.3 Create Animated Counter Component
+
 **File:** `src/components/AnimatedCounter/AnimatedCounter.tsx`
+
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useMotionValue, useTransform } from 'framer-motion';
@@ -391,7 +399,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   }, [isInView, hasAnimated, motionValue, to, duration, delay, onComplete]);
 
   const rounded = useTransform(motionValue, (value) => {
-    return decimals > 0 
+    return decimals > 0
       ? value.toFixed(decimals)
       : Math.round(value).toLocaleString();
   });
@@ -409,7 +417,9 @@ export default AnimatedCounter;
 ```
 
 #### 2.4 Create Statistics Section with Staggered Animations
+
 **File:** `src/components/StatisticsSection/StatisticsSection.tsx`
+
 ```typescript
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -480,8 +490,8 @@ const StatisticsSection: React.FC = () => {
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       scale: 0.9
     },
@@ -529,7 +539,7 @@ const StatisticsSection: React.FC = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 transition: { duration: 0.2 }
               }}
@@ -540,14 +550,14 @@ const StatisticsSection: React.FC = () => {
                   backgroundImage: `linear-gradient(to right, ${stat.color})`
                 }}
               />
-              
+
               <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 {/* Icon with animated background */}
                 <div className="relative mb-6">
                   <motion.div
                     className={`w-20 h-20 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto`}
                     animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ 
+                    transition={{
                       duration: 4,
                       repeat: Infinity,
                       repeatType: 'reverse'
@@ -555,16 +565,16 @@ const StatisticsSection: React.FC = () => {
                   >
                     <stat.icon className="w-10 h-10 text-white" />
                   </motion.div>
-                  
+
                   {/* Floating particles around icon */}
                   <motion.div
                     className="absolute -top-2 -right-2 w-4 h-4 bg-primary-400 rounded-full"
-                    animate={{ 
+                    animate={{
                       y: [-5, 5, -5],
                       x: [-5, 5, -5],
                       scale: [1, 1.2, 1]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 3,
                       repeat: Infinity,
                       ease: "easeInOut"
@@ -604,7 +614,7 @@ const StatisticsSection: React.FC = () => {
                     className="mt-4 h-1 bg-gray-200 rounded-full overflow-hidden"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ 
+                    transition={{
                       delay: index * 0.1 + 0.5,
                       duration: 1
                     }}
@@ -613,7 +623,7 @@ const StatisticsSection: React.FC = () => {
                       className={`h-full bg-gradient-to-r ${stat.color}`}
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
-                      transition={{ 
+                      transition={{
                         delay: index * 0.1 + 0.7,
                         duration: 1.5
                       }}
@@ -636,7 +646,9 @@ export default StatisticsSection;
 ### Day 5: Integration and Polish
 
 #### 2.5 Update Home.tsx with Enhanced Components
+
 **File:** Update `src/pages/Home.tsx`
+
 ```typescript
 import React, { Suspense, lazy } from 'react';
 // ... other imports
@@ -650,7 +662,7 @@ const Home: React.FC = () => {
   return (
     <>
       <SEO {/* ... existing SEO props */} />
-      
+
       {/* Enhanced Hero with Suspense */}
       <Suspense fallback={<HeroSkeleton />}>
         <EnhancedHero />
@@ -683,6 +695,7 @@ export default Home;
 ## Performance Metrics
 
 Target metrics after Phase 2:
+
 - **FCP**: < 2s
 - **LCP**: < 2.5s
 - **FID**: < 100ms

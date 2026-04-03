@@ -23,12 +23,11 @@ This guide provides ready-to-use content for optimizing both Google Business Pro
 **Recommended Images:**
 
 1. **hero.webp** or **hero-desktop.webp**
-
    - **Caption:** "Modern garment manufacturing facility at Kattali Textile Limited in Chittagong, Bangladesh"
    - **Category:** Factory Exterior/Interior
    - **Path:** `Version01/project/public/assets-optimized/hero-desktop.webp`
-2. **designer-2.webp** or **designer-2-desktop.webp**
 
+2. **designer-2.webp** or **designer-2-desktop.webp**
    - **Caption:** "Advanced textile manufacturing equipment and automated production lines at Kattali Textile Limited facility"
    - **Category:** Factory Interior
    - **Path:** `Version01/project/public/assets-optimized/designer-2-desktop.webp`
@@ -48,12 +47,11 @@ This guide provides ready-to-use content for optimizing both Google Business Pro
 **Recommended Images:**
 
 1. **designer-1.webp** or **designer-1-desktop.webp**
-
    - **Caption:** "Premium quality woven garments and textiles manufactured by Kattali Textile Limited for international fashion brands"
    - **Category:** Products
    - **Path:** `Version01/project/public/assets-optimized/designer-1-desktop.webp`
-2. **denimcloseup.webp** or **denimcloseup.jpg**
 
+2. **denimcloseup.webp** or **denimcloseup.jpg**
    - **Caption:** "High-quality denim products manufactured in Bangladesh by Kattali Textile Limited - denim manufacturer"
    - **Category:** Products
    - **Path:** `Version01/project/public/assets-optimized/denimcloseup.webp`
@@ -206,7 +204,7 @@ As a trusted woven garment supplier, Kattali Textile Limited produces premium wo
 **Suggested Auto-Reply:**
 
 ```
-Thank you for contacting Kattali Textile Limited! We're a leading Bangladesh garment manufacturer and textile exporter based in Chittagong. 
+Thank you for contacting Kattali Textile Limited! We're a leading Bangladesh garment manufacturer and textile exporter based in Chittagong.
 
 Our team typically responds within 24 hours during business hours (Monday-Friday, 9 AM - 6 PM).
 
@@ -363,8 +361,8 @@ For international clients, we're available via email 24/7 and respond within 24 
 
 ### Posts:
 
-- [X] Create Post 1: New Product Launch (Denim Collection)
-- [X] Create Post 2: Sustainability Initiatives
+- [x] Create Post 1: New Product Launch (Denim Collection)
+- [x] Create Post 2: Sustainability Initiatives
 - [ ] Create Post 3: Company Milestone (20+ Years)
 - [ ] Create Post 4: Manufacturing Capabilities
 - [ ] Schedule regular posts (1-2 per week)

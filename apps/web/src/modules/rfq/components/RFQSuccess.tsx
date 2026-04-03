@@ -24,10 +24,7 @@ const RFQSuccess = ({ formData, onSubmitAnother }: RFQSuccessProps) => (
       description="Your quote request has been successfully submitted to KTL."
     />
     <SubpageHeader
-      breadcrumbItems={[
-        { label: 'Home', to: '/' },
-        { label: 'Request a Quote' },
-      ]}
+      breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Request a Quote' }]}
       pageTitle="Request a Quote"
     />
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
@@ -45,18 +42,15 @@ const RFQSuccess = ({ formData, onSubmitAnother }: RFQSuccessProps) => (
           Request Successfully Submitted!
         </h2>
         <p className="text-lg text-neutral-600 mb-6">
-          Thank you for your quote request. Our sales team will review your
-          requirements and respond within 24 hours.
+          Thank you for your quote request. Our sales team will review your requirements and respond
+          within 24 hours.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
           <p className="text-sm text-neutral-600 mb-1">Your Reference Number:</p>
-          <p className="text-2xl font-bold text-blue-600">
-            {generateReferenceNumber()}
-          </p>
+          <p className="text-2xl font-bold text-blue-600">{generateReferenceNumber()}</p>
         </div>
         <p className="text-sm text-neutral-600 mb-8">
-          A confirmation email has been sent to{' '}
-          <strong>{formData.contact.email}</strong>
+          A confirmation email has been sent to <strong>{formData.contact.email}</strong>
         </p>
         <div className="flex gap-4 justify-center">
           <button
@@ -80,5 +74,3 @@ const RFQSuccess = ({ formData, onSubmitAnother }: RFQSuccessProps) => (
 );
 
 export default RFQSuccess;
-
-

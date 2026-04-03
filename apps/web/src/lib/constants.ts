@@ -79,49 +79,50 @@ export const FACEBOOK_PAGE_URL = SOCIAL_MEDIA.facebook;
 
 // Enhanced Google Business Profile structured data
 export const GOOGLE_BUSINESS_STRUCTURED_DATA = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": COMPANY_NAME,
-  "alternateName": COMPANY_SHORT_NAME,
-  "url": "https://ktlbd.com",
-  "logo": "https://ktlbd.com/logos/ktl-logo.webp",
-  "description": "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad",
-    "addressLocality": "Chittagong",
-    "addressCountry": "Bangladesh"
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: COMPANY_NAME,
+  alternateName: COMPANY_SHORT_NAME,
+  url: 'https://ktlbd.com',
+  logo: 'https://ktlbd.com/logos/ktl-logo.webp',
+  description:
+    "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad',
+    addressLocality: 'Chittagong',
+    addressCountry: 'Bangladesh',
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": COMPANY_LATITUDE.toString(),
-    "longitude": COMPANY_LONGITUDE.toString()
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: COMPANY_LATITUDE.toString(),
+    longitude: COMPANY_LONGITUDE.toString(),
   },
-  "hasPOS": {
-    "@type": "Place",
-    "name": GOOGLE_BUSINESS.production.name,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "North Kattali Industrial Area",
-      "addressLocality": "Chittagong",
-      "addressCountry": "Bangladesh"
+  hasPOS: {
+    '@type': 'Place',
+    name: GOOGLE_BUSINESS.production.name,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'North Kattali Industrial Area',
+      addressLocality: 'Chittagong',
+      addressCountry: 'Bangladesh',
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": FACTORY_LATITUDE.toString(),
-      "longitude": FACTORY_LONGITUDE.toString()
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: FACTORY_LATITUDE.toString(),
+      longitude: FACTORY_LONGITUDE.toString(),
     },
-    "hasMap": GOOGLE_MAPS_COORDINATES_URL,
-    "url": FACTORY_GOOGLE_PROFILE_URL
+    hasMap: GOOGLE_MAPS_COORDINATES_URL,
+    url: FACTORY_GOOGLE_PROFILE_URL,
   },
-  "hasMap": GOOGLE_MAPS_COORDINATES_URL,
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": COMPANY_PHONE,
-    "contactType": "customer service",
-    "email": COMPANY_EMAIL
+  hasMap: GOOGLE_MAPS_COORDINATES_URL,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: COMPANY_PHONE,
+    contactType: 'customer service',
+    email: COMPANY_EMAIL,
   },
-  "sameAs": [
+  sameAs: [
     SOCIAL_MEDIA.facebook,
     SOCIAL_MEDIA.linkedin,
     SOCIAL_MEDIA.instagram,
@@ -131,18 +132,18 @@ export const GOOGLE_BUSINESS_STRUCTURED_DATA = {
     STOCK_EXCHANGES.cse.url,
     ASSOCIATIONS.bgmea.url,
   ],
-  "additionalType": [
-    "https://en.wikipedia.org/wiki/Textile_manufacturing",
-    "https://en.wikipedia.org/wiki/Garment_manufacturing"
+  additionalType: [
+    'https://en.wikipedia.org/wiki/Textile_manufacturing',
+    'https://en.wikipedia.org/wiki/Garment_manufacturing',
   ],
-  "keywords": [
-    "textile manufacturer",
-    "garment exporter",
-    "eco-friendly clothing",
-    "Bangladesh RMG",
-    "woven and knit garments"
+  keywords: [
+    'textile manufacturer',
+    'garment exporter',
+    'eco-friendly clothing',
+    'Bangladesh RMG',
+    'woven and knit garments',
   ],
-  "foundingDate": "2002",
-  "industry": "Textile Manufacturing",
-  "numberOfEmployees": "1000+"
+  foundingDate: '2002',
+  industry: 'Textile Manufacturing',
+  numberOfEmployees: '1000+',
 };

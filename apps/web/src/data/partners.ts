@@ -14,7 +14,7 @@ export const partners: PartnerLogo[] = [
     website: 'https://www.calvinklein.com',
     partnership: 'Premium Denim Manufacturing',
     employees: '10,000+',
-    location: 'New York, USA'
+    location: 'New York, USA',
   },
   {
     id: 'gap',
@@ -24,7 +24,7 @@ export const partners: PartnerLogo[] = [
     website: 'https://www.gap.com',
     partnership: 'Casual Wear Production',
     employees: '50,000+',
-    location: 'San Francisco, USA'
+    location: 'San Francisco, USA',
   },
   {
     id: 'hm',
@@ -34,7 +34,7 @@ export const partners: PartnerLogo[] = [
     website: 'https://www.hm.com',
     partnership: 'Fast Fashion Manufacturing',
     employees: '100,000+',
-    location: 'Stockholm, Sweden'
+    location: 'Stockholm, Sweden',
   },
   {
     id: 'old-navy',
@@ -44,7 +44,7 @@ export const partners: PartnerLogo[] = [
     website: 'https://www.oldnavy.com',
     partnership: 'Family Apparel Production',
     employees: '25,000+',
-    location: 'San Francisco, USA'
+    location: 'San Francisco, USA',
   },
   {
     id: 'tommy-hilfiger',
@@ -54,6 +54,6 @@ export const partners: PartnerLogo[] = [
     website: 'https://www.tommy.com',
     partnership: 'Premium Lifestyle Apparel',
     employees: '15,000+',
-    location: 'New York, USA'
-  }
+    location: 'New York, USA',
+  },
 ];

@@ -9,7 +9,7 @@ import {
   GOOGLE_MAPS_VIEW_URL,
   GOOGLE_BUSINESS_PROFILE_URL,
   GOOGLE_BUSINESS_REVIEW_URL,
-  COMPANY_COORDINATES
+  COMPANY_COORDINATES,
 } from '../../lib/constants';
 
 interface GoogleBusinessWidgetProps {
@@ -23,7 +23,7 @@ const GoogleBusinessWidget: React.FC<GoogleBusinessWidgetProps> = ({
   className = '',
   showMap = true,
   showReviews = true,
-  showDirections = true
+  showDirections = true,
 }) => {
   return (
     <div className={`bg-white rounded-lg shadow-lg p-6 space-y-4 ${className}`}>

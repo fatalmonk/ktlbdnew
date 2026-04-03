@@ -40,7 +40,3 @@ export interface DashboardConfig {
   showTrends?: boolean;
   compactMode?: boolean;
 }
-
-
-
-

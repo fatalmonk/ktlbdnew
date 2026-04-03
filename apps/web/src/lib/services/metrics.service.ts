@@ -14,7 +14,7 @@ class MetricsService {
       // return response.json();
 
       // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       return mockMetrics;
     } catch (error) {
       console.error('Error fetching metrics:', error);
@@ -28,7 +28,7 @@ class MetricsService {
   async getMetricById(id: string): Promise<Metric | null> {
     try {
       const metrics = await this.getMetrics();
-      return metrics.find(m => m.id === id) || null;
+      return metrics.find((m) => m.id === id) || null;
     } catch (error) {
       console.error('Error fetching metric:', error);
       return null;
@@ -46,13 +46,13 @@ class MetricsService {
       // );
       // return response.json();
 
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       if (chartId) {
-        const chart = mockChartData.find(c => c.id === chartId);
+        const chart = mockChartData.find((c) => c.id === chartId);
         return chart ? [chart] : [];
       }
-      
+
       return mockChartData;
     } catch (error) {
       console.error('Error fetching chart data:', error);
@@ -71,9 +71,7 @@ class MetricsService {
   /**
    * Subscribe to real-time updates (WebSocket)
    */
-  subscribeToUpdates(
-    callback: (metrics: Metric[]) => void
-  ): () => void {
+  subscribeToUpdates(callback: (metrics: Metric[]) => void): () => void {
     // In production, implement WebSocket connection
     // const ws = new WebSocket(`${this.baseUrl}/metrics/stream`);
     // ws.onmessage = (event) => {
@@ -93,4 +91,3 @@ class MetricsService {
 }
 
 export const metricsService = new MetricsService();
-

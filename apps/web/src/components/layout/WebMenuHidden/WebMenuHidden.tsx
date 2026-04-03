@@ -27,10 +27,7 @@ const WebMenuHidden: React.FC = () => {
               <li key={item.name} className={isDropdown(item) ? 'has-children' : undefined}>
                 {isDropdown(item) ? (
                   <>
-                    <Link
-                      to={item.href}
-                      aria-label={`${item.name} within the site section`}
-                    >
+                    <Link to={item.href} aria-label={`${item.name} within the site section`}>
                       {item.name}
                     </Link>
                     <ul className="level3">

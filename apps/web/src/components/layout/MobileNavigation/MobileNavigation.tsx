@@ -144,9 +144,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
           style={{ top: 'calc(var(--strip-height) + var(--mobile-nav-height))' }}
         >
           <nav className="min-h-full px-8 pb-20 pt-32">
-            <ul className="flex flex-col gap-16">
-              {NAVIGATION_ITEMS.map(renderMenuItem)}
-            </ul>
+            <ul className="flex flex-col gap-16">{NAVIGATION_ITEMS.map(renderMenuItem)}</ul>
           </nav>
         </motion.div>
       )}

@@ -31,7 +31,7 @@ export const createOrganizationSchema = () => ({
       itemOffered: {
         '@type': 'Product',
         name: 'Woven Garment Manufacturing',
-        description: 'Premium woven apparel manufacturing services'
+        description: 'Premium woven apparel manufacturing services',
       },
       areaServed: 'Bangladesh',
       availableAtOrFrom: {
@@ -41,35 +41,35 @@ export const createOrganizationSchema = () => ({
           '@type': 'PostalAddress',
           streetAddress: 'BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad',
           addressLocality: 'Chittagong',
-          addressCountry: 'BD'
-        }
-      }
+          addressCountry: 'BD',
+        },
+      },
     },
     {
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Product',
         name: 'Denim Manufacturing',
-        description: 'High-quality denim products and jeans manufacturing'
+        description: 'High-quality denim products and jeans manufacturing',
       },
-      areaServed: 'Bangladesh'
+      areaServed: 'Bangladesh',
     },
     {
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Product',
         name: 'Sustainable Textile Manufacturing',
-        description: 'Eco-friendly and ethical textile production'
+        description: 'Eco-friendly and ethical textile production',
       },
-      areaServed: 'Bangladesh'
-    }
+      areaServed: 'Bangladesh',
+    },
   ],
   keywords: [
     'bangladesh garment manufacturer',
     'textile exporter chittagong',
     'woven garment supplier bangladesh',
     'denim manufacturer bangladesh',
-    'sustainable textile manufacturer'
+    'sustainable textile manufacturer',
   ],
   numberOfEmployees: {
     '@type': 'QuantitativeValue',

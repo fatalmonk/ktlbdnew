@@ -13,7 +13,8 @@ const DenimsPage = () => {
 
   const productSchema = createProductSchema({
     name: 'Premium Denim Products',
-    description: 'High-quality denim jeans, jackets, and accessories manufactured by Kattali Textile Ltd',
+    description:
+      'High-quality denim jeans, jackets, and accessories manufactured by Kattali Textile Ltd',
     image: 'https://ktlbd.com/assets-optimized/denimcloseup.webp',
     category: 'Denim Apparel',
     brand: 'Kattali Textile Ltd',
@@ -26,7 +27,13 @@ const DenimsPage = () => {
         title="Denim Manufacturer Bangladesh | Kattali Textile Ltd Premium Denim Products"
         description="KTL is Bangladesh's leading denim manufacturer, producing high-quality jeans, denim jackets, and accessories for global fashion brands from our Chittagong facilities."
         canonical="/products/denims"
-        keywords={['denim manufacturer bangladesh', 'jeans manufacturer', 'denim supplier', 'Bangladesh denim', 'denim production']}
+        keywords={[
+          'denim manufacturer bangladesh',
+          'jeans manufacturer',
+          'denim supplier',
+          'Bangladesh denim',
+          'denim production',
+        ]}
       />
       <StructuredData data={[createBreadcrumbSchema(breadcrumbs), productSchema]} />
       <SubpageHeader
@@ -43,17 +50,33 @@ const DenimsPage = () => {
             <h2 className="text-4xl font-bold text-black mb-8">Denim Manufacturer Bangladesh</h2>
             <div className="mb-8">
               <p className="text-lg text-neutral-800 mb-6">
-                As a leading <strong>denim manufacturer in Bangladesh</strong>, KTL specializes in producing
-                high-quality denim products for global fashion brands. Our state-of-the-art denim production
-                facilities in Chittagong combine traditional craftsmanship with modern technology to deliver
-                premium jeans, denim jackets, and accessories.
+                As a leading <strong>denim manufacturer in Bangladesh</strong>, KTL specializes in
+                producing high-quality denim products for global fashion brands. Our
+                state-of-the-art denim production facilities in Chittagong combine traditional
+                craftsmanship with modern technology to deliver premium jeans, denim jackets, and
+                accessories.
               </p>
               <p className="text-lg text-neutral-800 mb-6">
-                Our <strong>denim manufacturing</strong> capabilities include advanced washing techniques,
-                custom finishing processes, and sustainable production practices. We work with premium denim
-                fabrics and offer a wide range of styles from classic straight-fit jeans to contemporary
-                denim jackets and accessories. Explore our full range of <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garment products</Link> and 
-                <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline"> children's wear collections</Link>.
+                Our <strong>denim manufacturing</strong> capabilities include advanced washing
+                techniques, custom finishing processes, and sustainable production practices. We
+                work with premium denim fabrics and offer a wide range of styles from classic
+                straight-fit jeans to contemporary denim jackets and accessories. Explore our full
+                range of{' '}
+                <Link
+                  to="/products"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  woven garment products
+                </Link>{' '}
+                and
+                <Link
+                  to="/products/kids"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  {' '}
+                  children's wear collections
+                </Link>
+                .
               </p>
             </div>
 
@@ -62,7 +85,9 @@ const DenimsPage = () => {
               <h2 className="text-2xl font-bold mb-6 text-neutral-900">Denim Production Process</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">Manufacturing Capabilities</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-neutral-900">
+                    Manufacturing Capabilities
+                  </h3>
                   <ul className="space-y-2 text-neutral-700">
                     <li>• Premium denim fabric sourcing</li>
                     <li>• Advanced cutting and sewing techniques</li>

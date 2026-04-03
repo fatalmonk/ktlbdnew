@@ -1,12 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Package,
-  FileText,
-  CheckCircle,
-  Building,
-  User,
-  Send,
-} from 'lucide-react';
+import { Package, FileText, CheckCircle, Building, User, Send } from 'lucide-react';
 import type { RFQFormData } from '../types/rfq.types';
 
 export interface RFQStepConfig {
@@ -58,7 +51,7 @@ export const INDUSTRY_OPTIONS = [
   'Sportswear',
   'Fast Fashion',
   'Luxury Fashion',
-  'Children\'s Apparel',
+  "Children's Apparel",
   'Department Store',
   'E-commerce',
   'Brand Manufacturer',
@@ -88,5 +81,3 @@ export const initialRFQFormData: RFQFormData = {
   },
   attachments: [],
 };
-
-

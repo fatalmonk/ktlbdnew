@@ -12,11 +12,7 @@ interface ProductFilterProps {
   onFilterChange: (filters: ProductFilterState) => void;
 }
 
-const ProductFilter: React.FC<ProductFilterProps> = ({
-  categories,
-  tags,
-  onFilterChange
-}) => {
+const ProductFilter: React.FC<ProductFilterProps> = ({ categories, tags, onFilterChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -32,7 +28,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
 
   const handleCategoryToggle = (category: string) => {
     const updated = selectedCategories.includes(category)
-      ? selectedCategories.filter(c => c !== category)
+      ? selectedCategories.filter((c) => c !== category)
       : [...selectedCategories, category];
 
     setSelectedCategories(updated);
@@ -40,7 +36,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
 
   const handleTagToggle = (tag: string) => {
     const updated = selectedTags.includes(tag)
-      ? selectedTags.filter(t => t !== tag)
+      ? selectedTags.filter((t) => t !== tag)
       : [...selectedTags, tag];
 
     setSelectedTags(updated);
@@ -100,7 +96,9 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
             >
               {/* Header */}
               <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
-                <h3 id="filter-title" className="text-2xl font-bold">Filter Products</h3>
+                <h3 id="filter-title" className="text-2xl font-bold">
+                  Filter Products
+                </h3>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-neutral-100 rounded-lg transition-colors"
@@ -166,10 +164,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                       >
                         {tag.label}
                         {tag.count && (
-                          <span
-                            id={`tag-${tag.value}-count`}
-                            className="ml-1 text-xs opacity-75"
-                          >
+                          <span id={`tag-${tag.value}-count`} className="ml-1 text-xs opacity-75">
                             ({tag.count})
                           </span>
                         )}

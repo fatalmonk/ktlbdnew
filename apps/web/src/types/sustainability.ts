@@ -41,4 +41,3 @@ export interface SustainabilityInitiative {
   status: 'Active' | 'Completed' | 'Planned';
   image?: string;
 }
-

@@ -157,14 +157,14 @@ Kattali Textile Limited (KTL) is a publicly listed Bangladesh garment manufactur
 
 ## ✅ Verification Steps
 
-1. [X] Open Head Office profile in Google Business Profile Manager
-2. [X] Copy the current description
-3. [X] Check which keywords are present (use Ctrl+F to search)
-4. [X] Note any missing keywords
-5. [X] Repeat for Production Facility profile
-6. [X] Update descriptions using one of the examples above
-7. [X] Verify both profiles include all 5 keywords naturally
-8. [X] Save changes and wait 24-48 hours for updates to appear
+1. [x] Open Head Office profile in Google Business Profile Manager
+2. [x] Copy the current description
+3. [x] Check which keywords are present (use Ctrl+F to search)
+4. [x] Note any missing keywords
+5. [x] Repeat for Production Facility profile
+6. [x] Update descriptions using one of the examples above
+7. [x] Verify both profiles include all 5 keywords naturally
+8. [x] Save changes and wait 24-48 hours for updates to appear
 
 ---
 
@@ -178,11 +178,11 @@ Kattali Textile Limited (KTL) is a publicly listed Bangladesh garment manufactur
 
 ### Attributes to Enable:
 
-- [X] Women-led
-- [X] LGBTQ+ friendly
-- [X] Online appointments
-- [X] Accepts credit cards
-- [X] Wheelchair accessible
+- [x] Women-led
+- [x] LGBTQ+ friendly
+- [x] Online appointments
+- [x] Accepts credit cards
+- [x] Wheelchair accessible
 
 ### Products/Services to Add:
 

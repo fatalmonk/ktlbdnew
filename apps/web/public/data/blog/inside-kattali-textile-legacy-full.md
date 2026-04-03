@@ -166,4 +166,4 @@ The legacy we're building isn't just for our company—it's for our employees, o
 
 ---
 
-*Interested in learning more about Kattali Textile Ltd or exploring a partnership? Contact our team to start a conversation about how we can support your textile manufacturing needs.*
+_Interested in learning more about Kattali Textile Ltd or exploring a partnership? Contact our team to start a conversation about how we can support your textile manufacturing needs._

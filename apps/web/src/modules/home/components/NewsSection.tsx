@@ -21,7 +21,7 @@ const cellBorder = (index: number) =>
     'border-neutral-200',
     index < 3 && 'border-b',
     index % 2 === 0 && 'md:border-r',
-    index < 2 && 'md:border-b',
+    index < 2 && 'md:border-b'
   );
 
 const NewsSection = ({ newsItems }: NewsSectionProps) => {
@@ -47,10 +47,7 @@ const NewsSection = ({ newsItems }: NewsSectionProps) => {
           {items.map((item, index) => (
             <article
               key={item.slug}
-              className={cn(
-                'min-h-0 p-0 sm:min-h-[220px]',
-                cellBorder(index),
-              )}
+              className={cn('min-h-0 p-0 sm:min-h-[220px]', cellBorder(index))}
             >
               <Link
                 to={`/newsroom/stories/${item.slug}`}

@@ -15,7 +15,11 @@ import {
 import CertificationBadge from '../../components/certifications/CertificationBadge';
 import SEO from '../../components/seo/SEO';
 import SubpageHeader from '../../components/shared/SubpageHeader';
-import { Certification, CertificationFilterState, CertificationCategory } from '../../types/certification';
+import {
+  Certification,
+  CertificationFilterState,
+  CertificationCategory,
+} from '../../types/certification';
 import certificationsData from '@/data/certifications/index.json';
 
 const CertificationsHub = () => {
@@ -53,7 +57,7 @@ const CertificationsHub = () => {
   const certificationsByCategory = useMemo(() => {
     const grouped: Record<CertificationCategory, Certification[]> = {
       'Quality Management': [],
-      'Environmental': [],
+      Environmental: [],
       'Social Compliance': [],
       'Product Safety': [],
       'Customer Specific': [],
@@ -112,10 +116,7 @@ const CertificationsHub = () => {
       />
 
       <SubpageHeader
-        breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Certifications' },
-        ]}
+        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Certifications' }]}
         pageTitle="Certifications"
       />
       <div className="bg-neutral-50 min-h-screen">
@@ -129,9 +130,7 @@ const CertificationsHub = () => {
               className="text-center"
             >
               <Shield size={64} className="mx-auto mb-6" />
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Certifications & Compliance
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Certifications & Compliance</h2>
               <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
                 Trusted by global brands. Certified by international standards.
               </p>
@@ -174,11 +173,12 @@ const CertificationsHub = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {/* Search */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Search
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Search</label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" size={18} />
+                  <Search
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400"
+                    size={18}
+                  />
                   <input
                     type="text"
                     placeholder="Search certifications..."
@@ -191,12 +191,15 @@ const CertificationsHub = () => {
 
               {/* Category Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Category
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Category</label>
                 <select
                   value={filters.category}
-                  onChange={(e) => setFilters({ ...filters, category: e.target.value as CertificationCategory | '' })}
+                  onChange={(e) =>
+                    setFilters({
+                      ...filters,
+                      category: e.target.value as CertificationCategory | '',
+                    })
+                  }
                   className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">All Categories</option>
@@ -210,9 +213,7 @@ const CertificationsHub = () => {
 
               {/* Status Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Status
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Status</label>
                 <select
                   value={filters.status}
                   onChange={(e) => setFilters({ ...filters, status: e.target.value })}
@@ -256,7 +257,9 @@ const CertificationsHub = () => {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-neutral-900">{category}</h2>
-                        <p className="text-neutral-600">{certs.length} certification{certs.length > 1 ? 's' : ''}</p>
+                        <p className="text-neutral-600">
+                          {certs.length} certification{certs.length > 1 ? 's' : ''}
+                        </p>
                       </div>
                     </div>
 
@@ -276,8 +279,12 @@ const CertificationsHub = () => {
           ) : (
             <div className="text-center py-16">
               <Shield size={48} className="mx-auto text-neutral-400 mb-4" />
-              <h3 className="text-xl font-semibold text-neutral-900 mb-2">No certifications found</h3>
-              <p className="text-neutral-600 mb-4">Try adjusting your filters to see more results</p>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                No certifications found
+              </h3>
+              <p className="text-neutral-600 mb-4">
+                Try adjusting your filters to see more results
+              </p>
               <button
                 onClick={handleReset}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -295,7 +302,8 @@ const CertificationsHub = () => {
             <CheckCircle size={48} className="mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-4">Certified Quality You Can Trust</h2>
             <p className="text-xl text-blue-100 mb-8">
-              Our certifications ensure that every product meets the highest standards of quality, safety, and sustainability.
+              Our certifications ensure that every product meets the highest standards of quality,
+              safety, and sustainability.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -343,7 +351,9 @@ const CertificationsHub = () => {
                     />
                   )}
                   <div>
-                    <h2 className="text-2xl font-bold text-neutral-900">{selectedCertification.name}</h2>
+                    <h2 className="text-2xl font-bold text-neutral-900">
+                      {selectedCertification.name}
+                    </h2>
                     <p className="text-neutral-600 mt-1">{selectedCertification.fullName}</p>
                   </div>
                 </div>
@@ -370,7 +380,9 @@ const CertificationsHub = () => {
                   {selectedCertification.certificateNumber && (
                     <div>
                       <div className="text-sm text-neutral-600 mb-1">Certificate Number</div>
-                      <div className="font-semibold font-mono text-sm">{selectedCertification.certificateNumber}</div>
+                      <div className="font-semibold font-mono text-sm">
+                        {selectedCertification.certificateNumber}
+                      </div>
                     </div>
                   )}
                   <div>
@@ -402,31 +414,36 @@ const CertificationsHub = () => {
                 {/* Description */}
                 <div>
                   <h3 className="font-bold text-lg mb-2">About This Certification</h3>
-                  <p className="text-neutral-700 leading-relaxed">{selectedCertification.description}</p>
+                  <p className="text-neutral-700 leading-relaxed">
+                    {selectedCertification.description}
+                  </p>
                 </div>
 
                 {/* Why It Matters */}
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                   <h3 className="font-bold text-lg mb-2 text-blue-900">Why It Matters</h3>
-                  <p className="text-blue-800 leading-relaxed">{selectedCertification.whyItMatters}</p>
+                  <p className="text-blue-800 leading-relaxed">
+                    {selectedCertification.whyItMatters}
+                  </p>
                 </div>
 
                 {/* Related Products */}
-                {selectedCertification.relatedProducts && selectedCertification.relatedProducts.length > 0 && (
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">Applicable Products</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedCertification.relatedProducts.map((product) => (
-                        <span
-                          key={product}
-                          className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm"
-                        >
-                          {product}
-                        </span>
-                      ))}
+                {selectedCertification.relatedProducts &&
+                  selectedCertification.relatedProducts.length > 0 && (
+                    <div>
+                      <h3 className="font-bold text-lg mb-2">Applicable Products</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCertification.relatedProducts.map((product) => (
+                          <span
+                            key={product}
+                            className="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm"
+                          >
+                            {product}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-4 border-t border-neutral-200">
@@ -462,4 +479,3 @@ const CertificationsHub = () => {
 };
 
 export default CertificationsHub;
-

@@ -1,6 +1,22 @@
 [
-  {"label":"Market Cap","value":"৳2,850M","footnote":"As of Dec 2024"},
-  {"label":"Revenue (TTM)","value":"৳1,250M","footnote":"Trailing 12 months"},
-  {"label":"EPS (TTM)","value":"৳3.45","footnote":"Earnings per share"},
-  {"label":"Dividend Yield","value":"4.2%","footnote":"Annual dividend"}
+  {
+    "label": "Market cap",
+    "value": "৳1,139.8M",
+    "footnote": "DSE (mn BDT), Apr 2, 2026"
+  },
+  {
+    "label": "P/E (trailing)",
+    "value": "120×",
+    "footnote": "DSE basic EPS (continuing), Apr 2, 2026"
+  },
+  {
+    "label": "EPS (9M FY25)",
+    "value": "৳0.13",
+    "footnote": "Basic, unaudited interim (DSE)"
+  },
+  {
+    "label": "Latest cash dividend",
+    "value": "0.25%",
+    "footnote": "FY2024 (DSE company page)"
+  }
 ]

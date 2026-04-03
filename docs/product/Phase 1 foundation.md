@@ -1,7 +1,9 @@
 # 📦 Phase 1: Foundation Setup (Week 1)
-*Setting up animation libraries and core utilities*
+
+_Setting up animation libraries and core utilities_
 
 ## Overview
+
 This phase establishes the technical foundation for all dynamic enhancements. We'll install essential libraries, create reusable animation utilities, and set up performance monitoring.
 
 ## Tasks Checklist
@@ -9,9 +11,10 @@ This phase establishes the technical foundation for all dynamic enhancements. We
 ### Day 1-2: Library Installation & Setup
 
 #### 1.1 Install Core Animation Libraries
+
 ```bash
 cd /Users/mac.alvi/Desktop/KTL Website/Version01/project
-npm install framer-motion@11.0.3 
+npm install framer-motion@11.0.3
 npm install react-intersection-observer@9.5.3
 npm install @react-spring/web@9.7.3
 npm install clsx@2.1.0
@@ -19,12 +22,14 @@ npm install react-use@17.4.2
 ```
 
 #### 1.2 Install Development Dependencies
+
 ```bash
 npm install --save-dev @types/react-intersection-observer
 npm install --save-dev web-vitals@3.5.0
 ```
 
 #### 1.3 Create Animation Utilities Directory
+
 ```bash
 mkdir -p src/utils/animations
 mkdir -p src/hooks/animations
@@ -34,7 +39,9 @@ mkdir -p src/components/ui
 ### Day 2-3: Create Core Animation Utilities
 
 #### 1.4 Create Animation Constants
+
 **File:** `src/utils/animations/constants.ts`
+
 ```typescript
 export const ANIMATION_DURATION = {
   instant: 0.1,
@@ -42,7 +49,7 @@ export const ANIMATION_DURATION = {
   normal: 0.3,
   slow: 0.5,
   dramatic: 0.7,
-  epic: 1.0
+  epic: 1.0,
 } as const;
 
 export const ANIMATION_EASING = {
@@ -50,19 +57,21 @@ export const ANIMATION_EASING = {
   easeOut: [0, 0, 0.2, 1],
   easeIn: [0.4, 0, 1, 1],
   bounce: [0.68, -0.55, 0.265, 1.55],
-  elastic: [0.175, 0.885, 0.32, 1.275]
+  elastic: [0.175, 0.885, 0.32, 1.275],
 } as const;
 
 export const BREAKPOINTS = {
   mobile: 640,
   tablet: 768,
   desktop: 1024,
-  wide: 1280
+  wide: 1280,
 } as const;
 ```
 
 #### 1.5 Create Scroll Trigger Hook
+
 **File:** `src/hooks/animations/useScrollTrigger.ts`
+
 ```typescript
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
@@ -79,7 +88,7 @@ export const useScrollTrigger = (options: UseScrollTriggerOptions = {}) => {
   const [ref, inView] = useInView({
     threshold: options.threshold || 0.1,
     triggerOnce: options.triggerOnce ?? true,
-    rootMargin: options.rootMargin || '0px'
+    rootMargin: options.rootMargin || '0px',
   });
 
   useEffect(() => {
@@ -97,7 +106,9 @@ export const useScrollTrigger = (options: UseScrollTriggerOptions = {}) => {
 ### Day 3-4: Skeleton Loading System
 
 #### 1.6 Create Skeleton Component
+
 **File:** `src/components/ui/Skeleton.tsx`
+
 ```typescript
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -118,7 +129,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   animation = 'pulse'
 }) => {
   const baseClasses = 'bg-gray-200 dark:bg-gray-700';
-  
+
   const variantClasses = {
     text: 'rounded',
     circular: 'rounded-full',
@@ -156,7 +167,9 @@ export const Skeleton: React.FC<SkeletonProps> = ({
 ```
 
 #### 1.7 Create Product Card Skeleton
+
 **File:** `src/components/ui/SkeletonProductCard.tsx`
+
 ```typescript
 import React from 'react';
 import { Skeleton } from './Skeleton';
@@ -177,7 +190,9 @@ export const SkeletonProductCard: React.FC = () => {
 ### Day 4-5: Performance Monitoring Setup
 
 #### 1.8 Create Performance Monitor Hook
+
 **File:** `src/hooks/usePerformanceMonitor.ts`
+
 ```typescript
 import { useEffect, useState } from 'react';
 
@@ -190,7 +205,7 @@ interface PerformanceMetrics {
 export const usePerformanceMonitor = () => {
   const [metrics, setMetrics] = useState<PerformanceMetrics>({
     fps: 60,
-    loadTime: 0
+    loadTime: 0,
   });
 
   useEffect(() => {
@@ -201,16 +216,16 @@ export const usePerformanceMonitor = () => {
     const measureFPS = () => {
       frameCount++;
       const currentTime = performance.now();
-      
+
       if (currentTime >= lastTime + 1000) {
-        setMetrics(prev => ({
+        setMetrics((prev) => ({
           ...prev,
-          fps: Math.round((frameCount * 1000) / (currentTime - lastTime))
+          fps: Math.round((frameCount * 1000) / (currentTime - lastTime)),
         }));
         frameCount = 0;
         lastTime = currentTime;
       }
-      
+
       rafId = requestAnimationFrame(measureFPS);
     };
 
@@ -218,9 +233,9 @@ export const usePerformanceMonitor = () => {
 
     // Measure page load time
     if (window.performance && window.performance.timing) {
-      const loadTime = window.performance.timing.loadEventEnd - 
-                      window.performance.timing.navigationStart;
-      setMetrics(prev => ({ ...prev, loadTime }));
+      const loadTime =
+        window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+      setMetrics((prev) => ({ ...prev, loadTime }));
     }
 
     return () => {
@@ -235,7 +250,9 @@ export const usePerformanceMonitor = () => {
 ```
 
 #### 1.9 Create Debug Panel (Development Only)
+
 **File:** `src/components/ui/DebugPanel.tsx`
+
 ```typescript
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -243,7 +260,7 @@ import { usePerformanceMonitor } from '../../hooks/usePerformanceMonitor';
 
 export const DebugPanel: React.FC = () => {
   const metrics = usePerformanceMonitor();
-  
+
   if (process.env.NODE_ENV === 'production') return null;
 
   return (
@@ -263,7 +280,9 @@ export const DebugPanel: React.FC = () => {
 ### Day 5: Integration & Testing
 
 #### 1.10 Update App.tsx with Providers
+
 **File:** Update `src/App.tsx`
+
 ```typescript
 import { MotionConfig } from 'framer-motion';
 import { DebugPanel } from './components/ui/DebugPanel';
@@ -276,7 +295,9 @@ import { DebugPanel } from './components/ui/DebugPanel';
 ```
 
 #### 1.11 Create Test Page for Animations
+
 **File:** `src/pages/test/AnimationTest.tsx`
+
 ```typescript
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -290,7 +311,7 @@ const AnimationTest: React.FC = () => {
   return (
     <div className="min-h-screen p-8">
       <h1 className="text-4xl font-bold mb-8">Animation Test Page</h1>
-      
+
       {/* Skeleton Loading Demo */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold mb-4">Skeleton Loading</h2>
@@ -309,8 +330,8 @@ const AnimationTest: React.FC = () => {
           initial="hidden"
           variants={{
             hidden: { opacity: 0, y: 100 },
-            visible: { 
-              opacity: 1, 
+            visible: {
+              opacity: 1,
               y: 0,
               transition: {
                 duration: ANIMATION_DURATION.slow,
@@ -362,7 +383,9 @@ npm run preview
 ## Common Issues & Solutions
 
 ### Issue: Animations janky on scroll
+
 **Solution:** Use `will-change` CSS property and GPU acceleration
+
 ```css
 .animated-element {
   will-change: transform, opacity;
@@ -371,23 +394,28 @@ npm run preview
 ```
 
 ### Issue: Bundle size increased significantly
+
 **Solution:** Use dynamic imports for animation libraries
+
 ```typescript
 const FramerMotion = lazy(() => import('framer-motion'));
 ```
 
 ### Issue: Animations not triggering on mobile
+
 **Solution:** Adjust intersection observer threshold
+
 ```typescript
 useInView({
   threshold: 0.01, // Lower threshold for mobile
-  rootMargin: '100px' // Larger margin for earlier trigger
+  rootMargin: '100px', // Larger margin for earlier trigger
 });
 ```
 
 ## Next Steps
 
 After completing Phase 1:
+
 1. Verify all components work correctly
 2. Test on multiple devices
 3. Check performance metrics
@@ -398,6 +426,7 @@ After completing Phase 1:
 **Phase 1 Complete! ✅**
 
 Ready to proceed to Phase 2? Run:
+
 ```bash
 npm run dev
 # Navigate to http://localhost:5173/test/animation

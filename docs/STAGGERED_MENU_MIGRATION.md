@@ -1,11 +1,13 @@
 # StaggeredMenu Component Migration - Complete
 
 ## 🎯 Objective
+
 Eliminate GSAP from the main bundle by moving the `StaggeredMenu` component to an experimental module and enabling dynamic imports via `React.lazy()`.
 
 ## ✅ Changes Made
 
 ### 1. Component Relocation
+
 - **From**: `src/components/animation/StaggeredMenu.tsx`
 - **To**: `src/modules/experimental/StaggeredMenu.tsx`
 - **Status**: ✅ Complete
@@ -13,6 +15,7 @@ Eliminate GSAP from the main bundle by moving the `StaggeredMenu` component to a
 The entire component (549 lines) has been moved to the new experimental module location.
 
 ### 2. Module Structure Created
+
 ```
 src/modules/experimental/
 ├── StaggeredMenu.tsx           # Main component with GSAP
@@ -21,11 +24,13 @@ src/modules/experimental/
 ```
 
 **File: `src/modules/experimental/index.ts`**
+
 ```typescript
 export { default as StaggeredMenu, type StaggeredMenuProps } from './StaggeredMenu';
 ```
 
 ### 3. Backward Compatibility Maintained
+
 - **`src/components/animation/StaggeredMenu.tsx`**: Now re-exports from experimental module
 - **`src/components/animation/StaggeredMenu/index.ts`**: Now re-exports from experimental module
 - **Status**: ✅ Old imports still work (for now)
@@ -35,7 +40,9 @@ export { default as StaggeredMenu, type StaggeredMenuProps } from './StaggeredMe
 ### 4. Documentation Created
 
 #### A. Engineering Guide: `docs/engineering/EXPERIMENTAL_COMPONENTS.md`
+
 Comprehensive guide covering:
+
 - Why dynamic imports are needed
 - Current experimental components
 - Usage patterns (recommended vs. not recommended)
@@ -47,7 +54,9 @@ Comprehensive guide covering:
 - Best practices
 
 #### B. Usage Examples: `src/modules/experimental/USAGE_EXAMPLE.tsx`
+
 Six implementation examples:
+
 1. Basic usage with loading fallback
 2. Advanced usage with custom colors and socials
 3. Left-positioned menu with callbacks
@@ -91,17 +100,19 @@ import StaggeredMenu from 'src/components/animation/StaggeredMenu';
 ## 📊 Bundle Impact
 
 ### Before Migration (with direct import)
+
 | Bundle | Size (gzipped) | Includes GSAP |
-|--------|--------|--------|
-| Main | +30-50KB | ✓ Yes |
-| Total | 30-50KB more | Always loaded |
+| ------ | -------------- | ------------- |
+| Main   | +30-50KB       | ✓ Yes         |
+| Total  | 30-50KB more   | Always loaded |
 
 ### After Migration (with dynamic import)
-| Bundle | Size (gzipped) | When Loaded |
-|--------|--------|--------|
-| Main | -30-50KB | ✗ Excluded |
-| StaggeredMenu chunk | ~35-55KB | On-demand only |
-| Total | Reduced | ~30-50KB saved for non-users |
+
+| Bundle              | Size (gzipped) | When Loaded                  |
+| ------------------- | -------------- | ---------------------------- |
+| Main                | -30-50KB       | ✗ Excluded                   |
+| StaggeredMenu chunk | ~35-55KB       | On-demand only               |
+| Total               | Reduced        | ~30-50KB saved for non-users |
 
 **Expected Improvement**: 30-50KB reduction in main bundle size (gzipped)
 
@@ -142,18 +153,22 @@ docs/
 ## 🔍 Verification Steps
 
 ### 1. Check Component Works
+
 ```bash
 cd /Users/mac.alvi/Desktop/Projects/KTL\ Website/apps/web
 npm run build  # or yarn build
 ```
 
 ### 2. Verify Bundle Size
+
 Look for:
+
 - Main bundle: GSAP should NOT be included
 - Separate chunk: `experimental-*.js` or `StaggeredMenu-*.js`
 - Size reduction: ~30-50KB (gzipped) smaller main bundle
 
 ### 3. Test Import Paths
+
 ```typescript
 // All of these work:
 import StaggeredMenu from 'src/modules/experimental/StaggeredMenu';
@@ -162,7 +177,9 @@ import StaggeredMenu from 'src/components/animation/StaggeredMenu'; // deprecate
 ```
 
 ### 4. Monitor Bundle
+
 Use Vite's built-in analysis:
+
 ```bash
 npm run build -- --mode analyze
 ```
@@ -170,16 +187,19 @@ npm run build -- --mode analyze
 ## 📝 Notes
 
 ### TypeScript Support
+
 - ✅ Types auto-inferred from dynamic import
 - ✅ Full type safety with `StaggeredMenuProps`
 - ✅ All interfaces available: `StaggeredMenuItem`, `StaggeredMenuSocialItem`
 
 ### Performance
+
 - ✅ GSAP only loaded when component renders
 - ✅ No performance penalty for lazy loading
 - ✅ Suspense handles loading state gracefully
 
 ### Browser Support
+
 - ✅ Works in all modern browsers (React 18+)
 - ✅ Fallback UI shown during dynamic import
 
@@ -188,15 +208,18 @@ npm run build -- --mode analyze
 ### If You See Errors
 
 **Error: "Module not found"**
+
 - ✅ Check import path: `src/modules/experimental/StaggeredMenu`
 - ✅ Verify file exists
 - ✅ Check tsconfig path aliases
 
 **Error: "Cannot read property of undefined"**
+
 - ✅ Ensure Suspense wrapper is present
 - ✅ Check fallback UI is valid JSX
 
 **GSAP still in bundle**
+
 - ✅ Check for direct imports: `grep -r "components/animation/StaggeredMenu" src/`
 - ✅ Ensure all usages have `lazy()` wrapper
 
@@ -211,19 +234,23 @@ npm run build -- --mode analyze
 ## 🎓 Next Steps
 
 ### For Current Usage
+
 If StaggeredMenu is currently used anywhere:
+
 1. Find all usages: `grep -r "StaggeredMenu" src/`
 2. Update imports to use `lazy()` pattern
 3. Add `Suspense` boundaries
 4. Test thoroughly
 
 ### For New Experimental Components
+
 1. Create in `src/modules/experimental/ComponentName.tsx`
 2. Export from `src/modules/experimental/index.ts`
 3. Use with dynamic imports
 4. Follow same pattern as StaggeredMenu
 
 ### Monitoring
+
 - Watch bundle size in production builds
 - Verify GSAP is not included: `npm run build --analyze`
 - Monitor chunk loading performance
@@ -231,18 +258,17 @@ If StaggeredMenu is currently used anywhere:
 
 ## ✨ Summary
 
-| Item | Status | Benefit |
-|------|--------|---------|
-| Component moved | ✅ Done | Isolated from main code |
-| Dynamic imports enabled | ✅ Ready | GSAP excluded from bundle |
-| Backward compatibility | ✅ Maintained | Existing code still works |
-| Documentation | ✅ Complete | Clear usage patterns |
-| Type safety | ✅ Preserved | Full TypeScript support |
-| Bundle reduction | ✅ Potential | ~30-50KB saved (gzipped) |
+| Item                    | Status        | Benefit                   |
+| ----------------------- | ------------- | ------------------------- |
+| Component moved         | ✅ Done       | Isolated from main code   |
+| Dynamic imports enabled | ✅ Ready      | GSAP excluded from bundle |
+| Backward compatibility  | ✅ Maintained | Existing code still works |
+| Documentation           | ✅ Complete   | Clear usage patterns      |
+| Type safety             | ✅ Preserved  | Full TypeScript support   |
+| Bundle reduction        | ✅ Potential  | ~30-50KB saved (gzipped)  |
 
 ---
 
 **Last Updated**: 2024
 **Version**: 1.0
 **Related**: `docs/engineering/EXPERIMENTAL_COMPONENTS.md`
-

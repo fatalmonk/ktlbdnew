@@ -14,7 +14,7 @@ const CertLogo = ({ cert }: { cert: HomeCertification }) => (
         className={cn(
           'max-h-full w-full max-w-full object-contain',
           // Walt Disney asset ships with a white box; blend so it matches bg-neutral-50
-          cert.id === 'disney-fama' && 'mix-blend-multiply',
+          cert.id === 'disney-fama' && 'mix-blend-multiply'
         )}
         loading="lazy"
         decoding="async"
@@ -23,8 +23,7 @@ const CertLogo = ({ cert }: { cert: HomeCertification }) => (
   </div>
 );
 
-const desktopGridGaps =
-  'gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10';
+const desktopGridGaps = 'gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10';
 
 const CertificationsSectionContent = ({ certifications }: CertificationsSectionContentProps) => (
   <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
@@ -51,10 +50,7 @@ const CertificationsSectionContent = ({ certifications }: CertificationsSectionC
         </div>
         <div className={cn('grid w-full grid-cols-10', desktopGridGaps)}>
           {certifications.slice(5, 9).map((cert, idx) => (
-            <div
-              key={cert.id}
-              className={cn('col-span-2', idx === 0 && 'col-start-2')}
-            >
+            <div key={cert.id} className={cn('col-span-2', idx === 0 && 'col-start-2')}>
               <CertLogo cert={cert} />
             </div>
           ))}

@@ -1,6 +1,7 @@
 # Phase 4.10: Final Integration & Documentation
 
 ## Overview
+
 Complete the Phase 4 implementation with final integration, comprehensive documentation, and deployment preparation.
 
 ---
@@ -8,6 +9,7 @@ Complete the Phase 4 implementation with final integration, comprehensive docume
 ## 4.10.1 Complete Homepage Integration
 
 **Final homepage with all features:**
+
 ```typescript
 // app/page.tsx
 import { Suspense } from 'react';
@@ -77,6 +79,7 @@ export const metadata = {
 ## 4.10.2 Complete News Page
 
 **Full-featured news page:**
+
 ```typescript
 // app/news/page.tsx
 import { Suspense } from 'react';
@@ -139,6 +142,7 @@ export const metadata = {
 ## 4.10.3 Complete Dashboard Page
 
 **Full dashboard implementation:**
+
 ```typescript
 // app/dashboard/page.tsx
 import { Suspense } from 'react';
@@ -191,15 +195,18 @@ export const metadata = {
 ## 4.10.4 Component Documentation
 
 **Create comprehensive component docs:**
-```markdown
+
+````markdown
 # Component Documentation
 
 ## News Components
 
 ### NewsCard
+
 Displays a news article card with image, title, excerpt, and metadata.
 
 **Props:**
+
 - `article` (NewsArticle) - Article data object
 - `variant` ('default' | 'featured' | 'compact') - Card style variant
 - `showImage` (boolean) - Whether to display featured image
@@ -207,42 +214,41 @@ Displays a news article card with image, title, excerpt, and metadata.
 - `priority` (boolean) - Image loading priority
 
 **Usage:**
+
 ```tsx
-<NewsCard
-  article={article}
-  variant="default"
-  showImage={true}
-  showStats={true}
-/>
+<NewsCard article={article} variant="default" showImage={true} showStats={true} />
 ```
+````
 
 ### NewsGrid
+
 Responsive grid layout for displaying multiple news articles.
 
 **Props:**
+
 - `articles` (NewsArticle[]) - Array of articles to display
 - `loading` (boolean) - Loading state
 - `showFeatured` (boolean) - Whether to show featured article separately
 
 **Usage:**
+
 ```tsx
-<NewsGrid
-  articles={articles}
-  loading={false}
-  showFeatured={true}
-/>
+<NewsGrid articles={articles} loading={false} showFeatured={true} />
 ```
 
 ### NewsFilterSystem
+
 Complete filtering system with search, category filters, and advanced options.
 
 **Props:**
+
 - `onFiltersChange` (function) - Callback when filters change
 - `onSortChange` (function) - Callback when sort order changes
 - `availableTags` (string[]) - Available tags for filtering
 - `categoryCounts` (object) - Article counts per category
 
 **Usage:**
+
 ```tsx
 <NewsFilterSystem
   onFiltersChange={handleFiltersChange}
@@ -254,26 +260,27 @@ Complete filtering system with search, category filters, and advanced options.
 ## Metrics Components
 
 ### MetricCard
+
 Displays a single metric with animated counter and trend indicator.
 
 **Props:**
+
 - `metric` (Metric) - Metric data object
 - `index` (number) - Card index for stagger animation
 - `compact` (boolean) - Compact display mode
 
 **Usage:**
+
 ```tsx
-<MetricCard
-  metric={metric}
-  index={0}
-  compact={false}
-/>
+<MetricCard metric={metric} index={0} compact={false} />
 ```
 
 ### MetricsGrid
+
 Grid layout for displaying multiple metrics.
 
 **Props:**
+
 - `metrics` (Metric[]) - Array of metrics
 - `columns` (1 | 2 | 3 | 4) - Number of columns
 - `compact` (boolean) - Compact mode
@@ -281,70 +288,75 @@ Grid layout for displaying multiple metrics.
 - `description` (string) - Optional description
 
 **Usage:**
+
 ```tsx
-<MetricsGrid
-  metrics={metrics}
-  columns={3}
-  title="Key Metrics"
-/>
+<MetricsGrid metrics={metrics} columns={3} title="Key Metrics" />
 ```
 
 ### LineChart
+
 Animated line chart component using Recharts.
 
 **Props:**
+
 - `data` (ChartData) - Chart data object
 - `height` (number) - Chart height in pixels
 - `showGrid` (boolean) - Show grid lines
 - `showLegend` (boolean) - Show legend
 
 **Usage:**
+
 ```tsx
-<LineChart
-  data={chartData}
-  height={300}
-  showGrid={true}
-/>
+<LineChart data={chartData} height={300} showGrid={true} />
 ```
 
 ## Utility Hooks
 
 ### useNews
+
 Fetch and manage news articles with filtering.
 
 **Parameters:**
+
 - `filter` (NewsFilter) - Optional filter object
 
 **Returns:**
+
 - `data` (NewsResponse) - News data with pagination
 - `loading` (boolean) - Loading state
 - `error` (Error | null) - Error state
 
 **Usage:**
+
 ```tsx
 const { data, loading, error } = useNews({
   category: 'product-launch',
-  limit: 10
+  limit: 10,
 });
 ```
 
 ### useMetrics
+
 Fetch and manage metrics with optional auto-refresh.
 
 **Parameters:**
+
 - `autoRefresh` (boolean) - Enable auto-refresh
 - `interval` (number) - Refresh interval in milliseconds
 
 **Returns:**
+
 - `metrics` (Metric[]) - Array of metrics
 - `loading` (boolean) - Loading state
 - `error` (Error | null) - Error state
 
 **Usage:**
+
 ```tsx
 const { metrics, loading } = useMetrics(true, 30000);
 ```
-```
+
+````
 
 ---
 
@@ -388,12 +400,14 @@ Fetch news articles with optional filtering and pagination.
     "hasPrev": false
   }
 }
-```
+````
 
 ### GET /api/news/[slug]
+
 Fetch a single article by slug.
 
 **Response:**
+
 ```json
 {
   "id": "1",
@@ -407,9 +421,11 @@ Fetch a single article by slug.
 ## Metrics API
 
 ### GET /api/metrics
+
 Fetch all current metrics.
 
 **Response:**
+
 ```json
 [
   {
@@ -425,9 +441,11 @@ Fetch all current metrics.
 ```
 
 ### GET /api/metrics/charts
+
 Fetch chart data for visualization.
 
 **Response:**
+
 ```json
 [
   {
@@ -445,16 +463,19 @@ Fetch chart data for visualization.
 ```
 
 ### WebSocket /api/metrics/stream
+
 Real-time metrics updates via WebSocket.
 
 **Message Format:**
+
 ```json
 {
   "type": "update",
   "metrics": [...]
 }
 ```
-```
+
+````
 
 ---
 
@@ -518,22 +539,25 @@ Real-time metrics updates via WebSocket.
 - [ ] Component docs written
 - [ ] Deployment guide created
 - [ ] Troubleshooting guide added
-```
+````
 
 ---
 
 ## 4.10.7 README Update
 
 **Comprehensive project README:**
-```markdown
+
+````markdown
 # KTL Website - Phase 4: News & Metrics Enhancement
 
 ## Overview
+
 Phase 4 adds dynamic news sections and real-time metrics dashboard to the KTL homepage, providing visitors with up-to-date information and performance insights.
 
 ## Features
 
 ### News System
+
 - ✅ Dynamic news article management
 - ✅ Advanced filtering and search
 - ✅ Category-based organization
@@ -542,6 +566,7 @@ Phase 4 adds dynamic news sections and real-time metrics dashboard to the KTL ho
 - ✅ SEO-optimized article pages
 
 ### Metrics Dashboard
+
 - ✅ Real-time metrics tracking
 - ✅ Animated counters
 - ✅ Interactive data visualization
@@ -550,6 +575,7 @@ Phase 4 adds dynamic news sections and real-time metrics dashboard to the KTL ho
 - ✅ Auto-refresh capability
 
 ## Tech Stack
+
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
@@ -560,12 +586,15 @@ Phase 4 adds dynamic news sections and real-time metrics dashboard to the KTL ho
 ## Getting Started
 
 ### Prerequisites
+
 ```bash
 Node.js >= 18.0.0
 npm >= 9.0.0
 ```
+````
 
 ### Installation
+
 ```bash
 # Clone the repository
 git clone [repository-url]
@@ -578,12 +607,15 @@ npm run dev
 ```
 
 ### Environment Variables
+
 Create a `.env.local` file:
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
 ## Project Structure
+
 ```
 ├── app/                    # Next.js app directory
 │   ├── news/              # News pages
@@ -603,6 +635,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
 ## Available Scripts
+
 ```bash
 npm run dev          # Start development server
 npm run build        # Build for production
@@ -614,6 +647,7 @@ npm run type-check   # Run TypeScript check
 ```
 
 ## Testing
+
 ```bash
 # Unit tests
 npm run test
@@ -629,6 +663,7 @@ npm run test:accessibility
 ```
 
 ## Deployment
+
 ```bash
 # Build for production
 npm run build
@@ -638,23 +673,28 @@ npm run start
 ```
 
 ## Performance Targets
+
 - Lighthouse Score: > 90
 - First Contentful Paint: < 1.5s
 - Time to Interactive: < 3.5s
 - Bundle Size: < 200KB (gzipped)
 
 ## Browser Support
+
 - Chrome (last 2 versions)
 - Firefox (last 2 versions)
 - Safari (last 2 versions)
 - Edge (last 2 versions)
 
 ## Contributing
+
 Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
 
 ## License
+
 This project is licensed under the MIT License - see LICENSE.md for details.
-```
+
+````
 
 ---
 
@@ -677,11 +717,13 @@ npm list typescript
 rm -rf .next node_modules
 npm install
 npm run build
-```
+````
 
 ### Module Not Found
+
 **Problem:** Module import errors
 **Solution:**
+
 - Check tsconfig.json path mappings
 - Verify import paths use @/ alias
 - Clear Next.js cache
@@ -689,22 +731,28 @@ npm run build
 ## Runtime Issues
 
 ### Images Not Loading
+
 **Problem:** News/product images not displaying
 **Solution:**
+
 - Check next.config.js image domains
 - Verify image URLs are accessible
 - Add domain to remotePatterns
 
 ### Animations Not Working
+
 **Problem:** Framer Motion animations not playing
 **Solution:**
+
 - Check reduced motion preferences
 - Verify IntersectionObserver support
 - Add polyfills if needed
 
 ### Charts Not Rendering
+
 **Problem:** Recharts components not displaying
 **Solution:**
+
 - Verify data format matches expected structure
 - Check ResponsiveContainer parent has height
 - Ensure data array is not empty
@@ -712,14 +760,18 @@ npm run build
 ## Performance Issues
 
 ### Slow Page Load
+
 **Solution:**
+
 - Enable code splitting
 - Implement lazy loading
 - Optimize images
 - Check bundle size with `npm run analyze`
 
 ### Memory Leaks
+
 **Solution:**
+
 - Check for missing cleanup in useEffect
 - Verify WebSocket connections are closed
 - Remove console.logs in production
@@ -727,7 +779,9 @@ npm run build
 ## API Issues
 
 ### Failed to Fetch Data
+
 **Solution:**
+
 - Verify API endpoints are correct
 - Check network requests in DevTools
 - Verify CORS settings
@@ -736,10 +790,13 @@ npm run build
 ## Testing Issues
 
 ### Tests Failing
+
 **Solution:**
+
 - Clear Jest cache: `npm test -- --clearCache`
 - Update snapshots if needed
 - Check async operations are awaited
+
 ```
 
 ---
@@ -810,3 +867,4 @@ Your website now has a complete news and metrics system! Consider:
 
 **Total Phase 4 Time**: ~20-25 hours
 **All 10 Documents Created**: ✅
+```

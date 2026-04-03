@@ -1,5 +1,6 @@
 import { datadogRum } from '@datadog/browser-rum';
 import { reactPlugin } from '@datadog/browser-rum-react';
+import { registerRumReporter } from './lib/observability';
 
 export function initDatadog(): void {
   const applicationId = import.meta.env.VITE_DD_APPLICATION_ID;
@@ -19,5 +20,9 @@ export function initDatadog(): void {
     trackUserInteractions: true,
     trackLongTasks: true,
     plugins: [reactPlugin({ router: false })],
+  });
+
+  registerRumReporter((error, context) => {
+    datadogRum.addError(error, context);
   });
 }

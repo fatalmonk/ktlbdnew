@@ -11,6 +11,7 @@
 ### Day 1: Monday - Setup & Audit (5 hours)
 
 #### Morning Session (3 hours)
+
 - [ ] **Project Kickoff Meeting** (1 hour)
   - [ ] Review complete SEO plan with team
   - [ ] Assign roles and responsibilities
@@ -29,12 +30,15 @@
   - [ ] Create project board (Trello/Asana/Notion)
 
 #### Afternoon Session (2 hours)
+
 - [ ] **Technical Baseline Audit**
+
   ```bash
   # Run from project root
   cd /path/to/project
   npm run dev
   ```
+
   - [ ] Run Lighthouse on 5 key pages:
     - Homepage: /
     - Products: /products
@@ -52,10 +56,12 @@
 ### Day 2: Tuesday - Meta Tags Optimization (5 hours)
 
 #### Homepage Meta Tags (3 hours)
+
 - [ ] **Update Homepage SEO Component**
+
   ```tsx
   // File: src/pages/Home.tsx
-  
+
   <SEO
     title="Kattali Textile Ltd - Leading Garment Manufacturer Bangladesh"
     description="Publicly listed RMG manufacturer in Chittagong producing woven, denim & kidswear for global brands. Sustainable, certified, 30+ years. Contact us!"
@@ -65,19 +71,20 @@
       'textile exporter chittagong',
       'sustainable rmg factory',
       'woven garment supplier',
-      'denim manufacturer bangladesh'
+      'denim manufacturer bangladesh',
     ]}
     openGraph={{
-      title: 'Kattali Textile Ltd - Bangladesh\'s Leading Textile Manufacturer',
-      description: 'Premium garment manufacturing with 30+ years experience. Sustainable practices, certified quality.',
+      title: "Kattali Textile Ltd - Bangladesh's Leading Textile Manufacturer",
+      description:
+        'Premium garment manufacturing with 30+ years experience. Sustainable practices, certified quality.',
       image: '/assets-optimized/ktl-hero-desktop.webp',
-      type: 'website'
+      type: 'website',
     }}
     twitter={{
       card: 'summary_large_image',
       title: 'Kattali Textile Ltd',
       description: 'Leading garment manufacturer in Bangladesh',
-      image: '/assets-optimized/ktl-hero-desktop.webp'
+      image: '/assets-optimized/ktl-hero-desktop.webp',
     }}
   />
   ```
@@ -90,58 +97,62 @@
     - Description: 150-155 characters ✅
 
 #### Structured Data - Organization Schema (2 hours)
+
 - [ ] **Create Schema File**
+
   ```bash
   # Create new file
   touch src/lib/schemas.ts
   ```
 
 - [ ] **Implement Organization Schema**
+
   ```tsx
   // File: src/lib/schemas.ts
-  
+
   export const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Kattali Textile Limited",
-    "alternateName": "KTL",
-    "url": "https://ktlbd.com",
-    "logo": "https://ktlbd.com/logos/ktl-logo.png",
-    "description": "Leading woven garment and denim manufacturer in Bangladesh",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Kattali, Hathazari",
-      "addressLocality": "Chittagong",
-      "postalCode": "4330",
-      "addressCountry": "BD"
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Kattali Textile Limited',
+    alternateName: 'KTL',
+    url: 'https://ktlbd.com',
+    logo: 'https://ktlbd.com/logos/ktl-logo.png',
+    description: 'Leading woven garment and denim manufacturer in Bangladesh',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Kattali, Hathazari',
+      addressLocality: 'Chittagong',
+      postalCode: '4330',
+      addressCountry: 'BD',
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+8801730597576",
-      "contactType": "Customer Service",
-      "areaServed": "Worldwide",
-      "availableLanguage": ["English", "Bengali"]
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+8801730597576',
+      contactType: 'Customer Service',
+      areaServed: 'Worldwide',
+      availableLanguage: ['English', 'Bengali'],
     },
-    "sameAs": [
-      "https://www.linkedin.com/company/kattali-textile-limited",
-      "https://www.facebook.com/ktlbd"
+    sameAs: [
+      'https://www.linkedin.com/company/kattali-textile-limited',
+      'https://www.facebook.com/ktlbd',
     ],
-    "foundingDate": "1992",
-    "numberOfEmployees": {
-      "@type": "QuantitativeValue",
-      "value": 2500
-    }
+    foundingDate: '1992',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      value: 2500,
+    },
   };
   ```
 
 - [ ] **Add to Homepage**
+
   ```tsx
   // In src/pages/Home.tsx
   import StructuredData from '../components/StructuredData';
   import { organizationSchema } from '../lib/schemas';
-  
+
   // In component return
-  <StructuredData data={organizationSchema} />
+  <StructuredData data={organizationSchema} />;
   ```
 
 - [ ] **Test Schema**
@@ -153,45 +164,55 @@
 ### Day 3: Wednesday - Core Pages Meta Tags (6 hours)
 
 - [ ] **About Page** (1 hour)
+
   ```tsx
-  title: "About Kattali Textile - 30 Years of Manufacturing Excellence"
-  description: "Learn about KTL's journey from 1992 to becoming a publicly listed textile manufacturer. 2500+ employees, ISO certified, serving 50+ countries."
-  keywords: ['garment manufacturer chittagong', 'rmg factory bangladesh', 'textile company history']
+  title: 'About Kattali Textile - 30 Years of Manufacturing Excellence';
+  description: "Learn about KTL's journey from 1992 to becoming a publicly listed textile manufacturer. 2500+ employees, ISO certified, serving 50+ countries.";
+  keywords: [
+    'garment manufacturer chittagong',
+    'rmg factory bangladesh',
+    'textile company history',
+  ];
   ```
 
 - [ ] **Products Overview Page** (1 hour)
+
   ```tsx
-  title: "Woven Garments, Denim & Kidswear Manufacturer - KTL Bangladesh"
-  description: "Leading Bangladesh garment manufacturer producing woven apparel, denim jeans, children's wear. Sustainable practices, MOQ 5000 units."
-  keywords: ['woven garment supplier bangladesh', 'product catalog', 'textile products']
+  title: 'Woven Garments, Denim & Kidswear Manufacturer - KTL Bangladesh';
+  description: "Leading Bangladesh garment manufacturer producing woven apparel, denim jeans, children's wear. Sustainable practices, MOQ 5000 units.";
+  keywords: ['woven garment supplier bangladesh', 'product catalog', 'textile products'];
   ```
 
 - [ ] **Denim Products Page** (1 hour)
+
   ```tsx
-  title: "Denim Manufacturer Bangladesh - Sustainable Jeans Production"
-  description: "Premium denim manufacturing in Bangladesh. Eco-friendly washing, organic cotton, OEKO-TEX certified. Production capacity: 50,000 pcs/month."
-  keywords: ['denim manufacturer bangladesh', 'sustainable denim', 'jeans factory']
+  title: 'Denim Manufacturer Bangladesh - Sustainable Jeans Production';
+  description: 'Premium denim manufacturing in Bangladesh. Eco-friendly washing, organic cotton, OEKO-TEX certified. Production capacity: 50,000 pcs/month.';
+  keywords: ['denim manufacturer bangladesh', 'sustainable denim', 'jeans factory'];
   ```
 
 - [ ] **Sustainability Page** (1 hour)
+
   ```tsx
-  title: "Sustainable Textile Manufacturing - Ethical Garment Production"
-  description: "KTL's sustainability: Nirapon, Better Work, Walmart Green certified. Ethical labor, eco-friendly processes, transparent supply chain."
-  keywords: ['sustainable textile manufacturer', 'ethical manufacturing', 'eco-friendly textiles']
+  title: 'Sustainable Textile Manufacturing - Ethical Garment Production';
+  description: "KTL's sustainability: Nirapon, Better Work, Walmart Green certified. Ethical labor, eco-friendly processes, transparent supply chain.";
+  keywords: ['sustainable textile manufacturer', 'ethical manufacturing', 'eco-friendly textiles'];
   ```
 
 - [ ] **Contact Page** (1 hour)
+
   ```tsx
-  title: "Contact Kattali Textile - Bangladesh Garment Supplier Inquiry"
-  description: "Get in touch with KTL for garment sourcing. Office: Chittagong, Bangladesh. Phone: +880-1730-597576. Fast response guaranteed."
-  keywords: ['bangladesh garment supplier contact', 'textile inquiry', 'sourcing request']
+  title: 'Contact Kattali Textile - Bangladesh Garment Supplier Inquiry';
+  description: 'Get in touch with KTL for garment sourcing. Office: Chittagong, Bangladesh. Phone: +880-1730-597576. Fast response guaranteed.';
+  keywords: ['bangladesh garment supplier contact', 'textile inquiry', 'sourcing request'];
   ```
 
 - [ ] **Manufacturing Page** (1 hour)
+
   ```tsx
-  title: "Garment Manufacturing Facility - State-of-the-Art Production"
-  description: "Tour KTL's 200,000 sq ft facility with 45 production lines. Quality control, certifications, advanced machinery. Capacity: 1M+ pcs/month."
-  keywords: ['garment manufacturing facility', 'textile factory bangladesh', 'production capacity']
+  title: 'Garment Manufacturing Facility - State-of-the-Art Production';
+  description: "Tour KTL's 200,000 sq ft facility with 45 production lines. Quality control, certifications, advanced machinery. Capacity: 1M+ pcs/month.";
+  keywords: ['garment manufacturing facility', 'textile factory bangladesh', 'production capacity'];
   ```
 
 - [ ] **Deploy and Test All Pages**
@@ -206,6 +227,7 @@
 ### Day 4: Thursday - Image Optimization (6 hours)
 
 #### Optimize Priority Images (4 hours)
+
 - [ ] **Identify Priority Images**
   - [ ] Hero images (homepage, key pages)
   - [ ] Product category images
@@ -213,10 +235,11 @@
   - [ ] Social sharing images
 
 - [ ] **Run Optimization Script**
+
   ```bash
   # From project root
   npm run optimize-images
-  
+
   # This will:
   # 1. Convert JPG/PNG to WebP
   # 2. Create responsive variants (mobile, tablet, desktop)
@@ -224,10 +247,11 @@
   ```
 
 - [ ] **Verify Optimized Images**
+
   ```bash
   # Check output directory
   ls -lh public/assets-optimized/
-  
+
   # Should see:
   # - *-mobile.webp (640px)
   # - *-tablet.webp (1024px)
@@ -235,13 +259,15 @@
   ```
 
 #### Update Image Components (2 hours)
+
 - [ ] **Update Homepage Hero**
+
   ```tsx
   // In src/components/KTLHero.tsx
   <OptimizedImage
     src="/assets/hero-banner.jpg"
     alt="Kattali Textile factory producing sustainable woven garments"
-    priority={true}  // ← Critical change
+    priority={true} // ← Critical change
     sizes="100vw"
     className="w-full h-full object-cover"
   />
@@ -264,7 +290,9 @@
 ### Day 5: Friday - Sitemap & Search Console (5 hours)
 
 #### Sitemap Generation (2 hours)
+
 - [ ] **Update Sitemap Script**
+
   ```bash
   # Review generate-sitemap.js
   # Ensure all routes included
@@ -272,10 +300,11 @@
   ```
 
 - [ ] **Verify Sitemap**
+
   ```bash
   # Check sitemap exists
   cat public/sitemap.xml
-  
+
   # Should include all 20+ URLs
   ```
 
@@ -285,6 +314,7 @@
   - [ ] Verify URLs are accessible
 
 #### Search Console Setup (3 hours)
+
 - [ ] **Submit Sitemap to Google**
   1. Go to Google Search Console
   2. Select property: ktlbd.com
@@ -331,46 +361,50 @@
 ### Day 6: Monday - Product Schema (6 hours)
 
 #### Create Product Schema Template (3 hours)
+
 - [ ] **Create Schema Function**
+
   ```tsx
   // Add to src/lib/schemas.ts
-  
+
   export const productSchema = (product: any) => ({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.name,
-    "description": product.description,
-    "brand": {
-      "@type": "Brand",
-      "name": "Kattali Textile Ltd"
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    brand: {
+      '@type': 'Brand',
+      name: 'Kattali Textile Ltd',
     },
-    "manufacturer": {
-      "@type": "Organization",
-      "name": "Kattali Textile Ltd"
+    manufacturer: {
+      '@type': 'Organization',
+      name: 'Kattali Textile Ltd',
     },
-    "category": product.category,
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "price": product.price,
-      "priceCurrency": "USD",
-      "priceValidUntil": "2025-12-31"
-    }
+    category: product.category,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      price: product.price,
+      priceCurrency: 'USD',
+      priceValidUntil: '2025-12-31',
+    },
   });
   ```
 
 #### Implement on Product Pages (3 hours)
+
 - [ ] **Denim Page**
+
   ```tsx
   // In src/pages/products/denims/index.tsx
   const denimProduct = {
-    name: "Premium Denim Jeans",
-    description: "Sustainable denim manufacturing with eco-friendly processes",
-    category: "Denim Apparel",
-    price: "8.50" // Example FOB price
+    name: 'Premium Denim Jeans',
+    description: 'Sustainable denim manufacturing with eco-friendly processes',
+    category: 'Denim Apparel',
+    price: '8.50', // Example FOB price
   };
-  
-  <StructuredData data={productSchema(denimProduct)} />
+
+  <StructuredData data={productSchema(denimProduct)} />;
   ```
 
 - [ ] **Kids Page**
@@ -384,6 +418,7 @@
 ### Day 7: Tuesday - Internal Linking (5 hours)
 
 #### Audit Current Links (2 hours)
+
 - [ ] **Map Current Link Structure**
   - [ ] Use Screaming Frog (if available)
   - [ ] Or manually check each page
@@ -391,15 +426,18 @@
   - [ ] Find broken links
 
 #### Implement Strategic Links (3 hours)
+
 - [ ] **Homepage to Key Pages**
+
   ```tsx
   // In homepage content
-  "Explore our <Link to="/products">product range</Link> including 
-  <Link to="/products/denims">premium denim</Link> and 
+  "Explore our <Link to="/products">product range</Link> including
+  <Link to="/products/denims">premium denim</Link> and
   <Link to="/products/kids">children's wear</Link>."
   ```
 
 - [ ] **Product Pages Cross-Linking**
+
   ```tsx
   // In /products/denims
   "Also view our <Link to="/products/kids">kidswear collection</Link>
@@ -416,19 +454,23 @@
 ### Day 8: Wednesday - Core Web Vitals (6 hours)
 
 #### LCP Optimization (3 hours)
+
 - [ ] **Preload Hero Images**
+
   ```tsx
   // In index.html or App.tsx
   <link rel="preload" as="image" href="/assets-optimized/hero-desktop.webp" />
   ```
 
 - [ ] **Priority Loading**
+
   ```tsx
   // All hero/above-fold images
   <OptimizedImage priority={true} ... />
   ```
 
 - [ ] **Font Optimization**
+
   ```css
   /* In index.css */
   @font-face {
@@ -445,7 +487,9 @@
   ```
 
 #### CLS Optimization (2 hours)
+
 - [ ] **Reserve Image Space**
+
   ```css
   /* Add to index.css */
   img {
@@ -460,11 +504,13 @@
   - [ ] Avoid inserting content above fold
 
 #### FID Optimization (1 hour)
+
 - [ ] **Defer Non-Critical JS**
+
   ```tsx
   // In App.tsx
   import { lazy } from 'react';
-  
+
   // Lazy load heavy components
   const HeavyComponent = lazy(() => import('./HeavyComponent'));
   ```
@@ -499,6 +545,7 @@
 ### Day 10: Friday - Analytics & Review (5 hours)
 
 #### GA4 Dashboard Setup (3 hours)
+
 - [ ] **Create Custom Dashboard**
   1. Go to Google Analytics 4
   2. Reports → Library → Create new report
@@ -513,13 +560,14 @@
   ```javascript
   // In ContactForm.tsx
   gtag('event', 'form_submission', {
-    'event_category': 'Contact',
-    'event_label': 'Main Contact Form',
-    'value': 1
+    event_category: 'Contact',
+    event_label: 'Main Contact Form',
+    value: 1,
   });
   ```
 
 #### Phase 1 Review (2 hours)
+
 - [ ] **Checklist Review**
   - [ ] Count completed tasks
   - [ ] Document incomplete tasks
@@ -542,6 +590,7 @@
 ## ✅ Phase 1 Completion Checklist
 
 ### Meta Tags (All 16 pages)
+
 - [ ] Homepage
 - [ ] About
 - [ ] Products Overview
@@ -560,6 +609,7 @@
 - [ ] IR Reports
 
 ### Structured Data
+
 - [ ] Organization schema (Homepage)
 - [ ] LocalBusiness schema (Homepage)
 - [ ] WebSite schema (Homepage)
@@ -568,6 +618,7 @@
 - [ ] Tested with Rich Results Test
 
 ### Images
+
 - [ ] 20+ images optimized to WebP
 - [ ] Responsive variants created
 - [ ] Priority loading on hero images
@@ -575,6 +626,7 @@
 - [ ] Lazy loading functional
 
 ### Technical
+
 - [ ] Core Web Vitals improved
   - [ ] LCP < 2.5s
   - [ ] FID < 100ms
@@ -584,6 +636,7 @@
 - [ ] No critical crawl errors
 
 ### Setup
+
 - [ ] Google Search Console configured
 - [ ] Google Analytics 4 configured
 - [ ] Conversion tracking implemented
@@ -591,6 +644,7 @@
 - [ ] Email alerts set up
 
 ### Documentation
+
 - [ ] Baseline metrics recorded
 - [ ] Progress documented
 - [ ] Phase 1 report created
@@ -607,7 +661,7 @@ By end of Week 2, you should have:
 ✅ **LCP improved by 30%+** (from ~4s to <2.7s)  
 ✅ **Sitemap submitted** and indexing started  
 ✅ **Analytics tracking** fully operational  
-✅ **Baseline metrics** documented  
+✅ **Baseline metrics** documented
 
 ---
 
@@ -616,6 +670,7 @@ By end of Week 2, you should have:
 If all checklist items are complete, you're ready to move to **Phase 2: Content Development** (Weeks 3-6).
 
 **Phase 2 Preview:**
+
 - Homepage expansion (600 → 1,200+ words)
 - Product page deep dives (200 → 1,500+ words each)
 - Blog infrastructure setup
@@ -637,6 +692,6 @@ If you encounter any blockers:
 
 ---
 
-*Checklist Version: 1.0*  
-*Last Updated: October 24, 2025*  
-*Next Review: After Phase 1 completion*
+_Checklist Version: 1.0_  
+_Last Updated: October 24, 2025_  
+_Next Review: After Phase 1 completion_

@@ -1,11 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  MessageCircle,
-  X,
-  Send,
-  Minimize2,
-} from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2 } from 'lucide-react';
 import { ChatMessage, QUICK_ACTIONS, getResponse } from '../../lib/chatbot/responses';
 
 const ChatbotWidget = () => {
@@ -71,7 +66,7 @@ const ChatbotWidget = () => {
     }, 800);
   };
 
-  const handleQuickAction = (action: typeof QUICK_ACTIONS[0]) => {
+  const handleQuickAction = (action: (typeof QUICK_ACTIONS)[0]) => {
     if (action.action === 'navigate') {
       window.location.href = action.value;
     } else if (action.action === 'message') {
@@ -97,7 +92,7 @@ const ChatbotWidget = () => {
     const now = new Date();
     const day = now.getDay(); // 0 = Sunday, 6 = Saturday
     const hour = now.getHours();
-    
+
     // Monday-Friday, 9 AM - 6 PM (Bangladesh time - adjust as needed)
     return day >= 1 && day <= 5 && hour >= 9 && hour < 18;
   };
@@ -141,7 +136,7 @@ const ChatbotWidget = () => {
                 <div>
                   <h3 className="font-semibold">KTL Support</h3>
                   <p className="text-xs text-blue-100">
-                    {isBusinessHours() ? 'Online' : 'Offline - We\'ll respond soon'}
+                    {isBusinessHours() ? 'Online' : "Offline - We'll respond soon"}
                   </p>
                 </div>
               </div>
@@ -178,7 +173,9 @@ const ChatbotWidget = () => {
                         }`}
                       >
                         <p className="text-sm">{message.text}</p>
-                        <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-blue-100' : 'text-neutral-500'}`}>
+                        <p
+                          className={`text-xs mt-1 ${message.sender === 'user' ? 'text-blue-100' : 'text-neutral-500'}`}
+                        >
                           {message.timestamp.toLocaleTimeString('en-US', {
                             hour: '2-digit',
                             minute: '2-digit',
@@ -247,4 +244,3 @@ const ChatbotWidget = () => {
 };
 
 export default ChatbotWidget;
-

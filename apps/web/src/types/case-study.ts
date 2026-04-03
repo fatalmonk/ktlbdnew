@@ -39,4 +39,3 @@ export interface CaseStudyFilterState {
   product: string;
   searchQuery: string;
 }
-

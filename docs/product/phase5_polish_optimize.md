@@ -1,6 +1,7 @@
 # Phase 5: Polish & Optimize
 
 ## Overview
+
 This phase focuses on performance optimization, cross-browser compatibility, mobile responsiveness, and final polish to ensure a flawless user experience across all devices and browsers.
 
 ---
@@ -10,6 +11,7 @@ This phase focuses on performance optimization, cross-browser compatibility, mob
 ### 5.1.1 Code Splitting & Lazy Loading
 
 **Optimize Component Loading:**
+
 ```typescript
 // app/page.tsx - Implement lazy loading for heavy components
 import dynamic from 'next/dynamic';
@@ -61,6 +63,7 @@ function StatsSkeleton() {
 ### 5.1.2 Image Optimization
 
 **Create optimized image component:**
+
 ```typescript
 // components/OptimizedImage.tsx
 'use client';
@@ -95,7 +98,7 @@ export default function OptimizedImage({
       {isLoading && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
-      
+
       {!hasError ? (
         <Image
           src={src}
@@ -126,6 +129,7 @@ export default function OptimizedImage({
 ```
 
 **Update next.config.js for image optimization:**
+
 ```javascript
 // next.config.js
 /** @type {import('next').NextConfig} */
@@ -156,6 +160,7 @@ module.exports = nextConfig;
 ### 5.1.3 Animation Performance
 
 **Create optimized animation utilities:**
+
 ```typescript
 // lib/animations/performance.ts
 export const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
@@ -196,9 +201,7 @@ export const performanceVariants = {
 };
 
 export function getOptimizedVariants(prefersReducedMotion: boolean) {
-  return prefersReducedMotion 
-    ? performanceVariants.reduced 
-    : performanceVariants.full;
+  return prefersReducedMotion ? performanceVariants.reduced : performanceVariants.full;
 }
 
 // Throttle scroll events
@@ -208,7 +211,7 @@ export function useThrottledScroll(callback: () => void, delay: number = 100) {
   useEffect(() => {
     const handleScroll = () => {
       if (timeoutRef.current) return;
-      
+
       timeoutRef.current = setTimeout(() => {
         callback();
         timeoutRef.current = null;
@@ -242,11 +245,13 @@ export function useDebounce<T>(value: T, delay: number = 300): T {
 ### 5.1.4 Bundle Size Optimization
 
 **Create bundle analyzer setup:**
+
 ```bash
 npm install --save-dev @next/bundle-analyzer
 ```
 
 **Update next.config.js:**
+
 ```javascript
 // next.config.js
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -259,6 +264,7 @@ module.exports = withBundleAnalyzer({
 ```
 
 **Add script to package.json:**
+
 ```json
 {
   "scripts": {
@@ -274,27 +280,27 @@ module.exports = withBundleAnalyzer({
 ### 5.2.1 Browser-Specific Fixes
 
 **Create browser detection utility:**
+
 ```typescript
 // lib/utils/browser.ts
 export function detectBrowser() {
   if (typeof window === 'undefined') return 'unknown';
-  
+
   const userAgent = window.navigator.userAgent.toLowerCase();
-  
+
   if (userAgent.includes('firefox')) return 'firefox';
   if (userAgent.includes('safari') && !userAgent.includes('chrome')) return 'safari';
   if (userAgent.includes('chrome')) return 'chrome';
   if (userAgent.includes('edge')) return 'edge';
-  
+
   return 'unknown';
 }
 
 export function getBrowserSupport() {
   const browser = detectBrowser();
-  
+
   return {
-    supportsBackdropFilter: browser !== 'firefox' || 
-      CSS.supports('backdrop-filter', 'blur(10px)'),
+    supportsBackdropFilter: browser !== 'firefox' || CSS.supports('backdrop-filter', 'blur(10px)'),
     supportsGrid: CSS.supports('display', 'grid'),
     supportsFlexGap: CSS.supports('gap', '1rem'),
     supportsAspectRatio: CSS.supports('aspect-ratio', '16/9'),
@@ -303,6 +309,7 @@ export function getBrowserSupport() {
 ```
 
 **Create CSS fallbacks:**
+
 ```css
 /* styles/browser-fixes.css */
 
@@ -312,7 +319,7 @@ export function getBrowserSupport() {
   .smooth-scroll {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .fixed-bg {
     background-attachment: scroll; /* Safari doesn't handle fixed well */
   }
@@ -330,7 +337,7 @@ export function getBrowserSupport() {
   .flex-gap-4 > * + * {
     margin-left: 1rem;
   }
-  
+
   .grid-gap-4 > * {
     margin: 0.5rem;
   }
@@ -342,7 +349,7 @@ export function getBrowserSupport() {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
   }
-  
+
   .aspect-video > * {
     position: absolute;
     top: 0;
@@ -356,18 +363,20 @@ export function getBrowserSupport() {
 ### 5.2.2 Testing Configuration
 
 **Install testing tools:**
+
 ```bash
 npm install --save-dev @playwright/test cross-env
 ```
 
 **Create browser test suite:**
+
 ```typescript
 // tests/cross-browser.spec.ts
 import { test, expect } from '@playwright/test';
 
 const browsers = ['chromium', 'firefox', 'webkit'];
 
-browsers.forEach(browser => {
+browsers.forEach((browser) => {
   test.describe(`${browser} - Homepage Tests`, () => {
     test.use({ browserName: browser as any });
 
@@ -379,7 +388,7 @@ browsers.forEach(browser => {
     test('should animate statistics counters', async ({ page }) => {
       await page.goto('http://localhost:3000');
       await page.locator('[data-testid="statistics"]').scrollIntoViewIfNeeded();
-      
+
       const counter = page.locator('[data-testid="stat-counter"]').first();
       await expect(counter).not.toHaveText('0');
     });
@@ -387,7 +396,7 @@ browsers.forEach(browser => {
     test('should display product cards', async ({ page }) => {
       await page.goto('http://localhost:3000');
       await page.locator('[data-testid="products"]').scrollIntoViewIfNeeded();
-      
+
       const cards = page.locator('[data-testid="product-card"]');
       await expect(cards).toHaveCount(3);
     });
@@ -395,10 +404,10 @@ browsers.forEach(browser => {
     test('should handle mobile menu', async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 667 });
       await page.goto('http://localhost:3000');
-      
+
       const menuButton = page.locator('[data-testid="mobile-menu-button"]');
       await menuButton.click();
-      
+
       const menu = page.locator('[data-testid="mobile-menu"]');
       await expect(menu).toBeVisible();
     });
@@ -413,6 +422,7 @@ browsers.forEach(browser => {
 ### 5.3.1 Responsive Touch Interactions
 
 **Create touch-optimized components:**
+
 ```typescript
 // components/TouchOptimized.tsx
 'use client';
@@ -450,7 +460,7 @@ export default function TouchOptimized({
 
     const handleTouchEnd = (e: TouchEvent) => {
       setIsTouching(false);
-      
+
       if (!touchStart) return;
 
       const touchEnd = {
@@ -496,7 +506,7 @@ export default function TouchOptimized({
   return (
     <div
       ref={ref}
-      className={`${className} ${isTouching ? 'scale-[0.98]' : 'scale-100'} 
+      className={`${className} ${isTouching ? 'scale-[0.98]' : 'scale-100'}
         transition-transform duration-150`}
     >
       {children}
@@ -508,6 +518,7 @@ export default function TouchOptimized({
 ### 5.3.2 Mobile-First Responsive Utilities
 
 **Create responsive hooks:**
+
 ```typescript
 // lib/hooks/useResponsive.ts
 import { useState, useEffect } from 'react';
@@ -522,7 +533,7 @@ export function useMediaQuery(query: string): boolean {
 
     const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
     media.addEventListener('change', listener);
-    
+
     return () => media.removeEventListener('change', listener);
   }, [query]);
 
@@ -557,7 +568,7 @@ export function useViewportHeight() {
       // Use visual viewport for accurate mobile height
       const vh = window.visualViewport?.height || window.innerHeight;
       setHeight(vh);
-      
+
       // Set CSS variable for mobile viewport
       document.documentElement.style.setProperty('--vh', `${vh * 0.01}px`);
     };
@@ -579,25 +590,24 @@ export function useViewportHeight() {
 ### 5.3.3 Mobile Performance Optimization
 
 **Create mobile-specific optimizations:**
+
 ```typescript
 // lib/utils/mobile-performance.ts
 export function isMobileDevice(): boolean {
   if (typeof window === 'undefined') return false;
-  
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
 export function isLowEndDevice(): boolean {
   if (typeof window === 'undefined') return false;
-  
+
   // Check hardware concurrency (CPU cores)
   const cores = navigator.hardwareConcurrency || 1;
-  
+
   // Check memory (if available)
   const memory = (navigator as any).deviceMemory || 4;
-  
+
   return cores <= 2 || memory <= 2;
 }
 
@@ -622,6 +632,7 @@ export function getOptimizedAnimationConfig() {
 ### 5.4.1 ARIA Improvements
 
 **Add comprehensive ARIA labels:**
+
 ```typescript
 // components/AccessibleSection.tsx
 interface AccessibleSectionProps {
@@ -660,6 +671,7 @@ export default function AccessibleSection({
 ### 5.4.2 Keyboard Navigation
 
 **Create keyboard navigation utilities:**
+
 ```typescript
 // lib/utils/keyboard.ts
 export function useTrapFocus(ref: React.RefObject<HTMLElement>) {
@@ -712,6 +724,7 @@ export function useEscapeKey(callback: () => void) {
 ### 5.4.3 Skip Links
 
 **Add skip navigation:**
+
 ```typescript
 // components/SkipLinks.tsx
 export default function SkipLinks() {
@@ -719,14 +732,14 @@ export default function SkipLinks() {
     <div className="sr-only focus-within:not-sr-only">
       <a
         href="#main-content"
-        className="fixed top-0 left-0 z-50 p-4 bg-blue-600 text-white 
+        className="fixed top-0 left-0 z-50 p-4 bg-blue-600 text-white
           focus:relative focus:z-50"
       >
         Skip to main content
       </a>
       <a
         href="#navigation"
-        className="fixed top-0 left-0 z-50 p-4 bg-blue-600 text-white 
+        className="fixed top-0 left-0 z-50 p-4 bg-blue-600 text-white
           focus:relative focus:z-50"
       >
         Skip to navigation
@@ -743,6 +756,7 @@ export default function SkipLinks() {
 ### 5.5.1 Metadata Configuration
 
 **Update root layout:**
+
 ```typescript
 // app/layout.tsx
 import type { Metadata } from 'next';
@@ -802,6 +816,7 @@ export const metadata: Metadata = {
 ### 5.5.2 Structured Data
 
 **Add JSON-LD schema:**
+
 ```typescript
 // components/StructuredData.tsx
 export default function StructuredData() {
@@ -850,6 +865,7 @@ export default function StructuredData() {
 ### 5.6.1 Error Boundaries
 
 **Create error boundary:**
+
 ```typescript
 // components/ErrorBoundary.tsx
 'use client';
@@ -894,7 +910,7 @@ export class ErrorBoundary extends Component<Props, State> {
               </p>
               <button
                 onClick={() => window.location.reload()}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg 
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg
                   hover:bg-blue-700 transition-colors"
               >
                 Refresh Page
@@ -913,13 +929,14 @@ export class ErrorBoundary extends Component<Props, State> {
 ### 5.6.2 Loading States
 
 **Create consistent loading components:**
+
 ```typescript
 // components/LoadingStates.tsx
 export function PageLoader() {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
       <div className="text-center">
-        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 
+        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600
           rounded-full animate-spin mx-auto mb-4" />
         <p className="text-gray-600">Loading...</p>
       </div>
@@ -930,7 +947,7 @@ export function PageLoader() {
 export function SectionLoader() {
   return (
     <div className="py-20 flex items-center justify-center">
-      <div className="w-12 h-12 border-4 border-gray-200 border-t-gray-600 
+      <div className="w-12 h-12 border-4 border-gray-200 border-t-gray-600
         rounded-full animate-spin" />
     </div>
   );
@@ -939,7 +956,7 @@ export function SectionLoader() {
 export function InlineLoader() {
   return (
     <div className="inline-flex items-center gap-2">
-      <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600 
+      <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600
         rounded-full animate-spin" />
       <span className="text-sm text-gray-600">Loading...</span>
     </div>
@@ -952,6 +969,7 @@ export function InlineLoader() {
 ## 5.7 Final Testing Checklist
 
 ### Performance Testing
+
 - [ ] Lighthouse score > 90 for all metrics
 - [ ] First Contentful Paint < 1.5s
 - [ ] Time to Interactive < 3.5s
@@ -959,6 +977,7 @@ export function InlineLoader() {
 - [ ] Bundle size < 200KB (gzipped)
 
 ### Browser Testing
+
 - [ ] Chrome (latest 2 versions)
 - [ ] Firefox (latest 2 versions)
 - [ ] Safari (latest 2 versions)
@@ -967,6 +986,7 @@ export function InlineLoader() {
 - [ ] Chrome Mobile (Android)
 
 ### Device Testing
+
 - [ ] Desktop (1920x1080, 1366x768)
 - [ ] Laptop (1440x900)
 - [ ] Tablet (iPad, 1024x768)
@@ -974,6 +994,7 @@ export function InlineLoader() {
 - [ ] Mobile (Android, 360x640)
 
 ### Accessibility Testing
+
 - [ ] Keyboard navigation works throughout
 - [ ] Screen reader compatible (NVDA/JAWS)
 - [ ] Color contrast ratios meet WCAG AA
@@ -982,6 +1003,7 @@ export function InlineLoader() {
 - [ ] ARIA labels properly implemented
 
 ### Functionality Testing
+
 - [ ] All animations trigger correctly
 - [ ] Scroll-triggered animations work
 - [ ] Touch gestures work on mobile
@@ -991,6 +1013,7 @@ export function InlineLoader() {
 - [ ] Images load with proper optimization
 
 ### Cross-Browser Features
+
 - [ ] CSS Grid layouts display correctly
 - [ ] Flexbox gaps work or have fallbacks
 - [ ] Backdrop filters work or have fallbacks
@@ -1004,11 +1027,13 @@ export function InlineLoader() {
 ### 5.8.1 Web Vitals Tracking
 
 **Install analytics:**
+
 ```bash
 npm install web-vitals
 ```
 
 **Create monitoring component:**
+
 ```typescript
 // components/WebVitals.tsx
 'use client';
@@ -1019,7 +1044,7 @@ import { onCLS, onFID, onFCP, onLCP, onTTFB, Metric } from 'web-vitals';
 function sendToAnalytics(metric: Metric) {
   // Send to your analytics service
   console.log(metric);
-  
+
   // Example: Send to Google Analytics
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', metric.name, {
@@ -1045,6 +1070,7 @@ export default function WebVitals() {
 ```
 
 **Add to layout:**
+
 ```typescript
 // app/layout.tsx
 import WebVitals from '@/components/WebVitals';
@@ -1064,6 +1090,7 @@ export default function RootLayout({ children }) {
 ### 5.8.2 Error Tracking
 
 **Create error reporting:**
+
 ```typescript
 // lib/utils/error-reporting.ts
 export function reportError(error: Error, context?: Record<string, any>) {
@@ -1077,7 +1104,7 @@ export function reportError(error: Error, context?: Record<string, any>) {
   try {
     // Example: Sentry
     // Sentry.captureException(error, { extra: context });
-    
+
     // Or custom API endpoint
     fetch('/api/errors', {
       method: 'POST',
@@ -1122,36 +1149,37 @@ if (typeof window !== 'undefined') {
 ### 5.9.1 Content Security Policy
 
 **Add security headers:**
+
 ```typescript
 // next.config.js
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
-    value: 'on'
+    value: 'on',
   },
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload'
+    value: 'max-age=63072000; includeSubDomains; preload',
   },
   {
     key: 'X-Frame-Options',
-    value: 'SAMEORIGIN'
+    value: 'SAMEORIGIN',
   },
   {
     key: 'X-Content-Type-Options',
-    value: 'nosniff'
+    value: 'nosniff',
   },
   {
     key: 'X-XSS-Protection',
-    value: '1; mode=block'
+    value: '1; mode=block',
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'origin-when-cross-origin',
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()'
+    value: 'camera=(), microphone=(), geolocation=()',
   },
   {
     key: 'Content-Security-Policy',
@@ -1165,8 +1193,10 @@ const securityHeaders = [
       frame-ancestors 'self';
       base-uri 'self';
       form-action 'self';
-    `.replace(/\s{2,}/g, ' ').trim()
-  }
+    `
+      .replace(/\s{2,}/g, ' ')
+      .trim(),
+  },
 ];
 
 module.exports = {
@@ -1184,6 +1214,7 @@ module.exports = {
 ### 5.9.2 Input Sanitization
 
 **Create sanitization utility:**
+
 ```typescript
 // lib/utils/sanitize.ts
 export function sanitizeInput(input: string): string {
@@ -1197,12 +1228,12 @@ export function sanitizeInput(input: string): string {
 export function sanitizeUrl(url: string): string {
   try {
     const parsed = new URL(url);
-    
+
     // Only allow http and https protocols
     if (!['http:', 'https:'].includes(parsed.protocol)) {
       return '#';
     }
-    
+
     return parsed.toString();
   } catch {
     return '#';
@@ -1218,7 +1249,7 @@ export function escapeHtml(text: string): string {
     "'": '&#x27;',
     '/': '&#x2F;',
   };
-  
+
   return text.replace(/[&<>"'/]/g, (char) => map[char]);
 }
 ```
@@ -1230,6 +1261,7 @@ export function escapeHtml(text: string): string {
 ### 5.10.1 Static Asset Caching
 
 **Configure cache headers:**
+
 ```typescript
 // next.config.js
 module.exports = {
@@ -1270,6 +1302,7 @@ module.exports = {
 ### 5.10.2 API Response Caching
 
 **Create caching utility:**
+
 ```typescript
 // lib/utils/cache.ts
 interface CacheOptions {
@@ -1296,11 +1329,11 @@ class Cache {
 
   get(key: string, options: CacheOptions = {}): any | null {
     const cached = this.cache.get(key);
-    
+
     if (!cached) return null;
 
     const age = Date.now() - cached.timestamp;
-    
+
     // Check if expired
     if (options.ttl && age > options.ttl) {
       if (!options.staleWhileRevalidate) {
@@ -1332,14 +1365,14 @@ export async function fetchWithCache<T>(
   options: CacheOptions = { ttl: 5 * 60 * 1000 } // 5 minutes default
 ): Promise<T> {
   const cached = cache.get(key, options);
-  
+
   if (cached && !cached.__stale) {
     return cached;
   }
 
   const data = await fetcher();
   cache.set(key, data, options);
-  
+
   return data;
 }
 ```
@@ -1351,6 +1384,7 @@ export async function fetchWithCache<T>(
 ### 5.11.1 Micro-interactions
 
 **Add subtle feedback animations:**
+
 ```typescript
 // components/MicroInteractions.tsx
 'use client';
@@ -1402,6 +1436,7 @@ export function LinkWithUnderline({ children, href, ...props }: any) {
 ### 5.11.2 Loading Skeleton Screens
 
 **Create skeleton components:**
+
 ```typescript
 // components/Skeletons.tsx
 export function ProductCardSkeleton() {
@@ -1445,6 +1480,7 @@ export function NewsCardSkeleton() {
 ### 5.11.3 Smooth Scroll Behavior
 
 **Add smooth scrolling:**
+
 ```css
 /* styles/globals.css */
 html {
@@ -1456,7 +1492,7 @@ html {
   html {
     scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -1498,10 +1534,11 @@ html {
 ### 5.12.1 Component Documentation
 
 **Add JSDoc comments:**
-```typescript
+
+````typescript
 /**
  * Optimized product card with 3D hover effects and lazy loading
- * 
+ *
  * @component
  * @example
  * ```tsx
@@ -1512,39 +1549,37 @@ html {
  *   link="/products/item"
  * />
  * ```
- * 
+ *
  * @param {ProductCardProps} props - Component props
  * @param {string} props.title - Product title
  * @param {string} props.description - Product description
  * @param {string} props.image - Product image URL
  * @param {string} props.link - Product detail page link
- * 
+ *
  * @returns {JSX.Element} Rendered product card
  */
-export default function ProductCard({
-  title,
-  description,
-  image,
-  link,
-}: ProductCardProps) {
+export default function ProductCard({ title, description, image, link }: ProductCardProps) {
   // Component implementation
 }
-```
+````
 
 ### 5.12.2 README Updates
 
 **Create comprehensive README:**
-```markdown
+
+````markdown
 # KTL Homepage - UX/UI Enhancement
 
 ## Performance Optimizations
 
 ### Bundle Size
+
 - Implemented code splitting: ~40% reduction
 - Lazy loading for components: Improved initial load time
 - Image optimization: WebP format with fallbacks
 
 ### Metrics Achieved
+
 - Lighthouse Performance: 95+
 - First Contentful Paint: < 1.5s
 - Time to Interactive: < 3.0s
@@ -1553,12 +1588,14 @@ export default function ProductCard({
 ## Browser Support
 
 ### Desktop
+
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
 - Edge 90+
 
 ### Mobile
+
 - iOS Safari 14+
 - Chrome Mobile 90+
 - Samsung Internet 14+
@@ -1573,17 +1610,21 @@ export default function ProductCard({
 ## Testing
 
 ### Run Performance Tests
+
 ```bash
 npm run analyze
 npm run lighthouse
 ```
+````
 
 ### Run Browser Tests
+
 ```bash
 npm run test:e2e
 ```
 
 ### Run Accessibility Tests
+
 ```bash
 npm run test:a11y
 ```
@@ -1597,7 +1638,8 @@ npm run test:a11y
 - [ ] Test in all supported browsers
 - [ ] Validate accessibility
 - [ ] Monitor performance metrics
-```
+
+````
 
 ---
 
@@ -1665,11 +1707,12 @@ npm run test:a11y
     }
   ]
 }
-```
+````
 
 ### 5.13.2 Continuous Monitoring
 
 **Add monitoring scripts:**
+
 ```json
 // package.json
 {
@@ -1688,6 +1731,7 @@ npm run test:a11y
 ## ✅ Implementation Complete Checklist
 
 ### Code Quality
+
 - [ ] All TypeScript errors resolved
 - [ ] ESLint passing with no warnings
 - [ ] Prettier formatting applied
@@ -1696,6 +1740,7 @@ npm run test:a11y
 - [ ] Loading states for all async operations
 
 ### Performance
+
 - [ ] Code splitting implemented
 - [ ] Images optimized (WebP, proper sizing)
 - [ ] Fonts preloaded
@@ -1704,6 +1749,7 @@ npm run test:a11y
 - [ ] Debounce/throttle on scroll/resize events
 
 ### Accessibility
+
 - [ ] All images have alt text
 - [ ] Proper heading hierarchy
 - [ ] ARIA labels where needed
@@ -1712,6 +1758,7 @@ npm run test:a11y
 - [ ] Color contrast meets WCAG AA
 
 ### Browser Compatibility
+
 - [ ] Tested in Chrome
 - [ ] Tested in Firefox
 - [ ] Tested in Safari
@@ -1719,6 +1766,7 @@ npm run test:a11y
 - [ ] Fallbacks for unsupported features
 
 ### Mobile Optimization
+
 - [ ] Touch targets minimum 44x44px
 - [ ] Text readable without zooming
 - [ ] No horizontal scrolling
@@ -1726,6 +1774,7 @@ npm run test:a11y
 - [ ] Viewport meta tag configured
 
 ### Security
+
 - [ ] CSP headers configured
 - [ ] XSS protection enabled
 - [ ] Input sanitization implemented
@@ -1733,6 +1782,7 @@ npm run test:a11y
 - [ ] Security headers set
 
 ### SEO
+
 - [ ] Meta tags complete
 - [ ] Structured data added
 - [ ] Sitemap generated
@@ -1744,6 +1794,7 @@ npm run test:a11y
 ## 📊 Success Metrics
 
 ### Performance Targets
+
 - **Lighthouse Score**: > 90
 - **FCP**: < 1.5s
 - **LCP**: < 2.5s
@@ -1752,6 +1803,7 @@ npm run test:a11y
 - **Bundle Size**: < 200KB (gzipped)
 
 ### User Experience Targets
+
 - **Bounce Rate**: < 40%
 - **Time on Page**: > 2 minutes
 - **Scroll Depth**: > 70%

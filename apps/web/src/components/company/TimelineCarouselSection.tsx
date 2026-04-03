@@ -62,11 +62,10 @@ const TimelineCarouselSection = ({
         return next;
       });
     },
-    [maxIndex, perPage],
+    [maxIndex, perPage]
   );
 
-  const progress =
-    maxIndex <= 0 ? 100 : Math.min(100, ((pageIndex + 1) / (maxIndex + 1)) * 100);
+  const progress = maxIndex <= 0 ? 100 : Math.min(100, ((pageIndex + 1) / (maxIndex + 1)) * 100);
 
   const canPrev = pageIndex > 0;
   const canNext = pageIndex < maxIndex;
@@ -148,7 +147,7 @@ const TimelineCarouselSection = ({
               type="button"
               className={cn(
                 'pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900',
-                !canPrev && 'cursor-not-allowed opacity-30',
+                !canPrev && 'cursor-not-allowed opacity-30'
               )}
               aria-label="Previous slides"
               disabled={!canPrev}
@@ -162,7 +161,7 @@ const TimelineCarouselSection = ({
               type="button"
               className={cn(
                 'pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-md transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900',
-                !canNext && 'cursor-not-allowed opacity-30',
+                !canNext && 'cursor-not-allowed opacity-30'
               )}
               aria-label="Next slides"
               disabled={!canNext}
@@ -173,10 +172,7 @@ const TimelineCarouselSection = ({
           </div>
         </div>
 
-        <div
-          className="mx-auto mt-16 h-[3px] max-w-[1440px] bg-neutral-900"
-          aria-hidden
-        >
+        <div className="mx-auto mt-16 h-[3px] max-w-[1440px] bg-neutral-900" aria-hidden>
           <div
             className="h-full bg-white transition-[width] duration-300 ease-out"
             style={{ width: `${progress}%` }}

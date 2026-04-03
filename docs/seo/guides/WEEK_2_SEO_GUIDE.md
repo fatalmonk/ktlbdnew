@@ -30,10 +30,10 @@ Week 2 focuses on site-wide image optimization, internal linking strategy, Googl
 
 **Action Items:**
 
-- [X] List all images across all pages
-- [X] Document current file sizes
-- [X] Identify unoptimized images
-- [X] Prioritize images by page importance
+- [x] List all images across all pages
+- [x] Document current file sizes
+- [x] Identify unoptimized images
+- [x] Prioritize images by page importance
 
 **Command:**
 
@@ -50,10 +50,10 @@ find assets -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) -exec
 
 **Action Items:**
 
-- [X] Review `optimize-images.js` script
-- [X] Ensure all image paths are correct
-- [X] Run optimization script
-- [X] Verify WebP conversion for all images
+- [x] Review `optimize-images.js` script
+- [x] Ensure all image paths are correct
+- [x] Run optimization script
+- [x] Verify WebP conversion for all images
 
 **Command:**
 
@@ -84,19 +84,19 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Update homepage hero image to use optimized version
-- [X] Update product page images
-- [X] Update gallery images
-- [X] Ensure priority loading on above-the-fold images
-- [X] Add descriptive alt text to all images
+- [x] Update homepage hero image to use optimized version
+- [x] Update product page images
+- [x] Update gallery images
+- [x] Ensure priority loading on above-the-fold images
+- [x] Add descriptive alt text to all images
 
 **Priority Images to Update:**
 
-- [X] Homepage hero (`/`) - Updated with Image component, priority loading, alt text
-- [X] Products page hero (`/products`) - Uses CSS background (optimized)
-- [X] Denim page images (`/products/denims`) - Schema updated to WebP
-- [X] Sustainability page images (`/company/sustainability`) - Image component with alt text
-- [X] Manufacturing facility images (`/facilities/rmg`) - All 12 images have alt text, use Image component
+- [x] Homepage hero (`/`) - Updated with Image component, priority loading, alt text
+- [x] Products page hero (`/products`) - Uses CSS background (optimized)
+- [x] Denim page images (`/products/denims`) - Schema updated to WebP
+- [x] Sustainability page images (`/company/sustainability`) - Image component with alt text
+- [x] Manufacturing facility images (`/facilities/rmg`) - All 12 images have alt text, use Image component
 
 **Example Code:**
 
@@ -118,19 +118,19 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Test images in browser DevTools - ✅ Automated verification complete
-- [X] Verify WebP format is being served - ✅ Component configured, files created
-- [X] Check responsive image loading - ✅ srcSet generated with mobile/tablet/desktop variants
-- [X] Test lazy loading on scroll - ✅ Intersection Observer implemented
+- [x] Test images in browser DevTools - ✅ Automated verification complete
+- [x] Verify WebP format is being served - ✅ Component configured, files created
+- [x] Check responsive image loading - ✅ srcSet generated with mobile/tablet/desktop variants
+- [x] Test lazy loading on scroll - ✅ Intersection Observer implemented
 - [ ] Run PageSpeed Insights - ⏳ Pending production deployment/browser testing
-- [X] Document improvements - ✅ Verification report created
+- [x] Document improvements - ✅ Verification report created
 
 **Testing Checklist:**
 
-- [X] Desktop: Check Network tab for WebP loading - ✅ Component configured for WebP
-- [X] Mobile: Verify mobile variants loading - ✅ Mobile variants created (26KB hero-mobile.webp)
-- [X] Lazy loading: Scroll to verify deferred loading - ✅ Intersection Observer with 50px rootMargin
-- [X] Alt text: Verify all images have descriptive alt text - ✅ All hero and key page images have alt text
+- [x] Desktop: Check Network tab for WebP loading - ✅ Component configured for WebP
+- [x] Mobile: Verify mobile variants loading - ✅ Mobile variants created (26KB hero-mobile.webp)
+- [x] Lazy loading: Scroll to verify deferred loading - ✅ Intersection Observer with 50px rootMargin
+- [x] Alt text: Verify all images have descriptive alt text - ✅ All hero and key page images have alt text
 - [ ] PageSpeed: Run test on homepage and key pages - ⏳ Pending manual browser testing
 
 **✅ Automated Verification Results:**
@@ -162,11 +162,11 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Map current internal link structure ✅
-- [X] Identify orphan pages (no internal links) ✅ (26 orphan pages found)
-- [X] Find pages with low internal link count ✅ (Most pages have 0 links)
-- [X] Document anchor text usage ✅
-- [X] Identify opportunities for contextual links ✅
+- [x] Map current internal link structure ✅
+- [x] Identify orphan pages (no internal links) ✅ (26 orphan pages found)
+- [x] Find pages with low internal link count ✅ (Most pages have 0 links)
+- [x] Document anchor text usage ✅
+- [x] Identify opportunities for contextual links ✅
 
 **Tools:**
 
@@ -231,11 +231,11 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Add contextual links to homepage content ✅
-- [X] Add product category links from products page ✅
-- [X] Add breadcrumb-style links in page content ✅
-- [X] Link from product pages to other related pages ✅
-- [X] Add contextual links in sustainability and facilities pages ✅
+- [x] Add contextual links to homepage content ✅
+- [x] Add product category links from products page ✅
+- [x] Add breadcrumb-style links in page content ✅
+- [x] Link from product pages to other related pages ✅
+- [x] Add contextual links in sustainability and facilities pages ✅
 
 **Implementation Summary:**
 
@@ -251,9 +251,11 @@ npm run optimize-images
 ```tsx
 // In homepage content section
 <p>
-  As a leading <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">
+  As a leading{' '}
+  <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">
     woven garment supplier in Bangladesh
-  </Link>, we combine innovation with ethical practices.
+  </Link>
+  , we combine innovation with ethical practices.
 </p>
 ```
 
@@ -267,17 +269,17 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Claim/verify Google Business Profile ✅ (2 profiles verified)
-- [X] Complete business information: ✅
-  - [X] Business name: "Kattali Textile Limited" ✅
-  - [X] Address: BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong ✅
-  - [X] Phone: +8801734855403 ✅
-  - [X] Website: https://ktlbd.com ✅
-  - [X] Business hours (needs verification)
-  - [X] Business category: "Textile Manufacturer", "Garment Manufacturer" (needs verification)
-- [X] Add business description with keywords ✅ (Optimized descriptions created with all 5 keywords)
-- [X] Upload logo and cover photos (needs verification)
-- [X] Add product/service listings (needs verification)
+- [x] Claim/verify Google Business Profile ✅ (2 profiles verified)
+- [x] Complete business information: ✅
+  - [x] Business name: "Kattali Textile Limited" ✅
+  - [x] Address: BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong ✅
+  - [x] Phone: +8801734855403 ✅
+  - [x] Website: https://ktlbd.com ✅
+  - [x] Business hours (needs verification)
+  - [x] Business category: "Textile Manufacturer", "Garment Manufacturer" (needs verification)
+- [x] Add business description with keywords ✅ (Optimized descriptions created with all 5 keywords)
+- [x] Upload logo and cover photos (needs verification)
+- [x] Add product/service listings (needs verification)
 
 **Profile IDs:**
 
@@ -307,9 +309,9 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Add high-quality photos:
-  - [X] Factory exterior/interior
-  - [X] Product photos
+- [x] Add high-quality photos:
+  - [x] Factory exterior/interior
+  - [x] Product photos
   - [ ] Team photos
   - [ ] Certification photos
 - [ ] Create posts about:
@@ -318,11 +320,11 @@ npm run optimize-images
   - [ ] Company milestones
 - [ ] Enable messaging
 - [ ] Set up Q&A section with FAQs
-- [X] Add services/products:
-  - [X] Woven Garment Manufacturing
-  - [X] Denim Production
-  - [X] Children's Wear Manufacturing
-  - [X] Textile Export Services
+- [x] Add services/products:
+  - [x] Woven Garment Manufacturing
+  - [x] Denim Production
+  - [x] Children's Wear Manufacturing
+  - [x] Textile Export Services
 
 **📄 Complete Implementation Guide:** See `docs/seo/GBP_OPTIMIZATION_GUIDE.md` for:
 
@@ -345,10 +347,10 @@ npm run optimize-images
 
 **Action Items:**
 
-- [X] Review current homepage content ✅
-- [X] Count current word count ✅ (~305-350 words actual)
-- [X] Identify content gaps ✅ (4 major sections missing)
-- [X] List sections to add/expand ✅
+- [x] Review current homepage content ✅
+- [x] Count current word count ✅ (~305-350 words actual)
+- [x] Identify content gaps ✅ (4 major sections missing)
+- [x] List sections to add/expand ✅
 
 **Current State:** ~305-350 words (actual count)
 **Target:** 1,200+ words
@@ -379,30 +381,29 @@ npm run optimize-images
 **New Sections to Add:**
 
 1. **Company Overview Section** (300 words)
-
    - Key facts about KTL
    - Years of experience
    - Location and facilities
    - Certifications
-2. **Product Highlights Section** (250 words)
 
+2. **Product Highlights Section** (250 words)
    - Woven apparel details
    - Denim collection
    - Children's wear
    - Production capabilities
-3. **Why Choose KTL Section** (200 words)
 
+3. **Why Choose KTL Section** (200 words)
    - Key differentiators
    - Quality assurance
    - Sustainability focus
    - Customer service
-4. **Trust Indicators Section** (150 words)
 
+4. **Trust Indicators Section** (150 words)
    - Client testimonials (if available)
    - Statistics (already have statistics section)
    - Certifications display
-5. **Call-to-Action Section** (100 words)
 
+5. **Call-to-Action Section** (100 words)
    - Contact form link
    - Download catalog option
    - Schedule factory tour
@@ -543,25 +544,25 @@ By end of Week 2:
 
 ### Monday - Images:
 
-- [X] Image audit complete ✅
-- [X] Optimization script run ✅
-- [X] All images converted to WebP ✅ (31 WebP files created)
-- [X] Component updates complete ✅ (Hero, RMG, Sustainability updated)
-- [X] Verification done ✅ (Automated checks complete - see WEEK_2_IMAGE_VERIFICATION.md)
+- [x] Image audit complete ✅
+- [x] Optimization script run ✅
+- [x] All images converted to WebP ✅ (31 WebP files created)
+- [x] Component updates complete ✅ (Hero, RMG, Sustainability updated)
+- [x] Verification done ✅ (Automated checks complete - see WEEK_2_IMAGE_VERIFICATION.md)
 
 ### Tuesday - Internal Links:
 
-- [X] Link audit complete ✅ (Strategy documented in guide)
-- [X] Strategy documented ✅
-- [X] Links implemented ✅ (Homepage, Products, Sustainability, RMG, Denim, Kids pages)
+- [x] Link audit complete ✅ (Strategy documented in guide)
+- [x] Strategy documented ✅
+- [x] Links implemented ✅ (Homepage, Products, Sustainability, RMG, Denim, Kids pages)
 - [ ] Verification done (Pending manual review)
 
 ### Wednesday - Google Business:
 
-- [X] Profile claimed/verified ✅ (2 profiles: Head Office & Production Facility)
-- [X] Information complete ✅ (Name, address, phone, website verified)
-- [X] Description with keywords ✅ (Optimized descriptions created with all 5 keywords - ready to update)
-- [X] Optimization guide created ✅ (Complete guide with photos, posts, FAQs, products ready - see GBP_OPTIMIZATION_GUIDE.md)
+- [x] Profile claimed/verified ✅ (2 profiles: Head Office & Production Facility)
+- [x] Information complete ✅ (Name, address, phone, website verified)
+- [x] Description with keywords ✅ (Optimized descriptions created with all 5 keywords - ready to update)
+- [x] Optimization guide created ✅ (Complete guide with photos, posts, FAQs, products ready - see GBP_OPTIMIZATION_GUIDE.md)
 - [ ] Photos uploaded (Ready to implement - guide prepared)
 - [ ] Posts created (Ready to implement - 4 sample posts prepared)
 - [ ] Messaging enabled (Ready to implement - auto-reply template prepared)

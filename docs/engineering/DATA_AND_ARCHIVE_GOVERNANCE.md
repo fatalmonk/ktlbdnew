@@ -5,11 +5,13 @@ This policy prevents drift between runtime data, source data, and historical art
 ## Data Ownership
 
 ### `apps/web/src/data`
+
 - Source-of-truth for data imported directly by application code.
 - Use for typed, bundled data needed at build/runtime in React modules.
 - Changes should be reviewed as application code changes.
 
 ### `apps/web/public/data`
+
 - Source-of-truth for runtime-fetched static assets/data served as files.
 - Use for data that must be accessible by URL (e.g. markdown, downloadable JSON).
 - Treat as deployment assets, not type-safe app module data.

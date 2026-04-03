@@ -5,7 +5,7 @@
 ```typescript
 import { lazy, Suspense } from 'react';
 
-const StaggeredMenu = lazy(() => 
+const StaggeredMenu = lazy(() =>
   import('src/modules/experimental/StaggeredMenu')
 );
 
@@ -20,11 +20,11 @@ export function MyPage() {
 
 ## Three Important Rules
 
-| Rule | Example | Why |
-|------|---------|-----|
-| 1. Use `lazy()` | `lazy(() => import(...))` | Prevents GSAP in main bundle |
-| 2. Use `Suspense` | `<Suspense fallback={...}>` | Handles loading state |
-| 3. Provide fallback | `fallback={<div>Loading</div>}` | Shows while loading |
+| Rule                | Example                         | Why                          |
+| ------------------- | ------------------------------- | ---------------------------- |
+| 1. Use `lazy()`     | `lazy(() => import(...))`       | Prevents GSAP in main bundle |
+| 2. Use `Suspense`   | `<Suspense fallback={...}>`     | Handles loading state        |
+| 3. Provide fallback | `fallback={<div>Loading</div>}` | Shows while loading          |
 
 ## Props Cheat Sheet
 
@@ -53,6 +53,7 @@ export function MyPage() {
 ## Before & After Comparison
 
 ### ❌ DON'T (Old Way - GSAP in main bundle)
+
 ```typescript
 import StaggeredMenu from 'src/components/animation/StaggeredMenu';
 
@@ -62,8 +63,9 @@ export function MyPage() {
 ```
 
 ### ✅ DO (New Way - GSAP loaded on-demand)
+
 ```typescript
-const StaggeredMenu = lazy(() => 
+const StaggeredMenu = lazy(() =>
   import('src/modules/experimental/StaggeredMenu')
 );
 
@@ -78,22 +80,22 @@ export function MyPage() {
 
 ## File Locations
 
-| What | Location |
-|------|----------|
-| Component | `src/modules/experimental/StaggeredMenu.tsx` |
-| Examples | `src/modules/experimental/USAGE_EXAMPLE.tsx` |
-| Quick start | `src/modules/experimental/README.md` |
-| Full guide | `docs/engineering/EXPERIMENTAL_COMPONENTS.md` |
-| Migration info | `STAGGERED_MENU_MIGRATION.md` |
+| What           | Location                                      |
+| -------------- | --------------------------------------------- |
+| Component      | `src/modules/experimental/StaggeredMenu.tsx`  |
+| Examples       | `src/modules/experimental/USAGE_EXAMPLE.tsx`  |
+| Quick start    | `src/modules/experimental/README.md`          |
+| Full guide     | `docs/engineering/EXPERIMENTAL_COMPONENTS.md` |
+| Migration info | `STAGGERED_MENU_MIGRATION.md`                 |
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
-| "Module not found" | Check import path: `src/modules/experimental/StaggeredMenu` |
-| Component doesn't render | Add `<Suspense>` wrapper with `fallback` |
-| TypeScript errors | Types auto-inferred, no extra declaration needed |
-| GSAP in main bundle | Find direct imports: `grep -r "components/animation/StaggeredMenu" src/` |
+| Problem                  | Solution                                                                 |
+| ------------------------ | ------------------------------------------------------------------------ |
+| "Module not found"       | Check import path: `src/modules/experimental/StaggeredMenu`              |
+| Component doesn't render | Add `<Suspense>` wrapper with `fallback`                                 |
+| TypeScript errors        | Types auto-inferred, no extra declaration needed                         |
+| GSAP in main bundle      | Find direct imports: `grep -r "components/animation/StaggeredMenu" src/` |
 
 ## Bundle Impact
 
@@ -110,6 +112,7 @@ AFTER (Dynamic Import):
 ## One-Page Checklist
 
 When using StaggeredMenu:
+
 - [ ] Import with `lazy()`
 - [ ] Import from `src/modules/experimental/StaggeredMenu`
 - [ ] Wrap in `<Suspense>`
@@ -136,7 +139,7 @@ import Component from 'src/modules/experimental/StaggeredMenu';
 ```typescript
 import { lazy, Suspense } from 'react';
 
-const StaggeredMenu = lazy(() => 
+const StaggeredMenu = lazy(() =>
   import('src/modules/experimental/StaggeredMenu')
 );
 
@@ -144,7 +147,7 @@ export default function HomePage() {
   return (
     <div>
       <h1>Welcome</h1>
-      
+
       <Suspense fallback={<div>Loading menu...</div>}>
         <StaggeredMenu
           isFixed={true}
@@ -174,4 +177,3 @@ export default function HomePage() {
 ---
 
 **TL;DR**: Wrap import with `lazy()`, wrap component with `Suspense`, save 50KB! 🚀
-

@@ -17,10 +17,10 @@ const InvestorMetricsContent = () => (
 
               <div className="space-y-2 md:space-y-3">
                 <p className="text-sm md:text-base lg:text-[18px] leading-[1.5] text-[#3C3C3C]">
-                  DSE: M | as of March 29, 2026 3:10 PM BST
+                  DSE: Z | as of April 2, 2026 3:10 PM BST
                 </p>
                 <p className="text-sm md:text-base lg:text-[18px] leading-[1.5] text-[#3C3C3C]">
-                  Volume: 873,009. Change: +0.20 (+2.06%)
+                  Volume: 283,798. Change: -0.20 (-2.04%)
                 </p>
               </div>
 
@@ -41,7 +41,7 @@ const InvestorMetricsContent = () => (
             <div className="bg-wave-pattern absolute inset-0 opacity-95" />
             <div className="relative z-10 h-full flex items-center justify-center lg:justify-start lg:pl-10 xl:pl-16">
               <div className="metric-display text-[58px] md:text-[96px] lg:text-[150px] xl:text-[170px] text-[#0B0B0B] text-center lg:text-left">
-                <span className="metric-prefix">৳</span>9.90
+                <span className="metric-prefix">৳</span>9.60
               </div>
             </div>
           </div>
@@ -55,4 +55,3 @@ const InvestorMetricsContent = () => (
 );
 
 export default InvestorMetricsContent;
-

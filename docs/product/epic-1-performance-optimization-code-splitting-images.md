@@ -74,6 +74,7 @@ Optimize initial page load performance by implementing advanced code splitting s
 Implement dynamic imports for heavy components (Hero, Statistics, ProductsSection, NewsSection) with proper Suspense boundaries and loading skeleton components. Extend existing route-level lazy loading with component-level optimization.
 
 **Acceptance Criteria:**
+
 - Heavy components (Hero, Statistics, ProductsSection, NewsSection) use dynamic imports
 - Loading skeleton components created for each lazy-loaded component
 - Suspense boundaries properly implemented
@@ -88,6 +89,7 @@ Implement dynamic imports for heavy components (Hero, Statistics, ProductsSectio
 Enhance the existing Image component to automatically detect and use WebP optimized images from `assets-optimized/` directory with responsive variants. Implement proper `srcset`, `sizes`, and priority loading attributes.
 
 **Acceptance Criteria:**
+
 - Image component automatically uses WebP when available with fallback
 - Responsive image variants (mobile, tablet, desktop) loaded appropriately
 - `srcset` and `sizes` attributes properly configured
@@ -103,6 +105,7 @@ Enhance the existing Image component to automatically detect and use WebP optimi
 Enhance Vite build configuration and image optimization script to support advanced image formats (AVIF optional) and optimize image delivery through proper cache headers and preloading strategies.
 
 **Acceptance Criteria:**
+
 - Image optimization script supports AVIF format (optional)
 - Cache headers configured for optimized images
 - Critical above-the-fold images preloaded
@@ -129,6 +132,7 @@ Enhance Vite build configuration and image optimization script to support advanc
 **Risk:** Component-level code splitting may cause layout shifts or flash of unstyled content during component loading.
 
 **Mitigation:**
+
 - Implement proper Suspense boundaries with loading skeletons that match final component dimensions
 - Use CSS placeholders to reserve space during loading
 - Test on slow networks to verify graceful degradation
@@ -139,6 +143,7 @@ Enhance Vite build configuration and image optimization script to support advanc
 **Risk:** Image optimization changes may break existing image references or cause missing image errors.
 
 **Mitigation:**
+
 - Maintain backward compatibility with existing image paths
 - Implement robust fallback chain (WebP → JPEG → error state)
 - Validate all existing images have optimized variants before deployment
@@ -197,4 +202,3 @@ Please develop detailed user stories for this brownfield epic. Key consideration
   - No performance regressions
 
 The epic should maintain system integrity while delivering improved performance metrics (LCP < 2.5s, reduced bundle size, optimized image loading).
-

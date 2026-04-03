@@ -94,13 +94,12 @@ This prepares all files in `Version01/deployments/hostinger/`
 ### Step 2: Upload to Hostinger
 
 1. **Connect to FTP/SFTP**:
-
    - Host: Your Hostinger FTP host
    - Username: Your FTP username
    - Password: Your FTP password
    - Port: 21 (FTP) or 22 (SFTP)
-2. **Upload to public_html**:
 
+2. **Upload to public_html**:
    - Upload **all files** from `Version01/deployments/hostinger/` to `public_html/`
    - Ensure `index.html` is in the root of `public_html/`
    - Upload the entire `assets/` folder
@@ -173,14 +172,14 @@ If you need to create or update it manually, use this configuration:
 
 ### 1. Test Website Functionality
 
-- [X] Homepage loads correctly
-- [X] All navigation links work
+- [x] Homepage loads correctly
+- [x] All navigation links work
 - [ ] Hero video plays
-- [X] Images load properly
+- [x] Images load properly
 - [ ] Mobile responsiveness
 - [ ] Contact form (if applicable)
 - [ ] Google Analytics tracking (check browser dev tools)
-- [X] Social media links (Facebook, LinkedIn)
+- [x] Social media links (Facebook, LinkedIn)
 
 ### 2. Performance Testing
 
@@ -323,4 +322,4 @@ cp Version01/project/public/.htaccess Version01/deployments/hostinger/
 
 ---
 
-*Built with React, TypeScript, and Vite for optimal performance and modern web standards.*
+_Built with React, TypeScript, and Vite for optimal performance and modern web standards._

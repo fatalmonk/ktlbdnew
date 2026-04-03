@@ -85,7 +85,3 @@ export function useChartData(chartId?: string) {
 
   return { data, loading, error };
 }
-
-
-
-

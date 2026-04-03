@@ -20,7 +20,9 @@ const AnnouncementTicker: React.FC<AnnouncementTickerProps> = ({ isHidden }) => 
   return (
     <section
       className={`relative z-0 flex w-full bg-[var(--announcement-ticker-yellow)] transition-all duration-300 ${
-        isHidden ? 'invisible h-0 opacity-0 overflow-hidden' : 'visible h-[var(--ticker-height)] opacity-100'
+        isHidden
+          ? 'invisible h-0 opacity-0 overflow-hidden'
+          : 'visible h-[var(--ticker-height)] opacity-100'
       }`}
       aria-label="News and announcements"
     >

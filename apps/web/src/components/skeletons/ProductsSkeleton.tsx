@@ -19,7 +19,10 @@ const ProductsSkeleton: React.FC = () => {
         {/* Mobile skeleton: horizontal swipe row */}
         <div className="flex gap-4 overflow-x-auto pb-4 md:hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {[1, 2, 3, 4].map((index) => (
-            <div key={index} className="w-[84vw] max-w-[28rem] shrink-0 rounded-xl bg-white overflow-hidden shadow-lg first:ml-1 last:mr-1">
+            <div
+              key={index}
+              className="w-[84vw] max-w-[28rem] shrink-0 rounded-xl bg-white overflow-hidden shadow-lg first:ml-1 last:mr-1"
+            >
               <div className="mb-4">
                 <Skeleton
                   variant="rectangular"
@@ -138,4 +141,3 @@ const ProductsSkeleton: React.FC = () => {
 };
 
 export default ProductsSkeleton;
-

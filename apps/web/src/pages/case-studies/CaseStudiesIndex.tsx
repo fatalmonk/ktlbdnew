@@ -71,14 +71,16 @@ const CaseStudiesIndex = () => {
       <SEO
         title="Success Stories & Case Studies | KTL"
         description="Discover how Kattali Textile Ltd has helped global brands achieve their manufacturing goals with quality, sustainability, and innovation."
-        keywords={['textile case studies', 'manufacturing success stories', 'sustainable production', 'quality textile manufacturing']}
+        keywords={[
+          'textile case studies',
+          'manufacturing success stories',
+          'sustainable production',
+          'quality textile manufacturing',
+        ]}
       />
 
       <SubpageHeader
-        breadcrumbItems={[
-          { label: 'Home', to: '/' },
-          { label: 'Case Studies' },
-        ]}
+        breadcrumbItems={[{ label: 'Home', to: '/' }, { label: 'Case Studies' }]}
         pageTitle="Case Studies"
       />
       <div className="bg-neutral-50 min-h-screen">
@@ -91,11 +93,10 @@ const CaseStudiesIndex = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Client Success Stories
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Client Success Stories</h2>
               <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-                Real results from real partnerships. See how we've helped global brands achieve their manufacturing goals.
+                Real results from real partnerships. See how we've helped global brands achieve
+                their manufacturing goals.
               </p>
             </motion.div>
           </div>
@@ -138,12 +139,17 @@ const CaseStudiesIndex = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {/* Search */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Search
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Search</label>
                 <div className="relative">
-                  <Suspense fallback={<div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4.5 h-4.5" />}>
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" size={18} />
+                  <Suspense
+                    fallback={
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4.5 h-4.5" />
+                    }
+                  >
+                    <Search
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400"
+                      size={18}
+                    />
                   </Suspense>
                   <input
                     type="text"
@@ -157,9 +163,7 @@ const CaseStudiesIndex = () => {
 
               {/* Industry Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Industry
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Industry</label>
                 <select
                   value={filters.industry}
                   onChange={(e) => setFilters({ ...filters, industry: e.target.value })}
@@ -178,9 +182,7 @@ const CaseStudiesIndex = () => {
 
               {/* Product Filter */}
               <div>
-                <label className="block text-sm font-medium text-neutral-700 mb-2">
-                  Product
-                </label>
+                <label className="block text-sm font-medium text-neutral-700 mb-2">Product</label>
                 <select
                   value={filters.product}
                   onChange={(e) => setFilters({ ...filters, product: e.target.value })}
@@ -227,7 +229,9 @@ const CaseStudiesIndex = () => {
                 <Award size={48} className="mx-auto text-neutral-400 mb-4" />
               </Suspense>
               <h3 className="text-xl font-semibold text-neutral-900 mb-2">No case studies found</h3>
-              <p className="text-neutral-600 mb-4">Try adjusting your filters to see more results</p>
+              <p className="text-neutral-600 mb-4">
+                Try adjusting your filters to see more results
+              </p>
               <button
                 onClick={handleReset}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -273,4 +277,3 @@ const CaseStudiesIndex = () => {
 };
 
 export default CaseStudiesIndex;
-

@@ -13,6 +13,7 @@
 **File:** `src/components/media/Image/Image.tsx`
 
 **Verified:**
+
 - ✅ Component automatically detects optimized images (`/assets/` path)
 - ✅ Generates WebP srcSet for responsive images
 - ✅ Supports mobile (640px), tablet (1024px), desktop (1920px) variants
@@ -22,6 +23,7 @@
 - ✅ Proper `sizes` attribute for responsive loading
 
 **Code Verification:**
+
 ```typescript
 // Component automatically handles:
 - WebP conversion: Uses `/assets-optimized/` directory
@@ -39,23 +41,24 @@
 **Total Files:** 31 WebP files
 
 **Breakdown:**
+
 - Full-size WebP: 8 files
 - Mobile variants (640px): 8 files
-- Tablet variants (1024px): 8 files  
+- Tablet variants (1024px): 8 files
 - Desktop variants (1920px): 7 files (denimcloseup.jpg didn't need desktop)
 
 **Size Reductions Verified:**
 
-| Image | Original | Mobile | Reduction | Status |
-|-------|----------|--------|-----------|--------|
-| hero.jpg | 332KB | 26KB | 92% | ✅ |
-| designer-1.jpg | 1.4MB | 50KB | 96% | ✅ |
-| designer-2.jpg | 671KB | 42KB | 94% | ✅ |
-| denimcloseup.jpg | 1.0MB | 229KB | 77% | ✅ |
-| investor-hero.jpg | 1.4MB | 22KB | 98% | ✅ |
-| engin-akyurt-ahs1R32GG9Y-unsplash.jpg | 1.3MB | 34KB | 97% | ✅ |
-| collins-lesulie-0nVnbzYxAvA-unsplash.jpg | 1.4MB | 50KB | 96% | ✅ |
-| aleksandr-prokhortsev-9OIl4fdVPxs-unsplash.jpg | 671KB | 42KB | 94% | ✅ |
+| Image                                          | Original | Mobile | Reduction | Status |
+| ---------------------------------------------- | -------- | ------ | --------- | ------ |
+| hero.jpg                                       | 332KB    | 26KB   | 92%       | ✅     |
+| designer-1.jpg                                 | 1.4MB    | 50KB   | 96%       | ✅     |
+| designer-2.jpg                                 | 671KB    | 42KB   | 94%       | ✅     |
+| denimcloseup.jpg                               | 1.0MB    | 229KB  | 77%       | ✅     |
+| investor-hero.jpg                              | 1.4MB    | 22KB   | 98%       | ✅     |
+| engin-akyurt-ahs1R32GG9Y-unsplash.jpg          | 1.3MB    | 34KB   | 97%       | ✅     |
+| collins-lesulie-0nVnbzYxAvA-unsplash.jpg       | 1.4MB    | 50KB   | 96%       | ✅     |
+| aleksandr-prokhortsev-9OIl4fdVPxs-unsplash.jpg | 671KB    | 42KB   | 94%       | ✅     |
 
 **Average Reduction:** 92% for mobile variants ✅
 
@@ -91,15 +94,16 @@
 
 **All Key Images Have Descriptive Alt Text:**
 
-| Page | Image | Alt Text | Status |
-|------|-------|----------|--------|
-| Homepage Hero | Slide 1 | "Kattali Textile Limited modern manufacturing facility in Chittagong, Bangladesh producing sustainable woven garments" | ✅ |
-| Homepage Hero | Slide 2 | "Sustainable apparel manufacturing process with eco-friendly practices at Kattali Textile Limited" | ✅ |
-| Homepage Hero | Slide 3 | "Global apparel export services from Kattali Textile Limited serving international fashion brands" | ✅ |
-| RMG Facility | 12 images | All have keyword-rich, descriptive alt text | ✅ |
-| Sustainability | Main image | "Sustainable textile manufacturing process with eco-friendly practices and certified environmental standards at Kattali Textile Limited in Chittagong, Bangladesh" | ✅ |
+| Page           | Image      | Alt Text                                                                                                                                                           | Status |
+| -------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| Homepage Hero  | Slide 1    | "Kattali Textile Limited modern manufacturing facility in Chittagong, Bangladesh producing sustainable woven garments"                                             | ✅     |
+| Homepage Hero  | Slide 2    | "Sustainable apparel manufacturing process with eco-friendly practices at Kattali Textile Limited"                                                                 | ✅     |
+| Homepage Hero  | Slide 3    | "Global apparel export services from Kattali Textile Limited serving international fashion brands"                                                                 | ✅     |
+| RMG Facility   | 12 images  | All have keyword-rich, descriptive alt text                                                                                                                        | ✅     |
+| Sustainability | Main image | "Sustainable textile manufacturing process with eco-friendly practices and certified environmental standards at Kattali Textile Limited in Chittagong, Bangladesh" | ✅     |
 
 **Keyword Coverage:**
+
 - ✅ Location keywords: "Chittagong, Bangladesh"
 - ✅ Company name: "Kattali Textile Limited"
 - ✅ Product keywords: "woven garments", "textile manufacturing"
@@ -114,6 +118,7 @@
 **Chrome DevTools Network Tab:**
 
 1. **Test Homepage Hero Image:**
+
    ```
    Steps:
    1. Open homepage (http://localhost:5173 or production URL)
@@ -127,6 +132,7 @@
    ```
 
 2. **Test Responsive Image Loading:**
+
    ```
    Steps:
    1. Open Network tab
@@ -153,6 +159,7 @@
 ### PageSpeed Insights Testing
 
 **URLs to Test:**
+
 - Homepage: `https://ktlbd.com/`
 - Products: `https://ktlbd.com/products`
 - Contact: `https://ktlbd.com/contact`
@@ -161,14 +168,15 @@
 
 **Expected Results:**
 
-| Metric | Target | Expected Score |
-|--------|--------|----------------|
-| Performance | 85+ | 85-95 |
-| Accessibility | 95+ | 95-100 |
-| Best Practices | 95+ | 95-100 |
-| SEO | 100 | 100 |
+| Metric         | Target | Expected Score |
+| -------------- | ------ | -------------- |
+| Performance    | 85+    | 85-95          |
+| Accessibility  | 95+    | 95-100         |
+| Best Practices | 95+    | 95-100         |
+| SEO            | 100    | 100            |
 
 **Key Metrics to Verify:**
+
 - ✅ LCP (Largest Contentful Paint): < 2.5s (should be hero image)
 - ✅ FID (First Input Delay): < 100ms
 - ✅ CLS (Cumulative Layout Shift): < 0.1
@@ -178,6 +186,7 @@
 ## 📋 Verification Checklist
 
 ### Automated Checks ✅
+
 - [x] Image component configured for WebP
 - [x] All images optimized (31 WebP files created)
 - [x] Size reductions achieved (92% average)
@@ -186,6 +195,7 @@
 - [x] Priority loading implemented on hero
 
 ### Manual Checks ⏳
+
 - [ ] Browser DevTools - WebP format verification
 - [ ] Browser DevTools - Responsive variants loading
 - [ ] Browser DevTools - Lazy loading on scroll
@@ -200,6 +210,7 @@
 ## 🧪 Quick Test Commands
 
 ### Verify WebP Files Exist:
+
 ```bash
 cd Version01/project/public/assets-optimized
 find . -name "*.webp" | wc -l
@@ -207,6 +218,7 @@ find . -name "*.webp" | wc -l
 ```
 
 ### Check Image Sizes:
+
 ```bash
 cd Version01/project/public/assets-optimized
 ls -lh hero*.webp
@@ -214,6 +226,7 @@ ls -lh hero*.webp
 ```
 
 ### Verify Component Imports:
+
 ```bash
 cd Version01/project/src
 grep -r "from.*media/Image" pages/ components/ | wc -l
@@ -225,18 +238,21 @@ grep -r "from.*media/Image" pages/ components/ | wc -l
 ## 📊 Expected Improvements
 
 ### Before Optimization:
+
 - Total image size: ~8.1MB
 - Average page load with images: High
 - LCP: Likely > 3s
 - Mobile page load: Heavy
 
 ### After Optimization:
+
 - Total image size: ~1.2MB (mobile) / ~3.5MB (desktop)
 - Average page load with images: Optimized
 - LCP: Expected < 2.5s
 - Mobile page load: Optimized (90%+ reduction)
 
 **Estimated Improvement:**
+
 - Mobile: 85-90% reduction in image payload
 - Desktop: 60-70% reduction in image payload
 - PageSpeed Performance: +10-20 points improvement expected
@@ -246,6 +262,7 @@ grep -r "from.*media/Image" pages/ components/ | wc -l
 ## ✅ Verification Summary
 
 **Completed:**
+
 - ✅ Image optimization script run successfully
 - ✅ All images converted to WebP format
 - ✅ Responsive variants created
@@ -254,6 +271,7 @@ grep -r "from.*media/Image" pages/ components/ | wc -l
 - ✅ Priority loading configured
 
 **Pending:**
+
 - ⏳ Browser DevTools verification (manual)
 - ⏳ PageSpeed Insights testing (manual)
 - ⏳ Mobile device testing (manual)
@@ -273,4 +291,3 @@ grep -r "from.*media/Image" pages/ components/ | wc -l
 
 **Last Updated:** January 28, 2025  
 **Status:** Ready for Manual Testing
-

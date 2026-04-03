@@ -1,7 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../../components/media/Image';
-import { Settings, Users, Package, MapPin, Clock, Award, Shield, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Settings,
+  Users,
+  Package,
+  MapPin,
+  Clock,
+  Award,
+  Shield,
+  Zap,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import SEO from '../../../components/seo/SEO';
 import StructuredData from '../../../components/seo/StructuredData';
 import SubpageHeader from '../../../components/shared/SubpageHeader';
@@ -234,7 +246,15 @@ const RMGFacility = () => {
         title="World-Class Manufacturing Facilities | Kattali Textile Limited (KTL)"
         description="KTL operates state-of-the-art garment manufacturing facilities in Chittagong with certified quality systems, sustainable practices, and capacity to serve global brands."
         canonical="/facilities/rmg"
-        keywords={['RMG facility', 'garment manufacturing', 'textile production', 'Bangladesh factory', 'quality control', 'chittagong garments factory list', 'garments factory in chittagong']}
+        keywords={[
+          'RMG facility',
+          'garment manufacturing',
+          'textile production',
+          'Bangladesh factory',
+          'quality control',
+          'chittagong garments factory list',
+          'garments factory in chittagong',
+        ]}
       />
       <StructuredData data={createBreadcrumbSchema(breadcrumbs)} />
       <SubpageHeader
@@ -254,7 +274,8 @@ const RMGFacility = () => {
                 RMG Manufacturing <span className="text-primary">Excellence</span>
               </h2>
               <p className="text-xl text-white/90 leading-relaxed">
-                Advanced facilities, skilled workforce, and proven processes for premium textile production
+                Advanced facilities, skilled workforce, and proven processes for premium textile
+                production
               </p>
             </div>
           </div>
@@ -269,10 +290,38 @@ const RMGFacility = () => {
               </h2>
               <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
                 With decades of experience and continuous investment in technology, we deliver
-                world-class manufacturing services. Our facility produces a wide range of <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium underline">woven garments</Link>, 
-                <Link to="/products/denims" className="text-primary-600 hover:text-primary-700 font-medium underline"> denim products</Link>, and 
-                <Link to="/products/kids" className="text-primary-600 hover:text-primary-700 font-medium underline"> children's wear</Link> using 
-                <Link to="/sustainability" className="text-primary-600 hover:text-primary-700 font-medium underline"> sustainable manufacturing practices</Link>.
+                world-class manufacturing services. Our facility produces a wide range of{' '}
+                <Link
+                  to="/products"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  woven garments
+                </Link>
+                ,
+                <Link
+                  to="/products/denims"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  {' '}
+                  denim products
+                </Link>
+                , and
+                <Link
+                  to="/products/kids"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  {' '}
+                  children's wear
+                </Link>{' '}
+                using
+                <Link
+                  to="/sustainability"
+                  className="text-primary-600 hover:text-primary-700 font-medium underline"
+                >
+                  {' '}
+                  sustainable manufacturing practices
+                </Link>
+                .
               </p>
             </div>
 
@@ -318,7 +367,9 @@ const RMGFacility = () => {
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
                       {process.step}
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-neutral-900">{process.title}</h3>
+                    <h3 className="font-heading text-xl font-bold text-neutral-900">
+                      {process.title}
+                    </h3>
                   </div>
                   <p className="text-neutral-600 leading-relaxed">{process.description}</p>
                 </div>
@@ -339,7 +390,9 @@ const RMGFacility = () => {
                   <div className="flex items-start space-x-4">
                     <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-lg text-neutral-900 mb-2">Factory Address</h3>
+                      <h3 className="font-semibold text-lg text-neutral-900 mb-2">
+                        Factory Address
+                      </h3>
                       <p className="text-neutral-700 leading-relaxed">
                         BM Heights, 8th Floor
                         <br />

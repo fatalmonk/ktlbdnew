@@ -1,6 +1,7 @@
 # Phase 4.6: Live Metrics Dashboard
 
 ## Overview
+
 Create a comprehensive, real-time metrics dashboard combining all components with auto-refresh capabilities.
 
 ---
@@ -8,6 +9,7 @@ Create a comprehensive, real-time metrics dashboard combining all components wit
 ## 4.6.1 Dashboard Layout Component
 
 **Create main dashboard structure:**
+
 ```typescript
 // components/metrics/MetricsDashboard.tsx
 'use client';
@@ -37,12 +39,12 @@ export default function MetricsDashboard({
 }: MetricsDashboardProps) {
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [isRefreshing, setIsRefreshing] = useState(false);
-  
+
   const { metrics, loading: metricsLoading, error: metricsError } = useMetrics(
     true,
     config.refreshInterval
   );
-  
+
   const { data: charts, loading: chartsLoading } = useChartData();
 
   useEffect(() => {
@@ -65,11 +67,11 @@ export default function MetricsDashboard({
       charts,
       exportedAt: new Date().toISOString(),
     };
-    
+
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: 'application/json',
     });
-    
+
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -88,7 +90,7 @@ export default function MetricsDashboard({
           <p className="text-gray-600 text-sm">{metricsError.message}</p>
           <button
             onClick={handleManualRefresh}
-            className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg 
+            className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg
               hover:bg-blue-700 transition-colors"
           >
             Retry
@@ -105,7 +107,7 @@ export default function MetricsDashboard({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row md:items-center justify-between 
+        className="flex flex-col md:flex-row md:items-center justify-between
           gap-4"
       >
         <div>
@@ -127,7 +129,7 @@ export default function MetricsDashboard({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleExportData}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-100 
+            className="flex items-center gap-2 px-4 py-2 bg-gray-100
               hover:bg-gray-200 rounded-lg transition-colors"
           >
             <Download size={18} />
@@ -140,8 +142,8 @@ export default function MetricsDashboard({
             whileTap={{ scale: 0.95 }}
             onClick={handleManualRefresh}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 
-              text-white rounded-lg hover:bg-blue-700 transition-colors 
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600
+              text-white rounded-lg hover:bg-blue-700 transition-colors
               disabled:opacity-50"
           >
             <motion.div
@@ -211,8 +213,8 @@ export default function MetricsDashboard({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed bottom-6 right-6 bg-white px-4 py-2 rounded-full 
-            shadow-lg border border-gray-200 text-sm text-gray-600 flex 
+          className="fixed bottom-6 right-6 bg-white px-4 py-2 rounded-full
+            shadow-lg border border-gray-200 text-sm text-gray-600 flex
             items-center gap-2"
         >
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -229,17 +231,18 @@ export default function MetricsDashboard({
 ## 4.6.2 Dashboard Tabs Component
 
 **Create tabbed dashboard views:**
+
 ```typescript
 // components/metrics/TabbedDashboard.tsx
 'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingCart, 
-  BarChart3 
+import {
+  TrendingUp,
+  Users,
+  ShoppingCart,
+  BarChart3
 } from 'lucide-react';
 import MetricsDashboard from './MetricsDashboard';
 import { mockMetricsGroups } from '@/data/metrics-mock';
@@ -314,7 +317,7 @@ export default function TabbedDashboard() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setActiveTab(tab.id)}
                 className={`
-                  relative flex items-center gap-2 px-6 py-3 rounded-lg 
+                  relative flex items-center gap-2 px-6 py-3 rounded-lg
                   font-medium transition-all duration-300
                   ${
                     isActive
@@ -360,6 +363,7 @@ export default function TabbedDashboard() {
 ## 4.6.3 Dashboard Widgets
 
 **Create reusable widget components:**
+
 ```typescript
 // components/metrics/DashboardWidget.tsx
 'use client';
@@ -396,7 +400,7 @@ export default function DashboardWidget({
       className="bg-white rounded-xl shadow-lg overflow-hidden"
     >
       {/* Widget Header */}
-      <div className="px-6 py-4 border-b border-gray-100 flex items-center 
+      <div className="px-6 py-4 border-b border-gray-100 flex items-center
         justify-between">
         <div>
           <h3 className="text-lg font-bold text-gray-900">{title}</h3>
@@ -423,8 +427,8 @@ export default function DashboardWidget({
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="absolute right-0 top-full mt-2 bg-white rounded-lg 
-                    shadow-xl border border-gray-100 overflow-hidden z-50 
+                  className="absolute right-0 top-full mt-2 bg-white rounded-lg
+                    shadow-xl border border-gray-100 overflow-hidden z-50
                     min-w-[150px]"
                 >
                   {actions.map((action, index) => (
@@ -434,7 +438,7 @@ export default function DashboardWidget({
                         action.onClick();
                         setShowActions(false);
                       }}
-                      className="w-full px-4 py-2 text-left text-sm text-gray-700 
+                      className="w-full px-4 py-2 text-left text-sm text-gray-700
                         hover:bg-gray-50 transition-colors"
                     >
                       {action.label}
@@ -459,6 +463,7 @@ export default function DashboardWidget({
 ## 4.6.4 Real-time Updates Indicator
 
 **Create live data indicator:**
+
 ```typescript
 // components/metrics/LiveIndicator.tsx
 'use client';
@@ -471,15 +476,15 @@ interface LiveIndicatorProps {
   lastUpdate?: Date;
 }
 
-export default function LiveIndicator({ 
-  isLive = true, 
-  lastUpdate 
+export default function LiveIndicator({
+  isLive = true,
+  lastUpdate
 }: LiveIndicatorProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 
+      className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100
         rounded-full"
     >
       <div className="relative">
@@ -501,11 +506,11 @@ export default function LiveIndicator({
           </motion.div>
         )}
       </div>
-      
+
       <span className="text-xs font-medium text-gray-700">
         {isLive ? 'Live' : 'Paused'}
       </span>
-      
+
       {lastUpdate && (
         <span className="text-xs text-gray-500">
           • {lastUpdate.toLocaleTimeString()}
@@ -521,6 +526,7 @@ export default function LiveIndicator({
 ## 4.6.5 Dashboard Controls
 
 **Create control panel:**
+
 ```typescript
 // components/metrics/DashboardControls.tsx
 'use client';
@@ -553,7 +559,7 @@ export default function DashboardControls({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowDatePicker(!showDatePicker)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 
+            className="flex items-center gap-2 px-4 py-2 bg-white border-2
               border-gray-200 rounded-lg hover:border-gray-900 transition-colors"
           >
             <Calendar size={18} />
@@ -569,7 +575,7 @@ export default function DashboardControls({
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 px-4 py-2 bg-white border-2 
+          className="flex items-center gap-2 px-4 py-2 bg-white border-2
             border-gray-200 rounded-lg hover:border-gray-900 transition-colors"
         >
           <Filter size={18} />
@@ -583,7 +589,7 @@ export default function DashboardControls({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onExport}
-          className="flex items-center gap-2 px-4 py-2 bg-white border-2 
+          className="flex items-center gap-2 px-4 py-2 bg-white border-2
             border-gray-200 rounded-lg hover:border-gray-900 transition-colors"
         >
           <Download size={18} />
@@ -596,7 +602,7 @@ export default function DashboardControls({
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 px-4 py-2 bg-white border-2 
+          className="flex items-center gap-2 px-4 py-2 bg-white border-2
             border-gray-200 rounded-lg hover:border-gray-900 transition-colors"
         >
           <Settings size={18} />
@@ -613,6 +619,7 @@ export default function DashboardControls({
 ## 4.6.6 Complete Dashboard Page
 
 **Create full dashboard page:**
+
 ```typescript
 // app/dashboard/page.tsx
 import MetricsDashboard from '@/components/metrics/MetricsDashboard';

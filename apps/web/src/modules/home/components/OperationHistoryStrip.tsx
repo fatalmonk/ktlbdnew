@@ -31,7 +31,7 @@ const OperationHistoryStrip = () => (
                 from={0}
                 to={metric.value}
                 duration={1.7}
-                delay={0.12 + (index * 0.12)}
+                delay={0.12 + index * 0.12}
               />
             </span>
             <span>{metric.text}</span>

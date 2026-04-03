@@ -1,6 +1,7 @@
 # Figma Integration Setup Guide
 
 ## Overview
+
 This guide helps you set up the Figma MCP (Model Context Protocol) integration for Cursor, allowing you to interact with Figma designs directly from your development environment.
 
 ## Prerequisites
@@ -22,9 +23,7 @@ Add the following configuration to your Cursor MCP settings:
   "mcpServers": {
     "TalkToFigma": {
       "command": "bunx",
-      "args": [
-        "cursor-talk-to-figma-mcp@latest"
-      ]
+      "args": ["cursor-talk-to-figma-mcp@latest"]
     }
   }
 }
@@ -46,6 +45,7 @@ Add the following configuration to your Cursor MCP settings:
 ### Step 4: Verify Connection
 
 Test the connection by:
+
 1. Opening a Figma file
 2. Selecting an element in Figma
 3. Using the MCP commands in Cursor
@@ -55,11 +55,13 @@ Test the connection by:
 Once connected, you can use these commands in Cursor:
 
 ### Document Operations
+
 - `get_document_info` - Get information about the current Figma document
 - `get_selection` - Get information about selected elements
 - `read_my_design` - Get detailed information about selected design
 
 ### Node Operations
+
 - `get_node_info` - Get information about a specific node
 - `get_nodes_info` - Get information about multiple nodes
 - `create_rectangle` - Create a new rectangle
@@ -67,6 +69,7 @@ Once connected, you can use these commands in Cursor:
 - `create_text` - Create a new text element
 
 ### Modifications
+
 - `set_fill_color` - Change fill color
 - `set_stroke_color` - Change stroke color
 - `move_node` - Move a node
@@ -74,41 +77,49 @@ Once connected, you can use these commands in Cursor:
 - `delete_node` - Delete a node
 
 ### Layout & Styles
+
 - `set_layout_mode` - Set auto-layout mode
 - `set_padding` - Set padding values
 - `set_axis_align` - Set alignment
 - `set_corner_radius` - Set corner radius
 
 ### Components
+
 - `get_local_components` - Get all local components
 - `create_component_instance` - Create component instance
 - `set_instance_overrides` - Apply overrides
 
 ### Text Operations
+
 - `set_text_content` - Change text content
 - `scan_text_nodes` - Scan all text nodes
 
 ### Export
+
 - `export_node_as_image` - Export node as image (PNG, JPG, SVG, PDF)
 
 ## Usage Examples
 
 ### Example 1: Get Design Information
+
 ```
 @Figma get_document_info
 ```
 
 ### Example 2: Read Selected Design
+
 ```
 @Figma read_my_design
 ```
 
 ### Example 3: Create a Rectangle
+
 ```
 @Figma create_rectangle x=100 y=100 width=200 height=150
 ```
 
 ### Example 4: Export Selected Element
+
 ```
 @Figma export_node_as_image format=PNG scale=2
 ```
@@ -116,13 +127,15 @@ Once connected, you can use these commands in Cursor:
 ## Troubleshooting
 
 ### Connection Timeout
+
 - **Issue:** "Request to Figma timed out"
-- **Solution:** 
+- **Solution:**
   1. Make sure Figma plugin is running
   2. Check that you've joined a channel: `join_channel default`
   3. Verify Figma is open and file is accessible
 
 ### Plugin Not Found
+
 - **Issue:** Can't find the plugin in Figma
 - **Solution:**
   1. Search for "Talk to Figma MCP" in plugin marketplace
@@ -130,6 +143,7 @@ Once connected, you can use these commands in Cursor:
   3. Check plugin permissions
 
 ### MCP Server Not Starting
+
 - **Issue:** MCP server fails to start
 - **Solution:**
   1. Verify `bunx` is installed: `npm install -g bunx` or use `npx`
@@ -137,6 +151,7 @@ Once connected, you can use these commands in Cursor:
   3. Check Cursor logs for errors
 
 ### Channel Connection Issues
+
 - **Issue:** Cannot join channel
 - **Solution:**
   1. Use default channel first: `join_channel default`
@@ -154,6 +169,7 @@ Once connected, you can use these commands in Cursor:
 ## Integration with Development Workflow
 
 ### Design-to-Code Workflow
+
 1. Designer creates designs in Figma
 2. Developer opens Figma file
 3. Developer selects component in Figma
@@ -162,6 +178,7 @@ Once connected, you can use these commands in Cursor:
 6. Developer can export assets directly from Figma
 
 ### Component Sync
+
 1. Export design tokens (colors, spacing) from Figma
 2. Import into Tailwind config or CSS variables
 3. Use exported assets in components
@@ -176,6 +193,7 @@ Once connected, you can use these commands in Cursor:
 ## Support
 
 If you encounter issues:
+
 1. Check Cursor MCP logs
 2. Check Figma plugin console
 3. Verify network connectivity
@@ -185,4 +203,3 @@ If you encounter issues:
 
 **Last Updated:** January 2025
 **Status:** Configuration Ready - Needs Figma Plugin Setup
-

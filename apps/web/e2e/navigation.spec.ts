@@ -34,12 +34,18 @@ test.describe('Site Navigation', () => {
     });
 
     test('should navigate to Company overview from header', async ({ page }) => {
-      await page.getByRole('navigation', { name: /primary/i }).getByRole('link', { name: /^Company$/i }).click();
+      await page
+        .getByRole('navigation', { name: /primary/i })
+        .getByRole('link', { name: /^Company$/i })
+        .click();
       await expect(page).toHaveURL(/.*company\/our-story/);
     });
 
     test('should navigate to Contact page', async ({ page }) => {
-      await page.locator('footer').getByRole('link', { name: /^Contact$/i }).click();
+      await page
+        .locator('footer')
+        .getByRole('link', { name: /^Contact$/i })
+        .click();
       await expect(page).toHaveURL(/.*contact/);
     });
 
@@ -144,8 +150,12 @@ test.describe('Site Navigation', () => {
       await expect(page).toHaveURL(/.*investor/);
     });
 
-    test('should display stock price', async ({ page }) => {
-      await expect(page.getByText(/৳45.50/)).toBeVisible();
+    test('should display stock price on investor overview', async ({ page }) => {
+      // Price is rendered in #metric-band on /investors (not the homepage .metric-display block).
+      await page.goto('/investors');
+      const metricBand = page.locator('#metric-band');
+      await expect(metricBand.getByRole('heading', { name: /Investor Snapshot/i })).toBeVisible();
+      await expect(metricBand).toContainText(/৳\s*[\d,]+\.\d{2}/);
     });
   });
 
@@ -154,11 +164,12 @@ test.describe('Site Navigation', () => {
 
     test('should display mobile menu button', async ({ page }) => {
       // Look for hamburger menu
-      const menuButton = page.locator('button[aria-label*="menu"]').or(
-        page.locator('button:has-text("Menu")')
-      ).or(
-        page.locator('button svg') // Look for icon-based menu button
-      );
+      const menuButton = page
+        .locator('button[aria-label*="menu"]')
+        .or(page.locator('button:has-text("Menu")'))
+        .or(
+          page.locator('button svg') // Look for icon-based menu button
+        );
 
       if (await menuButton.first().isVisible()) {
         await expect(menuButton.first()).toBeVisible();
@@ -166,11 +177,10 @@ test.describe('Site Navigation', () => {
     });
 
     test('should toggle mobile menu', async ({ page }) => {
-      const menuButton = page.locator('button[aria-label*="menu"]').or(
-        page.locator('button:has-text("Menu")')
-      ).or(
-        page.locator('button svg').first()
-      );
+      const menuButton = page
+        .locator('button[aria-label*="menu"]')
+        .or(page.locator('button:has-text("Menu")'))
+        .or(page.locator('button svg').first());
 
       if (await menuButton.first().isVisible()) {
         await menuButton.first().click();

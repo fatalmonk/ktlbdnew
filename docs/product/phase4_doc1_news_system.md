@@ -1,6 +1,7 @@
 # Phase 4.1: News System Foundation
 
 ## Overview
+
 Set up the core news system with type definitions, data structures, and API integration for dynamic news content.
 
 ---
@@ -8,6 +9,7 @@ Set up the core news system with type definitions, data structures, and API inte
 ## 4.1.1 Type Definitions
 
 **Create news types:**
+
 ```typescript
 // types/news.ts
 export interface NewsArticle {
@@ -34,7 +36,7 @@ export interface NewsArticle {
   status: 'draft' | 'published' | 'archived';
 }
 
-export type NewsCategory = 
+export type NewsCategory =
   | 'product-launch'
   | 'company-news'
   | 'technology'
@@ -81,6 +83,7 @@ export interface NewsResponse {
 ## 4.1.2 Mock Data Structure
 
 **Create sample news data:**
+
 ```typescript
 // data/news-mock.ts
 import { NewsArticle } from '@/types/news';
@@ -89,7 +92,8 @@ export const mockNewsArticles: NewsArticle[] = [
   {
     id: '1',
     title: 'Introducing KTL Vision Pro: Next-Generation Quality Control',
-    excerpt: 'Revolutionary AI-powered inspection system achieves 99.9% accuracy in real-time quality assessment.',
+    excerpt:
+      'Revolutionary AI-powered inspection system achieves 99.9% accuracy in real-time quality assessment.',
     content: `
       We're excited to announce the launch of KTL Vision Pro, our latest breakthrough 
       in automated quality control technology. This advanced system combines artificial 
@@ -120,7 +124,8 @@ export const mockNewsArticles: NewsArticle[] = [
   {
     id: '2',
     title: 'KTL Expands Global Operations with New European Facility',
-    excerpt: 'State-of-the-art manufacturing center opens in Frankfurt, supporting growing demand across Europe.',
+    excerpt:
+      'State-of-the-art manufacturing center opens in Frankfurt, supporting growing demand across Europe.',
     content: `
       Today marks a significant milestone in KTL's global expansion strategy. 
       Our new 50,000 square foot facility in Frankfurt represents a $25 million 
@@ -151,7 +156,8 @@ export const mockNewsArticles: NewsArticle[] = [
   {
     id: '3',
     title: 'Breakthrough in Kosher Certification Technology',
-    excerpt: 'New blockchain-based system ensures complete transparency in kosher certification process.',
+    excerpt:
+      'New blockchain-based system ensures complete transparency in kosher certification process.',
     content: `
       KTL announces a groundbreaking advancement in kosher certification technology. 
       Our new blockchain-based tracking system provides unprecedented transparency 
@@ -182,7 +188,8 @@ export const mockNewsArticles: NewsArticle[] = [
   {
     id: '4',
     title: 'Industry Report: Kosher Food Market Growth Trends 2025',
-    excerpt: 'Comprehensive analysis reveals 15% year-over-year growth in global kosher food market.',
+    excerpt:
+      'Comprehensive analysis reveals 15% year-over-year growth in global kosher food market.',
     content: `
       Our latest industry research reveals significant growth trends in the global 
       kosher food market. With a 15% increase in demand year-over-year, the market 
@@ -227,6 +234,7 @@ export const newsCategories = [
 ## 4.1.3 API Service Layer
 
 **Create news service:**
+
 ```typescript
 // lib/services/news.service.ts
 import { NewsArticle, NewsFilter, NewsResponse } from '@/types/news';
@@ -249,42 +257,39 @@ class NewsService {
 
       // Apply filters
       if (filter?.category) {
-        filtered = filtered.filter(article => article.category === filter.category);
+        filtered = filtered.filter((article) => article.category === filter.category);
       }
 
       if (filter?.tag) {
-        filtered = filtered.filter(article => 
-          article.tags.some(tag => tag.toLowerCase().includes(filter.tag!.toLowerCase()))
+        filtered = filtered.filter((article) =>
+          article.tags.some((tag) => tag.toLowerCase().includes(filter.tag!.toLowerCase()))
         );
       }
 
       if (filter?.search) {
         const searchLower = filter.search.toLowerCase();
-        filtered = filtered.filter(article =>
-          article.title.toLowerCase().includes(searchLower) ||
-          article.excerpt.toLowerCase().includes(searchLower)
+        filtered = filtered.filter(
+          (article) =>
+            article.title.toLowerCase().includes(searchLower) ||
+            article.excerpt.toLowerCase().includes(searchLower)
         );
       }
 
       if (filter?.featured !== undefined) {
-        filtered = filtered.filter(article => article.featured === filter.featured);
+        filtered = filtered.filter((article) => article.featured === filter.featured);
       }
 
       if (filter?.dateFrom) {
-        filtered = filtered.filter(
-          article => new Date(article.publishedAt) >= filter.dateFrom!
-        );
+        filtered = filtered.filter((article) => new Date(article.publishedAt) >= filter.dateFrom!);
       }
 
       if (filter?.dateTo) {
-        filtered = filtered.filter(
-          article => new Date(article.publishedAt) <= filter.dateTo!
-        );
+        filtered = filtered.filter((article) => new Date(article.publishedAt) <= filter.dateTo!);
       }
 
       // Sort by date (newest first)
-      filtered.sort((a, b) => 
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      filtered.sort(
+        (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       );
 
       // Apply pagination
@@ -323,7 +328,7 @@ class NewsService {
       // return response.json();
 
       // Mock implementation
-      const article = mockNewsArticles.find(a => a.slug === slug);
+      const article = mockNewsArticles.find((a) => a.slug === slug);
       return article || null;
     } catch (error) {
       console.error('Error fetching article:', error);
@@ -342,19 +347,17 @@ class NewsService {
   /**
    * Get related articles based on tags
    */
-  async getRelatedArticles(
-    articleId: string,
-    limit: number = 3
-  ): Promise<NewsArticle[]> {
+  async getRelatedArticles(articleId: string, limit: number = 3): Promise<NewsArticle[]> {
     try {
-      const currentArticle = mockNewsArticles.find(a => a.id === articleId);
+      const currentArticle = mockNewsArticles.find((a) => a.id === articleId);
       if (!currentArticle) return [];
 
       // Find articles with matching tags
       const related = mockNewsArticles
-        .filter(article => 
-          article.id !== articleId &&
-          article.tags.some(tag => currentArticle.tags.includes(tag))
+        .filter(
+          (article) =>
+            article.id !== articleId &&
+            article.tags.some((tag) => currentArticle.tags.includes(tag))
         )
         .slice(0, limit);
 
@@ -372,9 +375,9 @@ class NewsService {
     try {
       // In production, make API call
       // await fetch(`${this.baseUrl}/news/${articleId}/view`, { method: 'POST' });
-      
+
       // Mock implementation
-      const article = mockNewsArticles.find(a => a.id === articleId);
+      const article = mockNewsArticles.find((a) => a.id === articleId);
       if (article && article.views !== undefined) {
         article.views++;
       }
@@ -389,13 +392,13 @@ class NewsService {
   async toggleLike(articleId: string): Promise<number> {
     try {
       // In production, make API call
-      // const response = await fetch(`${this.baseUrl}/news/${articleId}/like`, { 
-      //   method: 'POST' 
+      // const response = await fetch(`${this.baseUrl}/news/${articleId}/like`, {
+      //   method: 'POST'
       // });
       // return response.json();
 
       // Mock implementation
-      const article = mockNewsArticles.find(a => a.id === articleId);
+      const article = mockNewsArticles.find((a) => a.id === articleId);
       if (article && article.likes !== undefined) {
         article.likes++;
         return article.likes;
@@ -416,6 +419,7 @@ export const newsService = new NewsService();
 ## 4.1.4 React Hooks for News
 
 **Create custom hooks:**
+
 ```typescript
 // lib/hooks/useNews.ts
 'use client';
@@ -538,6 +542,7 @@ export function useFeaturedArticles(limit: number = 3) {
 ## 4.1.5 Utility Functions
 
 **Create helper utilities:**
+
 ```typescript
 // lib/utils/news.utils.ts
 import { NewsArticle } from '@/types/news';
@@ -547,7 +552,7 @@ import { NewsArticle } from '@/types/news';
  */
 export function formatNewsDate(date: Date | string): string {
   const d = typeof date === 'string' ? new Date(date) : date;
-  
+
   const now = new Date();
   const diff = now.getTime() - d.getTime();
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -556,7 +561,7 @@ export function formatNewsDate(date: Date | string): string {
   if (days === 1) return 'Yesterday';
   if (days < 7) return `${days} days ago`;
   if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
-  
+
   return d.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -588,10 +593,10 @@ export function getCategoryColor(category: string): string {
   const colors: Record<string, string> = {
     'product-launch': '#3B82F6',
     'company-news': '#10B981',
-    'technology': '#8B5CF6',
-    'industry': '#F59E0B',
-    'events': '#EF4444',
-    'research': '#06B6D4',
+    technology: '#8B5CF6',
+    industry: '#F59E0B',
+    events: '#EF4444',
+    research: '#06B6D4',
   };
   return colors[category] || '#6B7280';
 }
@@ -641,6 +646,7 @@ export function isNewArticle(publishedAt: Date | string): boolean {
 ## 4.1.6 Testing Setup
 
 **Create test utilities:**
+
 ```typescript
 // __tests__/utils/news.test.ts
 import { describe, it, expect } from '@jest/globals';

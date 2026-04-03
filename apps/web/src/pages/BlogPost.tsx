@@ -124,7 +124,10 @@ const BlogPost = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-neutral-900 mb-4">Story Not Found</h1>
           <p className="text-neutral-600 mb-8">The story you're looking for doesn't exist.</p>
-          <Link to="/newsroom/stories" className="text-primary-600 hover:text-primary-700 font-semibold">
+          <Link
+            to="/newsroom/stories"
+            className="text-primary-600 hover:text-primary-700 font-semibold"
+          >
             ← Back to Company Stories
           </Link>
         </div>
@@ -301,9 +304,7 @@ const BlogPost = () => {
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="font-heading font-bold text-3xl mb-4">
-              Ready to Partner with Us?
-            </h2>
+            <h2 className="font-heading font-bold text-3xl mb-4">Ready to Partner with Us?</h2>
             <p className="text-xl mb-8 text-white/90">
               Let's discuss how Kattali Textile Ltd can meet your manufacturing needs
             </p>

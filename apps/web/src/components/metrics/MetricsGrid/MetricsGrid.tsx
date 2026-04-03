@@ -17,12 +17,13 @@ export default function MetricsGrid({
   title,
   description,
 }: MetricsGridProps) {
-  const gridCols = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-1 md:grid-cols-2',
-    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-  }[columns] || 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+  const gridCols =
+    {
+      1: 'grid-cols-1',
+      2: 'grid-cols-1 md:grid-cols-2',
+      3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+      4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    }[columns] || 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -40,9 +41,7 @@ export default function MetricsGrid({
             </h2>
           )}
           {description && (
-            <p className="text-sm md:text-base text-neutral-600 leading-relaxed">
-              {description}
-            </p>
+            <p className="text-sm md:text-base text-neutral-600 leading-relaxed">{description}</p>
           )}
         </motion.div>
       )}
@@ -50,18 +49,9 @@ export default function MetricsGrid({
       {/* Grid */}
       <div className={`grid ${gridCols} gap-4 md:gap-6`}>
         {metrics.map((metric, index) => (
-          <MetricCard
-            key={metric.id}
-            metric={metric}
-            index={index}
-            compact={compact}
-          />
+          <MetricCard key={metric.id} metric={metric} index={index} compact={compact} />
         ))}
       </div>
     </div>
   );
 }
-
-
-
-

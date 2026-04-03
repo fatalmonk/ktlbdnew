@@ -99,4 +99,3 @@ const ValuesSectionContent = ({ values }: ValuesSectionContentProps) => {
 };
 
 export default ValuesSectionContent;
-

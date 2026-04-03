@@ -13,11 +13,7 @@ interface UseScrollAnimationOptions {
  * @returns Object containing ref to attach to element and isVisible state
  */
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
-  const {
-    threshold = 0.1,
-    rootMargin = '0px',
-    triggerOnce = true,
-  } = options;
+  const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options;
 
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);

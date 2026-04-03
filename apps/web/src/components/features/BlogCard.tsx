@@ -32,12 +32,14 @@ const BlogCard: React.FC<BlogCardProps> = ({
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
   return (
-    <article className={`group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${featured ? 'border-2 border-primary-500' : ''}`}>
+    <article
+      className={`group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${featured ? 'border-2 border-primary-500' : ''}`}
+    >
       {/* Image */}
       <Link to={`/newsroom/stories/${slug}`} className="block relative overflow-hidden">
         <div className="aspect-[16/9] bg-neutral-200 relative">
@@ -93,9 +95,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </Link>
 
         {/* Excerpt */}
-        <p className="text-neutral-600 text-xl mb-6 line-clamp-3 leading-relaxed">
-          {excerpt}
-        </p>
+        <p className="text-neutral-600 text-xl mb-6 line-clamp-3 leading-relaxed">{excerpt}</p>
 
         {/* Read More Link */}
         <Link

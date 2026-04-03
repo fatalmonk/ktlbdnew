@@ -22,4 +22,3 @@ For Hostinger deployment, see [HOSTINGER_DEPLOYMENT.md](./HOSTINGER_DEPLOYMENT.m
 ```
 
 For general deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md).
-

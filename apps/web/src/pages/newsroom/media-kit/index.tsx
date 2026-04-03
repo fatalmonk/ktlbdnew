@@ -7,7 +7,13 @@ const MediaKitPage = () => {
       <SEO
         title="Media Kit"
         description="Download KTL's media kit including company logos, brand guidelines, press photos, and media resources for journalists and partners."
-        keywords={['media kit', 'press resources', 'KTL logos', 'brand guidelines', 'media downloads']}
+        keywords={[
+          'media kit',
+          'press resources',
+          'KTL logos',
+          'brand guidelines',
+          'media downloads',
+        ]}
       />
       <SubpageHeader
         breadcrumbItems={[
@@ -21,16 +27,16 @@ const MediaKitPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Download our comprehensive media kit including company logos, brand guidelines,
-              press photos, and other resources for journalists, partners, and media professionals.
+              Download our comprehensive media kit including company logos, brand guidelines, press
+              photos, and other resources for journalists, partners, and media professionals.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Company Logos</h3>
                 <p className="text-neutral-800 mb-4">
-                  High-resolution KTL logos in various formats (PNG, SVG, EPS)
-                  for print and digital use.
+                  High-resolution KTL logos in various formats (PNG, SVG, EPS) for print and digital
+                  use.
                 </p>
                 <button className="text-primary hover:underline">Download Logos</button>
               </div>
@@ -38,8 +44,8 @@ const MediaKitPage = () => {
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Brand Guidelines</h3>
                 <p className="text-neutral-800 mb-4">
-                  Complete brand guidelines including color palettes,
-                  typography, and usage guidelines.
+                  Complete brand guidelines including color palettes, typography, and usage
+                  guidelines.
                 </p>
                 <button className="text-primary hover:underline">Download Guidelines</button>
               </div>
@@ -47,8 +53,7 @@ const MediaKitPage = () => {
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Press Photos</h3>
                 <p className="text-neutral-800 mb-4">
-                  High-quality press photos of facilities, products,
-                  and team members for media use.
+                  High-quality press photos of facilities, products, and team members for media use.
                 </p>
                 <button className="text-primary hover:underline">Download Photos</button>
               </div>
@@ -56,8 +61,7 @@ const MediaKitPage = () => {
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Company Fact Sheet</h3>
                 <p className="text-neutral-800 mb-4">
-                  Comprehensive company information, statistics,
-                  and key facts for media reference.
+                  Comprehensive company information, statistics, and key facts for media reference.
                 </p>
                 <button className="text-primary hover:underline">Download Fact Sheet</button>
               </div>

@@ -51,7 +51,7 @@ const ContactForm: React.FC = () => {
 
     const newErrors = validateForm(formData);
     setErrors(newErrors);
-    
+
     if (Object.keys(newErrors).length > 0) {
       return;
     }
@@ -70,7 +70,7 @@ const ContactForm: React.FC = () => {
         window.gtag('event', 'form_submission', {
           event_category: 'Contact',
           event_label: 'Contact Form',
-          value: 1
+          value: 1,
         });
       }
 
@@ -106,9 +106,7 @@ const ContactForm: React.FC = () => {
   return (
     <div className="w-full max-w-2xl">
       <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-2xl">
-        <h2 className="text-2xl font-heading font-bold text-white mb-6">
-          Send us a message
-        </h2>
+        <h2 className="text-2xl font-heading font-bold text-white mb-6">Send us a message</h2>
 
         {status === 'success' && (
           <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg flex items-start gap-3">
@@ -124,9 +122,7 @@ const ContactForm: React.FC = () => {
           </div>
         )}
 
-        {status === 'error' && (
-          <FormError message={errorMessage} />
-        )}
+        {status === 'error' && <FormError message={errorMessage} />}
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
           {/* Name and Email Row */}

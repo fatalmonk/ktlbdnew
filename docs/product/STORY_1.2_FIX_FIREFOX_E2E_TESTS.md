@@ -20,18 +20,21 @@
 ## Acceptance Criteria
 
 ### Primary Criteria
+
 - [ ] All Firefox E2E tests pass consistently (100% success rate)
 - [ ] Cross-browser compatibility verified between Chromium and Firefox
 - [ ] No regression in Chromium tests from Story 1.1
 - [ ] Test execution time remains < 10 minutes
 
 ### Technical Criteria
+
 - [ ] Tests run reliably in CI/CD pipeline
 - [ ] Firefox-specific behaviors handled properly
 - [ ] Test failures provide clear, actionable error messages
 - [ ] Cross-browser test consistency maintained
 
 ### Quality Criteria
+
 - [ ] All test assertions work consistently across browsers
 - [ ] Test data isolation maintained
 - [ ] Critical user journeys covered in Firefox
@@ -42,12 +45,14 @@
 ## Technical Requirements
 
 ### Test Infrastructure
+
 - **Framework:** Playwright 1.56.1
 - **Browser:** Firefox (latest stable)
 - **Test Location:** `project/e2e/`
 - **Configuration:** `playwright.config.ts`
 
 ### Firefox-Specific Considerations
+
 1. **Rendering Differences**
    - CSS property support variations
    - Font rendering differences
@@ -69,6 +74,7 @@
    - Network request handling
 
 ### Implementation Approach
+
 1. **Analyze Firefox Failures**
    - Compare with Chromium test results
    - Identify Firefox-specific issues
@@ -102,16 +108,19 @@
 ## Testing Strategy
 
 ### Pre-Implementation Testing
+
 - [ ] Run Firefox test suite to identify specific failures
 - [ ] Compare with Chromium test results
 - [ ] Document Firefox-specific failure patterns
 
 ### During Implementation Testing
+
 - [ ] Run Firefox tests after each fix
 - [ ] Run Chromium tests to ensure no regression
 - [ ] Test in multiple environments
 
 ### Post-Implementation Testing
+
 - [ ] Full cross-browser test execution
 - [ ] Performance impact assessment
 - [ ] Documentation review
@@ -121,14 +130,17 @@
 ## Risk Assessment
 
 ### High Risk
+
 - **Cross-Browser Regression:** Fixes for Firefox may break Chromium tests
 - **Firefox-Specific Behaviors:** Some issues may be inherent to Firefox
 
 ### Medium Risk
+
 - **Performance Differences:** Firefox may have different performance characteristics
 - **Timing Issues:** Firefox may have different timing for async operations
 
 ### Mitigation Strategies
+
 - Run both Chromium and Firefox tests after each fix
 - Use browser-agnostic selectors and strategies
 - Implement proper wait strategies for both browsers

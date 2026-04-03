@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode, Suspense } from 'react';
 import { createLazyIcon } from '@/lib/lucide-icons';
+import { reportError } from '@/lib/observability';
 
 const AlertTriangle = createLazyIcon('AlertTriangle');
 
@@ -24,7 +25,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    reportError(error, { source: 'ErrorBoundary', componentStack: errorInfo.componentStack });
   }
 
   render() {
@@ -69,4 +70,3 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 export default ErrorBoundary;
-
