@@ -2,6 +2,55 @@ import "@testing-library/jest-dom";
 import { afterEach, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
 
+// Node 25+ can expose a partial Web Storage implementation (no `clear`), which breaks
+// tests that reset storage. jsdom normally provides a full Storage; replace only when needed.
+(() => {
+  const ls = globalThis.localStorage;
+  if (ls && typeof ls.clear === "function") return;
+
+  const map = new Map<string, string>();
+  try {
+    if (ls && typeof ls.length === "number" && typeof ls.key === "function") {
+      for (let i = 0; i < ls.length; i++) {
+        const k = ls.key(i);
+        if (k) {
+          const v = ls.getItem(k);
+          if (v !== null) map.set(k, v);
+        }
+      }
+    }
+  } catch {
+    /* ignore partial storage reads */
+  }
+
+  const storage: Storage = {
+    get length() {
+      return map.size;
+    },
+    clear() {
+      map.clear();
+    },
+    getItem(key: string) {
+      return map.get(String(key)) ?? null;
+    },
+    key(index: number) {
+      return [...map.keys()][index] ?? null;
+    },
+    removeItem(key: string) {
+      map.delete(String(key));
+    },
+    setItem(key: string, value: string) {
+      map.set(String(key), String(value));
+    },
+  };
+
+  Object.defineProperty(globalThis, "localStorage", {
+    value: storage,
+    configurable: true,
+    writable: true,
+  });
+})();
+
 function createCanvas2dMock(): Partial<CanvasRenderingContext2D> {
   return {
     fillRect: vi.fn(),
