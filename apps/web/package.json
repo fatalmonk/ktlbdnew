@@ -31,6 +31,8 @@
     "test:all": "npm run test:run && npm run test:e2e"
   },
   "dependencies": {
+    "@datadog/browser-rum": "^6.32.0",
+    "@datadog/browser-rum-react": "^6.32.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.3",
     "gsap": "^3.13.0",

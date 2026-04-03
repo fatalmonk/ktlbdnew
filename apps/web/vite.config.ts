@@ -93,6 +93,9 @@ export default defineConfig(({ mode }) => {
             if (id.includes('gsap')) {
               return 'graphics-vendor';
             }
+            if (id.includes('@datadog')) {
+              return 'datadog-vendor';
+            }
             // All other node_modules go into a common vendor chunk
             return 'vendor';
           }
