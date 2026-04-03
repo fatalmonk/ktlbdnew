@@ -129,6 +129,18 @@ const KNITWEAR_PORTFOLIO_ITEMS: readonly { src: string; alt: string }[] = [
     src: "/assets/portfolio/knitwear/knitwear-07.png",
     alt: "KTL Knitwear — sleeveless ivory pinstripe shirt with navy contrast collar, drawstring waist, and bubble peplum hem, flat product shot",
   },
+  {
+    src: "/assets/portfolio/knitwear/knitwear-08.png",
+    alt: "KTL Knitwear — golden yellow hooded sweatshirt with large back graphic, styled with a striped bucket hat and denim, moody studio back view",
+  },
+  {
+    src: "/assets/portfolio/knitwear/knitwear-09.png",
+    alt: "KTL Knitwear — light neutral hooded sweatshirt with hood up, relaxed street styling on an urban ledge, full-length seated look",
+  },
+  {
+    src: "/assets/portfolio/knitwear/knitwear-10.png",
+    alt: "KTL Knitwear — plain oversized light grey hoodie with kangaroo pocket and ribbed cuffs, soft daylight outdoor portrait",
+  },
 ] as const;
 
 /**
@@ -169,6 +181,26 @@ const SWIMWEAR_PORTFOLIO_ITEMS: readonly { src: string; alt: string }[] = [
  * Kids' tiles: paths under `public/assets/portfolio/kids/`
  */
 const KIDS_PORTFOLIO_ITEMS: readonly { src: string; alt: string }[] = [
+  {
+    src: "/assets/portfolio/kids/kids-09.png",
+    alt: "KTL Kids' — child's forest green baseball jersey with contrast lime piping, button placket, and licensed character chest graphics, studio shot",
+  },
+  {
+    src: "/assets/portfolio/kids/kids-10.png",
+    alt: "KTL Kids' — two-piece knit pajama set in medium blue with large character face graphic, pink raglan ear panels, and matching cuffed pants, flat lay",
+  },
+  {
+    src: "/assets/portfolio/kids/kids-11.png",
+    alt: "KTL Kids' — black short-sleeve tee with comic-style hero graphic and web-pattern frame, paired with red all-over print shorts, flat product shot",
+  },
+  {
+    src: "/assets/portfolio/kids/kids-12.png",
+    alt: "KTL Kids' — heather navy crewneck sweatshirt with ribbed collar and cuffs, classic character chest graphic and theme park wordmark, flat lay on white",
+  },
+  {
+    src: "/assets/portfolio/kids/kids-13.png",
+    alt: "KTL Kids' — long-sleeve fleece pajama set in blue and red with striped raglan sleeves, embroidered chest patch, and all-over hero print pants, flat lay",
+  },
   {
     src: "/assets/portfolio/kids/kids-01.png",
     alt: "KTL Kids' — children's two-piece set with mint graphic tee and royal blue jogger pants with drawstring, flat lay",

@@ -1,7 +1,7 @@
 export const createProductSchema = (product: {
   name: string;
   description: string;
-  image: string;
+  image: string | string[];
   brand?: string;
   category?: string;
   price?: number;

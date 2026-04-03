@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import Image from "../../../components/media/Image";
+import {
+  CATEGORY_FEATURE_CARD,
+  CATEGORY_FEATURE_GRID,
+  CATEGORY_INLINE_LINK,
+  CATEGORY_PAGE_SHELL,
+  CategoryPortfolioSection,
+} from "../../../components/portfolio/CategoryPortfolioSection";
 import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
@@ -53,112 +59,85 @@ const SwimwearPage = () => {
         ]}
         pageTitle="Swimwear"
       />
-      <section className="min-h-screen bg-white text-black">
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-neutral-800 mb-8">
-              Our premium swimwear collection features high-quality swimsuits,
-              bikinis, and beachwear designed for comfort, style, and
-              durability. As part of our diverse{" "}
-              <Link
-                to="/products"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                textile product range
-              </Link>
-              , we also manufacture{" "}
-              <Link
-                to="/products/denims"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                premium denim
-              </Link>
-              ,
-              <Link
-                to="/products/knitwear"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                knitwear
-              </Link>
-              , and
-              <Link
-                to="/products/kids"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                children's apparel
-              </Link>
-              . All swimwear products are manufactured in our
-              <Link
-                to="/facilities/rmg"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                advanced production facilities
-              </Link>{" "}
-              with
-              <Link
-                to="/sustainability"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                certified sustainable practices
-              </Link>
-              .
-            </p>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                Sample styles
+      <div className="min-h-screen bg-white text-neutral-900">
+        <section className="py-12 md:py-16 lg:py-20">
+          <div className={CATEGORY_PAGE_SHELL}>
+            <div className="max-w-3xl md:mx-0">
+              <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-neutral-900 md:text-4xl lg:text-5xl">
+                Premium <span className="text-primary-500">swimwear</span>
               </h2>
-              <p className="text-neutral-700 mb-6 max-w-2xl">
-                A selection of swim and beach silhouettes we produce—rash
-                guards, sunsuits, swim sets, and modest swim options for
-                different markets.
+              <p className="mt-8 text-lg text-neutral-700">
+                Our premium swimwear collection features high-quality swimsuits,
+                bikinis, and beachwear designed for comfort, style, and
+                durability. As part of our diverse{" "}
+                <Link to="/products" className={CATEGORY_INLINE_LINK}>
+                  textile product range
+                </Link>
+                , we also manufacture{" "}
+                <Link to="/products/denims" className={CATEGORY_INLINE_LINK}>
+                  premium denim
+                </Link>
+                ,{" "}
+                <Link to="/products/knitwear" className={CATEGORY_INLINE_LINK}>
+                  knitwear
+                </Link>
+                , and{" "}
+                <Link to="/products/kids" className={CATEGORY_INLINE_LINK}>
+                  children&apos;s apparel
+                </Link>
+                . All swimwear products are manufactured in our{" "}
+                <Link to="/facilities/rmg" className={CATEGORY_INLINE_LINK}>
+                  advanced production facilities
+                </Link>{" "}
+                with{" "}
+                <Link to="/sustainability" className={CATEGORY_INLINE_LINK}>
+                  certified sustainable practices
+                </Link>
+                .
               </p>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-                {swimwearGallery.map((item) => (
-                  <figure
-                    key={item.src}
-                    className="group relative aspect-square overflow-hidden rounded-xl bg-neutral-100 shadow-sm ring-1 ring-black/5"
-                  >
-                    <Image
-                      src={item.src}
-                      alt={item.alt.replace(/^KTL Swimwear —\s*/i, "")}
-                      className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                      fit="cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                    <figcaption className="sr-only">{item.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Swimsuits</h3>
-                <p className="text-neutral-800">
+        <CategoryPortfolioSection
+          gridIdSuffix="swimwear"
+          items={swimwearGallery}
+          description="A selection of swim and beach silhouettes we produce—rash guards, sunsuits, swim sets, and modest swim options for different markets."
+        />
+
+        <section className="border-t border-neutral-100 bg-white py-12 md:py-16 lg:py-20">
+          <div className={CATEGORY_PAGE_SHELL}>
+            <div className={CATEGORY_FEATURE_GRID}>
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  Swimsuits
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   High-quality swimsuits with modern designs and comfortable
                   fits.
                 </p>
               </div>
-
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Bikinis</h3>
-                <p className="text-neutral-800">
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  Bikinis
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   Stylish bikinis perfect for beach and pool activities.
                 </p>
               </div>
-
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Beachwear</h3>
-                <p className="text-neutral-800">
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  Beachwear
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   Complementary beachwear and accessories for complete summer
                   looks.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 };

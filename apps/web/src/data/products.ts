@@ -52,14 +52,14 @@ export const products: Product[] = [
     tags: ["knit", "premium", "sweaters", "cardigans"],
   },
   {
-    id: "kids-clothing",
-    name: "Kids Clothing",
+    id: "kids",
+    name: "Kids'",
     category: "Children's Wear",
     description:
       "Safe and comfortable children's apparel including tops, pants, and sets for all ages",
-    image: heroSustainability1x,
+    image: "/assets/portfolio/kids/kids-09.png",
     icon: createLazyIconWrapper("Package"),
-    link: "/products/kids-clothing",
+    link: "/products/kids",
     featured: false,
     price: "From $10",
     tags: ["children", "kids", "safe", "comfortable"],

@@ -4,8 +4,9 @@
  */
 const q = "auto=format&fit=crop&q=80";
 
-/** Full-width hero (~1920w) */
+/** Full-width hero (~1920w). Local `facility` is KTL Chittagong (brand photography). */
 export const stockHero = {
+  facility: "/assets/images/hero/ktl-factory-chittagong.png",
   manufacturing: `https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?${q}&w=1920`,
   fabric: `https://images.unsplash.com/photo-1582735689369-4fe89db7114c?${q}&w=1920`,
   logistics: `https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?${q}&w=1920`,

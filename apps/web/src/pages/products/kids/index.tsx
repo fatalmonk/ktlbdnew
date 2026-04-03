@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import Image from "../../../components/media/Image";
+import {
+  CATEGORY_FEATURE_CARD,
+  CATEGORY_FEATURE_GRID,
+  CATEGORY_INLINE_LINK,
+  CATEGORY_PAGE_SHELL,
+  CategoryPortfolioSection,
+} from "../../../components/portfolio/CategoryPortfolioSection";
 import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
@@ -15,14 +21,20 @@ const KidsPage = () => {
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Products", url: "/products" },
-    { name: "Kids Wear", url: "/products/kids" },
+    { name: "Kids'", url: "/products/kids" },
   ];
 
   const productSchema = createProductSchema({
     name: "Premium Kids Wear Products",
     description:
       "KTL's premium kids wear collection features high-quality children's clothing for comfort, style, and durability manufactured in Bangladesh for global brands.",
-    image: "https://ktlbd.com/assets/portfolio/kids/kids-01.png",
+    image: [
+      "https://ktlbd.com/assets/portfolio/kids/kids-09.png",
+      "https://ktlbd.com/assets/portfolio/kids/kids-10.png",
+      "https://ktlbd.com/assets/portfolio/kids/kids-11.png",
+      "https://ktlbd.com/assets/portfolio/kids/kids-12.png",
+      "https://ktlbd.com/assets/portfolio/kids/kids-13.png",
+    ],
     category: "Children's Apparel",
     brand: "Kattali Textile Ltd",
     availability: "https://schema.org/InStock",
@@ -53,98 +65,85 @@ const KidsPage = () => {
         ]}
         pageTitle="Kids'"
       />
-      <section className="min-h-screen bg-white text-black">
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-neutral-800 mb-8">
-              Our premium kids wear collection features high-quality children's
-              clothing designed for comfort, style, and durability. As part of
-              our comprehensive product range, we also manufacture{" "}
-              <Link
-                to="/products/denims"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                premium denim products
-              </Link>{" "}
-              and a wide variety of{" "}
-              <Link
-                to="/products"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                woven garments
-              </Link>{" "}
-              for global fashion brands. All our products are made in our{" "}
-              <Link
-                to="/facilities/rmg"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                certified manufacturing facilities
-              </Link>{" "}
-              using
-              <Link
-                to="/sustainability"
-                className="text-primary-600 hover:text-primary-700 font-medium underline"
-              >
-                {" "}
-                sustainable practices
-              </Link>
-              .
-            </p>
-
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                Sample styles
+      <div className="min-h-screen bg-white text-neutral-900">
+        <section className="py-12 md:py-16 lg:py-20">
+          <div className={CATEGORY_PAGE_SHELL}>
+            <div className="max-w-3xl md:mx-0">
+              <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-neutral-900 md:text-4xl lg:text-5xl">
+                Kids&apos; <span className="text-primary-500">collections</span>
               </h2>
-              <p className="text-neutral-700 mb-6 max-w-2xl">
-                A selection of children&apos;s silhouettes we produce—sets,
-                separates, sleepwear, and baby essentials for different age
-                groups and markets.
+              <p className="mt-8 text-lg text-neutral-700">
+                Our premium kids wear collection features high-quality
+                children&apos;s clothing designed for comfort, style, and
+                durability. As part of our comprehensive product range, we also
+                manufacture{" "}
+                <Link to="/products/denims" className={CATEGORY_INLINE_LINK}>
+                  premium denim
+                </Link>
+                ,{" "}
+                <Link to="/products/knitwear" className={CATEGORY_INLINE_LINK}>
+                  knitwear
+                </Link>
+                ,{" "}
+                <Link to="/products/swimwear" className={CATEGORY_INLINE_LINK}>
+                  swimwear
+                </Link>
+                , and a wide variety of{" "}
+                <Link to="/products" className={CATEGORY_INLINE_LINK}>
+                  woven garments
+                </Link>{" "}
+                for global fashion brands. All our products are made in our{" "}
+                <Link to="/facilities/rmg" className={CATEGORY_INLINE_LINK}>
+                  certified manufacturing facilities
+                </Link>{" "}
+                using{" "}
+                <Link to="/sustainability" className={CATEGORY_INLINE_LINK}>
+                  sustainable practices
+                </Link>
+                .
               </p>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-                {kidsGallery.map((item) => (
-                  <figure
-                    key={item.src}
-                    className="group relative aspect-square overflow-hidden rounded-xl bg-neutral-100 shadow-sm ring-1 ring-black/5"
-                  >
-                    <Image
-                      src={item.src}
-                      alt={item.alt.replace(/^KTL Kids' —\s*/i, "")}
-                      className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                      fit="cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                    <figcaption className="sr-only">{item.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Toddler Clothing</h3>
-                <p className="text-neutral-800">
+        <CategoryPortfolioSection
+          gridIdSuffix="kids"
+          items={kidsGallery}
+          description="A selection of children's silhouettes we produce—sets, separates, sleepwear, and baby essentials for different age groups and markets."
+        />
+
+        <section className="border-t border-neutral-100 bg-white py-12 md:py-16 lg:py-20">
+          <div className={CATEGORY_PAGE_SHELL}>
+            <div className={CATEGORY_FEATURE_GRID}>
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  Toddler clothing
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   Comfortable and safe clothing for toddlers with modern
                   designs.
                 </p>
               </div>
-
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Kids Fashion</h3>
-                <p className="text-neutral-800">
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  Kids fashion
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   Stylish and trendy clothing for kids of all ages.
                 </p>
               </div>
-
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">School Wear</h3>
-                <p className="text-neutral-800">
+              <div className={CATEGORY_FEATURE_CARD}>
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  School wear
+                </h3>
+                <p className="mt-3 text-neutral-700">
                   Durable and comfortable school uniforms and casual wear.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 };

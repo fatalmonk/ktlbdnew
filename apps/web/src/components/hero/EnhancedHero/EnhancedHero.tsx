@@ -51,6 +51,16 @@ const SLIDES: HeroSlide[] = [
     ctaHref: "/contact",
   },
   {
+    id: "ktl-facility",
+    src: stockHero.facility,
+    alt: "Kattali Textile Limited factory exterior in Chittagong, Bangladesh, with warehouse buildings, loading area, and company signage",
+    headline: "Where capacity meets craftsmanship.",
+    subline:
+      "Our own manufacturing footprint in Bangladesh—scaled for global programs and audited to international standards.",
+    ctaLabel: "Explore facilities →",
+    ctaHref: "/facilities/rmg",
+  },
+  {
     id: "trusted-brands",
     src: stockHero.manufacturing,
     alt: "Kattali Textile Limited manufacturing team and operations",
