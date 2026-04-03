@@ -6,7 +6,7 @@ const ShippingFacility = () => {
     <>
       <SEO
         title="Shipping & Logistics Facility | Kattali Textile Ltd Global Distribution"
-        description="KTL's comprehensive shipping and logistics facility in Chittagong ensures efficient global distribution and timely delivery of textile products worldwide."
+        description="KTL's shipping and logistics facility in Chittagong supports global distribution and timely delivery to the USA, EU, and Canada, and other markets worldwide."
         canonical="/facilities/shipping"
         keywords={[
           "shipping logistics",
@@ -28,9 +28,9 @@ const ShippingFacility = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Our comprehensive shipping and logistics facility ensures
-              efficient global distribution and timely delivery of textile
-              products to customers worldwide.
+              Our shipping and logistics facility supports global distribution
+              and timely delivery of textile products, including programs for
+              the USA, EU, and Canada.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -40,7 +40,8 @@ const ShippingFacility = () => {
                 </h3>
                 <p className="text-neutral-800">
                   Worldwide shipping network with partnerships across major
-                  ports and logistics hubs for efficient global delivery.
+                  ports and logistics hubs for reliable delivery to the USA, EU,
+                  and Canada and other markets.
                 </p>
               </div>
 

@@ -1,6 +1,6 @@
 import { stockHero } from "@/data/stockImages";
 import { createLazyIcon } from "@/lib/lucide-icons";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import React, {
   Suspense,
   useCallback,
@@ -18,26 +18,23 @@ interface HeroSlide {
   id: string;
   src: string;
   alt: string;
-  brand: string;
   headline: string;
   subline: string;
   ctaLabel: string;
   ctaHref: string;
 }
 
-/** Crossfade between hero photos (sync = incoming/outgoing overlap). */
-const HERO_IMAGE_FADE = {
-  duration: 0.75,
-  ease: [0.4, 0, 0.2, 1] as const,
-};
+/** Soft ease-out — long deceleration for hero crossfades. */
+const HERO_EASE = [0.16, 1, 0.28, 1] as const;
+/** Horizontal drift (px) for right → left slide change (enter from right, exit to left). */
+const HERO_SLIDE_X = 48;
 
 const SLIDES: HeroSlide[] = [
   {
     id: "supply-chain",
     src: stockHero.logistics,
     alt: "Global logistics and garment supply chain operations at Kattali Textile Limited",
-    brand: "Kattali Textile Limited",
-    headline: "Your Global Supply Chain Starts in Bangladesh.",
+    headline: "Power your apparel production.",
     subline:
       "End-to-end garment manufacturing built for the demands of global trade.",
     ctaLabel: "Get in Touch →",
@@ -47,8 +44,7 @@ const SLIDES: HeroSlide[] = [
     id: "trusted-brands",
     src: stockHero.manufacturing,
     alt: "Kattali Textile Limited manufacturing team and operations",
-    brand: "Kattali Textile Limited",
-    headline: "Trusted by the World's Leading Brands.",
+    headline: "Elevating garment manufacturing standards.",
     subline: "From first sample to final shipment, our standards never waver.",
     ctaLabel: "View Our Capabilities →",
     ctaHref: "/products",
@@ -57,8 +53,7 @@ const SLIDES: HeroSlide[] = [
     id: "sustainability",
     src: stockHero.fabric,
     alt: "Sustainable textile production and fabric at KTL",
-    brand: "Kattali Textile Limited",
-    headline: "Woven With Care. For People and Planet.",
+    headline: "Woven with care. For people and planet.",
     subline:
       "Certified sustainable practices, ethical working conditions, and a commitment to a cleaner fashion industry.",
     ctaLabel: "Explore Sustainability →",
@@ -68,6 +63,7 @@ const SLIDES: HeroSlide[] = [
 
 const EnhancedHero: React.FC = () => {
   const { pathname } = useLocation();
+  const reduceMotion = useReducedMotion();
   const isHome = pathname === "/";
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -135,6 +131,30 @@ const EnhancedHero: React.FC = () => {
 
   const activeSlide = slides[currentSlide];
 
+  const heroFade = reduceMotion
+    ? { duration: 0.2 }
+    : { duration: 1.2, ease: HERO_EASE };
+
+  const imageMotionInitial = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, x: HERO_SLIDE_X, scale: 1.02 };
+  const imageMotionAnimate = reduceMotion
+    ? { opacity: 1 }
+    : { opacity: 1, x: 0, scale: 1 };
+  const imageMotionExit = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, x: -HERO_SLIDE_X, scale: 1.012 };
+
+  const copyMotionInitial = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, x: HERO_SLIDE_X * 0.65 };
+  const copyMotionAnimate = reduceMotion
+    ? { opacity: 1 }
+    : { opacity: 1, x: 0 };
+  const copyMotionExit = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, x: -HERO_SLIDE_X * 0.65 };
+
   return (
     // tabIndex makes the section focusable so keyboard listeners fire reliably
     <section
@@ -165,7 +185,7 @@ const EnhancedHero: React.FC = () => {
             Full-bleed image that fills the viewport width and a fixed tall height.
             Text is overlaid directly on top of the image (no card, no white panel).
           */}
-          <div className="relative px-5 sm:px-6 md:px-8 lg:hidden">
+          <div className="relative px-6 sm:px-8 md:px-10 lg:hidden">
             {/* Inset image frame — horizontal margin from viewport edges on small screens */}
             <div
               className="relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
@@ -178,10 +198,10 @@ const EnhancedHero: React.FC = () => {
               <AnimatePresence mode="sync" initial={false}>
                 <motion.div
                   key={activeSlide.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={HERO_IMAGE_FADE}
+                  initial={imageMotionInitial}
+                  animate={imageMotionAnimate}
+                  exit={imageMotionExit}
+                  transition={heroFade}
                   className="absolute inset-0 z-10"
                   role="group"
                   aria-roledescription="slide"
@@ -205,32 +225,41 @@ const EnhancedHero: React.FC = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Text overlay — sits above the bottom edge so it reads higher on the hero */}
-              <div className="absolute inset-x-0 bottom-[min(52vh,20rem)] z-20 px-7 pb-6 pt-2 sm:bottom-[min(50vh,22rem)] sm:px-8 sm:pb-7 md:bottom-[min(48vh,24rem)] md:px-10 md:pb-8">
-                <span className="font-heading block w-fit text-[2.3rem] font-semibold leading-none tracking-tight text-[#0a1218] lowercase sm:text-[2.5rem]">
-                  {activeSlide.brand}
-                </span>
+              {/* Text overlay — bottom-weighted on the image; min-h headline slot limits vertical shift between slides */}
+              <div className="absolute inset-x-0 bottom-[min(50vh,18rem)] z-20 px-8 pb-8 pt-2 sm:bottom-[min(48vh,20rem)] sm:px-10 sm:pb-9 md:bottom-[min(46vh,22rem)] md:px-12">
+                <AnimatePresence mode="sync" initial={false}>
+                  <motion.div
+                    key={activeSlide.id}
+                    initial={copyMotionInitial}
+                    animate={copyMotionAnimate}
+                    exit={copyMotionExit}
+                    transition={heroFade}
+                    className="flex flex-col items-start text-left"
+                  >
+                    <div className="min-h-[3lh] max-w-[min(100%,36rem)]">
+                      {isHome ? (
+                        <h1 className="text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white">
+                          {activeSlide.headline}
+                        </h1>
+                      ) : (
+                        <h2 className="text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white">
+                          {activeSlide.headline}
+                        </h2>
+                      )}
+                    </div>
 
-                {isHome ? (
-                  <h1 className="mt-8 max-w-[min(100%,36rem)] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
-                    {activeSlide.headline}
-                  </h1>
-                ) : (
-                  <h2 className="mt-8 max-w-[min(100%,36rem)] text-[clamp(2.6rem,10vw,4.3rem)] font-extrabold leading-[0.92] tracking-[-0.03em] text-white sm:mt-10">
-                    {activeSlide.headline}
-                  </h2>
-                )}
+                    <p className="mt-7 max-w-[min(100%,38rem)] text-[1.45rem] font-medium leading-snug text-white/90 sm:mt-8 sm:text-[1.5rem]">
+                      {activeSlide.subline}
+                    </p>
 
-                <p className="mt-5 max-w-[min(100%,38rem)] text-[1.45rem] font-medium leading-snug text-white/90 sm:mt-6 sm:text-[1.5rem]">
-                  {activeSlide.subline}
-                </p>
-
-                <Link
-                  to={activeSlide.ctaHref}
-                  className="mt-8 inline-flex w-fit items-center border-b border-black pb-0.5 text-[1.8rem] font-semibold text-black transition-colors hover:border-neutral-800 hover:text-neutral-800 sm:mt-10"
-                >
-                  {activeSlide.ctaLabel}
-                </Link>
+                    <Link
+                      to={activeSlide.ctaHref}
+                      className="mt-10 inline-flex w-fit items-center border-b border-black pb-0.5 text-[1.8rem] font-semibold text-black transition-colors hover:border-neutral-800 hover:text-neutral-800 sm:mt-12"
+                    >
+                      {activeSlide.ctaLabel}
+                    </Link>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
@@ -242,7 +271,7 @@ const EnhancedHero: React.FC = () => {
             wave pattern fills the exposed white area to the right of the image.
           */}
           <div className="relative hidden lg:block">
-            <div className="relative px-6">
+            <div className="relative px-8">
               <div className="relative min-h-[clamp(500px,50vw,700px)] min-w-0">
                 {/* Contained image — narrower than full row, centered; text panel overlaps from left */}
                 <div className="absolute inset-y-0 left-1/2 w-[68%] max-w-[1180px] min-w-0 -translate-x-1/2 bg-[#f7e9e3]">
@@ -250,10 +279,10 @@ const EnhancedHero: React.FC = () => {
                     <AnimatePresence mode="sync" initial={false}>
                       <motion.div
                         key={activeSlide.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={HERO_IMAGE_FADE}
+                        initial={imageMotionInitial}
+                        animate={imageMotionAnimate}
+                        exit={imageMotionExit}
+                        transition={heroFade}
                         className="absolute inset-0 z-10 min-h-0 min-w-0"
                         role="group"
                         aria-roledescription="slide"
@@ -273,37 +302,46 @@ const EnhancedHero: React.FC = () => {
                   </div>
                 </div>
 
-                {/* White text panel — overlaps the left edge of the image */}
-                <div className="absolute inset-y-0 left-0 z-20 flex w-[42%] flex-col justify-center bg-white px-8 py-10 xl:w-[38%] xl:px-10">
-                  <span className="font-heading block w-fit text-[2.25rem] font-semibold leading-none tracking-tight text-[#0a1218] lowercase xl:text-[2.65rem]">
-                    {activeSlide.brand}
-                  </span>
+                {/* White text panel — top-aligned stack; copy slides right → left each change */}
+                <div className="absolute inset-y-0 left-0 z-20 flex w-[42%] flex-col items-start justify-start bg-white px-10 pb-12 pt-24 text-left xl:w-[38%] xl:px-12 xl:pb-14 xl:pt-32">
+                  <AnimatePresence mode="sync" initial={false}>
+                    <motion.div
+                      key={activeSlide.id}
+                      initial={copyMotionInitial}
+                      animate={copyMotionAnimate}
+                      exit={copyMotionExit}
+                      transition={heroFade}
+                      className="flex w-full flex-col items-start text-left"
+                    >
+                      <div className="min-h-[3lh] max-w-[min(100%,48rem)] xl:min-h-[3.25lh]">
+                        {isHome ? (
+                          <h1 className="text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:text-[6.85rem]">
+                            {activeSlide.headline}
+                          </h1>
+                        ) : (
+                          <h2 className="text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:text-[6.85rem]">
+                            {activeSlide.headline}
+                          </h2>
+                        )}
+                      </div>
 
-                  {isHome ? (
-                    <h1 className="mt-12 max-w-[min(100%,48rem)] text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:mt-14 xl:text-[6.85rem]">
-                      {activeSlide.headline}
-                    </h1>
-                  ) : (
-                    <h2 className="mt-12 max-w-[min(100%,48rem)] text-[clamp(3.25rem,4.2vw,6.85rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-black xl:mt-14 xl:text-[6.85rem]">
-                      {activeSlide.headline}
-                    </h2>
-                  )}
+                      <p className="mt-10 max-w-[min(100%,40rem)] text-[1.45rem] leading-snug text-neutral-600 xl:mt-11 xl:text-[1.55rem]">
+                        {activeSlide.subline}
+                      </p>
 
-                  <p className="mt-8 max-w-[min(100%,40rem)] text-[1.45rem] leading-snug text-neutral-600 xl:mt-9 xl:text-[1.55rem]">
-                    {activeSlide.subline}
-                  </p>
-
-                  <Link
-                    to={activeSlide.ctaHref}
-                    className="mt-10 inline-flex w-fit items-center border-b border-[#243a4f] pb-1 text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:border-primary-600 hover:text-primary-600 xl:mt-12"
-                  >
-                    {activeSlide.ctaLabel}
-                  </Link>
+                      <Link
+                        to={activeSlide.ctaHref}
+                        className="mt-12 inline-flex w-fit items-center border-b border-[#243a4f] pb-1 text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:border-primary-600 hover:text-primary-600 xl:mt-14"
+                      >
+                        {activeSlide.ctaLabel}
+                      </Link>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
 
-            {/* Decorative diagonal stripe in the exposed white area bottom-right */}
+            {/* Decorative diagonal stripe in the exposed white area (right of image) */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute bottom-0 right-0 h-[280px] w-[36%]"
@@ -316,7 +354,7 @@ const EnhancedHero: React.FC = () => {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-4 px-5 pb-2 pt-6 sm:px-6 md:px-8 md:pt-7 lg:px-0">
+        <div className="flex items-center justify-center gap-4 px-6 pb-3 pt-8 sm:px-8 md:px-10 md:pt-8 lg:px-0">
           {/* Play / Pause */}
           <button
             type="button"

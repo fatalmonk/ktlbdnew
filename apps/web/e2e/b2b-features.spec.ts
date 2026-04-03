@@ -46,27 +46,18 @@ test.describe("B2B Features E2E Tests", () => {
       await expect(page.locator("h1")).toContainText(/Certifications/i);
     });
 
-    test("should display certification badges", async ({ page }) => {
+    test("should display partner program logos", async ({ page }) => {
       await page.goto("/certifications");
 
-      // Verify certification cards are displayed
-      const certificationCards = page
-        .locator('[class*="certification"]')
-        .or(page.locator('[class*="badge"]'));
-      await expect(certificationCards.first()).toBeVisible();
-    });
-
-    test("should filter certifications by category", async ({ page }) => {
-      await page.goto("/certifications");
-
-      // Select category filter
-      await page
-        .locator("select")
-        .first()
-        .selectOption({ label: /Quality/i });
-
-      // Verify results are filtered
-      await expect(page.locator("body")).toContainText(/ISO/i);
+      await expect(
+        page.getByRole("list", {
+          name: /Certification and partner program logos/i,
+        }),
+      ).toBeVisible();
+      await expect(
+        page.getByAltText(/ACCORD on Fire and Building Safety/i),
+      ).toBeVisible();
+      await expect(page.getByAltText(/Sedex Member/i)).toBeVisible();
     });
   });
 
@@ -236,14 +227,18 @@ test.describe("B2B Features E2E Tests", () => {
       await expect(page.locator("text=/Featured Case Study/i")).toBeVisible();
     });
 
-    test("should display certification showcase", async ({ page }) => {
+    test("should surface trust strip with partner logos", async ({ page }) => {
       await page.goto("/");
 
-      // Scroll to certifications
-      await page.locator("text=/Certified.*Quality/i").scrollIntoViewIfNeeded();
+      await page.locator("text=/Global Standards/i").scrollIntoViewIfNeeded();
 
-      // Verify certifications are shown
-      await expect(page.locator("text=/ISO 9001/i")).toBeVisible();
+      await expect(page.locator("text=/Sustainable Future/i")).toBeVisible();
+      await expect(
+        page.locator("text=/internationally recognized compliance/i"),
+      ).toBeVisible();
+      await expect(
+        page.getByRole("list", { name: /Featured partner brands/i }),
+      ).toBeVisible();
     });
 
     test("should display sustainability snapshot", async ({ page }) => {

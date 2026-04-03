@@ -1,3 +1,5 @@
+import { ORGANIZATION_SCHEMA_DESCRIPTION } from "../../../lib/b2b-listing-copy";
+
 export const createOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -5,8 +7,7 @@ export const createOrganizationSchema = () => ({
   alternateName: "KTL",
   url: "https://ktlbd.com",
   logo: "https://ktlbd.com/logos/ktl-logo.webp",
-  description:
-    "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
+  description: ORGANIZATION_SCHEMA_DESCRIPTION,
   foundingDate: "2002",
   address: {
     "@type": "PostalAddress",
@@ -70,6 +71,20 @@ export const createOrganizationSchema = () => ({
     "woven garment supplier bangladesh",
     "denim manufacturer bangladesh",
     "sustainable textile manufacturer",
+    "Sedex",
+    "OEKO-TEX",
+    "BSCI",
+    "WRAP",
+    "GOTS",
+    "ISO 9001",
+  ],
+  knowsAbout: [
+    "Sedex SMETA ethical supply chain",
+    "OEKO-TEX Standard 100",
+    "amfori BSCI",
+    "WRAP apparel certification",
+    "Global Organic Textile Standard (GOTS)",
+    "ISO 9001:2015 quality management",
   ],
   numberOfEmployees: {
     "@type": "QuantitativeValue",

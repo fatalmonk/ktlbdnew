@@ -1,8 +1,12 @@
 import { PartnerLogo } from "../types/partner";
 import calvinKleinLogo from "@/assets/images/products/partners/partner-calvin-klein.png";
+import celebrityPinkLogo from "@/assets/images/products/partners/partner-celebrity-pink.png";
+import disneyLogo from "@/assets/images/products/partners/partner-disney.png";
 import gapLogo from "@/assets/images/products/partners/partner-gap.png";
+import giantTigerLogo from "@/assets/images/products/partners/partner-giant-tiger.png";
 import hmLogo from "@/assets/images/products/partners/partner-hm.png";
 import oldNavyLogo from "@/assets/images/products/partners/partner-old-navy.png";
+import tjMaxxLogo from "@/assets/images/products/partners/partner-tj-maxx.png";
 import tommyHilfigerLogo from "@/assets/images/products/partners/partner-tommy-hilfiger.png";
 
 export const partners: PartnerLogo[] = [
@@ -59,5 +63,45 @@ export const partners: PartnerLogo[] = [
     partnership: "Premium Lifestyle Apparel",
     employees: "15,000+",
     location: "New York, USA",
+  },
+  {
+    id: "celebrity-pink",
+    name: "Celebrity Pink Jeans",
+    logo: celebrityPinkLogo,
+    description:
+      "Contemporary denim and lifestyle brand known for fits, washes, and accessible style",
+    website: "https://www.celebpink.com",
+    partnership: "Denim & woven apparel",
+    location: "USA",
+  },
+  {
+    id: "giant-tiger",
+    name: "Giant Tiger",
+    logo: giantTigerLogo,
+    description:
+      "Canadian discount retailer offering apparel, home, and everyday essentials",
+    website: "https://www.gianttiger.com",
+    partnership: "Retail & private-label programs",
+    location: "Ottawa, Canada",
+  },
+  {
+    id: "disney",
+    name: "Disney",
+    logo: disneyLogo,
+    description:
+      "Global entertainment brand spanning family apparel, character programs, and licensed goods",
+    website: "https://www.shopdisney.com",
+    partnership: "Licensed apparel & character goods",
+    location: "Burbank, USA",
+  },
+  {
+    id: "tj-maxx",
+    name: "T.J. Maxx",
+    logo: tjMaxxLogo,
+    description:
+      "Off-price retailer offering branded apparel, accessories, and home at accessible prices",
+    website: "https://www.tjmaxx.com",
+    partnership: "Off-price apparel & sourcing",
+    location: "Framingham, USA",
   },
 ];

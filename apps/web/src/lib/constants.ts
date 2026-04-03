@@ -1,3 +1,5 @@
+import { ORGANIZATION_SCHEMA_DESCRIPTION } from "./b2b-listing-copy";
+
 // Company Information
 export const COMPANY_NAME = "Kattali Textile Limited";
 export const COMPANY_SHORT_NAME = "KTL";
@@ -86,8 +88,7 @@ export const GOOGLE_BUSINESS_STRUCTURED_DATA = {
   alternateName: COMPANY_SHORT_NAME,
   url: "https://ktlbd.com",
   logo: "https://ktlbd.com/logos/ktl-logo.webp",
-  description:
-    "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
+  description: ORGANIZATION_SCHEMA_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
     streetAddress: "BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad",

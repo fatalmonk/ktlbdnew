@@ -12,7 +12,7 @@ test.describe("Site Navigation", () => {
 
     test("should display the hero section", async ({ page }) => {
       await expect(
-        page.getByText(/Your Global Supply Chain Starts in Bangladesh/i),
+        page.getByText(/Power your apparel production/i),
       ).toBeVisible();
     });
 
@@ -289,7 +289,7 @@ test.describe("Site Navigation", () => {
       await page.goto("/");
 
       await expect(
-        page.getByText(/Your Global Supply Chain Starts in Bangladesh/i),
+        page.getByText(/Power your apparel production/i),
       ).toBeVisible();
     });
 
@@ -298,7 +298,7 @@ test.describe("Site Navigation", () => {
       await page.goto("/");
 
       await expect(
-        page.getByText(/Your Global Supply Chain Starts in Bangladesh/i),
+        page.getByText(/Power your apparel production/i),
       ).toBeVisible();
     });
 
@@ -307,7 +307,7 @@ test.describe("Site Navigation", () => {
       await page.goto("/");
 
       await expect(
-        page.getByText(/Your Global Supply Chain Starts in Bangladesh/i),
+        page.getByText(/Power your apparel production/i),
       ).toBeVisible();
     });
   });

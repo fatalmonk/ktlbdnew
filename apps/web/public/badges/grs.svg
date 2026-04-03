@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="GRS Global Recycled Standard">
+  <rect width="200" height="100" rx="10" fill="#fff" stroke="#0e7490" stroke-width="2.5"/>
+  <text x="100" y="38" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="20" font-weight="800" fill="#0e7490">GRS</text>
+  <text x="100" y="58" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="10" fill="#475569">Global Recycled Standard</text>
+  <text x="100" y="76" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="9" fill="#64748b">Textile Exchange</text>
+</svg>

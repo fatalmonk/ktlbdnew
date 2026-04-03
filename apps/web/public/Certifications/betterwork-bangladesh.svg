@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="Better Work Bangladesh">
+  <rect width="200" height="100" rx="10" fill="#fff" stroke="#1d4ed8" stroke-width="2.5"/>
+  <text x="100" y="34" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="13" font-weight="700" fill="#1e40af">Better Work</text>
+  <text x="100" y="52" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="11" fill="#475569">Bangladesh</text>
+  <text x="100" y="74" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="8" fill="#64748b">ILO / IFC Programme</text>
+</svg>

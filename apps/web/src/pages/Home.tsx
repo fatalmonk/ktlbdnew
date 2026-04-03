@@ -1,14 +1,15 @@
 import { Suspense, lazy, useEffect, useState } from "react";
-import { certifications, newsItems } from "../data/home";
+import { newsItems } from "../data/home";
 import { partners } from "../data/partners";
 import { featuredProducts } from "../data/products";
 import HeroSection from "../modules/home/components/HeroSection";
 import HomeSEO from "../modules/home/components/HomeSEO";
+import KeyPerformanceMetricsSection from "../modules/home/components/KeyPerformanceMetricsSection";
+import ComplianceHighlightsStrip from "../modules/home/components/ComplianceHighlightsStrip";
 import OperationHistoryStrip from "../modules/home/components/OperationHistoryStrip";
 
 import {
   CTASkeleton,
-  CertificationsSkeleton,
   InvestorMetricsSkeleton,
   LogoCarouselSkeleton,
   NewsSkeleton,
@@ -32,9 +33,6 @@ const LazyLogoCarousel = lazy(
 );
 const LazyGetToKnowUsSection = lazy(
   () => import("../modules/home/components/GetToKnowUsSection"),
-);
-const LazyCertifications = lazy(
-  () => import("../modules/home/components/CertificationsSection"),
 );
 const LazyNews = lazy(() => import("../modules/home/components/NewsSection"));
 const LazyCTA = lazy(() => import("../modules/home/components/CTASection"));
@@ -66,6 +64,8 @@ const Home = () => {
              ABOVE THE FOLD (instant)
            ------------------------------ */}
         <HeroSection />
+        <KeyPerformanceMetricsSection />
+        <ComplianceHighlightsStrip />
         <OperationHistoryStrip />
 
         {/* ------------------------------
@@ -84,10 +84,6 @@ const Home = () => {
 
             <Suspense fallback={<GetToKnowUsSkeleton />}>
               <LazyGetToKnowUsSection />
-            </Suspense>
-
-            <Suspense fallback={<CertificationsSkeleton />}>
-              <LazyCertifications certifications={certifications} />
             </Suspense>
 
             <Suspense fallback={<NewsSkeleton />}>

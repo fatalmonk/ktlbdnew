@@ -1,9 +1,10 @@
 import SEO from "../../../components/seo/SEO";
+import { HOME_META_DESCRIPTION } from "../../../lib/b2b-listing-copy";
 
 const HomeSEO = () => (
   <SEO
     title="Kattali Textile Limited (KTL) | Leading Woven Garment Manufacturer in Bangladesh"
-    description="Kattali Textile Limited (KTL) is a publicly listed garment manufacturer in Chittagong, Bangladesh. We produce high-quality woven, denim, and children's apparel for global brands with certified sustainable practices."
+    description={HOME_META_DESCRIPTION}
     canonical="/"
     keywords={[
       "bangladesh garment manufacturer",
@@ -15,6 +16,13 @@ const HomeSEO = () => (
       "Chittagong textile",
       "garments factory in chittagong",
       "woven textile company in chittagong",
+      "Sedex",
+      "OEKO-TEX",
+      "BSCI",
+      "WRAP",
+      "GOTS",
+      "ISO 9001",
+      "garment compliance Bangladesh",
     ]}
   />
 );

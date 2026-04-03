@@ -13,6 +13,8 @@ export type SubpageHeaderProps = {
   className?: string;
   /** When false, parent must apply header offset (e.g. `header-spacing`) */
   withHeaderOffset?: boolean;
+  /** Align breadcrumb row with full-bleed page content (wider horizontal padding, no max-width on trail). */
+  fullWidthBreadcrumbs?: boolean;
 };
 
 /**
@@ -74,6 +76,7 @@ export function SubpageHeader({
   pageTitle,
   className,
   withHeaderOffset = true,
+  fullWidthBreadcrumbs = false,
 }: SubpageHeaderProps) {
   const crumbs = withoutLeadingHome(breadcrumbItems);
 
@@ -89,10 +92,18 @@ export function SubpageHeader({
       {pageTitle ? <h1 className="sr-only">{pageTitle}</h1> : null}
       {crumbs.length > 0 && (
         <nav
-          className="relative z-[1] border-b border-transparent px-4 pt-20 pb-6 sm:px-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-8 lg:px-8 lg:pt-32 lg:pb-10 xl:pt-40 xl:pb-12"
+          className={cn(
+            "relative z-[1] border-b border-transparent px-4 pt-20 pb-6 sm:px-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-8 lg:pt-32 lg:pb-10 xl:pt-40 xl:pb-12",
+            fullWidthBreadcrumbs ? "lg:px-10 xl:px-14 2xl:px-20" : "lg:px-8",
+          )}
           aria-label="Breadcrumb"
         >
-          <ol className="mx-auto flex max-w-ktl flex-wrap items-center gap-x-2 gap-y-1 text-body-lg text-neutral-600">
+          <ol
+            className={cn(
+              "flex flex-wrap items-center gap-x-2 gap-y-1 text-body-lg text-neutral-600",
+              fullWidthBreadcrumbs ? "w-full max-w-none" : "mx-auto max-w-ktl",
+            )}
+          >
             {crumbs.map((item, i) => {
               const isLast = i === crumbs.length - 1;
               return (

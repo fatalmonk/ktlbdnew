@@ -114,7 +114,7 @@
     "description": "Disney FAMA is Disney's comprehensive compliance program for vendors producing Disney-branded merchandise. It includes strict requirements for safety, quality, and ethical manufacturing.",
     "whyItMatters": "Disney FAMA certification represents one of the industry's most rigorous compliance standards. It enables us to produce licensed Disney merchandise and demonstrates our capability to meet the highest safety and quality requirements—especially critical for children's products.",
     "certificatePdfUrl": "/certificates/disney-fama.pdf",
-    "badgeImage": "/badges/disney-fama.svg",
+    "badgeImage": "/Certifications/walt-disney-fama.png",
     "relatedProducts": ["Kids Apparel"]
   },
   {
@@ -131,7 +131,7 @@
     "whyItMatters": "Sedex membership allows us to share our ethical and sustainability performance data transparently with our clients. Major retailers use Sedex to assess supplier compliance, making this essential for doing business with global brands.",
     "verificationUrl": "https://www.sedex.com/",
     "certificatePdfUrl": "/certificates/sedex.pdf",
-    "badgeImage": "/badges/sedex.svg",
+    "badgeImage": "/Certifications/Sedex_Member_Logo_RGB_Pos.png",
     "relatedProducts": ["All Products"]
   },
   {
@@ -165,7 +165,7 @@
     "whyItMatters": "As a BGMEA-certified member, we comply with Bangladesh's post-Rana Plaza safety reforms, including building inspections, fire safety systems, and worker rights protections. This demonstrates our commitment to safe manufacturing environments.",
     "verificationUrl": "https://www.bgmea.com.bd/",
     "certificatePdfUrl": "/certificates/bgmea.pdf",
-    "badgeImage": "/badges/bgmea.svg",
+    "badgeImage": "/Certifications/bgmea.png",
     "relatedProducts": ["All Products"]
   }
 ]

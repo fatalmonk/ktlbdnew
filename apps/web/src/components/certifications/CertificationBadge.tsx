@@ -40,32 +40,32 @@ const CertificationBadge = ({
     switch (status) {
       case "Active":
         return (
-          <Suspense fallback={<div className="w-4 h-4" />}>
-            <CheckCircle size={16} />
+          <Suspense fallback={<div className="w-5 h-5" />}>
+            <CheckCircle size={18} />
           </Suspense>
         );
       case "Expiring Soon":
         return (
-          <Suspense fallback={<div className="w-4 h-4" />}>
-            <Clock size={16} />
+          <Suspense fallback={<div className="w-5 h-5" />}>
+            <Clock size={18} />
           </Suspense>
         );
       case "Expired":
         return (
-          <Suspense fallback={<div className="w-4 h-4" />}>
-            <AlertCircle size={16} />
+          <Suspense fallback={<div className="w-5 h-5" />}>
+            <AlertCircle size={18} />
           </Suspense>
         );
       case "In Renewal":
         return (
-          <Suspense fallback={<div className="w-4 h-4" />}>
-            <Clock size={16} />
+          <Suspense fallback={<div className="w-5 h-5" />}>
+            <Clock size={18} />
           </Suspense>
         );
       default:
         return (
-          <Suspense fallback={<div className="w-4 h-4" />}>
-            <Award size={16} />
+          <Suspense fallback={<div className="w-5 h-5" />}>
+            <Award size={18} />
           </Suspense>
         );
     }
@@ -89,34 +89,39 @@ const CertificationBadge = ({
   };
 
   if (compact) {
+    const src = certification.badgeImage;
     return (
       <div
         onClick={onClick}
-        className="group cursor-pointer bg-white rounded-lg border-2 border-neutral-200 hover:border-blue-500 p-4 transition-all hover:shadow-md"
+        className="group cursor-pointer bg-white rounded-xl border-2 border-neutral-200 hover:border-blue-500 p-5 md:p-6 transition-all hover:shadow-lg"
       >
-        <div className="flex items-start gap-3">
-          {certification.badgeImage ? (
-            <img
-              src={certification.badgeImage}
-              alt={certification.name}
-              className="w-12 h-12 object-contain flex-shrink-0"
-            />
+        <div className="flex items-start gap-4">
+          {src ? (
+            <div className="flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center overflow-hidden rounded-xl sm:h-20 sm:w-20">
+              <img
+                src={src}
+                alt={certification.fullName || certification.name}
+                className="h-full w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           ) : (
-            <div className="w-12 h-12 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
-              <Suspense fallback={<div className="w-6 h-6" />}>
-                <Award className="text-blue-600" size={24} />
+            <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Suspense fallback={<div className="w-8 h-8" />}>
+                <Award className="text-blue-600" size={32} />
               </Suspense>
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors truncate">
+            <h4 className="font-semibold text-lg text-neutral-900 group-hover:text-blue-600 transition-colors truncate">
               {certification.name}
             </h4>
-            <p className="text-xs text-neutral-500 mt-1 line-clamp-1">
+            <p className="text-sm text-neutral-500 mt-1 line-clamp-1">
               {certification.issuingBody}
             </p>
             <div
-              className={`inline-flex items-center gap-1 mt-2 text-xs px-2 py-1 rounded-full ${getStatusColor(certification.status)}`}
+              className={`inline-flex items-center gap-1.5 mt-3 text-sm px-3 py-1.5 rounded-full ${getStatusColor(certification.status)}`}
             >
               {getStatusIcon(certification.status)}
               <span>{certification.status}</span>
@@ -133,43 +138,47 @@ const CertificationBadge = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all overflow-hidden cursor-pointer"
+      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden cursor-pointer"
       onClick={onClick}
     >
       {/* Header with badge */}
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 text-center">
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 md:p-10 text-center">
         {certification.badgeImage ? (
-          <img
-            src={certification.badgeImage}
-            alt={certification.name}
-            className="w-24 h-24 mx-auto object-contain mb-4"
-          />
+          <div className="mx-auto mb-5 w-full max-w-[min(100%,12rem)]">
+            <img
+              src={certification.badgeImage}
+              alt={certification.fullName || certification.name}
+              className="mx-auto h-36 w-full object-contain sm:h-40 md:h-44"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         ) : (
-          <div className="w-24 h-24 mx-auto bg-blue-200 rounded-full flex items-center justify-center mb-4">
-            <Suspense fallback={<div className="w-12 h-12" />}>
-              <Award className="text-blue-600" size={48} />
+          <div className="w-32 h-32 mx-auto bg-blue-200 rounded-full flex items-center justify-center mb-5">
+            <Suspense fallback={<div className="w-14 h-14" />}>
+              <Award className="text-blue-600" size={56} />
             </Suspense>
           </div>
         )}
-        <h3 className="font-bold text-lg text-neutral-900">
+        <h3 className="font-bold text-xl md:text-2xl text-neutral-900">
           {certification.name}
         </h3>
-        <p className="text-sm text-neutral-600 mt-1">
+        <p className="text-base md:text-lg text-neutral-600 mt-2">
           {certification.issuingBody}
         </p>
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-8 md:p-9">
         {/* Category & Status */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
           <span
-            className={`text-xs px-3 py-1 rounded-full ${getCategoryColor(certification.category)}`}
+            className={`text-sm px-4 py-1.5 rounded-full ${getCategoryColor(certification.category)}`}
           >
             {certification.category}
           </span>
           <div
-            className={`flex items-center gap-1 text-xs px-3 py-1 rounded-full ${getStatusColor(certification.status)}`}
+            className={`flex items-center gap-1.5 text-sm px-4 py-1.5 rounded-full ${getStatusColor(certification.status)}`}
           >
             {getStatusIcon(certification.status)}
             <span>{certification.status}</span>
@@ -177,18 +186,18 @@ const CertificationBadge = ({
         </div>
 
         {/* Description */}
-        <p className="text-sm text-neutral-700 mb-4 line-clamp-3">
+        <p className="text-base text-neutral-700 mb-5 line-clamp-4 leading-relaxed">
           {certification.description}
         </p>
 
         {/* Dates */}
         {certification.certificateNumber && (
-          <div className="text-xs text-neutral-600 mb-2">
+          <div className="text-sm text-neutral-600 mb-2">
             <span className="font-medium">Certificate #:</span>{" "}
             {certification.certificateNumber}
           </div>
         )}
-        <div className="grid grid-cols-2 gap-3 text-xs text-neutral-600 mb-4">
+        <div className="grid grid-cols-2 gap-4 text-sm text-neutral-600 mb-5">
           <div>
             <span className="font-medium">Issued:</span>{" "}
             {new Date(certification.issuedDate).toLocaleDateString("en-US", {
@@ -206,17 +215,17 @@ const CertificationBadge = ({
         </div>
 
         {/* Actions */}
-        <div className="flex gap-2 pt-4 border-t border-neutral-200">
+        <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-neutral-200">
           {certification.verificationUrl && (
             <a
               href={certification.verificationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 text-base font-semibold bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors min-h-[48px]"
               onClick={(e) => e.stopPropagation()}
             >
-              <Suspense fallback={<div className="w-3.5 h-3.5" />}>
-                <ExternalLink size={14} />
+              <Suspense fallback={<div className="w-5 h-5" />}>
+                <ExternalLink size={20} />
               </Suspense>
               Verify
             </a>
@@ -225,11 +234,11 @@ const CertificationBadge = ({
             <a
               href={certification.certificatePdfUrl}
               download
-              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 text-sm border-2 border-neutral-300 text-neutral-700 rounded hover:border-blue-600 hover:text-blue-600 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 text-base font-semibold border-2 border-neutral-300 text-neutral-700 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-colors min-h-[48px]"
               onClick={(e) => e.stopPropagation()}
             >
-              <Suspense fallback={<div className="w-3.5 h-3.5" />}>
-                <Download size={14} />
+              <Suspense fallback={<div className="w-5 h-5" />}>
+                <Download size={20} />
               </Suspense>
               Download
             </a>

@@ -4,6 +4,7 @@ export type HomeCertification = {
   logoAlt: string;
 };
 
+/** Partner / compliance marks on the home page (`public/Certifications/`). */
 export const certifications: HomeCertification[] = [
   {
     id: "accord",
@@ -26,14 +27,14 @@ export const certifications: HomeCertification[] = [
     logoAlt: "Sedex Member",
   },
   {
-    id: "disney-fama",
-    logoSrc: "/Certifications/walt-disney-fama.png",
-    logoAlt: "Walt Disney FAMA — Facility and Merchandise Authorization",
-  },
-  {
     id: "walmart-supplier-one",
     logoSrc: "/Certifications/walmart-supplier-one.png",
     logoAlt: "Walmart Supplier ONE",
+  },
+  {
+    id: "disney-fama",
+    logoSrc: "/Certifications/walt-disney-fama.png",
+    logoAlt: "Walt Disney FAMA — Facility and Merchandise Authorization",
   },
   {
     id: "cse",
@@ -41,14 +42,14 @@ export const certifications: HomeCertification[] = [
     logoAlt: "Chittagong Stock Exchange (CSE)",
   },
   {
-    id: "dhaka-stock-exchange",
-    logoSrc: "/Certifications/dhaka-stock-exchange.png",
-    logoAlt: "Dhaka Stock Exchange Ltd.",
-  },
-  {
     id: "bgmea",
     logoSrc: "/Certifications/bgmea.png",
     logoAlt:
       "Bangladesh Garment Manufacturers and Exporters Association (BGMEA)",
+  },
+  {
+    id: "dhaka-stock-exchange",
+    logoSrc: "/Certifications/dhaka-stock-exchange.png",
+    logoAlt: "Dhaka Stock Exchange Ltd.",
   },
 ];

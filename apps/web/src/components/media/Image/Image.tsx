@@ -116,6 +116,11 @@ const Image: React.FC<ImageProps> = ({
       return `/${imageSrc.replace(/^\.\//, "")}`;
     }
 
+    // Absolute site-root paths (Vite `public/`, e.g. `/Certifications/*.svg`)
+    if (imageSrc.startsWith("/")) {
+      return imageSrc;
+    }
+
     // Default: assume it's a simple filename and prepend /assets/
     return `/assets/${imageSrc}`;
   };
@@ -313,26 +318,12 @@ const Image: React.FC<ImageProps> = ({
       return img;
     }
 
-    // For non-optimized images, create picture with AVIF/WebP sources if possible
-    const getImageVariants = (imageSrc: string) => {
-      const basePath = imageSrc.replace(/\.(jpg|jpeg|png|webp)$/i, "");
-      return {
-        avif: `${basePath}.avif`,
-        webp: imageSrc.match(/\.(jpg|jpeg|png)$/i)
-          ? `${basePath}.webp`
-          : imageSrc,
-        original: imageSrc,
-      };
-    };
-
-    const variants = getImageVariants(absoluteSrc);
-    const img = (
-      <picture>
-        <source type="image/avif" srcSet={variants.avif} />
-        <source type="image/webp" srcSet={variants.webp} />
+    // SVG (and similar): no raster AVIF/WebP siblings — use a single <img>
+    if (/\.svg$/i.test(absoluteSrc)) {
+      const img = (
         <img
           ref={imgRef}
-          src={variants.original}
+          src={absoluteSrc}
           alt={alt}
           className={`${className} ${fit === "contain" ? "object-contain" : "object-cover"}`}
           width={width}
@@ -344,7 +335,45 @@ const Image: React.FC<ImageProps> = ({
           onError={handleError}
           sizes={finalSizes}
         />
-      </picture>
+      );
+
+      if (width && height) {
+        const aspectRatio =
+          typeof width === "number" && typeof height === "number"
+            ? `${width}/${height}`
+            : "auto";
+        return (
+          <div
+            ref={containerRef}
+            className={`${containerClassName} ${aspectRatio !== "auto" ? `aspect-[${aspectRatio}]` : ""}`}
+            style={aspectRatio === "auto" ? { width, height } : undefined}
+          >
+            {img}
+          </div>
+        );
+      }
+
+      return img;
+    }
+
+    // Public / ad-hoc rasters (e.g. `public/Certifications/*.png`): use a single <img>.
+    // A <picture> with sibling `.avif` / `.webp` sources breaks when those files were never
+    // generated — AVIF-capable browsers pick the first <source> and show nothing on 404.
+    const img = (
+      <img
+        ref={imgRef}
+        src={absoluteSrc}
+        alt={alt}
+        className={`${className} ${fit === "contain" ? "object-contain" : "object-cover"}`}
+        width={width}
+        height={height}
+        loading={priority || eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchpriority={priority ? "high" : "low"}
+        onLoad={handleLoad}
+        onError={handleError}
+        sizes={finalSizes}
+      />
     );
 
     // If explicit dimensions provided, wrap with aspect ratio container

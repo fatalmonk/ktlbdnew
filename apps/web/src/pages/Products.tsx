@@ -267,8 +267,8 @@ const Products = () => {
                 <span className="text-primary-500">Global Brands</span>
               </h2>
             </motion.div>
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <EnhancedLogoCarousel partners={partners} speed={20} />
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 lg:p-16 xl:p-20">
+              <EnhancedLogoCarousel partners={partners} speed={108} />
             </div>
           </div>
         </section>

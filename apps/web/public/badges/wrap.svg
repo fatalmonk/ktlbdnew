@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="WRAP">
+  <rect width="200" height="100" rx="10" fill="#fff" stroke="#0369a1" stroke-width="2.5"/>
+  <text x="100" y="40" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#0369a1" letter-spacing="0.08em">WRAP</text>
+  <text x="100" y="62" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="9" fill="#64748b">Worldwide Responsible Accredited Production</text>
+</svg>

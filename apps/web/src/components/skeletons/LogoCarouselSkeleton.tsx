@@ -17,14 +17,14 @@ const LogoCarouselSkeleton: React.FC = () => {
         </div>
 
         {/* Carousel container skeleton */}
-        <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
+        <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-6 md:p-12 lg:p-16">
           <div className="flex gap-8 overflow-hidden">
             {[1, 2, 3, 4, 5, 6].map((index) => (
               <Skeleton
                 key={index}
                 variant="rectangular"
-                width={140}
-                height={80}
+                width={160}
+                height={96}
                 className="flex-shrink-0"
                 aria-label={`Loading logo ${index}`}
               />

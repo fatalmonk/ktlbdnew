@@ -7,7 +7,7 @@ describe("Home Page", () => {
 
     expect(
       screen.getAllByRole("heading", {
-        name: /Your Global Supply Chain Starts in Bangladesh/i,
+        name: /Power your apparel production/i,
       })[0],
     ).toBeInTheDocument();
 
@@ -38,11 +38,7 @@ describe("Home Page", () => {
       ),
     ).toBeInTheDocument();
     expect(
-      await screen.findByRole(
-        "heading",
-        { name: /Our Certifications/i },
-        { timeout },
-      ),
+      await screen.findByRole("heading", { name: /In The News/i }, { timeout }),
     ).toBeInTheDocument();
     expect(
       await screen.findByText(/Investor Snapshot/i, {}, { timeout }),

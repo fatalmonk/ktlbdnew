@@ -83,7 +83,7 @@ const Contact = () => {
     {
       question: "Where is Kattali Textile Limited located?",
       answer:
-        "Head Office: BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong, Bangladesh. Production Facility: North Kattali Industrial Area, Chittagong, Bangladesh. We are a textile exporter in Chittagong serving global markets from our Bangladesh-based facilities.",
+        "Head Office: BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad, Chittagong, Bangladesh. Production Facility: North Kattali Industrial Area, Chittagong, Bangladesh. We are a textile exporter in Chittagong serving buyers in the USA, EU, and Canada and other markets from our Bangladesh-based facilities.",
     },
     {
       question: "What is your minimum order quantity (MOQ)?",
@@ -98,7 +98,7 @@ const Contact = () => {
     {
       question: "What markets do you serve?",
       answer:
-        "As a premier textile exporter in Chittagong, we serve global markets including North America, Europe, and the Middle East. We work with international fashion brands and retailers, delivering high-quality garments manufactured in our Bangladesh facilities.",
+        "As a premier textile exporter in Chittagong, we work with international apparel buyers, sourcing managers, and brands importing from Asia, with export programs to the USA, EU, and Canada, as well as other regions including the Middle East. We deliver high-quality garments manufactured in our Bangladesh facilities.",
     },
     {
       question: "Do you manufacture denim products?",

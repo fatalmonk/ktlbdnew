@@ -29,8 +29,8 @@ const LogoCarouselSectionContent = ({
             <span className="text-primary-500">global brands</span>
           </h2>
         </motion.div>
-        <div className="rounded-xl bg-white p-6 shadow-lg md:rounded-2xl md:p-10 lg:p-12">
-          <EnhancedLogoCarousel partners={partners} speed={20} />
+        <div className="rounded-xl bg-white p-8 shadow-lg md:rounded-2xl md:p-14 lg:p-16 xl:p-20">
+          <EnhancedLogoCarousel partners={partners} speed={108} />
         </div>
       </div>
     </section>

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
+import { ORGANIZATION_SCHEMA_DESCRIPTION } from "../../../lib/b2b-listing-copy";
 import { COMPANY_NAME } from "../../../lib/constants";
 
 const SEO = {
   siteName: COMPANY_NAME,
   siteUrl: "https://ktlbd.com/",
-  defaultDescription:
-    "Bangladesh's leading eco-friendly textile exporter with over 20 years of experience in manufacturing premium woven and knit garments for global markets.",
+  defaultDescription: ORGANIZATION_SCHEMA_DESCRIPTION,
 };
 
 interface SEOProps {

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" role="img" aria-label="Nirapon">
+  <rect width="200" height="100" rx="10" fill="#fff" stroke="#0369a1" stroke-width="2.5"/>
+  <text x="100" y="44" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#0369a1">Nirapon</text>
+  <text x="100" y="68" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="10" fill="#475569">Safety Alliance</text>
+</svg>

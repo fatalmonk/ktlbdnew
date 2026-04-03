@@ -3,35 +3,35 @@ import { Skeleton } from "../ui/Skeleton";
 
 const CertificationsSkeleton: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
-      <div className="mx-auto w-full max-w-[1920px] px-4 md:px-6 lg:px-8">
-        {/* Header skeleton */}
-        <div className="text-center mb-24">
+    <section className="w-full bg-neutral-50 py-16 md:py-24 lg:py-28">
+      <div className="mx-auto w-full max-w-ktl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center md:mb-16 lg:mb-20">
           <Skeleton
             variant="text"
-            height={72}
-            width="60%"
-            className="mx-auto max-w-2xl"
+            height={56}
+            width="55%"
+            className="mx-auto max-w-md md:h-16 lg:h-[4.5rem]"
             aria-label="Loading certifications title"
           />
         </div>
 
-        {/* Certifications grid skeleton */}
-        <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-6 lg:grid-cols-5 lg:gap-x-6 lg:gap-y-8 xl:gap-x-8 xl:gap-y-10 2xl:gap-x-10 2xl:gap-y-12">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center px-2 py-2 sm:py-3 md:px-3 md:py-4 lg:px-4 lg:py-5"
-            >
-              <Skeleton
-                variant="rectangular"
-                height={144}
-                width="100%"
-                className="mx-auto max-w-[160px] sm:max-w-[200px] md:max-w-[300px] lg:max-w-none"
-                aria-label={`Loading certification ${index} logo`}
-              />
-            </div>
-          ))}
+        <div className="overflow-hidden rounded-2xl ring-1 ring-neutral-200/90 shadow-sm">
+          <div className="grid grid-cols-1 gap-px bg-neutral-200/90 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
+              <div
+                key={index}
+                className="min-w-0 bg-white p-10 md:p-12 lg:p-14"
+              >
+                <Skeleton
+                  variant="rectangular"
+                  height={228}
+                  width="100%"
+                  className="rounded-xl"
+                  aria-label={`Loading certification ${index} logo`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

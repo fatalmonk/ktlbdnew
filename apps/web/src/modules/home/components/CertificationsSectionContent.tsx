@@ -1,67 +1,20 @@
 import type { HomeCertification } from "../../../data/home/certifications";
-import { cn } from "../../../lib/utils";
+import { PartnerProgramLogoGrid } from "../../../components/certifications/PartnerProgramLogoGrid";
 
 interface CertificationsSectionContentProps {
   certifications: HomeCertification[];
 }
 
-const CertLogo = ({ cert }: { cert: HomeCertification }) => (
-  <div className="flex items-center justify-center px-2 py-2 sm:py-3 md:px-3 md:py-4 lg:px-3 lg:py-3">
-    <div className="mx-auto flex h-24 w-full max-w-[160px] items-center justify-center sm:h-28 sm:max-w-[200px] md:h-40 md:max-w-[300px] lg:h-36 lg:max-w-[165px] xl:h-40 xl:max-w-[185px] 2xl:h-44 2xl:max-w-[205px]">
-      <img
-        src={cert.logoSrc}
-        alt={cert.logoAlt}
-        className={cn(
-          "max-h-full w-full max-w-full object-contain",
-          // Walt Disney asset ships with a white box; blend so it matches bg-neutral-50
-          cert.id === "disney-fama" && "mix-blend-multiply",
-        )}
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-  </div>
-);
-
-const desktopGridGaps =
-  "gap-x-3 gap-y-6 xl:gap-x-4 xl:gap-y-8 2xl:gap-x-5 2xl:gap-y-10";
-
 const CertificationsSectionContent = ({
   certifications,
 }: CertificationsSectionContentProps) => (
-  <section className="py-16 md:py-24 lg:py-32 bg-neutral-50">
-    <div className="mx-auto w-full max-w-[1920px] px-4 md:px-6 lg:px-8">
-      <h2 className="font-heading mb-24 text-center text-5xl font-bold leading-tight tracking-tight text-neutral-900 md:text-6xl lg:text-7xl">
+  <section className="w-full bg-neutral-50 py-16 md:py-24 lg:py-28">
+    <div className="mx-auto w-full max-w-ktl px-4 sm:px-6 lg:px-8">
+      <h2 className="font-heading mb-12 text-center text-4xl font-bold leading-tight tracking-tight text-neutral-900 md:mb-16 md:text-5xl lg:mb-20 lg:text-6xl">
         Our <span className="text-primary-500">Certifications</span>
       </h2>
 
-      {/* Mobile / tablet: single grid */}
-      <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-6 lg:hidden">
-        {certifications.map((cert) => (
-          <CertLogo key={cert.id} cert={cert} />
-        ))}
-      </div>
-
-      {/* Desktop: row of 5, then centered row of 4 (10-col grid) */}
-      <div className="hidden flex-col gap-y-40 xl:gap-y-52 2xl:gap-y-64 lg:flex">
-        <div className={cn("grid w-full grid-cols-10", desktopGridGaps)}>
-          {certifications.slice(0, 5).map((cert) => (
-            <div key={cert.id} className="col-span-2">
-              <CertLogo cert={cert} />
-            </div>
-          ))}
-        </div>
-        <div className={cn("grid w-full grid-cols-10", desktopGridGaps)}>
-          {certifications.slice(5, 9).map((cert, idx) => (
-            <div
-              key={cert.id}
-              className={cn("col-span-2", idx === 0 && "col-start-2")}
-            >
-              <CertLogo cert={cert} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <PartnerProgramLogoGrid certifications={certifications} />
     </div>
   </section>
 );
