@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import Header from "./components/layout/Header";
@@ -118,6 +119,17 @@ const ResponsiveHooksTest = React.lazy(
 );
 const MetricsTest = React.lazy(() => import("./pages/test/MetricsTest"));
 
+/** Reset scroll after client-side navigation (BrowserRouter does not by default). */
+function ScrollToTopOnRouteChange() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   const isDev = import.meta.env.DEV;
 
@@ -133,6 +145,7 @@ function App() {
     <ErrorBoundary>
       <MotionConfig reducedMotion="user">
         <Router basename={import.meta.env.BASE_URL}>
+          <ScrollToTopOnRouteChange />
           <StructuredData
             data={[createOrganizationSchema(), createWebsiteSchema()]}
           />

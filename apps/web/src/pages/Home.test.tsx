@@ -41,7 +41,11 @@ describe("Home Page", () => {
       await screen.findByRole("heading", { name: /In The News/i }, { timeout }),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/Investor Snapshot/i, {}, { timeout }),
+      await screen.findByRole(
+        "region",
+        { name: /Investor snapshot/i },
+        { timeout },
+      ),
     ).toBeInTheDocument();
   });
 });

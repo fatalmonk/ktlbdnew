@@ -87,25 +87,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Primary nav — row 2 col 2 on lg, vertically centered with social row; mobile order 4 */}
-          <nav
-            aria-label="Footer"
-            className="order-4 w-full lg:order-none lg:col-start-2 lg:row-start-2 lg:w-auto lg:justify-self-end lg:self-center lg:text-right"
-          >
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-body font-medium md:gap-x-8 md:text-body-lg lg:justify-end lg:text-body">
-              {primaryNav.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="text-white transition-colors hover:text-primary-400"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
           {/* Google Business — row 3 col 1; mobile order 3 */}
           <div className="order-3 flex w-full max-w-2xl flex-col gap-6 border-t border-white/10 pt-12 lg:order-none lg:col-start-1 lg:row-start-3 lg:pt-12">
             <p className="text-overline font-medium text-neutral-400">
@@ -189,59 +170,82 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Stock + legal — row 3 col 2, bottom of column on lg; mobile order 5 */}
-          <div className="order-5 flex min-h-0 w-full flex-col gap-14 lg:order-none lg:col-start-2 lg:row-start-3 lg:h-full lg:items-end lg:justify-end lg:text-right">
-            <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-body text-neutral-300 md:text-body-lg lg:justify-end">
-              <a
-                href={STOCK_EXCHANGES.dse.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white"
-              >
-                {STOCK_EXCHANGES.dse.shortName}
-              </a>
-              {pipe}
-              <a
-                href={STOCK_EXCHANGES.cse.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white"
-              >
-                {STOCK_EXCHANGES.cse.shortName}
-              </a>
-              {pipe}
-              <a
-                href={ASSOCIATIONS.bgmea.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white"
-              >
-                {ASSOCIATIONS.bgmea.shortName}
-              </a>
-              {pipe}
-              <Link to="/certifications" className="hover:text-white">
-                Certifications
-              </Link>
-            </div>
+          {/* Primary nav + stock/legal — col 2 spans rows 2–3 on lg; nav sits lower via justify-end */}
+          <div className="order-4 flex min-h-0 w-full flex-col gap-14 lg:order-none lg:col-start-2 lg:row-start-2 lg:row-span-2 lg:w-full lg:justify-self-end lg:justify-end">
+            <nav
+              aria-label="Footer"
+              className="w-full lg:ml-auto lg:w-auto lg:max-w-xl lg:text-right"
+            >
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3 text-body font-medium tracking-wide md:gap-x-6 md:text-body-lg md:tracking-wider lg:justify-end lg:gap-x-5 lg:text-body">
+                {primaryNav.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      to={item.href}
+                      className="text-white transition-colors hover:text-primary-400"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-            <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-caption text-neutral-400 lg:justify-end">
-              <Link to="/contact" className="hover:text-neutral-200">
-                Contact Us
-              </Link>
-              {pipe}
-              <Link to="/company/governance" className="hover:text-neutral-200">
-                Governance
-              </Link>
-              {pipe}
-              <Link to="/sustainability" className="hover:text-neutral-200">
-                Sustainability
-              </Link>
-              {pipe}
-              <Link to="/newsroom/stories" className="hover:text-neutral-200">
-                Company Stories
-              </Link>
-              {pipe}
-              <span>© {new Date().getFullYear()} Kattali Textile Ltd.</span>
+            <div className="flex min-h-0 w-full flex-col gap-14 lg:items-end lg:justify-end lg:text-right">
+              <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-body text-neutral-300 md:text-body-lg lg:justify-end">
+                <a
+                  href={STOCK_EXCHANGES.dse.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  {STOCK_EXCHANGES.dse.shortName}
+                </a>
+                {pipe}
+                <a
+                  href={STOCK_EXCHANGES.cse.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  {STOCK_EXCHANGES.cse.shortName}
+                </a>
+                {pipe}
+                <a
+                  href={ASSOCIATIONS.bgmea.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  {ASSOCIATIONS.bgmea.shortName}
+                </a>
+                {pipe}
+                <Link to="/certifications" className="hover:text-white">
+                  Certifications
+                </Link>
+              </div>
+
+              <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-caption text-neutral-400 lg:justify-end">
+                <Link to="/contact" className="hover:text-neutral-200">
+                  Contact Us
+                </Link>
+                {pipe}
+                <Link
+                  to="/company/governance"
+                  className="hover:text-neutral-200"
+                >
+                  Governance
+                </Link>
+                {pipe}
+                <Link to="/sustainability" className="hover:text-neutral-200">
+                  Sustainability
+                </Link>
+                {pipe}
+                <Link to="/newsroom/stories" className="hover:text-neutral-200">
+                  Company Stories
+                </Link>
+                {pipe}
+                <span>© {new Date().getFullYear()} Kattali Textile Ltd.</span>
+              </div>
             </div>
           </div>
         </div>

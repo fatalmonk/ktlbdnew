@@ -52,6 +52,10 @@ export const STOCK_EXCHANGES = {
   },
 };
 
+/** Third-party market data site (not affiliated). Use for outbound “live quote” links only. */
+export const STOCKNOW_KTL_URL =
+  "https://stocknow.com.bd/search?symbol=KTL" as const;
+
 // Industry Associations
 export const ASSOCIATIONS = {
   bgmea: {

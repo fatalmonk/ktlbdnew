@@ -136,6 +136,22 @@ export default {
             textTransform: "uppercase",
           },
         ],
+
+        /* clamp() scales — use with font-heading / font-body as needed */
+        "fluid-xs": ["var(--fs-fluid-xs)", { lineHeight: "1.5" }],
+        "fluid-sm": ["var(--fs-fluid-sm)", { lineHeight: "1.5" }],
+        "fluid-base": ["var(--fs-fluid-base)", { lineHeight: "1.6" }],
+        "fluid-md": ["var(--fs-fluid-md)", { lineHeight: "1.6" }],
+        "fluid-lg": ["var(--fs-fluid-lg)", { lineHeight: "1.55" }],
+        "fluid-xl": ["var(--fs-fluid-xl)", { lineHeight: "1.45" }],
+        "fluid-2xl": ["var(--fs-fluid-2xl)", { lineHeight: "1.35" }],
+        "fluid-3xl": ["var(--fs-fluid-3xl)", { lineHeight: "1.2" }],
+        "fluid-4xl": ["var(--fs-fluid-4xl)", { lineHeight: "1.15" }],
+        "fluid-5xl": ["var(--fs-fluid-5xl)", { lineHeight: "1.1" }],
+        "fluid-hero": [
+          "var(--fs-fluid-hero)",
+          { lineHeight: "1.08", letterSpacing: "-0.02em" },
+        ],
       },
 
       /* --------------------------------------------------------------
@@ -151,6 +167,10 @@ export default {
         12: "3rem", // 48
         16: "4rem", // 64
         24: "6rem", // 96
+        "fluid-section": "var(--fluid-section-inline)",
+        "fluid-gap-sm": "var(--fluid-gap-sm)",
+        "fluid-gap-md": "var(--fluid-gap-md)",
+        "fluid-gap-lg": "var(--fluid-gap-lg)",
       },
 
       /* --------------------------------------------------------------
@@ -173,6 +193,12 @@ export default {
 
       maxWidth: {
         ktl: "1200px",
+        "fluid-content": "var(--fluid-max-content)",
+        "fluid-wide": "var(--fluid-max-wide)",
+        "fluid-prose": "var(--fluid-prose)",
+        "fluid-col-sm": "var(--fluid-col-sm)",
+        "fluid-col-md": "var(--fluid-col-md)",
+        "fluid-col-lg": "var(--fluid-col-lg)",
       },
 
       /* --------------------------------------------------------------

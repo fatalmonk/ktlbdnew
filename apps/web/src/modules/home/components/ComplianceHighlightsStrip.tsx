@@ -35,7 +35,7 @@ const CERTIFICATIONS_CTA_CLASS =
 const ComplianceHighlightsStrip = () => {
   return (
     <section className="bg-white" aria-labelledby="trust-partners-heading">
-      <div className="mx-auto w-full max-w-[1920px] px-20 py-44 sm:px-[5rem] sm:py-48 md:px-24 md:py-52 lg:px-28 lg:py-56 xl:px-36 xl:py-60 2xl:px-44 2xl:py-64">
+      <div className="mx-auto w-full max-w-[1920px] px-20 py-52 sm:px-[5rem] sm:py-56 md:px-24 md:py-60 lg:px-28 lg:py-64 xl:px-36 xl:py-72 2xl:px-44 2xl:py-80">
         <div className="grid gap-20 lg:grid-cols-2 lg:items-center lg:gap-28 xl:gap-32 2xl:gap-40">
           <div className="min-w-0 lg:max-w-[min(100%,48rem)] xl:max-w-[min(100%,56rem)] 2xl:max-w-[min(100%,64rem)]">
             <h2

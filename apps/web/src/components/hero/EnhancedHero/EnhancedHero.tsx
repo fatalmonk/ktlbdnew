@@ -26,8 +26,18 @@ interface HeroSlide {
 
 /** Soft ease-out — long deceleration for hero crossfades. */
 const HERO_EASE = [0.16, 1, 0.28, 1] as const;
-/** Horizontal drift (px) for right → left slide change (enter from right, exit to left). */
+/** One-time hero reveal on load (left → right). */
+const HERO_ENTER_EASE = [0.22, 1, 0.36, 1] as const;
+/** Horizontal drift (px) for slide change: enter from left, exit to right. */
 const HERO_SLIDE_X = 48;
+
+/** Brand yellow underline — matches mobile nav link treatment (ticker yellow #ffce00). */
+const HERO_CTA_HIGHLIGHT =
+  "inline bg-[linear-gradient(#ffce00,#ffce00)] bg-[length:100%_0.15em] bg-no-repeat bg-[position:0_calc(100%-2px)] px-0.5";
+
+/** Hero photo: soft when idle, sharp + slight zoom on hover (focus pull). */
+const HERO_IMAGE_HOVER =
+  "origin-center blur-[2px] brightness-[0.96] scale-100 transition-[filter,transform] duration-500 ease-out group-hover/hero:blur-none group-hover/hero:brightness-100 group-hover/hero:scale-[1.02] motion-reduce:blur-none motion-reduce:brightness-100 motion-reduce:scale-100 motion-reduce:transition-none";
 
 const SLIDES: HeroSlide[] = [
   {
@@ -147,23 +157,27 @@ const EnhancedHero: React.FC = () => {
 
   const imageMotionInitial = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: HERO_SLIDE_X };
+    : { opacity: 0, x: -HERO_SLIDE_X };
   const imageMotionAnimate = reduceMotion
     ? { opacity: 1 }
     : { opacity: 1, x: 0 };
   const imageMotionExit = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: -HERO_SLIDE_X };
+    : { opacity: 0, x: HERO_SLIDE_X };
 
   const copyMotionInitial = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: HERO_SLIDE_X * 0.65 };
+    : { opacity: 0, x: -HERO_SLIDE_X * 0.65 };
   const copyMotionAnimate = reduceMotion
     ? { opacity: 1 }
     : { opacity: 1, x: 0 };
   const copyMotionExit = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: -HERO_SLIDE_X * 0.65 };
+    : { opacity: 0, x: HERO_SLIDE_X * 0.65 };
+
+  const heroEnterTransition = reduceMotion
+    ? { duration: 0.01 }
+    : { duration: 0.6, ease: HERO_ENTER_EASE };
 
   return (
     // tabIndex makes the section focusable so keyboard listeners fire reliably
@@ -188,7 +202,12 @@ const EnhancedHero: React.FC = () => {
         {announcement}
       </div>
 
-      <div className="mx-auto w-full max-w-[1920px]">
+      <motion.div
+        className="mx-auto w-full max-w-[1920px]"
+        initial={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -36 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={heroEnterTransition}
+      >
         <div className="relative bg-white">
           {/*
             ─── MOBILE / TABLET (< lg) ───────────────────────────────────────────
@@ -198,7 +217,7 @@ const EnhancedHero: React.FC = () => {
           <div className="relative px-10 sm:px-[4.5rem] md:px-20 lg:hidden">
             {/* Inset image frame — horizontal margin from viewport edges on small screens */}
             <div
-              className="relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
+              className="group/hero relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
               style={{
                 minHeight: "360px",
                 height:
@@ -224,19 +243,19 @@ const EnhancedHero: React.FC = () => {
                     priority={currentSlide === 0}
                     eager
                     sizes="(max-width: 639px) calc(100vw - 5rem), (max-width: 767px) calc(100vw - 9rem), (max-width: 1023px) calc(100vw - 10rem), 100vw"
-                    className="h-full w-full object-cover object-center opacity-80"
+                    className={`${HERO_IMAGE_HOVER} h-full w-full object-cover object-center opacity-80`}
                     fit="cover"
                   />
                   {/* Gradient scrim so white text remains legible */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-[backdrop-filter] duration-500 ease-out group-hover/hero:backdrop-blur-[1px] motion-reduce:backdrop-blur-none motion-reduce:transition-none"
                   />
                 </motion.div>
               </AnimatePresence>
 
               {/* Text overlay — bottom-weighted on the image; min-h headline slot limits vertical shift between slides */}
-              <div className="absolute inset-x-0 bottom-[min(50vh,18rem)] z-20 px-10 pb-8 pt-2 sm:bottom-[min(48vh,20rem)] sm:px-[4.5rem] sm:pb-9 md:bottom-[min(46vh,22rem)] md:px-20">
+              <div className="absolute inset-x-0 bottom-[min(50vh,18rem)] z-20 rounded-2xl px-10 pb-8 pt-2 transition-[backdrop-filter,background-color] duration-500 ease-out group-hover/hero:bg-black/15 group-hover/hero:backdrop-blur-md motion-reduce:bg-transparent motion-reduce:backdrop-blur-none motion-reduce:transition-none sm:bottom-[min(48vh,20rem)] sm:px-[4.5rem] sm:pb-9 md:bottom-[min(46vh,22rem)] md:px-20">
                 <AnimatePresence mode="sync" initial={false}>
                   <motion.div
                     key={activeSlide.id}
@@ -264,9 +283,11 @@ const EnhancedHero: React.FC = () => {
 
                     <Link
                       to={activeSlide.ctaHref}
-                      className="mt-10 inline-flex w-fit items-center border-b border-black pb-0.5 text-[1.8rem] font-semibold text-black transition-colors hover:border-neutral-800 hover:text-neutral-800 sm:mt-12"
+                      className="mt-10 inline-flex w-fit items-center text-[1.8rem] font-semibold text-white transition-colors hover:text-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:mt-12"
                     >
-                      {activeSlide.ctaLabel}
+                      <span className={HERO_CTA_HIGHLIGHT}>
+                        {activeSlide.ctaLabel}
+                      </span>
                     </Link>
                   </motion.div>
                 </AnimatePresence>
@@ -281,10 +302,10 @@ const EnhancedHero: React.FC = () => {
             wave pattern fills the exposed white area to the right of the image.
           */}
           <div className="relative hidden lg:block">
-            <div className="relative lg:px-24 xl:px-32 2xl:px-40">
-              <div className="relative min-h-[clamp(500px,50vw,700px)] min-w-0">
+            <div className="relative mx-auto w-full max-w-[1280px] lg:px-16 xl:px-20 2xl:px-24">
+              <div className="group/hero relative min-h-[clamp(500px,50vw,700px)] min-w-0">
                 {/* Contained image — narrower than full row, centered; text panel overlaps from left */}
-                <div className="absolute inset-y-0 left-1/2 w-[68%] max-w-[1180px] min-w-0 -translate-x-1/2 bg-[#f7e9e3]">
+                <div className="absolute inset-y-0 left-1/2 w-[60%] max-w-[880px] min-w-0 -translate-x-1/2 bg-[#f7e9e3]">
                   <div className="absolute inset-0 min-h-0 overflow-hidden rounded-br-[220px]">
                     <AnimatePresence mode="sync" initial={false}>
                       <motion.div
@@ -303,8 +324,8 @@ const EnhancedHero: React.FC = () => {
                           alt={activeSlide.alt}
                           priority={currentSlide === 0}
                           eager
-                          sizes="(min-width: 1536px) min(68vw, 1180px), (min-width: 1024px) 68vw, 100vw"
-                          className="h-full w-full object-cover object-center opacity-80"
+                          sizes="(min-width: 1536px) min(60vw, 880px), (min-width: 1024px) 60vw, 100vw"
+                          className={`${HERO_IMAGE_HOVER} h-full w-full object-cover object-center opacity-80`}
                           fit="cover"
                         />
                       </motion.div>
@@ -312,8 +333,8 @@ const EnhancedHero: React.FC = () => {
                   </div>
                 </div>
 
-                {/* White text panel — top-aligned stack; copy slides right → left each change */}
-                <div className="absolute inset-y-0 left-0 z-20 flex w-[42%] flex-col items-start justify-start bg-white px-10 pb-12 pt-24 text-left xl:w-[38%] xl:px-12 xl:pb-14 xl:pt-32">
+                {/* White text panel — top-aligned stack; copy slides left → right each change */}
+                <div className="absolute inset-y-0 left-0 z-20 flex w-[44%] flex-col items-start justify-start bg-white px-8 pb-12 pt-24 text-left shadow-none transition-[box-shadow,backdrop-filter] duration-500 ease-out group-hover/hero:shadow-[0_24px_60px_-20px_rgba(36,58,79,0.18)] group-hover/hero:ring-1 group-hover/hero:ring-[#243a4f]/10 motion-reduce:transition-none motion-reduce:group-hover/hero:shadow-none motion-reduce:group-hover/hero:ring-0 xl:w-[40%] xl:px-10 xl:pb-14 xl:pt-32">
                   <AnimatePresence mode="sync" initial={false}>
                     <motion.div
                       key={activeSlide.id}
@@ -341,25 +362,27 @@ const EnhancedHero: React.FC = () => {
 
                       <Link
                         to={activeSlide.ctaHref}
-                        className="mt-12 inline-flex w-fit items-center border-b border-[#243a4f] pb-1 text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:border-primary-600 hover:text-primary-600 xl:mt-14"
+                        className="mt-12 inline-flex w-fit items-center text-[1.6rem] font-semibold text-[#243a4f] transition-colors hover:text-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 xl:mt-14"
                       >
-                        {activeSlide.ctaLabel}
+                        <span className={HERO_CTA_HIGHLIGHT}>
+                          {activeSlide.ctaLabel}
+                        </span>
                       </Link>
                     </motion.div>
                   </AnimatePresence>
                 </div>
               </div>
-            </div>
 
-            {/* Decorative diagonal stripe in the exposed white area (right of image) */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-[280px] w-[36%]"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(25deg, transparent 0 26px, rgba(243,212,90,0.92) 26px 30px, transparent 30px 58px), repeating-linear-gradient(155deg, transparent 0 24px, rgba(243,212,90,0.62) 24px 27px, transparent 27px 54px)",
-              }}
-            />
+              {/* Decorative diagonal stripe in the exposed white area (right of image) */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-0 right-0 h-[280px] w-[34%]"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(25deg, transparent 0 26px, rgba(243,212,90,0.92) 26px 30px, transparent 30px 58px), repeating-linear-gradient(155deg, transparent 0 24px, rgba(243,212,90,0.62) 24px 27px, transparent 27px 54px)",
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -409,7 +432,7 @@ const EnhancedHero: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -7,6 +7,10 @@ import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
 import { createBreadcrumbSchema } from "../../../modules/seo/templates";
+import {
+  BOARD_COMMUNICATION_YELLOW_BG,
+  BoardCommunicationLeftColumn,
+} from "./BoardCommunicationLeftColumn";
 
 /** Shared section title scale: comfortable on mobile, aligned on lg+ desktop */
 const sectionTitleClass =
@@ -300,41 +304,11 @@ const CompanyGovernance = () => {
         <section
           id="contact-board"
           className="py-24"
-          style={{ backgroundColor: "#FCD338" }}
+          style={{ backgroundColor: BOARD_COMMUNICATION_YELLOW_BG }}
         >
           <div className="container mx-auto px-8 md:px-16">
             <div className="grid md:grid-cols-[3fr_2fr] gap-12">
-              {/* Left Column */}
-              <div className="flex flex-col justify-center space-y-8">
-                <h2 className={`${sectionTitleClass} leading-tight`}>
-                  Communicating
-                  <br />
-                  with Our Board
-                </h2>
-
-                <p className="text-2xl sm:text-3xl text-black leading-relaxed max-w-xl">
-                  You may communicate with the full Board, the Audit Committee,
-                  the lead Independent Director, the other Non-Employee
-                  Directors, or any individual director as follows:
-                </p>
-
-                <div className="text-black text-2xl sm:text-3xl">
-                  <div className="flex flex-col gap-1 sm:gap-1.5">
-                    <p className="m-0 font-bold leading-tight">
-                      Kattali Textile Limited
-                    </p>
-                    <p className="m-0 font-bold leading-snug">
-                      BM Heights, 8th Floor, 318 Sk. Mujib Road, Agrabad
-                    </p>
-                  </div>
-                  <a
-                    href="mailto:board@ktlbd.com"
-                    className="mt-8 block font-bold underline hover:text-neutral-700 transition-colors sm:mt-10"
-                  >
-                    board@ktlbd.com
-                  </a>
-                </div>
-              </div>
+              <BoardCommunicationLeftColumn variant="page" />
 
               {/* Right Column */}
               <div className="flex items-center">

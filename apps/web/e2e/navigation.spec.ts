@@ -156,7 +156,9 @@ test.describe("Site Navigation", () => {
 
   test.describe("Investor Relations", () => {
     test("should display investor snapshot", async ({ page }) => {
-      await expect(page.getByText(/Investor Snapshot/i)).toBeVisible();
+      await expect(
+        page.getByRole("region", { name: /Investor snapshot/i }),
+      ).toBeVisible();
     });
 
     test("should navigate to investor relations", async ({ page }) => {
