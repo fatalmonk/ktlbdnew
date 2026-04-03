@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { newsItems } from "../data/home";
 import { partners } from "../data/partners";
-import { featuredProducts } from "../data/products";
 import HeroSection from "../modules/home/components/HeroSection";
 import HomeSEO from "../modules/home/components/HomeSEO";
 import KeyPerformanceMetricsSection from "../modules/home/components/KeyPerformanceMetricsSection";
@@ -75,7 +74,7 @@ const Home = () => {
         {canRenderIslands && (
           <>
             <Suspense fallback={<ProductsSkeleton />}>
-              <LazyProductsShowcase products={featuredProducts} />
+              <LazyProductsShowcase />
             </Suspense>
 
             <Suspense fallback={<LogoCarouselSkeleton />}>

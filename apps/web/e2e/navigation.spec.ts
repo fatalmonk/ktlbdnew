@@ -23,9 +23,14 @@ test.describe("Site Navigation", () => {
     });
 
     test("should display products section", async ({ page }) => {
-      await expect(page.getByText(/Our Products/i)).toBeVisible();
-      await expect(page.getByText("Denims")).toBeVisible();
-      await expect(page.getByText("T-Shirts")).toBeVisible();
+      await expect(page.getByText(/^Portfolio$/i)).toBeVisible();
+      await expect(
+        page.getByRole("heading", { name: /Our Works/i }),
+      ).toBeVisible();
+      await expect(page.getByRole("tab", { name: /^Denims$/i })).toBeVisible();
+      await expect(
+        page.getByRole("tab", { name: /^Knitwear$/i }),
+      ).toBeVisible();
     });
   });
 

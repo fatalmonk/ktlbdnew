@@ -31,11 +31,7 @@ describe("Home Page", () => {
 
     const timeout = 15000;
     expect(
-      await screen.findByRole(
-        "heading",
-        { name: /Our Products/i },
-        { timeout },
-      ),
+      await screen.findByRole("heading", { name: /Our Works/i }, { timeout }),
     ).toBeInTheDocument();
     expect(
       await screen.findByRole("heading", { name: /In The News/i }, { timeout }),

@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import Image from "../../../components/media/Image";
 import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
+import { getPortfolioGridImages } from "../../../data/portfolioGallery";
 import {
   createProductSchema,
   createBreadcrumbSchema,
 } from "../../../modules/seo/templates";
+
+const swimwearGallery = getPortfolioGridImages("swimwear");
 
 const SwimwearPage = () => {
   const breadcrumbs = [
@@ -18,7 +22,7 @@ const SwimwearPage = () => {
     name: "Premium Swimwear Products",
     description:
       "KTL's premium swimwear collection features high-quality swimsuits, bikinis, and beachwear manufactured in Bangladesh for global fashion brands.",
-    image: "https://ktlbd.com/assets/swimwear.jpg",
+    image: "https://ktlbd.com/assets/portfolio/swimwear/swimwear-01.png",
     category: "Swimwear Apparel",
     brand: "Kattali Textile Ltd",
     availability: "https://schema.org/InStock",
@@ -99,6 +103,34 @@ const SwimwearPage = () => {
               </Link>
               .
             </p>
+
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
+                Sample styles
+              </h2>
+              <p className="text-neutral-700 mb-6 max-w-2xl">
+                A selection of swim and beach silhouettes we produce—rash
+                guards, sunsuits, swim sets, and modest swim options for
+                different markets.
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {swimwearGallery.map((item) => (
+                  <figure
+                    key={item.src}
+                    className="group relative aspect-square overflow-hidden rounded-xl bg-neutral-100 shadow-sm ring-1 ring-black/5"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt.replace(/^KTL Swimwear —\s*/i, "")}
+                      className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      fit="cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <figcaption className="sr-only">{item.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">

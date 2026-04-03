@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import Image from "../../../components/media/Image";
 import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
+import { getPortfolioGridImages } from "../../../data/portfolioGallery";
 import {
   createProductSchema,
   createBreadcrumbSchema,
 } from "../../../modules/seo/templates";
+
+const knitwearGallery = getPortfolioGridImages("knitwear");
 
 const KnitwearPage = () => {
   const breadcrumbs = [
@@ -18,7 +22,7 @@ const KnitwearPage = () => {
     name: "Premium Knitwear Products",
     description:
       "KTL's premium knitwear collection features high-quality sweaters, cardigans, and knit accessories manufactured in Bangladesh for global fashion brands.",
-    image: "https://ktlbd.com/assets/knitwear.jpg",
+    image: "https://ktlbd.com/assets/portfolio/knitwear/knitwear-01.png",
     category: "Knitwear Apparel",
     brand: "Kattali Textile Ltd",
     availability: "https://schema.org/InStock",
@@ -53,9 +57,13 @@ const KnitwearPage = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-neutral-800 mb-8">
-              Our premium knitwear collection features high-quality sweaters,
-              cardigans, and knit accessories crafted for comfort, warmth, and
-              style. As part of our comprehensive{" "}
+              We develop knit programs that translate woven and jersey trends
+              into stitch—jacquard and intarsia botanicals and animal prints,
+              tonal damask effects, pinstripe textures, smocked necklines,
+              balloon sleeves, mock-necks, and relaxed lounge silhouettes. Our
+              premium knitwear line spans sweaters, cardigans, tops, and
+              coordinated sets for comfort, drape, and retail-ready finish. As
+              part of our comprehensive{" "}
               <Link
                 to="/products"
                 className="text-primary-600 hover:text-primary-700 font-medium underline"
@@ -94,28 +102,64 @@ const KnitwearPage = () => {
               .
             </p>
 
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
+                Sample styles
+              </h2>
+              <p className="text-neutral-700 mb-6 max-w-2xl">
+                Reference directions we can engineer in knit—from multi-color
+                jacquard and tonal textures to engineered ribs, gathers, and
+                contemporary women&apos;s silhouettes.
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {knitwearGallery.map((item) => (
+                  <figure
+                    key={item.src}
+                    className="group relative aspect-square overflow-hidden rounded-xl bg-neutral-100 shadow-sm ring-1 ring-black/5"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt.replace(/^KTL Knitwear —\s*/i, "")}
+                      className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      fit="cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <figcaption className="sr-only">{item.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Premium Sweaters</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Jacquard &amp; pattern knits
+                </h3>
                 <p className="text-neutral-800">
-                  High-quality sweaters with modern designs and comfortable
-                  fits.
+                  Multi-color jacquard, intarsia, and tonal stitch patterns for
+                  botanical, animal, geo, and damask-inspired designs at the
+                  gauge your brand specifies.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">
-                  Stylish Cardigans
+                  Statement silhouettes
                 </h3>
                 <p className="text-neutral-800">
-                  Versatile cardigans perfect for layering and all seasons.
+                  Engineered ribs, smocked or gathered necklines, balloon
+                  sleeves, mock-necks, peplum and high-low hems—built with
+                  consistent sizing and clean finishing.
                 </p>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Knit Accessories</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  Loungewear &amp; layering
+                </h3>
                 <p className="text-neutral-800">
-                  Complementary knit accessories and finishing touches.
+                  Coordinated sets, fine-gauge tops, and cardigans for lounge,
+                  casual, and elevated everyday programs.
                 </p>
               </div>
             </div>

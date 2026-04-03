@@ -44,7 +44,7 @@ export const products: Product[] = [
     category: "Premium Apparel",
     description:
       "Premium knitted garments including sweaters, cardigans, and knit tops",
-    image: stock.knitwear,
+    image: "/assets/portfolio/knitwear/knitwear-01.png",
     icon: createLazyIconWrapper("Shirt"),
     link: "/products/knitwear",
     featured: true,
@@ -106,7 +106,7 @@ export const products: Product[] = [
     name: "Swimwear",
     category: "Sports Wear",
     description: "High-quality swim trunks and swimwear for active lifestyles",
-    image: heroGlobal1x,
+    image: "/assets/portfolio/swimwear/swimwear-01.png",
     icon: createLazyIconWrapper("Package"),
     link: "/products/swimwear",
     featured: false,

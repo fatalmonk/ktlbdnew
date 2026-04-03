@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import Image from "../../../components/media/Image";
 import SEO from "../../../components/seo/SEO";
 import StructuredData from "../../../components/seo/StructuredData";
 import SubpageHeader from "../../../components/shared/SubpageHeader";
+import { getPortfolioGridImages } from "../../../data/portfolioGallery";
 import {
   createProductSchema,
   createBreadcrumbSchema,
 } from "../../../modules/seo/templates";
+
+const kidsGallery = getPortfolioGridImages("kids");
 
 const KidsPage = () => {
   const breadcrumbs = [
@@ -18,7 +22,7 @@ const KidsPage = () => {
     name: "Premium Kids Wear Products",
     description:
       "KTL's premium kids wear collection features high-quality children's clothing for comfort, style, and durability manufactured in Bangladesh for global brands.",
-    image: "https://ktlbd.com/assets/kids.jpg",
+    image: "https://ktlbd.com/assets/portfolio/kids/kids-01.png",
     category: "Children's Apparel",
     brand: "Kattali Textile Ltd",
     availability: "https://schema.org/InStock",
@@ -86,6 +90,34 @@ const KidsPage = () => {
               </Link>
               .
             </p>
+
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-neutral-900 mb-4">
+                Sample styles
+              </h2>
+              <p className="text-neutral-700 mb-6 max-w-2xl">
+                A selection of children&apos;s silhouettes we produce—sets,
+                separates, sleepwear, and baby essentials for different age
+                groups and markets.
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {kidsGallery.map((item) => (
+                  <figure
+                    key={item.src}
+                    className="group relative aspect-square overflow-hidden rounded-xl bg-neutral-100 shadow-sm ring-1 ring-black/5"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt.replace(/^KTL Kids' —\s*/i, "")}
+                      className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      fit="cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <figcaption className="sr-only">{item.alt}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
