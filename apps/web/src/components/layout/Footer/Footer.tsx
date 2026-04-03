@@ -24,19 +24,22 @@ const pipe = (
 );
 
 const Footer = () => {
-  const primaryNav = NAVIGATION_ITEMS.map((item) => ({
-    name: item.name,
-    href: item.href,
-  }));
+  const primaryNav: { name: string; href: string }[] = [];
+  for (const item of NAVIGATION_ITEMS) {
+    primaryNav.push({ name: item.name, href: item.href });
+    if (item.name === "Corporate Responsibility") {
+      primaryNav.push({ name: "Certifications", href: "/certifications" });
+    }
+  }
 
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto max-w-[1920px] px-10 py-28 md:px-16 md:py-36 lg:px-20 lg:py-44 xl:px-24 xl:py-52">
+      <div className="mx-auto max-w-[1920px] px-10 pt-20 pb-28 md:px-16 md:pt-24 md:pb-36 lg:px-20 lg:pt-28 lg:pb-44 xl:px-24 xl:pt-32 xl:pb-52">
         <div className="grid grid-cols-1 gap-20 text-left lg:grid-cols-2 lg:grid-rows-[auto_auto_minmax(0,1fr)] lg:gap-x-28 lg:gap-y-12">
           {/* Wordmark — row 1 col 1; mobile order 1 */}
           <Link
             to="/"
-            className="order-1 font-heading block text-6xl font-semibold tracking-tight text-[#6d8eb8] lowercase md:text-7xl lg:order-none lg:col-start-1 lg:row-start-1 lg:mb-16 lg:text-8xl xl:mb-20"
+            className="order-1 font-heading block text-6xl font-semibold tracking-tight text-[#6d8eb8] lowercase md:text-7xl lg:order-none lg:col-start-1 lg:row-start-1 lg:mb-20 lg:text-8xl xl:mb-24"
           >
             kattali textile limited
           </Link>
@@ -174,11 +177,11 @@ const Footer = () => {
           <div className="order-4 flex min-h-0 w-full flex-col gap-14 lg:order-none lg:col-start-2 lg:row-start-2 lg:row-span-2 lg:w-full lg:justify-self-end lg:justify-end">
             <nav
               aria-label="Footer"
-              className="w-full lg:ml-auto lg:w-auto lg:max-w-xl lg:text-right"
+              className="w-full lg:ml-auto lg:max-w-7xl lg:text-right"
             >
-              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3 text-body font-medium tracking-wide md:gap-x-6 md:text-body-lg md:tracking-wider lg:justify-end lg:gap-x-5 lg:text-body">
+              <ul className="flex w-full min-w-0 flex-col gap-y-2 text-body font-normal tracking-wide md:gap-y-2.5 md:text-body-lg md:tracking-wider items-start lg:items-end">
                 {primaryNav.map((item) => (
-                  <li key={item.name}>
+                  <li key={item.name} className="shrink-0">
                     <Link
                       to={item.href}
                       className="text-white transition-colors hover:text-primary-400"
@@ -218,10 +221,6 @@ const Footer = () => {
                 >
                   {ASSOCIATIONS.bgmea.shortName}
                 </a>
-                {pipe}
-                <Link to="/certifications" className="hover:text-white">
-                  Certifications
-                </Link>
               </div>
 
               <div className="flex max-w-2xl flex-wrap items-center gap-x-2 gap-y-2 text-caption text-neutral-400 lg:justify-end">

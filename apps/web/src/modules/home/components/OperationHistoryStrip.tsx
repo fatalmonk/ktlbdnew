@@ -8,7 +8,7 @@ const metrics = [
 
 /** Large display numerals — responsive scale */
 const counterClassName =
-  "inline-flex shrink-0 items-center font-glacial text-[12.5rem] font-bold leading-[0.85] tracking-[-0.04em] text-primary-500 md:text-[16rem] lg:text-[18.25rem]";
+  "inline-flex shrink-0 items-center font-glacial text-[14.5rem] font-bold leading-[0.85] tracking-[-0.04em] text-primary-500 md:text-[18.5rem] lg:text-[21.5rem]";
 
 const OperationHistoryStrip = () => (
   <section
@@ -24,7 +24,7 @@ const OperationHistoryStrip = () => (
       }}
     />
 
-    <div className="relative mx-auto flex min-h-[32rem] w-full max-w-[1440px] flex-col justify-center px-6 md:min-h-[40rem] md:px-10 lg:min-h-[46rem] lg:px-16">
+    <div className="relative mx-auto flex min-h-[36rem] w-full max-w-[1440px] flex-col justify-center px-6 md:min-h-[44rem] md:px-10 lg:min-h-[52rem] lg:px-16">
       <div className="grid w-full grid-cols-1 items-center justify-items-center gap-[0.9375rem] lg:grid-cols-[auto_auto_auto] lg:justify-center lg:gap-x-1 lg:gap-y-0 xl:gap-x-2">
         {metrics.map((metric, index) => {
           const isStart = metric.align === "start";
@@ -56,13 +56,7 @@ const OperationHistoryStrip = () => (
           );
         })}
 
-        <div className="order-2 flex flex-col items-center justify-center gap-1.5 px-10 py-2 lg:shrink-0 lg:px-16 lg:py-0 xl:px-20">
-          <span
-            className="hidden text-[0.75rem] font-semibold uppercase tracking-[0.32em] text-white/35 lg:block"
-            aria-hidden
-          >
-            since
-          </span>
+        <div className="order-2 flex flex-col items-center justify-center px-10 py-2 lg:shrink-0 lg:px-16 lg:py-0 xl:px-20">
           <Link
             to="/company/our-story"
             className="inline-flex min-h-[48px] items-center border border-white/20 bg-white/5 px-7 py-3 font-heading text-base font-semibold leading-none tracking-tight text-white backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white hover:text-black md:min-h-[52px] md:px-8 md:py-3.5 md:text-lg"

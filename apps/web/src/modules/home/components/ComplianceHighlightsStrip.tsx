@@ -21,7 +21,7 @@ const LOGO_IMG_MONO =
 const LOGO_IMG_COLOR = "max-h-full max-w-full h-auto w-auto object-contain";
 
 const EXTERNAL_TEXT_LINK =
-  "inline no-underline font-medium text-[#555555] transition-colors hover:text-black focus:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
+  "inline no-underline font-medium text-[#555555] transition-colors hover:text-[#f4c414] focus:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
 
 const LOGO_EXTERNAL_LINK =
   "inline-flex h-full min-h-0 max-h-full w-full max-w-full items-center justify-center rounded-sm transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";

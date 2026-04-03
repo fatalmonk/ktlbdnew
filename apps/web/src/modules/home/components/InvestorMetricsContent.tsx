@@ -88,7 +88,7 @@ function MetricCell({
   valueClassName?: string;
 }) {
   return (
-    <div className="flex h-full min-h-[5.25rem] min-w-0 flex-col justify-center gap-2 bg-white px-4 py-4 sm:min-h-[5.75rem] sm:px-5 sm:py-5 md:min-h-[6rem] md:px-5 md:py-6 lg:px-5">
+    <div className="flex h-full min-h-[5.25rem] min-w-0 flex-col justify-start gap-2 bg-white px-4 py-4 sm:min-h-[5.75rem] sm:px-5 sm:py-5 md:min-h-[6rem] md:px-5 md:py-6 lg:px-5">
       <span className="text-balance text-sm font-medium uppercase leading-snug tracking-wide text-neutral-500 sm:text-base">
         {label}
       </span>
@@ -110,8 +110,6 @@ function MetricCell({
 
 const InvestorMetricsContent = () => (
   <section className="metrics-section" aria-label="Investor snapshot">
-    <div className="metrics-accent-bar" />
-
     <div className="py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-[min(100%,1280px)] px-4 sm:px-6 lg:pl-0 lg:pr-8">
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:grid-rows-[minmax(44rem,1fr)] lg:items-stretch lg:gap-8 xl:gap-10 lg:min-h-[44rem] lg:content-stretch">
@@ -231,7 +229,7 @@ const InvestorMetricsContent = () => (
                     value="৳8.50 – ৳14.70"
                     truncateValue={false}
                   />
-                  <div className="flex h-full min-h-[5.25rem] min-w-0 flex-col justify-center gap-2 bg-white px-4 py-4 sm:min-h-[5.75rem] sm:px-5 sm:py-5 md:min-h-[6rem] md:px-5 md:py-6 lg:px-5">
+                  <div className="flex h-full min-h-[5.25rem] min-w-0 flex-col justify-start gap-2 bg-white px-4 py-4 sm:min-h-[5.75rem] sm:px-5 sm:py-5 md:min-h-[6rem] md:px-5 md:py-6 lg:px-5">
                     <span className="text-balance text-sm font-medium uppercase leading-snug tracking-wide text-neutral-500 sm:text-base">
                       Overview
                     </span>

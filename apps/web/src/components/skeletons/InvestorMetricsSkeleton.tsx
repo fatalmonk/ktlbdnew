@@ -8,7 +8,6 @@ const InvestorMetricsSkeleton: React.FC = () => {
       aria-busy="true"
       aria-label="Loading investor snapshot"
     >
-      <div className="metrics-accent-bar" />
       <div className="py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-[min(100%,1280px)] px-4 sm:px-6 lg:pl-0 lg:pr-8">
           <div className="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:grid-rows-[minmax(44rem,1fr)] lg:items-stretch lg:gap-8 xl:gap-10 lg:min-h-[44rem] lg:content-stretch">
