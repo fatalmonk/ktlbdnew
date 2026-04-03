@@ -26,22 +26,25 @@ const EXTERNAL_TEXT_LINK =
 const LOGO_EXTERNAL_LINK =
   "inline-flex h-full min-h-0 max-h-full w-full max-w-full items-center justify-center rounded-sm transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
 
+const CERTIFICATIONS_CTA_CLASS =
+  "inline-flex min-h-[52px] items-center justify-center rounded-sm bg-blue-600 px-8 py-3.5 font-heading text-lg font-semibold leading-none tracking-tight text-white transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:min-h-14 sm:px-10 sm:py-4 sm:text-xl md:px-12 lg:min-h-[3.75rem] lg:px-14 lg:py-[1.125rem] lg:text-2xl";
+
 /**
  * Above-the-fold trust strip: headline + compliance program marks (Nirapon, Better Work, Sedex, Disney FAMA).
  */
 const ComplianceHighlightsStrip = () => {
   return (
     <section className="bg-white" aria-labelledby="trust-partners-heading">
-      <div className="mx-auto w-full max-w-[1920px] px-10 py-28 sm:px-12 sm:py-32 md:px-14 md:py-36 lg:px-16 lg:py-40 xl:px-24 xl:py-44 2xl:px-28 2xl:py-48">
+      <div className="mx-auto w-full max-w-[1920px] px-16 py-40 sm:px-[4.5rem] sm:py-44 md:px-20 md:py-48 lg:px-24 lg:py-52 xl:px-32 xl:py-56 2xl:px-40 2xl:py-60">
         <div className="grid gap-20 lg:grid-cols-2 lg:items-center lg:gap-28 xl:gap-32 2xl:gap-40">
-          <div className="min-w-0">
+          <div className="min-w-0 lg:max-w-[min(100%,48rem)] xl:max-w-[min(100%,56rem)] 2xl:max-w-[min(100%,64rem)]">
             <h2
               id="trust-partners-heading"
               className="font-heading text-5xl font-bold leading-[1.06] tracking-tight text-black sm:text-6xl md:text-[3.75rem] lg:text-[4.25rem] xl:text-[4.5rem] 2xl:text-[4.75rem]"
             >
-              Global Standards.
+              Globally recognized,
               <br />
-              Sustainable Future.
+              Ethically grounded.
             </h2>
             <p className="mt-8 text-lg leading-relaxed text-[#666666] sm:mt-9 sm:text-xl lg:mt-12 lg:text-2xl lg:leading-relaxed xl:text-[1.625rem] xl:leading-[1.55]">
               KTL operates under internationally recognized compliance and
@@ -86,7 +89,7 @@ const ComplianceHighlightsStrip = () => {
             </p>
             <Link
               to="/certifications"
-              className="mt-10 inline-flex min-h-[52px] items-center justify-center rounded-sm bg-blue-600 px-8 py-3.5 font-heading text-lg font-semibold leading-none tracking-tight text-white transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:mt-11 sm:min-h-14 sm:px-10 sm:py-4 sm:text-xl md:mt-12 md:px-12 lg:mt-14 lg:min-h-[3.75rem] lg:px-14 lg:py-[1.125rem] lg:text-2xl"
+              className={`${CERTIFICATIONS_CTA_CLASS} mt-10 hidden sm:mt-11 md:mt-12 lg:mt-14 lg:inline-flex`}
             >
               Certifications & compliance
             </Link>
@@ -135,6 +138,12 @@ const ComplianceHighlightsStrip = () => {
               );
             })}
           </ul>
+
+          <div className="min-w-0 lg:hidden">
+            <Link to="/certifications" className={CERTIFICATIONS_CTA_CLASS}>
+              Certifications & compliance
+            </Link>
+          </div>
         </div>
       </div>
     </section>

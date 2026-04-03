@@ -230,9 +230,11 @@ test.describe("B2B Features E2E Tests", () => {
     test("should surface trust strip with partner logos", async ({ page }) => {
       await page.goto("/");
 
-      await page.locator("text=/Global Standards/i").scrollIntoViewIfNeeded();
+      await page
+        .locator("text=/Globally recognized/i")
+        .scrollIntoViewIfNeeded();
 
-      await expect(page.locator("text=/Sustainable Future/i")).toBeVisible();
+      await expect(page.locator("text=/Ethically grounded/i")).toBeVisible();
       await expect(
         page.locator("text=/internationally recognized compliance/i"),
       ).toBeVisible();

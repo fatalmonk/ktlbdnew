@@ -129,6 +129,16 @@ const EnhancedHero: React.FC = () => {
     return () => clearInterval(interval);
   }, [isAutoPlay, slides]);
 
+  // Preload every hero frame so crossfades are not fighting remote image fetch
+  // (only slide 0 was priority/eager before; new slides mounted mid-transition).
+  useEffect(() => {
+    for (const slide of slides) {
+      // `Image` is the React component import — use the global HTMLImageElement ctor.
+      const img = new window.Image();
+      img.src = slide.src;
+    }
+  }, [slides]);
+
   const activeSlide = slides[currentSlide];
 
   const heroFade = reduceMotion
@@ -137,13 +147,13 @@ const EnhancedHero: React.FC = () => {
 
   const imageMotionInitial = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: HERO_SLIDE_X, scale: 1.02 };
+    : { opacity: 0, x: HERO_SLIDE_X };
   const imageMotionAnimate = reduceMotion
     ? { opacity: 1 }
-    : { opacity: 1, x: 0, scale: 1 };
+    : { opacity: 1, x: 0 };
   const imageMotionExit = reduceMotion
     ? { opacity: 0 }
-    : { opacity: 0, x: -HERO_SLIDE_X, scale: 1.012 };
+    : { opacity: 0, x: -HERO_SLIDE_X };
 
   const copyMotionInitial = reduceMotion
     ? { opacity: 0 }
@@ -164,8 +174,8 @@ const EnhancedHero: React.FC = () => {
       aria-label="Kattali Textile Limited highlights"
       className={
         isHome
-          ? "bg-white pb-6 pt-[calc(var(--site-header-height-mobile-with-ticker)+var(--home-hero-ticker-gap))] lg:pt-[var(--site-header-height-desktop-with-ticker)]"
-          : "bg-white pb-6 pt-[var(--site-header-height-mobile)] lg:pt-[var(--site-header-height-desktop)]"
+          ? "bg-white pb-6 pt-[calc(var(--site-header-height-mobile-with-ticker)+var(--home-hero-ticker-gap))] lg:pb-12 lg:pt-[var(--site-header-height-desktop-with-ticker)] xl:pb-14"
+          : "bg-white pb-6 pt-[var(--site-header-height-mobile)] lg:pb-12 lg:pt-[var(--site-header-height-desktop)] xl:pb-14"
       }
     >
       {/* Live region: announces slide changes to screen readers */}
@@ -185,7 +195,7 @@ const EnhancedHero: React.FC = () => {
             Full-bleed image that fills the viewport width and a fixed tall height.
             Text is overlaid directly on top of the image (no card, no white panel).
           */}
-          <div className="relative px-6 sm:px-8 md:px-10 lg:hidden">
+          <div className="relative px-10 sm:px-[4.5rem] md:px-20 lg:hidden">
             {/* Inset image frame — horizontal margin from viewport edges on small screens */}
             <div
               className="relative w-full overflow-hidden rounded-br-2xl sm:rounded-br-3xl"
@@ -202,7 +212,7 @@ const EnhancedHero: React.FC = () => {
                   animate={imageMotionAnimate}
                   exit={imageMotionExit}
                   transition={heroFade}
-                  className="absolute inset-0 z-10"
+                  className="absolute inset-0 z-10 [backface-visibility:hidden]"
                   role="group"
                   aria-roledescription="slide"
                   aria-label={`${currentSlide + 1} of ${slides.length}: ${activeSlide.headline}`}
@@ -212,8 +222,8 @@ const EnhancedHero: React.FC = () => {
                     src={activeSlide.src}
                     alt={activeSlide.alt}
                     priority={currentSlide === 0}
-                    eager={currentSlide === 0}
-                    sizes="(max-width: 1023px) calc(100vw - 2.5rem), 100vw"
+                    eager
+                    sizes="(max-width: 639px) calc(100vw - 5rem), (max-width: 767px) calc(100vw - 9rem), (max-width: 1023px) calc(100vw - 10rem), 100vw"
                     className="h-full w-full object-cover object-center opacity-80"
                     fit="cover"
                   />
@@ -226,7 +236,7 @@ const EnhancedHero: React.FC = () => {
               </AnimatePresence>
 
               {/* Text overlay — bottom-weighted on the image; min-h headline slot limits vertical shift between slides */}
-              <div className="absolute inset-x-0 bottom-[min(50vh,18rem)] z-20 px-8 pb-8 pt-2 sm:bottom-[min(48vh,20rem)] sm:px-10 sm:pb-9 md:bottom-[min(46vh,22rem)] md:px-12">
+              <div className="absolute inset-x-0 bottom-[min(50vh,18rem)] z-20 px-10 pb-8 pt-2 sm:bottom-[min(48vh,20rem)] sm:px-[4.5rem] sm:pb-9 md:bottom-[min(46vh,22rem)] md:px-20">
                 <AnimatePresence mode="sync" initial={false}>
                   <motion.div
                     key={activeSlide.id}
@@ -271,7 +281,7 @@ const EnhancedHero: React.FC = () => {
             wave pattern fills the exposed white area to the right of the image.
           */}
           <div className="relative hidden lg:block">
-            <div className="relative px-8">
+            <div className="relative lg:px-24 xl:px-32 2xl:px-40">
               <div className="relative min-h-[clamp(500px,50vw,700px)] min-w-0">
                 {/* Contained image — narrower than full row, centered; text panel overlaps from left */}
                 <div className="absolute inset-y-0 left-1/2 w-[68%] max-w-[1180px] min-w-0 -translate-x-1/2 bg-[#f7e9e3]">
@@ -283,7 +293,7 @@ const EnhancedHero: React.FC = () => {
                         animate={imageMotionAnimate}
                         exit={imageMotionExit}
                         transition={heroFade}
-                        className="absolute inset-0 z-10 min-h-0 min-w-0"
+                        className="absolute inset-0 z-10 min-h-0 min-w-0 [backface-visibility:hidden]"
                         role="group"
                         aria-roledescription="slide"
                         aria-label={`${currentSlide + 1} of ${slides.length}: ${activeSlide.headline}`}
@@ -292,7 +302,7 @@ const EnhancedHero: React.FC = () => {
                           src={activeSlide.src}
                           alt={activeSlide.alt}
                           priority={currentSlide === 0}
-                          eager={currentSlide === 0}
+                          eager
                           sizes="(min-width: 1536px) min(68vw, 1180px), (min-width: 1024px) 68vw, 100vw"
                           className="h-full w-full object-cover object-center opacity-80"
                           fit="cover"
@@ -354,7 +364,7 @@ const EnhancedHero: React.FC = () => {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-4 px-6 pb-3 pt-8 sm:px-8 md:px-10 md:pt-8 lg:px-0">
+        <div className="flex items-center justify-center gap-4 px-10 pb-3 pt-8 sm:px-[4.5rem] md:px-20 md:pt-8 lg:px-24 lg:pt-10 xl:px-32 xl:pt-11 2xl:px-40">
           {/* Play / Pause */}
           <button
             type="button"
