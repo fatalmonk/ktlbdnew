@@ -41,7 +41,7 @@ export function isMobileDevice(): boolean {
  * Check if the current device is a low-end device
  * @returns true if device has limited hardware capabilities
  */
-export function isLowEndDevice(): boolean {
+function isLowEndDevice(): boolean {
   if (typeof window === "undefined") return false;
 
   // Check hardware concurrency (CPU cores)
@@ -90,19 +90,4 @@ export function getOptimizedAnimationConfig() {
     enableTilt: !isMobile, // Disable tilt effects on mobile
     enableHoverEffects: !isMobile, // Disable hover-only effects on mobile
   };
-}
-
-/**
- * Get device performance tier
- * @returns 'high' | 'medium' | 'low'
- */
-export function getDevicePerformanceTier(): "high" | "medium" | "low" {
-  if (typeof window === "undefined") return "medium";
-
-  const isLowEnd = isLowEndDevice();
-  const isMobile = isMobileDevice();
-
-  if (isLowEnd) return "low";
-  if (isMobile) return "medium";
-  return "high";
 }

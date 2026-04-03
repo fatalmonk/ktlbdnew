@@ -63,38 +63,3 @@ export const filterProducts = (
 
   return filtered;
 };
-
-/**
- * Get featured products only
- */
-export const getFeaturedProducts = (products: Product[]): Product[] => {
-  return products.filter((product) => product.featured);
-};
-
-/**
- * Get products by category
- */
-export const getProductsByCategory = (
-  products: Product[],
-  category: string,
-): Product[] => {
-  return products.filter((product) => product.category === category);
-};
-
-/**
- * Search products by name or description
- */
-export const searchProducts = (
-  products: Product[],
-  query: string,
-): Product[] => {
-  if (!query.trim()) return products;
-
-  const lowercaseQuery = query.toLowerCase();
-  return products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(lowercaseQuery) ||
-      product.description.toLowerCase().includes(lowercaseQuery) ||
-      product.tags?.some((tag) => tag.toLowerCase().includes(lowercaseQuery)),
-  );
-};
