@@ -21,7 +21,7 @@ const LOGO_IMG_MONO =
 const LOGO_IMG_COLOR = "max-h-full max-w-full h-auto w-auto object-contain";
 
 const EXTERNAL_TEXT_LINK =
-  "font-medium text-[#555555] underline decoration-neutral-400 underline-offset-[3px] transition-colors hover:text-black hover:decoration-neutral-700 focus:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
+  "inline no-underline font-medium text-[#555555] transition-colors hover:text-black focus:outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
 
 const LOGO_EXTERNAL_LINK =
   "inline-flex h-full min-h-0 max-h-full w-full max-w-full items-center justify-center rounded-sm transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2";
@@ -35,7 +35,7 @@ const CERTIFICATIONS_CTA_CLASS =
 const ComplianceHighlightsStrip = () => {
   return (
     <section className="bg-white" aria-labelledby="trust-partners-heading">
-      <div className="mx-auto w-full max-w-[1920px] px-16 py-40 sm:px-[4.5rem] sm:py-44 md:px-20 md:py-48 lg:px-24 lg:py-52 xl:px-32 xl:py-56 2xl:px-40 2xl:py-60">
+      <div className="mx-auto w-full max-w-[1920px] px-20 py-44 sm:px-[5rem] sm:py-48 md:px-24 md:py-52 lg:px-28 lg:py-56 xl:px-36 xl:py-60 2xl:px-44 2xl:py-64">
         <div className="grid gap-20 lg:grid-cols-2 lg:items-center lg:gap-28 xl:gap-32 2xl:gap-40">
           <div className="min-w-0 lg:max-w-[min(100%,48rem)] xl:max-w-[min(100%,56rem)] 2xl:max-w-[min(100%,64rem)]">
             <h2

@@ -13,6 +13,7 @@ import { createLazyIcon } from "@/lib/lucide-icons";
 const ExternalLink = createLazyIcon("ExternalLink");
 const Globe = createLazyIcon("Globe");
 const Users = createLazyIcon("Users");
+import { useMediaQuery } from "@/hooks/useResponsive";
 import { PartnerLogo } from "../../types/partner";
 import Image from "../../media/Image";
 
@@ -23,9 +24,9 @@ interface EnhancedLogoCarouselProps {
 
 /** Wide wordmarks: scale down height so they stay proportionate vs square marks */
 const LOGO_IMG_DEFAULT =
-  "h-24 w-auto object-contain transition-all duration-300 md:h-28 lg:h-32 xl:h-36";
+  "h-16 w-auto object-contain transition-all duration-300 md:h-24 lg:h-28 xl:h-32 2xl:h-36";
 const LOGO_IMG_WIDE =
-  "h-16 w-auto max-w-[min(220px,55vw)] object-contain transition-all duration-300 md:h-20 lg:h-24 xl:h-28";
+  "h-12 w-auto max-w-[min(200px,50vw)] object-contain transition-all duration-300 md:h-16 lg:h-20 xl:h-24 2xl:h-28";
 
 type TooltipState = {
   partner: PartnerLogo;
@@ -47,10 +48,19 @@ function tooltipPosition(anchor: HTMLElement) {
   } as const;
 }
 
+const MD_UP = "(min-width: 768px)";
+
 const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
   partners,
   speed = 30,
 }) => {
+  const isMdUp = useMediaQuery(MD_UP);
+  const effectiveSpeedRef = useRef(speed);
+  /** Slower scroll on small viewports — same prop scales down (~44% below md). */
+  effectiveSpeedRef.current = isMdUp
+    ? speed
+    : Math.max(24, Math.round(speed * 0.44));
+
   const [isPaused, setIsPaused] = useState(false);
   const [tip, setTip] = useState<TooltipState | null>(null);
   const [, bumpPosition] = useReducer((x: number) => x + 1, 0);
@@ -80,7 +90,7 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
 
   useAnimationFrame(() => {
     if (!isPaused && containerRef.current) {
-      scrollX.current += speed / 60;
+      scrollX.current += effectiveSpeedRef.current / 60;
       if (scrollX.current >= containerRef.current.scrollWidth / 2) {
         scrollX.current = 0;
       }
@@ -171,16 +181,16 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
       : null;
 
   return (
-    <div className="relative overflow-x-hidden py-14 md:py-16 lg:py-20">
+    <div className="relative overflow-x-hidden py-8 md:py-14 lg:py-16 xl:py-20">
       {tooltipBody}
       {/* Gradient Masks */}
-      <div className="absolute bottom-0 left-0 top-0 z-10 w-24 bg-gradient-to-r from-white to-transparent sm:w-32 md:w-40" />
-      <div className="absolute bottom-0 right-0 top-0 z-10 w-24 bg-gradient-to-l from-white to-transparent sm:w-32 md:w-40" />
+      <div className="absolute bottom-0 left-0 top-0 z-10 w-14 bg-gradient-to-r from-white to-transparent sm:w-24 md:w-32 lg:w-40" />
+      <div className="absolute bottom-0 right-0 top-0 z-10 w-14 bg-gradient-to-l from-white to-transparent sm:w-24 md:w-32 lg:w-40" />
 
       {/* Logo Container */}
       <div
         ref={containerRef}
-        className="flex items-center gap-14 md:gap-16 lg:gap-20 xl:gap-24"
+        className="flex items-center gap-8 md:gap-14 lg:gap-16 xl:gap-20 2xl:gap-24"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => {
           setIsPaused(false);
@@ -203,8 +213,8 @@ const EnhancedLogoCarousel: React.FC<EnhancedLogoCarouselProps> = ({
             <div
               className={
                 partner.id === "celebrity-pink"
-                  ? "px-6 py-4 md:px-8 md:py-5 lg:px-10 lg:py-6"
-                  : "px-10 py-6 md:px-12 md:py-8 lg:px-14 lg:py-10"
+                  ? "px-4 py-3 md:px-6 md:py-4 lg:px-8 lg:py-5 xl:px-10 xl:py-6"
+                  : "px-5 py-4 md:px-10 md:py-6 lg:px-12 lg:py-8 xl:px-14 xl:py-10"
               }
             >
               <Image

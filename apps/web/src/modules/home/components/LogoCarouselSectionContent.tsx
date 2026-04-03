@@ -24,12 +24,12 @@ const LogoCarouselSectionContent = ({
           transition={fadeInUpTransition}
           className="mb-24 text-center"
         >
-          <h2 className="font-heading text-5xl font-bold leading-tight tracking-tight text-neutral-900 md:text-6xl lg:text-7xl">
+          <h2 className="font-heading text-4xl font-bold leading-tight tracking-tight text-neutral-900 md:text-5xl lg:text-6xl">
             Partnering with{" "}
             <span className="text-primary-500">global brands</span>
           </h2>
         </motion.div>
-        <div className="rounded-xl bg-white p-8 shadow-lg md:rounded-2xl md:p-14 lg:p-16 xl:p-20">
+        <div className="rounded-lg bg-white p-4 shadow-md sm:p-6 md:rounded-2xl md:p-14 md:shadow-lg lg:p-16 xl:p-20">
           <EnhancedLogoCarousel partners={partners} speed={108} />
         </div>
       </div>
