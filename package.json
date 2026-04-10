@@ -37,7 +37,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "baseline-browser-mapping": "^2.10.12",
+    "baseline-browser-mapping": "^2.10.17",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0"
   },
